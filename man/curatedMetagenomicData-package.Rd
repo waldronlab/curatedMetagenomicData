@@ -3,8 +3,10 @@
 \alias{curatedMetagenomicData-package}
 \alias{curatedMetagenomicData}
 
-\title{Taxonomic, functional, and gene marker abundance in samples collected 
-       from different body sites available as \code{ExpressionSet} objects.
+\title{
+  Taxonomic, functional, and gene marker abundance in samples collected 
+  from different body sites available as \code{ExpressionSet} objects.
+}
 
 \description{
   Human Microbiome has played a central role in clinical research due to its
@@ -19,7 +21,7 @@
   \itemize{
     \item \sQuote{_pres}: presence/absence of taxonomic markers 
     \item \sQuote{_ab}: abundance level of markers across samples
-
+  }
   The data have been parsed into \code{ExpressionSet} objects and
   are available in the Bioconductor \code{ExperimentHub}.
 }
