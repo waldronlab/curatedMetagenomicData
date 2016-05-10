@@ -1,0 +1,14 @@
+Package: curatedMetagenomicData
+Type: Package
+Title: Metagenome data from various studies
+Version: 0.99.1
+Author: Levi Waldron <lwaldron@gc.cuny.edu>, Faizan Malik <faizankmalik2012@yahoo.com>
+Maintainer: Levi Waldron <levi.waldron@hunter.cuny.edu>
+Description: The curatedMetagenomicData package provides taxonomic, 
+    functional, and gene marker abundance abundance in samples collected from 
+    different body sites.
+Depends: R (>= 2.10.0), ExperimentHubData (>= 0.101.1), affy
+Imports: BiocGenerics
+Suggests: gplots, ExperimentHub
+License: Artistic-2.0
+biocViews: ExperimentData, CancerData, ExpressionData, Homo_sapiens_Data, Metagenomics
