@@ -1,0 +1,3 @@
+import(ExperimentHubData)
+import(affy)
+exportPattern("^[[:alpha:]]+")
