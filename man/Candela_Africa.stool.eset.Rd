@@ -8,7 +8,15 @@
 \docType{data}
 \title{ Metagenome Sequencing of the Hadza Hunter-Gatherer Gut Microbiota }
 \description{ Through human microbiome sequencing, we can better understand how host evolutionary and ontogenetic history is reflected in the microbial function. However, there has been no information on the gut metagenome configuration in hunter-gatherer populations, posing a gap in our knowledge of gut microbiota (GM)-host mutualism arising from a lifestyle that describes over 90\% of human evolutionary history. Here, we present the first metagenomic analysis of GM from Hadza hunter-gatherers of Tanzania, showing a unique enrichment in metabolic pathways that aligns with the dietary and environmental factors characteristic of their foraging lifestyle. We found that the Hadza GM is adapted for broad-spectrum carbohydrate metabolism, reflecting the complex polysaccharides in their diet. Furthermore, the Hadza GM is equipped for branched-chain amino acid degradation and aromatic amino acid biosynthesis. Resistome functionality demonstrates the existence of antibiotic resistance genes in a population with little antibiotic exposure, indicating the ubiquitous presence of environmentally derived resistances. Our results demonstrate how the functional specificity of the GM correlates with certain environment and lifestyle factors and how complexity from the exogenous environment can be balanced by endogenous homeostasis. The Hadza gut metagenome structure allows us to appreciate the co-adaptive functional role of the GM in complementing the human physiology, providing a better understanding of the versatility of human life and subsistence. }
-\usage{data( Candela_Africa.stool.marker_ab.eset )}
+\usage{Candela_Africa.stool.marker_ab.eset(metadata=FALSE)}
+\arguments{
+  \item{metadata}{
+    \code{logical} value indicating whether metadata only should be returned
+    or if the resource should be loaded. Default behavior(metadata=FALSE) 
+    loads the data.
+  }
+}
+\format{
 \format{
 \preformatted{
 experimentData(eset):

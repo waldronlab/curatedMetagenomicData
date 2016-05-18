@@ -64,7 +64,7 @@ for (iFile in 1:length(eset.files)){
   }
 
   ## add Usage information to the Rd file including experimentData, featureData, assayData, Platform type etc.
-  cat(paste("\\usage{data(", cleanText(eset.name), ")}"))
+  cat(paste("\\usage{", cleanText(eset.name), "()}"))
   cat("\n")
   cat("\\format{")
   cat("\n")
