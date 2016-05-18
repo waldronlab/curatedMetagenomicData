@@ -1,7 +1,7 @@
 Package: curatedMetagenomicData
 Type: Package
 Title: Metagenome data from various studies
-Version: 0.99.1
+Version: 0.99.2
 Author: Levi Waldron <lwaldron@gc.cuny.edu>, Faizan Malik <faizankmalik2012@yahoo.com>
 Maintainer: Levi Waldron <levi.waldron@hunter.cuny.edu>
 Description: The curatedMetagenomicData package provides taxonomic, 
