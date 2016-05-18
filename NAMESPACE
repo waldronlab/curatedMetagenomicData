@@ -1,2 +1,6 @@
 import(ExperimentHubData)
 import(affy)
+
+export(
+  availableResources, filterResources, createResourcesList
+)
