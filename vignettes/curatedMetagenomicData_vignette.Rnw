@@ -22,7 +22,6 @@ BiocStyle::latex()
 
 <<preliminaries,echo=FALSE,results=hide>>=
 library(gplots)
-library(LeviRmisc)
 options(width=60)
 @
 
