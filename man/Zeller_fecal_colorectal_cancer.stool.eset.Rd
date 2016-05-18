@@ -8,7 +8,14 @@
 \docType{data}
 \title{ Potential of fecal microbiota for early-stage detection of colorectal cancer }
 \description{ Several bacterial species have been implicated in the development of colorectal carcinoma (CRC), but CRC-associated changes of fecal microbiota and their potential for cancer screening remain to be explored. Here, we used metagenomic sequencing of fecal samples to identify taxonomic markers that distinguished CRC patients from tumor-free controls in a study population of 156 participants. Accuracy of metagenomic CRC detection was similar to the standard fecal occult blood test (FOBT) and when both approaches were combined, sensitivity improved > 45\% relative to the FOBT, while maintaining its specificity. Accuracy of metagenomic CRC detection did not differ significantly between early- and late-stage cancer and could be validated in independent patient and control populations (N = 335) from different countries. CRC-associated changes in the fecal microbiome at least partially reflected microbial community composition at the tumor itself, indicating that observed gene pool differences may reveal tumor-related host-microbe interactions. Indeed, we deduced a metabolic shift from fiber degradation in controls to utilization of host carbohydrates and amino acids in CRC patients, accompanied by an increase of lipopolysaccharide metabolism. }
-\usage{data( Zeller_fecal_colorectal_cancer.stool.marker_ab.eset )}
+\usage{Zeller_fecal_colorectal_cancer.stool.marker_ab.eset(metadata=FALSE)}
+\arguments{
+  \item{metadata}{
+    \code{logical} value indicating whether metadata only should be returned
+    or if the resource should be loaded. Default behavior(metadata=FALSE) 
+    loads the data.
+  }
+}
 \format{
 \preformatted{
 experimentData(eset):
