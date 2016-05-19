@@ -8,7 +8,14 @@
 \docType{data}
 \title{ Structure, function and diversity of the healthy human microbiome }
 \description{ Studies of the human microbiome have revealed that even healthy individuals differ remarkably in the microbes that occupy habitats such as the gut, skin and vagina. Much of this diversity remains unexplained, although diet, environment, host genetics and early microbial exposure have all been implicated. Accordingly, to characterize the ecology of human-associated microbial communities, the Human Microbiome Project has analysed the largest cohort and set of distinct, clinically relevant body habitats so far. We found the diversity and abundance of each habitat's signature microbes to vary widely even among healthy subjects, with strong niche specialization both within and among individuals. The project encountered an estimated 81-99\% of the genera, enzyme families and community configurations occupied by the healthy Western microbiome. Metagenomic carriage of metabolic pathways was stable among individuals despite variation in community structure, and ethnic/racial background proved to be one of the strongest associations of both pathways and microbes with clinical metadata. These results thus delineate the range of structural and functional configurations normal in the microbial communities of a healthy population, enabling future characterization of the epidemiology, ecology and translational applications of the human microbiome. }
-\usage{data( hmp.vaginal_introitus.marker_ab.eset )}
+\usage{hmp.vaginal_introitus.marker_ab.eset(metadata=FALSE)}
+\arguments{
+  \item{metadata}{
+    \code{logical} value indicating whether metadata only should be returned
+    or if the resource should be loaded. Default behavior(metadata=FALSE) 
+    loads the data.
+  }
+}
 \format{
 \preformatted{
 experimentData(eset):
