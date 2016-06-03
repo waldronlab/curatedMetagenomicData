@@ -37,7 +37,7 @@ filterResources <- function(bodysite=character(), study=character()) {
 createResourcesList <- function(bodysite=character(), study=character(), 
                                resources=character()) { 
 
-    if (length(resources) {
+    if (length(resources)) {
         if (!is.character(resources))
             stop("'resources' must be a character vector")
         if (length(bodysite))
