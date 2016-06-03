@@ -9,14 +9,12 @@
 }
 
 \description{
-  Human Microbiome has played a central role in clinical research due to its
-  impact on human health and diseases. Shotgun metagenomics sequencing
-  technology has provided a precise way to profile microbial diversity from
-  various human body sites across different individuals, enabling us to better
-  understand the relationship between specific microbiota to human health and
-  some diseases.  In this package we present a collection of relative abundance
-  of taxa across 3000 samples collected from various human body sites as well
-  as relative abundance of marker datasets. The package contains two types of
+  Shotgun metagenomics sequencing can simultaneously profile bacteria, archeae,
+  fungi, and viruses to the strain level, enabling us to better
+  understand relationships between microbiota to human health.
+  In this package we present a collection of relative abundance
+  of taxa, marker datasets, and gene function  across 3000 samples 
+  collected from various human body sites. The package contains two types of
   marker datasets:
   \itemize{
     \item \sQuote{_pres}: presence/absence of taxonomic markers 
