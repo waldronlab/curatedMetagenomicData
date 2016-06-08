@@ -17,7 +17,6 @@
   }
 }
 \format{
-\format{
 \preformatted{
 experimentData(eset):
 Experiment data
