@@ -25,13 +25,15 @@ library(gplots)
 options(width=60)
 @
 
-\section{Section 1} Human Microbiome has played a central role in clinical
-research due to its impact on human health and diseases. Shotgun metagenomics
-sequencing technology has provided a precise way to profile microbial diversity
-from various human body sites across different individuals, enabling us to
-better understand the relationship between specific microbiota to human health
-and some diseases. To date, many human micro biome datasets have been generated
-from numerous studies as well as consortiums such as Human microbiome project
+\section{Introduction} 
+
+Human Microbiome has played a central role in clinical research due to its
+impact on human health and diseases. Shotgun metagenomics sequencing technology
+has provided a precise way to profile microbial diversity from various human
+body sites across different individuals, enabling us to better understand the
+relationship between specific microbiota to human health and some diseases. To
+date, many human micro biome datasets have been generated from numerous studies
+as well as consortiums such as Human microbiome project
 \cite{Qin2010,Qin2012,Huttenhower2012,
 Karlsson2013,Loman2013,LeChatelier2013,Qin2014,Zeller2014,Julia2014,Nielsen2014,Alexandra2015,Rampelli2015}.
 Here, we present the curatedMetagenomicData Bioconductor package that contains
@@ -40,11 +42,11 @@ species) across over 3000 samples collected from various different human body
 sites as well as relative abundance of marker datasets.The package composes of
 two types of marker datasets:
 
-In this vignette, we give a short tour of the package and will show how to use it efficiently.
-
 \begin{itemize}
- \item Marker\texttt{\_}pres indicates the presence/absence of taxonomic markers, and 
- \item Marker\texttt{\_}ab contains the abundance level of markers across samples.
+  \item Marker\texttt{\_}pres indicates the presence/absence of taxonomic 
+    markers, and 
+  \item Marker\texttt{\_}ab contains the abundance level of markers across 
+    samples.
 \end{itemize}
 
 Marker\texttt{\_}pres datasets compose of binary values (0 and 1) that indicate
@@ -62,81 +64,114 @@ normalizing read count data.
 In this vignette, we give a short tour of the package and will show how to use
 it efficiently.
 
-\section{Loading WT2D.stool.abundance data}
+\section{Data discovery}
 
-Loading a single dataset is very easy. First we load the package:
+The data are hosted in the Bioconductor ExperimentHub. We can use functions from
+the ExperimentHub package to list and load resources specific to 
+\code{curatedMetagenomicData}.
+
+First load the package:
 <<example1loadtep1>>=
 library(curatedMetagenomicData)
 @
 
-Use the \Rfunction{availableResources} function to see a list of all datasets:
-<<example1loadtep2, eval=FALSE>>=
-avaialbleResources()
+\Rfunction{listPackageResources} returns the names of all resources in 
+the package:
+<<example1loadtep2>>=
+allData <- listPackageResources("curatedMetagenomicData")
+length(allData)
+head(allData)
 @
 
-The name of each resource is a function that either lists the metadata or 
-loads the data. Setting \code{metadata=TRUE} returns the metadata:
+The query can be filtered by terms specific to the resource such as
+study, bodysite or data type. 
+<<example1loadtep2>>=
+listPackageResources("curatedMetagenomicData", filterBy="throat")
+@
+
+The name of each resource can be invoked as a function. The \code{metadata}
+argument controls whether metadata are returned or if the data are
+loaded. 
+
+\code{metadata=TRUE} returns just the metadata:
 <<example1loadtep3, eval=TRUE>>=
-WT2D.stool.abundance.eset(metadata=TRUE)
+WT2D.stool.abundance.eset.rda(metadata=TRUE)
 @
 
-To load the WT2D.stool.abundance data use \code{metadata=FALSE}:
+\code{metadata=FALSE} loads the dataset:
 <<example1loadtep4, eval=TRUE>>=
-WT2D.stool.abundance.eset(metadata=FALSE)
+WT2D.stool.abundance.eset.rda(metadata=FALSE)
+@
+
+Data can also be loaded with the \code{loadPackageResources} function. The
+\code{filterBy} argument can be the name of a resource or any term in the
+resource metadata.
+<<example1loadtep5, eval=TRUE>>=
+loadPackageResources("curatedMetagenomicData", filterBy="WT2D.stool.abundance")
 @
 
 The datasets are provided as Bioconductor \Rclass{ExpressionSet} objects and we
 refer to the Bioconductor documentation for users unfamiliar with this data
 structure.
 
-\section{Load datasets based on rules} For a meta-analysis, we typically want
-to filter datasets and samples to get a set of bodysites or studies we are
-interested in. We provide a helper function, \code{createResourcesList} that
-filters the resources by bodytype and study and loads the data as a list of
-\Rclass{ExpressionSet} objects.
+\section{Filtering datasets for analysis} 
 
-Possible values for \code{bodytype} and \code{study} are taken from the
-resource names:
-<<example2loadstep1>>=
-head(availableResources())
+For a meta-analysis, we typically want to filter datasets and samples to get a
+set of bodysites or studies we are interested in. \code{loadPackageResources} 
+filters resources based on the values in \code{filterBy} then loads the 
+datasets into a list.
+
+Any term in the resource metadata can be used as a filter term:
+<<>>=
+t2dmeta_long.stool.pathcoverage.eset.rda(metadata=TRUE)
 @
 
-\subsection{Selecting only samples from stool}
-To see a list of datasets that were collected only from body site 
-``stool'', we invoke \code{filterResources}:
+Body type, study and data type terms can be seen in the resource titles:
+<<>>=
+head(listPacakgeResources("curatedMetagenomicData"))
+@
 
-<<example3loadSkinstep1>>=
-filtered <- filterResources(bodysite = "stool")
+List all datasets that were collected only from body site \dQuote{saliva}:
+<<>>=
+filtered <- listPackageResources("curatedMetagenomicData", filterBy="saliva")
 filtered
 @ 
 
-To load the data as a list of \Rclass{ExpressionSet} objects we can invoke
-\code{createResourcesList} with the filtered resources:
-<<example3loadSkinstep2>>=
-createResourcesList(resources = filtered)
+Load the data as a list of \Rclass{ExpressionSet} objects:
+<<>>=
+esets <- loadPackageResources("curatedMetagenomicData", filterBy=filtered)
+sapply(esets, class)
 @
 
-or simply specify the \code{bodysite} parameter to \code{createResourcesList}:
-<<example3loadSkinstep3>>=
-createResourcesList(bodysite = "stool")
+We could have accomplished the same thing by passing \dQuote{saliva} as the
+\code{filteredBy} argument:
+<<eval=FALSE>>=
+loadPackageResources("curatedMetagenomicData", filterBy="saliva")
 @
 
-\subsection{Selecting only datasets from hmpii}
-Now, if we want to see what datasets were collected from study ``hmpii'':
+Search terms can be combined for more detailed filtering. There are quite
+a few datasets from the \dQuote{hmp} study:
+
 <<example4loadHmpiistep1>>=
-filterResources(study = "hmpii")
+length(listPackageResources("curatedMetagenomicData", "hmp"))
 @ 
 
-Load the hmpii datasets into a list of \code{eSet} obects:
-<<example4loadHmpiistep2>>=
-esets <- createResourcesList(study = "hmpii")
+We can further narrow the results by adding filtering by site 
+\dQuote{hard_palate"}:
+<<example4loadHmpiistep1>>=
+listPackageResources("curatedMetagenomicData", c("hmp", "hard_palate"))
+@ 
+
+Load the resources into a list:
+<<example4loadHmpiistep1>>=
+hmp <- loadPackageResources("curatedMetagenomicData", 
+                            c("hmp", "hard_palate", "marker"))
+names(hmp)
 @
 
-We have \Sexpr{length(esets)} datasets with samples that passed our filter
-in a list of \Rclass{ExpressionSet} objects called \texttt{esets}:
-<<example4loadHmpiistep3>>=
-names(esets)
-@
+We have \Sexpr{length(hmp)} datasets with samples that passed our filter
+in a list of \Rclass{ExpressionSet} objects called \texttt{hmp}:
+
 
 \section{Heatmap}
 
@@ -144,9 +179,9 @@ Next we select all abundance datasets and plot a heatmap to investigate if the
 abundance of any phyla is associated with particular body sites.
 <<example1prepare1>>=
 ## load all of the abundance datasets
-abundance <- createResourcesList(study = "abundance")
+esets <- loadPackageResources("curatedMetagenomicData", "\\.abundance")
 
-## merge all of the eset from the resulted esets 
+## merge all ExpressionSet objects into one
 eset <- ExpressionSet()
 for (i in 1:length(esets)){
   eset <- combine(eset, esets[[i]])
