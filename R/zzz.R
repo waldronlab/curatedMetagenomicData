@@ -13,7 +13,7 @@
             func = function(metadata = FALSE) {
                 library(ExperimentHub)
                 eh <- query(ExperimentHub(), "curatedMetagenomicData")
-                ehid <- query(eh, xx)
+                ehid <- names(query(eh, xx))
                 if (!length(ehid))
                     stop(paste0("resource ", xx, 
                          "not found in ExperimentHub"))
