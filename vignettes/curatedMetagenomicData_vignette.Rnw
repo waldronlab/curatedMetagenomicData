@@ -75,10 +75,10 @@ First load the package:
 library(curatedMetagenomicData)
 @
 
-\Rfunction{listPackageResources} returns the names of all resources in 
+\Rfunction{listResources} returns the names of all resources in 
 the package:
 <<example1loadtep2>>=
-allData <- listPackageResources("curatedMetagenomicData")
+allData <- listResources("curatedMetagenomicData")
 length(allData)
 head(allData)
 @
@@ -86,7 +86,7 @@ head(allData)
 The query can be filtered by terms specific to the resource such as
 study, bodysite or data type. 
 <<example1loadtep2>>=
-listPackageResources("curatedMetagenomicData", filterBy="throat")
+listResources("curatedMetagenomicData", filterBy="throat")
 @
 
 The name of each resource can be invoked as a function. The \code{metadata}
@@ -95,19 +95,19 @@ loaded.
 
 \code{metadata=TRUE} returns just the metadata:
 <<example1loadtep3, eval=TRUE>>=
-WT2D.stool.abundance.eset.rda(metadata=TRUE)
+WT2D.stool.abundance.eset(metadata=TRUE)
 @
 
 \code{metadata=FALSE} loads the dataset:
 <<example1loadtep4, eval=TRUE>>=
-WT2D.stool.abundance.eset.rda(metadata=FALSE)
+WT2D.stool.abundance.eset(metadata=FALSE)
 @
 
-Data can also be loaded with the \code{loadPackageResources} function. The
+Data can also be loaded with the \code{loadResources} function. The
 \code{filterBy} argument can be the name of a resource or any term in the
 resource metadata.
 <<example1loadtep5, eval=TRUE>>=
-loadPackageResources("curatedMetagenomicData", filterBy="WT2D.stool.abundance")
+loadResources("curatedMetagenomicData", filterBy="WT2D.stool.abundance")
 @
 
 The datasets are provided as Bioconductor \Rclass{ExpressionSet} objects and we
@@ -117,55 +117,54 @@ structure.
 \section{Filtering datasets for analysis} 
 
 For a meta-analysis, we typically want to filter datasets and samples to get a
-set of bodysites or studies we are interested in. \code{loadPackageResources} 
+set of bodysites or studies we are interested in. \code{loadResources} 
 filters resources based on the values in \code{filterBy} then loads the 
 datasets into a list.
 
 Any term in the resource metadata can be used as a filter term:
 <<>>=
-t2dmeta_long.stool.pathcoverage.eset.rda(metadata=TRUE)
+t2dmeta_long.stool.pathcoverage.eset(metadata=TRUE)
 @
 
 Body type, study and data type terms can be seen in the resource titles:
 <<>>=
-head(listPacakgeResources("curatedMetagenomicData"))
+head(listResources("curatedMetagenomicData"))
 @
 
 List all datasets that were collected only from body site \dQuote{saliva}:
 <<>>=
-filtered <- listPackageResources("curatedMetagenomicData", filterBy="saliva")
+filtered <- listResources("curatedMetagenomicData", filterBy="saliva")
 filtered
 @ 
 
 Load the data as a list of \Rclass{ExpressionSet} objects:
 <<>>=
-esets <- loadPackageResources("curatedMetagenomicData", filterBy=filtered)
+esets <- loadResources("curatedMetagenomicData", filterBy=filtered)
 sapply(esets, class)
 @
 
 We could have accomplished the same thing by passing \dQuote{saliva} as the
 \code{filteredBy} argument:
 <<eval=FALSE>>=
-loadPackageResources("curatedMetagenomicData", filterBy="saliva")
+loadResources("curatedMetagenomicData", filterBy="saliva")
 @
 
-Search terms can be combined for more detailed filtering. There are quite
-a few datasets from the \dQuote{hmp} study:
+Search terms can be combined for more detailed filtering. Here we list all
+datasets from the \dQuote{hmp} study:
 
 <<example4loadHmpiistep1>>=
-length(listPackageResources("curatedMetagenomicData", "hmp"))
+length(listResources("curatedMetagenomicData", "hmp"))
 @ 
 
-We can further narrow the results by adding filtering by site 
+The results can be narrowed down by filtering by the body site 
 \dQuote{hard_palate"}:
 <<example4loadHmpiistep1>>=
-listPackageResources("curatedMetagenomicData", c("hmp", "hard_palate"))
+listResources("curatedMetagenomicData", c("hmp", "hard_palate"))
 @ 
 
 Load the resources into a list:
 <<example4loadHmpiistep1>>=
-hmp <- loadPackageResources("curatedMetagenomicData", 
-                            c("hmp", "hard_palate", "marker"))
+hmp <- loadResources("curatedMetagenomicData", c("hmp", "hard_palate"))
 names(hmp)
 @
 
@@ -179,7 +178,7 @@ Next we select all abundance datasets and plot a heatmap to investigate if the
 abundance of any phyla is associated with particular body sites.
 <<example1prepare1>>=
 ## load all of the abundance datasets
-esets <- loadPackageResources("curatedMetagenomicData", "\\.abundance")
+esets <- loadResources("curatedMetagenomicData", "\\.abundance")
 
 ## merge all ExpressionSet objects into one
 eset <- ExpressionSet()
