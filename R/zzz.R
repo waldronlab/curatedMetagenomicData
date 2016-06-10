@@ -3,6 +3,7 @@
     esets <- read.csv(system.file("extdata", "metadata.csv", 
                       package="curatedMetagenomicData"), 
                       stringsAsFactors=FALSE)$Title
+    esets <- gsub(".rda", "", esets, fixed=TRUE)
     if (!length(esets))
         stop("no eSet objects found")
  
@@ -11,7 +12,8 @@
     sapply(esets, 
         function(xx) {
             func = function(metadata = FALSE) {
-                library(ExperimentHub)
+                if (!isNamespaceLoaded("ExperimentHub"))
+                    attachNamespace("ExperimentHub")
                 eh <- query(ExperimentHub(), "curatedMetagenomicData")
                 ehid <- names(query(eh, xx))
                 if (!length(ehid))
