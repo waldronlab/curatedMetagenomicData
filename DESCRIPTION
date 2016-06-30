@@ -1,14 +1,30 @@
 Package: curatedMetagenomicData
 Type: Package
-Title: Metagenome data from various studies
+Title: Curated Metagenomic Data of the Human Microbiome
 Version: 0.99.1
-Author: Levi Waldron <levi.waldron@sph.cuny.edu>, Faizan Malik <faizankmalik2012@yahoo.com>
+Author: Levi Waldron <levi.waldron@sph.cuny.edu>, 
+        Faizan Malik <faizankmalik2012@yahoo.com>, 
+        Valerie Obenchain <Valerie.Obenchain@roswellpark.org>,
+        Edoardo Pasolli <edoardo.pasolli@unitn.it>,
+        Nicola Segata <nicola.segata@unitn.it>,
+        Lucas Schiffer <schiffer.lucas@gmail.com>,
+        MorganMartin <martin.morgan@roswellpark.org>
 Maintainer: Levi Waldron <levi.waldron@sph.cuny.edu>
 Description: The curatedMetagenomicData package provides taxonomic, 
     functional, and gene marker abundance abundance in samples collected from 
     different body sites.
-Depends: R (>= 2.10.0), ExperimentHubData (>= 0.101.1), affy
+Depends: 
+    R (>= 3.3.0),
+    ExperimentHubData (>= 0.101.1), 
+    Biobase
 Imports: BiocGenerics
-Suggests: gplots, ExperimentHub
+Suggests:
+    BiocStyle,
+    testthat,
+    rmarkdown,
+    gplots,
+    ExperimentHub,
+    phyloseq
+VignetteBuilder: rmarkdown
 License: Artistic-2.0
 biocViews: ExperimentData, CancerData, ExpressionData, Homo_sapiens_Data, Metagenomics
