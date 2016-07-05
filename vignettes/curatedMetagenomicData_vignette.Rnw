@@ -201,7 +201,7 @@ colbars <- as.integer(as.factor(eset$bodysite))
 <<example1Heatmap, fig=TRUE>>=
 res <- heatmap.2(rel.abd.plt,
           main="Abundance across samples",
-          distfun=function(c) as.dist(1-cor(t(c))),
+          #distfun=function(c) as.dist(1-cor(t(c))),
           cexRow=0.6,
           breaks=c(0, 1e-4, 0.01, 0.25, 1),
           scale="none",
@@ -209,7 +209,7 @@ res <- heatmap.2(rel.abd.plt,
           key=FALSE,
           labCol=rep("", ncol(rel.abd.plt)),
           margins=c(5, 10),
-          labRow=shortenCladeName(rownames(rel.abd.plt)),
+          labRow=curatedMetagenomicData:::.shortenCladeName(rownames(rel.abd.plt)),
           col=colorRampPalette(c("white", "black"))(4),
           ColSideColors = as.character(colbars)
 )
