@@ -10,6 +10,6 @@ Description: The curatedMetagenomicData package provides taxonomic,
 Depends: R (>= 2.10.0), ExperimentHub (>= 0.101.9), 
     ExperimentHubData (>= 0.101.1), affy
 Imports: BiocGenerics, utils
-Suggests: gplots
+Suggests: BiocStyle, gplots
 License: Artistic-2.0
 biocViews: ExperimentData, CancerData, ExpressionData, Homo_sapiens_Data, Metagenomics
