@@ -68,7 +68,7 @@ it efficiently.
 
 The data are hosted in the Bioconductor ExperimentHub. We can use functions from
 the ExperimentHub package to list and load resources specific to 
-\code{curatedMetagenomicData}.
+\Rcode{curatedMetagenomicData}.
 
 First load the package:
 <<example1loadtep1>>=
@@ -89,22 +89,22 @@ study, bodysite or data type.
 listResources("curatedMetagenomicData", filterBy="throat")
 @
 
-The name of each resource can be invoked as a function. The \code{metadata}
+The name of each resource can be invoked as a function. The \Rcode{metadata}
 argument controls whether metadata are returned or if the data are
 loaded. 
 
-\code{metadata=TRUE} returns just the metadata:
+\Rcode{metadata=TRUE} returns just the metadata:
 <<example1loadtep3, eval=TRUE>>=
 WT2D.stool.abundance.eset(metadata=TRUE)
 @
 
-\code{metadata=FALSE} loads the dataset:
+\Rcode{metadata=FALSE} loads the dataset:
 <<example1loadtep4, eval=TRUE>>=
 WT2D.stool.abundance.eset(metadata=FALSE)
 @
 
-Data can also be loaded with the \code{loadResources} function. The
-\code{filterBy} argument can be the name of a resource or any term in the
+Data can also be loaded with the \Rcode{loadResources} function. The
+\Rcode{filterBy} argument can be the name of a resource or any term in the
 resource metadata.
 <<example1loadtep5, eval=TRUE>>=
 loadResources("curatedMetagenomicData", filterBy="WT2D.stool.abundance")
@@ -117,8 +117,8 @@ structure.
 \section{Filtering datasets for analysis} 
 
 For a meta-analysis, we typically want to filter datasets and samples to get a
-set of bodysites or studies we are interested in. \code{loadResources} 
-filters resources based on the values in \code{filterBy} then loads the 
+set of bodysites or studies we are interested in. \Rcode{loadResources} 
+filters resources based on the values in \Rcode{filterBy} then loads the 
 datasets into a list.
 
 Any term in the resource metadata can be used as a filter term:
@@ -131,7 +131,7 @@ Body type, study and data type terms can be seen in the resource titles:
 head(listResources("curatedMetagenomicData"))
 @
 
-List all datasets that were collected only from body site \dQuote{saliva}:
+List all datasets that were collected only from body site ``saliva":
 <<>>=
 filtered <- listResources("curatedMetagenomicData", filterBy="saliva")
 filtered
@@ -143,27 +143,21 @@ esets <- loadResources("curatedMetagenomicData", filterBy=filtered)
 sapply(esets, class)
 @
 
-We could have accomplished the same thing by passing \dQuote{saliva} as the
-\code{filteredBy} argument:
+We could have accomplished the same thing by passing ``saliva" as the
+\Rcode{filteredBy} argument:
 <<eval=FALSE>>=
 loadResources("curatedMetagenomicData", filterBy="saliva")
 @
 
 Search terms can be combined for more detailed filtering. Here we list all
-datasets from the \dQuote{hmp} study:
+datasets from the ``hmp" study:
 
 <<example4loadHmpiistep1>>=
 length(listResources("curatedMetagenomicData", "hmp"))
 @ 
 
-The results can be narrowed down by filtering by the body site 
-\dQuote{hard_palate"}:
-<<example4loadHmpiistep1>>=
-listResources("curatedMetagenomicData", c("hmp", "hard_palate"))
-@ 
-
 Load the resources into a list:
-<<example4loadHmpiistep1>>=
+<<example4loadHmpiistep3>>=
 hmp <- loadResources("curatedMetagenomicData", c("hmp", "hard_palate"))
 names(hmp)
 @
