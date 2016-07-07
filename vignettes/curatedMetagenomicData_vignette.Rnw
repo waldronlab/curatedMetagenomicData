@@ -156,6 +156,12 @@ datasets from the ``hmp" study:
 length(listResources("curatedMetagenomicData", "hmp"))
 @ 
 
+The results can be narrowed down by filtering by the body site 
+``hard{\_}palate":
+<<example4loadHmpiistep2>>=
+listResources("curatedMetagenomicData", c("hmp", "hard_palate"))
+@
+
 Load the resources into a list:
 <<example4loadHmpiistep3>>=
 hmp <- loadResources("curatedMetagenomicData", c("hmp", "hard_palate"))
@@ -193,9 +199,15 @@ colbars <- as.integer(as.factor(eset$bodysite))
 \begin{figure}
 \centering
 <<example1Heatmap, fig=TRUE>>=
+dist.na.removed <- function(c) {
+  dist <- as.dist(1-cor(t(c)))
+  dist[is.na(dist)] <- 0  
+  dist
+}
+
 res <- heatmap.2(rel.abd.plt,
           main="Abundance across samples",
-          #distfun=function(c) as.dist(1-cor(t(c))),
+          distfun=function(c) dist.na.removed(c),
           cexRow=0.6,
           breaks=c(0, 1e-4, 0.01, 0.25, 1),
           scale="none",
