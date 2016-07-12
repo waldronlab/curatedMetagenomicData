@@ -1,4 +1,4 @@
-metaphlanToPhyloseq <- function(
+ExpressionSet2phyloseq <- function(
   tax, 
   metadat=NULL, 
   simplenames=TRUE,
