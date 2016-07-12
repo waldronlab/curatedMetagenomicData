@@ -1,45 +1,38 @@
 \name{ExpressionSet2phyloseq}
 \alias{ExpressionSet2phyloseq}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
-%%  ~~function to do ... ~~
+ExpressionSet2phyloseq
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+A function for converting ExpressionSet class objects to phyloseq class objects.
 }
 \usage{
-ExpressionSet2phyloseq(x)
+ExpressionSet2phyloseq(tax, metadat=NULL, simplenames=TRUE, 
+                       roundtointeger=FALSE)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
-  \item{x}{
-%%     ~~Describe \code{x} here~~
+  \item{tax}{
+    tax is a matrix or data.frame with the table of taxonomic abundances, rows are taxa, columns are samples
 }
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
+  \item{metadat}{
+    metadat is an optional data.frame of specimen metadata, rows are samples, columns are variables
+  }
+  \item{simplenames}{
+    if \code{simplenames = TRUE}, use only the most detailed level of taxa names in the final object
+  }
+  \item{roundtointeger}{
+    if \code{roundtointeger = TRUE}, values will be rounded to the nearest integer
+  }
 }
 \value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
+returns a phyloseq class object
 }
 \author{
-%%  ~~who you are~~
+Levi Waldron, Lucas Schiffer
 }
-\note{
-%%  ~~further notes~~
-}
-
-%% ~Make other sections like Warning with \section{Warning }{....} ~
-
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+  \code{\link[phyloseq]{phyloseq}},
+  \code{\link[Biobase]{ExpressionSet}}
 }
 \examples{
 ##---- Should be DIRECTLY executable !! ----
@@ -50,8 +43,7 @@ ExpressionSet2phyloseq(x)
 function (x) 
 {
   }
+
+load  
+
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
