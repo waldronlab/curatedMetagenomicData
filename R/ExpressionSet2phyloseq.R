@@ -1,12 +1,4 @@
-ExpressionSet2phyloseq <- function(
-  tax, 
-  metadat=NULL, 
-  simplenames=TRUE,
-  roundtointeger=FALSE){
-  ## tax is a matrix or data.frame with the table of taxonomic abundances, rows are taxa, columns are samples
-  ## metadat is an optional data.frame of specimen metadata, rows are samples, columns are variables
-  ## if simplenames=TRUE, use only the most detailed level of taxa names in the final object
-  ## if roundtointeger=TRUE, values will be rounded to the nearest integer
+ExpressionSet2phyloseq <- function(tax, metadat=NULL, simplenames=TRUE, roundtointeger=FALSE) {
   xnames = rownames(tax)
   shortnames = gsub(".+\\|", "", xnames)
   if(simplenames){

@@ -35,15 +35,10 @@ Levi Waldron, Lucas Schiffer
   \code{\link[Biobase]{ExpressionSet}}
 }
 \examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
-
-## The function is currently defined as
-function (x) 
-{
-  }
-
-load  
-
+stoolAbundance <- Candela_Africa.stool.abundance.eset()
+tax <- exprs(stoolAbundance)
+phyloseqObject <- ExpressionSet2phyloseq(tax,
+                                         metadat = NULL,
+                                         simplenames = TRUE,
+                                         roundtointeger = FALSE)
 }
