@@ -8,7 +8,14 @@
 \docType{data}
 \title{ Identification and assembly of genomes and genetic elements in complex metagenomic samples without using reference genomes }
 \description{ Most current approaches for analyzing metagenomic data rely on comparisons to reference genomes, but the microbial diversity of many environments extends far beyond what is covered by reference databases. De novo segregation of complex metagenomic data into specific biological entities, such as particular bacterial strains or viruses, remains a largely unsolved problem. Here we present a method, based on binning co-abundant genes across a series of metagenomic samples, that enables comprehensive discovery of new microbial organisms, viruses and co-inherited genetic entities and aids assembly of microbial genomes without the need for reference sequences. We demonstrate the method on data from 396 human gut microbiome samples and identify 7,381 co-abundance gene groups (CAGs), including 741 metagenomic species (MGS). We use these to assemble 238 high-quality microbial genomes and identify affiliations between MGS and hundreds of viruses or genetic entities. Our method provides the means for comprehensive profiling of the diversity within complex metagenomic samples. }
-\usage{data( Neilsen_genome_assembly.stool.marker_ab.eset )}
+\usage{Neilsen_genome_assembly.stool.marker_ab.eset(metadata=FALSE)}
+\arguments{
+  \item{metadata}{
+    \code{logical} value indicating whether metadata only should be returned
+    or if the resource should be loaded. Default behavior(metadata=FALSE) 
+    loads the data.
+  }
+}
 \format{
 \preformatted{
 experimentData(eset):

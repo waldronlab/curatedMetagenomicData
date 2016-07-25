@@ -8,7 +8,14 @@
 \docType{data}
 \title{ Richness of human gut microbiome correlates with metabolic markers }
 \description{ We are facing a global metabolic health crisis provoked by an obesity epidemic. Here we report the human gut microbial composition in a population sample of 123 non-obese and 169 obese Danish individuals. We find two groups of individuals that differ by the number of gut microbial genes and thus gut bacterial richness. They contain known and previously unknown bacterial species at different proportions; individuals with a low bacterial richness (23\% of the population) are characterized by more marked overall adiposity, insulin resistance and dyslipidaemia and a more pronounced inflammatory phenotype when compared with high bacterial richness individuals. The obese individuals among the lower bacterial richness group also gain more weight over time. Only a few bacterial species are sufficient to distinguish between individuals with high and low bacterial richness, and even between lean and obese participants. Our classifications based on variation in the gut microbiome identify subsets of individuals in the general white adult population who may be at increased risk of progressing to adiposity-associated co-morbidities. }
-\usage{data( Chatelier_gut_obesity.stool.marker_ab.eset )}
+\usage{Chatelier_gut_obesity.stool.marker_ab.eset(metadata=FALSE)}
+\arguments{
+  \item{metadata}{
+    \code{logical} value indicating whether metadata only should be returned
+    or if the resource should be loaded. Default behavior(metadata=FALSE) 
+    loads the data.
+  }
+}
 \format{
 \preformatted{
 experimentData(eset):
