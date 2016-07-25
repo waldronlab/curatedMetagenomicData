@@ -1,0 +1,10 @@
+sampleID	subjectID	first	repeat	stooltexture	daysafteronset	hus	stec_count	shigatoxin2elisa	readsmillions	nonhuman	stec_coverage	stxab_detected	stx_ratio	typingdata	c_difficile_frequency	disease	bodysite	country	sequencing_technology	pubmedid	number_reads
+OBK1122	OBK1122	1122	0	na	na	na	na	na	8	33	na	y	na	na	positive	stec2-positive	stool	germany	Illumina	23571589	1758352
+OBK1196	OBK1196	1196	0	na	na	na	na	na	17.5	>99	na	n	na	na	negative	stec2-positive	stool	germany	Illumina	23571589	13423104
+OBK1253	OBK1253	1253	0	na	na	na	na	na	12.1	>99	na	n	na	na	negative	stec2-positive	stool	germany	Illumina	23571589	9949304
+OBK2535	OBK2535	2535	0	na	na	na	na	na	17.7	33.04	na	na	na	na	negative	stec2-positive	stool	germany	Illumina	23571589	664514
+OBK2638	OBK2638	2638	0	na	na	na	na	na	18.74	67.51	na	na	na	na	negative	stec2-positive	stool	germany	Illumina	23571589	1009732
+OBK2723	OBK2723	2723	0	na	na	na	na	na	11.81	1.86	na	na	na	na	negative	stec2-positive	stool	germany	Illumina	23571589	8017954
+OBK4096	OBK4096	4096	0	na	na	na	na	na	12.7	6	na	n	na	na	negative	stec2-positive	stool	germany	Illumina	23571589	164938
+OBK4328	OBK4328	4328	0	na	na	na	na	na	13.82	0	na	na	na	na	negative	stec2-positive	stool	germany	Illumina	23571589	10987598
+OBK4961	OBK4961	4961	0	na	na	na	na	na	12.5	9	na	n	na	na	negative	stec2-positive	stool	germany	Illumina	23571589	367922
