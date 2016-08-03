@@ -1,7 +1,6 @@
 # Script to read HUMAnN2 output file; e.g. hmp.tar.bz2
 #Functions to be loaded before running the script given below (line 124)
 
-
 getListFileFromTarBz2 <- function(tarbz2File=tarbz2File){ 
   library(data.table)
   listFiles <- untar(tarbz2File,
@@ -10,9 +9,10 @@ getListFileFromTarBz2 <- function(tarbz2File=tarbz2File){
   return (listFiles)
 }
 
-
 processTarBz2ByDatatype_batch <- function(tarbz2FileOutdir,
-                                          data.type=c("genefamilies", "pathabundance", "pathcoverage")){ 
+                                          data.type=c("genefamilies", 
+                                                      "pathabundance", 
+                                                      "pathcoverage")){ 
   library(data.table)
   
   tarbz2Dir <- getListFileFromTarBz2(tarbz2FileOutdir)[1]
@@ -35,7 +35,8 @@ processTarBz2ByDatatype_batch <- function(tarbz2FileOutdir,
   for (i in 1:length(tsvfiles.sel)){
     # skip the header line
     print(i)
-    numeric.dat <- fread(tsvfiles.sel[i], data.table=FALSE, header=TRUE, na.strings=c("NA", "nd", "-", " -"), skip=0)
+    numeric.dat <- fread(tsvfiles.sel[i], data.table=FALSE, header=TRUE, 
+                         na.strings=c("NA", "nd", "-", " -"), skip=0)
     family <- numeric.dat[, 1]
     sampName <- colnames(numeric.dat)[-1]
     numeric.dat <- numeric.dat[, -1]
@@ -58,7 +59,8 @@ mergeListDataframe <- function(list.dataframe){
     print(i)
     df <- data.table(df, keep.rownames=TRUE, key="rn")
     #df <- merge(df, as.data.frame(list.dataframe[[i]]), all=TRUE, by=0)
-    df <- merge(df, data.table(as.data.frame(list.dataframe[[i]]), keep.rownames=TRUE, key="rn"), all=TRUE)
+    df <- merge(df, data.table(as.data.frame(list.dataframe[[i]]),
+                               keep.rownames=TRUE, key="rn"), all=TRUE)
     #rownames(df) <- df$Row.names
   }
   df <- as.data.frame(df)
@@ -67,8 +69,7 @@ mergeListDataframe <- function(list.dataframe){
   return (df)
 }
 
-generateEset <- function(assay.data, phenotype.data=NULL, 
-                         experiment.data=NULL){
+generateEset <- function(assay.data, phenotype.data=NULL, experiment.data=NULL){
   library(affy)
   assay.data <- as.matrix(assay.data)
   phenotype.data <- phenotype.data[colnames(assay.data), ]  
@@ -135,5 +136,3 @@ flat.df.pathCov <- mergeListDataframe(humann2.pathCov)
 generateEsetByBodysite(flat.df.geneFam, phenotype.data=Dat, experiment.data=NULL, data.type=c("genefamilies"))
 generateEsetByBodysite(flat.df.pathAbun, phenotype.data=Dat, experiment.data=NULL, data.type=c("pathabundance"))
 generateEsetByBodysite(flat.df.pathCov, phenotype.data=Dat, experiment.data=NULL, data.type=c("pathcoverage"))
-
-
