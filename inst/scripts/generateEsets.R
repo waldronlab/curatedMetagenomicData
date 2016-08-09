@@ -22,19 +22,26 @@ generateEsets <- function(sourceDirectories, phenoData) {
   
   bplapply(sourceDirectories, function(x) {
     TSVfiles <- as.list(list.files(x, pattern = "*.tsv", full.names = TRUE))
-    matrixList <- bplapply(TSVfiles, function(x) {
-      numericData <- fread(x, sep = "\t", header = TRUE, 
-                           na.strings=c("NA", "nd", "-", " -"),
-                           data.table = FALSE)
-      rownames(numericData) <- numericData[, 1]
-      numericData[, -1]
-    })
-    mergedMatrix <- as.matrix(Reduce(merge, matrixList))
-    phenoData <- AnnotatedDataFrame(phenoData[colnames(mergedMatrix), ])
-    mergedExpression <- ExpressionSet(mergedMatrix, phenoData)
-    bodySites <- unique(mergedExpression$bodysite)
-    bplapply(bodySites, function(x) {
-      mergedExpression[, mergedExpression$bodysite == x]
+    dataTypes <- as.list(unique(gsub("(.+\\/\\w+_)(\\w+).+", "\\2", TSVfiles,
+                                     perl = TRUE)))
+    bplapply(dataTypes, function(x) {
+      TSVsubset <- TSVfiles[grep(x, TSVfiles)]
+      matrixList <- lapply(TSVsubset, function(x) {
+        numericData <- fread(x, sep = "\t", header = TRUE, 
+                             na.strings=c("NA", "na", "-", " -"),
+                             data.table = FALSE)
+        rownames(numericData) <- numericData[, 1]
+        numericData[, -1, drop = FALSE]
+      })
+      mergedMatrix <- as.matrix(Reduce(merge, matrixList))
+      phenoData <- AnnotatedDataFrame(phenoData[colnames(mergedMatrix), ])
+      mergedExpression <- ExpressionSet(mergedMatrix, phenoData)
+      bodySites <- unique(mergedExpression$bodysite)
+      bplapply(bodySites, function(x) {
+        toSave <- mergedExpression[, mergedExpression$bodysite == x]
+        save(toSave, file = paste(toSave$dataset_name, toSave$bodysite,
+                                  dataType, "eset", "rda", sep = "."))
+      }, dataType = x)
     })
   })
 }
