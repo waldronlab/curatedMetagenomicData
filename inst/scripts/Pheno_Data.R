@@ -9,7 +9,7 @@ pheno.dat <- pheno.dat[-1, ]
 
 rownames(pheno.dat) <- make.unique(paste(pheno.dat[, 2]))
 pheno.dat <- data.frame(pheno.dat, stringsAsFactors=FALSE)
-write.table(pheno.dat, file="Pheno_Data.txt", sep ='\t', quote=FALSE)
+write.table(pheno.dat, file="Pheno_Data.txt", quote=FALSE, sep ='\t', row.names = FALSE)
 
 
 
