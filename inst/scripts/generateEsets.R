@@ -27,15 +27,14 @@ generateEsets <- function(sourceDirectories, phenoData) {
     bplapply(dataTypes, function(x) {
       TSVsubset <- TSVfiles[grep(x, TSVfiles)]
       matrixList <- lapply(TSVsubset, function(x) {
-        numericData <- fread(x, sep = "\t", header = TRUE, 
-                             na.strings=c("NA", "na", "-", " -"),
-                             data.table = FALSE)
-        rownames(numericData) <- numericData[, 1]
-        numericData[, -1, drop = FALSE]
+        fread(x, sep = "\t", header = TRUE, na.strings=c("NA", "na", "-", " -"),
+              data.table = FALSE)
       })
-      mergedMatrix <- as.matrix(Reduce(merge, matrixList))
-      phenoData <- AnnotatedDataFrame(phenoData[colnames(mergedMatrix), ])
-      mergedExpression <- ExpressionSet(mergedMatrix, phenoData)
+      mergedMatrix <- Reduce(function(x, y) merge(x, y, all.x = TRUE), matrixList)
+      rownames(mergedMatrix) <- mergedMatrix[, 1]
+      mergedMatrix2 <- as.matrix(mergedMatrix[, -1])
+      phenoData2 <- AnnotatedDataFrame(phenoData[colnames(mergedMatrix), ])
+      mergedExpression <- ExpressionSet(mergedMatrix2, phenoData2)
       bodySites <- unique(mergedExpression$bodysite)
       bplapply(bodySites, function(x) {
         toSave <- mergedExpression[, mergedExpression$bodysite == x]
@@ -45,3 +44,5 @@ generateEsets <- function(sourceDirectories, phenoData) {
     })
   })
 }
+
+
