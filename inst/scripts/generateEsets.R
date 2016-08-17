@@ -32,9 +32,10 @@ generateEsets <- function(sourceDirectories, phenoData) {
       })
       mergedMatrix <- Reduce(function(x, y) merge(x, y, all.x = TRUE), matrixList)
       rownames(mergedMatrix) <- mergedMatrix[, 1]
-      mergedMatrix2 <- as.matrix(mergedMatrix[, -1])
-      phenoData2 <- AnnotatedDataFrame(phenoData[colnames(mergedMatrix), ])
-      mergedExpression <- ExpressionSet(mergedMatrix2, phenoData2)
+      mergedMatrix <- as.matrix(mergedMatrix[, -1])
+      colnames(mergedMatrix) <- gsub("_Abundance", "", colnames(mergedMatrix))
+      phenoData <- AnnotatedDataFrame(phenoData[colnames(mergedMatrix), ])
+      mergedExpression <- ExpressionSet(mergedMatrix, phenoData)
       bodySites <- unique(mergedExpression$bodysite)
       bplapply(bodySites, function(x) {
         toSave <- mergedExpression[, mergedExpression$bodysite == x]
