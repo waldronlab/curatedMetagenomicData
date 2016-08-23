@@ -26,24 +26,30 @@ generateEsets <- function(sourceDirectories, phenoData) {
                                      perl = TRUE)))
     bplapply(dataTypes, function(x) {
       TSVsubset <- TSVfiles[grep(x, TSVfiles)]
-      matrixList <- lapply(TSVsubset, function(x) {
-        fread(x, sep = "\t", header = TRUE, na.strings=c("NA", "na", "-", " -"),
-              data.table = FALSE)
+      sampleList <- bplapply(TSVsubset, function(x) {
+        readSample <- fread(x, sep = "\t", header = TRUE, 
+                            na.strings=c("NA", "na", "-", " -"),
+                            data.table = FALSE)
+        readSample[grep("\\|", readSample[, 1], invert = TRUE), ]
+        #rownames(readSample) <- readSample[, 1]
+        #readSample[, -1, drop = FALSE]
       })
-      mergedMatrix <- Reduce(function(x, y) merge(x, y, all.x = TRUE), matrixList)
-      rownames(mergedMatrix) <- mergedMatrix[, 1]
-      mergedMatrix <- as.matrix(mergedMatrix[, -1])
-      colnames(mergedMatrix) <- gsub("_Abundance", "", colnames(mergedMatrix))
-      phenoData <- AnnotatedDataFrame(phenoData[colnames(mergedMatrix), ])
-      mergedExpression <- ExpressionSet(mergedMatrix, phenoData)
+      #make a big blank matrix and fill it out
+      mergedSamples <- Reduce(function(x, y) merge(x, y, all.x = TRUE), 
+                             sampleList)
+      rownames(mergedSamples) <- mergedSamples[, 1]
+      mergedSamples <- as.matrix(mergedSamples[, -1])
+      colnames(mergedSamples) <- gsub("_Abundance", "", colnames(mergedSamples))
+      phenoData <- AnnotatedDataFrame(phenoData[match(colnames(mergedSamples), 
+                                                      phenoData$sampleID), ])
+      rownames(phenoData) <- phenoData$sampleID
+      mergedExpression <- ExpressionSet(mergedSamples, phenoData)
       bodySites <- unique(mergedExpression$bodysite)
-      bplapply(bodySites, function(x) {
-        toSave <- mergedExpression[, mergedExpression$bodysite == x]
-        save(toSave, file = paste(toSave$dataset_name, toSave$bodysite,
+      bplapply(bodySites, function(x, dataType) {
+        toSave <- mergedExpression[match(mergedExpression$bodysite, x), ]
+        save(toSave, file = paste(toSave$dataset_name[1], toSave$bodysite[1],
                                   dataType, "eset", "rda", sep = "."))
       }, dataType = x)
     })
   })
 }
-
-
