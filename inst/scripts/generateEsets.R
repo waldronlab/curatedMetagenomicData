@@ -30,25 +30,29 @@ generateEsets <- function(sourceDirectories, phenoData) {
         readSample <- fread(x, sep = "\t", header = TRUE, 
                             na.strings=c("NA", "na", "-", " -"),
                             data.table = FALSE)
-        readSample[grep("\\|", readSample[, 1], invert = TRUE), ]
-        #rownames(readSample) <- readSample[, 1]
-        #readSample[, -1, drop = FALSE]
+        #readSample[grep("\\|", readSample[, 1], invert = TRUE), ]
+        rownames(readSample) <- readSample[, 1]
+        readSample[, -1, drop = FALSE]
       })
       #make a big blank matrix and fill it out
       mergedSamples <- Reduce(function(x, y) merge(x, y, all.x = TRUE), 
                              sampleList)
       rownames(mergedSamples) <- mergedSamples[, 1]
       mergedSamples <- as.matrix(mergedSamples[, -1])
-      colnames(mergedSamples) <- gsub("_Abundance", "", colnames(mergedSamples))
+      colnames(mergedSamples) <- gsub("_\\w+", "", colnames(mergedSamples))
       phenoData <- AnnotatedDataFrame(phenoData[match(colnames(mergedSamples), 
                                                       phenoData$sampleID), ])
       rownames(phenoData) <- phenoData$sampleID
       mergedExpression <- ExpressionSet(mergedSamples, phenoData)
       bodySites <- unique(mergedExpression$bodysite)
       bplapply(bodySites, function(x, dataType) {
-        toSave <- mergedExpression[match(mergedExpression$bodysite, x), ]
-        save(toSave, file = paste(toSave$dataset_name[1], toSave$bodysite[1],
-                                  dataType, "eset", "rda", sep = "."))
+        saveName <- paste(toSave$dataset_name[1], toSave$bodysite[1], dataType,
+                          "eset", "rda", sep = ".")
+        saveObjt <- mergedExpression[, match(mergedExpression$bodysite, x) == 1]
+        save(assign(, 
+                    ),
+             file = paste(toSave$dataset_name[1], toSave$bodysite[1], dataType,
+                          "eset", "rda", sep = "."))
       }, dataType = x)
     })
   })
