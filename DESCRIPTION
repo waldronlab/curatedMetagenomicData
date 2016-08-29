@@ -2,14 +2,14 @@ Package: curatedMetagenomicData
 Type: Package
 Title: Curated Metagenomic Data of the Human Microbiome
 Version: 0.99.7
-Author: Levi Waldron <levi.waldron@sph.cuny.edu>, 
+Author: Levi Waldron <lwaldron.research@gmail.com>, 
         Faizan Malik <faizankmalik2012@yahoo.com>, 
         Valerie Obenchain <Valerie.Obenchain@roswellpark.org>,
         Edoardo Pasolli <edoardo.pasolli@unitn.it>,
         Nicola Segata <nicola.segata@unitn.it>,
         Lucas Schiffer <schiffer.lucas@gmail.com>,
         Morgan Martin <martin.morgan@roswellpark.org>
-Maintainer: Levi Waldron <levi.waldron@sph.cuny.edu>
+Maintainer: Levi Waldron <lwaldron.research@gmail.com>
 Description: The curatedMetagenomicData package provides taxonomic, 
     functional, and gene marker abundance abundance in samples collected from 
     different body sites.
