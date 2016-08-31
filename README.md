@@ -1,5 +1,5 @@
 [![Travis-CI Build Status](https://travis-ci.org/schifferl/curatedMetagenomicData.svg?branch=master)](https://travis-ci.org/schifferl/curatedMetagenomicData)
-[![Coverage Status](https://img.shields.io/codecov/c/github/schifferl/curatedMetagenomicData/master.svg)](https://codecov.io/github/schifferl/curatedMetagenomicData?branch=master)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/schifferl/curatedMetagenomicData?branch=master&svg=true)](https://ci.appveyor.com/project/schifferl/curatedMetagenomicData)
 [![Coverage Status](https://img.shields.io/codecov/c/github/schifferl/curatedMetagenomicData/master.svg)](https://codecov.io/github/schifferl/curatedMetagenomicData?branch=master)
 
 # curatedMetagenomicData
