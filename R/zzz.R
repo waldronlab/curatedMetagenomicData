@@ -1,4 +1,6 @@
 #' @keywords internal
+#' @importFrom utils read.csv
+#' @importFrom AnnotationHub query
 
 .onLoad <- function(libname, pkgname) {
   titles <- read.csv(system.file("extdata", "metadata.csv",
