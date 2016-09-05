@@ -1,20 +1,20 @@
-has_header <- function() {
-    if(dir_name == "./genefamilies_relab") {
+has_header <- function(data_type) {
+    if(data_type == "genefamilies_relab") {
         return(TRUE)
     }
-    if(dir_name == "./marker_abundance") {
+    if(data_type == "marker_abundance") {
         return(TRUE)
     }
-    if(dir_name == "./marker_presence") {
+    if(data_type == "marker_presence") {
         return(TRUE)
     }
-    if(dir_name == "./metaphlan_bugs_list") {
+    if(data_type == "metaphlan_bugs_list") {
         return(FALSE)
     }
-    if(dir_name == "./pathabundance_relab") {
+    if(data_type == "pathabundance_relab") {
         return(FALSE)
     }
-    if(dir_name == "./pathcoverage") {
+    if(data_type == "pathcoverage") {
         return(FALSE)
     }
 }
