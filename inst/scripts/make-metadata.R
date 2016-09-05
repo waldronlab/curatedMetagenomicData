@@ -1,19 +1,19 @@
 make_metadata <- function() {
     Title <- ""
     Description <- ""
-    BiocVersion <- ""
-    Genome <- ""
-    SourceType <- ""
+    BiocVersion <- biocVersion()
+    Genome <- "HG-19"
+    SourceType <- "fastq"
     SourceUrl <- ""
     SourceVersion <- ""
-    Species <- ""
-    TaxonomyId <- ""
+    Species <- "Homo Sapiens"
+    TaxonomyId <- "9606"
     Coordinate_1_based <- ""
     DataProvider <- ""
     Maintainer <- ""
-    RDataClass <- ""
-    DispatchClass <- ""
-    ResourceName <- ""
+    RDataClass <- "ExpressionSet"
+    DispatchClass <- "Rda"
+    ResourceName <- basename(dir("./data/"))
     metadata <- data.frame(Title, Description, BiocVersion, Genome, SourceType,
                            SourceUrl, SourceVersion, Species, TaxonomyId,
                            Coordinate_1_based, DataProvider, Maintainer,
