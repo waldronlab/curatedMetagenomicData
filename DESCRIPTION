@@ -3,27 +3,30 @@ Type: Package
 Title: Curated Metagenomic Data of the Human Microbiome
 Version: 0.99.8
 Author: Levi Waldron <lwaldron.research@gmail.com>,
+        Lucas Schiffer <schiffer.lucas@gmail.com>,
         Faizan Malik <faizankmalik2012@yahoo.com>,
-        Valerie Obenchain <Valerie.Obenchain@roswellpark.org>,
         Edoardo Pasolli <edoardo.pasolli@unitn.it>,
         Nicola Segata <nicola.segata@unitn.it>,
-        Lucas Schiffer <schiffer.lucas@gmail.com>,
+        Valerie Obenchain <Valerie.Obenchain@roswellpark.org>,
         Morgan Martin <martin.morgan@roswellpark.org>
 Maintainer: Levi Waldron <lwaldron.research@gmail.com>
 Description: The curatedMetagenomicData package provides taxonomic, functional,
-    and gene marker abundance abundance in samples collected from different body
-    sites.
+    and gene marker abundance for samples collected from different bodysites.
 License: Artistic-2.0
 Depends:
     R (>= 3.3.0),
-    ExperimentHub (>= 0.101.9),
-    ExperimentHubData (>= 0.101.1)
+    ExperimentHub (>= 0.101.13),
+    ExperimentHubData (>= 0.101.19)
 Suggests:
+    magrittr,
+    devtools,
+    roxygen2,
     covr,
     testthat,
     knitr,
-    rmarkdown
+    rmarkdown,
+    BiocStyle,
+    BiocCheck
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
-biocViews: ExperimentData, CancerData, ExpressionData, Homo_sapiens_Data,
-    Metagenomics
+biocViews: Homo_sapiens_Data, ReproducibleResearch, MicrobiomeData
