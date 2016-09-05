@@ -1,7 +1,8 @@
-pathabundance_relab <- function() {
-    dir_name <- "./pathabundance_relab"
+pathabundance_relab <- function(pheno_data, dataset_dir) {
+    data_type <- "pathabundance_relab"
+    paste0(dataset_dir, data_type) %>%
     assay_merge() %>%
     fix_rownames() %>%
-    fix_colnames() %>%
-    bodysite_eset()
+    fix_colnames(., data_type) %>%
+    bodysite_eset(., pheno_data, dataset_dir, data_type)
 }
