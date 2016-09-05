@@ -2,5 +2,3 @@
 
 import(ExperimentHub)
 import(ExperimentHubData)
-importFrom(AnnotationHub,query)
-importFrom(utils,read.csv)
