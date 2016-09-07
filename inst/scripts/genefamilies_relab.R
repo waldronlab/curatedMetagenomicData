@@ -1,6 +1,6 @@
 genefamilies_relab <- function(pheno_data, dataset_dir) {
     data_type <- "genefamilies_relab"
-    paste0(dataset_dir, data_type) %>%
+    pheno_order(pheno_data, dataset_dir, data_type) %>%
     assay_merge() %>%
     drop_rows() %>%
     fix_rownames() %>%
