@@ -30,7 +30,8 @@ Suggests:
     rmarkdown,
     BiocStyle,
     BiocCheck,
-    BiocParallel
+    BiocParallel,
+    BiocInstaller
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
 biocViews: Homo_sapiens_Data, ReproducibleResearch, MicrobiomeData
