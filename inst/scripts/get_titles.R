@@ -1,6 +1,4 @@
-get_titles <- function(){
-    dir("./data") %>%
-    basename() %>%
-    lapply(., strip_rda) %>%
+get_titles <- function(ResourceName) {
+    lapply(ResourceName, strip_rda) %>%
     as.character()
 }
