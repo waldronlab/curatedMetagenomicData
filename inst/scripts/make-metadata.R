@@ -12,12 +12,13 @@ make_metadata <- function() {
     TaxonomyId <- rep("", ResourceName_length)
     Coordinate_1_based <- rep("", ResourceName_length)
     DataProvider <- rep("", ResourceName_length)
-    Maintainer <- read.dcf("DESCRIPTION", "Maintainer")
+    Maintainer <- get_Maintainer(ResourceName_length)
     RDataClass <- get_RDataClasses(ResourceName)
     DispatchClass <- get_DispatchClasses(ResourceName)
     metadata <- data.frame(Title, Description, BiocVersion, Genome, SourceType,
                            SourceUrl, SourceVersion, Species, TaxonomyId,
                            Coordinate_1_based, DataProvider, Maintainer,
                            RDataClass, DispatchClass, ResourceName)
+    create_dir("./inst/extdata")
     write_csv(metadata, "./inst/extdata/metadata.csv", append = TRUE)
 }

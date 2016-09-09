@@ -1,6 +1,4 @@
-is_rda <- function() {
-    dir("./data") %>%
-    basename() %>%
-    lapply(., grepl_rda) %>%
+is_rda <- function(ResourceName) {
+    lapply(ResourceName, grepl_rda) %>%
     as.logical()
 }
