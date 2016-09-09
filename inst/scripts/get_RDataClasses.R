@@ -1,6 +1,5 @@
-get_RDataClasses <- function() {
-    dir("./data") %>%
-    basename() %>%
-    lapply(., strip_rda) %>%
+get_RDataClasses <- function(ResourceName) {
+    paste0("./data/", ResourceName) %>%
+    lapply(., get_class) %>%
     as.character()
 }
