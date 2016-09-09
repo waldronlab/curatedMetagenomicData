@@ -2,5 +2,5 @@
 #'
 #' @name curatedMetagenomicData
 #' @docType package
-#' @import ExperimentHub ExperimentHubData
+#' @import ExperimentHub ExperimentHubData Biobase
 NULL
