@@ -1,6 +1,6 @@
 ---
 title: "curatedMetagenomicData"
-output: 
+output:
     BiocStyle::html_document
 vignette: >
     %\VignetteIndexEntry{Vignette Title}

@@ -16,8 +16,7 @@ License: Artistic-2.0
 Depends:
     R (>= 3.3.0),
     ExperimentHub (>= 0.101.1),
-    ExperimentHubData (>= 0.101.1),
-    Biobase
+    ExperimentHubData (>= 0.101.1)
 Suggests:
     dplyr,
     readr,
@@ -31,7 +30,8 @@ Suggests:
     BiocStyle,
     BiocCheck,
     BiocParallel,
-    BiocInstaller
+    BiocInstaller,
+    RISmed
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
 biocViews: Homo_sapiens_Data, ReproducibleResearch, MicrobiomeData
