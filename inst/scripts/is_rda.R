@@ -1,4 +1,3 @@
-is_rda <- function(ResourceName) {
-    lapply(ResourceName, grepl_rda) %>%
-    as.logical()
+is_rda <- function(resource_name) {
+    grepl(".rda", resource_name)
 }
