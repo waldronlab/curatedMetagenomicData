@@ -1,6 +1,6 @@
 get_resource <- function(resource_name) {
-    paste0("./data/", resource_name) %>%
-    load()
+    resource_path <- paste0("./data/", resource_name)
+    load(resource_path)
     gsub(".rda", "", resource_name) %>%
     get()
 }
