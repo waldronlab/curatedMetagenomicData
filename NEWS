@@ -1,3 +1,8 @@
 # curatedMetagenomicData 0.99.8
 
-* Added a `NEWS.md` file to track changes to the package.
+* Codebase is completely refactored to ExperimentHub specifications
+* New parallel functions for data processing
+* Documentation updated to use roxygen2
+* All data is reprocessed in R (v3.3.1)
+* All raw data is reprocessed with MetaPhlAn2 (v2.2.0) & HUMAnN2 (v0.7.0)
+* Package vignette is updated Rmd syntax and uses BiocStyle

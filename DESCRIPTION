@@ -2,8 +2,8 @@ Package: curatedMetagenomicData
 Type: Package
 Title: Curated Metagenomic Data of the Human Microbiome
 Version: 0.99.8
-Author: Lucas Schiffer <schiffer.lucas@gmail.com>,
-        Levi Waldron <lwaldron.research@gmail.com>,
+Author: Levi Waldron <lwaldron.research@gmail.com>,
+        Lucas Schiffer <schiffer.lucas@gmail.com>,
         Faizan Malik <faizankmalik2012@yahoo.com>,
         Edoardo Pasolli <edoardo.pasolli@unitn.it>,
         Nicola Segata <nicola.segata@unitn.it>,
