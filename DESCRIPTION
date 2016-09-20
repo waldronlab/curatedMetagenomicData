@@ -16,11 +16,11 @@ License: Artistic-2.0
 Depends:
     R (>= 3.3.0),
     ExperimentHub (>= 0.101.13),
-    ExperimentHubData (>= 0.101.19)
+    ExperimentHubData (>= 0.101.19),
+    magrittr
 Suggests:
     dplyr,
     readr,
-    magrittr,
     devtools,
     roxygen2,
     covr,
