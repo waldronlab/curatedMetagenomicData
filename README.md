@@ -30,6 +30,19 @@ The following steps describe the process needed to add new data to the package;
 these steps are not of any consequence to the end user & should only concern the
 developers of this package.
 
+### Helper Functions
+
+There are two hidden helper functions to aid in adding new datasets to the 
+package. The first, `.load_suggests()`, is used to load all the suggested 
+packages listed in the `DESCRIPTION` file. If a package is not installed, the 
+function will download and install it using only the `base` and `utils` 
+packages. This choice is intentional and seeks to avoid the use of dependencies 
+beyond the packages that ship with R. The second function, `.source_scripts()`, 
+provides a mechanism to quickly load all of the functions used in processing
+`*.tar.gz` files into the final `ExpressionSet` objects. Once loaded into the 
+global environment, the functions are used as outlined below to add new 
+datasets to the package.
+
 ### Input Files
     
 Input files are `*.tar.gz` files sourced from `HUMAnN2` & `MetaPhlAn2` outputs 
@@ -128,16 +141,16 @@ files in the `./data` directory of the package.
 
 ### `ExpressionSet` Documentation
 
-`ExpressionSet` objects are documented using the `make_document()` function, 
-which does not require any arguments. This is because the `make_data()` function
-produced `ExpressionSet` objects for each dataset in the `./data` directory. 
-Following from this assumption, dataset specific `*.Rd` man pages are created 
-using `roxygen2` in two steps. First, the `make_documentation()` function loads 
-each `ExpressionSet` object and serializes information for the man page. Second,
-the serialized information is used to write a `*.R` file of roxygen comments for 
-each dataset & data type. Finally, as `roxygen2` is run (e.g. 
-`devtools::document()`), the roxygen comments become `*.Rd` man pages to 
-document each `ExpressionSet` objects.
+`ExpressionSet` objects are documented using the `make_documentation()` 
+function, which does not require any arguments. This is because the 
+`make_data()` function produced `ExpressionSet` objects for each dataset in the 
+`./data` directory. Following from this assumption, dataset specific `*.Rd` man 
+pages are created using `roxygen2` in two steps. First, the 
+`make_documentation()` function loads each `ExpressionSet` object and serializes
+information for the man page. Second, the serialized information is used to 
+write a `*.R` file of roxygen comments for each dataset & data type. Finally, as
+`roxygen2` is run (e.g. `devtools::document()`), the roxygen comments become 
+`*.Rd` man pages to document each `ExpressionSet` object.
 
 ### `ExperimentHub` Metadata
 
