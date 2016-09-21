@@ -1,4 +1,3 @@
-#' @export .load_suggests
 #' @importFrom utils install.packages
 
 .load_suggests <- function() {
