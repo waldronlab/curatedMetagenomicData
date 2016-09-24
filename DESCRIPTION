@@ -15,9 +15,11 @@ Description: The curatedMetagenomicData package provides taxonomic, functional,
 License: Artistic-2.0
 Depends:
     R (>= 3.3.0),
+    Biobase (>= 2.32.0),
     ExperimentHub (>= 0.101.13),
     ExperimentHubData (>= 0.101.19),
-    magrittr
+    magrittr,
+    phyloseq
 Suggests:
     dplyr,
     readr,

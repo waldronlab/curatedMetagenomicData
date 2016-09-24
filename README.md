@@ -32,19 +32,19 @@ developers of this package.
 
 ### Helper Functions
 
-There are two hidden helper functions to aid in adding new datasets to the 
-package. The first, `.load_suggests()`, is used to load all the suggested 
-packages listed in the `DESCRIPTION` file. If a package is not installed, the 
-function will download and install it using only the `base` and `utils` 
-packages. This choice is intentional and seeks to avoid the use of dependencies 
-beyond the packages that ship with R. The second function, `.source_scripts()`, 
-provides a mechanism to quickly load all of the functions used in processing
-`*.tar.gz` files into the final `ExpressionSet` objects. The functions are not 
-exported and must be used as follows:
+There are two helper functions to aid in adding new datasets to the package. The
+first, `load_suggests()`, is used to load all the suggested packages listed in 
+the `DESCRIPTION` file. If a package is not installed, the function will 
+download and install it using only the `base` and `utils` packages. This choice 
+is intentional and seeks to avoid the use of dependencies beyond the packages 
+that ship with R. The second function, `source_scripts()`, provides a mechanism 
+to quickly load all of the functions used in processing `*.tar.gz` files into 
+the final `ExpressionSet` objects. The functions are not exported and must be 
+used as follows:
 
 ```
-curatedMetagenomicData:::.load_suggests()
-curatedMetagenomicData:::.source_scripts()
+curatedMetagenomicData:::load_suggests()
+curatedMetagenomicData:::source_scripts()
 ```
 
 ### Input Files
