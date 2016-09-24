@@ -6,3 +6,4 @@ inst/doc
 *.Rproj
 tmp
 data
+.DS_Store
