@@ -1,4 +1,4 @@
-#' Convenience function to convert an ExpressionSet object to a phyloseq object
+#' Convert an ExpressionSet object to a phyloseq object
 #'
 #' @param ExpressionSet
 #'

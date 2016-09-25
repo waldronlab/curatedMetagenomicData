@@ -1,6 +1,5 @@
 #' @importFrom utils install.packages
 #' @keywords internal
-
 load_suggests <- function() {
     read.dcf("DESCRIPTION", "Suggests") %>%
     gsub("\n", "", .) %>%

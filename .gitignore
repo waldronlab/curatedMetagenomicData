@@ -7,3 +7,6 @@ inst/doc
 tmp
 data
 .DS_Store
+exec
+vignettes/*.R
+vignettes/*.html

@@ -3,4 +3,5 @@ make_documentation <- function() {
     bplapply(., get_documentation) %>%
     parallel_rbind() %>%
     write_documentation()
+    invisible(NULL)
 }
