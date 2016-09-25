@@ -1,4 +1,4 @@
-documentation_aliases <- function(title_str, documentation_df) {
-    grep(title_str, documentation_df$title)
-
+documentation_aliases <- function(every_element, documentation_df) {
+    documentation_df$aliases[every_element] %>%
+    paste("\n#' @aliases", ., "\n#'")
 }

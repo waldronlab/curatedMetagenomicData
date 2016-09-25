@@ -5,5 +5,6 @@ get_documentation <- function(resource_name) {
     subsection <- get_subsection(resource_object)
     source <- experimentData(resource_object)@lab
     name <- get_name(resource_name)
-    data_frame(title, aliases, subsection, source, name)
+    seealso <- strsplit(resource_name, "\\.")[[1]][1]
+    data_frame(title, aliases, subsection, source, name, seealso)
 }
