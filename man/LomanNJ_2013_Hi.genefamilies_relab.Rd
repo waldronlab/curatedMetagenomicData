@@ -11,15 +11,11 @@ Institute of Microbiology and Infection, University of Birmingham, Birmingham, E
 Relabeled genefamilies data from the LomanNJ_2013_Hi dataset
 }
 \section{Datasets}{
-
+ 
 
 \subsection{LomanNJ_2013_Hi.genefamilies_relab.stool}{
    An ExpressionSet with 44 samples and 718,320 features specific to the stool bodysite
 }
-}
-\examples{
-query(ExperimentHub(), "curatedMetagenomicData")
-
 }
 \seealso{
 \code{\link{LomanNJ_2013_Hi.marker_abundance}}, \code{\link{LomanNJ_2013_Hi.marker_presence}}, \code{\link{LomanNJ_2013_Hi.metaphlan_bugs_list}}, \code{\link{LomanNJ_2013_Hi.pathabundance_relab}}, \code{\link{LomanNJ_2013_Hi.pathcoverage}}

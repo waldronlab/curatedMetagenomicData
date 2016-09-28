@@ -1,7 +1,7 @@
 make_documentation <- function() {
     dir("./data") %>%
     bplapply(., get_documentation) %>%
-    parallel_rbind() %>%
+    Reduce(bind_rows, .) %>%
     write_documentation()
     invisible(NULL)
 }
