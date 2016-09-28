@@ -1,0 +1,16 @@
+---
+title: "curatedMetagenomicData"
+output:
+    BiocStyle::html_document
+vignette: >
+    %\VignetteIndexEntry{curatedMetagenomicData}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+The curatedMetagenomicData package provides taxonomic, functional, and gene 
+marker abundance data for samples collected from different bodysites.
