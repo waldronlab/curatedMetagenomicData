@@ -11,11 +11,15 @@ Institute of Microbiology and Infection, University of Birmingham, Birmingham, E
 Pathcoverage data from the LomanNJ_2013_Mi dataset
 }
 \section{Datasets}{
- 
+
 
 \subsection{LomanNJ_2013_Mi.pathcoverage.stool}{
    An ExpressionSet with 9 samples and 4,606 features specific to the stool bodysite
 }
+}
+\examples{
+query(ExperimentHub(), "curatedMetagenomicData")
+
 }
 \seealso{
 \code{\link{LomanNJ_2013_Mi.genefamilies_relab}}, \code{\link{LomanNJ_2013_Mi.marker_abundance}}, \code{\link{LomanNJ_2013_Mi.marker_presence}}, \code{\link{LomanNJ_2013_Mi.metaphlan_bugs_list}}, \code{\link{LomanNJ_2013_Mi.pathabundance_relab}}

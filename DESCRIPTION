@@ -19,7 +19,8 @@ Depends:
     ExperimentHub (>= 0.101.13),
     ExperimentHubData (>= 0.101.19),
     magrittr,
-    phyloseq
+    phyloseq,
+    utils
 Suggests:
     dplyr,
     readr,
