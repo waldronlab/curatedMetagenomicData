@@ -11,11 +11,15 @@
 Marker abundance data from the Obregon-TitoAJ_2015 dataset
 }
 \section{Datasets}{
- 
+
 
 \subsection{Obregon-TitoAJ_2015.marker_abundance.stool}{
    An ExpressionSet with 58 samples and 195,320 features specific to the stool bodysite
 }
+}
+\examples{
+query(ExperimentHub(), "curatedMetagenomicData")
+
 }
 \seealso{
 \code{\link{Obregon-TitoAJ_2015.genefamilies_relab}}, \code{\link{Obregon-TitoAJ_2015.marker_presence}}, \code{\link{Obregon-TitoAJ_2015.metaphlan_bugs_list}}, \code{\link{Obregon-TitoAJ_2015.pathabundance_relab}}, \code{\link{Obregon-TitoAJ_2015.pathcoverage}}
