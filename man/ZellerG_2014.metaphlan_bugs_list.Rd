@@ -11,15 +11,11 @@ Structural and Computational Biology Unit, European Molecular Biology Laboratory
 Taxonomic abundance data from the ZellerG_2014 dataset
 }
 \section{Datasets}{
-
+ 
 
 \subsection{ZellerG_2014.metaphlan_bugs_list.stool}{
    An ExpressionSet with 156 samples and 1,505 features specific to the stool bodysite
 }
-}
-\examples{
-query(ExperimentHub(), "curatedMetagenomicData")
-
 }
 \seealso{
 \code{\link{ZellerG_2014.genefamilies_relab}}, \code{\link{ZellerG_2014.marker_abundance}}, \code{\link{ZellerG_2014.marker_presence}}, \code{\link{ZellerG_2014.pathabundance_relab}}, \code{\link{ZellerG_2014.pathcoverage}}
