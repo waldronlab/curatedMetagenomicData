@@ -1,32 +1,40 @@
 Package: curatedMetagenomicData
 Type: Package
 Title: Curated Metagenomic Data of the Human Microbiome
-Version: 0.99.7
-Author: Levi Waldron <levi.waldron@sph.cuny.edu>, 
-        Faizan Malik <faizankmalik2012@yahoo.com>, 
-        Valerie Obenchain <Valerie.Obenchain@roswellpark.org>,
+Version: 0.99.8
+Author: Levi Waldron <lwaldron.research@gmail.com>,
+        Lucas Schiffer <schiffer.lucas@gmail.com>,
+        Faizan Malik <faizankmalik2012@yahoo.com>,
         Edoardo Pasolli <edoardo.pasolli@unitn.it>,
         Nicola Segata <nicola.segata@unitn.it>,
-        Lucas Schiffer <schiffer.lucas@gmail.com>,
+        Valerie Obenchain <Valerie.Obenchain@roswellpark.org>,
         Morgan Martin <martin.morgan@roswellpark.org>
-Maintainer: Levi Waldron <levi.waldron@sph.cuny.edu>
-Description: The curatedMetagenomicData package provides taxonomic, 
-    functional, and gene marker abundance abundance in samples collected from 
-    different body sites.
-Depends: 
-    R (>= 3.3.0),
-    ExperimentHub (>= 0.101.9),
-    ExperimentHubData (>= 0.101.1), 
-    Biobase,
-    affy
-Imports: BiocGenerics, utils
-Suggests:
-    BiocStyle,
-    testthat,
-    rmarkdown,
-    gplots,
-    ExperimentHub,
-    phyloseq
-VignetteBuilder: rmarkdown
+Maintainer: Lucas Schiffer <schiffer.lucas@gmail.com>
+Description: The curatedMetagenomicData package provides taxonomic, functional,
+    and gene marker abundance for samples collected from different bodysites.
 License: Artistic-2.0
-biocViews: ExperimentData, CancerData, ExpressionData, Homo_sapiens_Data, Metagenomics
+Depends:
+    R (>= 3.3.0),
+    Biobase (>= 2.32.0),
+    ExperimentHub (>= 0.101.13),
+    ExperimentHubData (>= 0.101.19),
+    magrittr,
+    phyloseq,
+    utils
+Suggests:
+    dplyr,
+    readr,
+    devtools,
+    roxygen2,
+    covr,
+    testthat,
+    knitr,
+    rmarkdown,
+    BiocStyle,
+    BiocCheck,
+    BiocParallel,
+    BiocInstaller,
+    RISmed
+VignetteBuilder: knitr
+RoxygenNote: 5.0.1
+biocViews: Homo_sapiens_Data, ReproducibleResearch, MicrobiomeData
