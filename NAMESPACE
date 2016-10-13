@@ -2,4 +2,3 @@
 
 export(ExpressionSet2phyloseq)
 importFrom(utils,install.packages)
-importFrom(utils,read.csv)
