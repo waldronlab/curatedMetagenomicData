@@ -1,5 +1,5 @@
 pubmed_check <- function(pubmedid) {
-    if(length(pubmedid) >= 2L) {
+    if(length(pubmedid) >= 2) {
         warning("Multiple pubmedids were found but only the first will be used")
         pubmedid <- pubmedid[1]
     }
