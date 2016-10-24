@@ -4,6 +4,7 @@ pubmed_check <- function(pubmedid) {
         pubmedid <- pubmedid[1]
     }
     if(is.na(pubmedid)) {
+        warning("No pubmedids were found and ExperimentData will reflect this")
         pubmedid <- NULL
     }
     pubmedid

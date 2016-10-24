@@ -4,15 +4,23 @@
 \alias{ExpressionSet2phyloseq}
 \title{Convert an ExpressionSet object to a phyloseq object}
 \usage{
-ExpressionSet2phyloseq(ExpressionSet)
+ExpressionSet2phyloseq(ExpressionSet, simplify = TRUE, rounding = TRUE)
 }
 \arguments{
 \item{ExpressionSet}{An ExpressionSet object}
+
+\item{simplify}{if TRUE the most detailed clade name is used}
+
+\item{rounding}{if TRUE values are rounded to the nearest interger}
 }
 \value{
 A phyloseq object
 }
 \description{
 Convert an ExpressionSet object to a phyloseq object
+}
+\examples{
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() \%>\%
+ExpressionSet2phyloseq()
 }
 

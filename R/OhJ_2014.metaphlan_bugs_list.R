@@ -10,7 +10,7 @@
 #'    An ExpressionSet with 291 samples and 2,461 features specific to the skin bodysite
 #' }
 #' 
-#' @source Translational and Functional Genomics Branch, National Human Genome Research Institute, NIH, Bethesda, Maryland 20892, USA., Pharmacy Department, Yale-New Haven Hospital, New Haven, Connecticut.
+#' @source Translational and Functional Genomics Branch, National Human Genome Research Institute, NIH, Bethesda, Maryland 20892, USA.
 #' 
 #' @seealso \code{\link{OhJ_2014.genefamilies_relab}}, \code{\link{OhJ_2014.marker_abundance}}, \code{\link{OhJ_2014.marker_presence}}, \code{\link{OhJ_2014.pathabundance_relab}}, \code{\link{OhJ_2014.pathcoverage}}
 #' 

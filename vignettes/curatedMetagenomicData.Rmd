@@ -11,6 +11,3 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-
-The curatedMetagenomicData package provides taxonomic, functional, and gene 
-marker abundance data for samples collected from different bodysites.
