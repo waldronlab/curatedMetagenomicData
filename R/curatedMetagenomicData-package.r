@@ -7,4 +7,5 @@
 #' require a computing cluster can be done on an ordianary laptop.
 #'
 #' @name curatedMetagenomicData
-"_PACKAGE"
+#' @docType package
+NULL
