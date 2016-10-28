@@ -19,7 +19,7 @@
                    if (!isNamespaceLoaded("ExperimentHub"))
                        attachNamespace("ExperimentHub")
                    eh <-
-                       query(ExperimentHub(), "curatedMetagenomicData")
+                       AnnotationHub::query(ExperimentHub(), "curatedMetagenomicData")
                    ehid <- names(query(eh, xx))
                    if (!length(ehid))
                        stop(paste0("resource ", xx,
