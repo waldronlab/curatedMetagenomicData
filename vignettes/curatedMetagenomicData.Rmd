@@ -112,7 +112,33 @@ head()
 
 ## Subseting / Pruning
 
+The names of phylogenetic ranks are easily examined using the `rank_names()` function
+
+```{r, eval=FALSE}
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
+ExpressionSet2phyloseq() %>%
+rank_names()
+```
+
+With knowledge of the rank names it becomes possible to filter 
+
+```{r, eval=FALSE}
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
+ExpressionSet2phyloseq() %>%
+subset_taxa(!is.na(Species))
+```
+
+Even greater specificity
+
+```{r, eval=FALSE}
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
+ExpressionSet2phyloseq() %>%
+subset_taxa(!is.na(Strain))
+```
+
 ## Advanced Pruning
+
+
 
 ## Taxonomy Heatmap
 

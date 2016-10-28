@@ -38,3 +38,6 @@ Suggests:
 VignetteBuilder: knitr
 RoxygenNote: 5.0.1
 biocViews: Homo_sapiens_Data, ReproducibleResearch, MicrobiomeData
+Imports: magrittr,
+    phyloseq,
+    utils

@@ -10,7 +10,7 @@
 #'    An ExpressionSet with 237 samples and 1,747,534 features specific to the stool bodysite
 #' }
 #' 
-#' @source [1] State Key Laboratory for Diagnosis and Treatment of Infectious Disease, The First Affiliated Hospital, College of Medicine, Zhejiang University, 310003 Hangzhou, China [2] Collaborative Innovation Center for Diagnosis and Treatment of Infectious Diseases, Zhejiang University, 310003 Hangzhou, China [3].
+#' @source 1] State Key Laboratory for Diagnosis and Treatment of Infectious Disease, The First Affiliated Hospital, College of Medicine, Zhejiang University, 310003 Hangzhou, China [2] Collaborative Innovation Center for Diagnosis and Treatment of Infectious Diseases, Zhejiang University, 310003 Hangzhou, China [3].
 #' 
 #' @seealso \code{\link{QinN_2014.marker_abundance}}, \code{\link{QinN_2014.marker_presence}}, \code{\link{QinN_2014.metaphlan_bugs_list}}, \code{\link{QinN_2014.pathabundance_relab}}, \code{\link{QinN_2014.pathcoverage}}
 #' 
