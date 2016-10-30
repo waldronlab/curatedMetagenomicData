@@ -1,3 +1,10 @@
+# curatedMetagenomicData 1.0.0
+
+* Package vignette is updated to reflect in the intended use of ExperimentHub
+* Object level documentation is update for completeness and aliased
+* Minor description file changes to ensure collation order
+* Version bumped to reflect latest y version of Bioconductor
+
 # curatedMetagenomicData 0.99.8
 
 * Codebase is completely refactored to ExperimentHub specifications
