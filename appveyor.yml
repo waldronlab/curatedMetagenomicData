@@ -15,6 +15,9 @@ install:
 build_script:
   - Rscript -e "source('https://bioconductor.org/biocLite.R')"
   - travis-tool.sh install_bioc_deps
+  - travis-tool.sh install_bioc BiocCheck
+  - travis-tool.sh install_bioc BiocParallel
+  - travis-tool.sh install_bioc BiocStyle
   - travis-tool.sh install_deps
 
 test_script:
