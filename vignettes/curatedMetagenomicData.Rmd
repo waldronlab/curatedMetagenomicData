@@ -1,7 +1,11 @@
 ---
 title: "curatedMetagenomicData"
 abstract: >
-    The curatedMetagenomicData package provides taxonomic, functional, and gene marker abundance for samples collected from different bodysites. It provides data from aproximately 3000 human microbiome samples that have been highly processed, refined, and curated such that analysis that might otherwise require a computing cluster can be done on an ordianary laptop.
+    The curatedMetagenomicData package provides taxonomic, functional, and gene
+    marker abundance for samples collected from different bodysites. It provides
+    data from aproximately 3000 human microbiome samples that have been highly
+    processed, refined, and curated such that analysis that might otherwise
+    require a computing cluster can be done on an ordianary laptop.
 output:
     BiocStyle::html_document
 vignette: >
