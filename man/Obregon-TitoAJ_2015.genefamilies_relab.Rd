@@ -5,7 +5,7 @@
 \alias{Obregon-TitoAJ_2015.genefamilies_relab.stool}
 \title{Relabeled genefamilies data from the Obregon-TitoAJ_2015 dataset}
 \source{
-1] Department of Anthropology, University of Oklahoma, Dale Hall Tower, 521 Norman, Oklahoma 73019, USA [2] Universidad Cient??fica del Sur, Lima 18, Per?? [3] City of Hope, NCI-designated Comprehensive Cancer Center, Duarte, California 91010, USA.
+[1] Department of Anthropology, University of Oklahoma, Dale Hall Tower, 521 Norman, Oklahoma 73019, USA [2] Universidad Científica del Sur, Lima 18, Perú [3] City of Hope, NCI-designated Comprehensive Cancer Center, Duarte, California 91010, USA.
 }
 \description{
 Relabeled genefamilies data from the Obregon-TitoAJ_2015 dataset

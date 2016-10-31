@@ -5,13 +5,13 @@
 \alias{Obregon-TitoAJ_2015.metaphlan_bugs_list.stool}
 \title{Taxonomic abundance data from the Obregon-TitoAJ_2015 dataset}
 \source{
-1] Department of Anthropology, University of Oklahoma, Dale Hall Tower, 521 Norman, Oklahoma 73019, USA [2] Universidad Científica del Sur, Lima 18, Perú [3] City of Hope, NCI-designated Comprehensive Cancer Center, Duarte, California 91010, USA.
+[1] Department of Anthropology, University of Oklahoma, Dale Hall Tower, 521 Norman, Oklahoma 73019, USA [2] Universidad Científica del Sur, Lima 18, Perú [3] City of Hope, NCI-designated Comprehensive Cancer Center, Duarte, California 91010, USA.
 }
 \description{
 Taxonomic abundance data from the Obregon-TitoAJ_2015 dataset
 }
 \section{Datasets}{
- 
+
 
 \subsection{Obregon-TitoAJ_2015.metaphlan_bugs_list.stool}{
    An ExpressionSet with 58 samples and 1,548 features specific to the stool bodysite

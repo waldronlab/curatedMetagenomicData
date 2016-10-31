@@ -10,3 +10,4 @@ data
 exec
 vignettes/*.R
 vignettes/*.html
+vignettes/rsconnect
