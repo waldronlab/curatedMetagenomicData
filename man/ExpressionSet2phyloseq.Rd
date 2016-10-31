@@ -22,5 +22,6 @@ Convert an ExpressionSet object to a phyloseq object
 \examples{
 LomanNJ_2013_Mi.metaphlan_bugs_list.stool() \%>\%
 ExpressionSet2phyloseq()
+
 }
 

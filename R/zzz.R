@@ -1,7 +1,5 @@
-#' @keywords internal
 #' @importFrom utils read.csv
-#' @importFrom AnnotationHub query
-#' @importFrom ExperimentHub ExperimentHub
+#' @keywords internal
 .onLoad <- function(libname, pkgname) {
     titles <- read.csv(system.file("extdata", "metadata.csv",
                                    package="curatedMetagenomicData"),
