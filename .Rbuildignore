@@ -3,5 +3,3 @@
 ^\.travis\.yml$
 ^codecov\.yml$
 ^appveyor\.yml$
-tmp
-data
