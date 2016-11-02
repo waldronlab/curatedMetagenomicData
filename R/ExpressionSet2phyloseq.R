@@ -1,26 +1,51 @@
-ExpressionSet2phyloseq <- function(tax, metadat=NULL, simplenames=TRUE, roundtointeger=FALSE) {
-  xnames = rownames(tax)
-  shortnames = gsub(".+\\|", "", xnames)
-  if(simplenames){
-    rownames(tax) = shortnames
-  }
-  if(roundtointeger){
-    tax = round(tax * 1e4) 
-  }
-  x2 = strsplit(xnames, split="|", fixed=TRUE)
-  taxmat = matrix(NA, ncol=max(sapply(x2, length)), nrow=length(x2))
-  colnames(taxmat) = c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species", "Strain")[1:ncol(taxmat)]
-  rownames(taxmat) = rownames(tax)
-  for (i in 1:nrow(taxmat)){
-    taxmat[i, 1:length(x2[[i]])] <- x2[[i]]
-  }
-  taxmat = gsub("[a-z]__", "", taxmat)
-  taxmat = phyloseq::tax_table(taxmat)
-  otutab = phyloseq::otu_table(tax, taxa_are_rows=TRUE)
-  if(is.null(metadat)){
-    res = phyloseq::phyloseq(taxmat, otutab)
-  }else{
-    res = phyloseq::phyloseq(taxmat, otutab, phyloseq::sample_data(metadat))
-  }
-  return(res)
+#' Convert an ExpressionSet object to a phyloseq object
+#'
+#' @param ExpressionSet
+#'
+#' An ExpressionSet object
+#'
+#' @param simplify
+#'
+#' if TRUE the most detailed clade name is used
+#'
+#' @param rounding
+#'
+#'  if TRUE values are rounded to the nearest interger
+#'
+#' @return
+#'
+#' A phyloseq object
+#'
+#' @export
+#'
+#' @examples
+#' LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
+#' ExpressionSet2phyloseq()
+#'
+#' @importFrom dplyr data_frame
+#' @importFrom tidyr separate
+ExpressionSet2phyloseq <- function(ExpressionSet, simplify = TRUE,
+                                   rounding = TRUE) {
+    otu_table <- exprs(ExpressionSet)
+    sample_data <- pData(ExpressionSet) %>%
+        sample_data(., errorIfNULL = FALSE)
+
+    taxonomic_ranks <- c("Kingdom", "Phylum", "Class", "Order", "Family",
+                         "Genus", "Species", "Strain")
+    tax_table <- rownames(otu_table) %>%
+        gsub("[a-z]__", "", .) %>%
+        data_frame() %>%
+        separate(., ".", taxonomic_ranks, sep = "\\|") %>%
+        as.matrix()
+    if(simplify == TRUE) {
+        rownames(otu_table) <- rownames(otu_table) %>%
+            gsub(".+\\|", "", .)
+    }
+    rownames(tax_table) <- rownames(otu_table)
+    if(rounding == TRUE) {
+        otu_table <- round(otu_table * 10000, 0)
+    }
+    otu_table <- otu_table(otu_table, taxa_are_rows = TRUE)
+    tax_table <- tax_table(tax_table)
+    phyloseq(otu_table, sample_data, tax_table)
 }

@@ -1,0 +1,15 @@
+# curatedMetagenomicData 1.0.0
+
+* Package vignette is updated to reflect in the intended use of ExperimentHub
+* Object level documentation is update for completeness and aliased
+* Minor description file changes to ensure collation order
+* Version bumped to reflect latest y version of Bioconductor
+
+# curatedMetagenomicData 0.99.8
+
+* Codebase is completely refactored to ExperimentHub specifications
+* Package vignette is updated to Rmd syntax and uses BiocStyle
+* New parallel functions allow for faster data processing
+* Documentation updated to use roxygen2
+* All data is reprocessed in R (v3.3.1)
+* All raw data is reprocessed with MetaPhlAn2 (v2.2.0) & HUMAnN2 (v0.7.0)

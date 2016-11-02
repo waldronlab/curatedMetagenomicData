@@ -1,32 +1,42 @@
 Package: curatedMetagenomicData
 Type: Package
 Title: Curated Metagenomic Data of the Human Microbiome
-Version: 0.99.7
-Author: Levi Waldron <levi.waldron@sph.cuny.edu>, 
-        Faizan Malik <faizankmalik2012@yahoo.com>, 
-        Valerie Obenchain <Valerie.Obenchain@roswellpark.org>,
-        Edoardo Pasolli <edoardo.pasolli@unitn.it>,
-        Nicola Segata <nicola.segata@unitn.it>,
-        Lucas Schiffer <schiffer.lucas@gmail.com>,
-        Morgan Martin <martin.morgan@roswellpark.org>
-Maintainer: Levi Waldron <levi.waldron@sph.cuny.edu>
-Description: The curatedMetagenomicData package provides taxonomic, 
-    functional, and gene marker abundance abundance in samples collected from 
-    different body sites.
-Depends: 
-    R (>= 3.3.0),
-    ExperimentHub (>= 0.101.9),
-    ExperimentHubData (>= 0.101.1), 
-    Biobase,
-    affy
-Imports: BiocGenerics, utils
-Suggests:
-    BiocStyle,
-    testthat,
-    rmarkdown,
-    gplots,
-    ExperimentHub,
-    phyloseq
-VignetteBuilder: rmarkdown
+Version: 1.0.0
+Author:
+    Levi Waldron <lwaldron.research@gmail.com>,
+    Lucas Schiffer <schiffer.lucas@gmail.com>,
+    Faizan Malik <faizankmalik2012@yahoo.com>,
+    Edoardo Pasolli <edoardo.pasolli@unitn.it>,
+    Nicola Segata <nicola.segata@unitn.it>,
+    Valerie Obenchain <Valerie.Obenchain@roswellpark.org>,
+    Morgan Martin <martin.morgan@roswellpark.org>
+Maintainer: Lucas Schiffer <schiffer.lucas@gmail.com>
+Description:
+    The curatedMetagenomicData package provides taxonomic, functional, and gene
+    marker abundance for samples collected from different bodysites.
 License: Artistic-2.0
-biocViews: ExperimentData, CancerData, ExpressionData, Homo_sapiens_Data, Metagenomics
+Depends:
+    R (>= 3.3.0),
+    phyloseq (>= 1.18.0),
+    Biobase (>= 2.34.0),
+    ExperimentHub (>= 1.0.0),
+    magrittr
+Imports:
+    utils,
+    dplyr,
+    tidyr
+Suggests:
+    devtools,
+    roxygen2,
+    testthat,
+    covr,
+    knitr,
+    rmarkdown,
+    BiocCheck,
+    BiocStyle,
+    BiocParallel,
+    readr,
+    RISmed
+VignetteBuilder: knitr
+biocViews: Homo_sapiens_Data, ReproducibleResearch, MicrobiomeData
+RoxygenNote: 5.0.1
