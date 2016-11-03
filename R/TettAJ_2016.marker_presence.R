@@ -9,6 +9,18 @@
 #' \subsection{TettAJ_2016.marker_presence.left_ear}{
 #'    An ExpressionSet with 22 samples and 57,429 features specific to the left_ear bodysite
 #' }
+#'
+#' \subsection{TettAJ_2016.marker_presence.left_elbow}{
+#'    An ExpressionSet with 26 samples and 57,429 features specific to the left_elbow bodysite
+#' }
+#'
+#' \subsection{TettAJ_2016.marker_presence.right_ear}{
+#'    An ExpressionSet with 26 samples and 57,429 features specific to the right_ear bodysite
+#' }
+#'
+#' \subsection{TettAJ_2016.marker_presence.right_elbow}{
+#'    An ExpressionSet with 23 samples and 57,429 features specific to the right_elbow bodysite
+#' }
 #' 
 #' @source 
 #' 

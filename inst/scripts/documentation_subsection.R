@@ -3,5 +3,6 @@ documentation_subsection <- function(every_element, documentation_df) {
     subsection_text <- documentation_df$subsection[every_element]
     bpmapply(subsection_str, subsection_name, subsection_text) %>%
     unlist() %>%
-    as.character()
+    as.character() %>%
+    paste0(., collapse = "")
 }
