@@ -24,7 +24,7 @@
 #' 
 #' @source 
 #' 
-#' @seealso \code{\link{TettAJ_2016.marker_abundance}}, \code{\link{TettAJ_2016.marker_abundance}}, \code{\link{TettAJ_2016.marker_abundance}}, \code{\link{TettAJ_2016.marker_abundance}}, \code{\link{TettAJ_2016.marker_presence}}, \code{\link{TettAJ_2016.marker_presence}}, \code{\link{TettAJ_2016.marker_presence}}, \code{\link{TettAJ_2016.marker_presence}}, \code{\link{TettAJ_2016.metaphlan_bugs_list}}, \code{\link{TettAJ_2016.metaphlan_bugs_list}}, \code{\link{TettAJ_2016.metaphlan_bugs_list}}, \code{\link{TettAJ_2016.metaphlan_bugs_list}}, \code{\link{TettAJ_2016.pathabundance_relab}}, \code{\link{TettAJ_2016.pathabundance_relab}}, \code{\link{TettAJ_2016.pathabundance_relab}}, \code{\link{TettAJ_2016.pathabundance_relab}}, \code{\link{TettAJ_2016.pathcoverage}}, \code{\link{TettAJ_2016.pathcoverage}}, \code{\link{TettAJ_2016.pathcoverage}}, \code{\link{TettAJ_2016.pathcoverage}}
+#' @seealso \code{\link{TettAJ_2016.marker_abundance}}, \code{\link{TettAJ_2016.marker_presence}}, \code{\link{TettAJ_2016.metaphlan_bugs_list}}, \code{\link{TettAJ_2016.pathabundance_relab}}, \code{\link{TettAJ_2016.pathcoverage}}
 #' 
 #' @name TettAJ_2016.genefamilies_relab 
 NULL
