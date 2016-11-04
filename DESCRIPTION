@@ -35,6 +35,7 @@ Suggests:
     BiocCheck,
     BiocStyle,
     BiocParallel,
+    dplyr,
     readr,
     RISmed
 VignetteBuilder: knitr
