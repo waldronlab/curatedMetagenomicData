@@ -4,6 +4,7 @@ documentation_seealso <- function(every_element, documentation_df) {
     grep(., documentation_df$seealso) %>%
     setdiff(., every_element) %>%
     documentation_df$name[.] %>%
+    unique() %>%
     paste0("\\code{\\link{", ., "}}") %>%
     paste(., collapse = ", ") %>%
     paste0("\n#' @seealso ", ., "\n#'")
