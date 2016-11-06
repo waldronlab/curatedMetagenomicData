@@ -17,13 +17,13 @@ Description:
 License: Artistic-2.0
 Depends:
     R (>= 3.3.0),
+    dplyr (>= 0.5.0),
     phyloseq (>= 1.18.0),
     Biobase (>= 2.34.0),
     ExperimentHub (>= 1.0.0),
     magrittr
 Imports:
     utils,
-    dplyr,
     tidyr
 Suggests:
     devtools,
@@ -36,7 +36,6 @@ Suggests:
     BiocStyle,
     BiocInstaller,
     BiocParallel,
-    dplyr,
     readr,
     RISmed
 VignetteBuilder: knitr

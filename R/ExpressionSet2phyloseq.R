@@ -22,7 +22,6 @@
 #' LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
 #' ExpressionSet2phyloseq()
 #'
-#' @importFrom dplyr data_frame
 #' @importFrom tidyr separate
 ExpressionSet2phyloseq <- function(ExpressionSet, simplify = TRUE,
                                    rounding = TRUE) {
