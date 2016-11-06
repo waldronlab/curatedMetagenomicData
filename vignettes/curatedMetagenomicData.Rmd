@@ -62,7 +62,7 @@ user to simply call datasets as functions because the package is aware of the
 resources present in ExperimentHub S3 buckets. A function call to a dataset name
 will return an expression set object which can be manipulated or serialized.
 
-```{r}
+```{r, eval=FALSE}
 # BiocInstaller::biocLite("curatedMetagenomicData")
 library(curatedMetagenomicData)
 LomanNJ_2013_Hi.genefamilies_relab.stool()
@@ -78,7 +78,7 @@ experiment-level metadata, subject-level metadata, and the data itself.
 To access the experiment-level metadata the `experimentData()` function is used
 to return a `MIAME` (Minimum Information About a Microarray Experiment) object.
 
-```{r}
+```{r, eval=FALSE}
 LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
 experimentData()
 ```
@@ -86,7 +86,7 @@ experimentData()
 To access the subject-level metadata the `pData()` function is used to return a
 `data.frame` containing subject-level variables of study.
 
-```{r}
+```{r, eval=FALSE}
 LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
 pData()
 ```
@@ -94,7 +94,7 @@ pData()
 To access the data itself the `exprs()` function is used to return a long and
 skinny `matrix` in which samples are column rather than rows.
 
-```{r}
+```{r, eval=FALSE}
 LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
 exprs()
 ```
@@ -109,7 +109,7 @@ profiles make sense to analyse as phylogenetic data. A convienence function,
 package to allow for coversion between the `ExpressionSet` class and the
 `phyloseq` class; it is used as follows.
 
-```{r}
+```{r, eval=FALSE}
 LomanNJ_2013_Hi.metaphlan_bugs_list.stool() %>%
 ExpressionSet2phyloseq()
 ```
@@ -122,7 +122,7 @@ dataset containing taxanomic profiles is first converted to a `phyloseq` object
 and then the `otu_table()` function is used to view the contents and structure
 of the table.
 
-```{r}
+```{r, eval=FALSE}
 LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
 ExpressionSet2phyloseq() %>% 
 otu_table() %>% 
@@ -155,32 +155,32 @@ tax_table() %>%
 head()
 ```
 
-## Subseting / Pruning
+<!-- ## Subseting / Pruning -->
 
-The names of phylogenetic ranks are easily examined using the `rank_names()`
-function
+<!-- The names of phylogenetic ranks are easily examined using the `rank_names()` -->
+<!-- function -->
 
-```{r, eval=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-rank_names()
-```
+<!-- ```{r, eval=FALSE} -->
+<!-- LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>% -->
+<!-- ExpressionSet2phyloseq() %>% -->
+<!-- rank_names() -->
+<!-- ``` -->
 
-With knowledge of the rank names it becomes possible to filter 
+<!-- With knowledge of the rank names it becomes possible to filter  -->
 
-```{r, eval=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-subset_taxa(!is.na(Species))
-```
+<!-- ```{r, eval=FALSE} -->
+<!-- LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>% -->
+<!-- ExpressionSet2phyloseq() %>% -->
+<!-- subset_taxa(!is.na(Species)) -->
+<!-- ``` -->
 
-Even greater specificity
+<!-- Even greater specificity -->
 
-```{r, eval=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-subset_taxa(!is.na(Strain))
-```
+<!-- ```{r, eval=FALSE} -->
+<!-- LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>% -->
+<!-- ExpressionSet2phyloseq() %>% -->
+<!-- subset_taxa(!is.na(Strain)) -->
+<!-- ``` -->
 
 <!-- ## Advanced Pruning -->
 

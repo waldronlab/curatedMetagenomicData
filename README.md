@@ -16,12 +16,16 @@ number (n ≈ 3000) of human microbiome samples gathered from various sources.
 `BioConductor` & `ExperimentHub`. For example:
 
 ```{r}
-library(ExperimentHub)
-listResources(ExperimentHub(), "curatedMetagenomicData")
-loadResources(ExperimentHub(), "curatedMetagenomicData", "LomanNJ_2013_Mi")
-pData(LomanNJ_2013_Mi.genefamilies_relab.stool)
-experimentData(LomanNJ_2013_Mi.genefamilies_relab.stool)
-exprs(LomanNJ_2013_Mi.genefamilies_relab.stool)
+library(curatedMetagenomicData)
+
+LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
+pData()
+
+LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
+experimentData()
+
+LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
+exprs()
 ```
     
 ## Adding New Data
