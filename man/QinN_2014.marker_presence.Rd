@@ -17,6 +17,10 @@ Marker presence data from the QinN_2014 dataset
    An ExpressionSet with 237 samples and 126,097 features specific to the stool bodysite
 }
 }
+\examples{
+QinN_2014.marker_presence.stool()
+
+}
 \seealso{
 \code{\link{QinN_2014.genefamilies_relab}}, \code{\link{QinN_2014.marker_abundance}}, \code{\link{QinN_2014.metaphlan_bugs_list}}, \code{\link{QinN_2014.pathabundance_relab}}, \code{\link{QinN_2014.pathcoverage}}
 }

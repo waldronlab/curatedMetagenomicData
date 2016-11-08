@@ -14,5 +14,7 @@
 #' 
 #' @seealso \code{\link{OhJ_2014.genefamilies_relab}}, \code{\link{OhJ_2014.marker_abundance}}, \code{\link{OhJ_2014.marker_presence}}, \code{\link{OhJ_2014.pathabundance_relab}}, \code{\link{OhJ_2014.pathcoverage}}
 #' 
+#' @examples OhJ_2014.metaphlan_bugs_list.skin()
+#' 
 #' @name OhJ_2014.metaphlan_bugs_list 
 NULL

@@ -14,5 +14,7 @@
 #' 
 #' @seealso \code{\link{QinN_2014.genefamilies_relab}}, \code{\link{QinN_2014.marker_abundance}}, \code{\link{QinN_2014.marker_presence}}, \code{\link{QinN_2014.metaphlan_bugs_list}}, \code{\link{QinN_2014.pathcoverage}}
 #' 
+#' @examples QinN_2014.pathabundance_relab.stool()
+#' 
 #' @name QinN_2014.pathabundance_relab 
 NULL

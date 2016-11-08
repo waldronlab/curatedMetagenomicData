@@ -17,6 +17,10 @@ Marker presence data from the LomanNJ_2013_Mi dataset
    An ExpressionSet with 9 samples and 22,710 features specific to the stool bodysite
 }
 }
+\examples{
+LomanNJ_2013_Mi.marker_presence.stool()
+
+}
 \seealso{
 \code{\link{LomanNJ_2013_Mi.genefamilies_relab}}, \code{\link{LomanNJ_2013_Mi.marker_abundance}}, \code{\link{LomanNJ_2013_Mi.metaphlan_bugs_list}}, \code{\link{LomanNJ_2013_Mi.pathabundance_relab}}, \code{\link{LomanNJ_2013_Mi.pathcoverage}}
 }

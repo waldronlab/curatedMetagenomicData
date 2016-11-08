@@ -3,6 +3,21 @@
 \name{HMP_2012.metaphlan_bugs_list}
 \alias{HMP_2012.metaphlan_bugs_list}
 \alias{HMP_2012.metaphlan_bugs_list.anterior_nares}
+\alias{HMP_2012.metaphlan_bugs_list.buccal_mucosa}
+\alias{HMP_2012.metaphlan_bugs_list.hard_palate}
+\alias{HMP_2012.metaphlan_bugs_list.keratinized_gingiva}
+\alias{HMP_2012.metaphlan_bugs_list.l_retroauricular_crease}
+\alias{HMP_2012.metaphlan_bugs_list.mid_vagina}
+\alias{HMP_2012.metaphlan_bugs_list.palatine_tonsils}
+\alias{HMP_2012.metaphlan_bugs_list.posterior_fornix}
+\alias{HMP_2012.metaphlan_bugs_list.r_retroauricular_crease}
+\alias{HMP_2012.metaphlan_bugs_list.saliva}
+\alias{HMP_2012.metaphlan_bugs_list.stool}
+\alias{HMP_2012.metaphlan_bugs_list.subgingival_plaque}
+\alias{HMP_2012.metaphlan_bugs_list.supragingival_plaque}
+\alias{HMP_2012.metaphlan_bugs_list.throat}
+\alias{HMP_2012.metaphlan_bugs_list.tongue_dorsum}
+\alias{HMP_2012.metaphlan_bugs_list.vaginal_introitus}
 \title{Taxonomic abundance data from the HMP_2012 dataset}
 \source{
 Department of Psychology, Abdul Haq Campus, Federal Urdu University for Arts, Science and Technology, Karachi, Pakistan. shahiq_psy@yahoo.com
@@ -77,7 +92,11 @@ Taxonomic abundance data from the HMP_2012 dataset
    An ExpressionSet with 3 samples and 1,988 features specific to the vaginal_introitus bodysite
 }
 }
+\examples{
+HMP_2012.metaphlan_bugs_list.anterior_nares()
+
+}
 \seealso{
-\code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}, \code{\link{HMP_2012.pathcoverage}}
+\code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathcoverage}}
 }
 

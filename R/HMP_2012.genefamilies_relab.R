@@ -2,7 +2,7 @@
 ## see source in inst/scripts/make-documentation.R 
 #' Relabeled genefamilies data from the HMP_2012 dataset
 #' 
-#' @aliases HMP_2012.genefamilies_relab.anterior_nares 
+#' @aliases HMP_2012.genefamilies_relab.anterior_nares HMP_2012.genefamilies_relab.buccal_mucosa HMP_2012.genefamilies_relab.hard_palate HMP_2012.genefamilies_relab.keratinized_gingiva HMP_2012.genefamilies_relab.l_retroauricular_crease HMP_2012.genefamilies_relab.mid_vagina HMP_2012.genefamilies_relab.palatine_tonsils HMP_2012.genefamilies_relab.posterior_fornix HMP_2012.genefamilies_relab.r_retroauricular_crease HMP_2012.genefamilies_relab.saliva HMP_2012.genefamilies_relab.stool HMP_2012.genefamilies_relab.subgingival_plaque HMP_2012.genefamilies_relab.supragingival_plaque HMP_2012.genefamilies_relab.throat HMP_2012.genefamilies_relab.tongue_dorsum HMP_2012.genefamilies_relab.vaginal_introitus 
 #' 
 #' @section Datasets: 
 #' 
@@ -73,6 +73,8 @@
 #' @source Department of Psychology, Abdul Haq Campus, Federal Urdu University for Arts, Science and Technology, Karachi, Pakistan. shahiq_psy@yahoo.com
 #' 
 #' @seealso \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.metaphlan_bugs_list}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathcoverage}}
+#' 
+#' @examples HMP_2012.genefamilies_relab.anterior_nares()
 #' 
 #' @name HMP_2012.genefamilies_relab 
 NULL
