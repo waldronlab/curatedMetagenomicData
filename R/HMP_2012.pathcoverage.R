@@ -2,7 +2,7 @@
 ## see source in inst/scripts/make-documentation.R 
 #' Pathcoverage data from the HMP_2012 dataset
 #' 
-#' @aliases HMP_2012.pathcoverage.anterior_nares 
+#' @aliases HMP_2012.pathcoverage.anterior_nares HMP_2012.pathcoverage.buccal_mucosa HMP_2012.pathcoverage.hard_palate HMP_2012.pathcoverage.keratinized_gingiva HMP_2012.pathcoverage.l_retroauricular_crease HMP_2012.pathcoverage.mid_vagina HMP_2012.pathcoverage.palatine_tonsils HMP_2012.pathcoverage.posterior_fornix HMP_2012.pathcoverage.r_retroauricular_crease HMP_2012.pathcoverage.saliva HMP_2012.pathcoverage.stool HMP_2012.pathcoverage.subgingival_plaque HMP_2012.pathcoverage.supragingival_plaque HMP_2012.pathcoverage.throat HMP_2012.pathcoverage.tongue_dorsum HMP_2012.pathcoverage.vaginal_introitus 
 #' 
 #' @section Datasets: 
 #' 
@@ -73,6 +73,8 @@
 #' @source Department of Psychology, Abdul Haq Campus, Federal Urdu University for Arts, Science and Technology, Karachi, Pakistan. shahiq_psy@yahoo.com
 #' 
 #' @seealso \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.metaphlan_bugs_list}}, \code{\link{HMP_2012.pathabundance_relab}}
+#' 
+#' @examples HMP_2012.pathcoverage.anterior_nares()
 #' 
 #' @name HMP_2012.pathcoverage 
 NULL

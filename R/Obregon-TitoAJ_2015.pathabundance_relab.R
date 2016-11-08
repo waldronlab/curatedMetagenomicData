@@ -14,5 +14,7 @@
 #' 
 #' @seealso \code{\link{Obregon-TitoAJ_2015.genefamilies_relab}}, \code{\link{Obregon-TitoAJ_2015.marker_abundance}}, \code{\link{Obregon-TitoAJ_2015.marker_presence}}, \code{\link{Obregon-TitoAJ_2015.metaphlan_bugs_list}}, \code{\link{Obregon-TitoAJ_2015.pathcoverage}}
 #' 
+#' @examples Obregon-TitoAJ_2015.pathabundance_relab.stool()
+#' 
 #' @name Obregon-TitoAJ_2015.pathabundance_relab 
 NULL

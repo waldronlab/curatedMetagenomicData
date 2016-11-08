@@ -14,5 +14,7 @@
 #' 
 #' @seealso \code{\link{LeChatelierE_2013.genefamilies_relab}}, \code{\link{LeChatelierE_2013.marker_presence}}, \code{\link{LeChatelierE_2013.metaphlan_bugs_list}}, \code{\link{LeChatelierE_2013.pathabundance_relab}}, \code{\link{LeChatelierE_2013.pathcoverage}}
 #' 
+#' @examples LeChatelierE_2013.marker_abundance.stool()
+#' 
 #' @name LeChatelierE_2013.marker_abundance 
 NULL

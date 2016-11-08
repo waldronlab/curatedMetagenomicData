@@ -17,6 +17,10 @@ Marker presence data from the Obregon-TitoAJ_2015 dataset
    An ExpressionSet with 58 samples and 150,347 features specific to the stool bodysite
 }
 }
+\examples{
+Obregon-TitoAJ_2015.marker_presence.stool()
+
+}
 \seealso{
 \code{\link{Obregon-TitoAJ_2015.genefamilies_relab}}, \code{\link{Obregon-TitoAJ_2015.marker_abundance}}, \code{\link{Obregon-TitoAJ_2015.metaphlan_bugs_list}}, \code{\link{Obregon-TitoAJ_2015.pathabundance_relab}}, \code{\link{Obregon-TitoAJ_2015.pathcoverage}}
 }

@@ -2,7 +2,7 @@
 ## see source in inst/scripts/make-documentation.R 
 #' Taxonomic abundance data from the TettAJ_2016 dataset
 #' 
-#' @aliases TettAJ_2016.metaphlan_bugs_list.left_ear 
+#' @aliases TettAJ_2016.metaphlan_bugs_list.left_ear TettAJ_2016.metaphlan_bugs_list.left_elbow TettAJ_2016.metaphlan_bugs_list.right_ear TettAJ_2016.metaphlan_bugs_list.right_elbow 
 #' 
 #' @section Datasets: 
 #' 
@@ -25,6 +25,8 @@
 #' @source 
 #' 
 #' @seealso \code{\link{TettAJ_2016.genefamilies_relab}}, \code{\link{TettAJ_2016.marker_abundance}}, \code{\link{TettAJ_2016.marker_presence}}, \code{\link{TettAJ_2016.pathabundance_relab}}, \code{\link{TettAJ_2016.pathcoverage}}
+#' 
+#' @examples TettAJ_2016.metaphlan_bugs_list.left_ear()
 #' 
 #' @name TettAJ_2016.metaphlan_bugs_list 
 NULL
