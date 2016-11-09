@@ -21,6 +21,7 @@ Depends:
     phyloseq (>= 1.18.0),
     Biobase (>= 2.34.0),
     ExperimentHub (>= 1.0.0),
+    AnnotationHub (>= 2.6.0),
     magrittr
 Imports:
     utils,

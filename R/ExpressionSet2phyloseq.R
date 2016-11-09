@@ -22,7 +22,15 @@
 #' LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
 #' ExpressionSet2phyloseq()
 #'
+#' @importFrom Biobase exprs
+#' @importFrom Biobase pData
+#' @importFrom magrittr %>%
+#' @importFrom phyloseq sample_data
+#' @importFrom dplyr data_frame
 #' @importFrom tidyr separate
+#' @importFrom phyloseq otu_table
+#' @importFrom phyloseq tax_table
+#' @importFrom phyloseq phyloseq
 ExpressionSet2phyloseq <- function(ExpressionSet, simplify = TRUE,
                                    rounding = TRUE) {
     otu_table <- exprs(ExpressionSet)

@@ -7,14 +7,11 @@
 \alias{TettAJ_2016.pathabundance_relab.right_ear}
 \alias{TettAJ_2016.pathabundance_relab.right_elbow}
 \title{Relabeled pathabundance data from the TettAJ_2016 dataset}
-\source{
-
-}
 \description{
 Relabeled pathabundance data from the TettAJ_2016 dataset
 }
 \section{Datasets}{
- 
+
 
 \subsection{TettAJ_2016.pathabundance_relab.left_ear}{
    An ExpressionSet with 22 samples and 21,899 features specific to the left_ear bodysite

@@ -1,3 +1,4 @@
+#' @importFrom magrittr %>%
 #' @importFrom utils install.packages
 #' @keywords internal
 load_suggests <- function() {
