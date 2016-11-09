@@ -11,14 +11,14 @@ Structural and Computational Biology Unit, European Molecular Biology Laboratory
 Relabeled genefamilies data from the ZellerG_2014 dataset
 }
 \section{Datasets}{
-
+ 
 
 \subsection{ZellerG_2014.genefamilies_relab.stool}{
    An ExpressionSet with 156 samples and 1,796,274 features specific to the stool bodysite
 }
 }
 \examples{
-query(ExperimentHub(), "curatedMetagenomicData")
+ZellerG_2014.genefamilies_relab.stool()
 
 }
 \seealso{

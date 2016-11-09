@@ -11,14 +11,14 @@ Institute of Microbiology and Infection, University of Birmingham, Birmingham, E
 Relabeled pathabundance data from the LomanNJ_2013_Hi dataset
 }
 \section{Datasets}{
-
+ 
 
 \subsection{LomanNJ_2013_Hi.pathabundance_relab.stool}{
    An ExpressionSet with 44 samples and 8,716 features specific to the stool bodysite
 }
 }
 \examples{
-query(ExperimentHub(), "curatedMetagenomicData")
+LomanNJ_2013_Hi.pathabundance_relab.stool()
 
 }
 \seealso{

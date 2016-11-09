@@ -11,14 +11,14 @@ Department of Chemical and Biological Engineering, Chalmers University of Techno
 Taxonomic abundance data from the KarlssonFH_2013 dataset
 }
 \section{Datasets}{
-
+ 
 
 \subsection{KarlssonFH_2013.metaphlan_bugs_list.stool}{
    An ExpressionSet with 145 samples and 1,140 features specific to the stool bodysite
 }
 }
 \examples{
-query(ExperimentHub(), "curatedMetagenomicData")
+KarlssonFH_2013.metaphlan_bugs_list.stool()
 
 }
 \seealso{
