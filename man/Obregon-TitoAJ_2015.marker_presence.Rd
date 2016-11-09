@@ -5,17 +5,21 @@
 \alias{Obregon-TitoAJ_2015.marker_presence.stool}
 \title{Marker presence data from the Obregon-TitoAJ_2015 dataset}
 \source{
-1] Department of Anthropology, University of Oklahoma, Dale Hall Tower, 521 Norman, Oklahoma 73019, USA [2] Universidad Científica del Sur, Lima 18, Perú [3] City of Hope, NCI-designated Comprehensive Cancer Center, Duarte, California 91010, USA.
+[1] Department of Anthropology, University of Oklahoma, Dale Hall Tower, 521 Norman, Oklahoma 73019, USA [2] Universidad Cientifica del Sur, Lima 18, Peru [3] City of Hope, NCI-designated Comprehensive Cancer Center, Duarte, California 91010, USA.
 }
 \description{
 Marker presence data from the Obregon-TitoAJ_2015 dataset
 }
 \section{Datasets}{
- 
+
 
 \subsection{Obregon-TitoAJ_2015.marker_presence.stool}{
    An ExpressionSet with 58 samples and 150,347 features specific to the stool bodysite
 }
+}
+\examples{
+Obregon-TitoAJ_2015.marker_presence.stool()
+
 }
 \seealso{
 \code{\link{Obregon-TitoAJ_2015.genefamilies_relab}}, \code{\link{Obregon-TitoAJ_2015.marker_abundance}}, \code{\link{Obregon-TitoAJ_2015.metaphlan_bugs_list}}, \code{\link{Obregon-TitoAJ_2015.pathabundance_relab}}, \code{\link{Obregon-TitoAJ_2015.pathcoverage}}

@@ -14,5 +14,7 @@
 #' 
 #' @seealso \code{\link{ZellerG_2014.genefamilies_relab}}, \code{\link{ZellerG_2014.marker_abundance}}, \code{\link{ZellerG_2014.marker_presence}}, \code{\link{ZellerG_2014.metaphlan_bugs_list}}, \code{\link{ZellerG_2014.pathabundance_relab}}
 #' 
+#' @examples ZellerG_2014.pathcoverage.stool()
+#' 
 #' @name ZellerG_2014.pathcoverage 
 NULL

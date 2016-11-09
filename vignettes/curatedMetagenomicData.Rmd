@@ -16,6 +16,7 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(cache = TRUE)
 ```
 
 # What `curatedMetagenomicData` provides
@@ -62,7 +63,7 @@ resources present in ExperimentHub S3 buckets. A function call to a dataset name
 will return an expression set object which can be manipulated or serialized.
 
 ```{r, eval=FALSE}
-BiocInstaller::biocLite("curatedMetagenomicData")
+# BiocInstaller::biocLite("curatedMetagenomicData")
 library(curatedMetagenomicData)
 LomanNJ_2013_Hi.genefamilies_relab.stool()
 ```
@@ -154,43 +155,43 @@ tax_table() %>%
 head()
 ```
 
-## Subseting / Pruning
+<!-- ## Subseting / Pruning -->
 
-The names of phylogenetic ranks are easily examined using the `rank_names()`
-function
+<!-- The names of phylogenetic ranks are easily examined using the `rank_names()` -->
+<!-- function -->
 
-```{r, eval=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-rank_names()
-```
+<!-- ```{r, eval=FALSE} -->
+<!-- LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>% -->
+<!-- ExpressionSet2phyloseq() %>% -->
+<!-- rank_names() -->
+<!-- ``` -->
 
-With knowledge of the rank names it becomes possible to filter 
+<!-- With knowledge of the rank names it becomes possible to filter  -->
 
-```{r, eval=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-subset_taxa(!is.na(Species))
-```
+<!-- ```{r, eval=FALSE} -->
+<!-- LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>% -->
+<!-- ExpressionSet2phyloseq() %>% -->
+<!-- subset_taxa(!is.na(Species)) -->
+<!-- ``` -->
 
-Even greater specificity
+<!-- Even greater specificity -->
 
-```{r, eval=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-subset_taxa(!is.na(Strain))
-```
+<!-- ```{r, eval=FALSE} -->
+<!-- LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>% -->
+<!-- ExpressionSet2phyloseq() %>% -->
+<!-- subset_taxa(!is.na(Strain)) -->
+<!-- ``` -->
 
-## Advanced Pruning
+<!-- ## Advanced Pruning -->
 
-## Taxonomy Heatmap
+<!-- ## Taxonomy Heatmap -->
 
-## Taxonomy Histogram
+<!-- ## Taxonomy Histogram -->
 
-## Alpha Diversity Estimation
+<!-- ## Alpha Diversity Estimation -->
 
-## Alpha Diversity Estimate Comparison
+<!-- ## Alpha Diversity Estimate Comparison -->
 
-## Beta Diversity / Dissimilarity Clustering
+<!-- ## Beta Diversity / Dissimilarity Clustering -->
 
-## Beta Diversity / Dissimilarity Analysis
+<!-- ## Beta Diversity / Dissimilarity Analysis -->

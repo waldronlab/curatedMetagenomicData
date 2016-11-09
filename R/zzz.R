@@ -1,4 +1,7 @@
 #' @importFrom utils read.csv
+#' @importFrom AnnotationHub query
+#' @importFrom ExperimentHub ExperimentHub
+#' @importFrom utils globalVariables
 #' @keywords internal
 .onLoad <- function(libname, pkgname) {
     titles <- read.csv(system.file("extdata", "metadata.csv",
@@ -27,4 +30,6 @@
                assign(xx, func, envir=ns)
                namespaceExport(ns, xx)
            })
+
+    globalVariables(".")
 }
