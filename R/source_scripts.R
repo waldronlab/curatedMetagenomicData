@@ -1,3 +1,4 @@
+#' @importFrom magrittr %>%
 #' @keywords internal
 source_scripts <- function() {
     dir("./inst/scripts") %>%
