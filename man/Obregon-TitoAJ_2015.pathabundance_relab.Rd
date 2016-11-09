@@ -5,7 +5,7 @@
 \alias{Obregon-TitoAJ_2015.pathabundance_relab.stool}
 \title{Relabeled pathabundance data from the Obregon-TitoAJ_2015 dataset}
 \source{
-1] Department of Anthropology, University of Oklahoma, Dale Hall Tower, 521 Norman, Oklahoma 73019, USA [2] Universidad Científica del Sur, Lima 18, Perú [3] City of Hope, NCI-designated Comprehensive Cancer Center, Duarte, California 91010, USA.
+[1] Department of Anthropology, University of Oklahoma, Dale Hall Tower, 521 Norman, Oklahoma 73019, USA [2] Universidad Cientifica del Sur, Lima 18, Peru [3] City of Hope, NCI-designated Comprehensive Cancer Center, Duarte, California 91010, USA.
 }
 \description{
 Relabeled pathabundance data from the Obregon-TitoAJ_2015 dataset
@@ -18,7 +18,7 @@ Relabeled pathabundance data from the Obregon-TitoAJ_2015 dataset
 }
 }
 \examples{
-query(ExperimentHub(), "curatedMetagenomicData")
+Obregon-TitoAJ_2015.pathabundance_relab.stool()
 
 }
 \seealso{

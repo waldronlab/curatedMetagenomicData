@@ -11,14 +11,14 @@ Department of Chemical and Biological Engineering, Chalmers University of Techno
 Marker abundance data from the KarlssonFH_2013 dataset
 }
 \section{Datasets}{
-
+ 
 
 \subsection{KarlssonFH_2013.marker_abundance.stool}{
    An ExpressionSet with 145 samples and 101,168 features specific to the stool bodysite
 }
 }
 \examples{
-query(ExperimentHub(), "curatedMetagenomicData")
+KarlssonFH_2013.marker_abundance.stool()
 
 }
 \seealso{

@@ -11,14 +11,14 @@ Structural and Computational Biology Unit, European Molecular Biology Laboratory
 Relabeled pathabundance data from the ZellerG_2014 dataset
 }
 \section{Datasets}{
-
+ 
 
 \subsection{ZellerG_2014.pathabundance_relab.stool}{
    An ExpressionSet with 156 samples and 17,888 features specific to the stool bodysite
 }
 }
 \examples{
-query(ExperimentHub(), "curatedMetagenomicData")
+ZellerG_2014.pathabundance_relab.stool()
 
 }
 \seealso{
