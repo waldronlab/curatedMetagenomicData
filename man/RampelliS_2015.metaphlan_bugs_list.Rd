@@ -17,6 +17,10 @@ Taxonomic abundance data from the RampelliS_2015 dataset
    An ExpressionSet with 38 samples and 727 features specific to the stool bodysite
 }
 }
+\examples{
+RampelliS_2015.metaphlan_bugs_list.stool()
+
+}
 \seealso{
 \code{\link{RampelliS_2015.genefamilies_relab}}, \code{\link{RampelliS_2015.marker_abundance}}, \code{\link{RampelliS_2015.marker_presence}}, \code{\link{RampelliS_2015.pathabundance_relab}}, \code{\link{RampelliS_2015.pathcoverage}}
 }

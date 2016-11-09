@@ -3,15 +3,15 @@
 \name{TettAJ_2016.metaphlan_bugs_list}
 \alias{TettAJ_2016.metaphlan_bugs_list}
 \alias{TettAJ_2016.metaphlan_bugs_list.left_ear}
+\alias{TettAJ_2016.metaphlan_bugs_list.left_elbow}
+\alias{TettAJ_2016.metaphlan_bugs_list.right_ear}
+\alias{TettAJ_2016.metaphlan_bugs_list.right_elbow}
 \title{Taxonomic abundance data from the TettAJ_2016 dataset}
-\source{
-
-}
 \description{
 Taxonomic abundance data from the TettAJ_2016 dataset
 }
 \section{Datasets}{
- 
+
 
 \subsection{TettAJ_2016.metaphlan_bugs_list.left_ear}{
    An ExpressionSet with 22 samples and 1,004 features specific to the left_ear bodysite
@@ -29,7 +29,11 @@ Taxonomic abundance data from the TettAJ_2016 dataset
    An ExpressionSet with 23 samples and 1,004 features specific to the right_elbow bodysite
 }
 }
+\examples{
+TettAJ_2016.metaphlan_bugs_list.left_ear()
+
+}
 \seealso{
-\code{\link{TettAJ_2016.genefamilies_relab}}, \code{\link{TettAJ_2016.genefamilies_relab}}, \code{\link{TettAJ_2016.genefamilies_relab}}, \code{\link{TettAJ_2016.genefamilies_relab}}, \code{\link{TettAJ_2016.marker_abundance}}, \code{\link{TettAJ_2016.marker_abundance}}, \code{\link{TettAJ_2016.marker_abundance}}, \code{\link{TettAJ_2016.marker_abundance}}, \code{\link{TettAJ_2016.marker_presence}}, \code{\link{TettAJ_2016.marker_presence}}, \code{\link{TettAJ_2016.marker_presence}}, \code{\link{TettAJ_2016.marker_presence}}, \code{\link{TettAJ_2016.pathabundance_relab}}, \code{\link{TettAJ_2016.pathabundance_relab}}, \code{\link{TettAJ_2016.pathabundance_relab}}, \code{\link{TettAJ_2016.pathabundance_relab}}, \code{\link{TettAJ_2016.pathcoverage}}, \code{\link{TettAJ_2016.pathcoverage}}, \code{\link{TettAJ_2016.pathcoverage}}, \code{\link{TettAJ_2016.pathcoverage}}
+\code{\link{TettAJ_2016.genefamilies_relab}}, \code{\link{TettAJ_2016.marker_abundance}}, \code{\link{TettAJ_2016.marker_presence}}, \code{\link{TettAJ_2016.pathabundance_relab}}, \code{\link{TettAJ_2016.pathcoverage}}
 }
 

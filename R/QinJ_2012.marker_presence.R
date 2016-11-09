@@ -14,5 +14,7 @@
 #' 
 #' @seealso \code{\link{QinJ_2012.genefamilies_relab}}, \code{\link{QinJ_2012.marker_abundance}}, \code{\link{QinJ_2012.metaphlan_bugs_list}}, \code{\link{QinJ_2012.pathabundance_relab}}, \code{\link{QinJ_2012.pathcoverage}}
 #' 
+#' @examples QinJ_2012.marker_presence.stool()
+#' 
 #' @name QinJ_2012.marker_presence 
 NULL

@@ -14,5 +14,7 @@
 #' 
 #' @seealso \code{\link{RampelliS_2015.genefamilies_relab}}, \code{\link{RampelliS_2015.marker_abundance}}, \code{\link{RampelliS_2015.marker_presence}}, \code{\link{RampelliS_2015.metaphlan_bugs_list}}, \code{\link{RampelliS_2015.pathabundance_relab}}
 #' 
+#' @examples RampelliS_2015.pathcoverage.stool()
+#' 
 #' @name RampelliS_2015.pathcoverage 
 NULL
