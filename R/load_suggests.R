@@ -1,3 +1,4 @@
+#' @importFrom magrittr %>%
 #' @importFrom BiocInstaller biocLite
 #' @keywords internal
 load_suggests <- function() {
