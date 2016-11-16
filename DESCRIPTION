@@ -23,6 +23,7 @@ Depends:
     ExperimentHub (>= 1.0.0),
     magrittr
 Imports:
+    BiocInstaller,
     utils,
     tidyr
 Suggests:
@@ -34,7 +35,6 @@ Suggests:
     rmarkdown,
     BiocCheck,
     BiocStyle,
-    BiocInstaller,
     BiocParallel,
     readr,
     RISmed
