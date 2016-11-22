@@ -14,5 +14,7 @@
 #' 
 #' @seealso \code{\link{LomanNJ_2013_Hi.genefamilies_relab}}, \code{\link{LomanNJ_2013_Hi.marker_abundance}}, \code{\link{LomanNJ_2013_Hi.marker_presence}}, \code{\link{LomanNJ_2013_Hi.metaphlan_bugs_list}}, \code{\link{LomanNJ_2013_Hi.pathabundance_relab}}
 #' 
+#' @examples LomanNJ_2013_Hi.pathcoverage.stool()
+#' 
 #' @name LomanNJ_2013_Hi.pathcoverage 
 NULL

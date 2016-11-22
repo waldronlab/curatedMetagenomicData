@@ -17,6 +17,10 @@ Relabeled genefamilies data from the NielsenHB_2014 dataset
    An ExpressionSet with 396 samples and 1,730,384 features specific to the stool bodysite
 }
 }
+\examples{
+NielsenHB_2014.genefamilies_relab.stool()
+
+}
 \seealso{
 \code{\link{NielsenHB_2014.marker_abundance}}, \code{\link{NielsenHB_2014.marker_presence}}, \code{\link{NielsenHB_2014.metaphlan_bugs_list}}, \code{\link{NielsenHB_2014.pathabundance_relab}}, \code{\link{NielsenHB_2014.pathcoverage}}
 }
