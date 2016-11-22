@@ -14,5 +14,7 @@
 #' 
 #' @seealso \code{\link{NielsenHB_2014.genefamilies_relab}}, \code{\link{NielsenHB_2014.marker_presence}}, \code{\link{NielsenHB_2014.metaphlan_bugs_list}}, \code{\link{NielsenHB_2014.pathabundance_relab}}, \code{\link{NielsenHB_2014.pathcoverage}}
 #' 
+#' @examples NielsenHB_2014.marker_abundance.stool()
+#' 
 #' @name NielsenHB_2014.marker_abundance 
 NULL

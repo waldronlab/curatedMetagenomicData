@@ -6,4 +6,3 @@ pubmed_query <- function(metadata) {
     pubmed_check() %>%
     EUtilsGet()
 }
-
