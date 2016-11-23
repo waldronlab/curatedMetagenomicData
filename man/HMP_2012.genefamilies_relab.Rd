@@ -4,8 +4,10 @@
 \alias{HMP_2012.genefamilies_relab}
 \alias{HMP_2012.genefamilies_relab.anterior_nares}
 \alias{HMP_2012.genefamilies_relab.buccal_mucosa}
+\alias{HMP_2012.genefamilies_relab.hard_palate}
 \alias{HMP_2012.genefamilies_relab.keratinized_gingiva}
 \alias{HMP_2012.genefamilies_relab.l_retroauricular_crease}
+\alias{HMP_2012.genefamilies_relab.mid_vagina}
 \alias{HMP_2012.genefamilies_relab.palatine_tonsils}
 \alias{HMP_2012.genefamilies_relab.posterior_fornix}
 \alias{HMP_2012.genefamilies_relab.r_retroauricular_crease}
@@ -34,12 +36,20 @@ Relabeled genefamilies data from the HMP_2012 dataset
    An ExpressionSet with 119 samples and 1,964,481 features specific to the buccal_mucosa bodysite
 }
 
+\subsection{HMP_2012.genefamilies_relab.hard_palate}{
+   An ExpressionSet with 1 sample and 1,964,481 features specific to the hard_palate bodysite
+}
+
 \subsection{HMP_2012.genefamilies_relab.keratinized_gingiva}{
    An ExpressionSet with 6 samples and 1,964,481 features specific to the keratinized_gingiva bodysite
 }
 
 \subsection{HMP_2012.genefamilies_relab.l_retroauricular_crease}{
    An ExpressionSet with 9 samples and 1,964,481 features specific to the l_retroauricular_crease bodysite
+}
+
+\subsection{HMP_2012.genefamilies_relab.mid_vagina}{
+   An ExpressionSet with 2 samples and 1,964,481 features specific to the mid_vagina bodysite
 }
 
 \subsection{HMP_2012.genefamilies_relab.palatine_tonsils}{
@@ -87,6 +97,6 @@ HMP_2012.genefamilies_relab.anterior_nares()
 
 }
 \seealso{
-\code{\link{}}
+\code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.metaphlan_bugs_list}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathcoverage}}
 }
 

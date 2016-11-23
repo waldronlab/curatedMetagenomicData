@@ -72,7 +72,7 @@
 #' 
 #' @source Department of Psychology, Abdul Haq Campus, Federal Urdu University for Arts, Science and Technology, Karachi, Pakistan. shahiq_psy@yahoo.com
 #' 
-#' @seealso \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathcoverage}}
+#' @seealso \code{\link{HMP_2012.genefamilies_relab}}, \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathcoverage}}
 #' 
 #' @examples HMP_2012.metaphlan_bugs_list.anterior_nares()
 #' 
