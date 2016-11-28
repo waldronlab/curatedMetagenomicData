@@ -12,6 +12,9 @@ install:
 
 # Adapt as necessary starting from here
 
+environment:
+    r_check_args: --no-examples
+
 build_script:
   - Rscript -e "source('https://bioconductor.org/biocLite.R')"
   - travis-tool.sh install_bioc_deps
@@ -45,5 +48,3 @@ artifacts:
 
   - path: '\*_*.zip'
     name: Bits
-
-R_CHECK_ARGS: --as-cran
