@@ -4,6 +4,7 @@
 * Object level documentation is update for completeness and aliased
 * Minor description file changes to ensure collation order
 * Version bumped to reflect latest y version of Bioconductor
+* All data is reprocessed in R (v3.3.2)
 
 # curatedMetagenomicData 0.99.8
 
