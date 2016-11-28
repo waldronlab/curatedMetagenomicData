@@ -4,12 +4,12 @@
 #' @importFrom utils globalVariables
 #' @keywords internal
 .onLoad <- function(libname, pkgname) {
-  titles <- read.csv(system.file("extdata", "metadata.csv",
-                                 package="curatedMetagenomicData"),
-                     stringsAsFactors=FALSE)$Title
-  rda <- gsub(".rda", "", titles, fixed=TRUE)
-  if (!length(rda))
-    stop("no .rda objects found in metadata")
+    titles <- read.csv(system.file("extdata", "metadata.csv",
+                                   package="curatedMetagenomicData"),
+                       stringsAsFactors=FALSE)$Title
+    rda <- gsub(".rda", "", titles, fixed=TRUE)
+    if (!length(rda))
+        stop("no .rda objects found in metadata")
 
     ## Functions to load resources by name:
     ns <- asNamespace(pkgname)
