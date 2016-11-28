@@ -22,7 +22,7 @@
                    ehid <- names(query(eh, xx))
                    if (!length(ehid))
                        stop(paste0("resource ", xx,
-                                   "not found in ExperimentHub"))
+                                   " not found in ExperimentHub"))
                    if (metadata)
                        eh[ehid]
                    else eh[[ehid]]

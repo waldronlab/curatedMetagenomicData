@@ -13,6 +13,8 @@ install:
 # Adapt as necessary starting from here
 
 environment:
+    r_arch: x64
+    use_rtools: true
     r_check_args: --no-examples
 
 build_script:
