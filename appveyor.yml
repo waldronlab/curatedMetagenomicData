@@ -13,7 +13,7 @@ install:
 # Adapt as necessary starting from here
 
 environment:
-    r_check_args: --no-examples
+    r_check_args: --no-manual --no-examples
 
 build_script:
   - Rscript -e "source('https://bioconductor.org/biocLite.R')"
