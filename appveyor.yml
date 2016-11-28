@@ -46,4 +46,4 @@ artifacts:
   - path: '\*_*.zip'
     name: Bits
 
-R_CHECK_ARGS="--no-examples"
+R_CHECK_ARGS: "--no-examples"
