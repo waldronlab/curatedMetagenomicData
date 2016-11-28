@@ -20,8 +20,7 @@ build_script:
   - travis-tool.sh install_bioc BiocStyle
   - travis-tool.sh install_deps
 
-r_check_args:
-  --no-examples
+r_check_args: --no-examples
 
 test_script:
   - travis-tool.sh run_tests
