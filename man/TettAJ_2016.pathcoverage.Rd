@@ -7,11 +7,14 @@
 \alias{TettAJ_2016.pathcoverage.right_ear}
 \alias{TettAJ_2016.pathcoverage.right_elbow}
 \title{Pathcoverage data from the TettAJ_2016 dataset}
+\source{
+
+}
 \description{
 Pathcoverage data from the TettAJ_2016 dataset
 }
 \section{Datasets}{
-
+ 
 
 \subsection{TettAJ_2016.pathcoverage.left_ear}{
    An ExpressionSet with 22 samples and 21,899 features specific to the left_ear bodysite

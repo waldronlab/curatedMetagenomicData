@@ -7,11 +7,14 @@
 \alias{TettAJ_2016.metaphlan_bugs_list.right_ear}
 \alias{TettAJ_2016.metaphlan_bugs_list.right_elbow}
 \title{Taxonomic abundance data from the TettAJ_2016 dataset}
+\source{
+
+}
 \description{
 Taxonomic abundance data from the TettAJ_2016 dataset
 }
 \section{Datasets}{
-
+ 
 
 \subsection{TettAJ_2016.metaphlan_bugs_list.left_ear}{
    An ExpressionSet with 22 samples and 1,004 features specific to the left_ear bodysite

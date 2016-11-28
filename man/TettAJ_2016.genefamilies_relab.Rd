@@ -7,11 +7,14 @@
 \alias{TettAJ_2016.genefamilies_relab.right_ear}
 \alias{TettAJ_2016.genefamilies_relab.right_elbow}
 \title{Relabeled genefamilies data from the TettAJ_2016 dataset}
+\source{
+
+}
 \description{
 Relabeled genefamilies data from the TettAJ_2016 dataset
 }
 \section{Datasets}{
-
+ 
 
 \subsection{TettAJ_2016.genefamilies_relab.left_ear}{
    An ExpressionSet with 22 samples and 1,183,854 features specific to the left_ear bodysite
