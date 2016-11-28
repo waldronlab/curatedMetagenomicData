@@ -12,3 +12,4 @@ vignettes/*.R
 vignettes/*.html
 vignettes/rsconnect
 vignettes/*_cache
+.httr-oauth
