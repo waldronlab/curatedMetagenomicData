@@ -34,6 +34,18 @@ The following steps describe the process needed to add new data to the package;
 these steps are not of any consequence to the end user & should only concern the
 developers of this package.
 
+### Project Source
+
+The source of `curatedMetagenomicData` is hosted on GitHub and is updated 
+periodically. As such, the addition of any new dataset should begin with the 
+most up to date project source. This is accomplished by cloning the repository 
+from GitHub as a new RStudio project (or doing a pull if the project source has 
+been cloned previously). Once cloned, the source should be built and reloaded, a
+button is found in the build pane of RStudio. This step must be successfully 
+completed before moving on given that developer functions have relative paths 
+and it will be necessary to view package contents during the process of adding a
+new dataset.
+
 ### Helper Functions
 
 There are two helper functions to aid in adding new datasets to the package. The

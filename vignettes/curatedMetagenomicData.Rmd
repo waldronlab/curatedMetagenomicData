@@ -43,14 +43,15 @@ manually-curated metadata, as integrated and documented Bioconductor
 ExpressionSet objects
 * ~200 fields of specimen metadata from original papers, supplementary files, 
 and websites, with manual curation to standardize annotations
-* processing of data through the new MetaPhlAn2 pipeline 
-(http://huttenhower.sph.harvard.edu/metaphlan2) for taxonomic abundance, and 
-HUMAnN2 pipeline (Version 2 manuscript in preparation) 
-(http://huttenhower.sph.harvard.edu/humann2) for metabolic analysis.
+* processing of data through the 
+[MetaPhlAn2](http://huttenhower.sph.harvard.edu/metaphlan2) pipeline for 
+taxonomic abundance, and [HUMAnN2](http://huttenhower.sph.harvard.edu/humann2) 
+pipeline for metabolic analysis
 * This effort required analyzing ~23T of raw sequencing data, generating ~52T of
 intermediate files
 
-These datasets are documented in the [reference manual]().
+These datasets are documented in the 
+[reference manual](https://tinyurl.com/curatedMetagenomicData-man).
 
 # Using `curatedMetagenomicData` Resources
 
@@ -59,12 +60,17 @@ Bioconductor's ExperimentHub platform, which allows for the accessing of data
 through an intuitive interface. First, `curatedMetagenomicData` is installed
 using `BiocInstaller` and then called as a library - the process allows for the
 user to simply call datasets as functions because the package is aware of the
-resources present in ExperimentHub S3 buckets. A function call to a dataset name
-will return an expression set object which can be manipulated or serialized.
+resources present in ExperimentHub S3 buckets. 
 
-```{r, eval=FALSE}
+```{r, message=FALSE}
 # BiocInstaller::biocLite("curatedMetagenomicData")
 library(curatedMetagenomicData)
+```
+
+A function call to a dataset name will return an expression set object which can
+be manipulated or serialized.
+
+```{r, eval=FALSE}
 LomanNJ_2013_Hi.genefamilies_relab.stool()
 ```
 
