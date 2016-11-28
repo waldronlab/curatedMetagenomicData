@@ -20,8 +20,6 @@ build_script:
   - travis-tool.sh install_bioc BiocStyle
   - travis-tool.sh install_deps
 
-R_CHECK_ARGS="--no-examples"
-
 test_script:
   - travis-tool.sh run_tests
 
@@ -47,3 +45,5 @@ artifacts:
 
   - path: '\*_*.zip'
     name: Bits
+
+R_CHECK_ARGS="--no-examples"
