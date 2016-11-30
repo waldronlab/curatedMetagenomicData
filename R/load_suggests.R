@@ -1,5 +1,5 @@
 #' @importFrom magrittr %>%
-#' @importFrom utils install.packages
+#' @importFrom BiocInstaller biocLite
 #' @keywords internal
 load_suggests <- function() {
     read.dcf("DESCRIPTION", "Suggests") %>%
@@ -8,7 +8,7 @@ load_suggests <- function() {
     unlist() %>%
     for (i in .) {
         if(!require(i, character.only = TRUE)) {
-            install.packages(i)
+            biocLite(i)
             require(i, character.only = TRUE)
         }
     }
