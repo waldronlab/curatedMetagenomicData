@@ -37,6 +37,7 @@ Suggests:
     rmarkdown,
     BiocCheck,
     BiocStyle,
+    BiocInstaller,
     BiocParallel,
     readr,
     RISmed
