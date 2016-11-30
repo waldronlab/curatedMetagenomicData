@@ -5,7 +5,7 @@
 \alias{NielsenHB_2014.pathcoverage.stool}
 \title{Pathcoverage data from the NielsenHB_2014 dataset}
 \source{
-1] Center for Biological Sequence Analysis, Technical University of Denmark, Kongens Lyngby, Denmark. [2] Novo Nordisk Foundation Center for Biosustainability, Technical University of Denmark, Kongens Lyngby, Denmark. [3].
+[1] Center for Biological Sequence Analysis, Technical University of Denmark, Kongens Lyngby, Denmark. [2] Novo Nordisk Foundation Center for Biosustainability, Technical University of Denmark, Kongens Lyngby, Denmark. [3].
 }
 \description{
 Pathcoverage data from the NielsenHB_2014 dataset

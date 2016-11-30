@@ -15,6 +15,7 @@ Description:
     The curatedMetagenomicData package provides taxonomic, functional, and gene
     marker abundance for samples collected from different bodysites.
 License: Artistic-2.0
+Encoding: UTF-8
 Depends:
     R (>= 3.3.0),
     dplyr (>= 0.5.0),
@@ -24,6 +25,7 @@ Depends:
     AnnotationHub (>= 2.6.0),
     magrittr
 Imports:
+    BiocInstaller,
     utils,
     tidyr
 Suggests:

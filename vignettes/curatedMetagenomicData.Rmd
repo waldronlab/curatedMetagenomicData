@@ -43,14 +43,15 @@ manually-curated metadata, as integrated and documented Bioconductor
 ExpressionSet objects
 * ~200 fields of specimen metadata from original papers, supplementary files, 
 and websites, with manual curation to standardize annotations
-* processing of data through the new MetaPhlAn2 pipeline 
-(http://huttenhower.sph.harvard.edu/metaphlan2) for taxonomic abundance, and 
-HUMAnN2 pipeline (Version 2 manuscript in preparation) 
-(http://huttenhower.sph.harvard.edu/humann2) for metabolic analysis.
+* processing of data through the 
+[MetaPhlAn2](http://huttenhower.sph.harvard.edu/metaphlan2) pipeline for 
+taxonomic abundance, and [HUMAnN2](http://huttenhower.sph.harvard.edu/humann2) 
+pipeline for metabolic analysis
 * This effort required analyzing ~23T of raw sequencing data, generating ~52T of
 intermediate files
 
-These datasets are documented in the [reference manual]().
+These datasets are documented in the 
+[reference manual](https://tinyurl.com/curatedMetagenomicData-man).
 
 # Using `curatedMetagenomicData` Resources
 
@@ -59,13 +60,18 @@ Bioconductor's ExperimentHub platform, which allows for the accessing of data
 through an intuitive interface. First, `curatedMetagenomicData` is installed
 using `BiocInstaller` and then called as a library - the process allows for the
 user to simply call datasets as functions because the package is aware of the
-resources present in ExperimentHub S3 buckets. A function call to a dataset name
-will return an expression set object which can be manipulated or serialized.
+resources present in ExperimentHub S3 buckets. 
 
-```{r, eval=FALSE}
+```{r, message=FALSE}
 # BiocInstaller::biocLite("curatedMetagenomicData")
 library(curatedMetagenomicData)
-LomanNJ_2013_Hi.genefamilies_relab.stool()
+```
+
+A function call to a dataset name will return an expression set object which can
+be manipulated or serialized.
+
+```{r}
+LomanNJ_2013_Mi.genefamilies_relab.stool()
 ```
 
 # Features of `ExpressionSet` Objects
@@ -78,26 +84,46 @@ experiment-level metadata, subject-level metadata, and the data itself.
 To access the experiment-level metadata the `experimentData()` function is used
 to return a `MIAME` (Minimum Information About a Microarray Experiment) object.
 
-```{r, eval=FALSE}
-LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
+```{r}
+LomanNJ_2013_Mi.genefamilies_relab.stool() %>%
 experimentData()
 ```
 
 To access the subject-level metadata the `pData()` function is used to return a
 `data.frame` containing subject-level variables of study.
 
-```{r, eval=FALSE}
-LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
-pData()
+```{r}
+LomanNJ_2013_Mi.genefamilies_relab.stool() %>%
+pData() %>%
+head()
 ```
 
 To access the data itself the `exprs()` function is used to return a long and
 skinny `matrix` in which samples are column rather than rows.
 
-```{r, eval=FALSE}
-LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
-exprs()
+```{r}
+LomanNJ_2013_Mi.genefamilies_relab.stool() %>%
+exprs() %>%
+head()
 ```
+
+Bioconductor provides further documentation of the ExpressionSet class and has 
+published an excellent [introduction](https://tinyurl.com/ExpressionSetIntro).
+
+# Estimating Absolute Raw Count Data
+
+Absolute raw count data can be estimated from the relative count data by 
+multiplying the rows of the `ExpressionSet` data by the number of reads, as 
+found in the `pData`. The `sweep` function from base `R` provides a way to 
+quickly multiply every row of the matrix by the number of reads vector.
+
+```{r}
+LomanNJ_2013_Mi.genefamilies_relab.stool() %>%
+exprs() %>%
+sweep(., 2, LomanNJ_2013_Mi.genefamilies_relab.stool()$number_reads, "*") %>%
+head()
+```
+
 
 # Taxonomy-Aware Analysis using `phyloseq`
 
@@ -109,8 +135,8 @@ profiles make sense to analyse as phylogenetic data. A convienence function,
 package to allow for coversion between the `ExpressionSet` class and the
 `phyloseq` class; it is used as follows.
 
-```{r, eval=FALSE}
-LomanNJ_2013_Hi.metaphlan_bugs_list.stool() %>%
+```{r, warning=FALSE}
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
 ExpressionSet2phyloseq()
 ```
 
@@ -122,7 +148,7 @@ dataset containing taxanomic profiles is first converted to a `phyloseq` object
 and then the `otu_table()` function is used to view the contents and structure
 of the table.
 
-```{r, eval=FALSE}
+```{r, warning=FALSE}
 LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
 ExpressionSet2phyloseq() %>% 
 otu_table() %>% 
@@ -132,10 +158,10 @@ head()
 Similarly, the process of exploratory data analysis will likely include an
 examination of study-related metadata in order to understand the type of
 questions that can be asked of the data. To examine the structure and contents
-of metadata a `phyloseq` object is created and then the `sample_data()` function
-is used to view the table.
+of metadata, a `phyloseq` object is created and then the `sample_data()` 
+function is used to view the table.
 
-```{r, eval=FALSE}
+```{r, warning=FALSE}
 LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
 ExpressionSet2phyloseq() %>% 
 sample_data() %>% 
@@ -148,50 +174,180 @@ object to a `phyloseq` object and then using the `tax_table()` function to
 expose the underlying taxanomic table. The table provides a complete listing of
 every clade available within the dataset down to the strain level.
 
-```{r, eval=FALSE}
+```{r, warning=FALSE}
 LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
 ExpressionSet2phyloseq() %>%
 tax_table() %>%
 head()
 ```
 
-<!-- ## Subseting / Pruning -->
+## Subseting / Pruning
 
-<!-- The names of phylogenetic ranks are easily examined using the `rank_names()` -->
-<!-- function -->
+The process of subseting begins with the names of phylogenetic ranks, which are
+easily examined using the `rank_names()` function.
 
-<!-- ```{r, eval=FALSE} -->
-<!-- LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>% -->
-<!-- ExpressionSet2phyloseq() %>% -->
-<!-- rank_names() -->
-<!-- ``` -->
+```{r, warning=FALSE}
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
+ExpressionSet2phyloseq() %>%
+rank_names()
+```
 
-<!-- With knowledge of the rank names it becomes possible to filter  -->
+With knowledge of the rank names it becomes possible to filter by taxa using the
+`subset_taxa()` function. In the example below, where a species is not given 
+taxa are removed.
 
-<!-- ```{r, eval=FALSE} -->
-<!-- LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>% -->
-<!-- ExpressionSet2phyloseq() %>% -->
-<!-- subset_taxa(!is.na(Species)) -->
-<!-- ``` -->
+```{r, warning=FALSE}
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
+ExpressionSet2phyloseq() %>%
+subset_taxa(!is.na(Species))
+```
 
-<!-- Even greater specificity -->
+Even greater specificity can be achieved using a more specific taxa such as 
+strain.
 
-<!-- ```{r, eval=FALSE} -->
-<!-- LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>% -->
-<!-- ExpressionSet2phyloseq() %>% -->
-<!-- subset_taxa(!is.na(Strain)) -->
-<!-- ``` -->
+```{r, warning=FALSE}
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
+ExpressionSet2phyloseq() %>%
+subset_taxa(!is.na(Strain))
+```
 
-<!-- ## Advanced Pruning -->
+Where a specific level of taxa is desired for analysis it can be obtained 
+through the use of the `prune_taxa()` function in combination with an `apply()` 
+function.
 
-<!-- ## Taxonomy Heatmap -->
+```{r, warning=FALSE}
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
+ExpressionSet2phyloseq() %>%
+tax_table() %>%
+apply(., 1, function(x) {sum(!is.na(x))}) ->
+taxa_level
 
-<!-- ## Taxonomy Histogram -->
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
+ExpressionSet2phyloseq() %>%
+prune_taxa(taxa_level == 2, .) %>%
+taxa_names()
+```
 
-<!-- ## Alpha Diversity Estimation -->
+## Advanced Pruning
 
-<!-- ## Alpha Diversity Estimate Comparison -->
+More advanced pruning of taxa can be done with filtering functions, such as the 
+following one whereby taxa are kept only if they are among the most abundant 10%
+in at least two samples.
 
-<!-- ## Beta Diversity / Dissimilarity Clustering -->
+```{r, warning=FALSE}
+topp(0.10) %>%
+filterfun_sample() ->
+top_ten
 
-<!-- ## Beta Diversity / Dissimilarity Analysis -->
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
+ExpressionSet2phyloseq() %>%
+genefilter_sample(., top_ten, A = 2) ->
+filtered_taxa
+    
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
+ExpressionSet2phyloseq() %>%
+subset_taxa(., filtered_taxa)
+```
+
+## Taxonomy Heatmap
+
+Heatmaps of taxonomic abundance are easily made by passing a `phyloseq` class 
+object to the `plot_heatmap()` function. Here, extensive subsetting is done to 
+reduce the amount of OTUs that appear on the y-axis.
+
+```{r, warning=FALSE}
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
+ExpressionSet2phyloseq() %>%
+subset_taxa(., filtered_taxa) %>%
+subset_taxa(!is.na(Strain)) %>% 
+plot_heatmap(., method="PCoA", distance="bray")
+```
+
+## Taxonomy Histogram
+
+```{r, warning=FALSE}
+LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
+ExpressionSet2phyloseq() %>%
+subset_taxa(., filtered_taxa) %>%
+subset_taxa(!is.na(Strain)) ->
+unsorted_taxa
+
+par(mar = c(20, 4, 0, 0) + 0.15)
+
+barplot(sort(taxa_sums(unsorted_taxa), TRUE)[1:20] / nsamples(unsorted_taxa),
+        las = 2)
+```
+
+## Alpha Diversity Estimation
+
+
+
+```{r, warning=FALSE}
+c("Shannon", "Simpson", "InvSimpson") ->
+alpha_measures
+
+unsorted_taxa %>%
+plot_richness(., "c_difficile_frequency", "stxab_detected",
+              measures = alpha_measures)
+```
+
+## Alpha Diversity Estimate Comparison
+
+
+
+```{r, warning=FALSE}
+unsorted_taxa %>%
+estimate_richness(., measures = alpha_measures) %>%
+pairs()
+```
+
+## Beta Diversity / Dissimilarity Clustering
+
+
+
+```{r, warning=FALSE}
+unsorted_taxa %>%
+distance(method="bray") %>% 
+hclust() %>% 
+plot(main="Bray-Curtis Dissimilarity", xlab="", sub = "")
+```
+
+## Ordination Analysis
+
+
+
+```{r, warning=FALSE}
+unsorted_taxa %>%
+ordinate(., method = "PCoA", distance = "bray") ->
+ordinated_taxa
+
+unsorted_taxa %>%
+plot_ordination(., ordinated_taxa, color="c_difficile_frequency", 
+                title = "Bray-Curtis Principal Coordinates Analysis")
+```
+
+
+```{r}
+plot_scree(ordinated_taxa)
+```
+
+
+# Adding Datasets
+
+Authors welcome the addition of new datasets provided they can be or already 
+have been run through the MetaPhlAn2 and HUMAnN2 pipelines. Please read the 
+[developer documentation](https://tinyurl.com/cMDReadme) and contact the 
+maintainer if you have a shotgun metagenomic dataset that would be of interest 
+to the Bioconductor community.
+
+# Reporting Bugs
+
+Development of the `curatedMetagenomicData` package occurs on GitHub and bugs 
+reported via GitHub issues will recieve the quickest response. Please visit the 
+[project repository](https://github.com/vobencha/curatedMetagenomicData) and 
+file an issue should you find one.
+
+# Other Issues
+
+Visit the Bioconductor support site at https://support.bioconductor.org/, 
+breifly describe your issue, and add the curatedmetagenomicdata.

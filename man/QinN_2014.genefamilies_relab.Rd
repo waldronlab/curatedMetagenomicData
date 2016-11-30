@@ -5,7 +5,7 @@
 \alias{QinN_2014.genefamilies_relab.stool}
 \title{Relabeled genefamilies data from the QinN_2014 dataset}
 \source{
-1] State Key Laboratory for Diagnosis and Treatment of Infectious Disease, The First Affiliated Hospital, College of Medicine, Zhejiang University, 310003 Hangzhou, China [2] Collaborative Innovation Center for Diagnosis and Treatment of Infectious Diseases, Zhejiang University, 310003 Hangzhou, China [3].
+[1] State Key Laboratory for Diagnosis and Treatment of Infectious Disease, The First Affiliated Hospital, College of Medicine, Zhejiang University, 310003 Hangzhou, China [2] Collaborative Innovation Center for Diagnosis and Treatment of Infectious Diseases, Zhejiang University, 310003 Hangzhou, China [3].
 }
 \description{
 Relabeled genefamilies data from the QinN_2014 dataset

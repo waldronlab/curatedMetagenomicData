@@ -7,11 +7,14 @@
 \alias{TettAJ_2016.marker_abundance.right_ear}
 \alias{TettAJ_2016.marker_abundance.right_elbow}
 \title{Marker abundance data from the TettAJ_2016 dataset}
+\source{
+
+}
 \description{
 Marker abundance data from the TettAJ_2016 dataset
 }
 \section{Datasets}{
-
+ 
 
 \subsection{TettAJ_2016.marker_abundance.left_ear}{
    An ExpressionSet with 22 samples and 64,040 features specific to the left_ear bodysite
