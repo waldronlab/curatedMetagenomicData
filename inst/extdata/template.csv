@@ -1,0 +1,129 @@
+col.name,var.class,uniqueness,requiredness,allowedvalues,description
+dataset_name,character,non-unique,required,HMP_2012|KarlssonFH_2013|LeChatelierE_2013|LomanNJ_2013_Hi|LomanNJ_2013_Mi|NeilsenHB_2014|Obregon-TitoAJ_2015|OhJ_2014|QinJ_2012|QinN_2014|RampelliS_2015|TettAJ_2016|ZellerG_2014,Dataset name
+sampleID,character,unique,required,*,Sample identifier
+subjectID,character,non-unique,required,*,Subject identifier
+bodysite,character,non-unique,required,*,Bodysite of acquisition
+disease,character,non-unique,required,*,Disease presence and type
+age,numeric,non-unique,required,*,Subject age (years)
+gender,character,non-unique,required,female|male,Subject gender
+country,character,non-unique,required,*,Country of acquisition
+sequencing_technology,character,non-unique,required,illumina,Sequencing technology
+pubmedid,integer,non-unique,required,*,Identifier of the main publication in PubMed
+number_reads,integer,non-unique,required,*,Number of final reads
+visit_number,integer,non-unique,optional,1|2|3,Visit number
+snprnt,integer,non-unique,optional,*,SNPRNT
+wmsphase,integer,non-unique,optional,1|2,Acquisition stage/phase
+classification,character,non-unique,optional,igt|ngt|t2d,Classification
+gad-antibodies,numeric,non-unique,optional,*,Glutamic acid decarboxylase antibodies (for units see Bingley et al. Diabetes 52, 1128-1136, 2003) 
+bmi,numeric,non-unique,optional,*,Body mass index (kg/m2)
+whr,numeric,non-unique,optional,*,Waist-to-hip ratio (cm/cm)
+wc,integer,non-unique,optional,*,Waist circumference (cm)
+cholesterol,numeric,non-unique,optional,*,Cholesterol (mmol/L)
+triglycerides,numeric,non-unique,optional,*,Triglycerides (mmol/L)
+hdl,numeric,non-unique,optional,*,High-density lipoprotein (mmol/L)
+ldl,numeric,non-unique,optional,*,Low-density lipoprotein (mmol/L)
+creatinine,integer,non-unique,optional,*,Creatinine (µmol/L)
+y-gt,numeric,non-unique,optional,*,?-glutamyltransferase (µkat/L)
+fasting_glucose,numeric,non-unique,optional,*,Fasting glucose (mmol/L)
+fasting_insulin,numeric,non-unique,optional,*,Fasting Insulin (mU/L)
+hba1c,integer,non-unique,optional,*,Glycosylated hemoglobin A1c (mmol/mol)
+adiponectin,numeric,non-unique,optional,*,Adiponectin (mg/L)
+leptin,numeric,non-unique,optional,*,Leptin (µg/L)
+glp-1,numeric,non-unique,optional,*,Glucagon-like peptide 1 (pmol/L)
+fgf-19,numeric,non-unique,optional,*,Fibroblast growth factor 19 (pg/ml)
+hscrp,numeric,non-unique,optional,*,High-sensitivity C-reactive protein (mg/L)
+c-peptide,numeric,non-unique,optional,*,C-peptide (nmol/L)
+tnfa,numeric,non-unique,optional,*,Tumor necrosis factor ? (ng/L)
+il-1,numeric,non-unique,optional,*,Interleukin 1 (pg/ml)
+cd163,numeric,non-unique,optional,*,Cluster of differentiation 163 (ng/ml)
+statins,character,non-unique,optional,[yn],Statins
+insulin,character,non-unique,optional,[yn],Insulin
+oral_anti-diabetic_medication,character,non-unique,optional,meth|sulph,"Oral anti-diabetic medication (meth: metformin; sulph: sulphonylurea)"
+years_in_sweden,integer,non-unique,optional,*,Years in Sweden
+ethnicity,character,non-unique,optional,asian|white,Subject ethnicity
+paired_end_insert_size,character,non-unique,optional,*,Paired-end insert size (bp)
+read_length,character,non-unique,optional,*,Read length (bp)
+matched_reads,integer,non-unique,optional,*,Number of matched reads
+uniquely_matching_reads,integer,non-unique,optional,*,Number of uniquely matching reads
+uniquely_matched_reads,integer,non-unique,optional,*,Number of uniquely matched reads (two paired end reads that matched the same gene were counted as one read)
+gene_number,integer,non-unique,optional,*,Gene number
+gene_number_for_11m_uniquely_matched_reads,integer,non-unique,optional,*,Gene number for 11 M uniquely matched reads
+hitchip_probe_number,integer,non-unique,optional,*,HITChip probe number
+gene_count_class,character,non-unique,optional,hgc|lgc,Gene count class
+hitchip_probe_class,character,non-unique,optional,hpc|lpc,HITChip Probe class
+first,integer,non-unique,optional,*,Identifier associated with the sampleID
+repeat,integer,non-unique,optional,0|1|2|3|4|5,Samples with the same repeat number were acquired from the same subject
+stooltexture,character,non-unique,optional,bloody|smooth|watery,Stool texture
+daysafteronset,integer,non-unique,optional,*,Days after onset of diarrhea
+hus,character,non-unique,optional,[yn],Hemolytic-uremic syndrome
+stec_count,character,non-unique,optional,low|moderate|high,"Colony counts of STEC from samples (low < 10^4; moderate 10^4 to 10^6; high > 10^6 colony-forming units/mL)"
+shigatoxin2elisa,character,non-unique,optional,negative|positive,Shiga-toxin 2 enzyme-linked immunosorbent assay
+readsmillions,numeric,non-unique,optional,*,Number of original reads (millions)
+nonhuman,character,non-unique,optional,*,Percentage of sequenced reads that did not align against the humane refence genome and thus were used in futher analysis
+stec_coverage,character,non-unique,optional,*,Average coverage of the chromosome of the STEC O104:H4 reference genome
+stxab_detected,character,non-unique,optional,[yn],Shiga-toxin gene detected
+stx_ratio,character,non-unique,optional,*,Ratio of reads mapping to the Shiga-toxin genes to the reads mapping to STEC chromosomal loci
+typingdata,character,non-unique,optional,[yn],Whether information on the serotpye (H4) and the multilocus sequence type for the outbreak strain could be recovered from the sample sequences
+c_difficile_frequency,character,non-unique,optional,*,Prediceted abundance of Clostridium difficile relative to other bacterial species detected in the sample in the MetaPhlAn analysis
+sampling_day,integer,non-unique,optional,*,Sampling day (relative to September 20th 2007)
+dfmp,character,non-unique,optional,dfmp,Known consumers of a defined fermented milk product (DFMP)
+mgs_richness,integer,non-unique,optional,*,MGS richness
+mgs_profile_matched_sample_pairs,character,non-unique,optional,*,MGS profile matched sample pairs
+population,character,non-unique,optional,mates|norman|tunapuco,Subject population
+bmi_class,character,non-unique,optional,healthy|obese|overweight|underweight,Body mass index class
+16s_rrna,character,non-unique,optional,[yn],16S rRNA analysis performed in the study
+shotgun_metagenome,character,non-unique,optional,[yn],Shotgun metagenomic analysis performed in the study
+designation,character,non-unique,optional,*,Sample designation
+age_range,character,non-unique,optional,10s|20s|30s,Subject age range (years)
+site_symmetry,character,non-unique,optional,*,Syte and symmetry of sample acquisition
+affected,character,non-unique,optional,[yn],Affected syte
+method,character,non-unique,optional,ss|mock|sw|qq|cut,Acquisition method
+site_characteristic,character,non-unique,optional,moist|mock|sebaceous|toenail|dry,Syte characteristic
+total_initial_reads,integer,non-unique,optional,*,Number of initial reads
+estimated_median_insert_size,integer,non-unique,optional,*,Estimated median insert size
+reported_as_failed_qc,integer,non-unique,optional,*,Number of reads reported as failed QC
+uniquely_align_to_human,integer,non-unique,optional,*,Number of reads uniquely aligned to human
+non_uniquely_align_to_human_with_0_2_mismatches,integer,non-unique,optional,*,Number of reads non-uniquely aligned to human with 0-2 mismatches
+reads_removed_because_of_read_pair_trimming_discrepancy,integer,non-unique,optional,*,Number of reads removed because of read pair trimming discrepancy
+too_short_after_quality_trimming(<50bp),integer,non-unique,optional,*,Number of reads too short after quality trimming (<50bp)
+stage,character,non-unique,optional,stage_i|stage_ii|discovery|validation,Acquisition stage/phase
+height,integer,non-unique,optional,*,Subject height (cm)
+weight,integer,non-unique,optional,*,Subject weight (km)
+diabetic,character,non-unique,optional,[yn],Is the subject diabetic
+fbg,numeric,non-unique,optional,*,Fasting blood glucose (mmol/L)
+sbp,integer,non-unique,optional,*,Systolic blood pressure (mm Hg)
+dbp,integer,non-unique,optional,*,Diastolic blood pressure (mm Hg)
+fins,numeric,non-unique,optional,*,Fasting serum insulin (mU/L)
+fcp,numeric,non-unique,optional,*,Fasting serum C-peptide (ng/ml)
+hbalc,numeric,non-unique,optional,*,Glycosylated hemoglobin HbAlc (%)
+tg,numeric,non-unique,optional,*,Triglyceride (mmol/L)
+tcho,numeric,non-unique,optional,*,Total cholesterol (mmol/L)
+cirrhotic,character,non-unique,optional,[yn],Is the subject cirrhotic
+hbv_related,character,non-unique,optional,[yn],Cirrhosis related to HBV
+alcohol_related,character,non-unique,optional,[yn],Cirrhosis related to alcohol
+other_causes_related,character,non-unique,optional,*,Cirrhosis related to other causes
+inr,numeric,non-unique,optional,*,INR
+crea,integer,non-unique,optional,*,Crea (umol/L)
+alb,numeric,non-unique,optional,*,Alb (g/L)
+tb,integer,non-unique,optional,*,TB (umol/L)
+pt,numeric,non-unique,optional,*,PT (S)
+ascites,character,non-unique,optional,absent|mild|sever,Ascites
+he,character,non-unique,optional,none|grade_1|grade_4,HE
+ctp,integer,non-unique,optional,*,CTP
+meld,numeric,non-unique,optional,*,MELD
+antivirus,character,non-unique,optional,*,Antivirus
+beta-blocker,character,non-unique,optional,none|propranolol,beta-blocker
+camp,character,non-unique,optional,bologna|comano|dedauko|trento|sengele,Camp name
+quality_control,integer,non-unique,optional,*,Number of reads after quality control
+pasi,integer,non-unique,optional,*,Psoriasis Area and Severity Index (PASI)
+bsa,integer,non-unique,optional,*,Body surface area (BSA)
+age_of_onset,integer,non-unique,optional,*,Age of disease onset
+arthritis,character,non-unique,optional,[yn],Has the subject arthritis
+type,character,non-unique,optional,plaque,Psoriasis type
+antibiotic_usage,character,non-unique,optional,[yn],Has the subject used antibiotics
+tnm_stage,character,non-unique,optional,*,TNM stage of the tumor
+ajcc_stage,character,non-unique,optional,i|ii|iii|iv,AJCC stage of the tumor (na: no classification for healthy controls or adenomas)
+localization,character,non-unique,optional,*,Localization of the tumor/adenoma (rc: right colon, lc: left colon, lc/rc: multiple localizations, sigma: sigma, rectum: rectum)
+fobt,character,non-unique,optional,negative|positive,Result of the fecal occult blood test (FOBT)
+wif-1_gene_methylation_test,character,non-unique,optional,negative|positive,Result of the wif-1 gene methylation test
+group,character,non-unique,optional,control|crc,Sample group (control: healthy controls and patients with small adenomas, crc: patients with CRC, na: patients with large adenoma not included)
