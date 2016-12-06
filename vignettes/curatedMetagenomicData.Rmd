@@ -63,15 +63,85 @@ user to simply call datasets as functions because the package is aware of the
 resources present in ExperimentHub S3 buckets. 
 
 ```{r, message=FALSE}
-# BiocInstaller::biocLite("curatedMetagenomicData")
+# BiocInstaller::biocLite("curatedMetagenomicData")  #Bioconductor version
+# BiocInstaller::biocLite("vobencha/curatedMetagenomicData")  #bleeding edge version
 library(curatedMetagenomicData)
 ```
 
-A function call to a dataset name will return an expression set object which can
-be manipulated or serialized.
+# Browsing `r Biocpkg("ExperimentHub")`
+
+In the next section we will demonstrate convenience functions that make `r Biocpkg("ExperimentHub")`  transparent, but it can be useful and powerful to interact directly with `r Biocpkg("ExperimentHub")`. A "hub" connects you to the `r Biocpkg("ExperimentHub")` server and its metadata, without downloading any data:
 
 ```{r}
-LomanNJ_2013_Mi.genefamilies_relab.stool()
+suppressPackageStartupMessages(library(ExperimentHub))
+eh = ExperimentHub()
+```
+
+The following queries ExperimentHub for all records matching "curatedMetagenomicData":
+
+```{r}
+myquery = query(eh, "curatedMetagenomicData")
+```
+
+This is an abbreviated list of what was found:
+
+```{r}
+myquery
+```
+
+Note that the first column, "EH178" etc, are unique IDs for each dataset.  For a full list, `mcols(myquery)` produces a `data.frame`. The following is unevaluated in this script, but can be used to display an interactive spreadsheet of the results:
+
+```{r, eval=FALSE}
+View(mcols(myquery))
+```
+
+Or to write the search results to a csv file:
+
+```{r, eval=FALSE}
+write.csv(mcols(myquery), file="curatedMetagenomicData_allrecords.csv")
+```
+
+# Advanced searching of `r Biocpkg("ExperimentHub")`
+
+Tags can (eventually) help identify useful datasets:
+```{r}
+head(myquery$tags)
+```
+
+Titles can be used to select body site and data type. Here are the MetaPhlan2 taxonomy tables for all the available Human Microbiome Project (HMP) body sites, found using a Perl regular expression to find "HMP" at the beginning of a string, followed by any number of characters ".*", followed by the word "metaphlan":
+
+```{r}
+grep("(?=HMP)(?=.*metaphlan)", myquery$title, perl=TRUE, val=TRUE)
+```
+
+Here are all the metabolic pathway abundance for the stool body site:
+```{r}
+grep("(?=.*stool)(?=.*metaphlan)", myquery$title, perl=TRUE, val=TRUE)
+```
+
+Or, here are all the data products available for the HiSeq component of the "Loman" study:
+```{r}
+(lomannames = grep("LomanNJ_2013_Hi", myquery$title, perl=TRUE, val=TRUE))
+```
+
+We could create a list of `ExpressionSet` objects containing all of the Loman HiSeq products as follows (not evaluated):
+
+```{r, eval=FALSE}
+(idx = grep("LomanNJ_2013_Hi", myquery$title, perl=TRUE))
+loman.list = lapply(idx, function(i){
+  return(myquery[[i]])
+})
+names(loman.list) = lomannames
+loman.list
+```
+
+# Convenience functions
+
+Individual data projects can be fetched without having to think about `r Biocpkg("ExperimentHub")`. A function call to a dataset name returns a Bioconductor ExpressionSet object:
+
+```{r}
+suppressPackageStartupMessages(library(curatedMetagenomicData))
+loman.eset = LomanNJ_2013_Hi.metaphlan_bugs_list.stool()
 ```
 
 # Features of `ExpressionSet` Objects
@@ -85,250 +155,220 @@ To access the experiment-level metadata the `experimentData()` function is used
 to return a `MIAME` (Minimum Information About a Microarray Experiment) object.
 
 ```{r}
-LomanNJ_2013_Mi.genefamilies_relab.stool() %>%
-experimentData()
+experimentData( loman.eset )
 ```
 
 To access the subject-level metadata the `pData()` function is used to return a
 `data.frame` containing subject-level variables of study.
 
 ```{r}
-LomanNJ_2013_Mi.genefamilies_relab.stool() %>%
-pData() %>%
-head()
+head( pData( loman.eset ) )
 ```
 
-To access the data itself the `exprs()` function is used to return a long and
-skinny `matrix` in which samples are column rather than rows.
+To access the data itself (in this case relative abundance), the `exprs()` function returns a variables
+by samples (rows by columns) numeric matrix. Note the presence of "synthetic" clades at all levels of the taxonomy,
+starting with kingdom, e.g. k__bacteria here:
 
 ```{r}
-LomanNJ_2013_Mi.genefamilies_relab.stool() %>%
-exprs() %>%
-head()
+exprs( loman.eset )[1:6, 1:5]  #first 6 rows and 5 columns
 ```
 
 Bioconductor provides further documentation of the ExpressionSet class and has 
 published an excellent [introduction](https://tinyurl.com/ExpressionSetIntro).
+
+## E. coli prevalence
+
+Here's a direct, exploratory analysis of *E. coli* prevalence in the Loman 
+dataset using the `ExpressionSet` object. More elegant solutions will be provided later using subsetting methods provided by the `r Biocpkg("phyloseq")` package,
+but for users familiar with `grep()` and the `ExpressionSet` object, such
+manual methods may suffice.
+
+First, which *E. coli*-related taxa are available?
+
+```{r}
+grep("coli", rownames(loman.eset), value=TRUE)
+```
+
+Create a vector of *E. coli* relative abundances. This `grep` call with
+a "$" at the end selects the only row that ends with "s__Escherichia_coli":
+```{r}
+x = exprs( loman.eset )[grep("s__Escherichia_coli$", rownames( loman.eset)), ]
+summary( x )
+```
+
+This could be plotted as a histogram:
+```{r}
+hist( x, xlab = "Relative Abundance", main="Prevalence of E. Coli",
+      breaks="FD")
+```
 
 # Estimating Absolute Raw Count Data
 
 Absolute raw count data can be estimated from the relative count data by 
 multiplying the rows of the `ExpressionSet` data by the number of reads, as 
 found in the `pData`. The `sweep` function from base `R` provides a way to 
-quickly multiply every row of the matrix by the number of reads vector.
+quickly multiply every row of the matrix by the number of reads for that sample.
 
 ```{r}
-LomanNJ_2013_Mi.genefamilies_relab.stool() %>%
-exprs() %>%
-sweep(., 2, LomanNJ_2013_Mi.genefamilies_relab.stool()$number_reads, "*") %>%
-head()
+loman.counts = sweep(exprs( loman.eset ), 2, loman.eset$number_reads, "*")
+loman.counts[1:6, 1:5]
 ```
 
+We can replace the relative abundances in an `ExpressionSet` with normalized counts:
+```{r}
+loman.eset.counts = loman.eset
+exprs( loman.eset.counts ) = loman.counts
+```
 
 # Taxonomy-Aware Analysis using `phyloseq`
 
-The `phyloseq` bioconductor package provides a number of useful functions
-related to taxonomic analysis and readily produces `ggPlot2` graphics.
-`curatedMetagenomicData` provides 6 types of data; of these, only the taxonomic
-profiles make sense to analyse as phylogenetic data. A convienence function,
-`ExpressionSet2phyloseq()`, is provided within the `curatedMetagenomicData`
-package to allow for coversion between the `ExpressionSet` class and the
-`phyloseq` class; it is used as follows.
+For the MetaPhlAn2 bugs datasets (but not other data types), you gain a lot of 
+taxonomy-aware, ecological analysis and plotting by conversion to a 
+`r Biocpkg("phyloseq")` class object. `r Biocpkg("curatedMetagenomicData")`
+provides the `ExpressionSet2phyloseq()` function to make this easy:
 
 ```{r, warning=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq()
+loman.pseq = ExpressionSet2phyloseq( loman.eset )
 ```
 
-## Exploratory Data Analysis
+## Components of a `r Biocpkg("phyloseq")` object
 
-Exploratory data analysis might begin through the examination of clade-specific
-realative abundances contained in the OTU (Operational Taxanomic Unit) table. A
-dataset containing taxanomic profiles is first converted to a `phyloseq` object
-and then the `otu_table()` function is used to view the contents and structure
-of the table.
-
-```{r, warning=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>% 
-otu_table() %>% 
-head()
+The  `r Biocpkg("phyloseq")` objects currently contain 3 components, with
+extractor functions hinted at by its show method:
+```{r}
+loman.pseq
 ```
 
-Similarly, the process of exploratory data analysis will likely include an
-examination of study-related metadata in order to understand the type of
-questions that can be asked of the data. To examine the structure and contents
-of metadata, a `phyloseq` object is created and then the `sample_data()` 
-function is used to view the table.
+
+`otu_table()` returns the same thing as `exprs( loman.eset )` did, the
+Operational Taxanomic Unit (OTU) table. Here are the first 6 rows and 5 columns:
 
 ```{r, warning=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>% 
-sample_data() %>% 
-head()
+otu_table( loman.pseq )[1:6, 1:5]
 ```
 
-As with the OTU and metadata tables, the structure and contents of the taxanomic
-table should also be examined. This is done by converting an `ExpressionSet`
-object to a `phyloseq` object and then using the `tax_table()` function to
-expose the underlying taxanomic table. The table provides a complete listing of
-every clade available within the dataset down to the strain level.
+The same patient or participant data that was available from 
+`pData( loman.eset )` is now availble using `sample_data()` on 
+the `r Biocpkg("phyloseq")` object:
 
 ```{r, warning=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-tax_table() %>%
-head()
+sample_data( loman.pseq )[1:6, 1:5]
+```
+
+But this object also is aware of the taxonomic structure, which 
+will enable the powerful subsetting methods of the `r Biocpkg("phyloseq")` 
+package.
+
+```{r, warning=FALSE}
+head( tax_table( loman.pseq ) )
 ```
 
 ## Subseting / Pruning
 
-The process of subseting begins with the names of phylogenetic ranks, which are
-easily examined using the `rank_names()` function.
+The process of subsetting begins with the names of phylogenetic ranks:
 
 ```{r, warning=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-rank_names()
+rank_names( loman.pseq )
 ```
 
-With knowledge of the rank names it becomes possible to filter by taxa using the
-`subset_taxa()` function. In the example below, where a species is not given 
-taxa are removed.
+Taxa can be filtered by these rank names. For example, to return an object
+with only species and strains:
 
 ```{r, warning=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-subset_taxa(!is.na(Species))
+subset_taxa( loman.pseq, !is.na(Species))
 ```
 
-Even greater specificity can be achieved using a more specific taxa such as 
-strain.
+To keep only phylum-level data (not class or finer, and not kingdom-level):
 
-```{r, warning=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-subset_taxa(!is.na(Strain))
+```{r}
+subset_taxa( loman.pseq, is.na(Class) & !is.na(Phylum))
 ```
 
-Where a specific level of taxa is desired for analysis it can be obtained 
-through the use of the `prune_taxa()` function in combination with an `apply()` 
-function.
-
-```{r, warning=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-tax_table() %>%
-apply(., 1, function(x) {sum(!is.na(x))}) ->
-taxa_level
-
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-prune_taxa(taxa_level == 2, .) %>%
-taxa_names()
+Or to keep only Bacteroidetes phylum. Note that taxa names have been shortened 
+from the rownames of the `ExpressionSet` object, for nicer plotting.
+```{r}
+loman.bd = subset_taxa( loman.pseq, Phylum == "Bacteroidetes")
+head( taxa_names( loman.bd ) )
 ```
 
 ## Advanced Pruning
 
-More advanced pruning of taxa can be done with filtering functions, such as the 
-following one whereby taxa are kept only if they are among the most abundant 10%
-in at least two samples.
+The `r Biocpkg("phyloseq")` package provides advanced pruning of taxa, such as the following which keeps only taxa that are among the most abundant 5% in at least five samples:
 
 ```{r, warning=FALSE}
-topp(0.10) %>%
-filterfun_sample() ->
-top_ten
-
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-genefilter_sample(., top_ten, A = 2) ->
-filtered_taxa
-    
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-subset_taxa(., filtered_taxa)
+keepotu = genefilter_sample(loman.pseq, filterfun_sample(topp(0.05)), A=5)
+summary(keepotu)
+subset_taxa(loman.pseq, keepotu)
 ```
+
+Note that `r Biocpkg("phyloseq")` also provides `topk()` for selecting the 
+most abundant `k` taxa, and other functions for advanced pruning of taxa.
 
 ## Taxonomy Heatmap
 
-Heatmaps of taxonomic abundance are easily made by passing a `phyloseq` class 
-object to the `plot_heatmap()` function. Here, extensive subsetting is done to 
-reduce the amount of OTUs that appear on the y-axis.
+The `r Biocpkg("phyloseq")` package provides the `plot_heatmap()` function
+to create heatmaps using a variety of built-in dissimilarity metrics for 
+clustering. Here, we apply the same abundance filter as above, keep only 
+strain-level OTUs. This function supports a large number of distance and ordination methods, here we use Bray-Curtis dissimilarity for distance and 
+PCoA as the ordination method for organizing the heatmap.
 
 ```{r, warning=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-subset_taxa(., filtered_taxa) %>%
-subset_taxa(!is.na(Strain)) %>% 
-plot_heatmap(., method="PCoA", distance="bray")
+loman.filt = subset_taxa(loman.pseq, keepotu & !is.na(Strain))
+plot_heatmap(loman.filt, method="PCoA", distance="bray")
 ```
 
 ## Taxonomy Histogram
 
+Here we plot the top 20 most abundant species (not strains), defined by the sum of abundance across all samples in the dataset:
+
 ```{r, warning=FALSE}
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() %>%
-ExpressionSet2phyloseq() %>%
-subset_taxa(., filtered_taxa) %>%
-subset_taxa(!is.na(Strain)) ->
-unsorted_taxa
-
-par(mar = c(20, 4, 0, 0) + 0.15)
-
-barplot(sort(taxa_sums(unsorted_taxa), TRUE)[1:20] / nsamples(unsorted_taxa),
-        las = 2)
+loman.sp = subset_taxa(loman.pseq, !is.na(Species) & is.na(Strain))
+par(mar = c(20, 4, 0, 0) + 0.15) #increase margin size on the bottom
+barplot(sort(taxa_sums(loman.sp), TRUE)[1:20] / nsamples(loman.sp),
+        ylab = "Total counts", las = 2)
 ```
 
 ## Alpha Diversity Estimation
 
-
+The `r Biocpkg("phyloseq")` package calculates numerous alpha diversity
+measures.  Here we compare three diversity in the species-level data, stratifying by stool texture:
 
 ```{r, warning=FALSE}
-c("Shannon", "Simpson", "InvSimpson") ->
-alpha_measures
-
-unsorted_taxa %>%
-plot_richness(., "c_difficile_frequency", "stxab_detected",
-              measures = alpha_measures)
+alphas = c("Shannon", "Simpson", "InvSimpson")
+plot_richness(loman.sp, "stooltexture", measures = alphas)
 ```
-
-## Alpha Diversity Estimate Comparison
-
-
+Let's compare these three alpha diversity measures:
 
 ```{r, warning=FALSE}
-unsorted_taxa %>%
-estimate_richness(., measures = alpha_measures) %>%
-pairs()
+pairs( estimate_richness(loman.sp, measures = alphas) )
 ```
 
 ## Beta Diversity / Dissimilarity Clustering
 
-
+Numerous beta diversity / dissimilarity are provided by the `distance()` function when provided a `r Biocpkg("phyloseq")` object, and these can be used for any kind of clustering or classification scheme. For example, here is a hierarchical clustering dendrogram produced by the `hclust()` from the base R `stats` package with "Ward" linkage:
 
 ```{r, warning=FALSE}
-unsorted_taxa %>%
-distance(method="bray") %>% 
-hclust() %>% 
-plot(main="Bray-Curtis Dissimilarity", xlab="", sub = "")
+mydist = distance(loman.sp, method="bray")
+myhclust = hclust( mydist )
+plot(myhclust, main="Bray-Curtis Dissimilarity", 
+     method="ward.D", xlab="Samples", sub = "")
 ```
 
 ## Ordination Analysis
 
-
+The `r Biocpkg("phyloseq")` package provides a variety of ordination methods, with convenient options for labelling points. Here is a 
+Principal Coordinates Analysis plot of species-level taxa from the Loman
+dataset, using Bray-Curtis distance:
 
 ```{r, warning=FALSE}
-unsorted_taxa %>%
-ordinate(., method = "PCoA", distance = "bray") ->
-ordinated_taxa
-
-unsorted_taxa %>%
-plot_ordination(., ordinated_taxa, color="c_difficile_frequency", 
+ordinated_taxa = ordinate(loman.sp, method="PCoA", distance="bray")
+plot_ordination(loman.sp, ordinated_taxa, color="stooltexture", 
                 title = "Bray-Curtis Principal Coordinates Analysis")
 ```
 
 
 ```{r}
-plot_scree(ordinated_taxa)
+plot_scree(ordinated_taxa, title="Screeplot")
 ```
 
 
@@ -350,4 +390,4 @@ file an issue should you find one.
 # Other Issues
 
 Visit the Bioconductor support site at https://support.bioconductor.org/, 
-breifly describe your issue, and add the curatedmetagenomicdata.
+breifly describe your issue, and add the #curatedmetagenomicdata tag.
