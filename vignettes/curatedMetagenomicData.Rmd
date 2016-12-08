@@ -202,24 +202,6 @@ hist( x, xlab = "Relative Abundance", main="Prevalence of E. Coli",
       breaks="FD")
 ```
 
-# Estimating Absolute Raw Count Data
-
-Absolute raw count data can be estimated from the relative count data by 
-multiplying the rows of the `ExpressionSet` data by the number of reads, as 
-found in the `pData`. The `sweep` function from base `R` provides a way to 
-quickly multiply every row of the matrix by the number of reads for that sample.
-
-```{r}
-loman.counts = sweep(exprs( loman.eset ), 2, loman.eset$number_reads, "*")
-loman.counts[1:6, 1:5]
-```
-
-We can replace the relative abundances in an `ExpressionSet` with normalized counts:
-```{r}
-loman.eset.counts = loman.eset
-exprs( loman.eset.counts ) = loman.counts
-```
-
 # Taxonomy-Aware Analysis using `phyloseq`
 
 For the MetaPhlAn2 bugs datasets (but not other data types), you gain a lot of 
@@ -230,6 +212,29 @@ provides the `ExpressionSet2phyloseq()` function to make this easy:
 ```{r, warning=FALSE}
 loman.pseq = ExpressionSet2phyloseq( loman.eset )
 ```
+
+## Estimating Absolute Raw Count Data
+
+Absolute raw count data can be estimated from the relative count data by 
+multiplying the columns of the `ExpressionSet` data by the number of reads for
+each sample, as found in the `pData` column "number_reads". You could do this
+manually using the `sweep()` function:
+
+```{r}
+loman.counts = sweep(exprs( loman.eset ), 2, loman.eset$number_reads, "*")
+loman.counts[1:6, 1:5]
+```
+
+or just set the `relab` argument in `Expressionset2phyloseq()` to `FALSE`:
+
+```{r}
+loman.pseq2 = ExpressionSet2phyloseq( loman.eset, relab=FALSE )
+otu_table( loman.pseq2 )[1:6, 1:5]
+```
+
+Note the simplified row names of the OTU table, resulting from the default 
+argument `simplify=TRUE`. The simplified names are convenient, and lossless
+because taxonomic information is now attainable by `tax_table(loman.pseq2)`
 
 ## Components of a `r Biocpkg("phyloseq")` object
 
