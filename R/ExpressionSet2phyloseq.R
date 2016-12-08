@@ -1,16 +1,18 @@
 #' Convert an ExpressionSet object to a phyloseq object
 #'
-#' @param ExpressionSet
+#' @param eset
 #'
-#' An ExpressionSet object
+#' An eset object
 #'
 #' @param simplify
 #'
 #' if TRUE the most detailed clade name is used
 #'
-#' @param rounding
+#' @param relab
 #'
-#'  if TRUE values are rounded to the nearest interger
+#'  if FALSE, values are multiplied by read depth to approximate counts,
+#'  if TRUE (default) values kept as relative abundances between 0 and 
+#'  100 %.
 #'
 #' @return
 #'
@@ -31,28 +33,28 @@
 #' @importFrom phyloseq otu_table
 #' @importFrom phyloseq tax_table
 #' @importFrom phyloseq phyloseq
-ExpressionSet2phyloseq <- function(ExpressionSet, simplify = TRUE,
-                                   rounding = TRUE) {
-    otu_table <- exprs(ExpressionSet)
-    sample_data <- pData(ExpressionSet) %>%
+ExpressionSet2phyloseq <- function(eset, simplify = TRUE,
+                                   relab = TRUE) {
+    otu.table <- exprs(eset)
+    sample.data <- pData(eset) %>%
         sample_data(., errorIfNULL = FALSE)
 
-    taxonomic_ranks <- c("Kingdom", "Phylum", "Class", "Order", "Family",
+    taxonomic.ranks <- c("Kingdom", "Phylum", "Class", "Order", "Family",
                          "Genus", "Species", "Strain")
-    tax_table <- rownames(otu_table) %>%
+    tax.table <- rownames(otu.table) %>%
         gsub("[a-z]__", "", .) %>%
         data_frame() %>%
-        separate(., ".", taxonomic_ranks, sep = "\\|") %>%
+        separate(., ".", taxonomic.ranks, sep = "\\|", fill="right") %>%
         as.matrix()
-    if(simplify == TRUE) {
-        rownames(otu_table) <- rownames(otu_table) %>%
+    if(simplify) {
+        rownames(otu.table) <- rownames(otu.table) %>%
             gsub(".+\\|", "", .)
     }
-    rownames(tax_table) <- rownames(otu_table)
-    if(rounding == TRUE) {
-        otu_table <- round(otu_table * 10000, 0)
+    rownames(tax.table) <- rownames(otu.table)
+    if(!relab) {
+      otu.table <- round( sweep(otu.table, 2, eset$number_reads, "*") )
     }
-    otu_table <- otu_table(otu_table, taxa_are_rows = TRUE)
-    tax_table <- tax_table(tax_table)
-    phyloseq(otu_table, sample_data, tax_table)
+    otu.table <- otu_table(otu.table, taxa_are_rows = TRUE)
+    tax.table <- tax_table(tax.table)
+    phyloseq(otu.table, sample.data, tax.table)
 }
