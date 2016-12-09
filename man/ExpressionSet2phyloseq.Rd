@@ -11,9 +11,8 @@ ExpressionSet2phyloseq(eset, simplify = TRUE, relab = TRUE)
 
 \item{simplify}{if TRUE the most detailed clade name is used}
 
-\item{relab}{if FALSE, values are multiplied by read depth to approximate counts,
-if TRUE (default) values kept as relative abundances between 0 and 
-100 %.}
+\item{relab}{if FALSE, values are multiplied by read depth to approximate counts, if TRUE
+(default) values kept as relative abundances between 0 and 100\%.}
 }
 \value{
 A phyloseq object

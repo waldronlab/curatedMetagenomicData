@@ -10,9 +10,8 @@
 #'
 #' @param relab
 #'
-#'  if FALSE, values are multiplied by read depth to approximate counts,
-#'  if TRUE (default) values kept as relative abundances between 0 and 
-#'  100 %.
+#' if FALSE, values are multiplied by read depth to approximate counts, if TRUE
+#' (default) values kept as relative abundances between 0 and 100\%.
 #'
 #' @return
 #'
@@ -52,7 +51,7 @@ ExpressionSet2phyloseq <- function(eset, simplify = TRUE,
     }
     rownames(tax.table) <- rownames(otu.table)
     if(!relab) {
-      otu.table <- round( sweep(otu.table, 2, eset$number_reads, "*") )
+        otu.table <- round(sweep(otu.table, 2, eset$number_reads, "*"))
     }
     otu.table <- otu_table(otu.table, taxa_are_rows = TRUE)
     tax.table <- tax_table(tax.table)
