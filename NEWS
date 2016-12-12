@@ -1,3 +1,12 @@
+# curatedMetagenomicData 1.1.4
+
+* Version bumped to reflect latest y version of Bioconductor
+* Fixed a bug related to ExperimentHub that caused checks to fail
+
+# curatedMetagenomicData 1.0.4
+
+* Fixed a bug related to ExperimentHub that caused checks to fail
+
 # curatedMetagenomicData 1.0.0
 
 * Package vignette is updated to reflect in the intended use of ExperimentHub
