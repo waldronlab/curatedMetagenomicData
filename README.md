@@ -28,7 +28,7 @@ LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
 exprs()
 ```
 
-Usage instruction beyond these basic steps are available in the package [vignette](https://bioconductor.org/packages/release/data/experiment/vignettes/curatedMetagenomicData/inst/doc/curatedMetagenomicData.html).
+Usage instructions beyond these basic steps are available in the package [vignette](https://bioconductor.org/packages/release/data/experiment/vignettes/curatedMetagenomicData/inst/doc/curatedMetagenomicData.html).
 
 ## Adding New Data
 
