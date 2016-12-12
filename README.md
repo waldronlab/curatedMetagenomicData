@@ -33,7 +33,7 @@ Usage instructions beyond these basic steps are available in the package [vignet
 ## Adding New Data
 
 The following steps describe the process needed to add new data to the package; 
-these steps are not of any consequence to the end user & should only concern the
+these steps are not of any consequence to the end user and should only concern the
 developers of this package.
 
 ### Project Source
