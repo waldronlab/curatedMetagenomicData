@@ -153,22 +153,11 @@ source("https://raw.githubusercontent.com/waldronlab/presentations/master/Waldro
 pseq <- metaphlanToPhyloseq(tax=exprs(eset_bugs), metadat=pData(eset_bugs), split=".")
 ```
 
-Coordinated color scheme
+
 ```{r}
-blue <- "#3366aa"
-blueGreen <- "#11aa99"
-green <- "#66aa55"
-paleYellow <- "#cccc55"
-gray <- "#777777"
-purple <- "#992288"
-red <- "#ee3333"
-orange <- "#ee7722"
-yellow <- "#ffee33"
-pallet <- c(blue, blueGreen, green, paleYellow, gray, purple, red, orange, yellow)
-n <- length(pallet)
-# image(1:n, 1, as.matrix(1:n), col = pallet, 
-#         xlab = "", ylab = "", xaxt = "n", yaxt = "n", 
-#         bty = "n")
+##Coordinated color scheme
+source("https://raw.githubusercontent.com/waldronlab/curatedMetagenomicData/master/vignettes/extras/colorPalette_curatedMetagenomicData.R")
+
 ```
 
 # Within-sample relative bug abundances
@@ -281,7 +270,7 @@ qplot(x    = eset_pathway$prev,
 
 ```
 
-## With top 20 most abundant bugs
+## With top 20 most abundant genera
 ```{r heatmap_cors, fig.width=10}
 
 #get top 20 genuses
