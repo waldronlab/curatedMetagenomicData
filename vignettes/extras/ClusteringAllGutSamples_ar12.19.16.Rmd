@@ -94,22 +94,11 @@ pseq <- metaphlanToPhyloseq(tax=exprs(eset), metadat=pData(eset), split=".")
 ```{r}
 print(pseq)
 ```
-## Coordinated color scheme
+
 ```{r}
-blue <- "#3366aa"
-blueGreen <- "#11aa99"
-green <- "#66aa55"
-paleYellow <- "#cccc55"
-gray <- "#777777"
-purple <- "#992288"
-red <- "#ee3333"
-orange <- "#ee7722"
-yellow <- "#ffee33"
-pallet <- c(blue, blueGreen, green, paleYellow, gray, purple, red, orange, yellow)
-n <- length(pallet)
-image(1:n, 1, as.matrix(1:n), col = pallet, 
-        xlab = "", ylab = "", xaxt = "n", yaxt = "n", 
-        bty = "n")
+## Coordinated color scheme
+source("https://raw.githubusercontent.com/waldronlab/curatedMetagenomicData/master/vignettes/extras/colorPalette_curatedMetagenomicData.R")
+
 ```
 
 
@@ -260,7 +249,7 @@ ch_rjs = apply(pam_rjs, 2, function(i) cluster.stats(dist_rjs, i)$ch)
 ```
 ```{r plot_Calinski}
 #plot calinski-harabasz
-plot_cluster_validation(ch_bray, ch_js, ch_rjs, legend=T, ylab="Calinski-Harabasz score", ylim=c(100,600))
+plot_cluster_validation(ch_bray, ch_js, ch_rjs, legend=T, ylab="Calinski-Harabasz score", ylim=c(0,300))
 ```
 
 ## PCoA k=2 & gradient for Prevotella & Bacteroides
