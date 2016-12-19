@@ -1,3 +1,8 @@
+#################################################
+#  Color-blind friendly universal color palette #
+#  for curatedMetagenomicData figures.          #
+#################################################
+
 blue = "#3366aa"
 blueGreen = "#11aa99"
 green = "#66aa55"
