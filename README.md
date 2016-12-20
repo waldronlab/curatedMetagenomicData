@@ -10,6 +10,8 @@
 `curatedMetagenomicData` is an `ExperimentHub` package for accessing a large 
 number (n ≈ 3000) of human microbiome samples gathered from various sources.
 
+See quick-start directions on the wiki [here](https://github.com/waldronlab/curatedMetagenomicData/wiki).
+
 ## Using Existing Data
 
 `curatedMetagenomicData` and its related data are accessed through `R` using 
@@ -17,15 +19,11 @@ number (n ≈ 3000) of human microbiome samples gathered from various sources.
 
 ```{r}
 library(curatedMetagenomicData)
-
-LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
-pData()
-
-LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
-experimentData()
-
-LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
-exprs()
+eset = LomanNJ_2013_Hi.genefamilies_relab.stool()
+pData( eset )
+experimentData( eset )
+exprs( eset )
+ExpressionSet2phyloseq( eset, simplify=TRUE, relab=FALSE )
 ```
 
 Usage instructions beyond these basic steps are available in the package [vignette](https://bioconductor.org/packages/release/data/experiment/vignettes/curatedMetagenomicData/inst/doc/curatedMetagenomicData.html).
