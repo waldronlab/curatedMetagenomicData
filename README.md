@@ -19,7 +19,7 @@ See quick-start directions on the wiki [here](https://github.com/waldronlab/cura
 
 ```{r}
 library(curatedMetagenomicData)
-eset = LomanNJ_2013_Hi.genefamilies_relab.stool()
+eset = LomanNJ_2013_Hi.metaphlan_bugs_list.stool()
 pData( eset )
 experimentData( eset )
 exprs( eset )
