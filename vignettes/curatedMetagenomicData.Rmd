@@ -236,7 +236,7 @@ Note the simplified row names of the OTU table, resulting from the default
 argument `simplify=TRUE`. The simplified names are convenient, and lossless
 because taxonomic information is now attainable by `tax_table(loman.pseq2)`
 
-## Components of a `r Biocpkg("phyloseq")` object
+## Components of a phyloseq object
 
 The  `r Biocpkg("phyloseq")` objects currently contain 3 components, with
 extractor functions hinted at by its show method:

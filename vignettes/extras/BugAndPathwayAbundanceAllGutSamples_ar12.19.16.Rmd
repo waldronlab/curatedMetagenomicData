@@ -52,11 +52,11 @@ for (i in 1:length(eset.list)){
     eset.list[[i]]$subjectID <- as.character(eset.list[[i]]$subjectID)
 }
 ```
-Keep leaf nodes only:
+
+Remove rows providing genus/species names:
 ```{r}
 for (i in seq_along(eset.list)){
-  eset.list[[i]] <- eset.list[[i]][grep("t__", rownames(eset.list[[i]]), invert=TRUE), ]
-  eset.list[[i]] <- eset.list[[i]][grep("s__|_unclassified\t", rownames(eset.list[[i]]), perl=TRUE), ]
+  eset.list[[i]] <- eset.list[[i]][!grepl("\\|", rownames(eset.list[[i]])), ]
 }
 ```
 
@@ -206,7 +206,7 @@ bardat %<>% mutate(Sample = as.numeric(factor(Sample, levels=factor(firmicutes_o
 set.seed(14)
 b <- ggplot(arrange(bardat, desc(OTU), Abundance), aes(x=Sample, y=Abundance, fill=OTU))
 b <- b + geom_area()
-b <- b + scale_fill_manual(values=sample(pallet, size = 8, replace=F))
+b <- b + scale_fill_manual(values=sample(pallet, size = 8, replace=FALSE))
 b <- b + labs(fill="Phylum")
 b + theme(axis.text.x = element_blank(), legend.position="bottom")
 
@@ -240,7 +240,7 @@ p
 # Correlation of metabolic pathways with most abundant bugs
 
 ## With Prevotella *copri*
-```{r warning=F}
+```{r warning=FALSE}
 eset_pathway$prev <- as.numeric(exprs(eset_bugs)[grep("s__Prevotella_copri",rownames(exprs(eset_bugs))),] )
 
 cor_est_p <- function(x1,x2) {
