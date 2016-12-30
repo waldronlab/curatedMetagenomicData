@@ -1,0 +1,59 @@
+#!/usr/bin/Rscript --vanilla
+
+if(!suppressPackageStartupMessages(require("docopt"))){
+  stop("You must have the docopt R package installed. Assuming you have 
+             installed R & Bioconductor (www.bioconductor.org/install), type:\n
+             BiocInstaller::biocLite(\"docopt\") \n
+             from your R prompt.")
+}
+
+doc <- "Usage: curatedMetagenomicData [--dataset NAME] [--pdata]
+
+-h --help    Show this. Note that arguments may optionally be quoted.
+-d --dataset Comma-separated list of names of one or more curatedMetagenomicData datasets to return (see manual for list of all datasets)
+-p --pdata   Include phenotype data at the top of the tsv file? [default: FALSE]
+-c --counts  If FALSE, return MetaPhlAn2 and HUMAnN2 results as-is. If TRUE, return them multiplied by read depth and rounded to the nearest integer [default: FALSE]
+
+The script will produce one tab-separated tsv file per dataset requested. 
+For each dataset requested, an output tab-separated values file will be created. 
+The output files are the name of the dataset name with '.tsv' appended to it.
+
+With -p TRUE, the first rows of the output tab-separated file will provide 
+phenotype data.
+"
+
+input <- docopt(doc)
+
+required.packages <- c("curatedMetagenomicData", "Biobase")
+for (pkg in required.packages){
+  if(!suppressPackageStartupMessages(require(pkg, character.only=TRUE))){
+    stop(paste0("Make sure Bioconductor is installed (www.bioconductor.org/install), then type:\n
+                BiocInstaller::biocLite(\"", pkg, "\") \n
+                from your R prompt."))
+  }
+}
+
+
+requested.datasets <- strsplit(input$dataset, ",")[[1]]
+all.datasets <- ls("package:curatedMetagenomicData")
+all.datasets <-  grep("marker|gene|path|metaphlan_bugs", all.datasets, val=TRUE)
+
+if(!all(requested.datasets %in% all.datasets))
+  stop("--dataset argument is not an available dataset")
+
+for (i in seq_along(requested.datasets)){
+  message(paste0("Working on ", requested.datasets[i]))
+  load("/Library/Frameworks/R.framework/Versions/3.0/Resources/library/Biobase/data/sample.ExpressionSet.rda")
+  eset <- sample.ExpressionSet
+##  eset <- do.call(get(requested.datasets[1]), list())
+  if(input$counts){
+    edat <- round(sweep(exprs(eset), 2, eset$number_reads, "*"))
+  }else{
+    edat <- exprs(eset)
+  }
+  if(input$pdata){
+    pdat <- t(as.matrix(pData(eset)))
+    edat <- rbind(pdat, edat)
+  }
+  write.table(edat, file = paste0(requested.datasets[i], ".tsv"), quote = FALSE)
+}
