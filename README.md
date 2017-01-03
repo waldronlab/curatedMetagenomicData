@@ -7,31 +7,64 @@
 
 # curatedMetagenomicData
 
-`curatedMetagenomicData` is an `ExperimentHub` package for accessing a large 
-number (n ≈ 3000) of human microbiome samples gathered from various sources.
+*curatedMetagenomicData* is a *Bioconductor* package using *ExperimentHub* to access 
+a large number (n ≈ 3000) of human microbiome samples gathered from various sources.
 
-## Using Existing Data
+See quick-start directions on the wiki [here](https://github.com/waldronlab/curatedMetagenomicData/wiki).
 
-`curatedMetagenomicData` and its related data are accessed through `R` using 
-`BioConductor` & `ExperimentHub`. For example:
+## Accessing Data through R/Bioconductor
+
+*curatedMetagenomicData* and its related data can be accessed through *R* using *Bioconductor* & *ExperimentHub*. To install the necessary software:
+
+1. Install *R* and *Bioconductor* according to instructions at [www.bioconductor.org/install](www.bioconductor.org/install).
+
+2. From the *R* prompt, install *curatedMetagenomicData*:
+```
+BiocInstaller::biocLite("curatedMetagenomicData")
+```
+
+Then you can access datasets through *R* like this:
 
 ```{r}
 library(curatedMetagenomicData)
-
-LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
-pData()
-
-LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
-experimentData()
-
-LomanNJ_2013_Hi.genefamilies_relab.stool() %>%
-exprs()
+eset = LomanNJ_2013_Hi.metaphlan_bugs_list.stool()
 ```
-    
+
+From the resulting *ExpressionSet* object you can extract metagenomic data with `exprs( eset )`, participant and sequencing information using `pData( eset )`, and study information using `experimentData( eset )`. 
+
+The Metaphlan bugs datasets can be converted to *phyloseq* objects for use with the excellent [phyloseq](bioconductor.org/packages/phyloseq) Bioconductor package (see ?ExpressionSet2phyloseq) for more details on this conversion:
+
+```
+ExpressionSet2phyloseq( eset, simplify=TRUE, relab=FALSE )
+```
+
+Usage instructions beyond these basic steps are available in the package [vignette](https://bioconductor.org/packages/release/data/experiment/vignettes/curatedMetagenomicData/inst/doc/curatedMetagenomicData.html). A list of all datasets is available in the [Reference Manual](http://bioconductor.org/packages/release/data/experiment/manuals/curatedMetagenomicData/man/curatedMetagenomicData.pdf).
+
+## Accessing Data From the Command Line
+
+You must install *R*, *Bioconductor*, and *curatedMetagenomicData* using the instructions above. Additionally, you must install the *docopt* package from 
+within *R*:
+```
+BiocInstaller::biocLite("docopt")
+```
+
+Then:
+
+1. Download the [curatedMetagenomicData shell script](https://raw.githubusercontent.com/waldronlab/curatedMetagenomicData/master/inst/commandline/curatedMetagenomicData). 
+
+2. Make sure it has executable permissions:
+```
+chmod a+x curatedMetagenomicData
+```
+
+3. Make sure the R executable at the top of the script is correct (by default `/usr/bin/Rscript`). Check where your `Rscript` is installed by `which Rscript`.
+
+4. Place the *curatedMetagenomicData* file somewhere in your PATH, or invoke it using `./curatedMetagenomicData`. Use `./curatedMetagenomicData -h`to see its help.
+
 ## Adding New Data
 
 The following steps describe the process needed to add new data to the package; 
-these steps are not of any consequence to the end user & should only concern the
+these steps are not of any consequence to the end user and should only concern the
 developers of this package.
 
 ### Project Source
