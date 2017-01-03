@@ -10,8 +10,8 @@ if(!suppressPackageStartupMessages(require("docopt"))){
 doc <- "curatedMetagenomicData - command-line access to the curatedMetagenomicData R/Bioconductor package
 
 Usage: 
-  curatedMetagenomicData [--pdata] [--counts] [--dryrun] <NAME>...
-  curatedMetagenomicData [-pcd] <NAME>...
+  curatedMetagenomicData [--pdata] [--counts] [--dryrun] [--list] <NAME>...
+  curatedMetagenomicData [-pcdl] <NAME>...
 
 Options:
   -h --help      Show this. Note that arguments may optionally be quoted.
@@ -46,6 +46,7 @@ Will return two files, without clinical / sequencing metadata.
   curatedMetagenomicData -d \"*\"                 #Will show all available datasets (don't download)
   curatedMetagenomicData -d \"HMP*\"              #Will show all HMP data products (don't download)
   curatedMetagenomicData -d \"HMP*hard_palate\"   #Will show all HMP hard palate data products (don't download)
+  curatedMetagenomicData -d \"HMP*\" \"Loman*\"   #Will show all HMP and Loman data products (don't download)
   curatedMetagenomicData -d \"*metaphlan*stool\"  #Will show all stool bug abundance tables (don't download)
 
 Output: The file names of datasets to be created are returned to standard output.
@@ -63,7 +64,6 @@ for (pkg in required.packages){
 }
 
 requested.datasets <- input$NAME
-print(requested.datasets)
 all.datasets <- ls("package:curatedMetagenomicData")
 all.datasets <-  grep("marker|gene|path|metaphlan_bugs", all.datasets, val=TRUE)
 
@@ -89,5 +89,6 @@ for (i in seq_along(matched.datasets)){
     pdat <- t(as.matrix(pData(eset)))
     edat <- rbind(pdat, edat)
   }
-  write.table(edat, file = paste0(matched.datasets[i], ".tsv"), quote = FALSE)
+  write.table(edat, file = paste0(matched.datasets[i], ".tsv"), 
+              sep = "\t", quote = FALSE)
 }
