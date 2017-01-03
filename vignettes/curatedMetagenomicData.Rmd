@@ -1,11 +1,14 @@
 ---
-title: "curatedMetagenomicData"
+title: "curatedMetagenomicData vignette: microbial taxonomy and functional data for the human microbiome"
 abstract: >
     The curatedMetagenomicData package provides taxonomic, functional, and gene
-    marker abundance for samples collected from different bodysites. It provides
-    data from aproximately 3000 human microbiome samples that have been highly
-    processed, refined, and curated such that analysis that might otherwise
-    require a computing cluster can be done on an ordianary laptop.
+    marker abundance for samples collected from different human bodysites. It provides
+    processed data from whole-metagenome sequencing for  aproximately 3000 human 
+    microbiome samples, including the Human Microbiome Project.  Microbiome data and 
+    associated subject, specimen, and sequencing information are integrated as 
+    Bioconductor ExpressionSet objects, allowing straightfoward analyses. A conversion 
+    function also links taxonomic datasets to the `r Biocpkg("phyloseq")` package for 
+    ecological analyses.
 output:
     BiocStyle::html_document
 vignette: >
@@ -23,7 +26,7 @@ knitr::opts_chunk$set(cache = TRUE)
 
 `curatedMetagenomicData` provides 6 types of data for each dataset:
 
-1. species-level taxonomic profiles,
+1. species-level taxonomic profiles, expressed as relative abundance from phylum to strain level.
 2. presence of unique, clade-specific markers,
 3. abundance of unique, clade-specific markers,
 4. abundance of gene families,
@@ -236,7 +239,7 @@ Note the simplified row names of the OTU table, resulting from the default
 argument `simplify=TRUE`. The simplified names are convenient, and lossless
 because taxonomic information is now attainable by `tax_table(loman.pseq2)`
 
-## Components of a `r Biocpkg("phyloseq")` object
+## Components of a phyloseq object
 
 The  `r Biocpkg("phyloseq")` objects currently contain 3 components, with
 extractor functions hinted at by its show method:

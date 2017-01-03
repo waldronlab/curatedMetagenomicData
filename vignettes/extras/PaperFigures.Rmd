@@ -1,0 +1,68 @@
+---
+title: "PaperFigures"
+output:
+    BiocStyle::html_document
+vignette: >
+    %\VignetteIndexEntry{PaperFigures}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(cache = TRUE)
+```
+
+```{r libraries, include=FALSE}
+library(curatedMetagenomicData)
+library(ggplot2)
+```
+
+# Coordinated Color Scheme
+
+```{r}
+blue <- "#3366aa"
+blueGreen <- "#11aa99"
+green <- "#66aa55"
+paleYellow <- "#cccc55"
+gray <- "#777777"
+purple <- "#992288"
+red <- "#ee3333"
+orange <- "#ee7722"
+yellow <- "#ffee33"
+pallet <- c(blue, blueGreen, green, paleYellow, gray, purple, red, orange, yellow)
+n <- length(pallet)
+image(1:n, 1, as.matrix(1:n), col = pallet, 
+        xlab = "", ylab = "", xaxt = "n", yaxt = "n", 
+        bty = "n")
+```
+
+# Coordinated Symbol Significance
+
+```{r}
+#todo lucas
+```
+
+# Classification
+
+```{r}
+#todo edoardo
+```
+
+# Clustering
+
+```{r}
+#todo audrey
+```
+
+# Sample Abundance
+
+```{r}
+#todo edoardo
+```
+
+# Pathway Abundance
+
+```{r}
+#todo edoardo
+```
