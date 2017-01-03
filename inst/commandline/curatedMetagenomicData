@@ -14,16 +14,13 @@ Usage: curatedMetagenomicData [--dataset NAME] [--pdata] [--counts]
 DESCRIPTION
 
 -h --help    Show this. Note that arguments may optionally be quoted.
--d --dataset Comma-separated list of names of one or more curatedMetagenomicData datasets to return (see manual for list of all datasets)
--p --pdata   Include phenotype data in the first rows of the tsv file
--c --counts  If this flag is set, multiplied MetaPhlAn2 and HUMAnN2 relative abundances by read depth, then round to the nearest integer. If it is not set, return MetaPhlAn2 and HUMAnN2 results as-is
+-d --dataset Comma-separated list of names of one or more curatedMetagenomicData datasets to return (see manual for list of all datasets).
+-p --pdata   Include metadata in the first rows of the tsv file. This includes
+participant data such as age, sex, and disease status, and the number of sequencing reads. See explanations of pdata rows at https://github.com/waldronlab/curatedMetagenomicData/blob/master/inst/extdata/template.csv.
+-c --counts  If this flag is set, multiply MetaPhlAn2 and HUMAnN2 relative abundances by read depth, then round to the nearest integer. If it is not set, return MetaPhlAn2 and HUMAnN2 results as-is.
 
 The script will produce one tab-separated tsv file per dataset requested. 
-For each dataset requested, an output tab-separated values file will be created. 
-The output files are the name of the dataset name with '.tsv' appended to it.
-
-With -p TRUE, the first rows of the output tab-separated file will provide 
-phenotype data.
+The output files are the name of the dataset name with '.tsv' appended.
 
 EXAMPLES
 
@@ -36,7 +33,6 @@ curatedMetagenomicData -d LomanNJ_2013_Hi.metaphlan_bugs_list.stool,LomanNJ_2013
 will return two files, without clinical / sequencing metadata: 
     * LomanNJ_2013_Hi.metaphlan_bugs_list.stool.tsv providing MetaPhlAn2 taxonomic relative abundances, and
     * LomanNJ_2013_Hi.pathcoverage.stool.tsv providing HUMAnN2 pathway coverages
-
 "
 
 input <- docopt(doc)
