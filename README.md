@@ -1,7 +1,7 @@
 [![Platforms](https://bioconductor.org/images/shields/availability/all.svg)](https://bioconductor.org/packages/3.4/data/experiment/html/curatedMetagenomicData.html#archives)
-[![Travis-CI Build Status](https://travis-ci.org/schifferl/curatedMetagenomicData.svg?branch=master)](https://travis-ci.org/schifferl/curatedMetagenomicData)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/schifferl/curatedMetagenomicData?branch=master&svg=true)](https://ci.appveyor.com/project/schifferl/curatedMetagenomicData)
-[![Coverage Status](https://img.shields.io/codecov/c/github/schifferl/curatedMetagenomicData/master.svg)](https://codecov.io/github/schifferl/curatedMetagenomicData?branch=master)
+[![Travis-CI Build Status](https://travis-ci.org/waldronlab/curatedMetagenomicData.svg?branch=master)](https://travis-ci.org/waldronlab/curatedMetagenomicData)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/waldronlab/curatedMetagenomicData?branch=master&svg=true)](https://ci.appveyor.com/project/waldronlab/curatedMetagenomicData)
+[![Coverage Status](https://img.shields.io/codecov/c/github/waldronlab/curatedMetagenomicData/master.svg)](https://codecov.io/github/waldronlab/curatedMetagenomicData?branch=master)
 [![Commits](https://bioconductor.org/shields/commits/data-experiment/curatedMetagenomicData.svg)](https://bioconductor.org/packages/3.4/data/experiment/html/curatedMetagenomicData.html#svn_source)
 
 
