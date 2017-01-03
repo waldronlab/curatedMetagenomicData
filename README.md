@@ -50,7 +50,7 @@ BiocInstaller::biocLite("docopt")
 
 Then:
 
-1. Download the [curatedMetagenomicData shell script](https://github.com/waldronlab/curatedMetagenomicData/blob/master/inst/commandline/curatedMetagenomicData). 
+1. Download the [curatedMetagenomicData shell script](https://raw.githubusercontent.com/waldronlab/curatedMetagenomicData/master/inst/commandline/curatedMetagenomicData). 
 
 2. Make sure it has executable permissions:
 ```
