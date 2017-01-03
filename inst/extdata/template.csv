@@ -123,7 +123,7 @@ type,character,non-unique,optional,plaque,Psoriasis type
 antibiotic_usage,character,non-unique,optional,[yn],Has the subject used antibiotics
 tnm_stage,character,non-unique,optional,*,TNM stage of the tumor
 ajcc_stage,character,non-unique,optional,i|ii|iii|iv,AJCC stage of the tumor (na: no classification for healthy controls or adenomas)
-localization,character,non-unique,optional,*,Localization of the tumor/adenoma (rc: right colon, lc: left colon, lc/rc: multiple localizations, sigma: sigma, rectum: rectum)
+localization,character,non-unique,optional,*,Localization of the tumor/adenoma (rc: right colon; lc: left colon; lc/rc; multiple localizations; sigma: sigma; rectum: rectum)
 fobt,character,non-unique,optional,negative|positive,Result of the fecal occult blood test (FOBT)
 wif-1_gene_methylation_test,character,non-unique,optional,negative|positive,Result of the wif-1 gene methylation test
-group,character,non-unique,optional,control|crc,Sample group (control: healthy controls and patients with small adenomas, crc: patients with CRC, na: patients with large adenoma not included)
+group,character,non-unique,optional,control|crc,Sample group (control: healthy controls and patients with small adenomas; crc: patients with CRC; na: patients with large adenoma not included)
