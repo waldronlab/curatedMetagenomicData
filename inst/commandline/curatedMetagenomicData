@@ -7,11 +7,13 @@ if(!suppressPackageStartupMessages(require("docopt"))){
              from your R prompt.")
 }
 
-doc <- "curatedMetagenomicData - command-line access to the curatedMetagenomicData R/Bioconductor package
+doc <- "curatedMetagenomicData: command-line access to the curatedMetagenomicData R/Bioconductor package
 
 Usage: 
-  curatedMetagenomicData [--pdata] [--counts] [--dryrun] [--list] <NAME>...
-  curatedMetagenomicData [-pcdl] <NAME>...
+  curatedMetagenomicData [--pdata] [--counts] [--dryrun] [<NAME>]...
+  curatedMetagenomicData [-pcd] [<NAME>]...
+  curatedMetagenomicData -l | --list
+  curatedMetagenomicData -h | --help
 
 Options:
   -h --help      Show this. Note that arguments may optionally be quoted.
@@ -22,8 +24,9 @@ https://github.com/waldronlab/curatedMetagenomicData/blob/master/inst/extdata/te
   -c --counts    Multiply MetaPhlAn2 and HUMAnN2 relative abundances by read 
 depth, then round to the nearest integer. If it is not set, return MetaPhlAn2 
 and HUMAnN2 results as-is.
-  -d --dryrun  Show which datasets would be downloaded, then exit normally 
+  -d --dryrun    Show which datasets would be downloaded, then exit normally 
 without downloading.
+  -l --list      List all datasets available then exit.
   <NAME>...      One or more names curatedMetagenomicData datasets (See 
 reference manual for list of all datasets). Standard Unix globbing is 
 supported (such as * for wildcard), however in this case NAME argument 
@@ -53,7 +56,12 @@ Output: The file names of datasets to be created are returned to standard output
 "
 
 input <- docopt(doc)
-
+if(length(input$NAME) == 0 & !input$list)
+    docopt(doc, args="-h")
+if(input$list){
+    input$NAME <- "*"
+    input$dryrun <- TRUE
+}
 required.packages <- c("curatedMetagenomicData", "Biobase")
 for (pkg in required.packages){
   if(!suppressPackageStartupMessages(require(pkg, character.only=TRUE))){
@@ -81,7 +89,7 @@ for (i in seq_along(matched.datasets)){
   message(paste0("Working on ", matched.datasets[i]))
   eset <- do.call(get(matched.datasets[i]), list())
   if(input$counts){
-    edat <- round(sweep(exprs(eset), 2, eset$number_reads, "*"))
+    edat <- round(sweep(exprs(eset), 2, eset$number_reads/100, "*"))
   }else{
     edat <- exprs(eset)
   }
@@ -90,5 +98,5 @@ for (i in seq_along(matched.datasets)){
     edat <- rbind(pdat, edat)
   }
   write.table(edat, file = paste0(matched.datasets[i], ".tsv"), 
-              sep = "\t", quote = FALSE)
+              col.names=NA, sep = "\t", quote = FALSE)
 }
