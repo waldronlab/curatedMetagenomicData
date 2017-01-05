@@ -1,7 +1,7 @@
-title: Long Haul
-description: Long Form Jekyll theme built with SASS / COMPASS / SUSY
+title: curatedMetagenomicData
+description: Curated and processed metagenomic data through ExperimentHub
 
-url: http://brianmaierjr.github.com/long-haul
+url: https://waldronlab.github.io/curatedMetagenomicData
 baseurl: ""
 paginate_path: "blog/page:num/"
 permalink: blog/:title/
@@ -19,10 +19,10 @@ navigation:
  - title: Contact
    url: /contact
 
-social:
-   github: brianmaierjr
-   twitter: brianmaierjr
-   facebook: brianmaierjr
-   email: brimaidesigns@gmail.com
+# social:
+#    github: brianmaierjr
+#    twitter: brianmaierjr
+#    facebook: brianmaierjr
+#    email: brimaidesigns@gmail.com
 
 google_analytics: "UA-58263416-1"

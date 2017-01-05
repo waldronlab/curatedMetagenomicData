@@ -176,7 +176,7 @@ HEADER STYLING
 
 .header {
 	background-color: $background-color;
-	background-image: url('../img/touring.jpg');
+	background-image: url('../img/header.jpg');
 	background-size: cover;
 	background-position: center center;
 	color: white;
@@ -196,7 +196,7 @@ HEADER STYLING
 		line-height: 3em;
 		font-family: $sans-serif;
 		font-weight: 800;
-		text-transform: uppercase;
+		// text-transform: uppercase;
 
 		a {
 			color: white;
