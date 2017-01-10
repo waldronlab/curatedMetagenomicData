@@ -3,7 +3,7 @@ title: "curatedMetagenomicData vignette: microbial taxonomy and functional data 
 abstract: >
     The curatedMetagenomicData package provides taxonomic, functional, and gene
     marker abundance for samples collected from different human bodysites. It provides
-    processed data from whole-metagenome sequencing for  aproximately 3000 human 
+    processed data from whole-metagenome sequencing for  approximately 3000 human 
     microbiome samples, including the Human Microbiome Project.  Microbiome data and 
     associated subject, specimen, and sequencing information are integrated as 
     Bioconductor ExpressionSet objects, allowing straightfoward analyses. A conversion 
@@ -39,7 +39,7 @@ by [HUMAnN2](http://huttenhower.sph.harvard.edu/humann2).
 
 Currently, `curatedMetagenomicData` provides:
 
-* 2,875 samples from 13 datasets, primarily of the human gut but including body 
+* 2,875 samples from 12 datasets, primarily of the human gut but including body 
 sites profiled in the Human Microbiome Project
 * processed data from whole-metagenome shotgun metagenomics, with 
 manually-curated metadata, as integrated and documented Bioconductor 
@@ -50,7 +50,7 @@ and websites, with manual curation to standardize annotations
 [MetaPhlAn2](http://huttenhower.sph.harvard.edu/metaphlan2) pipeline for 
 taxonomic abundance, and [HUMAnN2](http://huttenhower.sph.harvard.edu/humann2) 
 pipeline for metabolic analysis
-* This effort required analyzing ~23T of raw sequencing data, generating ~52T of
+* This effort required analyzing ~30T of raw sequencing data, generating ~52T of
 intermediate files
 
 These datasets are documented in the 
@@ -221,10 +221,11 @@ loman.pseq = ExpressionSet2phyloseq( loman.eset )
 Absolute raw count data can be estimated from the relative count data by 
 multiplying the columns of the `ExpressionSet` data by the number of reads for
 each sample, as found in the `pData` column "number_reads". You could do this
-manually using the `sweep()` function:
+manually using the `sweep()` function (dividing by 100 to convert relative 
+abundance percentages to fractions):
 
 ```{r}
-loman.counts = sweep(exprs( loman.eset ), 2, loman.eset$number_reads, "*")
+loman.counts = sweep(exprs( loman.eset ) / 100, 2, loman.eset$number_reads, "*")
 loman.counts[1:6, 1:5]
 ```
 
