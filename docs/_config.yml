@@ -3,8 +3,8 @@ description: Curated and processed metagenomic data through ExperimentHub
 
 url: https://waldronlab.github.io/curatedMetagenomicData
 baseurl: ""
-paginate_path: "blog/page:num/"
-permalink: blog/:title/
+paginate_path: "tutorials/page:num/"
+permalink: tutorials/:title/
 
 markdown: kramdown
 highlighter: rouge
@@ -13,16 +13,13 @@ paginate: 5
 
 navigation:
  - title: Home
-   url: /index.html
- - title: About
-   url: /about
- - title: Contact
-   url: /contact
+   url: /
+ - title: Tutorials
+   url: /tutorials
+ - title: Publications
+   url: /publications
 
-# social:
-#    github: brianmaierjr
-#    twitter: brianmaierjr
-#    facebook: brianmaierjr
-#    email: brimaidesigns@gmail.com
+google_analytics: "UA-90028752-1"
 
-google_analytics: "UA-58263416-1"
+github_url: https://github.com/waldronlab/curatedMetagenomicData
+download_url: https://github.com/waldronlab/curatedMetagenomicData/archive/master.zip
