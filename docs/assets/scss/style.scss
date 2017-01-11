@@ -32,3 +32,9 @@
 body {
   text-align: justify;
 }
+
+@media only screen and (max-width: 799px) {
+  .hide-me {
+    display: none;
+  }
+}
