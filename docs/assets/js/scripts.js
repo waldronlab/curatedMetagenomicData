@@ -20,13 +20,14 @@ $( document ).ready(function() {
 	credits = strURL.includes("credits");
 
 	if (tutorials) {
-		$("[href='/tutorials']:parent").addClass("current");
+		$("[href='/tutorials']").parent().addClass("current");
 	} else if (publications) {
-		$().addClass();
+		$("[href='/publications']").parent().addClass("current");
 	} else if (credits) {
 		NULL
 	} else {
-		$().addClass();
+		$("[href='/']").parent().addClass("current");
+		$("#home > p").first().addClass("centered");
 	}
 
 });
