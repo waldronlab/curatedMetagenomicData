@@ -20,14 +20,16 @@ $( document ).ready(function() {
 	credits = strURL.includes("credits");
 
 	if (tutorials) {
-		$("[href='/tutorials']").parent().addClass("current");
+		$("[href='/curatedMetagenomicData/tutorials']").parent().addClass("current");
 	} else if (publications) {
-		$("[href='/publications']").parent().addClass("current");
+		$("[href='/curatedMetagenomicData/publications']").parent().addClass("current");
 	} else if (credits) {
-		NULL
+		$("#home").addClass("post");
 	} else {
-		$("[href='/']").parent().addClass("current");
+		$("[href='/curatedMetagenomicData/']").parent().addClass("current");
+		$("#home").addClass("post");
 		$("#home > p").first().addClass("centered");
+		$("#home > h1").first().addClass("hide-me");
 	}
 
 });
