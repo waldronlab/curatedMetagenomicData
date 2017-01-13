@@ -37,6 +37,7 @@ HOMEPAGE STYLING
 ***************/
 
 #home {
+
 	.posts, .pageTitle, .pagination {
 		@include span(9 of 12);
 		float: none;
@@ -64,7 +65,7 @@ HEADER STYLING
 		-webkit-transform: translateY(-50%);
 		-ms-transform: translateY(-50%);
 		transform: translateY(-50%);
-		@include container(750px);
+		@include container(700px);
 	}
 
 	h1 {
