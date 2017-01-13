@@ -18,12 +18,14 @@ $( document ).ready(function() {
 	tutorials = strURL.includes("tutorials");
 	publications = strURL.includes("publications");
 	credits = strURL.includes("credits");
+	install = strURL.includes("install");
 
 	if (tutorials) {
 		$("[href='/curatedMetagenomicData/tutorials']").parent().addClass("current");
 	} else if (publications) {
 		$("[href='/curatedMetagenomicData/publications']").parent().addClass("current");
-	} else if (credits) {
+		$("#home").addClass("post");
+	} else if (credits || install) {
 		$("#home").addClass("post");
 	} else {
 		$("[href='/curatedMetagenomicData/']").parent().addClass("current");

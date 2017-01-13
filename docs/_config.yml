@@ -1,4 +1,5 @@
 title: curatedMetagenomicData
+short_title: cMD
 description: Curated and processed metagenomic data through ExperimentHub
 
 url: https://waldronlab.github.io/curatedMetagenomicData
@@ -14,6 +15,8 @@ paginate: 5
 navigation:
  - title: Home
    url: /
+ - title: Install
+   url: /install
  - title: Tutorials
    url: /tutorials
  - title: Publications
