@@ -15,17 +15,20 @@ $( document ).ready(function() {
 
 	// Set current link
 	var strURL = document.URL;
+	install = strURL.includes("install");
 	tutorials = strURL.includes("tutorials");
 	publications = strURL.includes("publications");
 	credits = strURL.includes("credits");
-	install = strURL.includes("install");
 
-	if (tutorials) {
+	if (install) {
+		$("[href='/curatedMetagenomicData/install']").parent().addClass("current");
+		$("#home").addClass("post");
+	} else if (tutorials) {
 		$("[href='/curatedMetagenomicData/tutorials']").parent().addClass("current");
 	} else if (publications) {
 		$("[href='/curatedMetagenomicData/publications']").parent().addClass("current");
 		$("#home").addClass("post");
-	} else if (credits || install) {
+	} else if (credits) {
 		$("#home").addClass("post");
 	} else {
 		$("[href='/curatedMetagenomicData/']").parent().addClass("current");
