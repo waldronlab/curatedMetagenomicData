@@ -3,7 +3,7 @@ layout: post
 title:  "Adding New Data"
 date:   2017-01-13
 ---
-<p class="intro"><span class="dropcap">T</span>he following steps describe the process needed to add new data to the package; these steps are not of any consequence to the end user and should only concern the developers of this package.</p>
+The following steps describe the process needed to add new data to the package; these steps are not of any consequence to the end user and should only concern the developers of this package.
 
 ### Project Source
 
