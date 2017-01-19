@@ -13,7 +13,7 @@ most up to date project source. This is accomplished by cloning the repository
 from GitHub as a new RStudio project (or doing a pull if the project source has
 been cloned previously). Once cloned, the source should be built and reloaded, a
 button is found in the build pane of RStudio. This step must be successfully
-completed before moving on given that developer functions have relative paths
+completed before moving on, given that developer functions have relative paths
 and it will be necessary to view package contents during the process of adding a
 new dataset.
 
@@ -22,12 +22,12 @@ new dataset.
 There are two helper functions to aid in adding new datasets to the package. The
 first, `load_suggests()`, is used to load all the suggested packages listed in
 the `DESCRIPTION` file. If a package is not installed, the function will
-download and install it using only the `base` and `utils` packages. This choice
-is intentional and seeks to avoid the use of dependencies beyond the packages
-that ship with R. The second function, `source_scripts()`, provides a mechanism
-to quickly load all of the functions used in processing `*.tar.gz` files into
-the final `ExpressionSet` objects. The functions are not exported and must be
-used as follows:
+download and install it using only the `base` and `BiocInstaller` packages. This
+choice is intentional and seeks to avoid the use of dependencies beyond the
+packages that ship with R. The second function, `source_scripts()`, provides a
+mechanism to quickly load all of the functions used in processing `*.tar.gz`
+files into the final `ExpressionSet` objects. The functions are not exported and
+must be used as follows:
 
 ```
 curatedMetagenomicData:::load_suggests()
@@ -151,7 +151,7 @@ augmented using the `make_metadata()` function. Much like the
 `make_documentation()` function, no arguments are required because the package
 directory structure can be assumed. Internally the function is also similar to
 the `make_documentation()` function in that it reads in each `ExpressionSet`
-object and serialized the information as required in the `metadata.csv` file. In
+object and serializes the information as required in the `metadata.csv` file. In
 the final step of the `make_metadata()` function a line for each `ExpressionSet`
 is written to the `metadata.csv` file. It is important to note that this process
 does not overwrite the existing file and that is the desired behavior. In such a

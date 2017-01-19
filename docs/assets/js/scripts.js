@@ -14,8 +14,11 @@ $( document ).ready(function() {
 	tutorials = strURL.includes("tutorials");
 	publications = strURL.includes("publications");
 	credits = strURL.includes("credits");
+	is404 = $("h1.pageTitle").text().includes("404");
 
-	if (install) {
+	if (is404) {
+		$("#home > p").first().addClass("centered");
+	} else if (install) {
 		$("[href='/curatedMetagenomicData/install']").parent().addClass("current");
 		$("#home").addClass("post");
 		$("#home > p").first().addClass("intro");
@@ -28,7 +31,7 @@ $( document ).ready(function() {
 	} else if (credits) {
 		$("#home").addClass("post");
 		$("#home > p").first().addClass("intro");
-	} else {
+	} else if (!is404) {
 		$("[href='/curatedMetagenomicData/']").parent().addClass("current");
 		$("#home").addClass("post");
 		$("#home > p").first().addClass("centered");
@@ -45,7 +48,9 @@ $( document ).ready(function() {
 	$(".intro").html('<span class="dropcap">'+currentText.slice(0,1)+'</span>'+currentText.slice(1));
 
 	// Intro Class w/o First Letter Style
-	$("#home > p.centered").next().addClass("intro");
+	if (!is404) {
+		$("#home > p.centered").next().addClass("intro");
+	}
 
 	// DropCap.js (should always come last)
 	var dropcaps = document.querySelectorAll(".dropcap");
