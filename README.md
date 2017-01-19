@@ -7,14 +7,12 @@
 
 # curatedMetagenomicData
 
-*curatedMetagenomicData* is a *Bioconductor* package using *ExperimentHub* to access
+*curatedMetagenomicData* is a *Bioconductor* package that uses *ExperimentHub* to access
 a large number (n ≈ 3000) of human microbiome samples gathered from various sources.
-
-See quick-start directions on the wiki [here](https://github.com/waldronlab/curatedMetagenomicData/wiki).
 
 ## Quick Start
 
-Install `curatedMetagenomicData` through Bioconductor using `BiocInstaller` and open the vignette.
+Install `curatedMetagenomicData` through Bioconductor using `BiocInstaller` and open the [package vignette](https://bioconductor.org/packages/release/data/experiment/vignettes/curatedMetagenomicData/inst/doc/curatedMetagenomicData.html).
 
 ```
 BiocInstaller::biocLite("curatedMetagenomicData")
