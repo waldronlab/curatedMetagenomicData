@@ -3,7 +3,7 @@ layout: post
 title:  "Accessing Data From the Command Line"
 date:   2017-01-17
 ---
-In order to access data from the command line it is necessary to have *R*, *Bioconductor*, and *curatedMetagenomicData* installed (see [install](/install)). Additionally, it is necessary to install the *docopt* package from within *R*:
+In order to access data from the command line it is necessary to have *R*, *Bioconductor*, and *curatedMetagenomicData* installed (see install). Additionally, it is necessary to install the *docopt* package from within *R*:
 
 ```
 BiocInstaller::biocLite("docopt")
