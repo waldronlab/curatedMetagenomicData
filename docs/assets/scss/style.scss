@@ -35,12 +35,31 @@ body {
   margin: 0;
 }
 
-p {
+blockquote {
+  font-size: inherit;
+}
+
+blockquote img {
+	box-shadow:  0 0 10px rgba(0,0,0,0.6);
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+	-o-box-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+.home p {
   text-align: justify;
 }
 
+ol p, ul p {
+  text-align: left !important;
+}
+
+.highlighter-rouge {
+  font-size: x-large;
+}
+
 .centered {
-  text-align: center;
+  text-align: center !important;
 }
 
 @media only screen and (max-width: 799px) {

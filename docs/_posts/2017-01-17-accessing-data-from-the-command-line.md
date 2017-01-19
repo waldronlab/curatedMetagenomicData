@@ -3,23 +3,18 @@ layout: post
 title:  "Accessing Data From the Command Line"
 date:   2017-01-17
 ---
-You must install *R*, *Bioconductor*, and *curatedMetagenomicData* using the instructions above. Additionally, you must install the *docopt* package from
-within *R*:
+In order to access data from the command line it is necessary to have *R*, *Bioconductor*, and *curatedMetagenomicData* installed (see [install](/install)). Additionally, it is necessary to install the *docopt* package from within *R*:
 
 ```
 BiocInstaller::biocLite("docopt")
 ```
 
-Then:
+With the above completed, data can be accessed from the command line by:
 
-1. Download the [curatedMetagenomicData shell script](https://raw.githubusercontent.com/waldronlab/curatedMetagenomicData/master/inst/commandline/curatedMetagenomicData).
+1. Downloading the curatedMetagenomicData [shell script](https://raw.githubusercontent.com/waldronlab/curatedMetagenomicData/master/inst/commandline/curatedMetagenomicData){:target="_blank"}.
 
-2. Make sure it has executable permissions:
+2. Making sure the shell script has executable permissions (i.e., `chmod a+x curatedMetagenomicData`)
 
-    ```
-    chmod a+x curatedMetagenomicData
-    ```
+3. Making sure the R executable at the top of the script is correct (by default `/usr/bin/Rscript`). Check where `Rscript` is installed by `which Rscript`.
 
-3. Make sure the R executable at the top of the script is correct (by default `/usr/bin/Rscript`). Check where your `Rscript` is installed by `which Rscript`.
-
-4. Place the *curatedMetagenomicData* file somewhere in your PATH, or invoke it using `./curatedMetagenomicData`. Use `./curatedMetagenomicData -h`to see its help.
+4. Placing the *curatedMetagenomicData* file somewhere on your `PATH`, or invoke it using `./curatedMetagenomicData`. Use `./curatedMetagenomicData -h` to see its help.
