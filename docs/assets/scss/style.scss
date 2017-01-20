@@ -39,7 +39,7 @@ blockquote {
   font-size: inherit;
 }
 
-blockquote img {
+blockquote img, blockquote iframe {
 	box-shadow:  0 0 10px rgba(0,0,0,0.6);
 	-moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
 	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
@@ -52,6 +52,10 @@ blockquote img {
 
 ol p, ul p {
   text-align: left !important;
+}
+
+.description {
+  text-align: justify !important;
 }
 
 .highlighter-rouge {
