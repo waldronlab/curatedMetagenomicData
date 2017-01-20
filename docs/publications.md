@@ -2,7 +2,12 @@
 layout: default
 title: Publications
 ---
-There have been a number of publications and presentation concerning curatedMetagenomicData, all of which have been collected here. Beyond these, a journal manuscript is currently being prepared and will be posted in the near future.
+Publications and presentations relating to curatedMetagenomicData will be collected here. 
+
+> ### December 6, 2016
+> 
+> A 5-minute video describing curatedMetagenomicData and giving a simple usage 
+> scenario: https://www.youtube.com/watch?v=ZAbaXAQpZPE
 
 > ### December 01, 2016
 >
