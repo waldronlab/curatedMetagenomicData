@@ -15,8 +15,8 @@ paginate: 5
 navigation:
  - title: Home
    url: /
- - title: Install
-   url: /install
+ - title: Getting Started
+   url: /getting-started
  - title: Tutorials
    url: /tutorials
  - title: Publications
@@ -25,4 +25,3 @@ navigation:
 google_analytics: "UA-90028752-1"
 
 github_url: https://github.com/waldronlab/curatedMetagenomicData
-download_url: https://github.com/waldronlab/curatedMetagenomicData/archive/master.zip

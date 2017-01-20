@@ -10,7 +10,7 @@ $( document ).ready(function() {
 
 	// CSS Hacks for Current Page
 	var strURL = document.URL;
-	install = strURL.includes("install");
+	gettingStarted = strURL.includes("getting-started");
 	tutorials = strURL.includes("tutorials");
 	publications = strURL.includes("publications");
 	credits = strURL.includes("credits");
@@ -18,8 +18,8 @@ $( document ).ready(function() {
 
 	if (is404) {
 		$("#home > p").first().addClass("centered");
-	} else if (install) {
-		$("[href='/curatedMetagenomicData/install']").parent().addClass("current");
+	} else if (gettingStarted) {
+		$("[href='/curatedMetagenomicData/getting-started']").parent().addClass("current");
 		$("#home").addClass("post");
 		$("#home > p").first().addClass("intro");
 	} else if (tutorials) {
