@@ -7,7 +7,7 @@ Publications and presentations relating to curatedMetagenomicData will be collec
 > ### December 6, 2016
 > 
 > A 5-minute video describing curatedMetagenomicData and giving a simple usage 
-> scenario: https://www.youtube.com/watch?v=ZAbaXAQpZPE
+> scenario: [https://www.youtube.com/watch?v=ZAbaXAQpZPE](https://www.youtube.com/watch?v=ZAbaXAQpZPE)
 
 > ### December 01, 2016
 >
