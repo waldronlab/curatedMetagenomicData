@@ -16,30 +16,57 @@ knitr::opts_chunk$set(echo = TRUE, cache=TRUE)
 ```
 # Assemble pathway abundance dataset
 ## Retrieve data
-Create an ExperimentHub containing metadata for all `curatedMetagenomicData` records:
 
-```{r}
-suppressPackageStartupMessages(library(ExperimentHub))
-eh = ExperimentHub()
-myquery = query(eh, "curatedMetagenomicData")
-```
-
-Subset this to bug abundance from stool datasets. Note that this could also be done using `myquery$tags` (once the tags are updated). See the available metadata using `View(mcols(myquery))`.
-
-```{r}
-myquery.stool <- myquery[grepl("stool", myquery$title) & grepl("pathabundance", myquery$title), ]
-myquery.stool
+```{r, echo=FALSE}
+## Get rid of this as soon as the function is added to the package...
+curatedMetagenomicData <- function(x = "*",
+           dryrun = TRUE,
+           counts = FALSE,
+           bugs.as.phyloseq = FALSE,
+           x.is.glob = TRUE) {
+    requested.datasets <- x
+    all.datasets <- ls("package:curatedMetagenomicData")
+    all.datasets <-
+      grep("marker|gene|path|metaphlan_bugs", all.datasets, val = TRUE)
+    regex <-
+      ifelse(x.is.glob,
+             paste(glob2rx(requested.datasets), collapse = "|"),
+             requested.datasets)
+    matched.datasets <- grep(regex, all.datasets, value = TRUE)
+    if (dryrun) {
+      message("Dry run: see return values for datasets that would be downloaded. Run with `dryrun=FALSE` to actually download these datasets.")
+      return(matched.datasets)
+    }
+    if (!any(matched.datasets %in% all.datasets))
+      stop("requested datasets do not match any available datasets.")
+    eset.list <- lapply(seq_along(matched.datasets), function(i) {
+      message(paste0("Working on ", matched.datasets[i]))
+      eset <- do.call(get(matched.datasets[i]), list())
+      if (counts) {
+        exprs(eset) <-
+          round(sweep(exprs(eset), 2, eset$number_reads / 100, "*"))
+      }
+      if(bugs.as.phyloseq && grepl("metaphlan", matched.datasets[i])){
+        eset <- ExpressionSet2phyloseq(eset)
+      }
+      return(eset)
+    })
+    names(eset.list) <- matched.datasets
+    return(eset.list)
+  }
 ```
 
 Create a list of ExpressionSet objects:
 ```{r, message=FALSE}
-eset.list <- lapply(names(myquery.stool), function(x) myquery.stool[[x]])
+suppressPackageStartupMessages(library(curatedMetagenomicData))
+eset.list <- curatedMetagenomicData("*pathabundance_relab.stool", dryrun = FALSE)
 ```
 
 Give them simplified titles:
 ```{r}
-names(eset.list) <- myquery.stool$title
-names(eset.list) <- gsub("\\..+", "", myquery.stool$title)
+names(eset.list)
+names(eset.list) <- gsub("\\..+", "", names(eset.list))
+names(eset.list)
 ```
 
 And add the titles to the colnames:
@@ -88,20 +115,17 @@ eset_pathway
 
 ## Retrieve data
 
-```{r}
-myquery.stool <- myquery[grepl("stool", myquery$title) & grepl("bugs", myquery$title), ]
-myquery.stool
-```
 
 Create a list of ExpressionSet objects:
 ```{r, message=FALSE}
-eset.list <- lapply(names(myquery.stool), function(x) myquery.stool[[x]])
+eset.list <- curatedMetagenomicData("*metaphlan_bugs_list.stool", dryrun = FALSE)
 ```
 
 Give them simplified titles:
 ```{r}
-names(eset.list) <- myquery.stool$title
-names(eset.list) <- gsub("\\..+", "", myquery.stool$title)
+names(eset.list)
+names(eset.list) <- gsub("\\..+", "", names(eset.list))
+names(eset.list)
 ```
 
 And add the titles to the colnames:
@@ -125,18 +149,6 @@ for (i in seq_along(eset.list)){
 ## Merge into one big `ExpressionSet`
 
 ```{r join_bugs, message=FALSE, cache=TRUE}
-joinWithRnames <- function(obj, FUN = I) {
-    mylist <- lapply(obj, function(x) {
-        df <- data.frame(FUN(x))
-        df$rnames28591436107 <- rownames(df)
-        return(df)
-    })
-    bigdf <- Reduce(dplyr::full_join, mylist)
-    rownames(bigdf) <- make.names(bigdf$rnames28591436107)
-    bigdf <- bigdf[, !grepl("^rnames28591436107$", colnames(bigdf))]
-    return(bigdf)
-}
-
 pdat <- joinWithRnames(eset.list, FUN=pData)
 pdat$study <- sub("\\..+", "", rownames(pdat))
 ab <- joinWithRnames(eset.list, FUN=exprs)
@@ -148,7 +160,6 @@ eset_bugs
 ## Convert bug abundance `ExpressionSet` to `phyloseq` object
 
 ```{r}
-suppressPackageStartupMessages(library(phyloseq))
 source("https://raw.githubusercontent.com/waldronlab/presentations/master/Waldron_2016-06-07_EPIC/metaphlanToPhyloseq.R")
 pseq <- metaphlanToPhyloseq(tax=exprs(eset_bugs), metadat=pData(eset_bugs), split=".")
 ```
