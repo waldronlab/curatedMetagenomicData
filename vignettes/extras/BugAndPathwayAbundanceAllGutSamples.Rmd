@@ -10,9 +10,10 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(cache = TRUE)
-knitr::opts_chunk$set(eval = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
 ```
 
 ```{r libraries, include=FALSE}
@@ -52,7 +53,9 @@ curatedMetagenomicData <- function(x = "*", dryrun = TRUE, counts = FALSE, bugs.
     regex <- ifelse(x.is.glob, paste(glob2rx(requested.datasets), collapse = "|"), requested.datasets)
     matched.datasets <- grep(regex, all.datasets, value = TRUE)
     if (dryrun) {
-        message(c("Dry run: see return values for datasets that would be downloaded.", "\n", "Run with `dryrun=FALSE` to actually download these datasets."))
+        message(c(
+            "Dry run: see return values for datasets that would be downloaded.",
+            "\nRun with `dryrun=FALSE` to actually download these datasets."))
         return(matched.datasets)
     }
     if (!any(matched.datasets %in% all.datasets)) 
@@ -173,49 +176,72 @@ eset_bugs <- ExpressionSet(assayData = as.matrix(ab), phenoData = AnnotatedDataF
 ## Convert bug abundance `ExpressionSet` to `phyloseq` object
 
 ```{r}
-pseq <- ExpressionSet2phyloseq(eset_bugs)
+metaphlanToPhyloseq <- function(tax, metadat = NULL, simplenames = TRUE, roundtointeger = FALSE, split = "|") {
+    xnames <- rownames(tax)
+    shortnames <- gsub(paste0(".+\\", split), "", xnames)
+    if (simplenames) {
+        rownames(tax) <- shortnames
+    }
+    if (roundtointeger) {
+        tax <- round(tax * 10000)
+    }
+    x2 <- strsplit(xnames, split = split, fixed = TRUE)
+    taxmat <- matrix(NA, ncol = max(sapply(x2, length)), nrow = length(x2))
+    colnames(taxmat) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species", "Strain")[1:ncol(taxmat)]
+    rownames(taxmat) <- rownames(tax)
+    for (i in 1:nrow(taxmat)) {
+        taxmat[i, 1:length(x2[[i]])] <- x2[[i]]
+    }
+    taxmat <- gsub("[a-z]__", "", taxmat)
+    taxmat <- phyloseq::tax_table(taxmat)
+    otutab <- phyloseq::otu_table(tax, taxa_are_rows = TRUE)
+    if (is.null(metadat)) {
+        res <- phyloseq::phyloseq(taxmat, otutab)
+    } else {
+        res <- phyloseq::phyloseq(taxmat, otutab, phyloseq::sample_data(metadat))
+    }
+    return(res)
+}
+
+pseq <- metaphlanToPhyloseq(tax = exprs(eset_bugs), metadat = pData(eset_bugs), split = ".")
 ```
 
 # Within-sample relative bug abundances
-
 ```{r}
 glom <- tax_glom(pseq, taxrank = "Phylum")
 
-top8phyla <- names(sort(taxa_sums(glom), TRUE)[1:8])
+top8phyla = names(sort(taxa_sums(glom), TRUE)[1:8])
 phyla8_subset <- prune_taxa(top8phyla, glom)
 
 phyla_to_sort <- data.frame(id = 1:8, phyla = as.character(tax_table(phyla8_subset)[, "Phylum"]), otu = as.character(taxa_names(phyla8_subset)))
 rownames(phyla_to_sort) <- phyla_to_sort$otu
 
-phyla8_subset %>%
+phylum_ranks <- phyla8_subset %>%
     otu_table %>%
     rowSums %>%
     sort(T) %>%
-    names ->
-    phylum_ranks
+    names
 
 phyla_to_sort <- phyla_to_sort[phylum_ranks, ]
 
 prop <- transform_sample_counts(phyla8_subset, function(i) i/sum(i))
 
-psmelt(prop) %>%
+bardat <- psmelt(prop) %>%
     select(OTU, Sample, Abundance) %>%
-    mutate(Sample = as.numeric(factor(Sample)), OTU = factor(OTU, levels = phyla_to_sort$otu, labels = phyla_to_sort$phyla)) ->
-    bardat
+    mutate(Sample = as.numeric(factor(Sample)), OTU = factor(OTU, levels = phyla_to_sort$otu, labels = phyla_to_sort$phyla))
 
-bardat %>%
+firmicutes_order <- bardat %>%
     filter(OTU == "Firmicutes") %>%
     arrange(Abundance) %>%
-    select(Sample) ->
-    firmicutes_order
+    select(Sample)
 
-bardat %<>% 
+bardat %<>%
     mutate(Sample = as.numeric(factor(Sample, levels = factor(firmicutes_order$Sample))))
 
 set.seed(14)
 
-bardat %>% 
-    arrange(bardat, desc(OTU), Abundance) %>%
+bardat %>%
+    arrange(desc(OTU), Abundance) %>%
     ggplot(aes(x = Sample, y = Abundance, fill = OTU)) +
     geom_area() +
     scale_fill_manual(values = sample(pallet, size = 8, replace = FALSE)) +
@@ -283,7 +309,7 @@ qplot(x = eset_pathway$prev,
 
 ## With top 20 most abundant genera
 
-```{r}
+```{r, fig.width=10}
 glom_genus <- tax_glom(pseq, taxrank = "Genus")
 top20_genus_otu_names <- names(sort(taxa_sums(glom_genus), TRUE)[1:20])
 top20_genus <- tax_table(glom_genus)[top20_genus_otu_names, "Genus"]
@@ -300,9 +326,7 @@ cor_matrix <- cor(t(otu_table(subset_genus)), t(exprs(eset_pathway)[max_pathways
 rownames(cor_matrix) <- top20_genus[rownames(cor_matrix), 1]
 
 melted_cors <- melt(cor_matrix)
-```
 
-```{r}
 melted_cors %>%
     ggplot(aes(x = Var1, y = Var2, fill = value)) +
     geom_tile() +
