@@ -1,17 +1,19 @@
 ---
-title: "Clustering of All Gut Samples using Taxonomic Abundance"
+title: "Clustering of All Gut Samples by Taxonomic Abundance"
 author: "Audrey Renson"
 output:
     BiocStyle::html_document
 vignette: >
-    %\VignetteIndexEntry{Clustering of All Gut Samples using Taxonomic Abundance}
+    %\VignetteIndexEntry{Clustering of All Gut Samples by Taxonomic Abundance}
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
 ```
 
 ```{r libraries, include=FALSE}
@@ -35,39 +37,39 @@ orange <- "#ee7722"
 yellow <- "#ffee33"
 pallet <- c(blue, blueGreen, green, paleYellow, gray, purple, red, orange, yellow)
 n <- length(pallet)
-image(1:n, 1, as.matrix(1:n), col = pallet, 
-        xlab = "", ylab = "", xaxt = "n", yaxt = "n", 
-        bty = "n")
+image(1:n, 1, as.matrix(1:n), col = pallet, xlab = "", ylab = "", xaxt = "n", yaxt = "n", bty = "n")
 ```
 
 # Create datasets
 
 ```{r}
 curatedMetagenomicData <- function(x = "*", dryrun = TRUE, counts = FALSE, bugs.as.phyloseq = FALSE, x.is.glob = TRUE) {
-  requested.datasets <- x
-  all.datasets <- ls("package:curatedMetagenomicData")
-  all.datasets <- grep("marker|gene|path|metaphlan_bugs", all.datasets, val = TRUE)
-  regex <- ifelse(x.is.glob, paste(glob2rx(requested.datasets), collapse = "|"), requested.datasets)
-  matched.datasets <- grep(regex, all.datasets, value = TRUE)
-  if (dryrun) {
-    message("Dry run: see return values for datasets that would be downloaded. Run with `dryrun=FALSE` to actually download these datasets.")
-    return(matched.datasets)
-  }
-  if (!any(matched.datasets %in% all.datasets)) 
-    stop("requested datasets do not match any available datasets.")
-  eset.list <- lapply(seq_along(matched.datasets), function(i) {
-    message(paste0("Working on ", matched.datasets[i]))
-    eset <- do.call(get(matched.datasets[i]), list())
-    if (counts) {
-      exprs(eset) <- round(sweep(exprs(eset), 2, eset$number_reads/100, "*"))
+    requested.datasets <- x
+    all.datasets <- ls("package:curatedMetagenomicData")
+    all.datasets <- grep("marker|gene|path|metaphlan_bugs", all.datasets, val = TRUE)
+    regex <- ifelse(x.is.glob, paste(glob2rx(requested.datasets), collapse = "|"), requested.datasets)
+    matched.datasets <- grep(regex, all.datasets, value = TRUE)
+    if (dryrun) {
+        message(c(
+            "Dry run: see return values for datasets that would be downloaded.",
+            "\nRun with `dryrun=FALSE` to actually download these datasets."))
+        return(matched.datasets)
     }
-    if (bugs.as.phyloseq && grepl("metaphlan", matched.datasets[i])) {
-      eset <- ExpressionSet2phyloseq(eset)
-    }
-    return(eset)
-  })
-  names(eset.list) <- matched.datasets
-  return(eset.list)
+    if (!any(matched.datasets %in% all.datasets)) 
+        stop("requested datasets do not match any available datasets.")
+    eset.list <- lapply(seq_along(matched.datasets), function(i) {
+        message(paste0("Working on ", matched.datasets[i]))
+        eset <- do.call(get(matched.datasets[i]), list())
+        if (counts) {
+            exprs(eset) <- round(sweep(exprs(eset), 2, eset$number_reads/100, "*"))
+        }
+        if (bugs.as.phyloseq && grepl("metaphlan", matched.datasets[i])) {
+            eset <- ExpressionSet2phyloseq(eset)
+        }
+        return(eset)
+    })
+    names(eset.list) <- matched.datasets
+    return(eset.list)
 }
 ```
 
@@ -87,9 +89,9 @@ And add the titles to the colnames:
 
 ```{r}
 for (i in 1:length(eset.list)) {
-  colnames(eset.list[[i]]) <- paste(names(eset.list)[[i]], colnames(eset.list[[i]]), sep = ".")
-  pData(eset.list[[i]]) <- pData(eset.list[[i]])[, !sapply(pData(eset.list[[i]]), function(x) all(is.na(x)))]
-  eset.list[[i]]$subjectID <- as.character(eset.list[[i]]$subjectID)
+    colnames(eset.list[[i]]) <- paste(names(eset.list)[[i]], colnames(eset.list[[i]]), sep = ".")
+    pData(eset.list[[i]]) <- pData(eset.list[[i]])[, !sapply(pData(eset.list[[i]]), function(x) all(is.na(x)))]
+    eset.list[[i]]$subjectID <- as.character(eset.list[[i]]$subjectID)
 }
 ```
 
@@ -97,8 +99,8 @@ Keep leaf nodes only:
 
 ```{r}
 for (i in seq_along(eset.list)) {
-  eset.list[[i]] <- eset.list[[i]][grep("t__", rownames(eset.list[[i]]), invert = TRUE), ]
-  eset.list[[i]] <- eset.list[[i]][grep("s__|_unclassified\t", rownames(eset.list[[i]]), perl = TRUE), ]
+    eset.list[[i]] <- eset.list[[i]][grep("t__", rownames(eset.list[[i]]), invert = TRUE), ]
+    eset.list[[i]] <- eset.list[[i]][grep("s__|_unclassified\t", rownames(eset.list[[i]]), perl = TRUE), ]
 }
 ```
 
@@ -106,15 +108,15 @@ for (i in seq_along(eset.list)) {
 
 ```{r}
 joinWithRnames <- function(obj, FUN = I) {
-  mylist <- lapply(obj, function(x) {
-    df <- data.frame(FUN(x))
-    df$rnames28591436107 <- rownames(df)
-    return(df)
-  })
-  bigdf <- Reduce(full_join, mylist)
-  rownames(bigdf) <- make.names(bigdf$rnames28591436107)
-  bigdf <- bigdf[, !grepl("^rnames28591436107$", colnames(bigdf))]
-  return(bigdf)
+    mylist <- lapply(obj, function(x) {
+        df <- data.frame(FUN(x))
+        df$rnames28591436107 <- rownames(df)
+        return(df)
+    })
+    bigdf <- Reduce(full_join, mylist)
+    rownames(bigdf) <- make.names(bigdf$rnames28591436107)
+    bigdf <- bigdf[, !grepl("^rnames28591436107$", colnames(bigdf))]
+    return(bigdf)
 }
 
 pdat <- joinWithRnames(eset.list, FUN = pData)
@@ -129,7 +131,34 @@ eset <- ExpressionSet(assayData = as.matrix(ab), phenoData = AnnotatedDataFrame(
 # Convert to `phyloseq` object
 
 ```{r}
-pseq <- ExpressionSet2phyloseq(eset)
+metaphlanToPhyloseq <- function(tax, metadat = NULL, simplenames = TRUE, roundtointeger = FALSE, split = "|") {
+    xnames <- rownames(tax)
+    shortnames <- gsub(paste0(".+\\", split), "", xnames)
+    if (simplenames) {
+        rownames(tax) <- shortnames
+    }
+    if (roundtointeger) {
+        tax <- round(tax * 10000)
+    }
+    x2 <- strsplit(xnames, split = split, fixed = TRUE)
+    taxmat <- matrix(NA, ncol = max(sapply(x2, length)), nrow = length(x2))
+    colnames(taxmat) <- c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species", "Strain")[1:ncol(taxmat)]
+    rownames(taxmat) <- rownames(tax)
+    for (i in 1:nrow(taxmat)) {
+        taxmat[i, 1:length(x2[[i]])] <- x2[[i]]
+    }
+    taxmat <- gsub("[a-z]__", "", taxmat)
+    taxmat <- phyloseq::tax_table(taxmat)
+    otutab <- phyloseq::otu_table(tax, taxa_are_rows = TRUE)
+    if (is.null(metadat)) {
+        res <- phyloseq::phyloseq(taxmat, otutab)
+    } else {
+        res <- phyloseq::phyloseq(taxmat, otutab, phyloseq::sample_data(metadat))
+    }
+    return(res)
+}
+
+pseq <- metaphlanToPhyloseq(tax = exprs(eset), metadat = pData(eset), split = ".")
 ```
 
 # Principle Coordinates Analysis (PCoA) Plots
@@ -155,9 +184,14 @@ ord_RJS <- ordinate(pseq, method = "PCoA", distance = dist_rjs)
 ```
 
 ```{r plot_PCoA}
-plot_ordination(pseq, ord_bray, color = "source") + ggtitle("Bray-Curtis Principal Coordinates Analysis")
-plot_ordination(pseq, ord_JS, color = "source") + ggtitle("Jensen-Shannon Principal Coordinates Analysis")
-plot_ordination(pseq, ord_RJS, color = "source") + ggtitle("Root Jensen-Shannon Principal Coordinates Analysis")
+plot_ordination(pseq, ord_bray, color = "source") +
+    ggtitle("Bray-Curtis Principal Coordinates Analysis")
+
+plot_ordination(pseq, ord_JS, color = "source") +
+    ggtitle("Jensen-Shannon Principal Coordinates Analysis")
+
+plot_ordination(pseq, ord_RJS, color = "source") +
+    ggtitle("Root Jensen-Shannon Principal Coordinates Analysis")
 ```
 
 ## Colored by cluster
@@ -168,9 +202,14 @@ samp$bray_cluster_3 <- factor(pam(dist_bray, k = 3, cluster.only = T))
 samp$bray_cluster_4 <- factor(pam(dist_bray, k = 4, cluster.only = T))
 sample_data(pseq) <- samp
 
-plot_ordination(pseq, ord_bray, color = "bray_cluster_2") + ggtitle("Bray-Curtis PCoA with 2 Clusters")
-plot_ordination(pseq, ord_bray, color = "bray_cluster_3") + ggtitle("Bray-Curtis PCoA with 3 Clusters")
-plot_ordination(pseq, ord_bray, color = "bray_cluster_4") + ggtitle("Bray-Curtis PCoA with 4 Clusters")
+plot_ordination(pseq, ord_bray, color = "bray_cluster_2") +
+    ggtitle("Bray-Curtis PCoA with 2 Clusters")
+
+plot_ordination(pseq, ord_bray, color = "bray_cluster_3") +
+    ggtitle("Bray-Curtis PCoA with 3 Clusters")
+
+plot_ordination(pseq, ord_bray, color = "bray_cluster_4") +
+    ggtitle("Bray-Curtis PCoA with 4 Clusters")
 ```
 
 ## Colored by Prevotella copri
@@ -194,12 +233,12 @@ ps_rjs <- prediction.strength(dist_rjs, Gmin = 2, Gmax = 10, clustermethod = pam
 
 ```{r plot_function}
 plot_cluster_validation = function(bray, js, rjs, legend = T, ...) {
-  plot(2:10, bray, type = "b", pch = 1, xlab = "Number of Clusters", ...)
-  lines(2:10, js, type = "b", pch = 2, lty = 2)
-  lines(2:10, rjs, type = "b", pch = 22, lty = 3)
-  if (legend) {
-    legend("topright", legend = c("Bray-Curtis", "Jensen-Shannon", "Root Jensen-Shannon"), pch = c(1, 2, 22), lty = 1:3)
-  }
+    plot(2:10, bray, type = "b", pch = 1, xlab = "Number of Clusters", ...)
+    lines(2:10, js, type = "b", pch = 2, lty = 2)
+    lines(2:10, rjs, type = "b", pch = 22, lty = 3)
+    if (legend) {
+        legend("topright", legend = c("Bray-Curtis", "Jensen-Shannon", "Root Jensen-Shannon"), pch = c(1, 2, 22), lty = 1:3)
+    }
 }
 ```
 
@@ -215,13 +254,13 @@ text("Little or no support", x = 9, y = 0.6, col = "grey70")
 ## Silhouette Index
 
 ```{r Silhouette_Index}
-pam_bray = sapply(2:10, function(i) pam(dist_bray, k = i, cluster.only = T))
-pam_js = sapply(2:10, function(i) pam(dist_js, k = i, cluster.only = T))
-pam_rjs = sapply(2:10, function(i) pam(dist_rjs, k = i, cluster.only = T))
+pam_bray <- sapply(2:10, function(i) pam(dist_bray, k = i, cluster.only = T))
+pam_js <- sapply(2:10, function(i) pam(dist_js, k = i, cluster.only = T))
+pam_rjs <- sapply(2:10, function(i) pam(dist_rjs, k = i, cluster.only = T))
 
-si_bray = apply(pam_bray, 2, function(i) mean(silhouette(i, dist_bray)[, 3]))
-si_js = apply(pam_js, 2, function(i) mean(silhouette(i, dist_js)[, 3]))
-si_rjs = apply(pam_rjs, 2, function(i) mean(silhouette(i, dist_rjs)[, 3]))
+si_bray <- apply(pam_bray, 2, function(i) mean(silhouette(i, dist_bray)[, 3]))
+si_js <- apply(pam_js, 2, function(i) mean(silhouette(i, dist_js)[, 3]))
+si_rjs <- apply(pam_rjs, 2, function(i) mean(silhouette(i, dist_rjs)[, 3]))
 ```
 
 ```{r plot_Silhouette}
@@ -238,9 +277,9 @@ text("No substantial structure", x = 8.5, y = 0.2, col = "grey70")
 ## Calinski-Harabasz
 
 ```{r Calinski-Harabasz}
-ch_bray = apply(pam_bray, 2, function(i) cluster.stats(dist_bray, i)$ch)
-ch_js = apply(pam_js, 2, function(i) cluster.stats(dist_js, i)$ch)
-ch_rjs = apply(pam_rjs, 2, function(i) cluster.stats(dist_rjs, i)$ch)
+ch_bray <- apply(pam_bray, 2, function(i) cluster.stats(dist_bray, i)$ch)
+ch_js <- apply(pam_js, 2, function(i) cluster.stats(dist_js, i)$ch)
+ch_rjs <- apply(pam_rjs, 2, function(i) cluster.stats(dist_rjs, i)$ch)
 ```
 
 ```{r plot_Calinski}
@@ -262,11 +301,11 @@ df_bact <- df_ordinate[df_ordinate$bray2 == 21, ]
 df_prev <- df_ordinate[df_ordinate$bray2 == 22, ]
 
 ggplot() +
-  geom_point(data = df_prev, aes(x = pc1, y = pc2, shape = factor(bray2), fill = prev), shape = 21, size = 4) +
-  scale_fill_gradient(low = "white", high = purple, guide = guide_colorbar(title = "Prevotella copri \n(cluster 2)")) +
-  geom_point(data = df_bact, aes(x = pc1, y = pc2, shape = factor(bray2), color = bact), shape = 22, size = 4) +
-  scale_color_gradient(low = gray, high = blueGreen, guide = guide_colorbar(title = "Bacteroides \n(cluster 1)")) +
-  labs(x = "Axis 1", y = "Axis 2", title = "PCoA by selected abundances, displaying 2 clusters")
+    geom_point(data = df_prev, aes(x = pc1, y = pc2, shape = factor(bray2), fill = prev), shape = 21, size = 4) +
+    scale_fill_gradient(low = "white", high = purple, guide = guide_colorbar(title = "Prevotella copri \n(cluster 2)")) +
+    geom_point(data = df_bact, aes(x = pc1, y = pc2, shape = factor(bray2), color = bact), shape = 22, size = 4) +
+    scale_color_gradient(low = gray, high = blueGreen, guide = guide_colorbar(title = "Bacteroides \n(cluster 1)")) +
+    labs(x = "Axis 1", y = "Axis 2", title = "PCoA by selected abundances, displaying 2 clusters")
 ```
 
 ```{r PCoA_dataset_diseasestate, fig.width=11}
@@ -281,7 +320,7 @@ samp$disease_simplified[samp$disease %in% c("obesity", "overweight")] <- "obese 
 df_ord_dataset_disease <- data.frame(pc1, pc2, disease_bin = factor(samp$disease == "n", levels = c(T, F), labels = c("diseased", "healthy")), disease = samp$disease_simplified, study = samp$study, prev = df_ordinate$prev)
 
 df_ord_dataset_disease %>%
-  ggplot(aes(x = pc1, y = pc2, shape = disease, color = study)) +
-  geom_point() +
-  labs(x = "Axis 1", y = "Axis 2", title = "PCoA by dataset and disease")
+    ggplot(aes(x = pc1, y = pc2, shape = disease, color = study)) +
+    geom_point() +
+    labs(x = "Axis 1", y = "Axis 2", title = "PCoA by dataset and disease")
 ```
