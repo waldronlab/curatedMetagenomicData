@@ -1,0 +1,88 @@
+---
+title: "Disease Classification of Gut Samples by Taxonomic Abundance"
+author: "Edoardo Pasolli"
+output:
+    BiocStyle::html_document
+vignette: >
+    %\VignetteIndexEntry{Disease Classification of Gut Samples by Taxonomic Abundance}
+    %\VignetteEngine{knitr::rmarkdown}
+    %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+```{r libraries, include=FALSE}
+library(curatedMetagenomicData)
+library(randomForest)
+library(caret)
+library(pROC)
+```
+
+# Coordinated Color Scheme
+
+```{r}
+blue <- "#3366aa"
+green <- "#66aa55"
+gray <- "#777777"
+purple <- "#992288"
+red <- "#ee3333"
+black <- "#000000"
+pallet <- c(blue, green, gray, purple, red, black)
+```
+
+# Data Retrieval and Classification
+
+```{r}
+dataset_list = c("KarlssonFH_2013 (T2D)","LeChatelierE_2013 (Obesity)","NielsenHB_2014 (IBD)","QinJ_2012 (T2D)","QinN_2014 (Cirrhosis)","ZellerG_2014 (CRC)")
+class_list = c("t2d","obesity","ibd","t2d","cirrhosis","cancer")
+data_list = c("EH277","EH283","EH301","EH319","EH325","EH361")
+
+eh = ExperimentHub()
+
+for (i in 1:length(dataset_list)) {
+  taxabund = eh[[data_list[i]]]
+  
+  feat = t(exprs(taxabund))
+  feat = feat[, grep("(s__|unclassified)", colnames(feat))]
+  feat = feat[, -grep("t__", colnames(feat))]
+  meta = pData(taxabund)["disease"]
+  all = cbind(feat, meta)
+  if (i==1) {all = subset(all,disease!="impaired_glucose_tolerance")}
+  if (i==2) {all = subset(all, disease!="n")}
+  if (i==3) {
+    all$disease[all$disease == "ibd_ulcerative_colitis"] <- "ibd"
+    all$disease[all$disease == "ibd_crohn_disease"] <- "ibd"
+    all$disease[all$disease == "n_relative"] <- "n"
+  }
+  if (i==4) {all = subset(all, disease!="na")}
+  if (i==6) {
+    all = subset(all, disease!="large_adenoma")
+    all$disease[all$disease == "small_adenoma"] <- "n"
+  }
+
+  assign(paste('rf',i,sep="_"), train(disease~., data=all, preProc=c("zv", "scale", "center"), method="rf", ntree=500, tuneGrid=expand.grid(.mtry=c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 125, 150, 175, 200, 300, 400, 500)), trControl=trainControl(method="repeatedcv", number=10, search="grid", summaryFunction=twoClassSummary, classProbs=TRUE, savePredictions=TRUE)))
+}
+
+```
+
+# ROC curves
+
+```{r}
+for (i in 1:length(dataset_list)) {
+  rf = get(paste('rf',i,sep="_"))
+  
+  if (i==1) {
+    plot.roc(rf$pred$obs[rf$pred$mtry==rf$bestTune$mtry], rf$pred[,class_list[i]][rf$pred$mtry==rf$bestTune$mtry], grid=TRUE, ci=TRUE, xaxs="i", yaxs="i", col=pallet[i], lty=1)    
+  } else {
+    plot.roc(rf$pred$obs[rf$pred$mtry==rf$bestTune$mtry], rf$pred[,class_list[i]][rf$pred$mtry==rf$bestTune$mtry], grid=TRUE, ci=TRUE, xaxs="i", yaxs="i", col=pallet[i], lty=1, add=TRUE)
+  }
+}
+
+legend("bottomright", box.lwd=0, box.col="white", bg="white", lwd=2, legend=dataset_list, col=pallet)
+
+```
