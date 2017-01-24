@@ -1,10 +1,10 @@
 ---
-title: "Taxanomic and Pathway Abundance in All Gut Samples"
+title: "Taxonomic and Pathway Abundance in All Gut Samples"
 author: "Audrey Renson"
 output:
     BiocStyle::html_document
 vignette: >
-    %\VignetteIndexEntry{Taxanomic and Pathway Abundance in All Gut Samples}
+    %\VignetteIndexEntry{Taxonomic and Pathway Abundance in All Gut Samples}
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
 ---
