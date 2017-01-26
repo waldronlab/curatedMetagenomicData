@@ -338,28 +338,36 @@ eset_bugs <- ExpressionSet(assayData = as.matrix(ab), phenoData = AnnotatedDataF
 pseq <- metaphlanToPhyloseq(tax = exprs(eset_bugs), metadat = pData(eset_bugs), split = ".")
 
 glom_genus <- tax_glom(pseq, taxrank = "Genus")
-top20_genus_otu_names <- names(sort(taxa_sums(glom_genus), TRUE)[1:20])
-top20_genus <- tax_table(glom_genus)[top20_genus_otu_names, "Genus"]
+top20_genus_otu_names = names(sort(taxa_sums(glom_genus), TRUE)[1:20])
+top20_genus <- tax_table(glom_genus)[top20_genus_otu_names,"Genus"]
 subset_genus <- prune_taxa(top20_genus_otu_names, glom_genus)
 
-max_cor_pathway <- function(y, X, margin = 1) {
-    cors <- apply(X, margin, function(x) cor.test(as.numeric(y), as.numeric(x))$estimate)
-    rownames(X)[cors == max(cors)]
+max_cor_pathway <- function(y, X, margin=1) {
+  #X must be a matrix
+  cors = apply(X, margin, function(x) cor.test(as.numeric(y), as.numeric(x))$estimate)
+  rownames(X)[cors==max(cors, na.rm=TRUE)]
 }
 
-max_pathways <- apply(otu_table(subset_genus), 1, function(y) max_cor_pathway(y, X = exprs(eset_pathway)[1:20, ]))
 
-cor_matrix <- cor(t(otu_table(subset_genus)), t(exprs(eset_pathway)[max_pathways, ]))
-rownames(cor_matrix) <- top20_genus[rownames(cor_matrix), 1]
+exprs_pwy <- exprs(eset_pathway)
+exprs_pwy <- exprs_pwy[apply(exprs_pwy, 1, function(i) max(i) != 0), ]  #excluding pathways that are all zeros
 
-melted_cors <- melt(cor_matrix)
+max_pathways <- apply(otu_table(subset_genus), 1,  function(y) max_cor_pathway(y, X=exprs_pwy))
 
-melted_cors %>%
-    ggplot(aes(x = Var1, y = Var2, fill = value)) +
+
+
+cor_matrix <- stats::cor(t(otu_table(subset_genus)), t(exprs(eset_pathway)[max_pathways,]))
+rownames(cor_matrix) = top20_genus[rownames(cor_matrix), 1]
+
+melted_cors <- reshape2::melt(cor_matrix)
+heat_pathway <- ggplot(data = melted_cors, aes(x=Var1, y=Var2, fill=value)) + 
     geom_tile() +
-    scale_fill_gradient2(low = blueGreen, high = purple, mid = "gray90", midpoint = 0, space = "Lab", name = "Pearson\nCorrelation") +
-    theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust = 1, size = 9), axis.text.y = element_text(size = 9)) +
-    labs(x = "Genus", y = "Pathway")
+    scale_fill_gradient2(low = blueGreen, high = purple, mid = 'gray90', 
+     midpoint = 0, space = "Lab", 
+     name="Pearson\nCorrelation") + 
+    theme(axis.text.x = element_text(angle = 45, vjust=1, hjust = 1, size=9), axis.text.y=element_text(size=9)) +
+    labs(x="Genus",y="Pathway")
+heat_pathway
 ```
 
 # Supplemental Figure 5: Alpha diversity of taxa from 11 studies of the gut microbiome.
