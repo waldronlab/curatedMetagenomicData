@@ -239,9 +239,11 @@ samp$disease_simplified[samp$disease %in% c("obesity", "overweight")] <- "obese 
 df_ord_dataset_disease <- data.frame(pc1, pc2, disease_bin = factor(samp$disease == "n", levels = c(T, F), labels = c("diseased", "healthy")), disease = samp$disease_simplified, study = samp$study, prev = df_ordinate$prev)
 
 df_ord_dataset_disease %>%
-    ggplot(aes(x = pc1, y = pc2, shape = disease, color = study)) +
+    ggplot(aes(x=pc1, y=pc2, shape=disease, color=study, size=prev)) +
     geom_point() +
-    labs(x = "Axis 1", y = "Axis 2", title = "PCoA by dataset and disease")
+    labs(x="Axis 1", y="Axis 2", title="PCoA by dataset and disease") +
+    scale_shape_manual(values = 19:25) +
+    guides(color=guide_legend(ncol=2), shape=guide_legend(ncol=2), size=guide_legend(ncol=2, title="Prevotella copri"))
 ```
 
 # Supplemental Figure 3. Clustering scores for enterotypes in gut WGS samples.
@@ -360,14 +362,15 @@ cor_matrix <- stats::cor(t(otu_table(subset_genus)), t(exprs(eset_pathway)[max_p
 rownames(cor_matrix) = top20_genus[rownames(cor_matrix), 1]
 
 melted_cors <- reshape2::melt(cor_matrix)
-heat_pathway <- ggplot(data = melted_cors, aes(x=Var1, y=Var2, fill=value)) + 
+melted_cors %>% 
+    ggplot(aes(x=Var1, y=Var2, fill=value)) + 
     geom_tile() +
     scale_fill_gradient2(low = blueGreen, high = purple, mid = 'gray90', 
      midpoint = 0, space = "Lab", 
      name="Pearson\nCorrelation") + 
     theme(axis.text.x = element_text(angle = 45, vjust=1, hjust = 1, size=9), axis.text.y=element_text(size=9)) +
     labs(x="Genus",y="Pathway")
-heat_pathway
+
 ```
 
 # Supplemental Figure 5: Alpha diversity of taxa from 11 studies of the gut microbiome.
