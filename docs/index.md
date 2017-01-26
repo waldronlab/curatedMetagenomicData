@@ -9,7 +9,7 @@ title: curatedMetagenomicData
 [![Coverage Status](https://img.shields.io/codecov/c/github/waldronlab/curatedMetagenomicData/master.svg)](https://codecov.io/github/waldronlab/curatedMetagenomicData?branch=master){:target="_blank"}
 [![Subversion Commits](https://bioconductor.org/shields/commits/data-experiment/curatedMetagenomicData.svg)](https://bioconductor.org/packages/devel/data/experiment/html/curatedMetagenomicData.html#svn_source){:target="_blank"}
 
-*curatedMetagenomicData* is a *Bioconductor* package that uses *ExperimentHub* to access a large number (n ≈ 3000) of human microbiome samples gathered from various sources.
+We present *curatedMetagenomicData*, a Bioconductor package that uses *ExperimentHub* to access a large number of processed and curated metagenomic samples from the human microbiome gathered from various sources.
 
 The project is part of a larger pipeline and processes data from the [HUMAnN2](https://bitbucket.org/biobakery/humann2/wiki/Home){:target="_blank"} and [MetaPhlAn2](https://bitbucket.org/biobakery/metaphlan2){:target="_blank"} pipelines. Although much of the pipeline is of little consequence to the end user, it is shown below for illustration.
 
