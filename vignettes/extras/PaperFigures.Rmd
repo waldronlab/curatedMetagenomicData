@@ -11,6 +11,7 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = TRUE)
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.show = "hold")
 knitr::opts_chunk$set(message = FALSE)
 knitr::opts_chunk$set(warning = FALSE)
 ```
@@ -43,7 +44,8 @@ red <- "#ee3333"
 orange <- "#ee7722"
 black <- "#000000"
 brown <- "#655643"
-pallet <- c(purple, blue, blueGreen, green, paleYellow, yellow, orange, red, gray, brown, black)
+white <- "#ffffff"
+pallet <- c(purple, blue, blueGreen, green, paleYellow, yellow, orange, red, white, gray, brown, black)
 n <- length(pallet)
 image(1:n, 1, as.matrix(1:n), col = pallet, xlab = "", ylab = "", xaxt = "n", yaxt = "n", bty = "n")
 ```
@@ -97,7 +99,9 @@ for (i in 1:length(dataset_list)) {
     }
 }
 
-legend("bottomright", box.lwd = 0, box.col = "white", bg = "white", lwd = 2, legend = dataset_list, col = pallet)
+pallet_reduced <- c(blue, green, gray, purple, red, black)
+
+legend("bottomright", box.lwd = 0, box.col = "white", bg = "white", lwd = 2, legend = dataset_list, col = pallet_reduced)
 ```
 
 # Supplemental Figure 2: PCoA plots colored for dataset + disease states.
