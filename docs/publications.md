@@ -4,8 +4,14 @@ title: Publications
 ---
 Publications and presentations relating to curatedMetagenomicData will be collected here.
 
+> ### January 27, 2017
+>
+> A preprint of our forthcoming paper available on [bioRxiv](http://biorxiv.org/content/early/2017/01/27/103085){:target="_blank"}.
+>
+> [![](/curatedMetagenomicData/assets/img/paper.png)](http://biorxiv.org/content/biorxiv/early/2017/01/27/103085.full.pdf){:target="_blank"}
+
 <blockquote>
-<h3>December 6, 2016</h3>
+<h3>December 06, 2016</h3>
 <p>A 5-minute video describing curatedMetagenomicData and giving a simple usage scenario.</p>
 <p><iframe width="853" height="480" src="https://www.youtube-nocookie.com/embed/ZAbaXAQpZPE?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen></iframe></p>
 </blockquote>
