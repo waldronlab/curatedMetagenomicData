@@ -1,4 +1,4 @@
-experiment_data <- function(metadata) {
+format_experiment_data <- function(metadata) {
     pubmed_query <- pubmed_query(metadata)
     miame_name <- miame_name(pubmed_query)
     miame_lab <- miame_lab(pubmed_query)
