@@ -89,24 +89,24 @@ for (i in 1:length(dataset_list)) {
     assign(paste("rf", i, sep = "_"), train(disease ~ ., data = all, preProc = c("zv", "scale", "center"), method = "rf", ntree = 500, tuneGrid = expand.grid(.mtry = c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 125, 150, 175, 200, 300, 400, 500)), trControl = trainControl(method = "repeatedcv", number = 10, search = "grid", summaryFunction = twoClassSummary, classProbs = TRUE, savePredictions = TRUE)))
 }
 
+pallet_reduced <- c(blue, green, gray, purple, red, black)
+
 for (i in 1:length(dataset_list)) {
     rf <- get(paste("rf", i, sep = "_"))
     
     if (i == 1) {
-        plot.roc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry], grid = TRUE, ci = TRUE, xaxs = "i", yaxs = "i", col = pallet[i], lty = 1)
+        plot.roc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry], grid = TRUE, ci = TRUE, xaxs = "i", yaxs = "i", col = pallet_reduced[i], lty = 1)
     } else {
-        plot.roc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry], grid = TRUE, ci = TRUE, xaxs = "i", yaxs = "i", col = pallet[i], lty = 1, add = TRUE)
+        plot.roc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry], grid = TRUE, ci = TRUE, xaxs = "i", yaxs = "i", col = pallet_reduced[i], lty = 1, add = TRUE)
     }
 }
-
-pallet_reduced <- c(blue, green, gray, purple, red, black)
 
 legend("bottomright", box.lwd = 0, box.col = "white", bg = "white", lwd = 2, legend = dataset_list, col = pallet_reduced)
 ```
 
 # Supplemental Figure 2: PCoA plots colored for dataset + disease states.
 
-```{r figure_2}
+```{r figure_2, fig.width=11}
 curatedMetagenomicData <- function(x = "*", dryrun = TRUE, counts = FALSE, bugs.as.phyloseq = FALSE, x.is.glob = TRUE) {
     requested.datasets <- x
     all.datasets <- ls("package:curatedMetagenomicData")
@@ -299,7 +299,7 @@ text("Little or no support", x = 9, y = 0.6, col = "grey70")
 
 # Supplemental Figure 4: Top correlations between metabolic pathways and genera.
 
-```{r figure_4}
+```{r figure_4, fig.width=11}
 eset.list <- curatedMetagenomicData("*pathabundance_relab.stool", dryrun = FALSE)
 
 names(eset.list) <- gsub("\\..+", "", names(eset.list))
