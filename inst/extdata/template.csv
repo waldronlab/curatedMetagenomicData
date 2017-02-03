@@ -14,7 +14,7 @@ visit_number,integer,non-unique,optional,1|2|3,Visit number
 snprnt,integer,non-unique,optional,*,SNPRNT
 wmsphase,integer,non-unique,optional,1|2,Acquisition stage/phase
 classification,character,non-unique,optional,igt|ngt|t2d,Classification
-gad-antibodies,numeric,non-unique,optional,*,Glutamic acid decarboxylase antibodies (for units see Bingley et al. Diabetes 52; 1128-1136; 2003) 
+gad-antibodies,numeric,non-unique,optional,*,Glutamic acid decarboxylase antibodies (for units see Bingley et al. Diabetes 52; 1128-1136; 2003)
 bmi,numeric,non-unique,optional,*,Body mass index (kg/m2)
 whr,numeric,non-unique,optional,*,Waist-to-hip ratio (cm/cm)
 wc,integer,non-unique,optional,*,Waist circumference (cm)
@@ -80,7 +80,7 @@ affected,character,non-unique,optional,[yn],Affected syte
 method,character,non-unique,optional,ss|mock|sw|qq|cut,Acquisition method
 site_characteristic,character,non-unique,optional,moist|mock|sebaceous|toenail|dry,Syte characteristic
 total_initial_reads,integer,non-unique,optional,*,Number of initial reads
-estimated_median_insert_size,integer,non-unique,optional,*,Estimated median insert size
+estimated_median_insert_size,numeric,non-unique,optional,*,Estimated median insert size
 reported_as_failed_qc,integer,non-unique,optional,*,Number of reads reported as failed QC
 uniquely_align_to_human,integer,non-unique,optional,*,Number of reads uniquely aligned to human
 non_uniquely_align_to_human_with_0_2_mismatches,integer,non-unique,optional,*,Number of reads non-uniquely aligned to human with 0-2 mismatches
@@ -88,7 +88,7 @@ reads_removed_because_of_read_pair_trimming_discrepancy,integer,non-unique,optio
 too_short_after_quality_trimming(<50bp),integer,non-unique,optional,*,Number of reads too short after quality trimming (<50bp)
 stage,character,non-unique,optional,stage_i|stage_ii|discovery|validation,Acquisition stage/phase
 height,integer,non-unique,optional,*,Subject height (cm)
-weight,integer,non-unique,optional,*,Subject weight (km)
+weight,numeric,non-unique,optional,*,Subject weight (km)
 diabetic,character,non-unique,optional,[yn],Is the subject diabetic
 fbg,numeric,non-unique,optional,*,Fasting blood glucose (mmol/L)
 sbp,integer,non-unique,optional,*,Systolic blood pressure (mm Hg)
