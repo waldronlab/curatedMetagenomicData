@@ -47,7 +47,7 @@ matched_reads,integer,non-unique,optional,*,Number of matched reads
 uniquely_matching_reads,integer,non-unique,optional,*,Number of uniquely matching reads
 uniquely_matched_reads,integer,non-unique,optional,*,Number of uniquely matched reads (two paired end reads that matched the same gene were counted as one read)
 gene_number,integer,non-unique,optional,*,Gene number
-gene_number_for_11m_uniquely_matched_reads,integer,non-unique,optional,*,Gene number for 11 M uniquely matched reads
+gene_number_for_11M_uniquely_matched_reads,integer,non-unique,optional,*,Gene number for 11 M uniquely matched reads
 hitchip_probe_number,integer,non-unique,optional,*,HITChip probe number
 gene_count_class,character,non-unique,optional,hgc|lgc,Gene count class
 hitchip_probe_class,character,non-unique,optional,hpc|lpc,HITChip Probe class
@@ -87,7 +87,7 @@ non_uniquely_align_to_human_with_0_2_mismatches,integer,non-unique,optional,*,Nu
 reads_removed_because_of_read_pair_trimming_discrepancy,integer,non-unique,optional,*,Number of reads removed because of read pair trimming discrepancy
 too_short_after_quality_trimming(<50bp),integer,non-unique,optional,*,Number of reads too short after quality trimming (<50bp)
 stage,character,non-unique,optional,stage_i|stage_ii|discovery|validation,Acquisition stage/phase
-height,integer,non-unique,optional,*,Subject height (cm)
+height,numeric,non-unique,optional,*,Subject height (cm)
 weight,numeric,non-unique,optional,*,Subject weight (km)
 diabetic,character,non-unique,optional,[yn],Is the subject diabetic
 fbg,numeric,non-unique,optional,*,Fasting blood glucose (mmol/L)
