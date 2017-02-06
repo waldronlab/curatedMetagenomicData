@@ -11,6 +11,6 @@ make_data <- function(tar_gz_file) {
     metaphlan_bugs_list(pheno_data, experiment_data, dataset_dir)
     pathabundance_relab(pheno_data, experiment_data, dataset_dir)
     pathcoverage(pheno_data, experiment_data, dataset_dir)
-    sysdata(metadata)
+    sysdata(tar_gz_file, metadata)
     invisible(NULL)
 }
