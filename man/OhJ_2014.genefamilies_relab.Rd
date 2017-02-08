@@ -17,6 +17,7 @@ Relabeled genefamilies data from the OhJ_2014 dataset
    An ExpressionSet with 291 samples and 3,956,473 features specific to the skin bodysite
 }
 }
+
 \examples{
 OhJ_2014.genefamilies_relab.skin()
 
@@ -24,4 +25,3 @@ OhJ_2014.genefamilies_relab.skin()
 \seealso{
 \code{\link{OhJ_2014.marker_abundance}}, \code{\link{OhJ_2014.marker_presence}}, \code{\link{OhJ_2014.metaphlan_bugs_list}}, \code{\link{OhJ_2014.pathabundance_relab}}, \code{\link{OhJ_2014.pathcoverage}}
 }
-

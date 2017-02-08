@@ -17,6 +17,7 @@ Relabeled pathabundance data from the QinJ_2012 dataset
    An ExpressionSet with 363 samples and 18,478 features specific to the stool bodysite
 }
 }
+
 \examples{
 QinJ_2012.pathabundance_relab.stool()
 
@@ -24,4 +25,3 @@ QinJ_2012.pathabundance_relab.stool()
 \seealso{
 \code{\link{QinJ_2012.genefamilies_relab}}, \code{\link{QinJ_2012.marker_abundance}}, \code{\link{QinJ_2012.marker_presence}}, \code{\link{QinJ_2012.metaphlan_bugs_list}}, \code{\link{QinJ_2012.pathcoverage}}
 }
-
