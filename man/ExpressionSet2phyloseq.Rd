@@ -25,4 +25,3 @@ LomanNJ_2013_Mi.metaphlan_bugs_list.stool() \%>\%
 ExpressionSet2phyloseq()
 
 }
-

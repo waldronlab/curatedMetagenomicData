@@ -17,6 +17,7 @@ Marker abundance data from the LomanNJ_2013_Hi dataset
    An ExpressionSet with 44 samples and 56,689 features specific to the stool bodysite
 }
 }
+
 \examples{
 LomanNJ_2013_Hi.marker_abundance.stool()
 
@@ -24,4 +25,3 @@ LomanNJ_2013_Hi.marker_abundance.stool()
 \seealso{
 \code{\link{LomanNJ_2013_Hi.genefamilies_relab}}, \code{\link{LomanNJ_2013_Hi.marker_presence}}, \code{\link{LomanNJ_2013_Hi.metaphlan_bugs_list}}, \code{\link{LomanNJ_2013_Hi.pathabundance_relab}}, \code{\link{LomanNJ_2013_Hi.pathcoverage}}
 }
-

@@ -44,4 +44,4 @@ Suggests:
     RISmed
 VignetteBuilder: knitr
 biocViews: Homo_sapiens_Data, ReproducibleResearch, MicrobiomeData
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

@@ -92,6 +92,7 @@ Relabeled genefamilies data from the HMP_2012 dataset
    An ExpressionSet with 3 samples and 1,964,481 features specific to the vaginal_introitus bodysite
 }
 }
+
 \examples{
 HMP_2012.genefamilies_relab.anterior_nares()
 
@@ -99,4 +100,3 @@ HMP_2012.genefamilies_relab.anterior_nares()
 \seealso{
 \code{\link{HMP_2012.marker_abundance}}, \code{\link{HMP_2012.marker_presence}}, \code{\link{HMP_2012.metaphlan_bugs_list}}, \code{\link{HMP_2012.pathabundance_relab}}, \code{\link{HMP_2012.pathcoverage}}
 }
-

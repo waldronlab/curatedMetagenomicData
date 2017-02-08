@@ -5,9 +5,9 @@
 inst/doc
 *.Rproj
 tmp
-data
+uploads
 .DS_Store
-exec
+exec/upload2AWS.sh
 vignettes/*.R
 vignettes/*.html
 vignettes/rsconnect

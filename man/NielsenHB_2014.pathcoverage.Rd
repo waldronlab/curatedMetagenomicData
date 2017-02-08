@@ -17,6 +17,7 @@ Pathcoverage data from the NielsenHB_2014 dataset
    An ExpressionSet with 396 samples and 17,280 features specific to the stool bodysite
 }
 }
+
 \examples{
 NielsenHB_2014.pathcoverage.stool()
 
@@ -24,4 +25,3 @@ NielsenHB_2014.pathcoverage.stool()
 \seealso{
 \code{\link{NielsenHB_2014.genefamilies_relab}}, \code{\link{NielsenHB_2014.marker_abundance}}, \code{\link{NielsenHB_2014.marker_presence}}, \code{\link{NielsenHB_2014.metaphlan_bugs_list}}, \code{\link{NielsenHB_2014.pathabundance_relab}}
 }
-

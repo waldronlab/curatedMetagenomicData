@@ -17,6 +17,7 @@ Taxonomic abundance data from the KarlssonFH_2013 dataset
    An ExpressionSet with 145 samples and 1,140 features specific to the stool bodysite
 }
 }
+
 \examples{
 KarlssonFH_2013.metaphlan_bugs_list.stool()
 
@@ -24,4 +25,3 @@ KarlssonFH_2013.metaphlan_bugs_list.stool()
 \seealso{
 \code{\link{KarlssonFH_2013.genefamilies_relab}}, \code{\link{KarlssonFH_2013.marker_abundance}}, \code{\link{KarlssonFH_2013.marker_presence}}, \code{\link{KarlssonFH_2013.pathabundance_relab}}, \code{\link{KarlssonFH_2013.pathcoverage}}
 }
-

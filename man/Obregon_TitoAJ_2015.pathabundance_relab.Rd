@@ -17,6 +17,7 @@ Relabeled pathabundance data from the Obregon_TitoAJ_2015 dataset
    An ExpressionSet with 58 samples and 10,438 features specific to the stool bodysite
 }
 }
+
 \examples{
 Obregon_TitoAJ_2015.pathabundance_relab.stool()
 
@@ -24,4 +25,3 @@ Obregon_TitoAJ_2015.pathabundance_relab.stool()
 \seealso{
 \code{\link{Obregon_TitoAJ_2015.genefamilies_relab}}, \code{\link{Obregon_TitoAJ_2015.marker_abundance}}, \code{\link{Obregon_TitoAJ_2015.marker_presence}}, \code{\link{Obregon_TitoAJ_2015.metaphlan_bugs_list}}, \code{\link{Obregon_TitoAJ_2015.pathcoverage}}
 }
-

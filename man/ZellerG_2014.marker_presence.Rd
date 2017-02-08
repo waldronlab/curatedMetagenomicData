@@ -17,6 +17,7 @@ Marker presence data from the ZellerG_2014 dataset
    An ExpressionSet with 156 samples and 126,622 features specific to the stool bodysite
 }
 }
+
 \examples{
 ZellerG_2014.marker_presence.stool()
 
@@ -24,4 +25,3 @@ ZellerG_2014.marker_presence.stool()
 \seealso{
 \code{\link{ZellerG_2014.genefamilies_relab}}, \code{\link{ZellerG_2014.marker_abundance}}, \code{\link{ZellerG_2014.metaphlan_bugs_list}}, \code{\link{ZellerG_2014.pathabundance_relab}}, \code{\link{ZellerG_2014.pathcoverage}}
 }
-
