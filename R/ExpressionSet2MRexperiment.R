@@ -21,6 +21,7 @@
 #'
 #' @importFrom Biobase exprs
 #' @importFrom Biobase pData
+#' @importFrom metagenomeSeq newMRexperiment
 #' @importFrom magrittr %>%
 #' @importFrom dplyr data_frame
 #' @importFrom tidyr separate
