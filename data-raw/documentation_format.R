@@ -5,11 +5,13 @@ documentation_format <- function(template_csv) {
     colnames(combined_metadata) %>%
         match(template_csv$col.name) %>% {
             items <- template_csv$col.name[.]
-            descriptions <- template_csv$description[.]
+            descriptions <-
+                template_csv$description[.] %>%
+                gsub("%", "\\\u5c\u25", .)
+            paste0("\n#'   \\item{", items, "}{", descriptions, "}") %>%
+                c("\n#' @format A data.frame with ", nrow_combined_metadata,
+                    " rows and ", ncol_combined_metadata,
+                    " variables:\n#' \\describe{", ., "\n#' }\n#'") %>%
+                paste0(., collapse = "")
         }
-    paste0("\n#'   \item{", items, "}{", descriptions, "}") %>%
-        paste0("\n#' @format A data.frame with ", nrow_combined_metadata,
-               " rows and ", ncol_combined_metadata,
-               " variables.\n#' \describe{", .) %>%
-        paste0("\n#' }\n#'")
 }
