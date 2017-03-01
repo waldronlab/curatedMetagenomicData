@@ -1,5 +1,3 @@
-#' Title curatedMetagenomicData
-#'
 #' @param x
 #' A character vector of dataset names, regexes, or globs, that will be matched
 #' to available datasets. If x.is.glob is TRUE (default), wildcards such as "*"
@@ -8,7 +6,7 @@
 #' @param counts = FALSE
 #' If TRUE, relative abundances will be multiplied by read depth, then rounded to
 #' the nearest integer.
-#' @param bugs.as.phyloseq = FALSE 
+#' @param bugs.as.phyloseq = FALSE
 #' If TRUE, tables of taxonomic abundance (metaphlan datasets) will be converted
 #' to phyloseq objects for use with the phyloseq package.
 #' @param x.is.glob = TRUE
@@ -23,7 +21,7 @@
 #' curatedMetagenomicData("ZellerG*")
 #' curatedMetagenomicData("ZellerG.+marker", x.is.glob=FALSE)
 #' curatedMetagenomicData("ZellerG_2014.metaphlan_bugs_list.stool", dryrun=FALSE)
-#' curatedMetagenomicData("ZellerG_2014.metaphlan_bugs_list.stool", 
+#' curatedMetagenomicData("ZellerG_2014.metaphlan_bugs_list.stool",
 #'         counts=TRUE, dryrun=FALSE, bugs.as.phyloseq=TRUE)
 curatedMetagenomicData <- function(x = "*",
            dryrun = TRUE,
