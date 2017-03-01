@@ -11,6 +11,7 @@ make_metadata_documentation <- function() {
         "\n#' The combined sample level metadata of all studies in curatedMetagenomicData.\n#'"
     documentation_str[5] <- documentation_format(template_csv)
     documentation_str[6] <-
-        "\n#' @source See dataset specific help functions for source information\n"
-    documentation_str[7] <- '"combined_metadata"'
+        "\n#' @source See dataset specific help functions for source information"
+    documentation_str[7] <- "\n\"combined_metadata\"\n"
+    cat(documentation_str, file = "./R/combined_metadata.R")
 }
