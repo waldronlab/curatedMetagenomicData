@@ -124,7 +124,7 @@
 #'   \item{dbp}{Diastolic blood pressure (mm Hg)}
 #'   \item{fins}{Fasting serum insulin (mU/L)}
 #'   \item{fcp}{Fasting serum C-peptide (ng/ml)}
-#'   \item{hbalc}{Glycosylated hemoglobin HbAlc (%)}
+#'   \item{hbalc}{Glycosylated hemoglobin HbAlc (\%)}
 #'   \item{tg}{Triglyceride (mmol/L)}
 #'   \item{tcho}{Total cholesterol (mmol/L)}
 #'   \item{sampling_day}{Sampling day (relative to September 20th 2007)}
