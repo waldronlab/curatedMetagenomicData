@@ -30,7 +30,8 @@ Depends:
 Imports:
     BiocInstaller,
     utils,
-    tidyr
+    tidyr,
+    metagenomeSeq
 Suggests:
     devtools,
     roxygen2,
