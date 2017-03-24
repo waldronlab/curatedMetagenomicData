@@ -23,6 +23,7 @@ build_script:
   - travis-tool.sh install_bioc BiocCheck
   - travis-tool.sh install_bioc BiocParallel
   - travis-tool.sh install_bioc BiocStyle
+  - travis-tool.sh install_bioc metagenomeSeq
   - travis-tool.sh install_deps
 
 test_script:
