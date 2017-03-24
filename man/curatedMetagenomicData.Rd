@@ -17,6 +17,10 @@ to available datasets. If x.is.glob is TRUE (default), wildcards such as "*"
 and "?" are supported (see ?glob2rx), otherwise, regexes are supported (see
 ?grep)}
 
+\item{dryrun}{= TRUE
+Only return the names of datasets to be downloaded, not the datasets
+themselves. If FALSE, return the datasets rather than the names.}
+
 \item{counts}{= FALSE
 If TRUE, relative abundances will be multiplied by read depth, then rounded to
 the nearest integer.}

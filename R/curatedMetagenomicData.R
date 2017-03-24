@@ -1,3 +1,5 @@
+#' @importFrom utils glob2rx
+#'
 #' @param x
 #' A character vector of dataset names, regexes, or globs, that will be matched
 #' to available datasets. If x.is.glob is TRUE (default), wildcards such as "*"
@@ -11,6 +13,9 @@
 #' to phyloseq objects for use with the phyloseq package.
 #' @param x.is.glob = TRUE
 #' Set to FALSE to actually download the datasets
+#' @param dryrun = TRUE
+#' Only return the names of datasets to be downloaded, not the datasets
+#' themselves. If FALSE, return the datasets rather than the names.
 #'
 #' @return
 #' A list of ExpressionSet and/or phyloseq objects
@@ -31,14 +36,16 @@ curatedMetagenomicData <- function(x = "*",
     requested.datasets <- x
     all.datasets <- ls("package:curatedMetagenomicData")
     all.datasets <-
-      grep("marker|gene|path|metaphlan_bugs", all.datasets, val = TRUE)
+      grep("marker|gene|path|metaphlan_bugs", all.datasets, value = TRUE)
     regex <-
       ifelse(x.is.glob,
              paste(glob2rx(requested.datasets), collapse = "|"),
              requested.datasets)
     matched.datasets <- grep(regex, all.datasets, value = TRUE)
     if (dryrun) {
-      message("Dry run: see return values for datasets that would be downloaded. Run with `dryrun=FALSE` to actually download these datasets.")
+      message(
+          "Dry run: see return values for datasets that would be downloaded. ",
+          "Run with `dryrun=FALSE` to actually download these datasets.")
       return(matched.datasets)
     }
     if (!any(matched.datasets %in% all.datasets))
