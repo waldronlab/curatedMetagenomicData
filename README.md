@@ -23,4 +23,4 @@ For more extensive information on installing and using `curatedMetagenomicData` 
 
 ## Adding New Data
 
-To add new data there are a number of developer functions, the details of which are explained in the [wiki](https://github.com/waldronlab/curatedMetagenomicData/wiki/Adding-New-Data).
+To add new data there are a number of additional steps, the details of which are explained in the [wiki](https://github.com/waldronlab/curatedMetagenomicData/wiki/Adding-New-Data).
