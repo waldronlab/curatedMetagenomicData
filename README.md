@@ -21,6 +21,6 @@ browseVignettes("curatedMetagenomicData")
 
 For more extensive information on installing and using `curatedMetagenomicData` please see https://waldronlab.github.io/curatedMetagenomicData/.
 
-## Adding New Data
+## Contributing
 
-To add new data there are a number of additional steps, the details of which are explained in the [wiki](https://github.com/waldronlab/curatedMetagenomicData/wiki/Adding-New-Data).
+Contributions will gladly be accepted provided they fit within the context of the project. Please see  [CONTRIBUTING.md](https://github.com/waldronlab/curatedMetagenomicData/blob/master/CONTRIBUTING.md) for information regarding reporting bugs, pull request, adding datasets and other issues.
