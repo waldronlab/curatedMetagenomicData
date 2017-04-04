@@ -709,11 +709,7 @@ plot_scree(ordinated_taxa, title="Screeplot")
 
 ## Adding Datasets
 
-Authors welcome the addition of new datasets provided they can be or already
-have been run through the MetaPhlAn2 and HUMAnN2 pipelines. Please read the
-[developer documentation](https://tinyurl.com/cMDReadme){:target="_blank"} and contact the
-maintainer if you have a shotgun metagenomic dataset that would be of interest
-to the Bioconductor community.
+Authors welcome the addition of new datasets provided they can be run through the MetaPhlAn2 and HUMAnN2 pipelines and have curated per sample metadata. To have a dataset considered for addition please contact the maintainer and provide a TSV file containing curated per sample metadata, along with information about how the raw data can be transfered (SCP, SFTP, etc.) for processing. Provided the dataset is a curated human metagenomic study that can be run through the MetaPhlAn2 and HUMAnN2 pipelines it will be added by the process outlined in the [wiki](https://github.com/waldronlab/curatedMetagenomicData/wiki/Adding-New-Data){:target="_blank"} as soon as is practically possible.
 
 ## Reporting Bugs
 
