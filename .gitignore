@@ -10,12 +10,16 @@ uploads
 exec/upload2AWS.sh
 vignettes/*.R
 vignettes/*.html
+vignettes/*.md
 vignettes/rsconnect
 vignettes/*_cache
 vignettes/*_files
+vignettes/.build.timestamp
 vignettes/extras/*.R
 vignettes/extras/*.html
+vignettes/extras/*.md
 vignettes/extras/rsconnect
 vignettes/extras/*_cache
 vignettes/extras/*_files
+vignettes/extras/.build.timestamp
 .httr-oauth
