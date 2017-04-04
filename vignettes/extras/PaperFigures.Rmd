@@ -14,7 +14,6 @@ knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(fig.show = "hold")
 knitr::opts_chunk$set(message = FALSE)
 knitr::opts_chunk$set(warning = FALSE)
-knitr::opts_chunk$set(eval = FALSE)
 ```
 
 ```{r libraries, include=FALSE}
@@ -608,12 +607,12 @@ cor_matrix <- cor(t(otu_table(subset_genus)), t(exprs(eset_pathway)[max_pathways
 rownames(cor_matrix) = top20_genus[rownames(cor_matrix), 1]
 
 melted_cors <- melt(cor_matrix)
-melted_cors %>% 
-    ggplot(aes(x=Var1, y=Var2, fill=value)) + 
+melted_cors %>%
+    ggplot(aes(x=Var1, y=Var2, fill=value)) +
     geom_tile() +
-    scale_fill_gradient2(low = blueGreen, high = purple, mid = 'gray90', 
-     midpoint = 0, space = "Lab", 
-     name="Pearson\nCorrelation") + 
+    scale_fill_gradient2(low = blueGreen, high = purple, mid = 'gray90',
+     midpoint = 0, space = "Lab",
+     name="Pearson\nCorrelation") +
     theme(axis.text.x = element_text(angle = 45, vjust=1, hjust = 1, size=9), axis.text.y=element_text(size=9)) +
     labs(x="Genus",y="Pathway")
 ```
