@@ -41,16 +41,16 @@ blue <- "#3366aa"
 blueGreen <- "#11aa99"
 green <- "#66aa55"
 paleYellow <- "#cccc55"
-yellow <- "#ffee33"
 gray <- "#777777"
 purple <- "#992288"
 red <- "#ee3333"
 orange <- "#ee7722"
+yellow <- "#ffee33"
 black <- "#000000"
 brown <- "#655643"
 white <- "#ffffff"
-pallet <- c(purple, blue, blueGreen, green, paleYellow, yellow, orange, red, 
-            white, gray, brown, black)
+pallet <- c(blue, blueGreen, green, paleYellow, gray, purple, red, orange, 
+            yellow, black, brown, white)
 n <- length(pallet)
 image(1:n, 1, as.matrix(1:n), col = pallet, xlab = "", ylab = "", xaxt = "n", 
       yaxt = "n", bty = "n")
@@ -58,7 +58,7 @@ image(1:n, 1, as.matrix(1:n), col = pallet, xlab = "", ylab = "", xaxt = "n",
 
 # Figure 1, Example 1: Classification
 
-```{r}
+```{r, eval=FALSE}
 dataset_list <- c("KarlssonFH_2013 (T2D)", "LeChatelierE_2013 (Obesity)", "NielsenHB_2014 (IBD)", "QinJ_2012 (T2D)", "QinN_2014 (Cirrhosis)", "ZellerG_2014 (CRC)")
 class_list <- c("t2d", "obesity", "ibd", "t2d", "cirrhosis", "cancer")
 data_list <- matrix(nrow = 5, ncol = length(dataset_list))
@@ -216,7 +216,8 @@ ggplot() +
     scale_fill_gradient(low = "white", high = purple, guide = guide_colorbar(title = "Prevotella copri \n(cluster 2)")) +
     geom_point(data = df_bact, aes(x = pc1, y = pc2, shape = factor(bray2), color = bact), shape = 22, size = 4) +
     scale_color_gradient(low = gray, high = blueGreen, guide = guide_colorbar(title = "Bacteroides \n(cluster 1)")) +
-    labs(x = "Axis 1", y = "Axis 2", title = paste0("PCoA by selected abundances, displaying 2 clusters (n=", nrow(df_ordinate), ")"))
+    labs(x = "Axis 1", y = "Axis 2", title = "PCoA on species abundance, displaying 2 clusters") +
+    theme(legend.direction = "vertical", legend.position = c(0.4, 0.1))
 ```
 
 # Figure 1, Example 3: Abundance across samples
@@ -315,7 +316,7 @@ bardat %>%
     geom_area() +
     scale_fill_manual(values = sample(pallet, size = 8, replace = FALSE)) +
     labs(fill = "Phylum") +
-    theme(axis.text.x = element_blank(), legend.position = "bottom")
+    theme(axis.text.x = element_blank(), legend.position = c(0.4, 0.9))
 ```
 
 # Figure 1, Example 4: Species-pathway correlation
@@ -337,7 +338,7 @@ cors$feature <- feature
 cors <- na.omit(cors)
 
 par(mar = c(10, 10, 10, 10))
-qplot(x = eset_pathway$prev, y = exprs(eset_pathway)[cors$feature[cors$r.cor == max(cors$r.cor)], ], xlab = "Prevotella copri", ylab = "Pathway abundance", main = "PWY 7291: Adenosine ribonucleotides \nde novo biosynthesis ", colour = I("dodgerblue"), shape = I(1))
+qplot(x = eset_pathway$prev, y = exprs(eset_pathway)[cors$feature[cors$r.cor == max(cors$r.cor)], ], xlab = "Prevotella copri", ylab = "Pathway abundance", main = "PWY 7291: Adenosine ribonucleotides \nde novo biosynthesis ", colour = I(black), shape = I(1))
 ```
 
 # Supplemental Figure 1: Health status classification from species abundance.
@@ -544,7 +545,7 @@ text("Little or no support", x = 9, y = 0.6, col = "grey70")
 ```
 
 # Supplemental Figure 4: Top correlations between metabolic pathways and genera.
-```{r}
+```{r, fig.width=12}
 eset.list <- curatedMetagenomicData("*pathabundance_relab.stool", dryrun = FALSE)
 
 names(eset.list) <- gsub("\\..+", "", names(eset.list))
@@ -614,7 +615,7 @@ melted_cors %>%
      midpoint = 0, space = "Lab",
      name="Pearson\nCorrelation") +
     theme(axis.text.x = element_text(angle = 45, vjust=1, hjust = 1, size=9), axis.text.y=element_text(size=9)) +
-    labs(x="Genus",y="Pathway")
+    labs(x = "Genus", y = "Pathway")
 ```
 
 # Supplemental Figure 5: Alpha diversity of taxa from 11 studies of the gut microbiome.
