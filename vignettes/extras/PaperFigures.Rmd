@@ -1,5 +1,14 @@
 ---
 title: "Paper Figures"
+abstract: >
+    The following analysis represnets all the code that is necessary to 
+    reproduce the results shown in Pasolli, E., Schiffer, L., Renson, A., 
+    Obenchain, V., Manghi, P., Truong, D. T., Dowd, JB, Huttenhower, C, 
+    Morgan, M, Segata, N,  Waldron, L. (2017). Accessible, curated metagenomic 
+    data through ExperimentHub. bioRxiv. doi:10.1101/103085. Please note that 
+    much of this analysis occured during the development stages of 
+    curatedMetagenomicData and was written by multiple authors. As such, there 
+    may exist 
 output:
     BiocStyle::html_document
 vignette: >
@@ -58,7 +67,7 @@ image(1:n, 1, as.matrix(1:n), col = pallet, xlab = "", ylab = "", xaxt = "n",
 
 # Figure 1, Example 1: Classification
 
-```{r, eval=FALSE}
+```{r, fig.height=8, fig.width=8, eval=FALSE}
 dataset_list <- c("KarlssonFH_2013 (T2D)", "LeChatelierE_2013 (Obesity)", "NielsenHB_2014 (IBD)", "QinJ_2012 (T2D)", "QinN_2014 (Cirrhosis)", "ZellerG_2014 (CRC)")
 class_list <- c("t2d", "obesity", "ibd", "t2d", "cirrhosis", "cancer")
 data_list <- matrix(nrow = 5, ncol = length(dataset_list))
@@ -144,7 +153,7 @@ legend("bottom", xpd = TRUE, horiz = TRUE, inset = c(0, 0), bty = "n", pch = 16,
 
 # Figure 1, Example 2: Clustering
 
-```{r}
+```{r, fig.height=8, fig.width=8}
 eh <- ExperimentHub()
 myquery <- query(eh, "curatedMetagenomicData")
 
@@ -213,16 +222,16 @@ df_prev <- df_ordinate[df_ordinate$bray2 == 22, ]
 
 ggplot() +
     geom_point(data = df_prev, aes(x = pc1, y = pc2, shape = factor(bray2), fill = prev), shape = 21, size = 4) +
-    scale_fill_gradient(low = "white", high = purple, guide = guide_colorbar(title = "Prevotella copri \n(cluster 2)")) +
+    scale_fill_gradient(low = "white", high = purple, guide = guide_colorbar(direction = "horizontal", title = "Prevotella copri \n(cluster 2)")) +
     geom_point(data = df_bact, aes(x = pc1, y = pc2, shape = factor(bray2), color = bact), shape = 22, size = 4) +
-    scale_color_gradient(low = gray, high = blueGreen, guide = guide_colorbar(title = "Bacteroides \n(cluster 1)")) +
+    scale_color_gradient(low = gray, high = blueGreen, guide = guide_colorbar(direction = "horizontal", title = "Bacteroides \n(cluster 1)")) +
     labs(x = "Axis 1", y = "Axis 2", title = "PCoA on species abundance, displaying 2 clusters") +
-    theme(legend.direction = "vertical", legend.position = c(0.4, 0.1))
+    theme(axis.ticks = element_blank(), axis.text = element_blank(), legend.box = "vertical", legend.position = c(0.8, 0.1), plot.title = element_text(hjust = 0.5))
 ```
 
 # Figure 1, Example 3: Abundance across samples
 
-```{r}
+```{r, fig.width=12}
 eh <- ExperimentHub()
 myquery <- query(eh, "curatedMetagenomicData")
 
@@ -314,14 +323,16 @@ set.seed(14)
 bardat %>%
     ggplot(aes(x = Sample, y = Abundance, fill = OTU)) +
     geom_area() +
-    scale_fill_manual(values = sample(pallet, size = 8, replace = FALSE)) +
-    labs(fill = "Phylum") +
-    theme(axis.text.x = element_blank(), legend.position = c(0.4, 0.9))
+    scale_fill_manual(values = sample(c(blue, yellow, green, gray, purple, 
+                                        red, orange, paleYellow), 
+                                      size = 8, replace = FALSE), 
+                      guide = guide_legend(nrow = 4, ncol = 2)) +
+    theme(axis.text.x = element_blank(), axis.title.x = element_blank(), axis.ticks.x = element_blank(), legend.position = c(0.8, 0.8), legend.direction = "vertical", legend.title = element_blank(), panel.background = element_blank())
 ```
 
 # Figure 1, Example 4: Species-pathway correlation
 
-```{r}
+```{r, fig.height=8, fig.width=8}
 eset_pathway$prev <- as.numeric(exprs(eset_bugs)[grep("s__Prevotella_copri", rownames(exprs(eset_bugs))), ])
 
 cor_est_p <- function(x1, x2) {
@@ -338,11 +349,11 @@ cors$feature <- feature
 cors <- na.omit(cors)
 
 par(mar = c(10, 10, 10, 10))
-qplot(x = eset_pathway$prev, y = exprs(eset_pathway)[cors$feature[cors$r.cor == max(cors$r.cor)], ], xlab = "Prevotella copri", ylab = "Pathway abundance", main = "PWY 7291: Adenosine ribonucleotides \nde novo biosynthesis ", colour = I(black), shape = I(1))
+qplot(x = eset_pathway$prev, y = exprs(eset_pathway)[cors$feature[cors$r.cor == max(cors$r.cor)], ], xlab = "Prevotella copri abundance", ylab = "Pathway abundance", main = "Inosine 5 phosphate biosynthesis ", colour = I(black), shape = I(1))
 ```
 
 # Supplemental Figure 1: Health status classification from species abundance.
-```{r}
+```{r, fig.height=8, fig.width=8}
 dataset_list <- c("KarlssonFH_2013 (T2D)", "LeChatelierE_2013 (Obesity)", "NielsenHB_2014 (IBD)", "QinJ_2012 (T2D)", "QinN_2014 (Cirrhosis)", "ZellerG_2014 (CRC)")
 class_list <- c("t2d", "obesity", "ibd", "t2d", "cirrhosis", "cancer")
 data_list <- c("EH277", "EH283", "EH301", "EH319", "EH325", "EH361")
@@ -391,11 +402,11 @@ for (i in 1:length(dataset_list)) {
     }
 }
 
-legend("bottomright", box.lwd = 0, box.col = "white", bg = "white", lwd = 2, legend = dataset_list, col = pallet_reduced)
+legend("bottomright", box.lwd = 0, box.col = "transparent", bg = "transparent", lwd = 2, legend = dataset_list, col = pallet_reduced)
 ```
 
 # Supplemental Figure 2: PCoA plots colored for dataset + disease states.
-```{r}
+```{r, fig.height=8, fig.width=12}
 eset.list <- curatedMetagenomicData("*metaphlan_bugs_list.stool", dryrun = FALSE)
 
 names(eset.list) <- gsub("\\..+", "", names(eset.list))
@@ -545,7 +556,7 @@ text("Little or no support", x = 9, y = 0.6, col = "grey70")
 ```
 
 # Supplemental Figure 4: Top correlations between metabolic pathways and genera.
-```{r, fig.width=12}
+```{r, fig.height=12, fig.width=12}
 eset.list <- curatedMetagenomicData("*pathabundance_relab.stool", dryrun = FALSE)
 
 names(eset.list) <- gsub("\\..+", "", names(eset.list))

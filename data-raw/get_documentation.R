@@ -3,8 +3,14 @@ get_documentation <- function(resource_name) {
     title <- get_title(resource_name)
     aliases <- gsub(".rda", "", resource_name)
     subsection <- get_subsection(resource_object)
-    source <- experimentData(resource_object)@lab
+    publication <- get_experiment_data(resource_object, "title")
+        experimentData(resource_object)@title
+    authors <- experimentData(resource_object)@name
+    affiliations <- experimentData(resource_object)@lab
+    pmid <- experimentData(resource_object)@pubMedIds
+    technology <- get_technology(resource_object)
     name <- get_name(resource_name)
     seealso <- strsplit(resource_name, "\\.")[[1]][1]
-    data_frame(title, aliases, subsection, source, name, seealso)
+    data_frame(title, aliases, subsection, publication, authors, affiliations,
+               pmid, technology, name, seealso)
 }
