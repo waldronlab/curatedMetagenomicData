@@ -1,14 +1,15 @@
 ---
 title: "Paper Figures"
 abstract: >
-    The following analysis represnets all the code that is necessary to 
+    The following analysis represents all the code that is necessary to 
     reproduce the results shown in Pasolli, E., Schiffer, L., Renson, A., 
     Obenchain, V., Manghi, P., Truong, D. T., Dowd, JB, Huttenhower, C, 
     Morgan, M, Segata, N,  Waldron, L. (2017). Accessible, curated metagenomic 
-    data through ExperimentHub. bioRxiv. doi:10.1101/103085. Please note that 
-    much of this analysis occured during the development stages of 
-    curatedMetagenomicData and was written by multiple authors. As such, there 
-    may exist 
+    data through ExperimentHub. bioRxiv. doi&#58;10.1101/103085. Please note 
+    that much of this analysis occurred during the development stages of 
+    curatedMetagenomicData and was written by multiple authors. As such, while 
+    this analysis is methodologically sound, there may now exist more efficient 
+    ways to produce the same results syntactically.
 output:
     BiocStyle::html_document
 vignette: >
@@ -45,21 +46,21 @@ library(dplyr)
 
 # Coordinated Color Scheme
 
-```{r color_scheme}
+```{r colors}
 blue <- "#3366aa"
 blueGreen <- "#11aa99"
 green <- "#66aa55"
 paleYellow <- "#cccc55"
-gray <- "#777777"
+gray <- "#e5e5e5"
 purple <- "#992288"
 red <- "#ee3333"
 orange <- "#ee7722"
 yellow <- "#ffee33"
-black <- "#000000"
+darkGray <- "#b3b3b3"
 brown <- "#655643"
-white <- "#ffffff"
+lightBlack <- "#777777"
 pallet <- c(blue, blueGreen, green, paleYellow, gray, purple, red, orange, 
-            yellow, black, brown, white)
+            yellow, darkGray, brown, lightBlack)
 n <- length(pallet)
 image(1:n, 1, as.matrix(1:n), col = pallet, xlab = "", ylab = "", xaxt = "n", 
       yaxt = "n", bty = "n")
@@ -224,14 +225,14 @@ ggplot() +
     geom_point(data = df_prev, aes(x = pc1, y = pc2, shape = factor(bray2), fill = prev), shape = 21, size = 4) +
     scale_fill_gradient(low = "white", high = purple, guide = guide_colorbar(direction = "horizontal", title = "Prevotella copri \n(cluster 2)")) +
     geom_point(data = df_bact, aes(x = pc1, y = pc2, shape = factor(bray2), color = bact), shape = 22, size = 4) +
-    scale_color_gradient(low = gray, high = blueGreen, guide = guide_colorbar(direction = "horizontal", title = "Bacteroides \n(cluster 1)")) +
+    scale_color_gradient(low = lightBlack, high = blueGreen, guide = guide_colorbar(direction = "horizontal", title = "Bacteroides \n(cluster 1)")) +
     labs(x = "Axis 1", y = "Axis 2", title = "PCoA on species abundance, displaying 2 clusters") +
     theme(axis.ticks = element_blank(), axis.text = element_blank(), legend.box = "vertical", legend.position = c(0.8, 0.1), plot.title = element_text(hjust = 0.5))
 ```
 
 # Figure 1, Example 3: Abundance across samples
 
-```{r, fig.width=12}
+```{r, fig.height=8, fig.width=12}
 eh <- ExperimentHub()
 myquery <- query(eh, "curatedMetagenomicData")
 
@@ -349,10 +350,12 @@ cors$feature <- feature
 cors <- na.omit(cors)
 
 par(mar = c(10, 10, 10, 10))
-qplot(x = eset_pathway$prev, y = exprs(eset_pathway)[cors$feature[cors$r.cor == max(cors$r.cor)], ], xlab = "Prevotella copri abundance", ylab = "Pathway abundance", main = "Inosine 5 phosphate biosynthesis ", colour = I(black), shape = I(1))
+qplot(x = eset_pathway$prev, y = exprs(eset_pathway)[cors$feature[cors$r.cor == max(cors$r.cor)], ], xlab = "Prevotella copri abundance", ylab = "Pathway abundance", main = "Inosine 5 phosphate biosynthesis ", colour = I(black), shape = I(1)) +
+    theme(plot.title = element_text(hjust = 0.5))
 ```
 
 # Supplemental Figure 1: Health status classification from species abundance.
+
 ```{r, fig.height=8, fig.width=8}
 dataset_list <- c("KarlssonFH_2013 (T2D)", "LeChatelierE_2013 (Obesity)", "NielsenHB_2014 (IBD)", "QinJ_2012 (T2D)", "QinN_2014 (Cirrhosis)", "ZellerG_2014 (CRC)")
 class_list <- c("t2d", "obesity", "ibd", "t2d", "cirrhosis", "cancer")
@@ -406,6 +409,7 @@ legend("bottomright", box.lwd = 0, box.col = "transparent", bg = "transparent", 
 ```
 
 # Supplemental Figure 2: PCoA plots colored for dataset + disease states.
+
 ```{r, fig.height=8, fig.width=12}
 eset.list <- curatedMetagenomicData("*metaphlan_bugs_list.stool", dryrun = FALSE)
 
@@ -506,10 +510,12 @@ df_ord_dataset_disease %>%
     geom_point() +
     labs(x="Axis 1", y="Axis 2", title="PCoA by dataset and disease") +
     scale_shape_manual(values = 19:25) +
-    guides(color=guide_legend(ncol=2), shape=guide_legend(ncol=2), size=guide_legend(ncol=2, title="Prevotella copri"))
+    guides(color = guide_legend(ncol = 2, title = "Study"), shape = guide_legend(ncol = 2, title = "Disease"), size = guide_legend(ncol = 2, title="Prevotella copri")) +
+    theme(plot.title = element_text(hjust = 0.5))
 ```
 
 # Supplemental Figure 3. Clustering scores for enterotypes in gut WGS samples.
+
 ```{r}
 pam_bray <- sapply(2:10, function(i) pam(dist_bray, k = i, cluster.only = T))
 pam_js <- sapply(2:10, function(i) pam(dist_js, k = i, cluster.only = T))
@@ -535,28 +541,29 @@ si_js <- apply(pam_js, 2, function(i) mean(silhouette(i, dist_js)[, 3]))
 si_rjs <- apply(pam_rjs, 2, function(i) mean(silhouette(i, dist_rjs)[, 3]))
 
 plot_cluster_validation(si_bray, si_js, si_rjs, legend = F, ylab = "Average silhouette width", ylim = c(0, 1))
-abline(0.75, 0, lty = 5, col = "grey70")
-abline(0.5, 0, lty = 5, col = "grey70")
-abline(0.25, 0, lty = 5, col = "grey70")
-text("Strong support", x = 9, y = 0.8, col = "grey70")
-text("Moderate support", x = 9, y = 0.6, col = "grey70")
-text("Weak and could be artificial", x = 8.5, y = 0.4, col = "grey70")
-text("No substantial structure", x = 8.5, y = 0.2, col = "grey70")
+abline(0.75, 0, lty = 5, col = darkGray)
+abline(0.5, 0, lty = 5, col = darkGray)
+abline(0.25, 0, lty = 5, col = darkGray)
+text("Strong support", x = 9, y = 0.8, col = darkGray)
+text("Moderate support", x = 9, y = 0.6, col = darkGray)
+text("Weak and could be artificial", x = 8.5, y = 0.4, col = darkGray)
+text("No substantial structure", x = 8.5, y = 0.2, col = darkGray)
 
 ps_bray <- prediction.strength(dist_bray, Gmin = 2, Gmax = 10, clustermethod = pamkCBI)
 ps_js <- prediction.strength(dist_js, Gmin = 2, Gmax = 10, clustermethod = pamkCBI)
 ps_rjs <- prediction.strength(dist_rjs, Gmin = 2, Gmax = 10, clustermethod = pamkCBI)
 
 plot_cluster_validation(ps_bray$mean.pred[2:10], ps_js$mean.pred[2:10], ps_rjs$mean.pred[2:10], ylab = "Prediction Strength", ylim = c(0, 1.1), legend = F)
-abline(0.9, 0, lty = 5, col = "grey70")
-abline(0.8, 0, lty = 8, col = "grey70")
-text("Strong support", x = 9, y = 1, col = "grey70")
-text("Moderate support", x = 9, y = 0.85, col = "grey70")
-text("Little or no support", x = 9, y = 0.6, col = "grey70")
+abline(0.9, 0, lty = 5, col = darkGray)
+abline(0.8, 0, lty = 8, col = darkGray)
+text("Strong support", x = 9, y = 1, col = darkGray)
+text("Moderate support", x = 9, y = 0.85, col = darkGray)
+text("Little or no support", x = 9, y = 0.6, col = darkGray)
 ```
 
 # Supplemental Figure 4: Top correlations between metabolic pathways and genera.
-```{r, fig.height=12, fig.width=12}
+
+```{r, fig.height=8, fig.width=12}
 eset.list <- curatedMetagenomicData("*pathabundance_relab.stool", dryrun = FALSE)
 
 names(eset.list) <- gsub("\\..+", "", names(eset.list))
@@ -622,7 +629,7 @@ melted_cors <- melt(cor_matrix)
 melted_cors %>%
     ggplot(aes(x=Var1, y=Var2, fill=value)) +
     geom_tile() +
-    scale_fill_gradient2(low = blueGreen, high = purple, mid = 'gray90',
+    scale_fill_gradient2(low = blueGreen, high = purple, mid = gray,
      midpoint = 0, space = "Lab",
      name="Pearson\nCorrelation") +
     theme(axis.text.x = element_text(angle = 45, vjust=1, hjust = 1, size=9), axis.text.y=element_text(size=9)) +
@@ -630,6 +637,7 @@ melted_cors %>%
 ```
 
 # Supplemental Figure 5: Alpha diversity of taxa from 11 studies of the gut microbiome.
+
 ```{r}
 alpha <- estimate_richness(pseq, measures = "Shannon")
 alpha$study <- sample_data(pseq)$study
@@ -649,9 +657,10 @@ alpha %>%
     ggplot(aes(x = study, y = Shannon, fill = study)) +
     stat_boxplot(geom = "errorbar") +
     geom_boxplot() +
-    theme(axis.text.x = element_blank()) +
-    ylab("Shannon Alpha Diversity") +
-    xlab("")
+    theme(axis.text.x = element_blank(), axis.ticks.x = element_blank()) +
+    guides(fill = guide_legend(title="Study")) +
+    labs(x = "", y = "Shannon Alpha Diversity") +
+    scale_fill_manual(values = c(blue, blueGreen, green, paleYellow, lightBlack, purple, red, orange, yellow, darkGray, brown))
 ```
 
 # Session Info
