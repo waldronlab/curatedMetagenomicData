@@ -4,7 +4,7 @@ read.dcf("DESCRIPTION", "Suggests") %>%
     unlist() %>%
     for (i in .) {
         if(!require(i, character.only = TRUE)) {
-            biocLite(i)
+            BiocInstaller::biocLite(i)
             require(i, character.only = TRUE)
         }
     }
