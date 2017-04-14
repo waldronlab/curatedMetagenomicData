@@ -4,10 +4,9 @@ get_documentation <- function(resource_name) {
     aliases <- gsub(".rda", "", resource_name)
     subsection <- get_subsection(resource_object)
     publication <- get_experiment_data(resource_object, "title")
-        experimentData(resource_object)@title
-    authors <- experimentData(resource_object)@name
-    affiliations <- experimentData(resource_object)@lab
-    pmid <- experimentData(resource_object)@pubMedIds
+    authors <- get_experiment_data(resource_object, "name")
+    affiliations <- get_experiment_data(resource_object, "lab")
+    pmid <- get_experiment_data(resource_object, "pubMedIds")
     technology <- get_technology(resource_object)
     name <- get_name(resource_name)
     seealso <- strsplit(resource_name, "\\.")[[1]][1]
