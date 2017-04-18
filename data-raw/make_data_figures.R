@@ -17,6 +17,7 @@ make_data_figures <- function() {
     
     age_data <-
         combined_metadata %>%
+        mutate(age = round(age)) %>%
         filter(!is.na(age)) %>%
         select(dataset_name, age)
     
