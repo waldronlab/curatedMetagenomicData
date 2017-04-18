@@ -13,7 +13,7 @@ make_data_figures <- function() {
         select(dataset_name, disease)
     
     unique(disease_data$dataset_name) %>%
-        lapply(., figure_bar, bodysite_data)
+        lapply(., figure_bar, disease_data)
     
     age_data <-
         combined_metadata %>%
