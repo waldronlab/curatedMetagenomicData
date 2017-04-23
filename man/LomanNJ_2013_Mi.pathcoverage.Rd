@@ -4,9 +4,6 @@
 \alias{LomanNJ_2013_Mi.pathcoverage}
 \alias{LomanNJ_2013_Mi.pathcoverage.stool}
 \title{Pathcoverage data from the LomanNJ_2013_Mi dataset}
-\source{
-Institute of Microbiology and Infection, University of Birmingham, Birmingham, England.
-}
 \description{
 Pathcoverage data from the LomanNJ_2013_Mi dataset
 }
@@ -18,10 +15,40 @@ Pathcoverage data from the LomanNJ_2013_Mi dataset
 }
 }
 
+\section{Exploratory Data Analysis}{
+ 
+
+\figure{LomanNJ_2013_Mi.bodysite.png}{options: width="100\%"}
+
+\figure{LomanNJ_2013_Mi.country.png}{options: width="100\%"}
+
+\figure{LomanNJ_2013_Mi.disease.png}{options: width="100\%"}
+}
+
+\section{Source}{
+ 
+
+\subsection{Title}{
+   A culture-independent sequence-based metagenomics approach to the investigation of an outbreak of Shiga-toxigenic Escherichia coli O104:H4.
+}
+
+\subsection{Author}{
+   Loman NJ, Constantinidou C, Christner M, Rohde H, Chan JZ, Quick J, Weir JC, Quince C, Smith GP, Betley JR, Aepfelbacher M, Pallen MJ
+}
+
+\subsection{Lab}{
+   Institute of Microbiology and Infection, University of Birmingham, Birmingham, England.
+}
+
+\subsection{PMID}{
+   23571589
+}
+}
+
 \examples{
 LomanNJ_2013_Mi.pathcoverage.stool()
 
 }
 \seealso{
-\code{\link{LomanNJ_2013_Mi.genefamilies_relab}}, \code{\link{LomanNJ_2013_Mi.marker_abundance}}, \code{\link{LomanNJ_2013_Mi.marker_presence}}, \code{\link{LomanNJ_2013_Mi.metaphlan_bugs_list}}, \code{\link{LomanNJ_2013_Mi.pathabundance_relab}}
+\code{\link{}}
 }
