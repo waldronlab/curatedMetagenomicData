@@ -9,7 +9,7 @@ ExpressionSet2MRexperiment(eset, simplify = TRUE)
 \arguments{
 \item{eset}{An eset object}
 
-\item{simplify}{if TRUE the most detailed clade name is used, instead of the original 
+\item{simplify}{if TRUE the most detailed clade name is used, instead of the original
 metaPhlAn2 names which contain the full taxonomy.}
 }
 \value{
