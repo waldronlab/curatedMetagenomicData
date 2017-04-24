@@ -1,4 +1,4 @@
-# curatedMetagenomicData 1.1.5
+# curatedMetagenomicData 1.1.9
 
 * Vast improvements to documentation, now more informative and compact
 * New function to coerce data to an MRexperiment class
