@@ -31,45 +31,25 @@
 #' }
 #' 
 #' @section Exploratory Data Analysis: 
-#' KarlssonFH_2013.age.pdf
-#' \if{html}\figure{KarlssonFH_2013.age.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013.age.pdf}
+#' 
+#' \if{html}\figure{KarlssonFH_2013_age.png}{options: width="100\%"}
+#' \if{latex}\figure{KarlssonFH_2013_age.png}
 #'
-#'KarlssonFH_2013.age.png
-#' \if{html}\figure{KarlssonFH_2013.age.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013.age.pdf}
 #'
-#'KarlssonFH_2013.bmi.pdf
-#' \if{html}\figure{KarlssonFH_2013.age.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013.age.pdf}
+#' \if{html}\figure{KarlssonFH_2013_bmi.png}{options: width="100\%"}
+#' \if{latex}\figure{KarlssonFH_2013_bmi.png}
 #'
-#'KarlssonFH_2013.bmi.png
-#' \if{html}\figure{KarlssonFH_2013.age.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013.age.pdf}
 #'
-#'KarlssonFH_2013.bodysite.pdf
-#' \if{html}\figure{KarlssonFH_2013.age.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013.age.pdf}
+#' \if{html}\figure{KarlssonFH_2013_bodysite.png}{options: width="100\%"}
+#' \if{latex}\figure{KarlssonFH_2013_bodysite.png}
 #'
-#'KarlssonFH_2013.bodysite.png
-#' \if{html}\figure{KarlssonFH_2013.age.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013.age.pdf}
 #'
-#'KarlssonFH_2013.country.pdf
-#' \if{html}\figure{KarlssonFH_2013.age.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013.age.pdf}
+#' \if{html}\figure{KarlssonFH_2013_country.png}{options: width="100\%"}
+#' \if{latex}\figure{KarlssonFH_2013_country.png}
 #'
-#'KarlssonFH_2013.country.png
-#' \if{html}\figure{KarlssonFH_2013.age.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013.age.pdf}
 #'
-#'KarlssonFH_2013.disease.pdf
-#' \if{html}\figure{KarlssonFH_2013.age.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013.age.pdf}
-#'
-#'KarlssonFH_2013.disease.png
-#' \if{html}\figure{KarlssonFH_2013.age.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013.age.pdf}
+#' \if{html}\figure{KarlssonFH_2013_disease.png}{options: width="100\%"}
+#' \if{latex}\figure{KarlssonFH_2013_disease.png}
 #'
 #' 
 #' @section Source: 

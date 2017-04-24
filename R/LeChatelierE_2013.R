@@ -31,37 +31,21 @@
 #' }
 #' 
 #' @section Exploratory Data Analysis: 
-#' LeChatelierE_2013.bmi.pdf
-#' \if{html}\figure{LeChatelierE_2013.bmi.png}{options: width="100\%"}
-#' \if{latex}\figure{LeChatelierE_2013.bmi.pdf}
+#' 
+#' \if{html}\figure{LeChatelierE_2013_bmi.png}{options: width="100\%"}
+#' \if{latex}\figure{LeChatelierE_2013_bmi.png}
 #'
-#'LeChatelierE_2013.bmi.png
-#' \if{html}\figure{LeChatelierE_2013.bmi.png}{options: width="100\%"}
-#' \if{latex}\figure{LeChatelierE_2013.bmi.pdf}
 #'
-#'LeChatelierE_2013.bodysite.pdf
-#' \if{html}\figure{LeChatelierE_2013.bmi.png}{options: width="100\%"}
-#' \if{latex}\figure{LeChatelierE_2013.bmi.pdf}
+#' \if{html}\figure{LeChatelierE_2013_bodysite.png}{options: width="100\%"}
+#' \if{latex}\figure{LeChatelierE_2013_bodysite.png}
 #'
-#'LeChatelierE_2013.bodysite.png
-#' \if{html}\figure{LeChatelierE_2013.bmi.png}{options: width="100\%"}
-#' \if{latex}\figure{LeChatelierE_2013.bmi.pdf}
 #'
-#'LeChatelierE_2013.country.pdf
-#' \if{html}\figure{LeChatelierE_2013.bmi.png}{options: width="100\%"}
-#' \if{latex}\figure{LeChatelierE_2013.bmi.pdf}
+#' \if{html}\figure{LeChatelierE_2013_country.png}{options: width="100\%"}
+#' \if{latex}\figure{LeChatelierE_2013_country.png}
 #'
-#'LeChatelierE_2013.country.png
-#' \if{html}\figure{LeChatelierE_2013.bmi.png}{options: width="100\%"}
-#' \if{latex}\figure{LeChatelierE_2013.bmi.pdf}
 #'
-#'LeChatelierE_2013.disease.pdf
-#' \if{html}\figure{LeChatelierE_2013.bmi.png}{options: width="100\%"}
-#' \if{latex}\figure{LeChatelierE_2013.bmi.pdf}
-#'
-#'LeChatelierE_2013.disease.png
-#' \if{html}\figure{LeChatelierE_2013.bmi.png}{options: width="100\%"}
-#' \if{latex}\figure{LeChatelierE_2013.bmi.pdf}
+#' \if{html}\figure{LeChatelierE_2013_disease.png}{options: width="100\%"}
+#' \if{latex}\figure{LeChatelierE_2013_disease.png}
 #'
 #' 
 #' @section Source: 

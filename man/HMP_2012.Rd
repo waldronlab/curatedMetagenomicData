@@ -493,15 +493,24 @@ Data from the HMP_2012 study
 \section{Exploratory Data Analysis}{
  
 
-\figure{HMP_2012.age.png}{options: width="100\%"}
+\if{html}\figure{HMP_2012_age.png}{options: width="100\%"}
+\if{latex}\figure{HMP_2012_age.png}
 
-\figure{HMP_2012.bodysite.png}{options: width="100\%"}
 
-\figure{HMP_2012.country.png}{options: width="100\%"}
+\if{html}\figure{HMP_2012_bodysite.png}{options: width="100\%"}
+\if{latex}\figure{HMP_2012_bodysite.png}
 
-\figure{HMP_2012.disease.png}{options: width="100\%"}
 
-\figure{HMP_2012.gender.png}{options: width="100\%"}
+\if{html}\figure{HMP_2012_country.png}{options: width="100\%"}
+\if{latex}\figure{HMP_2012_country.png}
+
+
+\if{html}\figure{HMP_2012_disease.png}{options: width="100\%"}
+\if{latex}\figure{HMP_2012_disease.png}
+
+
+\if{html}\figure{HMP_2012_gender.png}{options: width="100\%"}
+\if{latex}\figure{HMP_2012_gender.png}
 }
 
 \section{Source}{

@@ -43,13 +43,20 @@ Data from the LeChatelierE_2013 study
 \section{Exploratory Data Analysis}{
  
 
-\figure{LeChatelierE_2013.bmi.png}{options: width="100\%"}
+\if{html}\figure{LeChatelierE_2013_bmi.png}{options: width="100\%"}
+\if{latex}\figure{LeChatelierE_2013_bmi.png}
 
-\figure{LeChatelierE_2013.bodysite.png}{options: width="100\%"}
 
-\figure{LeChatelierE_2013.country.png}{options: width="100\%"}
+\if{html}\figure{LeChatelierE_2013_bodysite.png}{options: width="100\%"}
+\if{latex}\figure{LeChatelierE_2013_bodysite.png}
 
-\figure{LeChatelierE_2013.disease.png}{options: width="100\%"}
+
+\if{html}\figure{LeChatelierE_2013_country.png}{options: width="100\%"}
+\if{latex}\figure{LeChatelierE_2013_country.png}
+
+
+\if{html}\figure{LeChatelierE_2013_disease.png}{options: width="100\%"}
+\if{latex}\figure{LeChatelierE_2013_disease.png}
 }
 
 \section{Source}{

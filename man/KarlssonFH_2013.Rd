@@ -43,15 +43,24 @@ Data from the KarlssonFH_2013 study
 \section{Exploratory Data Analysis}{
  
 
-\figure{KarlssonFH_2013.age.png}{options: width="100\%"}
+\if{html}\figure{KarlssonFH_2013_age.png}{options: width="100\%"}
+\if{latex}\figure{KarlssonFH_2013_age.png}
 
-\figure{KarlssonFH_2013.bmi.png}{options: width="100\%"}
 
-\figure{KarlssonFH_2013.bodysite.png}{options: width="100\%"}
+\if{html}\figure{KarlssonFH_2013_bmi.png}{options: width="100\%"}
+\if{latex}\figure{KarlssonFH_2013_bmi.png}
 
-\figure{KarlssonFH_2013.country.png}{options: width="100\%"}
 
-\figure{KarlssonFH_2013.disease.png}{options: width="100\%"}
+\if{html}\figure{KarlssonFH_2013_bodysite.png}{options: width="100\%"}
+\if{latex}\figure{KarlssonFH_2013_bodysite.png}
+
+
+\if{html}\figure{KarlssonFH_2013_country.png}{options: width="100\%"}
+\if{latex}\figure{KarlssonFH_2013_country.png}
+
+
+\if{html}\figure{KarlssonFH_2013_disease.png}{options: width="100\%"}
+\if{latex}\figure{KarlssonFH_2013_disease.png}
 }
 
 \section{Source}{
