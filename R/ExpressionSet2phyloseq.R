@@ -51,7 +51,7 @@ ExpressionSet2phyloseq <- function(eset, simplify = TRUE,
     }
     rownames(tax.table) <- rownames(otu.table)
     if(!relab) {
-        otu.table <- round(sweep(otu.table, 2, eset$number_reads, "*"))
+        otu.table <- round(sweep(otu.table, 2, eset$number_reads/100, "*"))
     }
     otu.table <- otu_table(otu.table, taxa_are_rows = TRUE)
     tax.table <- tax_table(tax.table)

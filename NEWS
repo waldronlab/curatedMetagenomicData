@@ -1,3 +1,10 @@
+# curatedMetagenomicData 1.1.9
+
+* Vast improvements to documentation, now more informative and compact
+* New function to coerce data to an MRexperiment class
+* New workhorse function to access data with wildcard search
+* Fun into message for developers
+
 # curatedMetagenomicData 1.1.4
 
 * Version bumped to reflect latest y version of Bioconductor

@@ -1,6 +1,6 @@
 context("HiddenFunctions")
 
-test_that("load_suggest is not an exported function", {
+test_that(".onLoad is not an exported function", {
     expect_error(.onLoad())
 })
 
