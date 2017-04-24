@@ -33,15 +33,15 @@
 #' @section Exploratory Data Analysis: 
 #' 
 #' \if{html}{\figure{LomanNJ_2013_Hi_bodysite.png}{options: width="100\%"}}
-#' \if{latex}{\figure{LomanNJ_2013_Hi_bodysite.png}}
+#' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
 #' \if{html}{\figure{LomanNJ_2013_Hi_country.png}{options: width="100\%"}}
-#' \if{latex}{\figure{LomanNJ_2013_Hi_country.png}}
+#' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
 #' \if{html}{\figure{LomanNJ_2013_Hi_disease.png}{options: width="100\%"}}
-#' \if{latex}{\figure{LomanNJ_2013_Hi_disease.png}}
+#' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #' 
 #' @section Source: 

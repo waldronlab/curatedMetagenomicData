@@ -33,19 +33,19 @@
 #' @section Exploratory Data Analysis: 
 #' 
 #' \if{html}{\figure{LeChatelierE_2013_bmi.png}{options: width="100\%"}}
-#' \if{latex}{\figure{LeChatelierE_2013_bmi.png}}
+#' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
 #' \if{html}{\figure{LeChatelierE_2013_bodysite.png}{options: width="100\%"}}
-#' \if{latex}{\figure{LeChatelierE_2013_bodysite.png}}
+#' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
 #' \if{html}{\figure{LeChatelierE_2013_country.png}{options: width="100\%"}}
-#' \if{latex}{\figure{LeChatelierE_2013_country.png}}
+#' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
 #' \if{html}{\figure{LeChatelierE_2013_disease.png}{options: width="100\%"}}
-#' \if{latex}{\figure{LeChatelierE_2013_disease.png}}
+#' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #' 
 #' @section Source: 

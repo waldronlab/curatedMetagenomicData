@@ -44,15 +44,15 @@ Data from the LomanNJ_2013_Mi study
  
 
 \if{html}{\figure{LomanNJ_2013_Mi_bodysite.png}{options: width="100\%"}}
-\if{latex}{\figure{LomanNJ_2013_Mi_bodysite.png}}
+\if{latex}{An EDA figure is available in the HTML documentation}
 
 
 \if{html}{\figure{LomanNJ_2013_Mi_country.png}{options: width="100\%"}}
-\if{latex}{\figure{LomanNJ_2013_Mi_country.png}}
+\if{latex}{An EDA figure is available in the HTML documentation}
 
 
 \if{html}{\figure{LomanNJ_2013_Mi_disease.png}{options: width="100\%"}}
-\if{latex}{\figure{LomanNJ_2013_Mi_disease.png}}
+\if{latex}{An EDA figure is available in the HTML documentation}
 }
 
 \section{Source}{
