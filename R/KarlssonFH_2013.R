@@ -32,24 +32,24 @@
 #' 
 #' @section Exploratory Data Analysis: 
 #' 
-#' \if{html}\figure{KarlssonFH_2013_age.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013_age.png}
+#' \if{html}{\figure{KarlssonFH_2013_age.png}{options: width="100\%"}}
+#' \if{latex}{\figure{KarlssonFH_2013_age.png}}
 #'
 #'
-#' \if{html}\figure{KarlssonFH_2013_bmi.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013_bmi.png}
+#' \if{html}{\figure{KarlssonFH_2013_bmi.png}{options: width="100\%"}}
+#' \if{latex}{\figure{KarlssonFH_2013_bmi.png}}
 #'
 #'
-#' \if{html}\figure{KarlssonFH_2013_bodysite.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013_bodysite.png}
+#' \if{html}{\figure{KarlssonFH_2013_bodysite.png}{options: width="100\%"}}
+#' \if{latex}{\figure{KarlssonFH_2013_bodysite.png}}
 #'
 #'
-#' \if{html}\figure{KarlssonFH_2013_country.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013_country.png}
+#' \if{html}{\figure{KarlssonFH_2013_country.png}{options: width="100\%"}}
+#' \if{latex}{\figure{KarlssonFH_2013_country.png}}
 #'
 #'
-#' \if{html}\figure{KarlssonFH_2013_disease.png}{options: width="100\%"}
-#' \if{latex}\figure{KarlssonFH_2013_disease.png}
+#' \if{html}{\figure{KarlssonFH_2013_disease.png}{options: width="100\%"}}
+#' \if{latex}{\figure{KarlssonFH_2013_disease.png}}
 #'
 #' 
 #' @section Source: 

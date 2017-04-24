@@ -493,24 +493,24 @@ Data from the HMP_2012 study
 \section{Exploratory Data Analysis}{
  
 
-\if{html}\figure{HMP_2012_age.png}{options: width="100\%"}
-\if{latex}\figure{HMP_2012_age.png}
+\if{html}{\figure{HMP_2012_age.png}{options: width="100\%"}}
+\if{latex}{\figure{HMP_2012_age.png}}
 
 
-\if{html}\figure{HMP_2012_bodysite.png}{options: width="100\%"}
-\if{latex}\figure{HMP_2012_bodysite.png}
+\if{html}{\figure{HMP_2012_bodysite.png}{options: width="100\%"}}
+\if{latex}{\figure{HMP_2012_bodysite.png}}
 
 
-\if{html}\figure{HMP_2012_country.png}{options: width="100\%"}
-\if{latex}\figure{HMP_2012_country.png}
+\if{html}{\figure{HMP_2012_country.png}{options: width="100\%"}}
+\if{latex}{\figure{HMP_2012_country.png}}
 
 
-\if{html}\figure{HMP_2012_disease.png}{options: width="100\%"}
-\if{latex}\figure{HMP_2012_disease.png}
+\if{html}{\figure{HMP_2012_disease.png}{options: width="100\%"}}
+\if{latex}{\figure{HMP_2012_disease.png}}
 
 
-\if{html}\figure{HMP_2012_gender.png}{options: width="100\%"}
-\if{latex}\figure{HMP_2012_gender.png}
+\if{html}{\figure{HMP_2012_gender.png}{options: width="100\%"}}
+\if{latex}{\figure{HMP_2012_gender.png}}
 }
 
 \section{Source}{
