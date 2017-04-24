@@ -43,11 +43,16 @@ Data from the LomanNJ_2013_Hi study
 \section{Exploratory Data Analysis}{
  
 
-\figure{LomanNJ_2013_Hi.bodysite.png}{options: width="100\%"}
+\if{html}\figure{LomanNJ_2013_Hi_bodysite.png}{options: width="100\%"}
+\if{latex}\figure{LomanNJ_2013_Hi_bodysite.png}
 
-\figure{LomanNJ_2013_Hi.country.png}{options: width="100\%"}
 
-\figure{LomanNJ_2013_Hi.disease.png}{options: width="100\%"}
+\if{html}\figure{LomanNJ_2013_Hi_country.png}{options: width="100\%"}
+\if{latex}\figure{LomanNJ_2013_Hi_country.png}
+
+
+\if{html}\figure{LomanNJ_2013_Hi_disease.png}{options: width="100\%"}
+\if{latex}\figure{LomanNJ_2013_Hi_disease.png}
 }
 
 \section{Source}{

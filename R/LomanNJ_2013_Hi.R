@@ -31,29 +31,17 @@
 #' }
 #' 
 #' @section Exploratory Data Analysis: 
-#' LomanNJ_2013_Hi.bodysite.pdf
-#' \if{html}\figure{LomanNJ_2013_Hi.bodysite.png}{options: width="100\%"}
-#' \if{latex}\figure{LomanNJ_2013_Hi.bodysite.pdf}
+#' 
+#' \if{html}\figure{LomanNJ_2013_Hi_bodysite.png}{options: width="100\%"}
+#' \if{latex}\figure{LomanNJ_2013_Hi_bodysite.png}
 #'
-#'LomanNJ_2013_Hi.bodysite.png
-#' \if{html}\figure{LomanNJ_2013_Hi.bodysite.png}{options: width="100\%"}
-#' \if{latex}\figure{LomanNJ_2013_Hi.bodysite.pdf}
 #'
-#'LomanNJ_2013_Hi.country.pdf
-#' \if{html}\figure{LomanNJ_2013_Hi.bodysite.png}{options: width="100\%"}
-#' \if{latex}\figure{LomanNJ_2013_Hi.bodysite.pdf}
+#' \if{html}\figure{LomanNJ_2013_Hi_country.png}{options: width="100\%"}
+#' \if{latex}\figure{LomanNJ_2013_Hi_country.png}
 #'
-#'LomanNJ_2013_Hi.country.png
-#' \if{html}\figure{LomanNJ_2013_Hi.bodysite.png}{options: width="100\%"}
-#' \if{latex}\figure{LomanNJ_2013_Hi.bodysite.pdf}
 #'
-#'LomanNJ_2013_Hi.disease.pdf
-#' \if{html}\figure{LomanNJ_2013_Hi.bodysite.png}{options: width="100\%"}
-#' \if{latex}\figure{LomanNJ_2013_Hi.bodysite.pdf}
-#'
-#'LomanNJ_2013_Hi.disease.png
-#' \if{html}\figure{LomanNJ_2013_Hi.bodysite.png}{options: width="100\%"}
-#' \if{latex}\figure{LomanNJ_2013_Hi.bodysite.pdf}
+#' \if{html}\figure{LomanNJ_2013_Hi_disease.png}{options: width="100\%"}
+#' \if{latex}\figure{LomanNJ_2013_Hi_disease.png}
 #'
 #' 
 #' @section Source: 

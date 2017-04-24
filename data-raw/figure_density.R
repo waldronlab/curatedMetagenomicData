@@ -9,11 +9,7 @@ figure_density <- function(current_dataset, filtered_data) {
         theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
         xlab(current_variable)
 
-    paste(current_dataset, current_variable, "png", sep = ".") %>%
+    paste(current_dataset, "_", current_variable, ".png", sep = "") %>%
         paste0("./man/figures/", .) %>%
         ggsave()
-
-    paste(current_dataset, current_variable, "pdf", sep = ".") %>%
-        paste0("./man/figures/", .) %>%
-        ggsave(device = "pdf")
 }

@@ -391,45 +391,25 @@
 #' }
 #' 
 #' @section Exploratory Data Analysis: 
-#' HMP_2012.age.pdf
-#' \if{html}\figure{HMP_2012.age.png}{options: width="100\%"}
-#' \if{latex}\figure{HMP_2012.age.pdf}
+#' 
+#' \if{html}\figure{HMP_2012_age.png}{options: width="100\%"}
+#' \if{latex}\figure{HMP_2012_age.png}
 #'
-#'HMP_2012.age.png
-#' \if{html}\figure{HMP_2012.age.png}{options: width="100\%"}
-#' \if{latex}\figure{HMP_2012.age.pdf}
 #'
-#'HMP_2012.bodysite.pdf
-#' \if{html}\figure{HMP_2012.age.png}{options: width="100\%"}
-#' \if{latex}\figure{HMP_2012.age.pdf}
+#' \if{html}\figure{HMP_2012_bodysite.png}{options: width="100\%"}
+#' \if{latex}\figure{HMP_2012_bodysite.png}
 #'
-#'HMP_2012.bodysite.png
-#' \if{html}\figure{HMP_2012.age.png}{options: width="100\%"}
-#' \if{latex}\figure{HMP_2012.age.pdf}
 #'
-#'HMP_2012.country.pdf
-#' \if{html}\figure{HMP_2012.age.png}{options: width="100\%"}
-#' \if{latex}\figure{HMP_2012.age.pdf}
+#' \if{html}\figure{HMP_2012_country.png}{options: width="100\%"}
+#' \if{latex}\figure{HMP_2012_country.png}
 #'
-#'HMP_2012.country.png
-#' \if{html}\figure{HMP_2012.age.png}{options: width="100\%"}
-#' \if{latex}\figure{HMP_2012.age.pdf}
 #'
-#'HMP_2012.disease.pdf
-#' \if{html}\figure{HMP_2012.age.png}{options: width="100\%"}
-#' \if{latex}\figure{HMP_2012.age.pdf}
+#' \if{html}\figure{HMP_2012_disease.png}{options: width="100\%"}
+#' \if{latex}\figure{HMP_2012_disease.png}
 #'
-#'HMP_2012.disease.png
-#' \if{html}\figure{HMP_2012.age.png}{options: width="100\%"}
-#' \if{latex}\figure{HMP_2012.age.pdf}
 #'
-#'HMP_2012.gender.pdf
-#' \if{html}\figure{HMP_2012.age.png}{options: width="100\%"}
-#' \if{latex}\figure{HMP_2012.age.pdf}
-#'
-#'HMP_2012.gender.png
-#' \if{html}\figure{HMP_2012.age.png}{options: width="100\%"}
-#' \if{latex}\figure{HMP_2012.age.pdf}
+#' \if{html}\figure{HMP_2012_gender.png}{options: width="100\%"}
+#' \if{latex}\figure{HMP_2012_gender.png}
 #'
 #' 
 #' @section Source: 
