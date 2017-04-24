@@ -32,16 +32,16 @@
 #' 
 #' @section Exploratory Data Analysis: 
 #' 
-#' \if{html}\figure{LomanNJ_2013_Hi_bodysite.png}{options: width="100\%"}
-#' \if{latex}\figure{LomanNJ_2013_Hi_bodysite.png}
+#' \if{html}{\figure{LomanNJ_2013_Hi_bodysite.png}{options: width="100\%"}}
+#' \if{latex}{\figure{LomanNJ_2013_Hi_bodysite.png}}
 #'
 #'
-#' \if{html}\figure{LomanNJ_2013_Hi_country.png}{options: width="100\%"}
-#' \if{latex}\figure{LomanNJ_2013_Hi_country.png}
+#' \if{html}{\figure{LomanNJ_2013_Hi_country.png}{options: width="100\%"}}
+#' \if{latex}{\figure{LomanNJ_2013_Hi_country.png}}
 #'
 #'
-#' \if{html}\figure{LomanNJ_2013_Hi_disease.png}{options: width="100\%"}
-#' \if{latex}\figure{LomanNJ_2013_Hi_disease.png}
+#' \if{html}{\figure{LomanNJ_2013_Hi_disease.png}{options: width="100\%"}}
+#' \if{latex}{\figure{LomanNJ_2013_Hi_disease.png}}
 #'
 #' 
 #' @section Source: 
