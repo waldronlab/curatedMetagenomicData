@@ -494,23 +494,23 @@ Data from the HMP_2012 study
  
 
 \if{html}{\figure{HMP_2012_age.png}{options: width="100\%"}}
-\if{latex}{\figure{HMP_2012_age.png}}
+\if{latex}{An EDA figure is available in the HTML documentation}
 
 
 \if{html}{\figure{HMP_2012_bodysite.png}{options: width="100\%"}}
-\if{latex}{\figure{HMP_2012_bodysite.png}}
+\if{latex}{An EDA figure is available in the HTML documentation}
 
 
 \if{html}{\figure{HMP_2012_country.png}{options: width="100\%"}}
-\if{latex}{\figure{HMP_2012_country.png}}
+\if{latex}{An EDA figure is available in the HTML documentation}
 
 
 \if{html}{\figure{HMP_2012_disease.png}{options: width="100\%"}}
-\if{latex}{\figure{HMP_2012_disease.png}}
+\if{latex}{An EDA figure is available in the HTML documentation}
 
 
 \if{html}{\figure{HMP_2012_gender.png}{options: width="100\%"}}
-\if{latex}{\figure{HMP_2012_gender.png}}
+\if{latex}{An EDA figure is available in the HTML documentation}
 }
 
 \section{Source}{
