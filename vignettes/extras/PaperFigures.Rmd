@@ -26,7 +26,7 @@ knitr::opts_chunk$set(message = FALSE)
 knitr::opts_chunk$set(warning = FALSE)
 ```
 
-```{r libraries, include=FALSE}
+```{r libraries, include=FALSE, cache=FALSE}
 library(curatedMetagenomicData)
 library(randomForest)
 library(caret)
@@ -69,7 +69,7 @@ image(1:n, 1, as.matrix(1:n), col = pallet, xlab = "", ylab = "", xaxt = "n",
 
 # Figure 1, Example 1: Classification
 
-```{r, fig.height=8, fig.width=8, eval=FALSE}
+```{r fig1eg1, fig.height=8, fig.width=8, eval=FALSE}
 dataset_list <- c("KarlssonFH_2013 (T2D)", "LeChatelierE_2013 (Obesity)", "NielsenHB_2014 (IBD)", "QinJ_2012 (T2D)", "QinN_2014 (Cirrhosis)", "ZellerG_2014 (CRC)")
 class_list <- c("t2d", "obesity", "ibd", "t2d", "cirrhosis", "cancer")
 data_list <- matrix(nrow = 5, ncol = length(dataset_list))
@@ -155,7 +155,7 @@ legend("bottom", xpd = TRUE, horiz = TRUE, inset = c(0, 0), bty = "n", pch = 16,
 
 # Figure 1, Example 2: Clustering
 
-```{r, fig.height=8, fig.width=8}
+```{r fig1eg2, fig.height=8, fig.width=8}
 eh <- ExperimentHub()
 myquery <- query(eh, "curatedMetagenomicData")
 
@@ -233,7 +233,7 @@ ggplot() +
 
 # Figure 1, Example 3: Abundance across samples
 
-```{r, fig.height=8, fig.width=12}
+```{r fig1eg3, fig.height=8, fig.width=12}
 eh <- ExperimentHub()
 myquery <- query(eh, "curatedMetagenomicData")
 
@@ -334,7 +334,7 @@ bardat %>%
 
 # Figure 1, Example 4: Species-pathway correlation
 
-```{r, fig.height=8, fig.width=8}
+```{r fig1eg4, fig.height=8, fig.width=8}
 eset_pathway$prev <- as.numeric(exprs(eset_bugs)[grep("s__Prevotella_copri", rownames(exprs(eset_bugs))), ])
 
 cor_est_p <- function(x1, x2) {
@@ -357,7 +357,7 @@ qplot(x = eset_pathway$prev, y = exprs(eset_pathway)[cors$feature[cors$r.cor == 
 
 # Supplemental Figure 1: Health status classification from species abundance.
 
-```{r, fig.height=8, fig.width=8}
+```{r suppfig1, fig.height=8, fig.width=8}
 dataset_list <- c("KarlssonFH_2013 (T2D)", "LeChatelierE_2013 (Obesity)", "NielsenHB_2014 (IBD)", "QinJ_2012 (T2D)", "QinN_2014 (Cirrhosis)", "ZellerG_2014 (CRC)")
 class_list <- c("t2d", "obesity", "ibd", "t2d", "cirrhosis", "cancer")
 data_list <- c("EH277", "EH283", "EH301", "EH319", "EH325", "EH361")
@@ -411,7 +411,7 @@ legend("bottomright", box.lwd = 0, box.col = "transparent", bg = "transparent", 
 
 # Supplemental Figure 2: PCoA plots colored for dataset + disease states.
 
-```{r, fig.height=8, fig.width=12}
+```{r suppfig2, fig.height=8, fig.width=12}
 eset.list <- curatedMetagenomicData("*metaphlan_bugs_list.stool", dryrun = FALSE)
 
 names(eset.list) <- gsub("\\..+", "", names(eset.list))
@@ -517,7 +517,7 @@ df_ord_dataset_disease %>%
 
 # Supplemental Figure 3. Clustering scores for enterotypes in gut WGS samples.
 
-```{r}
+```{r suppfig3}
 pam_bray <- sapply(2:10, function(i) pam(dist_bray, k = i, cluster.only = T))
 pam_js <- sapply(2:10, function(i) pam(dist_js, k = i, cluster.only = T))
 pam_rjs <- sapply(2:10, function(i) pam(dist_rjs, k = i, cluster.only = T))
@@ -564,7 +564,7 @@ text("Little or no support", x = 9, y = 0.6, col = darkGray)
 
 # Supplemental Figure 4: Top correlations between metabolic pathways and genera.
 
-```{r, fig.height=8, fig.width=12}
+```{r suppfig4, fig.height=8, fig.width=12}
 eset.list <- curatedMetagenomicData("*pathabundance_relab.stool", dryrun = FALSE)
 
 names(eset.list) <- gsub("\\..+", "", names(eset.list))
@@ -639,7 +639,7 @@ melted_cors %>%
 
 # Supplemental Figure 5: Alpha diversity of taxa from 11 studies of the gut microbiome.
 
-```{r}
+```{r suppfig5}
 alpha <- estimate_richness(pseq, measures = "Shannon")
 alpha$study <- sample_data(pseq)$study
 
@@ -665,6 +665,6 @@ alpha %>%
 ```
 
 # Session Info
-```{r}
+```{r sessioninfo, cache=FALSE}
 sessionInfo()
 ```
