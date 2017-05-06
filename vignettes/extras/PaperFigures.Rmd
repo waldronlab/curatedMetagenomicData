@@ -38,7 +38,6 @@ library(RColorBrewer)
 library(stats)
 library(reshape2)
 library(utils)
-library(ExperimentHub)
 library(phyloseq)
 library(cluster)
 library(dplyr)
@@ -70,48 +69,84 @@ image(1:n, 1, as.matrix(1:n), col = pallet, xlab = "", ylab = "", xaxt = "n",
 # Figure 1, Example 1: Classification
 
 ```{r fig1eg1, fig.height=8, fig.width=8, eval=FALSE}
-dataset_list <- c("KarlssonFH_2013 (T2D)", "LeChatelierE_2013 (Obesity)", "NielsenHB_2014 (IBD)", "QinJ_2012 (T2D)", "QinN_2014 (Cirrhosis)", "ZellerG_2014 (CRC)")
+dataset_list <-
+    c(
+        "KarlssonFH_2013 (T2D)",
+        "LeChatelierE_2013 (Obesity)",
+        "NielsenHB_2014 (IBD)",
+        "QinJ_2012 (T2D)",
+        "QinN_2014 (Cirrhosis)",
+        "ZellerG_2014 (CRC)"
+    )
 class_list <- c("t2d", "obesity", "ibd", "t2d", "cirrhosis", "cancer")
 data_list <- matrix(nrow = 5, ncol = length(dataset_list))
+## update
 data_list[1, ] <- c("EH277", "EH283", "EH301", "EH319", "EH325", "EH361")  # Species abundance
 data_list[2, ] <- c("EH278", "EH284", "EH302", "EH320", "EH326", "EH362")  # Pathway abundance
 data_list[3, ] <- c("EH279", "EH285", "EH303", "EH321", "EH327", "EH363")  # Pathway coverage
 data_list[4, ] <- c("EH275", "EH281", "EH299", "EH317", "EH323", "EH359")  # Maker abundance
 data_list[5, ] <- c("EH276", "EH282", "EH300", "EH318", "EH324", "EH360")  # Marker presence
 
+## update
 eh <- ExperimentHub()
 
 for (j in 1:length(data_list[, 1])) {
     for (i in 1:length(dataset_list)) {
+        print(dataset_list[i])
         taxabund <- eh[[data_list[j, i]]]
         
         feat <- t(exprs(taxabund))
         if (j == 1) {
-            feat <- feat[, grep("(s__|unclassified)", colnames(feat))]
-            feat <- feat[, -grep("t__", colnames(feat))]
+            feat <- feat[, grepl("(s__|unclassified)", colnames(feat))]
+            feat <- feat[, !grepl("t__", colnames(feat))]
         }
         meta <- pData(taxabund)["disease"]
         all <- cbind(feat, meta)
         if (i == 1) {
+            print("disease != impaired_glucose_tolerance")
             all <- subset(all, disease != "impaired_glucose_tolerance")
         }
         if (i == 2) {
+            print("disease != n")
             all <- subset(all, disease != "n")
         }
         if (i == 3) {
+            print("disease ibd")
             all$disease[all$disease == "ibd_ulcerative_colitis"] <- "ibd"
             all$disease[all$disease == "ibd_crohn_disease"] <- "ibd"
             all$disease[all$disease == "n_relative"] <- "n"
         }
         if (i == 4) {
+            print("disease != na")
             all <- subset(all, disease != "na")
         }
         if (i == 6) {
+            print("disease large_adenoma")
             all <- subset(all, disease != "large_adenoma")
             all$disease[all$disease == "small_adenoma"] <- "n"
         }
         
-        assign(paste("rf", j, i, sep = "_"), train(disease ~ ., data = all, preProc = c("zv", "scale", "center"), method = "rf", ntree = 500, tuneGrid = expand.grid(.mtry = c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 125, 150, 175, 200, 300, 400, 500)), trControl = trainControl(method = "repeatedcv", number = 10, search = "grid", summaryFunction = twoClassSummary, classProbs = TRUE, savePredictions = TRUE)))
+        assign(
+            paste("rf", j, i, sep = "_"),
+            train(
+                disease ~ .,
+                data = all,
+                preProc = c("zv", "scale", "center"),
+                method = "rf",
+                ntree = 500,
+                tuneGrid = expand.grid(
+                    .mtry = c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 125, 150, 175, 200, 300, 400, 500)
+                ),
+                trControl = trainControl(
+                    method = "repeatedcv",
+                    number = 10,
+                    search = "grid",
+                    summaryFunction = twoClassSummary,
+                    classProbs = TRUE,
+                    savePredictions = TRUE
+                )
+            )
+        )
     }
 }
 
@@ -156,6 +191,7 @@ legend("bottom", xpd = TRUE, horiz = TRUE, inset = c(0, 0), bty = "n", pch = 16,
 # Figure 1, Example 2: Clustering
 
 ```{r fig1eg2, fig.height=8, fig.width=8}
+## update
 eh <- ExperimentHub()
 myquery <- query(eh, "curatedMetagenomicData")
 
@@ -195,6 +231,7 @@ ab <- joinWithRnames(eset.list, FUN = exprs)
 ab[is.na(ab)] <- 0
 eset <- ExpressionSet(assayData = as.matrix(ab), phenoData = AnnotatedDataFrame(pdat))
 
+## update
 source("https://raw.githubusercontent.com/waldronlab/presentations/master/Waldron_2016-06-07_EPIC/metaphlanToPhyloseq.R")
 pseq <- metaphlanToPhyloseq(tax = exprs(eset), metadat = pData(eset), split = ".")
 
@@ -234,6 +271,7 @@ ggplot() +
 # Figure 1, Example 3: Abundance across samples
 
 ```{r fig1eg3, fig.height=8, fig.width=12}
+## update
 eh <- ExperimentHub()
 myquery <- query(eh, "curatedMetagenomicData")
 
@@ -268,14 +306,20 @@ names(eset.list) <- myquery.stool$title
 names(eset.list) <- gsub("\\..+", "", myquery.stool$title)
 
 for (i in 1:length(eset.list)) {
-    colnames(eset.list[[i]]) <- paste(names(eset.list)[[i]], colnames(eset.list[[i]]), sep = ".")
-    pData(eset.list[[i]]) <- pData(eset.list[[i]])[, !sapply(pData(eset.list[[i]]), function(x) all(is.na(x)))]
-    eset.list[[i]]$subjectID <- as.character(eset.list[[i]]$subjectID)
+    colnames(eset.list[[i]]) <-
+        paste(names(eset.list)[[i]], colnames(eset.list[[i]]), sep = ".")
+    pData(eset.list[[i]]) <-
+        pData(eset.list[[i]])[,!sapply(pData(eset.list[[i]]), function(x)
+            all(is.na(x)))]
+    eset.list[[i]]$subjectID <-
+        as.character(eset.list[[i]]$subjectID)
 }
 
 for (i in seq_along(eset.list)) {
-    eset.list[[i]] <- eset.list[[i]][grep("t__", rownames(eset.list[[i]]), invert = TRUE), ]
-    eset.list[[i]] <- eset.list[[i]][grep("s__|_unclassified\t", rownames(eset.list[[i]]), perl = TRUE), ]
+    eset.list[[i]] <-
+        eset.list[[i]][grep("t__", rownames(eset.list[[i]]), invert = TRUE),]
+    eset.list[[i]] <-
+        eset.list[[i]][grep("s__|_unclassified\t", rownames(eset.list[[i]]), perl = TRUE),]
 }
 
 pdat <- joinWithRnames(eset.list, FUN = pData)
@@ -284,6 +328,7 @@ ab <- joinWithRnames(eset.list, FUN = exprs)
 ab[is.na(ab)] <- 0
 eset_bugs <- ExpressionSet(assayData = as.matrix(ab), phenoData = AnnotatedDataFrame(pdat))
 
+## update
 pseq <- metaphlanToPhyloseq(tax = exprs(eset_bugs), metadat = pData(eset_bugs), split = ".")
 
 glom <- tax_glom(pseq, taxrank = "Phylum")
@@ -291,7 +336,12 @@ glom <- tax_glom(pseq, taxrank = "Phylum")
 top8phyla <- names(sort(taxa_sums(glom), TRUE)[1:8])
 phyla8_subset <- prune_taxa(top8phyla, glom)
 
-phyla_to_sort <- data.frame(id = 1:8, phyla = as.character(tax_table(phyla8_subset)[, "Phylum"]), otu = as.character(taxa_names(phyla8_subset)))
+phyla_to_sort <-
+    data.frame(
+        id = 1:8,
+        phyla = as.character(tax_table(phyla8_subset)[, "Phylum"]),
+        otu = as.character(taxa_names(phyla8_subset))
+    )
 rownames(phyla_to_sort) <- phyla_to_sort$otu
 
 phylum_ranks <-
@@ -351,14 +401,30 @@ cors$feature <- feature
 cors <- na.omit(cors)
 
 par(mar = c(10, 10, 10, 10))
-qplot(x = eset_pathway$prev, y = exprs(eset_pathway)[cors$feature[cors$r.cor == max(cors$r.cor)], ], xlab = "Prevotella copri abundance", ylab = "Pathway abundance", main = "Inosine 5 phosphate biosynthesis ", colour = I(black), shape = I(1)) +
+qplot(
+    x = eset_pathway$prev,
+    y = exprs(eset_pathway)[cors$feature[cors$r.cor == max(cors$r.cor)],],
+    xlab = "Prevotella copri abundance",
+    ylab = "Pathway abundance",
+    main = "Inosine 5 phosphate biosynthesis ",
+    colour = I(black),
+    shape = I(1)
+) +
     theme(plot.title = element_text(hjust = 0.5))
 ```
 
 # Supplemental Figure 1: Health status classification from species abundance.
 
 ```{r suppfig1, fig.height=8, fig.width=8}
-dataset_list <- c("KarlssonFH_2013 (T2D)", "LeChatelierE_2013 (Obesity)", "NielsenHB_2014 (IBD)", "QinJ_2012 (T2D)", "QinN_2014 (Cirrhosis)", "ZellerG_2014 (CRC)")
+dataset_list <-
+    c(
+        "KarlssonFH_2013 (T2D)",
+        "LeChatelierE_2013 (Obesity)",
+        "NielsenHB_2014 (IBD)",
+        "QinJ_2012 (T2D)",
+        "QinN_2014 (Cirrhosis)",
+        "ZellerG_2014 (CRC)"
+    )
 class_list <- c("t2d", "obesity", "ibd", "t2d", "cirrhosis", "cancer")
 data_list <- c("EH277", "EH283", "EH301", "EH319", "EH325", "EH361")
 
@@ -391,7 +457,27 @@ for (i in 1:length(dataset_list)) {
         all$disease[all$disease == "small_adenoma"] <- "n"
     }
     
-    assign(paste("rf", i, sep = "_"), train(disease ~ ., data = all, preProc = c("zv", "scale", "center"), method = "rf", ntree = 500, tuneGrid = expand.grid(.mtry = c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 125, 150, 175, 200, 300, 400, 500)), trControl = trainControl(method = "repeatedcv", number = 10, search = "grid", summaryFunction = twoClassSummary, classProbs = TRUE, savePredictions = TRUE)))
+    assign(
+        paste("rf", i, sep = "_"),
+        train(
+            disease ~ .,
+            data = all,
+            preProc = c("zv", "scale", "center"),
+            method = "rf",
+            ntree = 500,
+            tuneGrid = expand.grid(
+                .mtry = c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 125, 150, 175, 200, 300, 400, 500)
+            ),
+            trControl = trainControl(
+                method = "repeatedcv",
+                number = 10,
+                search = "grid",
+                summaryFunction = twoClassSummary,
+                classProbs = TRUE,
+                savePredictions = TRUE
+            )
+        )
+    )
 }
 
 pallet_reduced <- c(blue, green, gray, purple, red, black)
@@ -400,13 +486,41 @@ for (i in 1:length(dataset_list)) {
     rf <- get(paste("rf", i, sep = "_"))
     
     if (i == 1) {
-        plot.roc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry], grid = TRUE, ci = TRUE, xaxs = "i", yaxs = "i", col = pallet_reduced[i], lty = 1)
+        plot.roc(
+            rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry],
+            rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry],
+            grid = TRUE,
+            ci = TRUE,
+            xaxs = "i",
+            yaxs = "i",
+            col = pallet_reduced[i],
+            lty = 1
+        )
     } else {
-        plot.roc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry], grid = TRUE, ci = TRUE, xaxs = "i", yaxs = "i", col = pallet_reduced[i], lty = 1, add = TRUE)
+        plot.roc(
+            rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry],
+            rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry],
+            grid = TRUE,
+            ci = TRUE,
+            xaxs = "i",
+            yaxs = "i",
+            col = pallet_reduced[i],
+            lty = 1,
+            add = TRUE
+        )
     }
 }
 
-legend("bottomright", box.lwd = 0, box.col = "transparent", bg = "transparent", lwd = 2, legend = dataset_list, col = pallet_reduced)
+legend(
+    "bottomright",
+    box.lwd = 0,
+    box.col = "transparent",
+    bg = "transparent",
+    lwd = 2,
+    legend = dataset_list,
+    col = pallet_reduced
+    
+)
 ```
 
 # Supplemental Figure 2: PCoA plots colored for dataset + disease states.
@@ -417,14 +531,20 @@ eset.list <- curatedMetagenomicData("*metaphlan_bugs_list.stool", dryrun = FALSE
 names(eset.list) <- gsub("\\..+", "", names(eset.list))
 
 for (i in 1:length(eset.list)) {
-    colnames(eset.list[[i]]) <- paste(names(eset.list)[[i]], colnames(eset.list[[i]]), sep = ".")
-    pData(eset.list[[i]]) <- pData(eset.list[[i]])[, !sapply(pData(eset.list[[i]]), function(x) all(is.na(x)))]
-    eset.list[[i]]$subjectID <- as.character(eset.list[[i]]$subjectID)
+    colnames(eset.list[[i]]) <-
+        paste(names(eset.list)[[i]], colnames(eset.list[[i]]), sep = ".")
+    pData(eset.list[[i]]) <-
+        pData(eset.list[[i]])[,!sapply(pData(eset.list[[i]]), function(x)
+            all(is.na(x)))]
+    eset.list[[i]]$subjectID <-
+        as.character(eset.list[[i]]$subjectID)
 }
 
 for (i in seq_along(eset.list)) {
-    eset.list[[i]] <- eset.list[[i]][grep("t__", rownames(eset.list[[i]]), invert = TRUE), ]
-    eset.list[[i]] <- eset.list[[i]][grep("s__|_unclassified\t", rownames(eset.list[[i]]), perl = TRUE), ]
+    eset.list[[i]] <-
+        eset.list[[i]][grep("t__", rownames(eset.list[[i]]), invert = TRUE),]
+    eset.list[[i]] <-
+        eset.list[[i]][grep("s__|_unclassified\t", rownames(eset.list[[i]]), perl = TRUE),]
 }
 
 pdat <- joinWithRnames(eset.list, FUN = pData)
@@ -435,6 +555,7 @@ ab[is.na(ab)] <- 0
 
 eset <- ExpressionSet(assayData = as.matrix(ab), phenoData = AnnotatedDataFrame(pdat))
 
+## update
 metaphlanToPhyloseq <- function(tax, metadat = NULL, simplenames = TRUE, roundtointeger = FALSE, split = "|") {
     xnames <- rownames(tax)
     shortnames <- gsub(paste0(".+\\", split), "", xnames)
@@ -462,6 +583,7 @@ metaphlanToPhyloseq <- function(tax, metadat = NULL, simplenames = TRUE, roundto
     return(res)
 }
 
+## update
 pseq <- metaphlanToPhyloseq(tax = exprs(eset), metadat = pData(eset), split = ".")
 
 samp <- data.frame(sample_data(pseq))
@@ -504,14 +626,36 @@ samp$disease_simplified[samp$disease == "cirrhosis"] <- "cirrhosis"
 samp$disease_simplified[samp$disease %in% c("t2d", "impaired_glucose_tolerance")] <- "t2d / impaired glucose tolerance"
 samp$disease_simplified[samp$disease %in% c("ibd_crohn_disease", "ibd_ulcerative_colitis")] <- "ibd"
 samp$disease_simplified[samp$disease %in% c("obesity", "overweight")] <- "obese or overweight"
-df_ord_dataset_disease <- data.frame(pc1, pc2, disease_bin = factor(samp$disease == "n", levels = c(T, F), labels = c("diseased", "healthy")), disease = samp$disease_simplified, study = samp$study, prev = df_ordinate$prev)
+df_ord_dataset_disease <-
+    data.frame(
+        pc1,
+        pc2,
+        disease_bin = factor(
+            samp$disease == "n",
+            levels = c(T, F),
+            labels = c("diseased", "healthy")
+        ),
+        disease = samp$disease_simplified,
+        study = samp$study,
+        prev = df_ordinate$prev
+    )
 
 df_ord_dataset_disease %>%
-    ggplot(aes(x=pc1, y=pc2, shape=disease, color=study, size=prev)) +
+    ggplot(aes(
+        x = pc1,
+        y = pc2,
+        shape = disease,
+        color = study,
+        size = prev
+    )) +
     geom_point() +
-    labs(x="Axis 1", y="Axis 2", title="PCoA by dataset and disease") +
+    labs(x = "Axis 1", y = "Axis 2", title = "PCoA by dataset and disease") +
     scale_shape_manual(values = 19:25) +
-    guides(color = guide_legend(ncol = 2, title = "Study"), shape = guide_legend(ncol = 2, title = "Disease"), size = guide_legend(ncol = 2, title="Prevotella copri")) +
+    guides(
+        color = guide_legend(ncol = 2, title = "Study"),
+        shape = guide_legend(ncol = 2, title = "Disease"),
+        size = guide_legend(ncol = 2, title = "Prevotella copri")
+    ) +
     theme(plot.title = element_text(hjust = 0.5))
 ```
 
@@ -570,9 +714,13 @@ eset.list <- curatedMetagenomicData("*pathabundance_relab.stool", dryrun = FALSE
 names(eset.list) <- gsub("\\..+", "", names(eset.list))
 
 for (i in 1:length(eset.list)) {
-    colnames(eset.list[[i]]) <- paste(names(eset.list)[[i]], colnames(eset.list[[i]]), sep = ".")
-    pData(eset.list[[i]]) <- pData(eset.list[[i]])[, !sapply(pData(eset.list[[i]]), function(x) all(is.na(x)))]
-    eset.list[[i]]$subjectID <- as.character(eset.list[[i]]$subjectID)
+    colnames(eset.list[[i]]) <-
+        paste(names(eset.list)[[i]], colnames(eset.list[[i]]), sep = ".")
+    pData(eset.list[[i]]) <-
+        pData(eset.list[[i]])[,!sapply(pData(eset.list[[i]]), function(x)
+            all(is.na(x)))]
+    eset.list[[i]]$subjectID <-
+        as.character(eset.list[[i]]$subjectID)
 }
 
 for (i in seq_along(eset.list)) {
@@ -590,14 +738,20 @@ eset.list <- curatedMetagenomicData("*metaphlan_bugs_list.stool", dryrun = FALSE
 names(eset.list) <- gsub("\\..+", "", names(eset.list))
 
 for (i in 1:length(eset.list)) {
-    colnames(eset.list[[i]]) <- paste(names(eset.list)[[i]], colnames(eset.list[[i]]), sep = ".")
-    pData(eset.list[[i]]) <- pData(eset.list[[i]])[, !sapply(pData(eset.list[[i]]), function(x) all(is.na(x)))]
-    eset.list[[i]]$subjectID <- as.character(eset.list[[i]]$subjectID)
+    colnames(eset.list[[i]]) <-
+        paste(names(eset.list)[[i]], colnames(eset.list[[i]]), sep = ".")
+    pData(eset.list[[i]]) <-
+        pData(eset.list[[i]])[,!sapply(pData(eset.list[[i]]), function(x)
+            all(is.na(x)))]
+    eset.list[[i]]$subjectID <-
+        as.character(eset.list[[i]]$subjectID)
 }
 
 for (i in seq_along(eset.list)) {
-    eset.list[[i]] <- eset.list[[i]][grep("t__", rownames(eset.list[[i]]), invert = TRUE), ]
-    eset.list[[i]] <- eset.list[[i]][grep("s__|_unclassified\t", rownames(eset.list[[i]]), perl = TRUE), ]
+    eset.list[[i]] <-
+        eset.list[[i]][grep("t__", rownames(eset.list[[i]]), invert = TRUE),]
+    eset.list[[i]] <-
+        eset.list[[i]][grep("s__|_unclassified\t", rownames(eset.list[[i]]), perl = TRUE),]
 }
 
 pdat <- joinWithRnames(eset.list, FUN = pData)
