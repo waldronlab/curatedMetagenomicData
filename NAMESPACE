@@ -2,6 +2,7 @@
 
 export(ExpressionSet2MRexperiment)
 export(ExpressionSet2phyloseq)
+export(checkCuration)
 export(curatedMetagenomicData)
 importFrom(AnnotationHub,query)
 importFrom(Biobase,exprs)
