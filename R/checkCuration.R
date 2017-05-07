@@ -30,10 +30,10 @@
 #' View(template)
 #' }
 #' data(combined_metadata)
-#'
-#' combined_metadata <- combined_metadata[, colnames(combined_metadata) %in% template$col.name]
-#' template <- template[match(colnames(combined_metadata), template$col.name), ]
 #' problems <- checkCuration(curated=data.frame(combined_metadata), template=template)
+#' \dontrun{
+#' View(problems$values)
+#' }
 checkCuration <- function(curated, template) {
     problems <- list(colnames = NULL, values = NULL)
     if(is(curated, "ExpressionSet"))
