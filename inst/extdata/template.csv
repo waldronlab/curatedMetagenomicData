@@ -14,7 +14,8 @@ infant_age,integer,non-unique,optional,*,Infant age (days). Should be used for i
 age_category,character,non-unique,required,newborn|child|schoolage|adult|senior,Age category: newborn < 1 year; 1 <= child < 12; 12 <= schoolage < 19; 19 <= adult <= 65; senior > 65
 gender,character,non-unique,required,female|male|other|unknown,Subject gender
 visit_number,integer,non-unique,optional,*,Visit number for studies with repeated visits
-BMI,numeric,non-unique,optional,*,Body mass index (kg/m2)country,character,non-unique,required,***unfinished regex***,Country of acquisition using ISO3 code from http://www.fao.org/countryprofiles/iso3list/en/
+BMI,numeric,non-unique,optional,*,Body mass index (kg/m2)
+country,character,non-unique,required,***unfinished regex***,Country of acquisition using ISO3 code from http://www.fao.org/countryprofiles/iso3list/en/
 location,character,non-unique,optional,*,free-form additional location information
 days_from_first_collection,integer,non-unique,optional,*,Used for time series studies.
 sequencing_platform,character,non-unique,required,IlluminaHiSeq|IlluminaMiSeq|IlluminaNextSeq,This will be modified as new sequencing platforms are added to the database.
