@@ -21,10 +21,10 @@ days_from_first_collection,integer,non-unique,optional,*,Used for time series st
 sequencing_platform,character,non-unique,required,IlluminaHiSeq|IlluminaMiSeq|IlluminaNextSeq,This will be modified as new sequencing platforms are added to the database.
 DNA_extraction_kit,character,non-unique,required,Qiagen|Gnome|MoBio|MPBio|other|unknown,DNA extraction kit
 PMID,character,non-unique,required,[0-9]{8}|unpublished,Identifier of the main publication in PubMed
-number_reads,integer,non-unique,required,*,Number of final reads, calculated from raw data
+number_reads,integer,non-unique,required,*,Number of final reads - calculated from raw data
 number_bases,integer,non-unique,required,*,Total number of bases sequenced in the sample
-minimum_read_length,integer,non-unique,required,*,Minimum read length, calculated from raw data
-median_read_length,integer,non-unique,required,*,Median read length, calculated from raw data
+minimum_read_length,integer,non-unique,required,*,Minimum read length - calculated from raw data
+median_read_length,integer,non-unique,required,*,Median read length - calculated from raw data
 NCBI_accession,character,unique,required,***unfinished regex***,Semicolon-separated vector of NCBI accessions
 uncurated_author_metadata,character,non-unique,required,*,original uncurated data with each field separated by /// and column names separated from values with :
 ############################################################################################################################
