@@ -27,7 +27,7 @@ minimum_read_length,integer,non-unique,required,*,Minimum read length - calculat
 median_read_length,integer,non-unique,required,*,Median read length - calculated from raw data
 NCBI_accession,character,unique,required,***unfinished regex***,Semicolon-separated vector of NCBI accessions
 uncurated_author_metadata,character,non-unique,required,*,original uncurated data with each field separated by /// and column names separated from values with :
-############################################################################################################################
+######,,,,,
 snprnt,integer,non-unique,optional,*,SNPRNT
 wmsphase,integer,non-unique,optional,1|2,Acquisition stage/phase
 classification,character,non-unique,optional,igt|ngt|t2d,Classification
