@@ -6,7 +6,7 @@ body_site,character,non-unique,required,stool|skin|vagina|oralcavity|nasalcavity
 body_subsite,character,non-unique,optional,posterior_fornix|tongue_dorsum|sputum|buccal_mucosa***unfinished regex***|,Subsite of body site of acquisition
 antibiotics_current_use,character,non-unique,required,yes|no|unknown,Subject is currently taking antibiotics
 antibiotics_family,character,non-unique,optional,**unfinished regex**,Family of antibiotics currently used. Semicolon-separated.
-study_condition,character,non-unique,required,control|,The main disease or condition under study, "control" for controls
+study_condition,character,non-unique,required,control|**unfinished regex**,The main disease or condition under study; "control" for controls
 disease,character,non-unique,required,healthy|none|CRC|celiac|CDI|IBD|T2D|T1D,Semicolon-delimited vector of conditions. Use "healthy" only if subject is known to be healthy.  CRC=colorectal cancer. 
 disease_subtype,character,non-unique,optional,CD|UC**unfinished regex**,Disease subtype. CD=Chrohn's Disease.
 age,numeric,non-unique,optional,*,Subject age (years)
