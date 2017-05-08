@@ -1,21 +1,36 @@
 col.name,var.class,uniqueness,requiredness,allowedvalues,description
 dataset_name,character,non-unique,required,HMP_2012|KarlssonFH_2013|LeChatelierE_2013|LomanNJ_2013_Hi|LomanNJ_2013_Mi|NeilsenHB_2014|Obregon-TitoAJ_2015|OhJ_2014|QinJ_2012|QinN_2014|RampelliS_2015|TettAJ_2016|ZellerG_2014,Dataset name
-sampleID,character,unique,required,*,Sample identifier
-subjectID,character,non-unique,required,*,Subject identifier
-bodysite,character,non-unique,required,*,Bodysite of acquisition
-disease,character,non-unique,required,*,Disease presence and type
-age,numeric,non-unique,required,*,Subject age (years)
-gender,character,non-unique,required,female|male,Subject gender
-country,character,non-unique,required,*,Country of acquisition
-sequencing_technology,character,non-unique,required,illumina,Sequencing technology
-pubmedid,integer,non-unique,required,*,Identifier of the main publication in PubMed
-number_reads,integer,non-unique,required,*,Number of final reads
-visit_number,integer,non-unique,optional,1|2|3,Visit number
+sampleID,character,unique,required,[a-zA-Z]\S+,Sample identifier
+subjectID,character,non-unique,required,[a-zA-Z]\S+,Subject identifier
+body_site,character,non-unique,required,stool|skin|vagina|oralcavity|nasalcavity|lung|milk,Bodysite of acquisition
+body_subsite,character,non-unique,optional,posterior_fornix|tongue_dorsum|sputum|buccal_mucosa***unfinished regex***|,Subsite of body site of acquisition
+antibiotics_current_use,character,non-unique,required,yes|no|unknown,Subject is currently taking antibiotics
+antibiotics_family,character,non-unique,optional,**unfinished regex**,Family of antibiotics currently used. Semicolon-separated.
+study_condition,character,non-unique,required,control|,The main disease or condition under study, "control" for controls
+disease,character,non-unique,required,healthy|none|CRC|celiac|CDI|IBD|T2D|T1D,Semicolon-delimited vector of conditions. Use "healthy" only if subject is known to be healthy.  CRC=colorectal cancer. 
+disease_subtype,character,non-unique,optional,CD|UC**unfinished regex**,Disease subtype. CD=Chrohn's Disease.
+age,numeric,non-unique,optional,*,Subject age (years)
+infant_age,integer,non-unique,optional,*,Infant age (days). Should be used for infants < 2 years old.
+age_category,character,non-unique,required,newborn|child|schoolage|adult|senior,Age category: newborn < 1 year, 1 <= child < 12, 12 <= schoolage < 19, 19 <= adult <= 65, senior > 65
+gender,character,non-unique,required,female|male|other|unknown,Subject gender
+visit_number,integer,non-unique,optional,*,Visit number for studies with repeated visits
+BMI,numeric,non-unique,optional,*,Body mass index (kg/m2)country,character,non-unique,required,***unfinished regex***,Country of acquisition, using ISO3 code from http://www.fao.org/countryprofiles/iso3list/en/
+location,character,non-unique,optional,*,free-form additional location information
+days_from_first_collection,integer,non-unique,optional,*,Used for time series studies.
+sequencing_platform,character,non-unique,required,IlluminaHiSeq|IlluminaMiSeq|IlluminaNextSeq,This will be modified as new sequencing platforms are added to the database.
+DNA_extraction_kit,character,non-unique,required,Qiagen|Gnome|MoBio|MPBio|other|unknown,DNA extraction kit
+PMID,character,non-unique,required,[0-9]{8}|unpublished,Identifier of the main publication in PubMed
+number_reads,integer,non-unique,required,*,Number of final reads, calculated from raw data
+number_bases,integer,non-unique,required,*,Total number of bases sequenced in the sample
+minimum_read_length,integer,non-unique,required,*,Minimum read length, calculated from raw data
+median_read_length,integer,non-unique,required,*,Median read length, calculated from raw data
+NCBI_accession,character,unique,required,***unfinished regex***,Semicolon-separated vector of NCBI accessions
+uncurated_author_metadata,character,non-unique,required,*,"original uncurated data, with each field separated by /// and column names separated from values with :."
+############################################################################################################################
 snprnt,integer,non-unique,optional,*,SNPRNT
 wmsphase,integer,non-unique,optional,1|2,Acquisition stage/phase
 classification,character,non-unique,optional,igt|ngt|t2d,Classification
 gad-antibodies,numeric,non-unique,optional,*,Glutamic acid decarboxylase antibodies (for units see Bingley et al. Diabetes 52; 1128-1136; 2003)
-bmi,numeric,non-unique,optional,*,Body mass index (kg/m2)
 whr,numeric,non-unique,optional,*,Waist-to-hip ratio (cm/cm)
 wc,integer,non-unique,optional,*,Waist circumference (cm)
 cholesterol,numeric,non-unique,optional,*,Cholesterol (mmol/L)
