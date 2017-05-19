@@ -8,7 +8,7 @@
 # curatedMetagenomicData
 
 *curatedMetagenomicData* is a *Bioconductor* package that uses *ExperimentHub* to access
-a large number (n ≈ 3000) of human microbiome samples gathered from various sources.
+a large number of human microbiome samples gathered from various sources.
 
 ## Quick Start
 
