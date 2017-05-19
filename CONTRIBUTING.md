@@ -4,16 +4,22 @@ Principally curatedMetagenomicData aims to embody the spirit of open-source soft
 
 ## Reporting Bugs
 
-Development of the curatedMetagenomicData package occurs on GitHub and bugs reported via GitHub issues will recieve the quickest response. Please visit the [project repository](https://github.com/waldronlab/curatedMetagenomicData) and file an issue should you find one.
+Please report software bugs and data problems on our GitHub [issue tracker](https://github.com/waldronlab/curatedMetagenomicData/issues).
 
 ## Pull Request
 
-If you should find a bug that can be fixed with minimal effort please feel free to submit a pull request by cloning the master repository, fixing the bug, committing your changes, and submitting a pull request. If the pull request builds on continious itegration servers without issue it will be merged as soon as is practically possible.
+If you are able to fix a bug yourself, we would welcome a pull request. If the pull request builds cleanly on the continious itegration servers it will be merged as soon as is possible.
 
 ## Adding Datasets
 
-Authors welcome the addition of new datasets provided they can be run through the MetaPhlAn2 and HUMAnN2 pipelines and have curated per sample metadata. To have a dataset considered for addition please contact the maintainer and provide a TSV file containing curated per sample metadata, along with information about how the raw data can be transfered (SCP, SFTP, etc.) for processing. Provided the dataset is a curated human metagenomic study that can be run through the MetaPhlAn2 and HUMAnN2 pipelines it will be added by the process outlined in the [wiki](https://github.com/waldronlab/curatedMetagenomicData/wiki/Adding-New-Data) as soon as is practically possible.
+Authors welcome the addition of new metagenomic datasets provided that the raw data are hosted by NCBI and can be run through the MetaPhlAn2 and HUMAnN2 pipelines. You 
+can request the addition of a dataset by opening an issue on the [Issue Tracker](https://github.com/waldronlab/curatedMetagenomicData/issues), pointing
+us to the publication and raw data. Provided the dataset is a curated human metagenomic study that can be run through the MetaPhlAn2 and HUMAnN2 pipelines it will be added by the process outlined in the [wiki](https://github.com/waldronlab/curatedMetagenomicData/wiki/Adding-New-Data) as soon as is practically possible.
+
+You can speed up our ability to incorporate a new dataset by providing curated 
+metadata. Metadata must satisfy a grammar that is defined by this [template](https://github.com/waldronlab/curatedMetagenomicData/blob/master/inst/extdata/template.csv). You can check that a data.frame object satisfies this grammar using the checkCuration() function in curatedMetagenomicData.
+
 
 ## Other Issues
 
-Visit the Bioconductor support site at https://support.bioconductor.org/, breifly describe your issue, and add the tag curatedMetagenomicData.
+Visit the Bioconductor support site at https://support.bioconductor.org/, briefly describe your issue, and add the tag curatedMetagenomicData.
