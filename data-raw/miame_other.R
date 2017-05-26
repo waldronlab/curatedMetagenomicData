@@ -1,5 +1,5 @@
 miame_other <- function(metadata) {
-    select(metadata, sequencing_technology) %>%
+    select(metadata, sequencing_platform) %>%
     unique() %>%
-    list("Sequencing technology" = .)
+    list("Sequencing platform" = .)
 }

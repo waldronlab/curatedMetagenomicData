@@ -1,7 +1,7 @@
 description_str <- function(description_chr) {
     description_suffix <- paste("data from the", description_chr[1],
                                 "dataset specific to the", description_chr[3],
-                                "bodysite.")
+                                "body site.")
     if(description_chr[2] == "genefamilies_relab") {
         description_str <- paste("Relabeled genefamilies", description_suffix)
         return(description_str)
