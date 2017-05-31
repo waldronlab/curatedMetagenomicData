@@ -7,7 +7,7 @@ body_subsite,character,non-unique,optional,posterior_fornix|tongue_dorsum|sputum
 antibiotics_current_use,character,non-unique,required,yes|no|unknown,Subject is currently taking antibiotics
 antibiotics_family,character,non-unique,optional,**unfinished regex**,Family of antibiotics currently used. Semicolon-separated.
 study_condition,character,non-unique,required,control|**unfinished regex**,The main disease or condition under study; control for controls
-disease,character,non-unique,required,healthy|none|CRC|celiac|CDI|IBD|T2D|T1D,Semicolon-delimited vector of conditions. Use healthy only if subject is known to be healthy.  CRC=colorectal cancer. 
+disease,character,non-unique,required,healthy|none|CRC|celiac|CDI|IBD|T2D|T1D,Semicolon-delimited vector of conditions. Use healthy only if subject is known to be healthy.  CRC=colorectal cancer.
 disease_subtype,character,non-unique,optional,CD|UC**unfinished regex**,Disease subtype. CD=Chrohn's Disease.
 age,numeric,non-unique,optional,*,Subject age (years)
 infant_age,integer,non-unique,optional,*,Infant age (days). Should be used for infants < 2 years old.
@@ -22,7 +22,7 @@ sequencing_platform,character,non-unique,required,IlluminaHiSeq|IlluminaMiSeq|Il
 DNA_extraction_kit,character,non-unique,required,Qiagen|Gnome|MoBio|MPBio|other|unknown,DNA extraction kit
 PMID,character,non-unique,required,[0-9]{8}|unpublished,Identifier of the main publication in PubMed
 number_reads,integer,non-unique,required,*,Number of final reads - calculated from raw data
-number_bases,integer,non-unique,required,*,Total number of bases sequenced in the sample
+number_bases,numeric,non-unique,required,*,Total number of bases sequenced in the sample
 minimum_read_length,integer,non-unique,required,*,Minimum read length - calculated from raw data
 median_read_length,integer,non-unique,required,*,Median read length - calculated from raw data
 NCBI_accession,character,unique,required,***unfinished regex***,Semicolon-separated vector of NCBI accessions
