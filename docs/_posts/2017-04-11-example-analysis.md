@@ -4,6 +4,8 @@ title: "Example Analysis"
 date:  2017-04-11
 ---
 
+The following analysis represents all the code that is necessary to reproduce the results shown in Pasolli, E., Schiffer, L., Renson, A., Obenchain, V., Manghi, P., Truong, D. T., Dowd, JB, Huttenhower, C, Morgan, M, Segata, N, Waldron, L. (2017). Accessible, curated metagenomic data through ExperimentHub. bioRxiv. doi&#58;10.1101/103085. Please note that much of this analysis occurred during the development stages of curatedMetagenomicData and was written by multiple authors. As such, while this analysis is methodologically sound, there may now exist more efficient ways to produce the same results syntactically.
+
 # Coordinated Color Scheme
 
 {% highlight r %}
