@@ -24,7 +24,7 @@ PMID,character,non-unique,required,[0-9]{8}|unpublished,Identifier of the main p
 number_reads,integer,non-unique,required,*,Number of final reads - calculated from raw data
 number_bases,numeric,non-unique,required,*,Total number of bases sequenced in the sample
 minimum_read_length,integer,non-unique,required,*,Minimum read length - calculated from raw data
-median_read_length,integer,non-unique,required,*,Median read length - calculated from raw data
+median_read_length,numeric,non-unique,required,*,Median read length - calculated from raw data
 NCBI_accession,character,unique,required,***unfinished regex***,Semicolon-separated vector of NCBI accessions
 uncurated_author_metadata,character,non-unique,required,*,original uncurated data with each field separated by /// and column names separated from values with :
 ######,,,,,
