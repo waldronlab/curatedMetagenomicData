@@ -31,6 +31,7 @@ library(curatedMetagenomicData)
 library(randomForest)
 library(caret)
 library(pROC)
+library(gclus)
 library(ggplot2)
 library(cluster)
 library(fpc)
@@ -40,6 +41,7 @@ library(reshape2)
 library(utils)
 library(phyloseq)
 library(cluster)
+library(doMC)
 library(dplyr)
 ```
 
@@ -84,70 +86,73 @@ data_list <- matrix(nrow = 5, ncol = length(dataset_list))
 data_list[1, ] <- c("EH277", "EH283", "EH301", "EH319", "EH325", "EH361")  # Species abundance
 data_list[2, ] <- c("EH278", "EH284", "EH302", "EH320", "EH326", "EH362")  # Pathway abundance
 data_list[3, ] <- c("EH279", "EH285", "EH303", "EH321", "EH327", "EH363")  # Pathway coverage
-data_list[4, ] <- c("EH275", "EH281", "EH299", "EH317", "EH323", "EH359")  # Maker abundance
-data_list[5, ] <- c("EH276", "EH282", "EH300", "EH318", "EH324", "EH360")  # Marker presence
+data_list[4, ] <- c("EH275", "EH281", "EH299", "EH317", "EH323", "EH359")  # Marker abundance
+data_list[5, ] <- c("EH276", "EH282", "EH300", "EH318", "EH324", "EH360")  # Marker presencee
 
 ## update
 eh <- ExperimentHub()
 
 for (j in 1:length(data_list[, 1])) {
-    for (i in 1:length(dataset_list)) {
-        filename <- paste0(paste("rf", j, i, sep = "_"), ".rds")
-        print(dataset_list[i])
-        taxabund <- eh[[data_list[j, i]]]
-        
-        feat <- t(exprs(taxabund))
-        if (j == 1) {
-            feat <- feat[, grepl("(s__|unclassified)", colnames(feat))]
-            feat <- feat[, !grepl("t__", colnames(feat))]
-        }
-        meta <- pData(taxabund)["disease"]
-        all <- cbind(feat, meta)
-        if (i == 1) {
-            print("disease != impaired_glucose_tolerance")
-            all <- subset(all, disease != "impaired_glucose_tolerance")
-        }
-        if (i == 2) {
-            print("disease != n")
-            all <- subset(all, disease != "n")
-        }
-        if (i == 3) {
-            print("disease ibd")
-            all$disease[all$disease == "ibd_ulcerative_colitis"] <- "ibd"
-            all$disease[all$disease == "ibd_crohn_disease"] <- "ibd"
-            all$disease[all$disease == "n_relative"] <- "n"
-        }
-        if (i == 4) {
-            print("disease != na")
-            all <- subset(all, disease != "na")
-        }
-        if (i == 6) {
-            print("disease large_adenoma")
-            all <- subset(all, disease != "large_adenoma")
-            all$disease[all$disease == "small_adenoma"] <- "n"
-        }
-        if(file.exists(filename)) next
-        object <- 
-            train(
-                disease ~ .,
-                data = all,
-                preProc = c("zv", "scale", "center"),
-                method = "rf",
-                ntree = 500,
-                tuneGrid = expand.grid(
-                    .mtry = c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 125, 150, 175, 200, 300, 400, 500)
-                ),
-                trControl = trainControl(
-                    method = "repeatedcv",
-                    number = 10,
-                    search = "grid",
-                    summaryFunction = twoClassSummary,
-                    classProbs = TRUE,
-                    savePredictions = TRUE
-                )
-            )
-        saveRDS(object, file=filename)
+  for (i in 1:length(dataset_list)) {
+    filename <- paste0(paste("rf", j, i, sep = "_"), ".rds")
+    print(dataset_list[i])
+    taxabund <- eh[[data_list[j, i]]]
+    
+    feat <- t(exprs(taxabund))
+    if (j == 1) {
+      feat <- feat[, grepl("(s__|unclassified)", colnames(feat))]
+      feat <- feat[, !grepl("t__", colnames(feat))]
     }
+    if (j <= 3) {
+      feat <- predict(preProcess(feat, method=c("zv", "scale", "center")), feat) 
+    } else {
+      feat <- predict(preProcess(feat, method=c("zv", "scale", "center", "pca"), thresh=0.995), feat)
+    }
+    meta <- pData(taxabund)["disease"]
+    all <- cbind(feat, meta)
+    if (i == 1) {
+      print("disease != impaired_glucose_tolerance")
+      all <- subset(all, disease != "impaired_glucose_tolerance")
+    }
+    if (i == 2) {
+      print("disease != n")
+      all <- subset(all, disease != "n")
+    }
+    if (i == 3) {
+      print("disease ibd")
+      all$disease[all$disease == "ibd_ulcerative_colitis"] <- "ibd"
+      all$disease[all$disease == "ibd_crohn_disease"] <- "ibd"
+      all$disease[all$disease == "n_relative"] <- "n"
+    }
+    if (i == 4) {
+      print("disease != na")
+      all <- subset(all, disease != "na")
+    }
+    if (i == 6) {
+      print("disease large_adenoma")
+      all <- subset(all, disease != "large_adenoma")
+      all$disease[all$disease == "small_adenoma"] <- "n"
+    }
+    if(file.exists(filename)) next
+    object <- 
+      train(
+        disease ~ .,
+        data = all,
+        method = "rf",
+        ntree = 500,
+        #tuneGrid = expand.grid(.mtry = c(10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 125, 150, 175, 200, 300, 400, 500)),
+        tuneGrid = expand.grid(.mtry = c(50)),
+        trControl = trainControl(
+          method = "repeatedcv",
+          number = 10,
+          search = "grid",
+          summaryFunction = twoClassSummary,
+          classProbs = TRUE,
+          savePredictions = TRUE
+        )
+      )
+    saveRDS(object, file=filename)
+  }
 }
 
 ci_bugs <- c()
@@ -157,31 +162,31 @@ ci_mab <- c()
 ci_mpr <- c()
 
 for (i in 1:length(dataset_list)) {
-    rf <- readRDS(paste0(paste("rf", 1, i, sep = "_"), ".rds"))
-    ci_bugs <- c(ci_bugs, auc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry]))
-        
-    rf <- readRDS(paste0(paste("rf", 2, i, sep = "_"), ".rds"))
-    ci_pab <- c(ci_pab, auc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry]))
-        
-    rf <- readRDS(paste0(paste("rf", 3, i, sep = "_"), ".rds"))
-    ci_pcov <- c(ci_pcov, auc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry]))
-        
-    rf <- readRDS(paste0(paste("rf", 4, i, sep = "_"), ".rds"))
-    ci_mab <- c(ci_mab, auc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry]))
-        
-    rf <- readRDS(paste0(paste("rf", 5, i, sep = "_"), ".rds"))
-    ci_mpr <- c(ci_mpr, auc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry]))
-        }
+  rf <- readRDS(paste0(paste("rf", 1, i, sep = "_"), ".rds"))
+  ci_bugs <- c(ci_bugs, auc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry]))
+  
+  rf <- readRDS(paste0(paste("rf", 2, i, sep = "_"), ".rds"))
+  ci_pab <- c(ci_pab, auc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry]))
+  
+  rf <- readRDS(paste0(paste("rf", 3, i, sep = "_"), ".rds"))
+  ci_pcov <- c(ci_pcov, auc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry]))
+  
+  rf <- readRDS(paste0(paste("rf", 4, i, sep = "_"), ".rds"))
+  ci_mab <- c(ci_mab, auc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry]))
+  
+  rf <- readRDS(paste0(paste("rf", 5, i, sep = "_"), ".rds"))
+  ci_mpr <- c(ci_mpr, auc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry]))
+}
 
 ci <- data.frame(ci_bugs, ci_pab, ci_pcov, ci_mab, ci_mpr)
 colnames(ci) <-
-    c(
-        "Taxonomic abundance",
-        "Pathway abundance",
-        "Pathway coverage",
-        "Marker abundance",
-        "Marker presence"
-    )
+  c(
+    "Species abundance",
+    "Pathway abundance",
+    "Pathway coverage",
+    "Marker abundance",
+    "Marker presence"
+  )
 ci.r <- abs(cor(ci))
 ci.col <- dmat.color(ci.r)
 ci.o <- order.single(ci.r)
@@ -189,22 +194,22 @@ ci.o <- order.single(ci.r)
 par(oma = c(4, 1, 1, 1))
 
 cpairs(
-    ci,
-    ci.o,
-    panel.colors = ci.col,
-    col = alpha(pallet, 0.75),
-    pch = 16,
-    cex = 2,
-    gap = 0.5,
-    main = "AUC"
+  ci,
+  ci.o,
+  panel.colors = ci.col,
+  col = alpha(pallet, 0.75),
+  pch = 16,
+  cex = 2,
+  gap = 0.5,
+  main = "AUC"
 )
 
 par(
-    fig = c(0, 1, 0, 1),
-    oma = c(0, 0, 0, 0),
-    mar = c(0, 0, 0, 0),
-    new = TRUE
-    )
+  fig = c(0, 1, 0, 1),
+  oma = c(0, 0, 0, 0),
+  mar = c(0, 0, 0, 0),
+  new = TRUE
+)
 plot(0, 0, type = "n", bty = "n", xaxt = "n", yaxt = "n")
 legend("bottom", xpd = TRUE, horiz = TRUE, inset = c(0, 0), bty = "n", pch = 16, cex = 0.6, dataset_list, col = pallet)
 ```
