@@ -125,7 +125,11 @@ eh <- ExperimentHub()
 for (j in 1:length(data_list[, 1])) {
   for (i in 1:length(dataset_list)) {
     filename <- paste0(paste("rf", j, i, sep = "_"), ".rds")
+<<<<<<< HEAD
     message(paste("Training:", j, i, dataset_list[i]))
+=======
+    print(dataset_list[i])
+>>>>>>> d02ae786d2a424059c61ae3ed368714955b7b380
     if(file.exists(filename)) next
     taxabund <- eh[[data_list[j, i]]]
     
@@ -185,8 +189,15 @@ for (j in 1:length(data_list[, 1])) {
   }
 }
 
+<<<<<<< HEAD
 message("Finished training, starting plotting.")
 
+=======
+
+```
+
+```{r}
+>>>>>>> d02ae786d2a424059c61ae3ed368714955b7b380
 ci_bugs <- c()
 ci_pab <- c()
 ci_pcov <- c()
