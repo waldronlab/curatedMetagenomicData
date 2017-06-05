@@ -20,7 +20,18 @@ vignette: >
     %\VignetteEncoding{UTF-8}
 ---
 
-Note, R must be started with the option `--max-ppsize=500000` for Figure 1 Example 1 and for Supplemental Figure 1 to run. Otherwise, it will generate an error `Error: protect(): protection stack overflow`. If you are running on a machine with limited memory or a 32-bit installation of R, or you do not want to wait overnight for these classification examples to run, change `eval=TRUE` to `eval=FALSE` in the chunk options for the chunks named `fig1eg` and `suppfig1`. One way to do this from the command line is to invoke R:
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache = TRUE)
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.show = "hold")
+knitr::opts_chunk$set(message = FALSE)
+knitr::opts_chunk$set(warning = FALSE)
+```
+
+# Setup
+
+Note, R must be started with the option `--max-ppsize=500000` for Figure 1 Example 1 and for Supplemental Figure 1 to run. Otherwise, it will generate an error `Error: protect(): protection stack overflow`.  One way to do this from the command line is to invoke R:
 
 ```
 R --vanilla --max-ppsize=500000
@@ -33,20 +44,7 @@ library(rmarkdown)
 rmarkdown::render("PaperFigures.Rmd", "html_document")
 ```
 
-
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache = TRUE)
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(fig.show = "hold")
-knitr::opts_chunk$set(message = FALSE)
-knitr::opts_chunk$set(warning = FALSE)
-```
-
-Set the number of cores to use:
-```{r, cache=FALSE}
-registerDoMC(32)
-```
+If you are running on a machine with limited memory or a 32-bit installation of R, or you do not want to wait overnight for these classification examples to run, change `eval=TRUE` to `eval=FALSE` in the chunk options for the chunks named `fig1eg` and `suppfig1`.
 
 ```{r libraries, include=TRUE, cache=FALSE}
 suppressPackageStartupMessages({
@@ -68,6 +66,11 @@ suppressPackageStartupMessages({
     library(dplyr)
 }
 )
+```
+
+Set the number of cores to use:
+```{r, cache=FALSE}
+registerDoMC(32)
 ```
 
 # Coordinated Color Scheme
