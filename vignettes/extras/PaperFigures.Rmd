@@ -124,6 +124,7 @@ for (j in 1:length(data_list[, 1])) {
   for (i in 1:length(dataset_list)) {
     filename <- paste0(paste("rf", j, i, sep = "_"), ".rds")
     print(dataset_list[i])
+    if(file.exists(filename)) next
     taxabund <- eh[[data_list[j, i]]]
     
     feat <- t(exprs(taxabund))
@@ -161,7 +162,6 @@ for (j in 1:length(data_list[, 1])) {
       all <- subset(all, disease != "large_adenoma")
       all$disease[all$disease == "small_adenoma"] <- "n"
     }
-    if(file.exists(filename)) next
     object <- 
       train(
         disease ~ .,
@@ -183,6 +183,10 @@ for (j in 1:length(data_list[, 1])) {
   }
 }
 
+
+```
+
+```{r}
 ci_bugs <- c()
 ci_pab <- c()
 ci_pcov <- c()
