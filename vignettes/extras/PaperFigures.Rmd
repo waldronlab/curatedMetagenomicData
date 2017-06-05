@@ -1,15 +1,17 @@
 ---
 title: "Paper Figures"
 abstract: >
-    The following analysis represents all the code that is necessary to 
-    reproduce the results shown in Pasolli, E., Schiffer, L., Renson, A., 
+    The following script reproduces all results shown in Pasolli, E., Schiffer, L., Renson, A., 
     Obenchain, V., Manghi, P., Truong, D. T., Dowd, JB, Huttenhower, C, 
     Morgan, M, Segata, N,  Waldron, L. (2017). Accessible, curated metagenomic 
     data through ExperimentHub. bioRxiv. doi&#58;10.1101/103085. Please note 
     that much of this analysis occurred during the development stages of 
     curatedMetagenomicData and was written by multiple authors. As such, while 
     this analysis is methodologically sound, there may now exist more efficient 
-    ways to produce the same results syntactically.
+    ways to produce the same results syntactically. For example, the `curatedMetagenomicData()`
+    convenience function provides a simpler way to access the datasets, also providing 
+    access to multiple versions of the same dataset if they exist. See `?curatedMetagenomicData`
+    for more information.
 output:
     BiocStyle::html_document
 vignette: >
@@ -17,6 +19,21 @@ vignette: >
     %\VignetteEngine{knitr::rmarkdown}
     %\VignetteEncoding{UTF-8}
 ---
+
+Note, R must be started with the option `--max-ppsize=500000` for Figure 1 Example 1 and for Supplemental Figure 1 to run. Otherwise, it will generate an error `Error: protect(): protection stack overflow`. If you are running on a machine with limited memory or a 32-bit installation of R, or you do not want to wait overnight for these classification examples to run, change `eval=TRUE` to `eval=FALSE` in the chunk options for the chunks named `fig1eg` and `suppfig1`. One way to do this from the command line is to invoke R:
+
+```
+R --vanilla --max-ppsize=500000
+```
+
+Then enter from within R:
+
+```{r, eval=FALSE}
+library(rmarkdown)
+rmarkdown::render("PaperFigures.Rmd", "html_document")
+```
+
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(cache = TRUE)
@@ -26,23 +43,31 @@ knitr::opts_chunk$set(message = FALSE)
 knitr::opts_chunk$set(warning = FALSE)
 ```
 
-```{r libraries, include=FALSE, cache=FALSE}
-library(curatedMetagenomicData)
-library(randomForest)
-library(caret)
-library(pROC)
-library(gclus)
-library(ggplot2)
-library(cluster)
-library(fpc)
-library(RColorBrewer)
-library(stats)
-library(reshape2)
-library(utils)
-library(phyloseq)
-library(cluster)
-library(doMC)
-library(dplyr)
+Set the number of cores to use:
+```{r, cache=FALSE}
+registerDoMC(32)
+```
+
+```{r libraries, include=TRUE, cache=FALSE}
+suppressPackageStartupMessages({
+    library(curatedMetagenomicData)
+    library(randomForest)
+    library(caret)
+    library(pROC)
+    library(gclus)
+    library(ggplot2)
+    library(cluster)
+    library(fpc)
+    library(RColorBrewer)
+    library(stats)
+    library(reshape2)
+    library(utils)
+    library(phyloseq)
+    library(cluster)
+    library(doMC)
+    library(dplyr)
+}
+)
 ```
 
 # Coordinated Color Scheme
@@ -441,7 +466,7 @@ qplot(
 
 # Supplemental Figure 1: Health status classification from species abundance.
 
-```{r suppfig1, fig.height=8, fig.width=8}
+```{r suppfig1, fig.height=8, fig.width=8, eval=TRUE}
 dataset_list <-
     c(
         "KarlssonFH_2013 (T2D)",
