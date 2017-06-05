@@ -31,20 +31,22 @@ knitr::opts_chunk$set(warning = FALSE)
 
 # Setup
 
-Note, R must be started with the option `--max-ppsize=500000` for Figure 1 Example 1 and for Supplemental Figure 1 to run. Otherwise, it will generate an error `Error: protect(): protection stack overflow`.  One way to do this from the command line is to invoke R:
+Note, the classification analyses here (Figure 1 Example 1 and for Supplemental Figure 1) create very large matrices that can exceed default limits for R pointer size and the C stack limit on some systems.  If you see `Error: protect(): protection stack overflow` or `Error: segfault from C stack overflow`, one of these is the issue. From GNU/Linux, these limits can be increased from the command-line as follows:
 
 ```
-R --vanilla --max-ppsize=500000
+ulimit -s 65535   #addresses C stack overflow
+R --vanilla --max-ppsize=500000    #addresses protect() error
 ```
 
-Then enter from within R:
+If you are running on a machine with limited memory, a 32-bit installation of R, otherwise have trouble with stack overflows, or you do not want to wait overnight for these classification examples to run, change `eval=TRUE` to `eval=FALSE` in the chunk options for the chunks named `fig1eg` and `suppfig1` to skip these analyses.
+
+Then enter the following from within R to build the html:
 
 ```{r, eval=FALSE}
 library(rmarkdown)
 rmarkdown::render("PaperFigures.Rmd", "html_document")
 ```
 
-If you are running on a machine with limited memory or a 32-bit installation of R, or you do not want to wait overnight for these classification examples to run, change `eval=TRUE` to `eval=FALSE` in the chunk options for the chunks named `fig1eg` and `suppfig1`.
 
 ```{r libraries, include=TRUE, cache=FALSE}
 suppressPackageStartupMessages({
@@ -123,7 +125,8 @@ eh <- ExperimentHub()
 for (j in 1:length(data_list[, 1])) {
   for (i in 1:length(dataset_list)) {
     filename <- paste0(paste("rf", j, i, sep = "_"), ".rds")
-    print(dataset_list[i])
+    message(paste("Training:", j, i, dataset_list[i]))
+    if(file.exists(filename)) next
     taxabund <- eh[[data_list[j, i]]]
     
     feat <- t(exprs(taxabund))
@@ -161,7 +164,6 @@ for (j in 1:length(data_list[, 1])) {
       all <- subset(all, disease != "large_adenoma")
       all$disease[all$disease == "small_adenoma"] <- "n"
     }
-    if(file.exists(filename)) next
     object <- 
       train(
         disease ~ .,
@@ -183,6 +185,8 @@ for (j in 1:length(data_list[, 1])) {
   }
 }
 
+message("Finished training, starting plotting.")
+
 ci_bugs <- c()
 ci_pab <- c()
 ci_pcov <- c()
@@ -190,6 +194,7 @@ ci_mab <- c()
 ci_mpr <- c()
 
 for (i in 1:length(dataset_list)) {
+  message(paste(i, ":", dataset_list[i]))
   rf <- readRDS(paste0(paste("rf", 1, i, sep = "_"), ".rds"))
   ci_bugs <- c(ci_bugs, auc(rf$pred$obs[rf$pred$mtry == rf$bestTune$mtry], rf$pred[, class_list[i]][rf$pred$mtry == rf$bestTune$mtry]))
   
