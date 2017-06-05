@@ -25,12 +25,14 @@
 #' }
 #'
 #' @examples
-#' template <- read.csv(system.file("extdata/template.csv", package="curatedMetagenomicData"), as.is=TRUE)
+#' template <- read.csv(system.file("extdata/template.csv",
+#' package="curatedMetagenomicData"), as.is=TRUE)
 #' \dontrun{
 #' View(template)
 #' }
 #' data(combined_metadata)
-#' problems <- checkCuration(curated=data.frame(combined_metadata), template=template)
+#' problems <- checkCuration(curated=data.frame(combined_metadata),
+#' template=template)
 #' \dontrun{
 #' View(problems$values)
 #' }

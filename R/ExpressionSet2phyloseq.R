@@ -34,6 +34,10 @@
 #' @importFrom phyloseq phyloseq
 ExpressionSet2phyloseq <- function(eset, simplify = TRUE,
                                    relab = TRUE) {
+
+    if (!requireNamespace("phyloseq"))
+        stop("Please install the 'phyloseq' package to make phyloseq objects")
+
     otu.table <- exprs(eset)
     sample.data <- pData(eset) %>%
         sample_data(., errorIfNULL = FALSE)

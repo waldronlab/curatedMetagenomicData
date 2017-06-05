@@ -6,3 +6,5 @@
 ^\.httr-oauth$
 ^docs$
 ^data-raw$
+LICENSE
+CONTRIBUTING.md

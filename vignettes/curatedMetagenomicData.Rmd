@@ -213,6 +213,7 @@ taxonomy-aware, ecological analysis and plotting by conversion to a
 provides the `ExpressionSet2phyloseq()` function to make this easy:
 
 ```{r, warning=FALSE}
+library(phyloseq)
 loman.pseq = ExpressionSet2phyloseq( loman.eset )
 ```
 

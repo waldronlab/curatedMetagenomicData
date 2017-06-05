@@ -21,6 +21,9 @@
 #'
 #' @importFrom Biobase exprs
 #' @importFrom Biobase pData
+#' @importFrom Biobase AnnotatedDataFrame
+#' @importFrom Biobase phenoData
+#' @importFrom Biobase exprs<-
 #' @importFrom metagenomeSeq newMRexperiment
 #' @importFrom magrittr %>%
 #' @importFrom dplyr data_frame
