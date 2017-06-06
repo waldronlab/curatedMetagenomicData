@@ -16,11 +16,15 @@
 #' @param dryrun = TRUE
 #' Only return the names of datasets to be downloaded, not the datasets
 #' themselves. If FALSE, return the datasets rather than the names.
+#' @param cmdversion = max(cmdValidVersions())
+#' An integer version number, by default the most recent version.
+#' See cmdValidVersions() for possible options.
 #'
 #' @return
 #' A list of ExpressionSet and/or phyloseq objects
 #' @export
 #' curatedMetagenomicData
+#' @importClassesFrom S4Vectors SimpleList
 #' @examples
 #' curatedMetagenomicData()
 #' curatedMetagenomicData("ZellerG*")
@@ -32,7 +36,11 @@ curatedMetagenomicData <- function(x = "*",
                                    dryrun = TRUE,
                                    counts = FALSE,
                                    bugs.as.phyloseq = FALSE,
-                                   x.is.glob = TRUE) {
+                                   x.is.glob = TRUE,
+                                   cmdversion = max(cmdValidVersions())) {
+    cmdversion <- as.integer(cmdversion)
+    if(length(cmdversion) > 1 | !.cmdIsValidVersion(cmdversion))
+        stop("Must provide a single valid version number, see cmdValidVersions().")
     requested.datasets <- x
     all.datasets <- ls("package:curatedMetagenomicData")
     all.datasets <-
@@ -52,7 +60,7 @@ curatedMetagenomicData <- function(x = "*",
         stop("requested datasets do not match any available datasets.")
     eset.list <- lapply(seq_along(matched.datasets), function(i) {
         message(paste0("Working on ", matched.datasets[i]))
-        eset <- do.call(get(matched.datasets[i]), list())
+        eset <- do.call(get(matched.datasets[i]), args=list(cmdversion=cmdversion))
         if (counts) {
             exprs(eset) <-
                 round(sweep(exprs(eset), 2, eset$number_reads / 100, "*"))
@@ -62,6 +70,8 @@ curatedMetagenomicData <- function(x = "*",
         }
         return(eset)
     })
+    eset.list <- S4Vectors::SimpleList(eset.list)
+    metadata(eset.list) <- list(cmdversion = cmdversion)
     names(eset.list) <- matched.datasets
     return(eset.list)
 }
