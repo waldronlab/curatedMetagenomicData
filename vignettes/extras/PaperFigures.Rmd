@@ -141,7 +141,7 @@ for (j in 1:length(data_list[, 1])) {
     if (j <= 3) {
       feat <- predict(preProcess(feat, method=c("zv", "scale", "center")), feat) 
     } else {
-      feat <- predict(preProcess(feat, method=c("zv", "scale", "center", "pca"), thresh=0.995), feat)
+      feat <- predict(preProcess(feat, method=c("nzv", "scale", "center"), freqCut = 75/25, uniqueCut = 100), feat)
     }
     meta <- pData(taxabund)["disease"]
     all <- cbind(feat, meta)
