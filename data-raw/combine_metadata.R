@@ -9,5 +9,5 @@ combine_metadata <- function(tar_gz_file, metadata) {
         combined_metadata <- metadata
     }
     save(combined_metadata, file = "./data/combined_metadata.rda",
-         compress = "gzip")
+         compress = "xz")
 }
