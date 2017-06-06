@@ -39,7 +39,7 @@ tnm,character,non-unique,optional,t4n1m1|t3nxm1|t2n0m1|tnm|t2n1m1|t4n2m1|t3n0m1|
 days_after_onset,integer,non-unique,optional,*,"Days from the onset of the disease."
 stec_count,character,non-unique,optional,high|low|moderate|unknown|na,"."
 shigatoxin_2_elisa,character,non-unique,optional,positive|negative|na,"."
-stool_texture,character,non-unique,optional,smooth|watery|bloody|unknown|,"Texture of the stool at sampling time."
+stool_texture,character,non-unique,optional,smooth|watery|bloody|unknown,"Texture of the stool at sampling time."
 insulin(cat),character,non-unique,optional,yes|no|na,"Insulin intake as a boolean."
 inr,numeric,non-unique,optional,*,"International normalized ratio."
 protein_intake,numeric,non-unique,optional,*,"Indication about the protein intake in the Mongolians diet."
