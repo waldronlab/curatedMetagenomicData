@@ -29,7 +29,8 @@ Imports:
     utils,
     tidyr,
     magrittr,
-    methods
+    methods,
+    S4Vectors
 Suggests:
     roxygen2,
     testthat,

@@ -54,12 +54,4 @@ It is hoped that, with the provision of resources in *curatedMetagenomicData*, m
 | ZehernakovaA_2016 | 27126040 | 2016 | Stool | Other condition | 1135 | 
 | ZhangX_2015 | 26214836 | 2015 | Stool | Rheumatoid arthritis | 202 | 
 
-Authors welcome the addition of new datasets provided they can be run through the MetaPhlAn2 and HUMAnN2 pipelines and have curated per sample metadata. To have a dataset considered for addition please contact the maintainer and provide a TSV file containing curated per sample metadata, along with information about how the raw data can be transfered (SCP, SFTP, etc.) for processing. Provided the dataset is a curated human metagenomic study that can be run through the MetaPhlAn2 and HUMAnN2 pipelines it will be added by the process outlined in the [wiki](https://github.com/waldronlab/curatedMetagenomicData/wiki/Adding-New-Data){:target="_blank"} as soon as is practically possible.
-
-Development of the *curatedMetagenomicData* package occurs on GitHub and bugs
-reported via GitHub issues will recieve the quickest response. Please visit the
-[project repository](https://github.com/waldronlab/curatedMetagenomicData){:target="_blank"} and
-file an issue should you find one.
-
-If you have an issue that is not documented elsewhere, visit the Bioconductor support site at [https://support.bioconductor.org/](https://support.bioconductor.org/){:target="_blank"},
-breifly describe your issue, add the tag curatedMetagenomicData, and we will see it.
+*curatedMetagenomicData* aims to embody the spirit of open-source software, reproducibility, and to provide an ever growing collection of metagenomic data. As such, reports of bugs and curation errors, and suggestions and curation of relevant new metagenomic datasets will gladly be accepted. For more details, please visit the [contributing](https://github.com/waldronlab/curatedMetagenomicData/blob/master/CONTRIBUTING.md){:target="_blank"} section.
