@@ -26,12 +26,8 @@
 #' @importFrom Biobase exprs
 #' @importFrom Biobase pData
 #' @importFrom magrittr %>%
-#' @importFrom phyloseq sample_data
 #' @importFrom dplyr data_frame
 #' @importFrom tidyr separate
-#' @importFrom phyloseq otu_table
-#' @importFrom phyloseq tax_table
-#' @importFrom phyloseq phyloseq
 ExpressionSet2phyloseq <- function(eset, simplify = TRUE,
                                    relab = TRUE) {
 
@@ -40,7 +36,7 @@ ExpressionSet2phyloseq <- function(eset, simplify = TRUE,
 
     otu.table <- exprs(eset)
     sample.data <- pData(eset) %>%
-        sample_data(., errorIfNULL = FALSE)
+        phyloseq::sample_data(., errorIfNULL = FALSE)
 
     taxonomic.ranks <- c("Kingdom", "Phylum", "Class", "Order", "Family",
                          "Genus", "Species", "Strain")
@@ -57,7 +53,7 @@ ExpressionSet2phyloseq <- function(eset, simplify = TRUE,
     if(!relab) {
         otu.table <- round(sweep(otu.table, 2, eset$number_reads/100, "*"))
     }
-    otu.table <- otu_table(otu.table, taxa_are_rows = TRUE)
-    tax.table <- tax_table(tax.table)
-    phyloseq(otu.table, sample.data, tax.table)
+    otu.table <- phyloseq::otu_table(otu.table, taxa_are_rows = TRUE)
+    tax.table <- phyloseq::tax_table(tax.table)
+    phyloseq::phyloseq(otu.table, sample.data, tax.table)
 }
