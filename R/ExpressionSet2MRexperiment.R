@@ -21,11 +21,15 @@
 #'
 #' @importFrom Biobase exprs
 #' @importFrom Biobase pData
-#' @importFrom metagenomeSeq newMRexperiment
+#' @importFrom Biobase AnnotatedDataFrame
+#' @importFrom Biobase phenoData
+#' @importFrom Biobase exprs<-
 #' @importFrom magrittr %>%
 #' @importFrom dplyr data_frame
 #' @importFrom tidyr separate
 ExpressionSet2MRexperiment <- function(eset, simplify = TRUE) {
+    if (!requireNamespace("metagenomeSeq"))
+        stop("Please install the 'metagenomeSeq' package to make MRexperiment objects")
     taxonomic.ranks <- c("Kingdom", "Phylum", "Class", "Order", "Family",
                          "Genus", "Species", "Strain")
     otu.table <- exprs(eset)
@@ -43,7 +47,7 @@ ExpressionSet2MRexperiment <- function(eset, simplify = TRUE) {
     }
     rownames(tax.table) <- rownames(otu.table)
     tax.table <- AnnotatedDataFrame(data.frame(tax.table))
-    mgseq = newMRexperiment(counts = otu.table, phenoData = phenoData(eset),
+    mgseq = metagenomeSeq::newMRexperiment(counts = otu.table, phenoData = phenoData(eset),
                             featureData = tax.table)
     return(mgseq)
 }

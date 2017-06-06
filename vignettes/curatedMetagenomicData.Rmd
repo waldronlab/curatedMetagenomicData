@@ -122,15 +122,15 @@ Here are all the metabolic pathway abundance for the stool body site:
 grep("(?=.*stool)(?=.*metaphlan)", myquery$title, perl=TRUE, val=TRUE)
 ```
 
-Or, here are all the data products available for the HiSeq component of the "Loman" study:
+Or, here are all the data products available for the "Loman" study:
 ```{r}
-(lomannames = grep("LomanNJ_2013_Hi", myquery$title, perl=TRUE, val=TRUE))
+(lomannames = grep("LomanNJ_2013", myquery$title, perl=TRUE, val=TRUE))
 ```
 
-We could create a list of `ExpressionSet` objects containing all of the Loman HiSeq products as follows (not evaluated):
+We could create a list of `ExpressionSet` objects containing all of the Loman products as follows (not evaluated):
 
 ```{r, eval=FALSE}
-(idx = grep("LomanNJ_2013_Hi", myquery$title, perl=TRUE))
+(idx = grep("LomanNJ_2013", myquery$title, perl=TRUE))
 loman.list = lapply(idx, function(i){
   return(myquery[[i]])
 })
@@ -144,7 +144,7 @@ Individual data projects can be fetched without having to think about `r Biocpkg
 
 ```{r}
 suppressPackageStartupMessages(library(curatedMetagenomicData))
-loman.eset = LomanNJ_2013_Hi.metaphlan_bugs_list.stool()
+loman.eset = LomanNJ_2013.metaphlan_bugs_list.stool()
 ```
 
 # Features of `ExpressionSet` Objects
@@ -213,6 +213,7 @@ taxonomy-aware, ecological analysis and plotting by conversion to a
 provides the `ExpressionSet2phyloseq()` function to make this easy:
 
 ```{r, warning=FALSE}
+library(phyloseq)
 loman.pseq = ExpressionSet2phyloseq( loman.eset )
 ```
 

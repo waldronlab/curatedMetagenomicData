@@ -7,7 +7,7 @@ get_subsection <- function(resource_object) {
     }
     sample_number <- sample_number(resource_object)
     feature_number <- feature_number(resource_object)
-    resource_bodysite <- unique(resource_object$bodysite)
+    resource_bodysite <- unique(resource_object$body_site)
     paste(class_article, resource_class, "with", sample_number, "and",
-          feature_number, "specific to the", resource_bodysite, "bodysite")
+          feature_number, "specific to the", resource_bodysite, "body site")
 }

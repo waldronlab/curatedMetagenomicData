@@ -6,5 +6,6 @@ metadata_cols <- function(metadata_tsv) {
     match(template_csv$col.name) %>%
     template_csv$var.class[.] %>%
     strtrim(1) %>%
+    ifelse(is.na(.), "?", .) %>%
     paste0(collapse = "")
 }

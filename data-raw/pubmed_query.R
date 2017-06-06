@@ -1,5 +1,5 @@
 pubmed_query <- function(metadata) {
-    select(metadata, pubmedid) %>%
+    select(metadata, PMID) %>%
     unlist() %>%
     as.integer() %>%
     unique() %>%

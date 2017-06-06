@@ -18,13 +18,10 @@ cat_documentation <- function(title_str, documentation_df) {
     documentation_str[09] <- documentation_section("Source:")
     documentation_str[10] <- documentation_source(first_element,
                                                   documentation_df)
-
-    documentation_str[11] <- documentation_seealso(every_element,
-                                                  documentation_df)
-    documentation_str[12] <- documentation_examples(first_element,
+    documentation_str[11] <- documentation_examples(first_element,
                                                     documentation_df)
-    documentation_str[13] <- documentation_name(first_element, documentation_df)
-    documentation_str[14] <- "\nNULL\n"
+    documentation_str[12] <- documentation_name(first_element, documentation_df)
+    documentation_str[13] <- "\nNULL\n"
     documentation_filename(first_element, documentation_df) %>%
     cat(documentation_str, file = .)
 }
