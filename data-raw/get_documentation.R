@@ -1,5 +1,4 @@
 get_documentation <- function(resource_name) {
-    browser()
     resource_object <- get_resource(resource_name)
     title <- get_title(resource_name)
     aliases <- gsub(".rda", "", resource_name)
