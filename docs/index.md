@@ -23,34 +23,36 @@ As shown above, problems such as classification, clustering, and correlation ana
 
 It is hoped that, with the provision of resources in curatedMetagenomicData, microbiome analysis will be significantly enabled in a manner that is highly reproducible. Finally, into the future, the development of curatedMetagenomicData will continue with the addition, curation, and analysis of further microbiome datasets. Shown below is a list of forthcoming datasets that have been chosen for inclusion in curatedMetagenomicData.
 
-| Dataset Name | PMID | Publication Year | Bodysite | Disease | Number of Subjects | Number of Samples |
-| --- | --- | --- | --- | --- | --- | --- |
-| ChngKR_2016 | 27562258 | 2016 | skin | atopic dermatitis | 43 | 106 |
-| KorpelaK_2016 | 26811868 | 2016 | gut | other condition | 142 | 256 |
-| BonderJM_2016 | 27694959 | 2016 | gut | other condition | 471 | 1606 |
-| Castro-NallarE_2015 | 26336637 | 2015 | oral_cavity | schizophrenia | 32 | 32 |
-| ManorO_2016 | 26940651 | 2016 | gut | cystic fibrosis | 26 | 104 |
-| MurphyR_2016 | 27738970 | 2016 | gut | T2D | 14 | 28 |
-| QuinceC_2015 | 26526081 | 2015 | gut | IBD | 44 | 117 |
-| VogtmannE_2016 | 27171425 | 2016 | gut | CRC | 104 | 104 |
-| PiperHG_2016 | 27406942 | 2016 | gut | SBS | 11 | 11 |
-| Heintz-BuschartA_2016 | 27775723 | 2016 | gut | T1D | 20 | 53 |
-| LiuW_2016 | 27708392 | 2016 | gut | other condition | 110 | 110 |
-| FengQ_2015 | 25758642 | 2015 | gut | CRC | 147 | 156 |
-| RaymondF_2016 | 26359913 | 2016 | gut | other condition | 24 | 72 |
-| XieH_2016 | 27818083 | 2016 | gut | other condition | 250 | 250 |
-| SchirmerM_2016 | 27984736 | 2016 | gut | other condition | 489 | 471 |
-| HuangAD_2016 | 27881416 | 2016 | gut | other condition | 10 | 10 |
-| ZehernakovaA_2016 | 27126040 | 2016 | gut | other condition | 1135 | 1135 |
-| YuJ_2015 | 26408641 | 2015 | gut | CRC | 128 | 128 |
-| BritoIL_2016 | 27409808 | 2016 | oral_cavity, gut | other condition | 172 | 484 |
-| OlmMR_2017 | 28073918 | 2017 | gut, skin, oral_cavity | other condition | 2 | 45 |
-| HMPphaseII |  |  | gut, skin,oral_cavity, vagina | other condition | 300 | 1200 |
-| HMP2 |  |  | gut, vagina | T2D, IBD |  | 3528 |
-| KosticAD_2015 | 25662751 | 2015 | gut | T1D | 19 | 124 |
-| YassourM_2016 | 27306663 | 2016 | gut | other condition | 39 | 240 |
-| VatanenT_2016 | 27259157 | 2016 | gut | other condition | 222 | 785 |
-| ScherJU_2013 | 24192039 | 2014 | gut | other condition | 44 | 44 |
+| Dataset Name | PMID | Publication Year | Bodysite | Disease | Number of Samples | 
+| --- | --- | --- | --- | --- | --- | 
+| BarnardE_2016 | 28000755 | 2016 | Skin | Acne | 78 | 
+| GeveresD_2014 | 24629344 | 2014 | Stool | CD | 50 | 
+| HMP_phaseII |  |  | Several | Other condition | 1200 | 
+| HMP2 |  |  | Several | IBD, T2D | 3528 | 
+| HuangAD_2016 | 27881416 | 2016 | Stool | Other condition | 10 | 
+| KorpelaK_2016 | 26811868 | 2016 | Stool | Other condition | 256 | 
+| KosticAD_2015 | 25662751 | 2015 | Stool | T1D | 124 | 
+| LiJ_2014 | 24997786 | 2014 | Stool | Other condition | 260 | 
+| LiJ_2017 | 28143587 | 2017 | Stool | Hypertension | 196 | 
+| LiSS_2016 | 27126044 | 2016 | Stool | Other condition | 430 | 
+| LuisS_2016 | 26919743 | 2016 | Stool | Obesity | 92 | 
+| ManorO_2016 | 26940651 | 2016 | Stool | Cystic fibrosis | 104 | 
+| MilaniC_2016 | 27166072 | 2016 | Stool | CDI | 15 | 
+| MurphyR_2016 | 27738970 | 2016 | Stool | T2D | 28 | 
+| Nagy-SzakalD_2017 | 28441964 | 2017 | Stool | ME/CFS | 100 | 
+| OhJ_2016 | 27153496 | 2016 | Skin | Other condition | 406 | 
+| OlmMR_2017 | 28073918 | 2017 | Stool, skin, oral | Other condition | 45 | 
+| PehrssonEC_2016 | 27172044 | 2016 | Stool | Other condition | 116 | 
+| PiperHG_2016 | 27406942 | 2016 | Stool | SBS | 11 | 
+| QuinceC_2015 | 26526081 | 2015 | Stool | IBD | 117 | 
+| RoseG_2017 | 5270596 | 2017 | Stool | Other condition | 15 | 
+| ScherJU_2013 | 24192039 | 2013 | Stool | Other condition | 44 | 
+| TremaroliV_2015 | 26244932 | 2016 | Stool | Other condition | 21 | 
+| VoigtAY_2015 | 25888008 | 2015 | Stool | Other condition | 70 | 
+| YassourM_2016 | 27306663 | 2016 | Stool | Other condition | 240 | 
+| ZeeviD_2015 | 26590418 | 2015 | Stool | Other condition | 1523 | 
+| ZehernakovaA_2016 | 27126040 | 2016 | Stool | Other condition | 1135 | 
+| ZhangX_2015 | 26214836 | 2015 | Stool | Rheumatoid arthritis | 202 | 
 
 Authors welcome the addition of new datasets provided they can be run through the MetaPhlAn2 and HUMAnN2 pipelines and have curated per sample metadata. To have a dataset considered for addition please contact the maintainer and provide a TSV file containing curated per sample metadata, along with information about how the raw data can be transfered (SCP, SFTP, etc.) for processing. Provided the dataset is a curated human metagenomic study that can be run through the MetaPhlAn2 and HUMAnN2 pipelines it will be added by the process outlined in the [wiki](https://github.com/waldronlab/curatedMetagenomicData/wiki/Adding-New-Data){:target="_blank"} as soon as is practically possible.
 
