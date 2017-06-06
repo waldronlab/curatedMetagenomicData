@@ -1,7 +1,7 @@
 Package: curatedMetagenomicData
 Type: Package
 Title: Curated Metagenomic Data of the Human Microbiome
-Version: 1.3.2
+Version: 1.3.3
 Author:
     Lucas Schiffer <schiffer.lucas@gmail.com>,
     Edoardo Pasolli <edoardo.pasolli@unitn.it>,
@@ -24,11 +24,11 @@ Depends:
     dplyr (>= 0.5.0),
     Biobase (>= 2.34.0),
     ExperimentHub (>= 1.0.0),
-    AnnotationHub (>= 2.6.0),
-    magrittr
+    AnnotationHub (>= 2.6.0)
 Imports:
     utils,
     tidyr,
+    magrittr,
     methods
 Suggests:
     roxygen2,
