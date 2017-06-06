@@ -76,8 +76,8 @@ creatine,numeric,non-unique,optional,*,"Curators must use micro-mol/l."
 albumine,numeric,non-unique,optional,*,"Albumine level; curators must use g/l."
 bilubirin,numeric,non-unique,optional,*,"Bilubirin; curators must use mg/dl."
 prothrombin_time,integer,non-unique,optional,*,"Prothrombin time in seconds."
-dyastolic_p,numeric,non-unique,optional,*,Measured in mm/Hg.
-systolic_p,numeric,non-unique,optional,*,Measured in mm/Hg.
+dyastolic_p,numeric,non-unique,optional,*,"Measured in mm/Hg."
+systolic_p,numeric,non-unique,optional,*,"Measured in mm/Hg."
 hscrp,numeric,non-unique,optional,*,"."
 ferm_milk_prod_consumer,character,non-unique,optional,dfmp|unknown,"Dfmp means yes (defined milk product)."
 family,integer,non-unique,optional,*,"A number identifying the family subjects belong; not corrected for meta-analyses."
