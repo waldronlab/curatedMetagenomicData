@@ -5,7 +5,7 @@
 ## Reporting Bugs and Errors in Curation
 
 Development of the *curatedMetagenomicData* package occurs on GitHub. Please visit the
-[project repository](https://github.com/waldronlab/curatedMetagenomicData){:target="_blank"} and report software bugs and data problems on our [issue tracker](https://github.com/waldronlab/curatedMetagenomicData/issues).
+[project repository](https://github.com/waldronlab/curatedMetagenomicData) and report software bugs and data problems on our [issue tracker](https://github.com/waldronlab/curatedMetagenomicData/issues).
 
 ## Pull Request
 
