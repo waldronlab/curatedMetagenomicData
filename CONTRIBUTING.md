@@ -17,7 +17,7 @@ Authors welcome the addition of new metagenomic datasets provided that the raw d
 
 You can speed up our ability to incorporate a new dataset by providing curated metadata. Metadata must satisfy a grammar that is defined by this [template](https://github.com/waldronlab/curatedMetagenomicData/blob/master/inst/extdata/template.csv). You can check that a data.frame object satisfies this grammar using the checkCuration() function in curatedMetagenomicData.
 
-## Using the curatedMetagenomicData pipeline yourself
+## Using the curatedMetagenomicData Pipeline Yourself
 
 The process of adding a dataset is documented in the [wiki](https://github.com/waldronlab/curatedMetagenomicData/wiki/Adding-New-Data). Critical components are the [High Computational Load Pipeline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/inst/pipeline) and the [curatedMetagenomicData Generating Pipeline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/data-raw).
 
