@@ -4,8 +4,8 @@ description: Curated and processed metagenomic data through ExperimentHub
 
 url: https://waldronlab.github.io/curatedMetagenomicData
 baseurl: ""
-paginate_path: "tutorials/page:num/"
-permalink: tutorials/:title/
+paginate_path: "analyses/page:num/"
+permalink: analyses/:title/
 
 markdown: kramdown
 highlighter: rouge
@@ -17,8 +17,8 @@ navigation:
    url: /
  - title: Getting Started
    url: /getting-started
- - title: Tutorials
-   url: /tutorials
+ - title: Analyses
+   url: /analyses
  - title: Publications
    url: /publications
 
