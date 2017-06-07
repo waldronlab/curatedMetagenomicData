@@ -8,7 +8,7 @@ The scripts in this directory allow the user to reproduce the entire process of 
 
    See within `curatedMetagenomicData_pipeline.sh` for requirements and settings.
 
-* 'sample_name' and relative NCBI accession numbers for all the samples included in the package are available in the 'combined_metadata' dataset provided in the package:
+* `sample_name` and relative NCBI accession numbers for all the samples included in the package are available in the 'combined_metadata' dataset provided in the package:
 
    ```
    > library(curatedMetadata)
