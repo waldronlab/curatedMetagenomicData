@@ -80,7 +80,7 @@ The list of datasets currently included in the package is available in the [refe
 
 
 ### From the Command Line
-In order to access data from the command line it is necessary to have `R`, `Bioconductor`, and *curatedMetagenomicData* installed (see install). Additionally, it is necessary to install the `docopt` package from within `R`:
+In order to access data from the command line it is necessary to have `R`, `Bioconductor`, and *curatedMetagenomicData* installed (see the install section above). Additionally, it is necessary to install the `docopt` package from within `R`:
 
 {% highlight r %}
 BiocInstaller::biocLite("docopt")
