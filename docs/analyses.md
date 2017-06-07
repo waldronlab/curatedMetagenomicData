@@ -1,8 +1,8 @@
 ---
 layout: default
-title: Tutorials
+title: Analyses
 ---
-<div id="tutorials">
+<div id="analyses">
   <ul class="posts noList">
     {% for post in site.posts %}
       <li>
