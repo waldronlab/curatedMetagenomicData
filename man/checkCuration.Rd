@@ -4,7 +4,8 @@
 \alias{checkCuration}
 \title{Title Check the curation of per-participant metadata against a template.}
 \usage{
-checkCuration(curated, template)
+checkCuration(curated, template = read.csv(system.file("extdata/template.csv",
+  package = "curatedMetagenomicData"), as.is = TRUE))
 }
 \arguments{
 \item{curated}{a data.frame containing the curated per-participant metadata to be checked}
@@ -37,8 +38,10 @@ See Examples for the template used for curatedMetagenomicData. The template data
 }
 }
 \examples{
-template <- read.csv(system.file("extdata/template.csv",
-package="curatedMetagenomicData"), as.is=TRUE)
+eset <- curatedMetagenomicData("ZellerG_2014.metaphlan_bugs_list.stool", dryrun=FALSE)[[1]]
+checkCuration(eset)
+data(combined_metadata)
+checkCuration(combined_metadata)
 \dontrun{
 View(template)
 }
