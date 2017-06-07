@@ -1,4 +1,4 @@
-The scripts in this directory perform the complete pipeline of downloading raw reads, HUMAnN2 and MetaPhlAn2 profiling, and normalization.
+The scripts in this directory allow the user to reproduce the entire process of downloading raw reads, process them with the  MetaPhlAn2 and HUMAnN2 pipelines, generate the final normalized profiles, and arrange them in folders exactly as done for the package.
 
 A single sample is downloaded and processed as follows:
 
