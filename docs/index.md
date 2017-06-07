@@ -21,7 +21,7 @@ It is rather the integrated and distributed datasets that *curatedMetagenomicDat
 
 As shown above, problems such as classification, clustering, and correlation analysis can be done in a few lines of code and across multiple studies. The barrier of working with large-scale, raw sequencing data has been abstracted from the process of microbiome data analysis and work that would otherwise have required a computing cluster can be done on a laptop.
 
-It is hoped that, with the provision of resources in *curatedMetagenomicData*, microbiome analysis will be significantly enabled in a manner that is highly reproducible. Finally, into the future, the development of *curatedMetagenomicData* will continue with the addition, curation, and analysis of further microbiome datasets. Shown below is a list of forthcoming datasets that have been chosen for inclusion in curatedMetagenomicData.
+It is hoped that, with the provision of resources in *curatedMetagenomicData*, microbiome analysis will be significantly enabled in a manner that is highly reproducible. Finally, into the future, the development of *curatedMetagenomicData* will continue with the addition, curation, and analysis of further microbiome datasets. Shown below is a list of forthcoming datasets that have been chosen for inclusion in *curatedMetagenomicData*.
 
 | Dataset Name | PMID | Publication Year | Bodysite | Disease | Number of Samples | 
 | --- | --- | --- | --- | --- | --- | 
