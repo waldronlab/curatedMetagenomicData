@@ -63,7 +63,7 @@ With *curatedMetagenomicData* installed, you can access datasets through `R` lik
 
 {% highlight r %}
 library(curatedMetagenomicData)
-eset = LomanNJ_2013_Hi.metaphlan_bugs_list.stool()
+eset = LomanNJ_2013.metaphlan_bugs_list.stool()
 {% endhighlight %}
 
 From the resulting `ExpressionSet` object you can extract metagenomic data with `exprs(eset)`, participant and sequencing information using `pData(eset)`, and study information using `experimentData(eset)`.
