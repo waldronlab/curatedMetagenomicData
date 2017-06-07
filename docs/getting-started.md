@@ -74,7 +74,9 @@ The Metaphlan bugs datasets can be converted to `phyloseq` objects for use with 
 ExpressionSet2phyloseq(eset, simplify = TRUE, relab = FALSE )
 {% endhighlight %}
 
-Further usage instructions beyond these basic steps are available in the [package vignette](https://bioconductor.org/packages/release/data/experiment/vignettes/curatedMetagenomicData/inst/doc/curatedMetagenomicData.html){:target="_blank"}. A list of all datasets is available in the [reference manual](http://bioconductor.org/packages/release/data/experiment/manuals/curatedMetagenomicData/man/curatedMetagenomicData.pdf){:target="_blank"}.
+Further usage instructions beyond these basic steps are available in the [package vignette](https://bioconductor.org/packages/release/data/experiment/vignettes/curatedMetagenomicData/inst/doc/curatedMetagenomicData.html){:target="_blank"}.
+
+A list of all datasets currently included in the package is available in the [reference manual](http://bioconductor.org/packages/release/data/experiment/manuals/curatedMetagenomicData/man/curatedMetagenomicData.pdf){:target="_blank"}.
 
 
 ### From the Command Line
