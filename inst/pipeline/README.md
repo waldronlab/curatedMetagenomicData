@@ -15,7 +15,7 @@ The scripts in this directory allow the user to reproduce the entire process of 
    > data(combined_metadata)
    ```
 
-* All the samples included in the package can be downloaded and processed by running
+* All the samples included in the package can be downloaded and processed by running the commands in
 
    `curatedMetagenomicData_pipeline_allsamples.sh`
 
