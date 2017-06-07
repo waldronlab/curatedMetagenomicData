@@ -32,6 +32,8 @@ R --vanilla --max-ppsize=500000    #addresses protect() error
 
 If you are running on a machine with limited memory, a 32-bit installation of R, otherwise have trouble with stack overflows, or you do not want to wait overnight for these classification examples to run, change `eval=TRUE` to `eval=FALSE` in the chunk options for the chunks named `fig1eg` and `suppfig1` to skip these analyses.
 
+Note, when running Supplemental Figure 5 a warning occurs that "The data you have provided does not have any singletons." This is because the estimated relative abundance output of MetaPhlAn2 (and other metagenomic profiling software), even when converted to approximate counts by multiplying by read depth, does not include singletons. It is not a result of trimming, and does not affect the validity of the calculated Shannon diversity measure in as much as any relative abundance data, such as microbiome data from metagenomics, can be used to estimate alpha diversity. However, we recommend that the chao1 diversity measure not be used (Haegeman et al, The ISME Journal (2013) 7, 1092–1101; doi:10.1038/ismej.2013.10).
+
 Then enter the following from within R to build the html:
 
 
