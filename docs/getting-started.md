@@ -68,7 +68,7 @@ eset = LomanNJ_2013_Hi.metaphlan_bugs_list.stool()
 
 From the resulting `ExpressionSet` object you can extract metagenomic data with `exprs(eset)`, participant and sequencing information using `pData(eset)`, and study information using `experimentData(eset)`.
 
-The Metaphlan bugs datasets can be converted to `phyloseq` objects for use with the excellent [phyloseq](bioconductor.org/packages/phyloseq){:target="_blank"} Bioconductor package (see `?ExpressionSet2phyloseq`) for more details on this conversion:
+The Metaphlan bugs datasets can be converted to `phyloseq` objects for use with the excellent [phyloseq](https://bioconductor.org/packages/phyloseq){:target="_blank"} Bioconductor package. See `ExpressionSet2phyloseq` for more details on this conversion:
 
 {% highlight r %}
 ExpressionSet2phyloseq(eset, simplify = TRUE, relab = FALSE )
