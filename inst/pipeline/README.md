@@ -13,4 +13,4 @@ where `sample_name` is the name to be given to the sample, and SRRxxyxyxx etc ar
 
 See within `curatedMetagenomicData_pipeline.sh` for requirements and settings.
 
-See within `curatedMetagenomicData_pipeline_allsamples.sh` for downloading and processing the samples included in the package (be aware this would take ages to be run on a single CPU).
+See within `curatedMetagenomicData_pipeline_allsamples.sh` for downloading and processing all the samples included in the package (be aware this would take ages to be run on a single CPU).
