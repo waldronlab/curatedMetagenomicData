@@ -21,13 +21,7 @@ vignette: >
 ---
 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(cache = TRUE)
-knitr::opts_chunk$set(echo = TRUE)
-knitr::opts_chunk$set(fig.show = "hold")
-knitr::opts_chunk$set(message = FALSE)
-knitr::opts_chunk$set(warning = FALSE)
-```
+
 
 # Setup
 
@@ -42,13 +36,15 @@ If you are running on a machine with limited memory, a 32-bit installation of R,
 
 Then enter the following from within R to build the html:
 
-```{r, eval=FALSE}
+
+```r
 library(rmarkdown)
 rmarkdown::render("PaperFigures.Rmd", "html_document")
 ```
 
 
-```{r libraries, include=TRUE, cache=FALSE}
+
+```r
 suppressPackageStartupMessages({
     library(curatedMetagenomicData)
     library(randomForest)
@@ -71,13 +67,15 @@ suppressPackageStartupMessages({
 ```
 
 Set the number of cores to use:
-```{r, cache=FALSE}
+
+```r
 registerDoMC(32)
 ```
 
 # Coordinated Color Scheme
 
-```{r colors}
+
+```r
 blue <- "#3366aa"
 blueGreen <- "#11aa99"
 green <- "#66aa55"
@@ -98,9 +96,12 @@ image(1:n, 1, as.matrix(1:n), col = pallet, xlab = "", ylab = "", xaxt = "n",
       yaxt = "n", bty = "n")
 ```
 
+<img src="PaperFigures_files/figure-html/colors-1.png" width="672" />
+
 # Figure 1, Example 1: Classification
 
-```{r fig1eg1, fig.height=8, fig.width=8, eval=TRUE}
+
+```r
 dataset_list <-
     c(
         "KarlssonFH_2013 (T2D)",
@@ -137,7 +138,7 @@ for (j in 1:length(data_list[, 1])) {
     if (j <= 3) {
       feat <- predict(preProcess(feat, method=c("zv", "scale", "center")), feat) 
     } else {
-      feat <- predict(preProcess(feat, method=c("nzv", "scale", "center"), freqCut = 75/25, uniqueCut = 100), feat)
+      feat <- predict(preProcess(feat, method=c("zv", "scale", "center", "pca"), thresh=0.995), feat)
     }
     meta <- pData(taxabund)["disease"]
     all <- cbind(feat, meta)
@@ -184,7 +185,13 @@ for (j in 1:length(data_list[, 1])) {
     saveRDS(object, file=filename)
   }
 }
+```
 
+```
+## [1] "disease != impaired_glucose_tolerance"
+```
+
+```r
 message("Finished training, starting plotting.")
 
 ci_bugs <- c()
@@ -247,9 +254,12 @@ plot(0, 0, type = "n", bty = "n", xaxt = "n", yaxt = "n")
 legend("bottom", xpd = TRUE, horiz = TRUE, inset = c(0, 0), bty = "n", pch = 16, cex = 0.6, dataset_list, col = pallet)
 ```
 
+<img src="PaperFigures_files/figure-html/fig1eg1-1.png" width="768" />
+
 # Figure 1, Example 2: Clustering
 
-```{r fig1eg2, fig.height=8, fig.width=8}
+
+```r
 ## update
 eh <- ExperimentHub()
 myquery <- query(eh, "curatedMetagenomicData")
@@ -327,9 +337,12 @@ ggplot() +
     theme(axis.ticks = element_blank(), axis.text = element_blank(), legend.box = "vertical", legend.position = c(0.8, 0.1), plot.title = element_text(hjust = 0.5))
 ```
 
+<img src="PaperFigures_files/figure-html/fig1eg2-1.png" width="768" />
+
 # Figure 1, Example 3: Abundance across samples
 
-```{r fig1eg3, fig.height=8, fig.width=12}
+
+```r
 ## update
 eh <- ExperimentHub()
 myquery <- query(eh, "curatedMetagenomicData")
@@ -441,9 +454,12 @@ bardat %>%
     theme(axis.text.x = element_blank(), axis.title.x = element_blank(), axis.ticks.x = element_blank(), legend.position = c(0.8, 0.8), legend.direction = "vertical", legend.title = element_blank(), panel.background = element_blank())
 ```
 
+<img src="PaperFigures_files/figure-html/fig1eg3-1.png" width="1152" />
+
 # Figure 1, Example 4: Species-pathway correlation
 
-```{r fig1eg4, fig.height=8, fig.width=8}
+
+```r
 eset_pathway$prev <- as.numeric(exprs(eset_bugs)[grep("s__Prevotella_copri", rownames(exprs(eset_bugs))), ])
 
 cor_est_p <- function(x1, x2) {
@@ -472,9 +488,12 @@ qplot(
     theme(plot.title = element_text(hjust = 0.5))
 ```
 
+<img src="PaperFigures_files/figure-html/fig1eg4-1.png" width="768" />
+
 # Supplemental Figure 1: Health status classification from species abundance.
 
-```{r suppfig1, fig.height=8, fig.width=8, eval=TRUE}
+
+```r
 dataset_list <-
     c(
         "KarlssonFH_2013 (T2D)",
@@ -582,9 +601,12 @@ legend(
 )
 ```
 
+<img src="PaperFigures_files/figure-html/suppfig1-1.png" width="768" />
+
 # Supplemental Figure 2: PCoA plots colored for dataset + disease states.
 
-```{r suppfig2, fig.height=8, fig.width=12}
+
+```r
 eset.list <- curatedMetagenomicData("*metaphlan_bugs_list.stool", dryrun = FALSE)
 
 names(eset.list) <- gsub("\\..+", "", names(eset.list))
@@ -718,9 +740,12 @@ df_ord_dataset_disease %>%
     theme(plot.title = element_text(hjust = 0.5))
 ```
 
+<img src="PaperFigures_files/figure-html/suppfig2-1.png" width="1152" />
+
 # Supplemental Figure 3. Clustering scores for enterotypes in gut WGS samples.
 
-```{r suppfig3}
+
+```r
 pam_bray <- sapply(2:10, function(i) pam(dist_bray, k = i, cluster.only = T))
 pam_js <- sapply(2:10, function(i) pam(dist_js, k = i, cluster.only = T))
 pam_rjs <- sapply(2:10, function(i) pam(dist_rjs, k = i, cluster.only = T))
@@ -765,9 +790,12 @@ text("Moderate support", x = 9, y = 0.85, col = darkGray)
 text("Little or no support", x = 9, y = 0.6, col = darkGray)
 ```
 
+<img src="PaperFigures_files/figure-html/suppfig3-1.png" width="672" /><img src="PaperFigures_files/figure-html/suppfig3-2.png" width="672" /><img src="PaperFigures_files/figure-html/suppfig3-3.png" width="672" />
+
 # Supplemental Figure 4: Top correlations between metabolic pathways and genera.
 
-```{r suppfig4, fig.height=8, fig.width=12}
+
+```r
 eset.list <- curatedMetagenomicData("*pathabundance_relab.stool", dryrun = FALSE)
 
 names(eset.list) <- gsub("\\..+", "", names(eset.list))
@@ -850,9 +878,12 @@ melted_cors %>%
     labs(x = "Genus", y = "Pathway")
 ```
 
+<img src="PaperFigures_files/figure-html/suppfig4-1.png" width="1152" />
+
 # Supplemental Figure 5: Alpha diversity of taxa from 11 studies of the gut microbiome.
 
-```{r suppfig5}
+
+```r
 alpha <- estimate_richness(pseq, measures = "Shannon")
 alpha$study <- sample_data(pseq)$study
 
@@ -877,7 +908,87 @@ alpha %>%
     scale_fill_manual(values = c(blue, blueGreen, green, paleYellow, lightBlack, purple, red, orange, yellow, darkGray, brown))
 ```
 
+<img src="PaperFigures_files/figure-html/suppfig5-1.png" width="672" />
+
 # Session Info
-```{r sessioninfo, cache=FALSE}
+
+```r
 sessionInfo()
+```
+
+```
+## R version 3.4.0 RC (2017-04-20 r72569)
+## Platform: x86_64-pc-linux-gnu (64-bit)
+## Running under: Ubuntu 16.04.2 LTS
+## 
+## Matrix products: default
+## BLAS: /usr/lib/atlas-base/atlas/libblas.so.3.0
+## LAPACK: /usr/lib/atlas-base/atlas/liblapack.so.3.0
+## 
+## locale:
+##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              
+##  [3] LC_TIME=en_US.UTF-8        LC_COLLATE=en_US.UTF-8    
+##  [5] LC_MONETARY=en_US.UTF-8    LC_MESSAGES=en_US.UTF-8   
+##  [7] LC_PAPER=en_US.UTF-8       LC_NAME=C                 
+##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            
+## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       
+## 
+## attached base packages:
+## [1] parallel  stats     graphics  grDevices utils     datasets  methods  
+## [8] base     
+## 
+## other attached packages:
+##  [1] doMC_1.3.4                   iterators_1.0.8             
+##  [3] foreach_1.4.3                phyloseq_1.21.0             
+##  [5] reshape2_1.4.2               RColorBrewer_1.1-2          
+##  [7] fpc_2.1-10                   gclus_1.3.1                 
+##  [9] cluster_2.0.6                pROC_1.9.1                  
+## [11] caret_6.0-76                 ggplot2_2.2.1               
+## [13] lattice_0.20-35              randomForest_4.6-12         
+## [15] curatedMetagenomicData_1.3.3 ExperimentHub_1.3.0         
+## [17] AnnotationHub_2.9.3          Biobase_2.37.2              
+## [19] BiocGenerics_0.23.0          dplyr_0.5.0                 
+## 
+## loaded via a namespace (and not attached):
+##  [1] nlme_3.1-131                  pbkrtest_0.4-7               
+##  [3] httr_1.2.1                    rprojroot_1.2                
+##  [5] prabclus_2.2-6                tools_3.4.0                  
+##  [7] backports_1.1.0               vegan_2.4-3                  
+##  [9] R6_2.2.1                      DBI_0.6-1                    
+## [11] lazyeval_0.2.0                mgcv_1.8-17                  
+## [13] colorspace_1.3-2              permute_0.9-4                
+## [15] ade4_1.7-6                    trimcluster_0.1-2            
+## [17] nnet_7.3-12                   compiler_3.4.0               
+## [19] quantreg_5.33                 SparseM_1.77                 
+## [21] diptest_0.75-7                scales_0.4.1                 
+## [23] DEoptimR_1.0-8                mvtnorm_1.0-6                
+## [25] robustbase_0.92-7             stringr_1.2.0                
+## [27] digest_0.6.12                 minqa_1.2.4                  
+## [29] rmarkdown_1.5                 XVector_0.17.0               
+## [31] htmltools_0.3.6               lme4_1.1-13                  
+## [33] rlang_0.1.1                   RSQLite_1.1-2                
+## [35] BiocInstaller_1.27.2          shiny_1.0.3                  
+## [37] jsonlite_1.5                  mclust_5.3                   
+## [39] ModelMetrics_1.1.0            car_2.1-4                    
+## [41] magrittr_1.5                  modeltools_0.2-21            
+## [43] biomformat_1.5.0              Matrix_1.2-10                
+## [45] Rcpp_0.12.11                  munsell_0.4.3                
+## [47] S4Vectors_0.15.3              ape_4.1                      
+## [49] stringi_1.1.5                 yaml_2.1.14                  
+## [51] MASS_7.3-47                   zlibbioc_1.23.0              
+## [53] flexmix_2.3-14                rhdf5_2.21.1                 
+## [55] plyr_1.8.4                    grid_3.4.0                   
+## [57] Biostrings_2.45.2             splines_3.4.0                
+## [59] multtest_2.33.0               knitr_1.16                   
+## [61] igraph_1.0.1                  codetools_0.2-15             
+## [63] stats4_3.4.0                  evaluate_0.10                
+## [65] data.table_1.10.4             nloptr_1.0.4                 
+## [67] httpuv_1.3.3                  MatrixModels_0.4-1           
+## [69] gtable_0.2.0                  tidyr_0.6.3                  
+## [71] kernlab_0.9-25                assertthat_0.2.0             
+## [73] mime_0.5                      xtable_1.8-2                 
+## [75] class_7.3-14                  survival_2.41-3              
+## [77] tibble_1.3.3                  AnnotationDbi_1.39.1         
+## [79] memoise_1.1.0                 IRanges_2.11.3               
+## [81] interactiveDisplayBase_1.15.0
 ```

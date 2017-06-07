@@ -1,4 +1,5 @@
 
+
 #' Title Check the curation of per-participant metadata against a template.
 #'
 #' @param curated a data.frame containing the curated per-participant metadata to be checked
@@ -25,8 +26,10 @@
 #' }
 #'
 #' @examples
-#' template <- read.csv(system.file("extdata/template.csv",
-#' package="curatedMetagenomicData"), as.is=TRUE)
+#' eset <- curatedMetagenomicData("ZellerG_2014.metaphlan_bugs_list.stool", dryrun=FALSE)[[1]]
+#' checkCuration(eset)
+#' data(combined_metadata)
+#' checkCuration(combined_metadata)
 #' \dontrun{
 #' View(template)
 #' }
@@ -36,9 +39,12 @@
 #' \dontrun{
 #' View(problems$values)
 #' }
-checkCuration <- function(curated, template) {
+checkCuration <- function(curated,
+                          template = read.csv(system.file("extdata/template.csv",
+                                                          package = "curatedMetagenomicData"),
+                                              as.is = TRUE)) {
     problems <- list(colnames = NULL, values = NULL)
-    if(is(curated, "ExpressionSet"))
+    if (is(curated, "ExpressionSet"))
         curated <- pData(curated)
     ##-------------------------------------------------
     ##check that the column names match the template
@@ -47,7 +53,15 @@ checkCuration <- function(curated, template) {
         message("column names OK")
     } else{
         if (length(colnames(curated)) != template$col.name) {
-            warning(paste("There are", ncol(curated), "columns in curated, but", nrow(template), "columns defined by template."))
+            warning(
+                paste(
+                    "There are",
+                    ncol(curated),
+                    "columns in curated, but",
+                    nrow(template),
+                    "columns defined by template."
+                )
+            )
         } else{
             warning(
                 "Type `View(problems$colnames)` to find mis-matched column names, assuming output of the function is named `problems`"
