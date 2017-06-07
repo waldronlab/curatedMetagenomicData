@@ -1,4 +1,4 @@
-snicarF_2017
+#AsnicarF_2017
 bash curatedMetagenomicData_pipeline.sh MV_FEI1_t1Q14 "SRR4052021"
 bash curatedMetagenomicData_pipeline.sh MV_FEI2_t1Q14 "SRR4052022"
 bash curatedMetagenomicData_pipeline.sh MV_FEI3_t1Q14 "SRR4052033"
