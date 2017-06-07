@@ -11,7 +11,7 @@ Development of the *curatedMetagenomicData* package occurs on GitHub. Please vis
 
 ## Pull Request
 
-If you are able to fix a bug yourself, we would welcome a pull request. If the pull request builds cleanly on the continuous itegration servers it will be merged as soon as is possible.
+If you are able to fix a bug yourself, or wish to add an analysis example, we would welcome a pull request. If the pull request builds cleanly on the continuous itegration servers it will be merged as soon as is possible.
 
 ## Addition of Datasets to curatedMetagenomicData
 
@@ -22,10 +22,6 @@ You can speed up our ability to incorporate a new dataset by providing curated m
 ## Using the curatedMetagenomicData Pipeline Yourself
 
 The process of adding a dataset is documented in the [wiki](https://github.com/waldronlab/curatedMetagenomicData/wiki/Adding-New-Data). Critical components are the [High Computational Load Pipeline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/inst/pipeline) and the [curatedMetagenomicData Generating Pipeline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/data-raw).
-
-## Pull Request
-
-If you are able to fix a bug yourself, or wish to add an analysis example, we would welcome a pull request. If the pull request builds cleanly on the continuous integration servers it will be merged as soon as is possible.
 
 ## Other Issues
 
