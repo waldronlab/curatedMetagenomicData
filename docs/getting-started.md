@@ -2,9 +2,9 @@
 layout: default
 title: Getting Started
 ---
-Installing *curatedMetagenomicData* should generally be done through `R` following the procedure as shown below. However there is an alternative methods to install *curatedMetagenomicData* that is also shown below. Of course both `R` and `Bioconductor` should be installed prior to installing *curatedMetagenomicData*, installation recommendations are also below.
+Installing *curatedMetagenomicData* should generally be done through `R` following the procedure as shown below. However there is an alternative method to install *curatedMetagenomicData* that is also shown below. Of course both `R` and `Bioconductor` should be installed prior to installing *curatedMetagenomicData*, installation recommendations are also below.
 
-Finally, there are additional instructions for accessing data that follow the installation instructions. It is possible to data from *curatedMetagenomicData* both from within `R` and from the command line.
+Finally, there are additional instructions for accessing data that follow the installation instructions. It is possible to get data from *curatedMetagenomicData* both from within `R` and from the command line.
 
 ## Install R and Bioconductor
 
@@ -42,16 +42,14 @@ It is also possible to use `biocLite` to install *curatedMetagenomicData* from G
 Do either this:
 
 {% highlight r %}
-BiocInstaller::biocLite("waldronlab/curatedMetagenomicData",
-                        dependencies = TRUE, build_vignettes = TRUE)
+BiocInstaller::biocLite("waldronlab/curatedMetagenomicData", dependencies = TRUE, build_vignettes = TRUE)
 {% endhighlight %}
 
 Or this:
 
 {% highlight r %}
 library(BiocInstaller)
-biocLite("waldronlab/curatedMetagenomicData", dependencies = TRUE,
-         build_vignettes = TRUE)
+biocLite("waldronlab/curatedMetagenomicData", dependencies = TRUE, build_vignettes = TRUE)
 {% endhighlight %}
 
 Again, both are equivalent.
@@ -59,7 +57,7 @@ Again, both are equivalent.
 ## Accessing Data
 
 ### From within R
-*curatedMetagenomicData* and its related data can be accessed through `R` using `Bioconductor` and `ExperimentHub`. To install the necessary software see our install section.
+*curatedMetagenomicData* and its related data can be accessed through `R` using `Bioconductor` and `ExperimentHub`. To install the necessary software see our install section above.
 
 With *curatedMetagenomicData* installed, you can access datasets through `R` like this:
 
