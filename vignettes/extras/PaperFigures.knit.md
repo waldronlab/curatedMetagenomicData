@@ -1,10 +1,8 @@
 ---
 title: "Paper Figures"
 abstract: >
-    The following script reproduces all results shown in Pasolli, E., Schiffer, L., Renson, A., 
-    Obenchain, V., Manghi, P., Truong, D. T., Dowd, JB, Huttenhower, C, 
-    Morgan, M, Segata, N,  Waldron, L. (2017). Accessible, curated metagenomic 
-    data through ExperimentHub. bioRxiv. doi&#58;10.1101/103085. Please note 
+    The following script reproduces all results shown in our manuscript
+    "Accessible, curated metagenomic data through ExperimentHub". Please note 
     that much of this analysis occurred during the development stages of 
     curatedMetagenomicData and was written by multiple authors. As such, while 
     this analysis is methodologically sound, there may now exist more efficient 
