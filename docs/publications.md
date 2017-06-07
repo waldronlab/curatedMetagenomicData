@@ -2,7 +2,7 @@
 layout: default
 title: Publications
 ---
-Publications and presentations relating to curatedMetagenomicData will be collected here.
+Publications and presentations relating to *curatedMetagenomicData* will be collected here.
 
 > ### February 22, 2017
 >
