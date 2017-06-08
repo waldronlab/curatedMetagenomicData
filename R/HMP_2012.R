@@ -2,392 +2,104 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the HMP_2012 study
 #' 
-#' @aliases HMP_2012.genefamilies_relab.anterior_nares HMP_2012.genefamilies_relab.buccal_mucosa HMP_2012.genefamilies_relab.hard_palate HMP_2012.genefamilies_relab.keratinized_gingiva HMP_2012.genefamilies_relab.l_retroauricular_crease HMP_2012.genefamilies_relab.mid_vagina HMP_2012.genefamilies_relab.palatine_tonsils HMP_2012.genefamilies_relab.posterior_fornix HMP_2012.genefamilies_relab.r_retroauricular_crease HMP_2012.genefamilies_relab.saliva HMP_2012.genefamilies_relab.stool HMP_2012.genefamilies_relab.subgingival_plaque HMP_2012.genefamilies_relab.supragingival_plaque HMP_2012.genefamilies_relab.throat HMP_2012.genefamilies_relab.tongue_dorsum HMP_2012.genefamilies_relab.vaginal_introitus HMP_2012.marker_abundance.anterior_nares HMP_2012.marker_abundance.buccal_mucosa HMP_2012.marker_abundance.hard_palate HMP_2012.marker_abundance.keratinized_gingiva HMP_2012.marker_abundance.l_retroauricular_crease HMP_2012.marker_abundance.mid_vagina HMP_2012.marker_abundance.palatine_tonsils HMP_2012.marker_abundance.posterior_fornix HMP_2012.marker_abundance.r_retroauricular_crease HMP_2012.marker_abundance.saliva HMP_2012.marker_abundance.stool HMP_2012.marker_abundance.subgingival_plaque HMP_2012.marker_abundance.supragingival_plaque HMP_2012.marker_abundance.throat HMP_2012.marker_abundance.tongue_dorsum HMP_2012.marker_abundance.vaginal_introitus HMP_2012.marker_presence.anterior_nares HMP_2012.marker_presence.buccal_mucosa HMP_2012.marker_presence.hard_palate HMP_2012.marker_presence.keratinized_gingiva HMP_2012.marker_presence.l_retroauricular_crease HMP_2012.marker_presence.mid_vagina HMP_2012.marker_presence.palatine_tonsils HMP_2012.marker_presence.posterior_fornix HMP_2012.marker_presence.r_retroauricular_crease HMP_2012.marker_presence.saliva HMP_2012.marker_presence.stool HMP_2012.marker_presence.subgingival_plaque HMP_2012.marker_presence.supragingival_plaque HMP_2012.marker_presence.throat HMP_2012.marker_presence.tongue_dorsum HMP_2012.marker_presence.vaginal_introitus HMP_2012.metaphlan_bugs_list.anterior_nares HMP_2012.metaphlan_bugs_list.buccal_mucosa HMP_2012.metaphlan_bugs_list.hard_palate HMP_2012.metaphlan_bugs_list.keratinized_gingiva HMP_2012.metaphlan_bugs_list.l_retroauricular_crease HMP_2012.metaphlan_bugs_list.mid_vagina HMP_2012.metaphlan_bugs_list.palatine_tonsils HMP_2012.metaphlan_bugs_list.posterior_fornix HMP_2012.metaphlan_bugs_list.r_retroauricular_crease HMP_2012.metaphlan_bugs_list.saliva HMP_2012.metaphlan_bugs_list.stool HMP_2012.metaphlan_bugs_list.subgingival_plaque HMP_2012.metaphlan_bugs_list.supragingival_plaque HMP_2012.metaphlan_bugs_list.throat HMP_2012.metaphlan_bugs_list.tongue_dorsum HMP_2012.metaphlan_bugs_list.vaginal_introitus HMP_2012.pathabundance_relab.anterior_nares HMP_2012.pathabundance_relab.buccal_mucosa HMP_2012.pathabundance_relab.hard_palate HMP_2012.pathabundance_relab.keratinized_gingiva HMP_2012.pathabundance_relab.l_retroauricular_crease HMP_2012.pathabundance_relab.mid_vagina HMP_2012.pathabundance_relab.palatine_tonsils HMP_2012.pathabundance_relab.posterior_fornix HMP_2012.pathabundance_relab.r_retroauricular_crease HMP_2012.pathabundance_relab.saliva HMP_2012.pathabundance_relab.stool HMP_2012.pathabundance_relab.subgingival_plaque HMP_2012.pathabundance_relab.supragingival_plaque HMP_2012.pathabundance_relab.throat HMP_2012.pathabundance_relab.tongue_dorsum HMP_2012.pathabundance_relab.vaginal_introitus HMP_2012.pathcoverage.anterior_nares HMP_2012.pathcoverage.buccal_mucosa HMP_2012.pathcoverage.hard_palate HMP_2012.pathcoverage.keratinized_gingiva HMP_2012.pathcoverage.l_retroauricular_crease HMP_2012.pathcoverage.mid_vagina HMP_2012.pathcoverage.palatine_tonsils HMP_2012.pathcoverage.posterior_fornix HMP_2012.pathcoverage.r_retroauricular_crease HMP_2012.pathcoverage.saliva HMP_2012.pathcoverage.stool HMP_2012.pathcoverage.subgingival_plaque HMP_2012.pathcoverage.supragingival_plaque HMP_2012.pathcoverage.throat HMP_2012.pathcoverage.tongue_dorsum HMP_2012.pathcoverage.vaginal_introitus 
+#' @aliases 20170526.HMP_2012.genefamilies_relab.nasalcavity 20170526.HMP_2012.genefamilies_relab.oralcavity 20170526.HMP_2012.genefamilies_relab.stool 20170526.HMP_2012.genefamilies_relab.vagina 20170526.HMP_2012.marker_abundance.nasalcavity 20170526.HMP_2012.marker_abundance.oralcavity 20170526.HMP_2012.marker_abundance.stool 20170526.HMP_2012.marker_abundance.vagina 20170526.HMP_2012.marker_presence.nasalcavity 20170526.HMP_2012.marker_presence.oralcavity 20170526.HMP_2012.marker_presence.stool 20170526.HMP_2012.marker_presence.vagina 20170526.HMP_2012.metaphlan_bugs_list.nasalcavity 20170526.HMP_2012.metaphlan_bugs_list.oralcavity 20170526.HMP_2012.metaphlan_bugs_list.stool 20170526.HMP_2012.metaphlan_bugs_list.vagina 20170526.HMP_2012.pathabundance_relab.nasalcavity 20170526.HMP_2012.pathabundance_relab.oralcavity 20170526.HMP_2012.pathabundance_relab.stool 20170526.HMP_2012.pathabundance_relab.vagina 20170526.HMP_2012.pathcoverage.nasalcavity 20170526.HMP_2012.pathcoverage.oralcavity 20170526.HMP_2012.pathcoverage.stool 20170526.HMP_2012.pathcoverage.vagina 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{HMP_2012.genefamilies_relab.anterior_nares}{
-#'    An ExpressionSet with 93 samples and 1,964,481 features specific to the anterior_nares bodysite
+#' \subsection{20170526.HMP_2012.genefamilies_relab.nasalcavity}{
+#'    An ExpressionSet with 91 samples and 1,964,480 features specific to the nasalcavity body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.buccal_mucosa}{
-#'    An ExpressionSet with 119 samples and 1,964,481 features specific to the buccal_mucosa bodysite
+#' \subsection{20170526.HMP_2012.genefamilies_relab.oralcavity}{
+#'    An ExpressionSet with 506 samples and 1,964,480 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.hard_palate}{
-#'    An ExpressionSet with 1 sample and 1,964,481 features specific to the hard_palate bodysite
+#' \subsection{20170526.HMP_2012.genefamilies_relab.stool}{
+#'    An ExpressionSet with 147 samples and 1,964,480 features specific to the stool body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.keratinized_gingiva}{
-#'    An ExpressionSet with 6 samples and 1,964,481 features specific to the keratinized_gingiva bodysite
+#' \subsection{20170526.HMP_2012.genefamilies_relab.vagina}{
+#'    An ExpressionSet with 5 samples and 1,964,480 features specific to the vagina body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.l_retroauricular_crease}{
-#'    An ExpressionSet with 9 samples and 1,964,481 features specific to the l_retroauricular_crease bodysite
+#' \subsection{20170526.HMP_2012.marker_abundance.nasalcavity}{
+#'    An ExpressionSet with 91 samples and 162,107 features specific to the nasalcavity body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.mid_vagina}{
-#'    An ExpressionSet with 2 samples and 1,964,481 features specific to the mid_vagina bodysite
+#' \subsection{20170526.HMP_2012.marker_abundance.oralcavity}{
+#'    An ExpressionSet with 506 samples and 162,107 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.palatine_tonsils}{
-#'    An ExpressionSet with 6 samples and 1,964,481 features specific to the palatine_tonsils bodysite
+#' \subsection{20170526.HMP_2012.marker_abundance.stool}{
+#'    An ExpressionSet with 147 samples and 162,107 features specific to the stool body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.posterior_fornix}{
-#'    An ExpressionSet with 62 samples and 1,964,481 features specific to the posterior_fornix bodysite
+#' \subsection{20170526.HMP_2012.marker_abundance.vagina}{
+#'    An ExpressionSet with 5 samples and 162,107 features specific to the vagina body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.r_retroauricular_crease}{
-#'    An ExpressionSet with 18 samples and 1,964,481 features specific to the r_retroauricular_crease bodysite
+#' \subsection{20170526.HMP_2012.marker_presence.nasalcavity}{
+#'    An ExpressionSet with 91 samples and 158,645 features specific to the nasalcavity body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.saliva}{
-#'    An ExpressionSet with 5 samples and 1,964,481 features specific to the saliva bodysite
+#' \subsection{20170526.HMP_2012.marker_presence.oralcavity}{
+#'    An ExpressionSet with 506 samples and 158,645 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.stool}{
-#'    An ExpressionSet with 147 samples and 1,964,481 features specific to the stool bodysite
+#' \subsection{20170526.HMP_2012.marker_presence.stool}{
+#'    An ExpressionSet with 147 samples and 158,645 features specific to the stool body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.subgingival_plaque}{
-#'    An ExpressionSet with 7 samples and 1,964,481 features specific to the subgingival_plaque bodysite
+#' \subsection{20170526.HMP_2012.marker_presence.vagina}{
+#'    An ExpressionSet with 5 samples and 158,645 features specific to the vagina body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.supragingival_plaque}{
-#'    An ExpressionSet with 128 samples and 1,964,481 features specific to the supragingival_plaque bodysite
+#' \subsection{20170526.HMP_2012.metaphlan_bugs_list.nasalcavity}{
+#'    An ExpressionSet with 91 samples and 1,988 features specific to the nasalcavity body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.throat}{
-#'    An ExpressionSet with 7 samples and 1,964,481 features specific to the throat bodysite
+#' \subsection{20170526.HMP_2012.metaphlan_bugs_list.oralcavity}{
+#'    An ExpressionSet with 506 samples and 1,988 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.tongue_dorsum}{
-#'    An ExpressionSet with 136 samples and 1,964,481 features specific to the tongue_dorsum bodysite
+#' \subsection{20170526.HMP_2012.metaphlan_bugs_list.stool}{
+#'    An ExpressionSet with 147 samples and 1,988 features specific to the stool body site
 #' }
 #'
-#' \subsection{HMP_2012.genefamilies_relab.vaginal_introitus}{
-#'    An ExpressionSet with 3 samples and 1,964,481 features specific to the vaginal_introitus bodysite
+#' \subsection{20170526.HMP_2012.metaphlan_bugs_list.vagina}{
+#'    An ExpressionSet with 5 samples and 1,988 features specific to the vagina body site
 #' }
 #'
-#' \subsection{HMP_2012.marker_abundance.anterior_nares}{
-#'    An ExpressionSet with 93 samples and 162,108 features specific to the anterior_nares bodysite
+#' \subsection{20170526.HMP_2012.pathabundance_relab.nasalcavity}{
+#'    An ExpressionSet with 91 samples and 23,271 features specific to the nasalcavity body site
 #' }
 #'
-#' \subsection{HMP_2012.marker_abundance.buccal_mucosa}{
-#'    An ExpressionSet with 119 samples and 162,108 features specific to the buccal_mucosa bodysite
+#' \subsection{20170526.HMP_2012.pathabundance_relab.oralcavity}{
+#'    An ExpressionSet with 506 samples and 23,271 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{HMP_2012.marker_abundance.hard_palate}{
-#'    An ExpressionSet with 1 sample and 162,108 features specific to the hard_palate bodysite
+#' \subsection{20170526.HMP_2012.pathabundance_relab.stool}{
+#'    An ExpressionSet with 147 samples and 23,271 features specific to the stool body site
 #' }
 #'
-#' \subsection{HMP_2012.marker_abundance.keratinized_gingiva}{
-#'    An ExpressionSet with 6 samples and 162,108 features specific to the keratinized_gingiva bodysite
+#' \subsection{20170526.HMP_2012.pathabundance_relab.vagina}{
+#'    An ExpressionSet with 5 samples and 23,271 features specific to the vagina body site
 #' }
 #'
-#' \subsection{HMP_2012.marker_abundance.l_retroauricular_crease}{
-#'    An ExpressionSet with 9 samples and 162,108 features specific to the l_retroauricular_crease bodysite
+#' \subsection{20170526.HMP_2012.pathcoverage.nasalcavity}{
+#'    An ExpressionSet with 91 samples and 23,271 features specific to the nasalcavity body site
 #' }
 #'
-#' \subsection{HMP_2012.marker_abundance.mid_vagina}{
-#'    An ExpressionSet with 2 samples and 162,108 features specific to the mid_vagina bodysite
+#' \subsection{20170526.HMP_2012.pathcoverage.oralcavity}{
+#'    An ExpressionSet with 506 samples and 23,271 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{HMP_2012.marker_abundance.palatine_tonsils}{
-#'    An ExpressionSet with 6 samples and 162,108 features specific to the palatine_tonsils bodysite
+#' \subsection{20170526.HMP_2012.pathcoverage.stool}{
+#'    An ExpressionSet with 147 samples and 23,271 features specific to the stool body site
 #' }
 #'
-#' \subsection{HMP_2012.marker_abundance.posterior_fornix}{
-#'    An ExpressionSet with 62 samples and 162,108 features specific to the posterior_fornix bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_abundance.r_retroauricular_crease}{
-#'    An ExpressionSet with 18 samples and 162,108 features specific to the r_retroauricular_crease bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_abundance.saliva}{
-#'    An ExpressionSet with 5 samples and 162,108 features specific to the saliva bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_abundance.stool}{
-#'    An ExpressionSet with 147 samples and 162,108 features specific to the stool bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_abundance.subgingival_plaque}{
-#'    An ExpressionSet with 7 samples and 162,108 features specific to the subgingival_plaque bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_abundance.supragingival_plaque}{
-#'    An ExpressionSet with 128 samples and 162,108 features specific to the supragingival_plaque bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_abundance.throat}{
-#'    An ExpressionSet with 7 samples and 162,108 features specific to the throat bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_abundance.tongue_dorsum}{
-#'    An ExpressionSet with 136 samples and 162,108 features specific to the tongue_dorsum bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_abundance.vaginal_introitus}{
-#'    An ExpressionSet with 3 samples and 162,108 features specific to the vaginal_introitus bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.anterior_nares}{
-#'    An ExpressionSet with 93 samples and 158,646 features specific to the anterior_nares bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.buccal_mucosa}{
-#'    An ExpressionSet with 119 samples and 158,646 features specific to the buccal_mucosa bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.hard_palate}{
-#'    An ExpressionSet with 1 sample and 158,646 features specific to the hard_palate bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.keratinized_gingiva}{
-#'    An ExpressionSet with 6 samples and 158,646 features specific to the keratinized_gingiva bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.l_retroauricular_crease}{
-#'    An ExpressionSet with 9 samples and 158,646 features specific to the l_retroauricular_crease bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.mid_vagina}{
-#'    An ExpressionSet with 2 samples and 158,646 features specific to the mid_vagina bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.palatine_tonsils}{
-#'    An ExpressionSet with 6 samples and 158,646 features specific to the palatine_tonsils bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.posterior_fornix}{
-#'    An ExpressionSet with 62 samples and 158,646 features specific to the posterior_fornix bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.r_retroauricular_crease}{
-#'    An ExpressionSet with 18 samples and 158,646 features specific to the r_retroauricular_crease bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.saliva}{
-#'    An ExpressionSet with 5 samples and 158,646 features specific to the saliva bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.stool}{
-#'    An ExpressionSet with 147 samples and 158,646 features specific to the stool bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.subgingival_plaque}{
-#'    An ExpressionSet with 7 samples and 158,646 features specific to the subgingival_plaque bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.supragingival_plaque}{
-#'    An ExpressionSet with 128 samples and 158,646 features specific to the supragingival_plaque bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.throat}{
-#'    An ExpressionSet with 7 samples and 158,646 features specific to the throat bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.tongue_dorsum}{
-#'    An ExpressionSet with 136 samples and 158,646 features specific to the tongue_dorsum bodysite
-#' }
-#'
-#' \subsection{HMP_2012.marker_presence.vaginal_introitus}{
-#'    An ExpressionSet with 3 samples and 158,646 features specific to the vaginal_introitus bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.anterior_nares}{
-#'    An ExpressionSet with 93 samples and 1,988 features specific to the anterior_nares bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.buccal_mucosa}{
-#'    An ExpressionSet with 119 samples and 1,988 features specific to the buccal_mucosa bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.hard_palate}{
-#'    An ExpressionSet with 1 sample and 1,988 features specific to the hard_palate bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.keratinized_gingiva}{
-#'    An ExpressionSet with 6 samples and 1,988 features specific to the keratinized_gingiva bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.l_retroauricular_crease}{
-#'    An ExpressionSet with 9 samples and 1,988 features specific to the l_retroauricular_crease bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.mid_vagina}{
-#'    An ExpressionSet with 2 samples and 1,988 features specific to the mid_vagina bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.palatine_tonsils}{
-#'    An ExpressionSet with 6 samples and 1,988 features specific to the palatine_tonsils bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.posterior_fornix}{
-#'    An ExpressionSet with 62 samples and 1,988 features specific to the posterior_fornix bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.r_retroauricular_crease}{
-#'    An ExpressionSet with 18 samples and 1,988 features specific to the r_retroauricular_crease bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.saliva}{
-#'    An ExpressionSet with 5 samples and 1,988 features specific to the saliva bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.stool}{
-#'    An ExpressionSet with 147 samples and 1,988 features specific to the stool bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.subgingival_plaque}{
-#'    An ExpressionSet with 7 samples and 1,988 features specific to the subgingival_plaque bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.supragingival_plaque}{
-#'    An ExpressionSet with 128 samples and 1,988 features specific to the supragingival_plaque bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.throat}{
-#'    An ExpressionSet with 7 samples and 1,988 features specific to the throat bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.tongue_dorsum}{
-#'    An ExpressionSet with 136 samples and 1,988 features specific to the tongue_dorsum bodysite
-#' }
-#'
-#' \subsection{HMP_2012.metaphlan_bugs_list.vaginal_introitus}{
-#'    An ExpressionSet with 3 samples and 1,988 features specific to the vaginal_introitus bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.anterior_nares}{
-#'    An ExpressionSet with 93 samples and 23,271 features specific to the anterior_nares bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.buccal_mucosa}{
-#'    An ExpressionSet with 119 samples and 23,271 features specific to the buccal_mucosa bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.hard_palate}{
-#'    An ExpressionSet with 1 sample and 23,271 features specific to the hard_palate bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.keratinized_gingiva}{
-#'    An ExpressionSet with 6 samples and 23,271 features specific to the keratinized_gingiva bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.l_retroauricular_crease}{
-#'    An ExpressionSet with 9 samples and 23,271 features specific to the l_retroauricular_crease bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.mid_vagina}{
-#'    An ExpressionSet with 2 samples and 23,271 features specific to the mid_vagina bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.palatine_tonsils}{
-#'    An ExpressionSet with 6 samples and 23,271 features specific to the palatine_tonsils bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.posterior_fornix}{
-#'    An ExpressionSet with 62 samples and 23,271 features specific to the posterior_fornix bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.r_retroauricular_crease}{
-#'    An ExpressionSet with 18 samples and 23,271 features specific to the r_retroauricular_crease bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.saliva}{
-#'    An ExpressionSet with 5 samples and 23,271 features specific to the saliva bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.stool}{
-#'    An ExpressionSet with 147 samples and 23,271 features specific to the stool bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.subgingival_plaque}{
-#'    An ExpressionSet with 7 samples and 23,271 features specific to the subgingival_plaque bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.supragingival_plaque}{
-#'    An ExpressionSet with 128 samples and 23,271 features specific to the supragingival_plaque bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.throat}{
-#'    An ExpressionSet with 7 samples and 23,271 features specific to the throat bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.tongue_dorsum}{
-#'    An ExpressionSet with 136 samples and 23,271 features specific to the tongue_dorsum bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathabundance_relab.vaginal_introitus}{
-#'    An ExpressionSet with 3 samples and 23,271 features specific to the vaginal_introitus bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.anterior_nares}{
-#'    An ExpressionSet with 93 samples and 23,271 features specific to the anterior_nares bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.buccal_mucosa}{
-#'    An ExpressionSet with 119 samples and 23,271 features specific to the buccal_mucosa bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.hard_palate}{
-#'    An ExpressionSet with 1 sample and 23,271 features specific to the hard_palate bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.keratinized_gingiva}{
-#'    An ExpressionSet with 6 samples and 23,271 features specific to the keratinized_gingiva bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.l_retroauricular_crease}{
-#'    An ExpressionSet with 9 samples and 23,271 features specific to the l_retroauricular_crease bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.mid_vagina}{
-#'    An ExpressionSet with 2 samples and 23,271 features specific to the mid_vagina bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.palatine_tonsils}{
-#'    An ExpressionSet with 6 samples and 23,271 features specific to the palatine_tonsils bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.posterior_fornix}{
-#'    An ExpressionSet with 62 samples and 23,271 features specific to the posterior_fornix bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.r_retroauricular_crease}{
-#'    An ExpressionSet with 18 samples and 23,271 features specific to the r_retroauricular_crease bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.saliva}{
-#'    An ExpressionSet with 5 samples and 23,271 features specific to the saliva bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.stool}{
-#'    An ExpressionSet with 147 samples and 23,271 features specific to the stool bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.subgingival_plaque}{
-#'    An ExpressionSet with 7 samples and 23,271 features specific to the subgingival_plaque bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.supragingival_plaque}{
-#'    An ExpressionSet with 128 samples and 23,271 features specific to the supragingival_plaque bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.throat}{
-#'    An ExpressionSet with 7 samples and 23,271 features specific to the throat bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.tongue_dorsum}{
-#'    An ExpressionSet with 136 samples and 23,271 features specific to the tongue_dorsum bodysite
-#' }
-#'
-#' \subsection{HMP_2012.pathcoverage.vaginal_introitus}{
-#'    An ExpressionSet with 3 samples and 23,271 features specific to the vaginal_introitus bodysite
+#' \subsection{20170526.HMP_2012.pathcoverage.vagina}{
+#'    An ExpressionSet with 5 samples and 23,271 features specific to the vagina body site
 #' }
 #' 
 #' @section Exploratory Data Analysis: 
@@ -396,7 +108,7 @@
 #' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
-#' \if{html}{\figure{HMP_2012_bodysite.png}{options: width="100\%"}}
+#' \if{html}{\figure{HMP_2012_body_site.png}{options: width="100\%"}}
 #' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
@@ -415,24 +127,23 @@
 #' @section Source: 
 #' 
 #' \subsection{Title}{
-#'    Self-esteem: a comparative study of adolescents from mainstream and minority religious groups in Pakistan.
+#'    Structure, function and diversity of the healthy human microbiome.
 #' }
 #'
 #' \subsection{Author}{
-#'    Iqbal S, Ahmad R, Ayub N
+#'    Huttenhower C, Gevers D, Knight R, Abubucker S, Badger JH, Chinwalla AT, Creasy HH, Earl AM, FitzGerald MG, Fulton RS, Giglio MG, Hallsworth-Pepin K, Lobos EA, Madupu R, Magrini V, Martin JC, Mitreva M, Muzny DM, Sodergren EJ, Versalovic J, Wollam AM, Worley KC, Wortman JR, Young SK, Zeng Q, Aagaard KM, Abolude OO, Allen-Vercoe E, Alm EJ, Alvarado L, Andersen GL, Anderson S, Appelbaum E, Arachchi HM, Armitage G, Arze CA, Ayvaz T, Baker CC, Begg L, Belachew T, Bhonagiri V, Bihan M, Blaser MJ, Bloom T, Bonazzi V, Brooks J, Buck GA, Buhay CJ, Busam DA, Campbell JL, Canon SR, Cantarel BL, Chain PS, Chen IM, Chen L, Chhibba S, Chu K, Ciulla DM, Clemente JC, Clifton SW, Conlan S, Crabtree J, Cutting MA, Davidovics NJ, Davis CC, DeSantis TZ, Deal C, Delehaunty KD, Dewhirst FE, Deych E, Ding Y, Dooling DJ, Dugan SP, Dunne WM, Durkin A, Edgar RC, Erlich RL, Farmer CN, Farrell RM, Faust K, Feldgarden M, Felix VM, Fisher S, Fodor AA, Forney LJ, Foster L, Di Francesco V, Friedman J, Friedrich DC, Fronick CC, Fulton LL, Gao H, Garcia N, Giannoukos G, Giblin C, Giovanni MY, Goldberg JM, Goll J, Gonzalez A, Griggs A, Gujja S, Haake SK, Haas BJ, Hamilton HA, Harris EL, Hepburn TA, Herter B, Hoffmann DE, Holder ME, Howarth C, Huang KH, Huse SM, Izard J, Jansson JK, Jiang H, Jordan C, Joshi V, Katancik JA, Keitel WA, Kelley ST, Kells C, King NB, Knights D, Kong HH, Koren O, Koren S, Kota KC, Kovar CL, Kyrpides NC, La Rosa PS, Lee SL, Lemon KP, Lennon N, Lewis CM, Lewis L, Ley RE, Li K, Liolios K, Liu B, Liu Y, Lo CC, Lozupone CA, Lunsford R, Madden T, Mahurkar AA, Mannon PJ, Mardis ER, Markowitz VM, Mavromatis K, McCorrison JM, McDonald D, McEwen J, McGuire AL, McInnes P, Mehta T, Mihindukulasuriya KA, Miller JR, Minx PJ, Newsham I, Nusbaum C, O'Laughlin M, Orvis J, Pagani I, Palaniappan K, Patel SM, Pearson M, Peterson J, Podar M, Pohl C, Pollard KS, Pop M, Priest ME, Proctor LM, Qin X, Raes J, Ravel J, Reid JG, Rho M, Rhodes R, Riehle KP, Rivera MC, Rodriguez-Mueller B, Rogers YH, Ross MC, Russ C, Sanka RK, Sankar P, Sathirapongsasuti J, Schloss JA, Schloss PD, Schmidt TM, Scholz M, Schriml L, Schubert AM, Segata N, Segre JA, Shannon WD, Sharp RR, Sharpton TJ, Shenoy N, Sheth NU, Simone GA, Singh I, Smillie CS, Sobel JD, Sommer DD, Spicer P, Sutton GG, Sykes SM, Tabbaa DG, Thiagarajan M, Tomlinson CM, Torralba M, Treangen TJ, Truty RM, Vishnivetskaya TA, Walker J, Wang L, Wang Z, Ward DV, Warren W, Watson MA, Wellington C, Wetterstrand KA, White JR, Wilczek-Boney K, Wu Y, Wylie KM, Wylie T, Yandava C, Ye L, Ye Y, Yooseph S, Youmans BP, Zhang L, Zhou Y, Zhu Y, Zoloth L, Zucker JD, Birren BW, Gibbs RA, Highlander SK, Methé BA, Nelson KE, Petrosino JF, Weinstock GM, Wilson RK, White O
 #' }
 #'
 #' \subsection{Lab}{
-#'    Department of Psychology, Abdul Haq Campus, Federal Urdu University for Arts, Science and Technology, Karachi, Pakistan. shahiq_psy@yahoo.com
+#'    NA
 #' }
 #'
 #' \subsection{PMID}{
-#'    22699828
+#'    22699609
 #' }
 #' 
-#' @seealso \code{\link{}}
-#' 
-#' @examples HMP_2012.genefamilies_relab.anterior_nares()
+#' @examples 20170526.HMP_2012.genefamilies_relab.nasalcavity()
 #' 
 #' @name HMP_2012 
 NULL
+ 
