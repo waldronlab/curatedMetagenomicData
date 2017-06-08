@@ -1,9 +1,14 @@
+# curatedMetagenomicData 1.3.5
+
+* Data updated to include accession numbers
+* Minor updates to PaperFigures.Rmd vignette for reproducibility
+
 # curatedMetagenomicData 1.1.9
 
 * Vast improvements to documentation, now more informative and compact
 * New function to coerce data to an MRexperiment class
 * New workhorse function to access data with wildcard search
-* Fun into message for developers
+* Fun intro message for developers
 
 # curatedMetagenomicData 1.1.4
 
