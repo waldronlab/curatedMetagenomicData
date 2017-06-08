@@ -1,5 +1,5 @@
 documentation_format <- function(template_csv) {
-    load("./data/combined_metadata.Rda")
+    load("./data/combined_metadata.rda")
     nrow_combined_metadata <- nrow(combined_metadata)
     ncol_combined_metadata <- ncol(combined_metadata)
     colnames(combined_metadata) %>%

@@ -2,12 +2,12 @@
 % Please edit documentation in R/OhJ_2014.R
 \name{OhJ_2014}
 \alias{OhJ_2014}
-\alias{OhJ_2014.genefamilies_relab.skin}
-\alias{OhJ_2014.marker_abundance.skin}
-\alias{OhJ_2014.marker_presence.skin}
-\alias{OhJ_2014.metaphlan_bugs_list.skin}
-\alias{OhJ_2014.pathabundance_relab.skin}
-\alias{OhJ_2014.pathcoverage.skin}
+\alias{20170526.OhJ_2014.genefamilies_relab.skin}
+\alias{20170526.OhJ_2014.marker_abundance.skin}
+\alias{20170526.OhJ_2014.marker_presence.skin}
+\alias{20170526.OhJ_2014.metaphlan_bugs_list.skin}
+\alias{20170526.OhJ_2014.pathabundance_relab.skin}
+\alias{20170526.OhJ_2014.pathcoverage.skin}
 \title{Data from the OhJ_2014 study}
 \description{
 Data from the OhJ_2014 study
@@ -15,35 +15,35 @@ Data from the OhJ_2014 study
 \section{Datasets}{
  
 
-\subsection{OhJ_2014.genefamilies_relab.skin}{
-   An ExpressionSet with 291 samples and 3,956,473 features specific to the skin bodysite
+\subsection{20170526.OhJ_2014.genefamilies_relab.skin}{
+   An ExpressionSet with 291 samples and 3,956,472 features specific to the skin body site
 }
 
-\subsection{OhJ_2014.marker_abundance.skin}{
-   An ExpressionSet with 291 samples and 202,658 features specific to the skin bodysite
+\subsection{20170526.OhJ_2014.marker_abundance.skin}{
+   An ExpressionSet with 291 samples and 202,657 features specific to the skin body site
 }
 
-\subsection{OhJ_2014.marker_presence.skin}{
-   An ExpressionSet with 291 samples and 184,915 features specific to the skin bodysite
+\subsection{20170526.OhJ_2014.marker_presence.skin}{
+   An ExpressionSet with 291 samples and 184,914 features specific to the skin body site
 }
 
-\subsection{OhJ_2014.metaphlan_bugs_list.skin}{
-   An ExpressionSet with 291 samples and 2,461 features specific to the skin bodysite
+\subsection{20170526.OhJ_2014.metaphlan_bugs_list.skin}{
+   An ExpressionSet with 291 samples and 2,461 features specific to the skin body site
 }
 
-\subsection{OhJ_2014.pathabundance_relab.skin}{
-   An ExpressionSet with 291 samples and 48,536 features specific to the skin bodysite
+\subsection{20170526.OhJ_2014.pathabundance_relab.skin}{
+   An ExpressionSet with 291 samples and 48,536 features specific to the skin body site
 }
 
-\subsection{OhJ_2014.pathcoverage.skin}{
-   An ExpressionSet with 291 samples and 48,536 features specific to the skin bodysite
+\subsection{20170526.OhJ_2014.pathcoverage.skin}{
+   An ExpressionSet with 291 samples and 48,536 features specific to the skin body site
 }
 }
 
 \section{Exploratory Data Analysis}{
  
 
-\if{html}{\figure{OhJ_2014_bodysite.png}{options: width="100\%"}}
+\if{html}{\figure{OhJ_2014_body_site.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
@@ -80,9 +80,6 @@ Data from the OhJ_2014 study
 }
 
 \examples{
-OhJ_2014.genefamilies_relab.skin()
+20170526.OhJ_2014.genefamilies_relab.skin()
 
-}
-\seealso{
-\code{\link{}}
 }

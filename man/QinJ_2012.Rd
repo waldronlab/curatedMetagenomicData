@@ -2,12 +2,12 @@
 % Please edit documentation in R/QinJ_2012.R
 \name{QinJ_2012}
 \alias{QinJ_2012}
-\alias{QinJ_2012.genefamilies_relab.stool}
-\alias{QinJ_2012.marker_abundance.stool}
-\alias{QinJ_2012.marker_presence.stool}
-\alias{QinJ_2012.metaphlan_bugs_list.stool}
-\alias{QinJ_2012.pathabundance_relab.stool}
-\alias{QinJ_2012.pathcoverage.stool}
+\alias{20170526.QinJ_2012.genefamilies_relab.stool}
+\alias{20170526.QinJ_2012.marker_abundance.stool}
+\alias{20170526.QinJ_2012.marker_presence.stool}
+\alias{20170526.QinJ_2012.metaphlan_bugs_list.stool}
+\alias{20170526.QinJ_2012.pathabundance_relab.stool}
+\alias{20170526.QinJ_2012.pathcoverage.stool}
 \title{Data from the QinJ_2012 study}
 \description{
 Data from the QinJ_2012 study
@@ -15,28 +15,28 @@ Data from the QinJ_2012 study
 \section{Datasets}{
  
 
-\subsection{QinJ_2012.genefamilies_relab.stool}{
-   An ExpressionSet with 363 samples and 1,690,774 features specific to the stool bodysite
+\subsection{20170526.QinJ_2012.genefamilies_relab.stool}{
+   An ExpressionSet with 363 samples and 1,690,773 features specific to the stool body site
 }
 
-\subsection{QinJ_2012.marker_abundance.stool}{
-   An ExpressionSet with 363 samples and 132,934 features specific to the stool bodysite
+\subsection{20170526.QinJ_2012.marker_abundance.stool}{
+   An ExpressionSet with 363 samples and 132,933 features specific to the stool body site
 }
 
-\subsection{QinJ_2012.marker_presence.stool}{
-   An ExpressionSet with 363 samples and 125,127 features specific to the stool bodysite
+\subsection{20170526.QinJ_2012.marker_presence.stool}{
+   An ExpressionSet with 363 samples and 125,126 features specific to the stool body site
 }
 
-\subsection{QinJ_2012.metaphlan_bugs_list.stool}{
-   An ExpressionSet with 363 samples and 1,588 features specific to the stool bodysite
+\subsection{20170526.QinJ_2012.metaphlan_bugs_list.stool}{
+   An ExpressionSet with 363 samples and 1,588 features specific to the stool body site
 }
 
-\subsection{QinJ_2012.pathabundance_relab.stool}{
-   An ExpressionSet with 363 samples and 18,478 features specific to the stool bodysite
+\subsection{20170526.QinJ_2012.pathabundance_relab.stool}{
+   An ExpressionSet with 363 samples and 18,478 features specific to the stool body site
 }
 
-\subsection{QinJ_2012.pathcoverage.stool}{
-   An ExpressionSet with 363 samples and 18,478 features specific to the stool bodysite
+\subsection{20170526.QinJ_2012.pathcoverage.stool}{
+   An ExpressionSet with 363 samples and 18,478 features specific to the stool body site
 }
 }
 
@@ -47,19 +47,15 @@ Data from the QinJ_2012 study
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
-\if{html}{\figure{QinJ_2012_bmi.png}{options: width="100\%"}}
+\if{html}{\figure{QinJ_2012_BMI.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
-\if{html}{\figure{QinJ_2012_bodysite.png}{options: width="100\%"}}
+\if{html}{\figure{QinJ_2012_body_site.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
 \if{html}{\figure{QinJ_2012_country.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{QinJ_2012_diabetic.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
@@ -68,14 +64,6 @@ Data from the QinJ_2012 study
 
 
 \if{html}{\figure{QinJ_2012_gender.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{QinJ_2012_height.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{QinJ_2012_weight.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 }
 
@@ -100,9 +88,6 @@ Data from the QinJ_2012 study
 }
 
 \examples{
-QinJ_2012.genefamilies_relab.stool()
+20170526.QinJ_2012.genefamilies_relab.stool()
 
-}
-\seealso{
-\code{\link{}}
 }

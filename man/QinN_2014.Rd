@@ -2,12 +2,12 @@
 % Please edit documentation in R/QinN_2014.R
 \name{QinN_2014}
 \alias{QinN_2014}
-\alias{QinN_2014.genefamilies_relab.stool}
-\alias{QinN_2014.marker_abundance.stool}
-\alias{QinN_2014.marker_presence.stool}
-\alias{QinN_2014.metaphlan_bugs_list.stool}
-\alias{QinN_2014.pathabundance_relab.stool}
-\alias{QinN_2014.pathcoverage.stool}
+\alias{20170526.QinN_2014.genefamilies_relab.stool}
+\alias{20170526.QinN_2014.marker_abundance.stool}
+\alias{20170526.QinN_2014.marker_presence.stool}
+\alias{20170526.QinN_2014.metaphlan_bugs_list.stool}
+\alias{20170526.QinN_2014.pathabundance_relab.stool}
+\alias{20170526.QinN_2014.pathcoverage.stool}
 \title{Data from the QinN_2014 study}
 \description{
 Data from the QinN_2014 study
@@ -15,28 +15,28 @@ Data from the QinN_2014 study
 \section{Datasets}{
  
 
-\subsection{QinN_2014.genefamilies_relab.stool}{
-   An ExpressionSet with 237 samples and 1,747,534 features specific to the stool bodysite
+\subsection{20170526.QinN_2014.genefamilies_relab.stool}{
+   An ExpressionSet with 237 samples and 1,747,533 features specific to the stool body site
 }
 
-\subsection{QinN_2014.marker_abundance.stool}{
-   An ExpressionSet with 237 samples and 132,775 features specific to the stool bodysite
+\subsection{20170526.QinN_2014.marker_abundance.stool}{
+   An ExpressionSet with 237 samples and 132,774 features specific to the stool body site
 }
 
-\subsection{QinN_2014.marker_presence.stool}{
-   An ExpressionSet with 237 samples and 126,097 features specific to the stool bodysite
+\subsection{20170526.QinN_2014.marker_presence.stool}{
+   An ExpressionSet with 237 samples and 126,096 features specific to the stool body site
 }
 
-\subsection{QinN_2014.metaphlan_bugs_list.stool}{
-   An ExpressionSet with 237 samples and 1,512 features specific to the stool bodysite
+\subsection{20170526.QinN_2014.metaphlan_bugs_list.stool}{
+   An ExpressionSet with 237 samples and 1,512 features specific to the stool body site
 }
 
-\subsection{QinN_2014.pathabundance_relab.stool}{
-   An ExpressionSet with 237 samples and 19,418 features specific to the stool bodysite
+\subsection{20170526.QinN_2014.pathabundance_relab.stool}{
+   An ExpressionSet with 237 samples and 19,418 features specific to the stool body site
 }
 
-\subsection{QinN_2014.pathcoverage.stool}{
-   An ExpressionSet with 237 samples and 19,418 features specific to the stool bodysite
+\subsection{20170526.QinN_2014.pathcoverage.stool}{
+   An ExpressionSet with 237 samples and 19,418 features specific to the stool body site
 }
 }
 
@@ -47,11 +47,15 @@ Data from the QinN_2014 study
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
-\if{html}{\figure{QinN_2014_bmi.png}{options: width="100\%"}}
+\if{html}{\figure{QinN_2014_antibiotics_current_use.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
-\if{html}{\figure{QinN_2014_bodysite.png}{options: width="100\%"}}
+\if{html}{\figure{QinN_2014_BMI.png}{options: width="100\%"}}
+\if{latex}{An EDA figure is available in the HTML documentation}
+
+
+\if{html}{\figure{QinN_2014_body_site.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
@@ -88,9 +92,6 @@ Data from the QinN_2014 study
 }
 
 \examples{
-QinN_2014.genefamilies_relab.stool()
+20170526.QinN_2014.genefamilies_relab.stool()
 
-}
-\seealso{
-\code{\link{}}
 }
