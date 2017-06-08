@@ -2,12 +2,12 @@
 % Please edit documentation in R/RampelliS_2015.R
 \name{RampelliS_2015}
 \alias{RampelliS_2015}
-\alias{RampelliS_2015.genefamilies_relab.stool}
-\alias{RampelliS_2015.marker_abundance.stool}
-\alias{RampelliS_2015.marker_presence.stool}
-\alias{RampelliS_2015.metaphlan_bugs_list.stool}
-\alias{RampelliS_2015.pathabundance_relab.stool}
-\alias{RampelliS_2015.pathcoverage.stool}
+\alias{20170526.RampelliS_2015.genefamilies_relab.stool}
+\alias{20170526.RampelliS_2015.marker_abundance.stool}
+\alias{20170526.RampelliS_2015.marker_presence.stool}
+\alias{20170526.RampelliS_2015.metaphlan_bugs_list.stool}
+\alias{20170526.RampelliS_2015.pathabundance_relab.stool}
+\alias{20170526.RampelliS_2015.pathcoverage.stool}
 \title{Data from the RampelliS_2015 study}
 \description{
 Data from the RampelliS_2015 study
@@ -15,28 +15,28 @@ Data from the RampelliS_2015 study
 \section{Datasets}{
  
 
-\subsection{RampelliS_2015.genefamilies_relab.stool}{
-   An ExpressionSet with 38 samples and 788,641 features specific to the stool bodysite
+\subsection{20170526.RampelliS_2015.genefamilies_relab.stool}{
+   An ExpressionSet with 38 samples and 788,640 features specific to the stool body site
 }
 
-\subsection{RampelliS_2015.marker_abundance.stool}{
-   An ExpressionSet with 38 samples and 50,395 features specific to the stool bodysite
+\subsection{20170526.RampelliS_2015.marker_abundance.stool}{
+   An ExpressionSet with 38 samples and 50,394 features specific to the stool body site
 }
 
-\subsection{RampelliS_2015.marker_presence.stool}{
-   An ExpressionSet with 38 samples and 47,456 features specific to the stool bodysite
+\subsection{20170526.RampelliS_2015.marker_presence.stool}{
+   An ExpressionSet with 38 samples and 47,455 features specific to the stool body site
 }
 
-\subsection{RampelliS_2015.metaphlan_bugs_list.stool}{
-   An ExpressionSet with 38 samples and 727 features specific to the stool bodysite
+\subsection{20170526.RampelliS_2015.metaphlan_bugs_list.stool}{
+   An ExpressionSet with 38 samples and 727 features specific to the stool body site
 }
 
-\subsection{RampelliS_2015.pathabundance_relab.stool}{
-   An ExpressionSet with 38 samples and 6,798 features specific to the stool bodysite
+\subsection{20170526.RampelliS_2015.pathabundance_relab.stool}{
+   An ExpressionSet with 38 samples and 6,798 features specific to the stool body site
 }
 
-\subsection{RampelliS_2015.pathcoverage.stool}{
-   An ExpressionSet with 38 samples and 6,798 features specific to the stool bodysite
+\subsection{20170526.RampelliS_2015.pathcoverage.stool}{
+   An ExpressionSet with 38 samples and 6,798 features specific to the stool body site
 }
 }
 
@@ -47,15 +47,11 @@ Data from the RampelliS_2015 study
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
-\if{html}{\figure{RampelliS_2015_bodysite.png}{options: width="100\%"}}
+\if{html}{\figure{RampelliS_2015_body_site.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
 \if{html}{\figure{RampelliS_2015_country.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{RampelliS_2015_disease.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
@@ -84,9 +80,6 @@ Data from the RampelliS_2015 study
 }
 
 \examples{
-RampelliS_2015.genefamilies_relab.stool()
+20170526.RampelliS_2015.genefamilies_relab.stool()
 
-}
-\seealso{
-\code{\link{}}
 }

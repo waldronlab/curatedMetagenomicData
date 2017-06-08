@@ -2,32 +2,32 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the ZellerG_2014 study
 #' 
-#' @aliases ZellerG_2014.genefamilies_relab.stool ZellerG_2014.marker_abundance.stool ZellerG_2014.marker_presence.stool ZellerG_2014.metaphlan_bugs_list.stool ZellerG_2014.pathabundance_relab.stool ZellerG_2014.pathcoverage.stool 
+#' @aliases 20170526.ZellerG_2014.genefamilies_relab.stool 20170526.ZellerG_2014.marker_abundance.stool 20170526.ZellerG_2014.marker_presence.stool 20170526.ZellerG_2014.metaphlan_bugs_list.stool 20170526.ZellerG_2014.pathabundance_relab.stool 20170526.ZellerG_2014.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{ZellerG_2014.genefamilies_relab.stool}{
-#'    An ExpressionSet with 156 samples and 1,796,274 features specific to the stool bodysite
+#' \subsection{20170526.ZellerG_2014.genefamilies_relab.stool}{
+#'    An ExpressionSet with 199 samples and 2,040,556 features specific to the stool body site
 #' }
 #'
-#' \subsection{ZellerG_2014.marker_abundance.stool}{
-#'    An ExpressionSet with 156 samples and 130,272 features specific to the stool bodysite
+#' \subsection{20170526.ZellerG_2014.marker_abundance.stool}{
+#'    An ExpressionSet with 199 samples and 828,890 features specific to the stool body site
 #' }
 #'
-#' \subsection{ZellerG_2014.marker_presence.stool}{
-#'    An ExpressionSet with 156 samples and 126,622 features specific to the stool bodysite
+#' \subsection{20170526.ZellerG_2014.marker_presence.stool}{
+#'    An ExpressionSet with 199 samples and 735,085 features specific to the stool body site
 #' }
 #'
-#' \subsection{ZellerG_2014.metaphlan_bugs_list.stool}{
-#'    An ExpressionSet with 156 samples and 1,505 features specific to the stool bodysite
+#' \subsection{20170526.ZellerG_2014.metaphlan_bugs_list.stool}{
+#'    An ExpressionSet with 199 samples and 10,503 features specific to the stool body site
 #' }
 #'
-#' \subsection{ZellerG_2014.pathabundance_relab.stool}{
-#'    An ExpressionSet with 156 samples and 17,888 features specific to the stool bodysite
+#' \subsection{20170526.ZellerG_2014.pathabundance_relab.stool}{
+#'    An ExpressionSet with 199 samples and 19,367 features specific to the stool body site
 #' }
 #'
-#' \subsection{ZellerG_2014.pathcoverage.stool}{
-#'    An ExpressionSet with 156 samples and 17,888 features specific to the stool bodysite
+#' \subsection{20170526.ZellerG_2014.pathcoverage.stool}{
+#'    An ExpressionSet with 199 samples and 19,367 features specific to the stool body site
 #' }
 #' 
 #' @section Exploratory Data Analysis: 
@@ -36,11 +36,11 @@
 #' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
-#' \if{html}{\figure{ZellerG_2014_bmi.png}{options: width="100\%"}}
+#' \if{html}{\figure{ZellerG_2014_BMI.png}{options: width="100\%"}}
 #' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
-#' \if{html}{\figure{ZellerG_2014_bodysite.png}{options: width="100\%"}}
+#' \if{html}{\figure{ZellerG_2014_body_site.png}{options: width="100\%"}}
 #' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
@@ -74,9 +74,8 @@
 #'    25432777
 #' }
 #' 
-#' @seealso \code{\link{}}
-#' 
-#' @examples ZellerG_2014.genefamilies_relab.stool()
+#' @examples 20170526.ZellerG_2014.genefamilies_relab.stool()
 #' 
 #' @name ZellerG_2014 
 NULL
+ 

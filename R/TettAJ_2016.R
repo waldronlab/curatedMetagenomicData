@@ -2,104 +2,32 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the TettAJ_2016 study
 #' 
-#' @aliases TettAJ_2016.genefamilies_relab.left_ear TettAJ_2016.genefamilies_relab.left_elbow TettAJ_2016.genefamilies_relab.right_ear TettAJ_2016.genefamilies_relab.right_elbow TettAJ_2016.marker_abundance.left_ear TettAJ_2016.marker_abundance.left_elbow TettAJ_2016.marker_abundance.right_ear TettAJ_2016.marker_abundance.right_elbow TettAJ_2016.marker_presence.left_ear TettAJ_2016.marker_presence.left_elbow TettAJ_2016.marker_presence.right_ear TettAJ_2016.marker_presence.right_elbow TettAJ_2016.metaphlan_bugs_list.left_ear TettAJ_2016.metaphlan_bugs_list.left_elbow TettAJ_2016.metaphlan_bugs_list.right_ear TettAJ_2016.metaphlan_bugs_list.right_elbow TettAJ_2016.pathabundance_relab.left_ear TettAJ_2016.pathabundance_relab.left_elbow TettAJ_2016.pathabundance_relab.right_ear TettAJ_2016.pathabundance_relab.right_elbow TettAJ_2016.pathcoverage.left_ear TettAJ_2016.pathcoverage.left_elbow TettAJ_2016.pathcoverage.right_ear TettAJ_2016.pathcoverage.right_elbow 
+#' @aliases 20170526.TettAJ_2016.genefamilies_relab.skin 20170526.TettAJ_2016.marker_abundance.skin 20170526.TettAJ_2016.marker_presence.skin 20170526.TettAJ_2016.metaphlan_bugs_list.skin 20170526.TettAJ_2016.pathabundance_relab.skin 20170526.TettAJ_2016.pathcoverage.skin 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{TettAJ_2016.genefamilies_relab.left_ear}{
-#'    An ExpressionSet with 22 samples and 1,183,854 features specific to the left_ear bodysite
+#' \subsection{20170526.TettAJ_2016.genefamilies_relab.skin}{
+#'    An ExpressionSet with 97 samples and 1,183,853 features specific to the skin body site
 #' }
 #'
-#' \subsection{TettAJ_2016.genefamilies_relab.left_elbow}{
-#'    An ExpressionSet with 26 samples and 1,183,854 features specific to the left_elbow bodysite
+#' \subsection{20170526.TettAJ_2016.marker_abundance.skin}{
+#'    An ExpressionSet with 97 samples and 64,039 features specific to the skin body site
 #' }
 #'
-#' \subsection{TettAJ_2016.genefamilies_relab.right_ear}{
-#'    An ExpressionSet with 26 samples and 1,183,854 features specific to the right_ear bodysite
+#' \subsection{20170526.TettAJ_2016.marker_presence.skin}{
+#'    An ExpressionSet with 97 samples and 57,428 features specific to the skin body site
 #' }
 #'
-#' \subsection{TettAJ_2016.genefamilies_relab.right_elbow}{
-#'    An ExpressionSet with 23 samples and 1,183,854 features specific to the right_elbow bodysite
+#' \subsection{20170526.TettAJ_2016.metaphlan_bugs_list.skin}{
+#'    An ExpressionSet with 97 samples and 1,004 features specific to the skin body site
 #' }
 #'
-#' \subsection{TettAJ_2016.marker_abundance.left_ear}{
-#'    An ExpressionSet with 22 samples and 64,040 features specific to the left_ear bodysite
+#' \subsection{20170526.TettAJ_2016.pathabundance_relab.skin}{
+#'    An ExpressionSet with 97 samples and 21,899 features specific to the skin body site
 #' }
 #'
-#' \subsection{TettAJ_2016.marker_abundance.left_elbow}{
-#'    An ExpressionSet with 26 samples and 64,040 features specific to the left_elbow bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.marker_abundance.right_ear}{
-#'    An ExpressionSet with 26 samples and 64,040 features specific to the right_ear bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.marker_abundance.right_elbow}{
-#'    An ExpressionSet with 23 samples and 64,040 features specific to the right_elbow bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.marker_presence.left_ear}{
-#'    An ExpressionSet with 22 samples and 57,429 features specific to the left_ear bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.marker_presence.left_elbow}{
-#'    An ExpressionSet with 26 samples and 57,429 features specific to the left_elbow bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.marker_presence.right_ear}{
-#'    An ExpressionSet with 26 samples and 57,429 features specific to the right_ear bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.marker_presence.right_elbow}{
-#'    An ExpressionSet with 23 samples and 57,429 features specific to the right_elbow bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.metaphlan_bugs_list.left_ear}{
-#'    An ExpressionSet with 22 samples and 1,004 features specific to the left_ear bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.metaphlan_bugs_list.left_elbow}{
-#'    An ExpressionSet with 26 samples and 1,004 features specific to the left_elbow bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.metaphlan_bugs_list.right_ear}{
-#'    An ExpressionSet with 26 samples and 1,004 features specific to the right_ear bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.metaphlan_bugs_list.right_elbow}{
-#'    An ExpressionSet with 23 samples and 1,004 features specific to the right_elbow bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.pathabundance_relab.left_ear}{
-#'    An ExpressionSet with 22 samples and 21,899 features specific to the left_ear bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.pathabundance_relab.left_elbow}{
-#'    An ExpressionSet with 26 samples and 21,899 features specific to the left_elbow bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.pathabundance_relab.right_ear}{
-#'    An ExpressionSet with 26 samples and 21,899 features specific to the right_ear bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.pathabundance_relab.right_elbow}{
-#'    An ExpressionSet with 23 samples and 21,899 features specific to the right_elbow bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.pathcoverage.left_ear}{
-#'    An ExpressionSet with 22 samples and 21,899 features specific to the left_ear bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.pathcoverage.left_elbow}{
-#'    An ExpressionSet with 26 samples and 21,899 features specific to the left_elbow bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.pathcoverage.right_ear}{
-#'    An ExpressionSet with 26 samples and 21,899 features specific to the right_ear bodysite
-#' }
-#'
-#' \subsection{TettAJ_2016.pathcoverage.right_elbow}{
-#'    An ExpressionSet with 23 samples and 21,899 features specific to the right_elbow bodysite
+#' \subsection{20170526.TettAJ_2016.pathcoverage.skin}{
+#'    An ExpressionSet with 97 samples and 21,899 features specific to the skin body site
 #' }
 #' 
 #' @section Exploratory Data Analysis: 
@@ -108,11 +36,11 @@
 #' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
-#' \if{html}{\figure{TettAJ_2016_antibiotic_usage.png}{options: width="100\%"}}
+#' \if{html}{\figure{TettAJ_2016_antibiotics_current_use.png}{options: width="100\%"}}
 #' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
-#' \if{html}{\figure{TettAJ_2016_bodysite.png}{options: width="100\%"}}
+#' \if{html}{\figure{TettAJ_2016_body_site.png}{options: width="100\%"}}
 #' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
@@ -131,7 +59,7 @@
 #' @section Source: 
 #' 
 #' \subsection{Title}{
-#'    Experimental metagenomics and ribosomal profiling of the human skin microbiome
+#'    
 #' }
 #'
 #' \subsection{Author}{
@@ -143,12 +71,11 @@
 #' }
 #'
 #' \subsection{PMID}{
-#'    27623553
+#'    
 #' }
 #' 
-#' @seealso \code{\link{}}
-#' 
-#' @examples TettAJ_2016.genefamilies_relab.left_ear()
+#' @examples 20170526.TettAJ_2016.genefamilies_relab.skin()
 #' 
 #' @name TettAJ_2016 
 NULL
+ 

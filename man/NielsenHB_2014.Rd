@@ -2,12 +2,12 @@
 % Please edit documentation in R/NielsenHB_2014.R
 \name{NielsenHB_2014}
 \alias{NielsenHB_2014}
-\alias{NielsenHB_2014.genefamilies_relab.stool}
-\alias{NielsenHB_2014.marker_abundance.stool}
-\alias{NielsenHB_2014.marker_presence.stool}
-\alias{NielsenHB_2014.metaphlan_bugs_list.stool}
-\alias{NielsenHB_2014.pathabundance_relab.stool}
-\alias{NielsenHB_2014.pathcoverage.stool}
+\alias{20170526.NielsenHB_2014.genefamilies_relab.stool}
+\alias{20170526.NielsenHB_2014.marker_abundance.stool}
+\alias{20170526.NielsenHB_2014.marker_presence.stool}
+\alias{20170526.NielsenHB_2014.metaphlan_bugs_list.stool}
+\alias{20170526.NielsenHB_2014.pathabundance_relab.stool}
+\alias{20170526.NielsenHB_2014.pathcoverage.stool}
 \title{Data from the NielsenHB_2014 study}
 \description{
 Data from the NielsenHB_2014 study
@@ -15,28 +15,28 @@ Data from the NielsenHB_2014 study
 \section{Datasets}{
  
 
-\subsection{NielsenHB_2014.genefamilies_relab.stool}{
-   An ExpressionSet with 396 samples and 1,730,384 features specific to the stool bodysite
+\subsection{20170526.NielsenHB_2014.genefamilies_relab.stool}{
+   An ExpressionSet with 396 samples and 1,730,383 features specific to the stool body site
 }
 
-\subsection{NielsenHB_2014.marker_abundance.stool}{
-   An ExpressionSet with 396 samples and 222,838 features specific to the stool bodysite
+\subsection{20170526.NielsenHB_2014.marker_abundance.stool}{
+   An ExpressionSet with 396 samples and 222,837 features specific to the stool body site
 }
 
-\subsection{NielsenHB_2014.marker_presence.stool}{
-   An ExpressionSet with 396 samples and 188,447 features specific to the stool bodysite
+\subsection{20170526.NielsenHB_2014.marker_presence.stool}{
+   An ExpressionSet with 396 samples and 188,446 features specific to the stool body site
 }
 
-\subsection{NielsenHB_2014.metaphlan_bugs_list.stool}{
-   An ExpressionSet with 396 samples and 1,939 features specific to the stool bodysite
+\subsection{20170526.NielsenHB_2014.metaphlan_bugs_list.stool}{
+   An ExpressionSet with 396 samples and 1,939 features specific to the stool body site
 }
 
-\subsection{NielsenHB_2014.pathabundance_relab.stool}{
-   An ExpressionSet with 396 samples and 17,280 features specific to the stool bodysite
+\subsection{20170526.NielsenHB_2014.pathabundance_relab.stool}{
+   An ExpressionSet with 396 samples and 17,280 features specific to the stool body site
 }
 
-\subsection{NielsenHB_2014.pathcoverage.stool}{
-   An ExpressionSet with 396 samples and 17,280 features specific to the stool bodysite
+\subsection{20170526.NielsenHB_2014.pathcoverage.stool}{
+   An ExpressionSet with 396 samples and 17,280 features specific to the stool body site
 }
 }
 
@@ -47,11 +47,11 @@ Data from the NielsenHB_2014 study
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
-\if{html}{\figure{NielsenHB_2014_bmi.png}{options: width="100\%"}}
+\if{html}{\figure{NielsenHB_2014_BMI.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
-\if{html}{\figure{NielsenHB_2014_bodysite.png}{options: width="100\%"}}
+\if{html}{\figure{NielsenHB_2014_body_site.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
@@ -60,10 +60,6 @@ Data from the NielsenHB_2014 study
 
 
 \if{html}{\figure{NielsenHB_2014_disease.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{NielsenHB_2014_gender.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 }
 
@@ -88,9 +84,6 @@ Data from the NielsenHB_2014 study
 }
 
 \examples{
-NielsenHB_2014.genefamilies_relab.stool()
+20170526.NielsenHB_2014.genefamilies_relab.stool()
 
-}
-\seealso{
-\code{\link{}}
 }

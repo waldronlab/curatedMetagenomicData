@@ -2,12 +2,12 @@
 % Please edit documentation in R/LeChatelierE_2013.R
 \name{LeChatelierE_2013}
 \alias{LeChatelierE_2013}
-\alias{LeChatelierE_2013.genefamilies_relab.stool}
-\alias{LeChatelierE_2013.marker_abundance.stool}
-\alias{LeChatelierE_2013.marker_presence.stool}
-\alias{LeChatelierE_2013.metaphlan_bugs_list.stool}
-\alias{LeChatelierE_2013.pathabundance_relab.stool}
-\alias{LeChatelierE_2013.pathcoverage.stool}
+\alias{20170526.LeChatelierE_2013.genefamilies_relab.stool}
+\alias{20170526.LeChatelierE_2013.marker_abundance.stool}
+\alias{20170526.LeChatelierE_2013.marker_presence.stool}
+\alias{20170526.LeChatelierE_2013.metaphlan_bugs_list.stool}
+\alias{20170526.LeChatelierE_2013.pathabundance_relab.stool}
+\alias{20170526.LeChatelierE_2013.pathcoverage.stool}
 \title{Data from the LeChatelierE_2013 study}
 \description{
 Data from the LeChatelierE_2013 study
@@ -15,47 +15,47 @@ Data from the LeChatelierE_2013 study
 \section{Datasets}{
  
 
-\subsection{LeChatelierE_2013.genefamilies_relab.stool}{
-   An ExpressionSet with 292 samples and 1,519,376 features specific to the stool bodysite
+\subsection{20170526.LeChatelierE_2013.genefamilies_relab.stool}{
+   An ExpressionSet with 292 samples and 1,519,375 features specific to the stool body site
 }
 
-\subsection{LeChatelierE_2013.marker_abundance.stool}{
-   An ExpressionSet with 292 samples and 130,621 features specific to the stool bodysite
+\subsection{20170526.LeChatelierE_2013.marker_abundance.stool}{
+   An ExpressionSet with 292 samples and 130,620 features specific to the stool body site
 }
 
-\subsection{LeChatelierE_2013.marker_presence.stool}{
-   An ExpressionSet with 292 samples and 117,258 features specific to the stool bodysite
+\subsection{20170526.LeChatelierE_2013.marker_presence.stool}{
+   An ExpressionSet with 292 samples and 117,257 features specific to the stool body site
 }
 
-\subsection{LeChatelierE_2013.metaphlan_bugs_list.stool}{
-   An ExpressionSet with 292 samples and 1,542 features specific to the stool bodysite
+\subsection{20170526.LeChatelierE_2013.metaphlan_bugs_list.stool}{
+   An ExpressionSet with 292 samples and 1,542 features specific to the stool body site
 }
 
-\subsection{LeChatelierE_2013.pathabundance_relab.stool}{
-   An ExpressionSet with 292 samples and 13,504 features specific to the stool bodysite
+\subsection{20170526.LeChatelierE_2013.pathabundance_relab.stool}{
+   An ExpressionSet with 292 samples and 13,504 features specific to the stool body site
 }
 
-\subsection{LeChatelierE_2013.pathcoverage.stool}{
-   An ExpressionSet with 292 samples and 13,504 features specific to the stool bodysite
+\subsection{20170526.LeChatelierE_2013.pathcoverage.stool}{
+   An ExpressionSet with 292 samples and 13,504 features specific to the stool body site
 }
 }
 
 \section{Exploratory Data Analysis}{
  
 
-\if{html}{\figure{LeChatelierE_2013_bmi.png}{options: width="100\%"}}
+\if{html}{\figure{LeChatelierE_2013_antibiotics_current_use.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
-\if{html}{\figure{LeChatelierE_2013_bodysite.png}{options: width="100\%"}}
+\if{html}{\figure{LeChatelierE_2013_BMI.png}{options: width="100\%"}}
+\if{latex}{An EDA figure is available in the HTML documentation}
+
+
+\if{html}{\figure{LeChatelierE_2013_body_site.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 
 
 \if{html}{\figure{LeChatelierE_2013_country.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{LeChatelierE_2013_disease.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
 }
 
@@ -80,9 +80,6 @@ Data from the LeChatelierE_2013 study
 }
 
 \examples{
-LeChatelierE_2013.genefamilies_relab.stool()
+20170526.LeChatelierE_2013.genefamilies_relab.stool()
 
-}
-\seealso{
-\code{\link{}}
 }

@@ -2,32 +2,32 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the KarlssonFH_2013 study
 #' 
-#' @aliases KarlssonFH_2013.genefamilies_relab.stool KarlssonFH_2013.marker_abundance.stool KarlssonFH_2013.marker_presence.stool KarlssonFH_2013.metaphlan_bugs_list.stool KarlssonFH_2013.pathabundance_relab.stool KarlssonFH_2013.pathcoverage.stool 
+#' @aliases 20170526.KarlssonFH_2013.genefamilies_relab.stool 20170526.KarlssonFH_2013.marker_abundance.stool 20170526.KarlssonFH_2013.marker_presence.stool 20170526.KarlssonFH_2013.metaphlan_bugs_list.stool 20170526.KarlssonFH_2013.pathabundance_relab.stool 20170526.KarlssonFH_2013.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{KarlssonFH_2013.genefamilies_relab.stool}{
-#'    An ExpressionSet with 145 samples and 1,415,610 features specific to the stool bodysite
+#' \subsection{20170526.KarlssonFH_2013.genefamilies_relab.stool}{
+#'    An ExpressionSet with 145 samples and 1,415,750 features specific to the stool body site
 #' }
 #'
-#' \subsection{KarlssonFH_2013.marker_abundance.stool}{
-#'    An ExpressionSet with 145 samples and 101,168 features specific to the stool bodysite
+#' \subsection{20170526.KarlssonFH_2013.marker_abundance.stool}{
+#'    An ExpressionSet with 145 samples and 101,166 features specific to the stool body site
 #' }
 #'
-#' \subsection{KarlssonFH_2013.marker_presence.stool}{
-#'    An ExpressionSet with 145 samples and 95,322 features specific to the stool bodysite
+#' \subsection{20170526.KarlssonFH_2013.marker_presence.stool}{
+#'    An ExpressionSet with 145 samples and 95,324 features specific to the stool body site
 #' }
 #'
-#' \subsection{KarlssonFH_2013.metaphlan_bugs_list.stool}{
-#'    An ExpressionSet with 145 samples and 1,140 features specific to the stool bodysite
+#' \subsection{20170526.KarlssonFH_2013.metaphlan_bugs_list.stool}{
+#'    An ExpressionSet with 145 samples and 1,140 features specific to the stool body site
 #' }
 #'
-#' \subsection{KarlssonFH_2013.pathabundance_relab.stool}{
-#'    An ExpressionSet with 145 samples and 13,392 features specific to the stool bodysite
+#' \subsection{20170526.KarlssonFH_2013.pathabundance_relab.stool}{
+#'    An ExpressionSet with 145 samples and 13,392 features specific to the stool body site
 #' }
 #'
-#' \subsection{KarlssonFH_2013.pathcoverage.stool}{
-#'    An ExpressionSet with 145 samples and 13,392 features specific to the stool bodysite
+#' \subsection{20170526.KarlssonFH_2013.pathcoverage.stool}{
+#'    An ExpressionSet with 145 samples and 13,392 features specific to the stool body site
 #' }
 #' 
 #' @section Exploratory Data Analysis: 
@@ -36,11 +36,11 @@
 #' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
-#' \if{html}{\figure{KarlssonFH_2013_bmi.png}{options: width="100\%"}}
+#' \if{html}{\figure{KarlssonFH_2013_antibiotics_current_use.png}{options: width="100\%"}}
 #' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
-#' \if{html}{\figure{KarlssonFH_2013_bodysite.png}{options: width="100\%"}}
+#' \if{html}{\figure{KarlssonFH_2013_body_site.png}{options: width="100\%"}}
 #' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #'
@@ -49,6 +49,10 @@
 #'
 #'
 #' \if{html}{\figure{KarlssonFH_2013_disease.png}{options: width="100\%"}}
+#' \if{latex}{An EDA figure is available in the HTML documentation}
+#'
+#'
+#' \if{html}{\figure{KarlssonFH_2013_gender.png}{options: width="100\%"}}
 #' \if{latex}{An EDA figure is available in the HTML documentation}
 #'
 #' 
@@ -70,9 +74,8 @@
 #'    23719380
 #' }
 #' 
-#' @seealso \code{\link{}}
-#' 
-#' @examples KarlssonFH_2013.genefamilies_relab.stool()
+#' @examples 20170526.KarlssonFH_2013.genefamilies_relab.stool()
 #' 
 #' @name KarlssonFH_2013 
 NULL
+ 
