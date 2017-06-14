@@ -344,7 +344,7 @@ measures. Here we compare three diversity in the species-level data, stratifying
 
 ```{r, warning=FALSE}
 alphas = c("Shannon", "Simpson", "InvSimpson")
-plot_richness(loman.sp, "stooltexture", measures = alphas)
+plot_richness(loman.sp, "stool_texture", measures = alphas)
 ```
 Let's compare these three alpha diversity measures:
 
@@ -371,7 +371,7 @@ dataset, using Bray-Curtis distance:
 
 ```{r, warning=FALSE}
 ordinated_taxa = ordinate(loman.sp, method="PCoA", distance="bray")
-plot_ordination(loman.sp, ordinated_taxa, color="stooltexture", 
+plot_ordination(loman.sp, ordinated_taxa, color="stool_texture", 
                 title = "Bray-Curtis Principal Coordinates Analysis")
 ```
 
