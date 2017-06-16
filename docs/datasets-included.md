@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Ongoing datasets
+title: Included datasets
 ---
 
 Shown below is the list of datasets currently included in *curatedMetagenomicData*.
