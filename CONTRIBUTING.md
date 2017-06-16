@@ -21,7 +21,7 @@ You can speed up our ability to incorporate a new dataset by providing curated m
 
 ## Using the curatedMetagenomicData Pipeline Yourself
 
-The process of adding a dataset is documented in the [wiki](https://github.com/waldronlab/curatedMetagenomicData/wiki/Adding-New-Data). Critical components are the [High Computational Load Pipeline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/inst/pipeline) and the [curatedMetagenomicData Generating Pipeline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/data-raw).
+The process of adding a dataset is documented in the [wiki](https://github.com/waldronlab/curatedMetagenomicData/wiki/The-curatedMetagenomicData-pipelines). Critical components are the [High Computational Load Pipeline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/inst/pipeline) and the [curatedMetagenomicData Generating Pipeline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/data-raw).
 
 ## Other Issues
 
