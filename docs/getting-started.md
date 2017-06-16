@@ -41,14 +41,14 @@ The recommended way to access data from within R is with the `curatedMetagenomic
 {% highlight r %}
 library(curatedMetagenomicData)
 res <- curatedMetagenomicData("HMP_2012.metaphlan_bugs_list.stool", dryrun=FALSE) #one dataset
-res <- curatedMetagenomicData("HMP_2012.metaphlan_bugs_list.*") #many datasets
+res <- curatedMetagenomicData("HMP_2012.metaphlan_bugs_list.*", dryrun=FALSE) #many datasets
 {% endhighlight %}
 
 See:
 
-* `?curatedMetagenomicData` for more options to this function, including whether to return relative abundances or counts, conversion of taxonomic tables to [phyloseq](https://bioconductor.org/packages/phyloseq/) objects, and versioning
 * `help(package="curatedMetagenomicData")` for all datasets and available functions
-
+* `?curatedMetagenomicData` for more options to this function, including whether to return relative abundances or counts, conversion of taxonomic tables to [phyloseq](https://bioconductor.org/packages/phyloseq/) objects, and versioning
+* `?combined_metadata` or `View(combined_metadata)` for a table of all participants and their annotations.
 See the [package vignette](https://bioconductor.org/packages/release/data/experiment/vignettes/curatedMetagenomicData/inst/doc/curatedMetagenomicData.html) for additional instructions, and [vignettes/extras](https://github.com/waldronlab/curatedMetagenomicData/tree/master/vignettes/extras) for code to reproduce results of [our manuscript](http://biorxiv.org/content/early/2017/01/27/103085).
 
 ### Command line usage
