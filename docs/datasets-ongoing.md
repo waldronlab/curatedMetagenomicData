@@ -1,6 +1,6 @@
 ---
 layout: default
-title: curatedMetagenomicData
+title: datasets-ongoing
 ---
 
 Shown below is a list of forthcoming datasets that have been chosen for inclusion in *curatedMetagenomicData*.
