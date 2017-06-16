@@ -49,7 +49,7 @@ See:
 * `?curatedMetagenomicData` for more options to this function, including whether to return relative abundances or counts, conversion of taxonomic tables to [phyloseq](https://bioconductor.org/packages/phyloseq/) objects, and versioning
 * `help(package="curatedMetagenomicData")` for all datasets and available functions
 
-See the [package vignette](https://bioconductor.org/packages/release/data/experiment/vignettes/curatedMetagenomicData/inst/doc/curatedMetagenomicData.html) for additional instructions, and [vignettes/extras](https://github.com/waldronlab/curatedMetagenomicData/tree/master/vignettes/extras) for code to reproduce results of [our manuscript](biorxiv.org/content/early/2017/01/27/103085).
+See the [package vignette](https://bioconductor.org/packages/release/data/experiment/vignettes/curatedMetagenomicData/inst/doc/curatedMetagenomicData.html) for additional instructions, and [vignettes/extras](https://github.com/waldronlab/curatedMetagenomicData/tree/master/vignettes/extras) for code to reproduce results of [our manuscript](http://biorxiv.org/content/early/2017/01/27/103085).
 
 ### Command line usage
 
