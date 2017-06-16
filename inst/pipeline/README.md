@@ -23,4 +23,4 @@ The scripts in this directory allow the user to reproduce the entire process of 
 
 * Follow the same procedure if you want to process your own dataset.
 
-* When done, you are ready to [include your dataset](https://github.com/waldronlab/curatedMetagenomicData/wiki/The-curatedMetagenomicData-pipelines) in the *curatedMetagenomicData* package.
+* When done, your output profile files are properly organized and ready to be [included](https://github.com/waldronlab/curatedMetagenomicData/wiki/The-curatedMetagenomicData-pipelines) in the *curatedMetagenomicData* package.
