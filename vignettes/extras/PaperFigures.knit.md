@@ -239,7 +239,7 @@ plot(0, 0, type = "n", bty = "n", xaxt = "n", yaxt = "n")
 legend("bottom", xpd = TRUE, inset = c(0, 0), bty = "n", pch = 16, cex = 0.6, ncol=3, dataset_list, col = pallet_reduced)
 ```
 
-<img src="PaperFigures_files/figure-html/fig1eg1-1.png" width="768" />
+<img src="PaperFigures_files/figure-html/fig1eg1-1.png" width="672" />
 
 # Figure 1, Example 2: Clustering
 
@@ -323,7 +323,7 @@ ggplot() +
     theme(axis.ticks = element_blank(), axis.text = element_blank(), legend.box = "vertical", legend.position = c(0.775, 0.125), plot.title = element_text(hjust = 0.5))
 ```
 
-<img src="PaperFigures_files/figure-html/fig1eg2-1.png" width="768" />
+<img src="PaperFigures_files/figure-html/fig1eg2-1.png" width="672" />
 
 # Figure 1, Example 3: Abundance across samples
 
@@ -410,7 +410,7 @@ bardat %>%
     theme(axis.text.x = element_blank(), axis.title.x = element_blank(), axis.ticks.x = element_blank(), legend.position = c(0.7, 0.7), legend.direction = "vertical", legend.title = element_blank(), panel.background = element_blank())
 ```
 
-<img src="PaperFigures_files/figure-html/fig1eg3-1.png" width="1152" />
+<img src="PaperFigures_files/figure-html/fig1eg3-1.png" width="672" />
 
 # Figure 1, Example 4: Species-pathway correlation
 
@@ -471,7 +471,7 @@ qplot(
     theme(plot.title = element_text(hjust = 0.5))
 ```
 
-<img src="PaperFigures_files/figure-html/fig1eg4-1.png" width="768" />
+<img src="PaperFigures_files/figure-html/fig1eg4-1.png" width="672" />
 
 # Supplemental Figure 1: Health status classification from species abundance
 
@@ -586,7 +586,7 @@ legend(
 )
 ```
 
-<img src="PaperFigures_files/figure-html/suppfig1-1.png" width="768" />
+<img src="PaperFigures_files/figure-html/suppfig1-1.png" width="672" />
 
 # Supplemental Figure 2: Clustering colored by study and disease states
 
@@ -683,7 +683,7 @@ df_ord_dataset_disease %>%
     theme(plot.title = element_text(hjust = 0.5))
 ```
 
-<img src="PaperFigures_files/figure-html/suppfig2-1.png" width="1152" />
+<img src="PaperFigures_files/figure-html/suppfig2-1.png" width="672" />
 
 # Supplemental Figure 3. Clustering scores for enterotypes in gut WGS samples
 
@@ -823,7 +823,7 @@ melted_cors %>%
     labs(x = "Genus", y = "Pathway")
 ```
 
-<img src="PaperFigures_files/figure-html/suppfig4-1.png" width="1152" />
+<img src="PaperFigures_files/figure-html/suppfig4-1.png" width="672" />
 
 # Supplemental Figure 5: Alpha diversity from 22 gut studies
 
