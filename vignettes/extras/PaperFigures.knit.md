@@ -88,7 +88,7 @@ image(1:n, 1, as.matrix(1:n), col = pallet, xlab = "", ylab = "", xaxt = "n",
       yaxt = "n", bty = "n")
 ```
 
-<img src="PaperFigures_files/figure-html/colors-1.png" width="672" />
+<p align="center"><img src="PaperFigures_files/figure-html/colors-1.png" width="672" /></p>
 
 # Figure 1, Example 1: Classification
 
@@ -239,7 +239,7 @@ plot(0, 0, type = "n", bty = "n", xaxt = "n", yaxt = "n")
 legend("bottom", xpd = TRUE, inset = c(0, 0), bty = "n", pch = 16, cex = 0.6, ncol=3, dataset_list, col = pallet_reduced)
 ```
 
-<img src="PaperFigures_files/figure-html/fig1eg1-1.png" width="672" />
+<p align="center"><img src="PaperFigures_files/figure-html/fig1eg1-1.png" width="672" /></p>
 
 # Figure 1, Example 2: Clustering
 
@@ -323,7 +323,7 @@ ggplot() +
     theme(axis.ticks = element_blank(), axis.text = element_blank(), legend.box = "vertical", legend.position = c(0.775, 0.125), plot.title = element_text(hjust = 0.5))
 ```
 
-<img src="PaperFigures_files/figure-html/fig1eg2-1.png" width="672" />
+<p align="center"><img src="PaperFigures_files/figure-html/fig1eg2-1.png" width="672" /></p>
 
 # Figure 1, Example 3: Abundance across samples
 
@@ -410,7 +410,7 @@ bardat %>%
     theme(axis.text.x = element_blank(), axis.title.x = element_blank(), axis.ticks.x = element_blank(), legend.position = c(0.7, 0.7), legend.direction = "vertical", legend.title = element_blank(), panel.background = element_blank())
 ```
 
-<img src="PaperFigures_files/figure-html/fig1eg3-1.png" width="672" />
+<p align="center"><img src="PaperFigures_files/figure-html/fig1eg3-1.png" width="672" /></p>
 
 # Figure 1, Example 4: Species-pathway correlation
 
@@ -471,7 +471,7 @@ qplot(
     theme(plot.title = element_text(hjust = 0.5))
 ```
 
-<img src="PaperFigures_files/figure-html/fig1eg4-1.png" width="672" />
+<p align="center"><img src="PaperFigures_files/figure-html/fig1eg4-1.png" width="672" /></p>
 
 # Supplemental Figure 1: Health status classification from species abundance
 
@@ -586,7 +586,7 @@ legend(
 )
 ```
 
-<img src="PaperFigures_files/figure-html/suppfig1-1.png" width="672" />
+<p align="center"><img src="PaperFigures_files/figure-html/suppfig1-1.png" width="672" /></p>
 
 # Supplemental Figure 2: Clustering colored by study and disease states
 
@@ -683,7 +683,7 @@ df_ord_dataset_disease %>%
     theme(plot.title = element_text(hjust = 0.5))
 ```
 
-<img src="PaperFigures_files/figure-html/suppfig2-1.png" width="672" />
+<p align="center"><img src="PaperFigures_files/figure-html/suppfig2-1.png" width="672" /></p>
 
 # Supplemental Figure 3. Clustering scores for enterotypes in gut WGS samples
 
@@ -733,7 +733,7 @@ text("Moderate support", x = 9, y = 0.85, col = darkGray)
 text("Little or no support", x = 9, y = 0.6, col = darkGray)
 ```
 
-<img src="PaperFigures_files/figure-html/suppfig3-1.png" width="672" /><img src="PaperFigures_files/figure-html/suppfig3-2.png" width="672" /><img src="PaperFigures_files/figure-html/suppfig3-3.png" width="672" />
+<p align="center"><img src="PaperFigures_files/figure-html/suppfig3-1.png" width="672" /><img src="PaperFigures_files/figure-html/suppfig3-2.png" width="672" /><img src="PaperFigures_files/figure-html/suppfig3-3.png" width="672" /></p>
 
 # Supplemental Figure 4: Top correlations between metabolic pathways and genera
 
@@ -823,7 +823,7 @@ melted_cors %>%
     labs(x = "Genus", y = "Pathway")
 ```
 
-<img src="PaperFigures_files/figure-html/suppfig4-1.png" width="672" />
+<p align="center"><img src="PaperFigures_files/figure-html/suppfig4-1.png" width="672" /></p>
 
 # Supplemental Figure 5: Alpha diversity from 22 gut studies
 
@@ -884,7 +884,7 @@ alpha %>%
     scale_fill_manual(values = c(pallet[1:11], pallet[1:11]))
 ```
 
-<img src="PaperFigures_files/figure-html/suppfig5-1.png" width="672" />
+<p align="center"><img src="PaperFigures_files/figure-html/suppfig5-1.png" width="672" /></p>
 
 # Session Info
 
