@@ -2,51 +2,28 @@
 layout: default
 title: Getting Started
 ---
-Installing `curatedMetagenomicData` should generally be done through `R` following the procedure as shown below. However there is an alternative methods to install `curatedMetagenomicData` that is also shown below. Of course both `R` and `Bioconductor` should be installed prior to installing `curatedMetagenomicData`, installation recommendations are also below.
-
-Finally, there are additional instructions for accessing data that follow the installation instructions. It is possible to data from `curatedMetagenomicData` both from within `R` and from the command line.
+Installing `curatedMetagenomicData` should be done through the Bioconductor package manager `biocLite()`.  Note that accessing the most recent datasets requires the *development* version of Bioconductor. Trying to install the development version of curatedMetagenomicData on top of the release version of Bioconductor won't allow you to access datasets that have been added since the last Bioconductor release.
 
 ## Install R and Bioconductor
 
-1. Install `R` by following instructions found at [https://www.r-project.org/](https://www.r-project.org/).
+To install the *release* version, follow instructions for installing `R` and `Bioconductor` from [https://www.bioconductor.org/install/](https://www.bioconductor.org/install/). 
 
-2. Install `Bioconductor` from `R` by following instructions found at [https://www.bioconductor.org/install/](https://www.bioconductor.org/install/).
+To install the *development* version, follow the instructions at [http://bioconductor.org/developers/how-to/useDevel/](http://bioconductor.org/developers/how-to/useDevel/). 
 
-3. Optionally install `RStudio` to make using `R` easier by following instructions found at [https://www.rstudio.com/products/RStudio/](https://www.rstudio.com/products/RStudio/).
+If you're not sure which version to use, look at the "reference manual" for the [release](https://bioconductor.org/packages/curatedMetagenomicData/) and [development](https://bioconductor.org/packages/devel/data/experiment/html/curatedMetagenomicData.html) versions. 
 
 ## Install curatedMetagenomicData
 
 ### Through R/Bioconductor
 
-This is the usual way to install `curatedMetagenomicData` and is preferred in most cases. From R,
-
-Do either this:
-
-{% highlight r %}
-BiocInstaller::biocLite("curatedMetagenomicData")
-{% endhighlight %}
-
-Or this:
+This is the usual way to install `curatedMetagenomicData` and is preferred in most cases. You must have Bioconductor installed already.
 
 {% highlight r %}
 library(BiocInstaller)
 biocLite("curatedMetagenomicData")
 {% endhighlight %}
 
-Both are equivalent.
-
-### Using devtools
-
-It is also possible to use `biocLite` to install `curatedMetagenomicData` from GitHub. Know that this method will install the most up to date source and the software may contain bugs. From R,
-
-Do either this:
-
-{% highlight r %}
-BiocInstaller::biocLite("waldronlab/curatedMetagenomicData",
-                        dependencies = TRUE, build_vignettes = TRUE)
-{% endhighlight %}
-
-Or this:
+If you are running the development version of Bioconductor, you can also install directly from Github for the "bleeding edge" version, which may contain bugs:
 
 {% highlight r %}
 library(BiocInstaller)
@@ -54,44 +31,26 @@ biocLite("waldronlab/curatedMetagenomicData", dependencies = TRUE,
          build_vignettes = TRUE)
 {% endhighlight %}
 
-Again, both are equivalent.
-
 ## Accessing Data
 
 ### From within R
-*curatedMetagenomicData* and its related data can be accessed through *R* using *Bioconductor* & *ExperimentHub*. To install the necessary software see our install section.
+*curatedMetagenomicData* and its related data can be accessed through *R* using *Bioconductor* & *ExperimentHub*. 
 
-With *curatedMetagenomicData* installed, you can access datasets through *R* like this:
+The recommended way to access data from within R is with the `curatedMetagenomicData()` function. For example:
 
 {% highlight r %}
 library(curatedMetagenomicData)
-eset = LomanNJ_2013_Hi.metaphlan_bugs_list.stool()
+res <- curatedMetagenomicData("HMP_2012.metaphlan_bugs_list.stool", dryrun=FALSE) #one dataset
+res <- curatedMetagenomicData("HMP_2012.metaphlan_bugs_list.*") #many datasets
 {% endhighlight %}
 
-From the resulting *ExpressionSet* object you can extract metagenomic data with `exprs(eset)`, participant and sequencing information using `pData(eset)`, and study information using `experimentData(eset)`.
+See:
 
-The Metaphlan bugs datasets can be converted to *phyloseq* objects for use with the excellent [phyloseq](bioconductor.org/packages/phyloseq){:target="_blank"} Bioconductor package (see `?ExpressionSet2phyloseq`) for more details on this conversion:
+* `?curatedMetagenomicData` for more options to this function, including whether to return relative abundances or counts, conversion of taxonomic tables to [phyloseq](https://bioconductor.org/packages/phyloseq/) objects, and versioning
+* `help(package="curatedMetagenomicData")` for all datasets and available functions
 
-{% highlight r %}
-ExpressionSet2phyloseq(eset, simplify = TRUE, relab = FALSE )
-{% endhighlight %}
+See the [package vignette](https://bioconductor.org/packages/release/data/experiment/vignettes/curatedMetagenomicData/inst/doc/curatedMetagenomicData.html) for additional instructions, and [vignettes/extras](https://github.com/waldronlab/curatedMetagenomicData/tree/master/vignettes/extras) for code to reproduce results of [our manuscript](biorxiv.org/content/early/2017/01/27/103085).
 
-Further usage instructions beyond these basic steps are available in the [package vignette](https://bioconductor.org/packages/release/data/experiment/vignettes/curatedMetagenomicData/inst/doc/curatedMetagenomicData.html){:target="_blank"}. A list of all datasets is available in the [reference manual](http://bioconductor.org/packages/release/data/experiment/manuals/curatedMetagenomicData/man/curatedMetagenomicData.pdf){:target="_blank"}.
+### Command line usage
 
-
-### From the Command Line
-In order to access data from the command line it is necessary to have *R*, *Bioconductor*, and *curatedMetagenomicData* installed (see install). Additionally, it is necessary to install the *docopt* package from within *R*:
-
-{% highlight r %}
-BiocInstaller::biocLite("docopt")
-{% endhighlight %}
-
-With the above completed, data can be accessed from the command line by:
-
-1. Downloading the curatedMetagenomicData [shell script](https://raw.githubusercontent.com/waldronlab/curatedMetagenomicData/master/inst/commandline/curatedMetagenomicData){:target="_blank"}.
-
-2. Making sure the shell script has executable permissions (i.e., `chmod a+x curatedMetagenomicData`)
-
-3. Making sure the R executable at the top of the script is correct (by default `/usr/bin/Rscript`). Check where `Rscript` is installed by `which Rscript`.
-
-4. Placing the *curatedMetagenomicData* file somewhere on your `PATH`, or invoke it using `./curatedMetagenomicData`. Use `./curatedMetagenomicData -h` to see its help.
+Set up curatedMetagenomicData as above, then use the shell script provided in the [inst/commandline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/inst/commandline) package directory. This script generates tab-separated value files and takes similar arguments to the R function.
