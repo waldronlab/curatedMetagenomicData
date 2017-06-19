@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the Heitz-BuschartA_2016 study
 #' 
-#' @aliases 20170526.Heitz-BuschartA_2016.genefamilies_relab.stool 20170526.Heitz-BuschartA_2016.marker_abundance.stool 20170526.Heitz-BuschartA_2016.marker_presence.stool 20170526.Heitz-BuschartA_2016.metaphlan_bugs_list.stool 20170526.Heitz-BuschartA_2016.pathabundance_relab.stool 20170526.Heitz-BuschartA_2016.pathcoverage.stool 
+#' @aliases Heitz-BuschartA_2016.genefamilies_relab.stool Heitz-BuschartA_2016.marker_abundance.stool Heitz-BuschartA_2016.marker_presence.stool Heitz-BuschartA_2016.metaphlan_bugs_list.stool Heitz-BuschartA_2016.pathabundance_relab.stool Heitz-BuschartA_2016.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.Heitz-BuschartA_2016.genefamilies_relab.stool}{
+#' \subsection{Heitz-BuschartA_2016.genefamilies_relab.stool}{
 #'    An ExpressionSet with 53 samples and 1,110,454 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.Heitz-BuschartA_2016.marker_abundance.stool}{
+#' \subsection{Heitz-BuschartA_2016.marker_abundance.stool}{
 #'    An ExpressionSet with 53 samples and 80,864 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.Heitz-BuschartA_2016.marker_presence.stool}{
+#' \subsection{Heitz-BuschartA_2016.marker_presence.stool}{
 #'    An ExpressionSet with 53 samples and 77,488 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.Heitz-BuschartA_2016.metaphlan_bugs_list.stool}{
+#' \subsection{Heitz-BuschartA_2016.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 53 samples and 1,011 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.Heitz-BuschartA_2016.pathabundance_relab.stool}{
+#' \subsection{Heitz-BuschartA_2016.pathabundance_relab.stool}{
 #'    An ExpressionSet with 53 samples and 10,281 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.Heitz-BuschartA_2016.pathcoverage.stool}{
+#' \subsection{Heitz-BuschartA_2016.pathcoverage.stool}{
 #'    An ExpressionSet with 53 samples and 10,281 features specific to the stool body site
 #' }
 #' 
@@ -78,7 +78,7 @@
 #'    27723761
 #' }
 #' 
-#' @examples 20170526.Heitz-BuschartA_2016.genefamilies_relab.stool()
+#' @examples Heitz-BuschartA_2016.genefamilies_relab.stool()
 #' 
 #' @name Heitz-BuschartA_2016 
 NULL

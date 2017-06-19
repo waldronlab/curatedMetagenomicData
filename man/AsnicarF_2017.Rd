@@ -2,18 +2,18 @@
 % Please edit documentation in R/AsnicarF_2017.R
 \name{AsnicarF_2017}
 \alias{AsnicarF_2017}
-\alias{20170526.AsnicarF_2017.genefamilies_relab.milk}
-\alias{20170526.AsnicarF_2017.genefamilies_relab.stool}
-\alias{20170526.AsnicarF_2017.marker_abundance.milk}
-\alias{20170526.AsnicarF_2017.marker_abundance.stool}
-\alias{20170526.AsnicarF_2017.marker_presence.milk}
-\alias{20170526.AsnicarF_2017.marker_presence.stool}
-\alias{20170526.AsnicarF_2017.metaphlan_bugs_list.milk}
-\alias{20170526.AsnicarF_2017.metaphlan_bugs_list.stool}
-\alias{20170526.AsnicarF_2017.pathabundance_relab.milk}
-\alias{20170526.AsnicarF_2017.pathabundance_relab.stool}
-\alias{20170526.AsnicarF_2017.pathcoverage.milk}
-\alias{20170526.AsnicarF_2017.pathcoverage.stool}
+\alias{AsnicarF_2017.genefamilies_relab.milk}
+\alias{AsnicarF_2017.genefamilies_relab.stool}
+\alias{AsnicarF_2017.marker_abundance.milk}
+\alias{AsnicarF_2017.marker_abundance.stool}
+\alias{AsnicarF_2017.marker_presence.milk}
+\alias{AsnicarF_2017.marker_presence.stool}
+\alias{AsnicarF_2017.metaphlan_bugs_list.milk}
+\alias{AsnicarF_2017.metaphlan_bugs_list.stool}
+\alias{AsnicarF_2017.pathabundance_relab.milk}
+\alias{AsnicarF_2017.pathabundance_relab.stool}
+\alias{AsnicarF_2017.pathcoverage.milk}
+\alias{AsnicarF_2017.pathcoverage.stool}
 \title{Data from the AsnicarF_2017 study}
 \description{
 Data from the AsnicarF_2017 study
@@ -21,51 +21,51 @@ Data from the AsnicarF_2017 study
 \section{Datasets}{
  
 
-\subsection{20170526.AsnicarF_2017.genefamilies_relab.milk}{
+\subsection{AsnicarF_2017.genefamilies_relab.milk}{
    An ExpressionSet with 8 samples and 752,977 features specific to the milk body site
 }
 
-\subsection{20170526.AsnicarF_2017.genefamilies_relab.stool}{
+\subsection{AsnicarF_2017.genefamilies_relab.stool}{
    An ExpressionSet with 16 samples and 752,977 features specific to the stool body site
 }
 
-\subsection{20170526.AsnicarF_2017.marker_abundance.milk}{
+\subsection{AsnicarF_2017.marker_abundance.milk}{
    An ExpressionSet with 8 samples and 53,228 features specific to the milk body site
 }
 
-\subsection{20170526.AsnicarF_2017.marker_abundance.stool}{
+\subsection{AsnicarF_2017.marker_abundance.stool}{
    An ExpressionSet with 16 samples and 53,228 features specific to the stool body site
 }
 
-\subsection{20170526.AsnicarF_2017.marker_presence.milk}{
+\subsection{AsnicarF_2017.marker_presence.milk}{
    An ExpressionSet with 8 samples and 50,192 features specific to the milk body site
 }
 
-\subsection{20170526.AsnicarF_2017.marker_presence.stool}{
+\subsection{AsnicarF_2017.marker_presence.stool}{
    An ExpressionSet with 16 samples and 50,192 features specific to the stool body site
 }
 
-\subsection{20170526.AsnicarF_2017.metaphlan_bugs_list.milk}{
+\subsection{AsnicarF_2017.metaphlan_bugs_list.milk}{
    An ExpressionSet with 8 samples and 799 features specific to the milk body site
 }
 
-\subsection{20170526.AsnicarF_2017.metaphlan_bugs_list.stool}{
+\subsection{AsnicarF_2017.metaphlan_bugs_list.stool}{
    An ExpressionSet with 16 samples and 799 features specific to the stool body site
 }
 
-\subsection{20170526.AsnicarF_2017.pathabundance_relab.milk}{
+\subsection{AsnicarF_2017.pathabundance_relab.milk}{
    An ExpressionSet with 8 samples and 9,274 features specific to the milk body site
 }
 
-\subsection{20170526.AsnicarF_2017.pathabundance_relab.stool}{
+\subsection{AsnicarF_2017.pathabundance_relab.stool}{
    An ExpressionSet with 16 samples and 9,274 features specific to the stool body site
 }
 
-\subsection{20170526.AsnicarF_2017.pathcoverage.milk}{
+\subsection{AsnicarF_2017.pathcoverage.milk}{
    An ExpressionSet with 8 samples and 9,274 features specific to the milk body site
 }
 
-\subsection{20170526.AsnicarF_2017.pathcoverage.stool}{
+\subsection{AsnicarF_2017.pathcoverage.stool}{
    An ExpressionSet with 16 samples and 9,274 features specific to the stool body site
 }
 }
@@ -114,6 +114,6 @@ Data from the AsnicarF_2017 study
 }
 
 \examples{
-20170526.AsnicarF_2017.genefamilies_relab.milk()
+AsnicarF_2017.genefamilies_relab.milk()
 
 }

@@ -2,12 +2,12 @@
 % Please edit documentation in R/Heitz-BuschartA_2016.R
 \name{Heitz-BuschartA_2016}
 \alias{Heitz-BuschartA_2016}
-\alias{20170526.Heitz-BuschartA_2016.genefamilies_relab.stool}
-\alias{20170526.Heitz-BuschartA_2016.marker_abundance.stool}
-\alias{20170526.Heitz-BuschartA_2016.marker_presence.stool}
-\alias{20170526.Heitz-BuschartA_2016.metaphlan_bugs_list.stool}
-\alias{20170526.Heitz-BuschartA_2016.pathabundance_relab.stool}
-\alias{20170526.Heitz-BuschartA_2016.pathcoverage.stool}
+\alias{Heitz-BuschartA_2016.genefamilies_relab.stool}
+\alias{Heitz-BuschartA_2016.marker_abundance.stool}
+\alias{Heitz-BuschartA_2016.marker_presence.stool}
+\alias{Heitz-BuschartA_2016.metaphlan_bugs_list.stool}
+\alias{Heitz-BuschartA_2016.pathabundance_relab.stool}
+\alias{Heitz-BuschartA_2016.pathcoverage.stool}
 \title{Data from the Heitz-BuschartA_2016 study}
 \description{
 Data from the Heitz-BuschartA_2016 study
@@ -15,27 +15,27 @@ Data from the Heitz-BuschartA_2016 study
 \section{Datasets}{
  
 
-\subsection{20170526.Heitz-BuschartA_2016.genefamilies_relab.stool}{
+\subsection{Heitz-BuschartA_2016.genefamilies_relab.stool}{
    An ExpressionSet with 53 samples and 1,110,454 features specific to the stool body site
 }
 
-\subsection{20170526.Heitz-BuschartA_2016.marker_abundance.stool}{
+\subsection{Heitz-BuschartA_2016.marker_abundance.stool}{
    An ExpressionSet with 53 samples and 80,864 features specific to the stool body site
 }
 
-\subsection{20170526.Heitz-BuschartA_2016.marker_presence.stool}{
+\subsection{Heitz-BuschartA_2016.marker_presence.stool}{
    An ExpressionSet with 53 samples and 77,488 features specific to the stool body site
 }
 
-\subsection{20170526.Heitz-BuschartA_2016.metaphlan_bugs_list.stool}{
+\subsection{Heitz-BuschartA_2016.metaphlan_bugs_list.stool}{
    An ExpressionSet with 53 samples and 1,011 features specific to the stool body site
 }
 
-\subsection{20170526.Heitz-BuschartA_2016.pathabundance_relab.stool}{
+\subsection{Heitz-BuschartA_2016.pathabundance_relab.stool}{
    An ExpressionSet with 53 samples and 10,281 features specific to the stool body site
 }
 
-\subsection{20170526.Heitz-BuschartA_2016.pathcoverage.stool}{
+\subsection{Heitz-BuschartA_2016.pathcoverage.stool}{
    An ExpressionSet with 53 samples and 10,281 features specific to the stool body site
 }
 }
@@ -92,6 +92,6 @@ Data from the Heitz-BuschartA_2016 study
 }
 
 \examples{
-20170526.Heitz-BuschartA_2016.genefamilies_relab.stool()
+Heitz-BuschartA_2016.genefamilies_relab.stool()
 
 }

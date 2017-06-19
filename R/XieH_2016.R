@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the XieH_2016 study
 #' 
-#' @aliases 20170526.XieH_2016.genefamilies_relab.stool 20170526.XieH_2016.marker_abundance.stool 20170526.XieH_2016.marker_presence.stool 20170526.XieH_2016.metaphlan_bugs_list.stool 20170526.XieH_2016.pathabundance_relab.stool 20170526.XieH_2016.pathcoverage.stool 
+#' @aliases XieH_2016.genefamilies_relab.stool XieH_2016.marker_abundance.stool XieH_2016.marker_presence.stool XieH_2016.metaphlan_bugs_list.stool XieH_2016.pathabundance_relab.stool XieH_2016.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.XieH_2016.genefamilies_relab.stool}{
+#' \subsection{XieH_2016.genefamilies_relab.stool}{
 #'    An ExpressionSet with 250 samples and 1,743,159 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.XieH_2016.marker_abundance.stool}{
+#' \subsection{XieH_2016.marker_abundance.stool}{
 #'    An ExpressionSet with 250 samples and 142,530 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.XieH_2016.marker_presence.stool}{
+#' \subsection{XieH_2016.marker_presence.stool}{
 #'    An ExpressionSet with 250 samples and 129,776 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.XieH_2016.metaphlan_bugs_list.stool}{
+#' \subsection{XieH_2016.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 250 samples and 1,551 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.XieH_2016.pathabundance_relab.stool}{
+#' \subsection{XieH_2016.pathabundance_relab.stool}{
 #'    An ExpressionSet with 250 samples and 15,880 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.XieH_2016.pathcoverage.stool}{
+#' \subsection{XieH_2016.pathcoverage.stool}{
 #'    An ExpressionSet with 250 samples and 15,880 features specific to the stool body site
 #' }
 #' 
@@ -66,7 +66,7 @@
 #'    27818083
 #' }
 #' 
-#' @examples 20170526.XieH_2016.genefamilies_relab.stool()
+#' @examples XieH_2016.genefamilies_relab.stool()
 #' 
 #' @name XieH_2016 
 NULL

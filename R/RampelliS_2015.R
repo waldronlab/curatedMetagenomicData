@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the RampelliS_2015 study
 #' 
-#' @aliases 20170526.RampelliS_2015.genefamilies_relab.stool 20170526.RampelliS_2015.marker_abundance.stool 20170526.RampelliS_2015.marker_presence.stool 20170526.RampelliS_2015.metaphlan_bugs_list.stool 20170526.RampelliS_2015.pathabundance_relab.stool 20170526.RampelliS_2015.pathcoverage.stool 
+#' @aliases RampelliS_2015.genefamilies_relab.stool RampelliS_2015.marker_abundance.stool RampelliS_2015.marker_presence.stool RampelliS_2015.metaphlan_bugs_list.stool RampelliS_2015.pathabundance_relab.stool RampelliS_2015.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.RampelliS_2015.genefamilies_relab.stool}{
+#' \subsection{RampelliS_2015.genefamilies_relab.stool}{
 #'    An ExpressionSet with 38 samples and 788,640 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.RampelliS_2015.marker_abundance.stool}{
+#' \subsection{RampelliS_2015.marker_abundance.stool}{
 #'    An ExpressionSet with 38 samples and 50,394 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.RampelliS_2015.marker_presence.stool}{
+#' \subsection{RampelliS_2015.marker_presence.stool}{
 #'    An ExpressionSet with 38 samples and 47,455 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.RampelliS_2015.metaphlan_bugs_list.stool}{
+#' \subsection{RampelliS_2015.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 38 samples and 727 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.RampelliS_2015.pathabundance_relab.stool}{
+#' \subsection{RampelliS_2015.pathabundance_relab.stool}{
 #'    An ExpressionSet with 38 samples and 6,798 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.RampelliS_2015.pathcoverage.stool}{
+#' \subsection{RampelliS_2015.pathcoverage.stool}{
 #'    An ExpressionSet with 38 samples and 6,798 features specific to the stool body site
 #' }
 #' 
@@ -66,7 +66,7 @@
 #'    25981789
 #' }
 #' 
-#' @examples 20170526.RampelliS_2015.genefamilies_relab.stool()
+#' @examples RampelliS_2015.genefamilies_relab.stool()
 #' 
 #' @name RampelliS_2015 
 NULL

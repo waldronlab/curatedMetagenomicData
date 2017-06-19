@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the VatanenT_2016 study
 #' 
-#' @aliases 20170526.VatanenT_2016.genefamilies_relab.stool 20170526.VatanenT_2016.marker_abundance.stool 20170526.VatanenT_2016.marker_presence.stool 20170526.VatanenT_2016.metaphlan_bugs_list.stool 20170526.VatanenT_2016.pathabundance_relab.stool 20170526.VatanenT_2016.pathcoverage.stool 
+#' @aliases VatanenT_2016.genefamilies_relab.stool VatanenT_2016.marker_abundance.stool VatanenT_2016.marker_presence.stool VatanenT_2016.metaphlan_bugs_list.stool VatanenT_2016.pathabundance_relab.stool VatanenT_2016.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.VatanenT_2016.genefamilies_relab.stool}{
+#' \subsection{VatanenT_2016.genefamilies_relab.stool}{
 #'    An ExpressionSet with 785 samples and 1,719,634 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VatanenT_2016.marker_abundance.stool}{
+#' \subsection{VatanenT_2016.marker_abundance.stool}{
 #'    An ExpressionSet with 785 samples and 135,979 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VatanenT_2016.marker_presence.stool}{
+#' \subsection{VatanenT_2016.marker_presence.stool}{
 #'    An ExpressionSet with 785 samples and 131,625 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VatanenT_2016.metaphlan_bugs_list.stool}{
+#' \subsection{VatanenT_2016.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 785 samples and 1,584 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VatanenT_2016.pathabundance_relab.stool}{
+#' \subsection{VatanenT_2016.pathabundance_relab.stool}{
 #'    An ExpressionSet with 785 samples and 19,236 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VatanenT_2016.pathcoverage.stool}{
+#' \subsection{VatanenT_2016.pathcoverage.stool}{
 #'    An ExpressionSet with 785 samples and 19,236 features specific to the stool body site
 #' }
 #' 
@@ -74,7 +74,7 @@
 #'    27259157
 #' }
 #' 
-#' @examples 20170526.VatanenT_2016.genefamilies_relab.stool()
+#' @examples VatanenT_2016.genefamilies_relab.stool()
 #' 
 #' @name VatanenT_2016 
 NULL

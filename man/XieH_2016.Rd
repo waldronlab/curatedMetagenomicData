@@ -2,12 +2,12 @@
 % Please edit documentation in R/XieH_2016.R
 \name{XieH_2016}
 \alias{XieH_2016}
-\alias{20170526.XieH_2016.genefamilies_relab.stool}
-\alias{20170526.XieH_2016.marker_abundance.stool}
-\alias{20170526.XieH_2016.marker_presence.stool}
-\alias{20170526.XieH_2016.metaphlan_bugs_list.stool}
-\alias{20170526.XieH_2016.pathabundance_relab.stool}
-\alias{20170526.XieH_2016.pathcoverage.stool}
+\alias{XieH_2016.genefamilies_relab.stool}
+\alias{XieH_2016.marker_abundance.stool}
+\alias{XieH_2016.marker_presence.stool}
+\alias{XieH_2016.metaphlan_bugs_list.stool}
+\alias{XieH_2016.pathabundance_relab.stool}
+\alias{XieH_2016.pathcoverage.stool}
 \title{Data from the XieH_2016 study}
 \description{
 Data from the XieH_2016 study
@@ -15,27 +15,27 @@ Data from the XieH_2016 study
 \section{Datasets}{
  
 
-\subsection{20170526.XieH_2016.genefamilies_relab.stool}{
+\subsection{XieH_2016.genefamilies_relab.stool}{
    An ExpressionSet with 250 samples and 1,743,159 features specific to the stool body site
 }
 
-\subsection{20170526.XieH_2016.marker_abundance.stool}{
+\subsection{XieH_2016.marker_abundance.stool}{
    An ExpressionSet with 250 samples and 142,530 features specific to the stool body site
 }
 
-\subsection{20170526.XieH_2016.marker_presence.stool}{
+\subsection{XieH_2016.marker_presence.stool}{
    An ExpressionSet with 250 samples and 129,776 features specific to the stool body site
 }
 
-\subsection{20170526.XieH_2016.metaphlan_bugs_list.stool}{
+\subsection{XieH_2016.metaphlan_bugs_list.stool}{
    An ExpressionSet with 250 samples and 1,551 features specific to the stool body site
 }
 
-\subsection{20170526.XieH_2016.pathabundance_relab.stool}{
+\subsection{XieH_2016.pathabundance_relab.stool}{
    An ExpressionSet with 250 samples and 15,880 features specific to the stool body site
 }
 
-\subsection{20170526.XieH_2016.pathcoverage.stool}{
+\subsection{XieH_2016.pathcoverage.stool}{
    An ExpressionSet with 250 samples and 15,880 features specific to the stool body site
 }
 }
@@ -80,6 +80,6 @@ Data from the XieH_2016 study
 }
 
 \examples{
-20170526.XieH_2016.genefamilies_relab.stool()
+XieH_2016.genefamilies_relab.stool()
 
 }

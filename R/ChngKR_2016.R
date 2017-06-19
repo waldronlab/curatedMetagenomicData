@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the ChngKR_2016 study
 #' 
-#' @aliases 20170526.ChngKR_2016.genefamilies_relab.skin 20170526.ChngKR_2016.marker_abundance.skin 20170526.ChngKR_2016.marker_presence.skin 20170526.ChngKR_2016.metaphlan_bugs_list.skin 20170526.ChngKR_2016.pathabundance_relab.skin 20170526.ChngKR_2016.pathcoverage.skin 
+#' @aliases ChngKR_2016.genefamilies_relab.skin ChngKR_2016.marker_abundance.skin ChngKR_2016.marker_presence.skin ChngKR_2016.metaphlan_bugs_list.skin ChngKR_2016.pathabundance_relab.skin ChngKR_2016.pathcoverage.skin 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.ChngKR_2016.genefamilies_relab.skin}{
+#' \subsection{ChngKR_2016.genefamilies_relab.skin}{
 #'    An ExpressionSet with 78 samples and 823,859 features specific to the skin body site
 #' }
 #'
-#' \subsection{20170526.ChngKR_2016.marker_abundance.skin}{
+#' \subsection{ChngKR_2016.marker_abundance.skin}{
 #'    An ExpressionSet with 78 samples and 89,597 features specific to the skin body site
 #' }
 #'
-#' \subsection{20170526.ChngKR_2016.marker_presence.skin}{
+#' \subsection{ChngKR_2016.marker_presence.skin}{
 #'    An ExpressionSet with 78 samples and 85,656 features specific to the skin body site
 #' }
 #'
-#' \subsection{20170526.ChngKR_2016.metaphlan_bugs_list.skin}{
+#' \subsection{ChngKR_2016.metaphlan_bugs_list.skin}{
 #'    An ExpressionSet with 78 samples and 1,219 features specific to the skin body site
 #' }
 #'
-#' \subsection{20170526.ChngKR_2016.pathabundance_relab.skin}{
+#' \subsection{ChngKR_2016.pathabundance_relab.skin}{
 #'    An ExpressionSet with 78 samples and 10,995 features specific to the skin body site
 #' }
 #'
-#' \subsection{20170526.ChngKR_2016.pathcoverage.skin}{
+#' \subsection{ChngKR_2016.pathcoverage.skin}{
 #'    An ExpressionSet with 78 samples and 10,995 features specific to the skin body site
 #' }
 #' 
@@ -74,7 +74,7 @@
 #'    27562258
 #' }
 #' 
-#' @examples 20170526.ChngKR_2016.genefamilies_relab.skin()
+#' @examples ChngKR_2016.genefamilies_relab.skin()
 #' 
 #' @name ChngKR_2016 
 NULL
