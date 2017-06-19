@@ -2,18 +2,18 @@
 % Please edit documentation in R/BritoIL_2016.R
 \name{BritoIL_2016}
 \alias{BritoIL_2016}
-\alias{20170526.BritoIL_2016.genefamilies_relab.oralcavity}
-\alias{20170526.BritoIL_2016.genefamilies_relab.stool}
-\alias{20170526.BritoIL_2016.marker_abundance.oralcavity}
-\alias{20170526.BritoIL_2016.marker_abundance.stool}
-\alias{20170526.BritoIL_2016.marker_presence.oralcavity}
-\alias{20170526.BritoIL_2016.marker_presence.stool}
-\alias{20170526.BritoIL_2016.metaphlan_bugs_list.oralcavity}
-\alias{20170526.BritoIL_2016.metaphlan_bugs_list.stool}
-\alias{20170526.BritoIL_2016.pathabundance_relab.oralcavity}
-\alias{20170526.BritoIL_2016.pathabundance_relab.stool}
-\alias{20170526.BritoIL_2016.pathcoverage.oralcavity}
-\alias{20170526.BritoIL_2016.pathcoverage.stool}
+\alias{BritoIL_2016.genefamilies_relab.oralcavity}
+\alias{BritoIL_2016.genefamilies_relab.stool}
+\alias{BritoIL_2016.marker_abundance.oralcavity}
+\alias{BritoIL_2016.marker_abundance.stool}
+\alias{BritoIL_2016.marker_presence.oralcavity}
+\alias{BritoIL_2016.marker_presence.stool}
+\alias{BritoIL_2016.metaphlan_bugs_list.oralcavity}
+\alias{BritoIL_2016.metaphlan_bugs_list.stool}
+\alias{BritoIL_2016.pathabundance_relab.oralcavity}
+\alias{BritoIL_2016.pathabundance_relab.stool}
+\alias{BritoIL_2016.pathcoverage.oralcavity}
+\alias{BritoIL_2016.pathcoverage.stool}
 \title{Data from the BritoIL_2016 study}
 \description{
 Data from the BritoIL_2016 study
@@ -21,51 +21,51 @@ Data from the BritoIL_2016 study
 \section{Datasets}{
  
 
-\subsection{20170526.BritoIL_2016.genefamilies_relab.oralcavity}{
+\subsection{BritoIL_2016.genefamilies_relab.oralcavity}{
    An ExpressionSet with 140 samples and 1,825,268 features specific to the oralcavity body site
 }
 
-\subsection{20170526.BritoIL_2016.genefamilies_relab.stool}{
+\subsection{BritoIL_2016.genefamilies_relab.stool}{
    An ExpressionSet with 172 samples and 1,825,268 features specific to the stool body site
 }
 
-\subsection{20170526.BritoIL_2016.marker_abundance.oralcavity}{
+\subsection{BritoIL_2016.marker_abundance.oralcavity}{
    An ExpressionSet with 140 samples and 162,905 features specific to the oralcavity body site
 }
 
-\subsection{20170526.BritoIL_2016.marker_abundance.stool}{
+\subsection{BritoIL_2016.marker_abundance.stool}{
    An ExpressionSet with 172 samples and 162,905 features specific to the stool body site
 }
 
-\subsection{20170526.BritoIL_2016.marker_presence.oralcavity}{
+\subsection{BritoIL_2016.marker_presence.oralcavity}{
    An ExpressionSet with 140 samples and 156,452 features specific to the oralcavity body site
 }
 
-\subsection{20170526.BritoIL_2016.marker_presence.stool}{
+\subsection{BritoIL_2016.marker_presence.stool}{
    An ExpressionSet with 172 samples and 156,452 features specific to the stool body site
 }
 
-\subsection{20170526.BritoIL_2016.metaphlan_bugs_list.oralcavity}{
+\subsection{BritoIL_2016.metaphlan_bugs_list.oralcavity}{
    An ExpressionSet with 140 samples and 1,864 features specific to the oralcavity body site
 }
 
-\subsection{20170526.BritoIL_2016.metaphlan_bugs_list.stool}{
+\subsection{BritoIL_2016.metaphlan_bugs_list.stool}{
    An ExpressionSet with 172 samples and 1,864 features specific to the stool body site
 }
 
-\subsection{20170526.BritoIL_2016.pathabundance_relab.oralcavity}{
+\subsection{BritoIL_2016.pathabundance_relab.oralcavity}{
    An ExpressionSet with 140 samples and 22,539 features specific to the oralcavity body site
 }
 
-\subsection{20170526.BritoIL_2016.pathabundance_relab.stool}{
+\subsection{BritoIL_2016.pathabundance_relab.stool}{
    An ExpressionSet with 172 samples and 22,539 features specific to the stool body site
 }
 
-\subsection{20170526.BritoIL_2016.pathcoverage.oralcavity}{
+\subsection{BritoIL_2016.pathcoverage.oralcavity}{
    An ExpressionSet with 140 samples and 22,539 features specific to the oralcavity body site
 }
 
-\subsection{20170526.BritoIL_2016.pathcoverage.stool}{
+\subsection{BritoIL_2016.pathcoverage.stool}{
    An ExpressionSet with 172 samples and 22,539 features specific to the stool body site
 }
 }
@@ -110,6 +110,6 @@ Data from the BritoIL_2016 study
 }
 
 \examples{
-20170526.BritoIL_2016.genefamilies_relab.oralcavity()
+BritoIL_2016.genefamilies_relab.oralcavity()
 
 }

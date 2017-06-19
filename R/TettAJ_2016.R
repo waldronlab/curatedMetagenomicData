@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the TettAJ_2016 study
 #' 
-#' @aliases 20170526.TettAJ_2016.genefamilies_relab.skin 20170526.TettAJ_2016.marker_abundance.skin 20170526.TettAJ_2016.marker_presence.skin 20170526.TettAJ_2016.metaphlan_bugs_list.skin 20170526.TettAJ_2016.pathabundance_relab.skin 20170526.TettAJ_2016.pathcoverage.skin 
+#' @aliases TettAJ_2016.genefamilies_relab.skin TettAJ_2016.marker_abundance.skin TettAJ_2016.marker_presence.skin TettAJ_2016.metaphlan_bugs_list.skin TettAJ_2016.pathabundance_relab.skin TettAJ_2016.pathcoverage.skin 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.TettAJ_2016.genefamilies_relab.skin}{
+#' \subsection{TettAJ_2016.genefamilies_relab.skin}{
 #'    An ExpressionSet with 97 samples and 1,183,853 features specific to the skin body site
 #' }
 #'
-#' \subsection{20170526.TettAJ_2016.marker_abundance.skin}{
+#' \subsection{TettAJ_2016.marker_abundance.skin}{
 #'    An ExpressionSet with 97 samples and 64,039 features specific to the skin body site
 #' }
 #'
-#' \subsection{20170526.TettAJ_2016.marker_presence.skin}{
+#' \subsection{TettAJ_2016.marker_presence.skin}{
 #'    An ExpressionSet with 97 samples and 57,428 features specific to the skin body site
 #' }
 #'
-#' \subsection{20170526.TettAJ_2016.metaphlan_bugs_list.skin}{
+#' \subsection{TettAJ_2016.metaphlan_bugs_list.skin}{
 #'    An ExpressionSet with 97 samples and 1,004 features specific to the skin body site
 #' }
 #'
-#' \subsection{20170526.TettAJ_2016.pathabundance_relab.skin}{
+#' \subsection{TettAJ_2016.pathabundance_relab.skin}{
 #'    An ExpressionSet with 97 samples and 21,899 features specific to the skin body site
 #' }
 #'
-#' \subsection{20170526.TettAJ_2016.pathcoverage.skin}{
+#' \subsection{TettAJ_2016.pathcoverage.skin}{
 #'    An ExpressionSet with 97 samples and 21,899 features specific to the skin body site
 #' }
 #' 
@@ -74,7 +74,7 @@
 #'    
 #' }
 #' 
-#' @examples 20170526.TettAJ_2016.genefamilies_relab.skin()
+#' @examples TettAJ_2016.genefamilies_relab.skin()
 #' 
 #' @name TettAJ_2016 
 NULL

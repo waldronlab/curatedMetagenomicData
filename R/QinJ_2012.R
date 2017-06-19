@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the QinJ_2012 study
 #' 
-#' @aliases 20170526.QinJ_2012.genefamilies_relab.stool 20170526.QinJ_2012.marker_abundance.stool 20170526.QinJ_2012.marker_presence.stool 20170526.QinJ_2012.metaphlan_bugs_list.stool 20170526.QinJ_2012.pathabundance_relab.stool 20170526.QinJ_2012.pathcoverage.stool 
+#' @aliases QinJ_2012.genefamilies_relab.stool QinJ_2012.marker_abundance.stool QinJ_2012.marker_presence.stool QinJ_2012.metaphlan_bugs_list.stool QinJ_2012.pathabundance_relab.stool QinJ_2012.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.QinJ_2012.genefamilies_relab.stool}{
+#' \subsection{QinJ_2012.genefamilies_relab.stool}{
 #'    An ExpressionSet with 363 samples and 1,690,773 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.QinJ_2012.marker_abundance.stool}{
+#' \subsection{QinJ_2012.marker_abundance.stool}{
 #'    An ExpressionSet with 363 samples and 132,933 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.QinJ_2012.marker_presence.stool}{
+#' \subsection{QinJ_2012.marker_presence.stool}{
 #'    An ExpressionSet with 363 samples and 125,126 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.QinJ_2012.metaphlan_bugs_list.stool}{
+#' \subsection{QinJ_2012.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 363 samples and 1,588 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.QinJ_2012.pathabundance_relab.stool}{
+#' \subsection{QinJ_2012.pathabundance_relab.stool}{
 #'    An ExpressionSet with 363 samples and 18,478 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.QinJ_2012.pathcoverage.stool}{
+#' \subsection{QinJ_2012.pathcoverage.stool}{
 #'    An ExpressionSet with 363 samples and 18,478 features specific to the stool body site
 #' }
 #' 
@@ -74,7 +74,7 @@
 #'    23023125
 #' }
 #' 
-#' @examples 20170526.QinJ_2012.genefamilies_relab.stool()
+#' @examples QinJ_2012.genefamilies_relab.stool()
 #' 
 #' @name QinJ_2012 
 NULL

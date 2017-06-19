@@ -2,12 +2,12 @@
 % Please edit documentation in R/VogtmannE_2016.R
 \name{VogtmannE_2016}
 \alias{VogtmannE_2016}
-\alias{20170526.VogtmannE_2016.genefamilies_relab.stool}
-\alias{20170526.VogtmannE_2016.marker_abundance.stool}
-\alias{20170526.VogtmannE_2016.marker_presence.stool}
-\alias{20170526.VogtmannE_2016.metaphlan_bugs_list.stool}
-\alias{20170526.VogtmannE_2016.pathabundance_relab.stool}
-\alias{20170526.VogtmannE_2016.pathcoverage.stool}
+\alias{VogtmannE_2016.genefamilies_relab.stool}
+\alias{VogtmannE_2016.marker_abundance.stool}
+\alias{VogtmannE_2016.marker_presence.stool}
+\alias{VogtmannE_2016.metaphlan_bugs_list.stool}
+\alias{VogtmannE_2016.pathabundance_relab.stool}
+\alias{VogtmannE_2016.pathcoverage.stool}
 \title{Data from the VogtmannE_2016 study}
 \description{
 Data from the VogtmannE_2016 study
@@ -15,27 +15,27 @@ Data from the VogtmannE_2016 study
 \section{Datasets}{
  
 
-\subsection{20170526.VogtmannE_2016.genefamilies_relab.stool}{
+\subsection{VogtmannE_2016.genefamilies_relab.stool}{
    An ExpressionSet with 110 samples and 2,229,881 features specific to the stool body site
 }
 
-\subsection{20170526.VogtmannE_2016.marker_abundance.stool}{
+\subsection{VogtmannE_2016.marker_abundance.stool}{
    An ExpressionSet with 110 samples and 1,009,074 features specific to the stool body site
 }
 
-\subsection{20170526.VogtmannE_2016.marker_presence.stool}{
+\subsection{VogtmannE_2016.marker_presence.stool}{
    An ExpressionSet with 110 samples and 986,069 features specific to the stool body site
 }
 
-\subsection{20170526.VogtmannE_2016.metaphlan_bugs_list.stool}{
+\subsection{VogtmannE_2016.metaphlan_bugs_list.stool}{
    An ExpressionSet with 110 samples and 11,432 features specific to the stool body site
 }
 
-\subsection{20170526.VogtmannE_2016.pathabundance_relab.stool}{
+\subsection{VogtmannE_2016.pathabundance_relab.stool}{
    An ExpressionSet with 110 samples and 18,706 features specific to the stool body site
 }
 
-\subsection{20170526.VogtmannE_2016.pathcoverage.stool}{
+\subsection{VogtmannE_2016.pathcoverage.stool}{
    An ExpressionSet with 110 samples and 18,706 features specific to the stool body site
 }
 }
@@ -88,6 +88,6 @@ Data from the VogtmannE_2016 study
 }
 
 \examples{
-20170526.VogtmannE_2016.genefamilies_relab.stool()
+VogtmannE_2016.genefamilies_relab.stool()
 
 }

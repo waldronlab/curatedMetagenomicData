@@ -2,12 +2,12 @@
 % Please edit documentation in R/Obregon-TitoAJ_2015.R
 \name{Obregon-TitoAJ_2015}
 \alias{Obregon-TitoAJ_2015}
-\alias{20170526.Obregon-TitoAJ_2015.genefamilies_relab.stool}
-\alias{20170526.Obregon-TitoAJ_2015.marker_abundance.stool}
-\alias{20170526.Obregon-TitoAJ_2015.marker_presence.stool}
-\alias{20170526.Obregon-TitoAJ_2015.metaphlan_bugs_list.stool}
-\alias{20170526.Obregon-TitoAJ_2015.pathabundance_relab.stool}
-\alias{20170526.Obregon-TitoAJ_2015.pathcoverage.stool}
+\alias{Obregon-TitoAJ_2015.genefamilies_relab.stool}
+\alias{Obregon-TitoAJ_2015.marker_abundance.stool}
+\alias{Obregon-TitoAJ_2015.marker_presence.stool}
+\alias{Obregon-TitoAJ_2015.metaphlan_bugs_list.stool}
+\alias{Obregon-TitoAJ_2015.pathabundance_relab.stool}
+\alias{Obregon-TitoAJ_2015.pathcoverage.stool}
 \title{Data from the Obregon-TitoAJ_2015 study}
 \description{
 Data from the Obregon-TitoAJ_2015 study
@@ -15,27 +15,27 @@ Data from the Obregon-TitoAJ_2015 study
 \section{Datasets}{
  
 
-\subsection{20170526.Obregon-TitoAJ_2015.genefamilies_relab.stool}{
+\subsection{Obregon-TitoAJ_2015.genefamilies_relab.stool}{
    An ExpressionSet with 58 samples and 1,192,381 features specific to the stool body site
 }
 
-\subsection{20170526.Obregon-TitoAJ_2015.marker_abundance.stool}{
+\subsection{Obregon-TitoAJ_2015.marker_abundance.stool}{
    An ExpressionSet with 58 samples and 195,319 features specific to the stool body site
 }
 
-\subsection{20170526.Obregon-TitoAJ_2015.marker_presence.stool}{
+\subsection{Obregon-TitoAJ_2015.marker_presence.stool}{
    An ExpressionSet with 58 samples and 150,346 features specific to the stool body site
 }
 
-\subsection{20170526.Obregon-TitoAJ_2015.metaphlan_bugs_list.stool}{
+\subsection{Obregon-TitoAJ_2015.metaphlan_bugs_list.stool}{
    An ExpressionSet with 58 samples and 1,548 features specific to the stool body site
 }
 
-\subsection{20170526.Obregon-TitoAJ_2015.pathabundance_relab.stool}{
+\subsection{Obregon-TitoAJ_2015.pathabundance_relab.stool}{
    An ExpressionSet with 58 samples and 10,438 features specific to the stool body site
 }
 
-\subsection{20170526.Obregon-TitoAJ_2015.pathcoverage.stool}{
+\subsection{Obregon-TitoAJ_2015.pathcoverage.stool}{
    An ExpressionSet with 58 samples and 10,438 features specific to the stool body site
 }
 }
@@ -88,6 +88,6 @@ Data from the Obregon-TitoAJ_2015 study
 }
 
 \examples{
-20170526.Obregon-TitoAJ_2015.genefamilies_relab.stool()
+Obregon-TitoAJ_2015.genefamilies_relab.stool()
 
 }
