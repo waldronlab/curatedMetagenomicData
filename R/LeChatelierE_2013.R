@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the LeChatelierE_2013 study
 #' 
-#' @aliases 20170526.LeChatelierE_2013.genefamilies_relab.stool 20170526.LeChatelierE_2013.marker_abundance.stool 20170526.LeChatelierE_2013.marker_presence.stool 20170526.LeChatelierE_2013.metaphlan_bugs_list.stool 20170526.LeChatelierE_2013.pathabundance_relab.stool 20170526.LeChatelierE_2013.pathcoverage.stool 
+#' @aliases LeChatelierE_2013.genefamilies_relab.stool LeChatelierE_2013.marker_abundance.stool LeChatelierE_2013.marker_presence.stool LeChatelierE_2013.metaphlan_bugs_list.stool LeChatelierE_2013.pathabundance_relab.stool LeChatelierE_2013.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.LeChatelierE_2013.genefamilies_relab.stool}{
+#' \subsection{LeChatelierE_2013.genefamilies_relab.stool}{
 #'    An ExpressionSet with 292 samples and 1,519,375 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LeChatelierE_2013.marker_abundance.stool}{
+#' \subsection{LeChatelierE_2013.marker_abundance.stool}{
 #'    An ExpressionSet with 292 samples and 130,620 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LeChatelierE_2013.marker_presence.stool}{
+#' \subsection{LeChatelierE_2013.marker_presence.stool}{
 #'    An ExpressionSet with 292 samples and 117,257 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LeChatelierE_2013.metaphlan_bugs_list.stool}{
+#' \subsection{LeChatelierE_2013.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 292 samples and 1,542 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LeChatelierE_2013.pathabundance_relab.stool}{
+#' \subsection{LeChatelierE_2013.pathabundance_relab.stool}{
 #'    An ExpressionSet with 292 samples and 13,504 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LeChatelierE_2013.pathcoverage.stool}{
+#' \subsection{LeChatelierE_2013.pathcoverage.stool}{
 #'    An ExpressionSet with 292 samples and 13,504 features specific to the stool body site
 #' }
 #' 
@@ -66,7 +66,7 @@
 #'    23985870
 #' }
 #' 
-#' @examples 20170526.LeChatelierE_2013.genefamilies_relab.stool()
+#' @examples LeChatelierE_2013.genefamilies_relab.stool()
 #' 
 #' @name LeChatelierE_2013 
 NULL

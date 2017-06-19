@@ -2,12 +2,12 @@
 % Please edit documentation in R/VincentC_2016.R
 \name{VincentC_2016}
 \alias{VincentC_2016}
-\alias{20170526.VincentC_2016.genefamilies_relab.stool}
-\alias{20170526.VincentC_2016.marker_abundance.stool}
-\alias{20170526.VincentC_2016.marker_presence.stool}
-\alias{20170526.VincentC_2016.metaphlan_bugs_list.stool}
-\alias{20170526.VincentC_2016.pathabundance_relab.stool}
-\alias{20170526.VincentC_2016.pathcoverage.stool}
+\alias{VincentC_2016.genefamilies_relab.stool}
+\alias{VincentC_2016.marker_abundance.stool}
+\alias{VincentC_2016.marker_presence.stool}
+\alias{VincentC_2016.metaphlan_bugs_list.stool}
+\alias{VincentC_2016.pathabundance_relab.stool}
+\alias{VincentC_2016.pathcoverage.stool}
 \title{Data from the VincentC_2016 study}
 \description{
 Data from the VincentC_2016 study
@@ -15,27 +15,27 @@ Data from the VincentC_2016 study
 \section{Datasets}{
  
 
-\subsection{20170526.VincentC_2016.genefamilies_relab.stool}{
+\subsection{VincentC_2016.genefamilies_relab.stool}{
    An ExpressionSet with 229 samples and 1,513,277 features specific to the stool body site
 }
 
-\subsection{20170526.VincentC_2016.marker_abundance.stool}{
+\subsection{VincentC_2016.marker_abundance.stool}{
    An ExpressionSet with 229 samples and 116,377 features specific to the stool body site
 }
 
-\subsection{20170526.VincentC_2016.marker_presence.stool}{
+\subsection{VincentC_2016.marker_presence.stool}{
    An ExpressionSet with 229 samples and 110,951 features specific to the stool body site
 }
 
-\subsection{20170526.VincentC_2016.metaphlan_bugs_list.stool}{
+\subsection{VincentC_2016.metaphlan_bugs_list.stool}{
    An ExpressionSet with 229 samples and 1,452 features specific to the stool body site
 }
 
-\subsection{20170526.VincentC_2016.pathabundance_relab.stool}{
+\subsection{VincentC_2016.pathabundance_relab.stool}{
    An ExpressionSet with 229 samples and 16,254 features specific to the stool body site
 }
 
-\subsection{20170526.VincentC_2016.pathcoverage.stool}{
+\subsection{VincentC_2016.pathcoverage.stool}{
    An ExpressionSet with 229 samples and 16,254 features specific to the stool body site
 }
 }
@@ -88,6 +88,6 @@ Data from the VincentC_2016 study
 }
 
 \examples{
-20170526.VincentC_2016.genefamilies_relab.stool()
+VincentC_2016.genefamilies_relab.stool()
 
 }

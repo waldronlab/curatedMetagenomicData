@@ -2,55 +2,55 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the BritoIL_2016 study
 #' 
-#' @aliases 20170526.BritoIL_2016.genefamilies_relab.oralcavity 20170526.BritoIL_2016.genefamilies_relab.stool 20170526.BritoIL_2016.marker_abundance.oralcavity 20170526.BritoIL_2016.marker_abundance.stool 20170526.BritoIL_2016.marker_presence.oralcavity 20170526.BritoIL_2016.marker_presence.stool 20170526.BritoIL_2016.metaphlan_bugs_list.oralcavity 20170526.BritoIL_2016.metaphlan_bugs_list.stool 20170526.BritoIL_2016.pathabundance_relab.oralcavity 20170526.BritoIL_2016.pathabundance_relab.stool 20170526.BritoIL_2016.pathcoverage.oralcavity 20170526.BritoIL_2016.pathcoverage.stool 
+#' @aliases BritoIL_2016.genefamilies_relab.oralcavity BritoIL_2016.genefamilies_relab.stool BritoIL_2016.marker_abundance.oralcavity BritoIL_2016.marker_abundance.stool BritoIL_2016.marker_presence.oralcavity BritoIL_2016.marker_presence.stool BritoIL_2016.metaphlan_bugs_list.oralcavity BritoIL_2016.metaphlan_bugs_list.stool BritoIL_2016.pathabundance_relab.oralcavity BritoIL_2016.pathabundance_relab.stool BritoIL_2016.pathcoverage.oralcavity BritoIL_2016.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.BritoIL_2016.genefamilies_relab.oralcavity}{
+#' \subsection{BritoIL_2016.genefamilies_relab.oralcavity}{
 #'    An ExpressionSet with 140 samples and 1,825,268 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{20170526.BritoIL_2016.genefamilies_relab.stool}{
+#' \subsection{BritoIL_2016.genefamilies_relab.stool}{
 #'    An ExpressionSet with 172 samples and 1,825,268 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.BritoIL_2016.marker_abundance.oralcavity}{
+#' \subsection{BritoIL_2016.marker_abundance.oralcavity}{
 #'    An ExpressionSet with 140 samples and 162,905 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{20170526.BritoIL_2016.marker_abundance.stool}{
+#' \subsection{BritoIL_2016.marker_abundance.stool}{
 #'    An ExpressionSet with 172 samples and 162,905 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.BritoIL_2016.marker_presence.oralcavity}{
+#' \subsection{BritoIL_2016.marker_presence.oralcavity}{
 #'    An ExpressionSet with 140 samples and 156,452 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{20170526.BritoIL_2016.marker_presence.stool}{
+#' \subsection{BritoIL_2016.marker_presence.stool}{
 #'    An ExpressionSet with 172 samples and 156,452 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.BritoIL_2016.metaphlan_bugs_list.oralcavity}{
+#' \subsection{BritoIL_2016.metaphlan_bugs_list.oralcavity}{
 #'    An ExpressionSet with 140 samples and 1,864 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{20170526.BritoIL_2016.metaphlan_bugs_list.stool}{
+#' \subsection{BritoIL_2016.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 172 samples and 1,864 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.BritoIL_2016.pathabundance_relab.oralcavity}{
+#' \subsection{BritoIL_2016.pathabundance_relab.oralcavity}{
 #'    An ExpressionSet with 140 samples and 22,539 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{20170526.BritoIL_2016.pathabundance_relab.stool}{
+#' \subsection{BritoIL_2016.pathabundance_relab.stool}{
 #'    An ExpressionSet with 172 samples and 22,539 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.BritoIL_2016.pathcoverage.oralcavity}{
+#' \subsection{BritoIL_2016.pathcoverage.oralcavity}{
 #'    An ExpressionSet with 140 samples and 22,539 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{20170526.BritoIL_2016.pathcoverage.stool}{
+#' \subsection{BritoIL_2016.pathcoverage.stool}{
 #'    An ExpressionSet with 172 samples and 22,539 features specific to the stool body site
 #' }
 #' 
@@ -90,7 +90,7 @@
 #'    27409808
 #' }
 #' 
-#' @examples 20170526.BritoIL_2016.genefamilies_relab.oralcavity()
+#' @examples BritoIL_2016.genefamilies_relab.oralcavity()
 #' 
 #' @name BritoIL_2016 
 NULL

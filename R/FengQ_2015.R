@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the FengQ_2015 study
 #' 
-#' @aliases 20170526.FengQ_2015.genefamilies_relab.stool 20170526.FengQ_2015.marker_abundance.stool 20170526.FengQ_2015.marker_presence.stool 20170526.FengQ_2015.metaphlan_bugs_list.stool 20170526.FengQ_2015.pathabundance_relab.stool 20170526.FengQ_2015.pathcoverage.stool 
+#' @aliases FengQ_2015.genefamilies_relab.stool FengQ_2015.marker_abundance.stool FengQ_2015.marker_presence.stool FengQ_2015.metaphlan_bugs_list.stool FengQ_2015.pathabundance_relab.stool FengQ_2015.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.FengQ_2015.genefamilies_relab.stool}{
+#' \subsection{FengQ_2015.genefamilies_relab.stool}{
 #'    An ExpressionSet with 154 samples and 1,627,981 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.FengQ_2015.marker_abundance.stool}{
+#' \subsection{FengQ_2015.marker_abundance.stool}{
 #'    An ExpressionSet with 154 samples and 140,519 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.FengQ_2015.marker_presence.stool}{
+#' \subsection{FengQ_2015.marker_presence.stool}{
 #'    An ExpressionSet with 154 samples and 130,216 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.FengQ_2015.metaphlan_bugs_list.stool}{
+#' \subsection{FengQ_2015.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 154 samples and 1,547 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.FengQ_2015.pathabundance_relab.stool}{
+#' \subsection{FengQ_2015.pathabundance_relab.stool}{
 #'    An ExpressionSet with 154 samples and 16,866 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.FengQ_2015.pathcoverage.stool}{
+#' \subsection{FengQ_2015.pathcoverage.stool}{
 #'    An ExpressionSet with 154 samples and 16,866 features specific to the stool body site
 #' }
 #' 
@@ -74,7 +74,7 @@
 #'    25758642
 #' }
 #' 
-#' @examples 20170526.FengQ_2015.genefamilies_relab.stool()
+#' @examples FengQ_2015.genefamilies_relab.stool()
 #' 
 #' @name FengQ_2015 
 NULL

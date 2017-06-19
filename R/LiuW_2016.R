@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the LiuW_2016 study
 #' 
-#' @aliases 20170526.LiuW_2016.genefamilies_relab.stool 20170526.LiuW_2016.marker_abundance.stool 20170526.LiuW_2016.marker_presence.stool 20170526.LiuW_2016.metaphlan_bugs_list.stool 20170526.LiuW_2016.pathabundance_relab.stool 20170526.LiuW_2016.pathcoverage.stool 
+#' @aliases LiuW_2016.genefamilies_relab.stool LiuW_2016.marker_abundance.stool LiuW_2016.marker_presence.stool LiuW_2016.metaphlan_bugs_list.stool LiuW_2016.pathabundance_relab.stool LiuW_2016.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.LiuW_2016.genefamilies_relab.stool}{
+#' \subsection{LiuW_2016.genefamilies_relab.stool}{
 #'    An ExpressionSet with 110 samples and 1,178,616 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LiuW_2016.marker_abundance.stool}{
+#' \subsection{LiuW_2016.marker_abundance.stool}{
 #'    An ExpressionSet with 110 samples and 81,028 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LiuW_2016.marker_presence.stool}{
+#' \subsection{LiuW_2016.marker_presence.stool}{
 #'    An ExpressionSet with 110 samples and 76,593 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LiuW_2016.metaphlan_bugs_list.stool}{
+#' \subsection{LiuW_2016.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 110 samples and 1,078 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LiuW_2016.pathabundance_relab.stool}{
+#' \subsection{LiuW_2016.pathabundance_relab.stool}{
 #'    An ExpressionSet with 110 samples and 12,647 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LiuW_2016.pathcoverage.stool}{
+#' \subsection{LiuW_2016.pathcoverage.stool}{
 #'    An ExpressionSet with 110 samples and 12,647 features specific to the stool body site
 #' }
 #' 
@@ -58,7 +58,7 @@
 #'    27708392
 #' }
 #' 
-#' @examples 20170526.LiuW_2016.genefamilies_relab.stool()
+#' @examples LiuW_2016.genefamilies_relab.stool()
 #' 
 #' @name LiuW_2016 
 NULL

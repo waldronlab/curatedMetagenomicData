@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the SchirmerM_2016 study
 #' 
-#' @aliases 20170526.SchirmerM_2016.genefamilies_relab.stool 20170526.SchirmerM_2016.marker_abundance.stool 20170526.SchirmerM_2016.marker_presence.stool 20170526.SchirmerM_2016.metaphlan_bugs_list.stool 20170526.SchirmerM_2016.pathabundance_relab.stool 20170526.SchirmerM_2016.pathcoverage.stool 
+#' @aliases SchirmerM_2016.genefamilies_relab.stool SchirmerM_2016.marker_abundance.stool SchirmerM_2016.marker_presence.stool SchirmerM_2016.metaphlan_bugs_list.stool SchirmerM_2016.pathabundance_relab.stool SchirmerM_2016.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.SchirmerM_2016.genefamilies_relab.stool}{
+#' \subsection{SchirmerM_2016.genefamilies_relab.stool}{
 #'    An ExpressionSet with 471 samples and 1,396,085 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.SchirmerM_2016.marker_abundance.stool}{
+#' \subsection{SchirmerM_2016.marker_abundance.stool}{
 #'    An ExpressionSet with 471 samples and 104,930 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.SchirmerM_2016.marker_presence.stool}{
+#' \subsection{SchirmerM_2016.marker_presence.stool}{
 #'    An ExpressionSet with 471 samples and 101,457 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.SchirmerM_2016.metaphlan_bugs_list.stool}{
+#' \subsection{SchirmerM_2016.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 471 samples and 1,177 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.SchirmerM_2016.pathabundance_relab.stool}{
+#' \subsection{SchirmerM_2016.pathabundance_relab.stool}{
 #'    An ExpressionSet with 471 samples and 12,707 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.SchirmerM_2016.pathcoverage.stool}{
+#' \subsection{SchirmerM_2016.pathcoverage.stool}{
 #'    An ExpressionSet with 471 samples and 12,707 features specific to the stool body site
 #' }
 #' 
@@ -78,7 +78,7 @@
 #'    27984736
 #' }
 #' 
-#' @examples 20170526.SchirmerM_2016.genefamilies_relab.stool()
+#' @examples SchirmerM_2016.genefamilies_relab.stool()
 #' 
 #' @name SchirmerM_2016 
 NULL
