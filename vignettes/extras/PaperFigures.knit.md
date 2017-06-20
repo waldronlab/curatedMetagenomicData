@@ -21,7 +21,9 @@ vignette: >
 
 # Setup
 
-Note, the classification analyses here (Figure 1 Example 1 and for Supplemental Figure 1) create very large matrices that can exceed default limits for R pointer size and the C stack limit on some systems.  If you see `Error: protect(): protection stack overflow` or `Error: segfault from C stack overflow`, one of these is the issue. From GNU/Linux, these limits can be increased from the command-line as follows:
+Before running the script, please note that
+
+* The classification analyses (Figure 1 Example 1 and Supplemental Figure 1) create very large matrices that can exceed default limits for R pointer size and the C stack limit on some systems. If you see `Error: protect(): protection stack overflow` or `Error: segfault from C stack overflow`, one of these is the issue. From GNU/Linux, these limits can be increased from the command-line as follows:
 
 ```
 ulimit -s 65535   #addresses C stack overflow
@@ -30,7 +32,11 @@ R --vanilla --max-ppsize=500000    #addresses protect() error
 
 If you are running on a machine with limited memory, a 32-bit installation of R, otherwise have trouble with stack overflows, or you do not want to run these classification examples, change `eval=TRUE` to `eval=FALSE` in the chunk options for the chunks named `fig1eg` and `suppfig1` to skip these analyses.
 
-Note, when running Supplemental Figure 5 a warning occurs that "The data you have provided does not have any singletons." This is because the estimated relative abundance output of MetaPhlAn2 (and other metagenomic profiling software), even when converted to approximate counts by multiplying by read depth, does not include singletons. It is not a result of trimming, and does not affect the validity of the calculated Shannon diversity measure in as much as any relative abundance data, such as microbiome data from metagenomics, can be used to estimate alpha diversity. However, we recommend that the chao1 diversity measure not be used (Haegeman et al, The ISME Journal (2013) 7, 1092–1101; doi:10.1038/ismej.2013.10).
+* For the sake of reproducibility, the classification analyses (Figure 1 Example 1 and Supplemental Figure 1) are conducted here by considering fixed values of "ntree" and "mtry". Although these values may be tuned using more advanced strategies (such as grid search), we observed similar accuracy results but associated with a much higher computational load.
+
+* Several hours are needed to reproduce Supplemental Figure 3.
+
+* When running Supplemental Figure 5 a warning occurs that "The data you have provided does not have any singletons." This is because the estimated relative abundance output of MetaPhlAn2 (and other metagenomic profiling software), even when converted to approximate counts by multiplying by read depth, does not include singletons. It is not a result of trimming, and does not affect the validity of the calculated Shannon diversity measure in as much as any relative abundance data, such as microbiome data from metagenomics, can be used to estimate alpha diversity. However, we recommend that the chao1 diversity measure not be used (Haegeman et al, The ISME Journal (2013) 7, 1092–1101; doi:10.1038/ismej.2013.10).
 
 Then enter the following from within R to build the html:
 
@@ -49,7 +55,7 @@ suppressPackageStartupMessages({
     library(caret)
     library(pROC)
     library(gclus)
-    library(doMC)
+    library(doMC) #not supported in Windows
     library(stats)
     library(cluster)
     library(fpc)
@@ -60,7 +66,7 @@ suppressPackageStartupMessages({
 Set the number of cores to use:
 
 ```r
-registerDoMC(32)
+registerDoMC(32) #not supported in Windows
 ```
 
 # Coordinated Color Scheme
