@@ -13,7 +13,7 @@
 Data from the Obregon-TitoAJ_2015 study
 }
 \section{Datasets}{
- 
+
 
 \subsection{Obregon-TitoAJ_2015.genefamilies_relab.stool}{
    An ExpressionSet with 58 samples and 1,192,381 features specific to the stool body site
@@ -41,7 +41,7 @@ Data from the Obregon-TitoAJ_2015 study
 }
 
 \section{Exploratory Data Analysis}{
- 
+
 
 \if{html}{\figure{Obregon-TitoAJ_2015_age.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
@@ -68,7 +68,7 @@ Data from the Obregon-TitoAJ_2015 study
 }
 
 \section{Source}{
- 
+
 
 \subsection{Title}{
    Subsistence strategies in traditional societies distinguish gut microbiomes.
@@ -88,6 +88,6 @@ Data from the Obregon-TitoAJ_2015 study
 }
 
 \examples{
-Obregon-TitoAJ_2015.genefamilies_relab.stool()
+`Obregon-TitoAJ_2015.genefamilies_relab.stool`()
 
 }
