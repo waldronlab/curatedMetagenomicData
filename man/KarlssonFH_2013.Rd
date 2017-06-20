@@ -2,12 +2,12 @@
 % Please edit documentation in R/KarlssonFH_2013.R
 \name{KarlssonFH_2013}
 \alias{KarlssonFH_2013}
-\alias{20170526.KarlssonFH_2013.genefamilies_relab.stool}
-\alias{20170526.KarlssonFH_2013.marker_abundance.stool}
-\alias{20170526.KarlssonFH_2013.marker_presence.stool}
-\alias{20170526.KarlssonFH_2013.metaphlan_bugs_list.stool}
-\alias{20170526.KarlssonFH_2013.pathabundance_relab.stool}
-\alias{20170526.KarlssonFH_2013.pathcoverage.stool}
+\alias{KarlssonFH_2013.genefamilies_relab.stool}
+\alias{KarlssonFH_2013.marker_abundance.stool}
+\alias{KarlssonFH_2013.marker_presence.stool}
+\alias{KarlssonFH_2013.metaphlan_bugs_list.stool}
+\alias{KarlssonFH_2013.pathabundance_relab.stool}
+\alias{KarlssonFH_2013.pathcoverage.stool}
 \title{Data from the KarlssonFH_2013 study}
 \description{
 Data from the KarlssonFH_2013 study
@@ -15,27 +15,27 @@ Data from the KarlssonFH_2013 study
 \section{Datasets}{
  
 
-\subsection{20170526.KarlssonFH_2013.genefamilies_relab.stool}{
+\subsection{KarlssonFH_2013.genefamilies_relab.stool}{
    An ExpressionSet with 145 samples and 1,415,750 features specific to the stool body site
 }
 
-\subsection{20170526.KarlssonFH_2013.marker_abundance.stool}{
+\subsection{KarlssonFH_2013.marker_abundance.stool}{
    An ExpressionSet with 145 samples and 101,166 features specific to the stool body site
 }
 
-\subsection{20170526.KarlssonFH_2013.marker_presence.stool}{
+\subsection{KarlssonFH_2013.marker_presence.stool}{
    An ExpressionSet with 145 samples and 95,324 features specific to the stool body site
 }
 
-\subsection{20170526.KarlssonFH_2013.metaphlan_bugs_list.stool}{
+\subsection{KarlssonFH_2013.metaphlan_bugs_list.stool}{
    An ExpressionSet with 145 samples and 1,140 features specific to the stool body site
 }
 
-\subsection{20170526.KarlssonFH_2013.pathabundance_relab.stool}{
+\subsection{KarlssonFH_2013.pathabundance_relab.stool}{
    An ExpressionSet with 145 samples and 13,392 features specific to the stool body site
 }
 
-\subsection{20170526.KarlssonFH_2013.pathcoverage.stool}{
+\subsection{KarlssonFH_2013.pathcoverage.stool}{
    An ExpressionSet with 145 samples and 13,392 features specific to the stool body site
 }
 }
@@ -88,6 +88,6 @@ Data from the KarlssonFH_2013 study
 }
 
 \examples{
-20170526.KarlssonFH_2013.genefamilies_relab.stool()
+KarlssonFH_2013.genefamilies_relab.stool()
 
 }

@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the Castro-NallarE_2015 study
 #' 
-#' @aliases 20170526.Castro-NallarE_2015.genefamilies_relab.oralcavity 20170526.Castro-NallarE_2015.marker_abundance.oralcavity 20170526.Castro-NallarE_2015.marker_presence.oralcavity 20170526.Castro-NallarE_2015.metaphlan_bugs_list.oralcavity 20170526.Castro-NallarE_2015.pathabundance_relab.oralcavity 20170526.Castro-NallarE_2015.pathcoverage.oralcavity 
+#' @aliases Castro-NallarE_2015.genefamilies_relab.oralcavity Castro-NallarE_2015.marker_abundance.oralcavity Castro-NallarE_2015.marker_presence.oralcavity Castro-NallarE_2015.metaphlan_bugs_list.oralcavity Castro-NallarE_2015.pathabundance_relab.oralcavity Castro-NallarE_2015.pathcoverage.oralcavity 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.Castro-NallarE_2015.genefamilies_relab.oralcavity}{
+#' \subsection{Castro-NallarE_2015.genefamilies_relab.oralcavity}{
 #'    An ExpressionSet with 32 samples and 588,014 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{20170526.Castro-NallarE_2015.marker_abundance.oralcavity}{
+#' \subsection{Castro-NallarE_2015.marker_abundance.oralcavity}{
 #'    An ExpressionSet with 32 samples and 51,679 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{20170526.Castro-NallarE_2015.marker_presence.oralcavity}{
+#' \subsection{Castro-NallarE_2015.marker_presence.oralcavity}{
 #'    An ExpressionSet with 32 samples and 49,093 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{20170526.Castro-NallarE_2015.metaphlan_bugs_list.oralcavity}{
+#' \subsection{Castro-NallarE_2015.metaphlan_bugs_list.oralcavity}{
 #'    An ExpressionSet with 32 samples and 755 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{20170526.Castro-NallarE_2015.pathabundance_relab.oralcavity}{
+#' \subsection{Castro-NallarE_2015.pathabundance_relab.oralcavity}{
 #'    An ExpressionSet with 32 samples and 9,237 features specific to the oralcavity body site
 #' }
 #'
-#' \subsection{20170526.Castro-NallarE_2015.pathcoverage.oralcavity}{
+#' \subsection{Castro-NallarE_2015.pathcoverage.oralcavity}{
 #'    An ExpressionSet with 32 samples and 9,237 features specific to the oralcavity body site
 #' }
 #' 
@@ -74,7 +74,7 @@
 #'    26336637
 #' }
 #' 
-#' @examples 20170526.Castro-NallarE_2015.genefamilies_relab.oralcavity()
+#' @examples Castro-NallarE_2015.genefamilies_relab.oralcavity()
 #' 
 #' @name Castro-NallarE_2015 
 NULL

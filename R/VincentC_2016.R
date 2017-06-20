@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the VincentC_2016 study
 #' 
-#' @aliases 20170526.VincentC_2016.genefamilies_relab.stool 20170526.VincentC_2016.marker_abundance.stool 20170526.VincentC_2016.marker_presence.stool 20170526.VincentC_2016.metaphlan_bugs_list.stool 20170526.VincentC_2016.pathabundance_relab.stool 20170526.VincentC_2016.pathcoverage.stool 
+#' @aliases VincentC_2016.genefamilies_relab.stool VincentC_2016.marker_abundance.stool VincentC_2016.marker_presence.stool VincentC_2016.metaphlan_bugs_list.stool VincentC_2016.pathabundance_relab.stool VincentC_2016.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.VincentC_2016.genefamilies_relab.stool}{
+#' \subsection{VincentC_2016.genefamilies_relab.stool}{
 #'    An ExpressionSet with 229 samples and 1,513,277 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VincentC_2016.marker_abundance.stool}{
+#' \subsection{VincentC_2016.marker_abundance.stool}{
 #'    An ExpressionSet with 229 samples and 116,377 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VincentC_2016.marker_presence.stool}{
+#' \subsection{VincentC_2016.marker_presence.stool}{
 #'    An ExpressionSet with 229 samples and 110,951 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VincentC_2016.metaphlan_bugs_list.stool}{
+#' \subsection{VincentC_2016.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 229 samples and 1,452 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VincentC_2016.pathabundance_relab.stool}{
+#' \subsection{VincentC_2016.pathabundance_relab.stool}{
 #'    An ExpressionSet with 229 samples and 16,254 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VincentC_2016.pathcoverage.stool}{
+#' \subsection{VincentC_2016.pathcoverage.stool}{
 #'    An ExpressionSet with 229 samples and 16,254 features specific to the stool body site
 #' }
 #' 
@@ -74,7 +74,7 @@
 #'    26975510
 #' }
 #' 
-#' @examples 20170526.VincentC_2016.genefamilies_relab.stool()
+#' @examples VincentC_2016.genefamilies_relab.stool()
 #' 
 #' @name VincentC_2016 
 NULL

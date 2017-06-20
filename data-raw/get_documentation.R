@@ -1,7 +1,7 @@
 get_documentation <- function(resource_name) {
     resource_object <- get_resource(resource_name)
     title <- get_title(resource_name)
-    aliases <- gsub(".rda", "", resource_name)
+    aliases <- get_aliases(resource_name)
     subsection <- get_subsection(resource_object)
     publication <- get_experiment_data(resource_object, "title") %>% paste0(collapse = "; ")
     authors <- get_experiment_data(resource_object, "name")

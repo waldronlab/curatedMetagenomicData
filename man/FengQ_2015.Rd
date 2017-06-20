@@ -2,12 +2,12 @@
 % Please edit documentation in R/FengQ_2015.R
 \name{FengQ_2015}
 \alias{FengQ_2015}
-\alias{20170526.FengQ_2015.genefamilies_relab.stool}
-\alias{20170526.FengQ_2015.marker_abundance.stool}
-\alias{20170526.FengQ_2015.marker_presence.stool}
-\alias{20170526.FengQ_2015.metaphlan_bugs_list.stool}
-\alias{20170526.FengQ_2015.pathabundance_relab.stool}
-\alias{20170526.FengQ_2015.pathcoverage.stool}
+\alias{FengQ_2015.genefamilies_relab.stool}
+\alias{FengQ_2015.marker_abundance.stool}
+\alias{FengQ_2015.marker_presence.stool}
+\alias{FengQ_2015.metaphlan_bugs_list.stool}
+\alias{FengQ_2015.pathabundance_relab.stool}
+\alias{FengQ_2015.pathcoverage.stool}
 \title{Data from the FengQ_2015 study}
 \description{
 Data from the FengQ_2015 study
@@ -15,27 +15,27 @@ Data from the FengQ_2015 study
 \section{Datasets}{
  
 
-\subsection{20170526.FengQ_2015.genefamilies_relab.stool}{
+\subsection{FengQ_2015.genefamilies_relab.stool}{
    An ExpressionSet with 154 samples and 1,627,981 features specific to the stool body site
 }
 
-\subsection{20170526.FengQ_2015.marker_abundance.stool}{
+\subsection{FengQ_2015.marker_abundance.stool}{
    An ExpressionSet with 154 samples and 140,519 features specific to the stool body site
 }
 
-\subsection{20170526.FengQ_2015.marker_presence.stool}{
+\subsection{FengQ_2015.marker_presence.stool}{
    An ExpressionSet with 154 samples and 130,216 features specific to the stool body site
 }
 
-\subsection{20170526.FengQ_2015.metaphlan_bugs_list.stool}{
+\subsection{FengQ_2015.metaphlan_bugs_list.stool}{
    An ExpressionSet with 154 samples and 1,547 features specific to the stool body site
 }
 
-\subsection{20170526.FengQ_2015.pathabundance_relab.stool}{
+\subsection{FengQ_2015.pathabundance_relab.stool}{
    An ExpressionSet with 154 samples and 16,866 features specific to the stool body site
 }
 
-\subsection{20170526.FengQ_2015.pathcoverage.stool}{
+\subsection{FengQ_2015.pathcoverage.stool}{
    An ExpressionSet with 154 samples and 16,866 features specific to the stool body site
 }
 }
@@ -88,6 +88,6 @@ Data from the FengQ_2015 study
 }
 
 \examples{
-20170526.FengQ_2015.genefamilies_relab.stool()
+FengQ_2015.genefamilies_relab.stool()
 
 }

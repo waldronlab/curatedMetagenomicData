@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the LomanNJ_2013 study
 #' 
-#' @aliases 20170526.LomanNJ_2013.genefamilies_relab.stool 20170526.LomanNJ_2013.marker_abundance.stool 20170526.LomanNJ_2013.marker_presence.stool 20170526.LomanNJ_2013.metaphlan_bugs_list.stool 20170526.LomanNJ_2013.pathabundance_relab.stool 20170526.LomanNJ_2013.pathcoverage.stool 
+#' @aliases LomanNJ_2013.genefamilies_relab.stool LomanNJ_2013.marker_abundance.stool LomanNJ_2013.marker_presence.stool LomanNJ_2013.metaphlan_bugs_list.stool LomanNJ_2013.pathabundance_relab.stool LomanNJ_2013.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.LomanNJ_2013.genefamilies_relab.stool}{
+#' \subsection{LomanNJ_2013.genefamilies_relab.stool}{
 #'    An ExpressionSet with 43 samples and 716,332 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LomanNJ_2013.marker_abundance.stool}{
+#' \subsection{LomanNJ_2013.marker_abundance.stool}{
 #'    An ExpressionSet with 43 samples and 56,517 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LomanNJ_2013.marker_presence.stool}{
+#' \subsection{LomanNJ_2013.marker_presence.stool}{
 #'    An ExpressionSet with 43 samples and 53,285 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LomanNJ_2013.metaphlan_bugs_list.stool}{
+#' \subsection{LomanNJ_2013.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 43 samples and 736 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LomanNJ_2013.pathabundance_relab.stool}{
+#' \subsection{LomanNJ_2013.pathabundance_relab.stool}{
 #'    An ExpressionSet with 43 samples and 8,657 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.LomanNJ_2013.pathcoverage.stool}{
+#' \subsection{LomanNJ_2013.pathcoverage.stool}{
 #'    An ExpressionSet with 43 samples and 8,657 features specific to the stool body site
 #' }
 #' 
@@ -62,7 +62,7 @@
 #'    23571589
 #' }
 #' 
-#' @examples 20170526.LomanNJ_2013.genefamilies_relab.stool()
+#' @examples LomanNJ_2013.genefamilies_relab.stool()
 #' 
 #' @name LomanNJ_2013 
 NULL

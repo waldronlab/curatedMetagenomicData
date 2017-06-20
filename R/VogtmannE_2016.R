@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the VogtmannE_2016 study
 #' 
-#' @aliases 20170526.VogtmannE_2016.genefamilies_relab.stool 20170526.VogtmannE_2016.marker_abundance.stool 20170526.VogtmannE_2016.marker_presence.stool 20170526.VogtmannE_2016.metaphlan_bugs_list.stool 20170526.VogtmannE_2016.pathabundance_relab.stool 20170526.VogtmannE_2016.pathcoverage.stool 
+#' @aliases VogtmannE_2016.genefamilies_relab.stool VogtmannE_2016.marker_abundance.stool VogtmannE_2016.marker_presence.stool VogtmannE_2016.metaphlan_bugs_list.stool VogtmannE_2016.pathabundance_relab.stool VogtmannE_2016.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.VogtmannE_2016.genefamilies_relab.stool}{
+#' \subsection{VogtmannE_2016.genefamilies_relab.stool}{
 #'    An ExpressionSet with 110 samples and 2,229,881 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VogtmannE_2016.marker_abundance.stool}{
+#' \subsection{VogtmannE_2016.marker_abundance.stool}{
 #'    An ExpressionSet with 110 samples and 1,009,074 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VogtmannE_2016.marker_presence.stool}{
+#' \subsection{VogtmannE_2016.marker_presence.stool}{
 #'    An ExpressionSet with 110 samples and 986,069 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VogtmannE_2016.metaphlan_bugs_list.stool}{
+#' \subsection{VogtmannE_2016.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 110 samples and 11,432 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VogtmannE_2016.pathabundance_relab.stool}{
+#' \subsection{VogtmannE_2016.pathabundance_relab.stool}{
 #'    An ExpressionSet with 110 samples and 18,706 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.VogtmannE_2016.pathcoverage.stool}{
+#' \subsection{VogtmannE_2016.pathcoverage.stool}{
 #'    An ExpressionSet with 110 samples and 18,706 features specific to the stool body site
 #' }
 #' 
@@ -74,7 +74,7 @@
 #'    27171425
 #' }
 #' 
-#' @examples 20170526.VogtmannE_2016.genefamilies_relab.stool()
+#' @examples VogtmannE_2016.genefamilies_relab.stool()
 #' 
 #' @name VogtmannE_2016 
 NULL

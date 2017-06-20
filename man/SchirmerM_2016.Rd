@@ -2,12 +2,12 @@
 % Please edit documentation in R/SchirmerM_2016.R
 \name{SchirmerM_2016}
 \alias{SchirmerM_2016}
-\alias{20170526.SchirmerM_2016.genefamilies_relab.stool}
-\alias{20170526.SchirmerM_2016.marker_abundance.stool}
-\alias{20170526.SchirmerM_2016.marker_presence.stool}
-\alias{20170526.SchirmerM_2016.metaphlan_bugs_list.stool}
-\alias{20170526.SchirmerM_2016.pathabundance_relab.stool}
-\alias{20170526.SchirmerM_2016.pathcoverage.stool}
+\alias{SchirmerM_2016.genefamilies_relab.stool}
+\alias{SchirmerM_2016.marker_abundance.stool}
+\alias{SchirmerM_2016.marker_presence.stool}
+\alias{SchirmerM_2016.metaphlan_bugs_list.stool}
+\alias{SchirmerM_2016.pathabundance_relab.stool}
+\alias{SchirmerM_2016.pathcoverage.stool}
 \title{Data from the SchirmerM_2016 study}
 \description{
 Data from the SchirmerM_2016 study
@@ -15,27 +15,27 @@ Data from the SchirmerM_2016 study
 \section{Datasets}{
  
 
-\subsection{20170526.SchirmerM_2016.genefamilies_relab.stool}{
+\subsection{SchirmerM_2016.genefamilies_relab.stool}{
    An ExpressionSet with 471 samples and 1,396,085 features specific to the stool body site
 }
 
-\subsection{20170526.SchirmerM_2016.marker_abundance.stool}{
+\subsection{SchirmerM_2016.marker_abundance.stool}{
    An ExpressionSet with 471 samples and 104,930 features specific to the stool body site
 }
 
-\subsection{20170526.SchirmerM_2016.marker_presence.stool}{
+\subsection{SchirmerM_2016.marker_presence.stool}{
    An ExpressionSet with 471 samples and 101,457 features specific to the stool body site
 }
 
-\subsection{20170526.SchirmerM_2016.metaphlan_bugs_list.stool}{
+\subsection{SchirmerM_2016.metaphlan_bugs_list.stool}{
    An ExpressionSet with 471 samples and 1,177 features specific to the stool body site
 }
 
-\subsection{20170526.SchirmerM_2016.pathabundance_relab.stool}{
+\subsection{SchirmerM_2016.pathabundance_relab.stool}{
    An ExpressionSet with 471 samples and 12,707 features specific to the stool body site
 }
 
-\subsection{20170526.SchirmerM_2016.pathcoverage.stool}{
+\subsection{SchirmerM_2016.pathcoverage.stool}{
    An ExpressionSet with 471 samples and 12,707 features specific to the stool body site
 }
 }
@@ -92,6 +92,6 @@ Data from the SchirmerM_2016 study
 }
 
 \examples{
-20170526.SchirmerM_2016.genefamilies_relab.stool()
+SchirmerM_2016.genefamilies_relab.stool()
 
 }

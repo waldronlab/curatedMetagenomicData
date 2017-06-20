@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the RaymondF_2016 study
 #' 
-#' @aliases 20170526.RaymondF_2016.genefamilies_relab.stool 20170526.RaymondF_2016.marker_abundance.stool 20170526.RaymondF_2016.marker_presence.stool 20170526.RaymondF_2016.metaphlan_bugs_list.stool 20170526.RaymondF_2016.pathabundance_relab.stool 20170526.RaymondF_2016.pathcoverage.stool 
+#' @aliases RaymondF_2016.genefamilies_relab.stool RaymondF_2016.marker_abundance.stool RaymondF_2016.marker_presence.stool RaymondF_2016.metaphlan_bugs_list.stool RaymondF_2016.pathabundance_relab.stool RaymondF_2016.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.RaymondF_2016.genefamilies_relab.stool}{
+#' \subsection{RaymondF_2016.genefamilies_relab.stool}{
 #'    An ExpressionSet with 72 samples and 1,060,132 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.RaymondF_2016.marker_abundance.stool}{
+#' \subsection{RaymondF_2016.marker_abundance.stool}{
 #'    An ExpressionSet with 72 samples and 72,992 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.RaymondF_2016.marker_presence.stool}{
+#' \subsection{RaymondF_2016.marker_presence.stool}{
 #'    An ExpressionSet with 72 samples and 70,705 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.RaymondF_2016.metaphlan_bugs_list.stool}{
+#' \subsection{RaymondF_2016.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 72 samples and 834 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.RaymondF_2016.pathabundance_relab.stool}{
+#' \subsection{RaymondF_2016.pathabundance_relab.stool}{
 #'    An ExpressionSet with 72 samples and 8,562 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.RaymondF_2016.pathcoverage.stool}{
+#' \subsection{RaymondF_2016.pathcoverage.stool}{
 #'    An ExpressionSet with 72 samples and 8,562 features specific to the stool body site
 #' }
 #' 
@@ -74,7 +74,7 @@
 #'    26359913
 #' }
 #' 
-#' @examples 20170526.RaymondF_2016.genefamilies_relab.stool()
+#' @examples RaymondF_2016.genefamilies_relab.stool()
 #' 
 #' @name RaymondF_2016 
 NULL

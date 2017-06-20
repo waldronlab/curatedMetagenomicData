@@ -2,12 +2,12 @@
 % Please edit documentation in R/QinN_2014.R
 \name{QinN_2014}
 \alias{QinN_2014}
-\alias{20170526.QinN_2014.genefamilies_relab.stool}
-\alias{20170526.QinN_2014.marker_abundance.stool}
-\alias{20170526.QinN_2014.marker_presence.stool}
-\alias{20170526.QinN_2014.metaphlan_bugs_list.stool}
-\alias{20170526.QinN_2014.pathabundance_relab.stool}
-\alias{20170526.QinN_2014.pathcoverage.stool}
+\alias{QinN_2014.genefamilies_relab.stool}
+\alias{QinN_2014.marker_abundance.stool}
+\alias{QinN_2014.marker_presence.stool}
+\alias{QinN_2014.metaphlan_bugs_list.stool}
+\alias{QinN_2014.pathabundance_relab.stool}
+\alias{QinN_2014.pathcoverage.stool}
 \title{Data from the QinN_2014 study}
 \description{
 Data from the QinN_2014 study
@@ -15,27 +15,27 @@ Data from the QinN_2014 study
 \section{Datasets}{
  
 
-\subsection{20170526.QinN_2014.genefamilies_relab.stool}{
+\subsection{QinN_2014.genefamilies_relab.stool}{
    An ExpressionSet with 237 samples and 1,747,533 features specific to the stool body site
 }
 
-\subsection{20170526.QinN_2014.marker_abundance.stool}{
+\subsection{QinN_2014.marker_abundance.stool}{
    An ExpressionSet with 237 samples and 132,774 features specific to the stool body site
 }
 
-\subsection{20170526.QinN_2014.marker_presence.stool}{
+\subsection{QinN_2014.marker_presence.stool}{
    An ExpressionSet with 237 samples and 126,096 features specific to the stool body site
 }
 
-\subsection{20170526.QinN_2014.metaphlan_bugs_list.stool}{
+\subsection{QinN_2014.metaphlan_bugs_list.stool}{
    An ExpressionSet with 237 samples and 1,512 features specific to the stool body site
 }
 
-\subsection{20170526.QinN_2014.pathabundance_relab.stool}{
+\subsection{QinN_2014.pathabundance_relab.stool}{
    An ExpressionSet with 237 samples and 19,418 features specific to the stool body site
 }
 
-\subsection{20170526.QinN_2014.pathcoverage.stool}{
+\subsection{QinN_2014.pathcoverage.stool}{
    An ExpressionSet with 237 samples and 19,418 features specific to the stool body site
 }
 }
@@ -92,6 +92,6 @@ Data from the QinN_2014 study
 }
 
 \examples{
-20170526.QinN_2014.genefamilies_relab.stool()
+QinN_2014.genefamilies_relab.stool()
 
 }

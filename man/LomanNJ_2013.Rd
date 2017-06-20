@@ -2,12 +2,12 @@
 % Please edit documentation in R/LomanNJ_2013.R
 \name{LomanNJ_2013}
 \alias{LomanNJ_2013}
-\alias{20170526.LomanNJ_2013.genefamilies_relab.stool}
-\alias{20170526.LomanNJ_2013.marker_abundance.stool}
-\alias{20170526.LomanNJ_2013.marker_presence.stool}
-\alias{20170526.LomanNJ_2013.metaphlan_bugs_list.stool}
-\alias{20170526.LomanNJ_2013.pathabundance_relab.stool}
-\alias{20170526.LomanNJ_2013.pathcoverage.stool}
+\alias{LomanNJ_2013.genefamilies_relab.stool}
+\alias{LomanNJ_2013.marker_abundance.stool}
+\alias{LomanNJ_2013.marker_presence.stool}
+\alias{LomanNJ_2013.metaphlan_bugs_list.stool}
+\alias{LomanNJ_2013.pathabundance_relab.stool}
+\alias{LomanNJ_2013.pathcoverage.stool}
 \title{Data from the LomanNJ_2013 study}
 \description{
 Data from the LomanNJ_2013 study
@@ -15,27 +15,27 @@ Data from the LomanNJ_2013 study
 \section{Datasets}{
  
 
-\subsection{20170526.LomanNJ_2013.genefamilies_relab.stool}{
+\subsection{LomanNJ_2013.genefamilies_relab.stool}{
    An ExpressionSet with 43 samples and 716,332 features specific to the stool body site
 }
 
-\subsection{20170526.LomanNJ_2013.marker_abundance.stool}{
+\subsection{LomanNJ_2013.marker_abundance.stool}{
    An ExpressionSet with 43 samples and 56,517 features specific to the stool body site
 }
 
-\subsection{20170526.LomanNJ_2013.marker_presence.stool}{
+\subsection{LomanNJ_2013.marker_presence.stool}{
    An ExpressionSet with 43 samples and 53,285 features specific to the stool body site
 }
 
-\subsection{20170526.LomanNJ_2013.metaphlan_bugs_list.stool}{
+\subsection{LomanNJ_2013.metaphlan_bugs_list.stool}{
    An ExpressionSet with 43 samples and 736 features specific to the stool body site
 }
 
-\subsection{20170526.LomanNJ_2013.pathabundance_relab.stool}{
+\subsection{LomanNJ_2013.pathabundance_relab.stool}{
    An ExpressionSet with 43 samples and 8,657 features specific to the stool body site
 }
 
-\subsection{20170526.LomanNJ_2013.pathcoverage.stool}{
+\subsection{LomanNJ_2013.pathcoverage.stool}{
    An ExpressionSet with 43 samples and 8,657 features specific to the stool body site
 }
 }
@@ -76,6 +76,6 @@ Data from the LomanNJ_2013 study
 }
 
 \examples{
-20170526.LomanNJ_2013.genefamilies_relab.stool()
+LomanNJ_2013.genefamilies_relab.stool()
 
 }
