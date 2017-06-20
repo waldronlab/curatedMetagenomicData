@@ -2,12 +2,12 @@
 % Please edit documentation in R/TettAJ_2016.R
 \name{TettAJ_2016}
 \alias{TettAJ_2016}
-\alias{20170526.TettAJ_2016.genefamilies_relab.skin}
-\alias{20170526.TettAJ_2016.marker_abundance.skin}
-\alias{20170526.TettAJ_2016.marker_presence.skin}
-\alias{20170526.TettAJ_2016.metaphlan_bugs_list.skin}
-\alias{20170526.TettAJ_2016.pathabundance_relab.skin}
-\alias{20170526.TettAJ_2016.pathcoverage.skin}
+\alias{TettAJ_2016.genefamilies_relab.skin}
+\alias{TettAJ_2016.marker_abundance.skin}
+\alias{TettAJ_2016.marker_presence.skin}
+\alias{TettAJ_2016.metaphlan_bugs_list.skin}
+\alias{TettAJ_2016.pathabundance_relab.skin}
+\alias{TettAJ_2016.pathcoverage.skin}
 \title{Data from the TettAJ_2016 study}
 \description{
 Data from the TettAJ_2016 study
@@ -15,27 +15,27 @@ Data from the TettAJ_2016 study
 \section{Datasets}{
  
 
-\subsection{20170526.TettAJ_2016.genefamilies_relab.skin}{
+\subsection{TettAJ_2016.genefamilies_relab.skin}{
    An ExpressionSet with 97 samples and 1,183,853 features specific to the skin body site
 }
 
-\subsection{20170526.TettAJ_2016.marker_abundance.skin}{
+\subsection{TettAJ_2016.marker_abundance.skin}{
    An ExpressionSet with 97 samples and 64,039 features specific to the skin body site
 }
 
-\subsection{20170526.TettAJ_2016.marker_presence.skin}{
+\subsection{TettAJ_2016.marker_presence.skin}{
    An ExpressionSet with 97 samples and 57,428 features specific to the skin body site
 }
 
-\subsection{20170526.TettAJ_2016.metaphlan_bugs_list.skin}{
+\subsection{TettAJ_2016.metaphlan_bugs_list.skin}{
    An ExpressionSet with 97 samples and 1,004 features specific to the skin body site
 }
 
-\subsection{20170526.TettAJ_2016.pathabundance_relab.skin}{
+\subsection{TettAJ_2016.pathabundance_relab.skin}{
    An ExpressionSet with 97 samples and 21,899 features specific to the skin body site
 }
 
-\subsection{20170526.TettAJ_2016.pathcoverage.skin}{
+\subsection{TettAJ_2016.pathcoverage.skin}{
    An ExpressionSet with 97 samples and 21,899 features specific to the skin body site
 }
 }
@@ -88,6 +88,6 @@ Data from the TettAJ_2016 study
 }
 
 \examples{
-20170526.TettAJ_2016.genefamilies_relab.skin()
+TettAJ_2016.genefamilies_relab.skin()
 
 }

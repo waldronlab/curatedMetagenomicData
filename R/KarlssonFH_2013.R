@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the KarlssonFH_2013 study
 #' 
-#' @aliases 20170526.KarlssonFH_2013.genefamilies_relab.stool 20170526.KarlssonFH_2013.marker_abundance.stool 20170526.KarlssonFH_2013.marker_presence.stool 20170526.KarlssonFH_2013.metaphlan_bugs_list.stool 20170526.KarlssonFH_2013.pathabundance_relab.stool 20170526.KarlssonFH_2013.pathcoverage.stool 
+#' @aliases KarlssonFH_2013.genefamilies_relab.stool KarlssonFH_2013.marker_abundance.stool KarlssonFH_2013.marker_presence.stool KarlssonFH_2013.metaphlan_bugs_list.stool KarlssonFH_2013.pathabundance_relab.stool KarlssonFH_2013.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.KarlssonFH_2013.genefamilies_relab.stool}{
+#' \subsection{KarlssonFH_2013.genefamilies_relab.stool}{
 #'    An ExpressionSet with 145 samples and 1,415,750 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.KarlssonFH_2013.marker_abundance.stool}{
+#' \subsection{KarlssonFH_2013.marker_abundance.stool}{
 #'    An ExpressionSet with 145 samples and 101,166 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.KarlssonFH_2013.marker_presence.stool}{
+#' \subsection{KarlssonFH_2013.marker_presence.stool}{
 #'    An ExpressionSet with 145 samples and 95,324 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.KarlssonFH_2013.metaphlan_bugs_list.stool}{
+#' \subsection{KarlssonFH_2013.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 145 samples and 1,140 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.KarlssonFH_2013.pathabundance_relab.stool}{
+#' \subsection{KarlssonFH_2013.pathabundance_relab.stool}{
 #'    An ExpressionSet with 145 samples and 13,392 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.KarlssonFH_2013.pathcoverage.stool}{
+#' \subsection{KarlssonFH_2013.pathcoverage.stool}{
 #'    An ExpressionSet with 145 samples and 13,392 features specific to the stool body site
 #' }
 #' 
@@ -74,7 +74,7 @@
 #'    23719380
 #' }
 #' 
-#' @examples 20170526.KarlssonFH_2013.genefamilies_relab.stool()
+#' @examples KarlssonFH_2013.genefamilies_relab.stool()
 #' 
 #' @name KarlssonFH_2013 
 NULL

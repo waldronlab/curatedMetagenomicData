@@ -2,12 +2,12 @@
 % Please edit documentation in R/NielsenHB_2014.R
 \name{NielsenHB_2014}
 \alias{NielsenHB_2014}
-\alias{20170526.NielsenHB_2014.genefamilies_relab.stool}
-\alias{20170526.NielsenHB_2014.marker_abundance.stool}
-\alias{20170526.NielsenHB_2014.marker_presence.stool}
-\alias{20170526.NielsenHB_2014.metaphlan_bugs_list.stool}
-\alias{20170526.NielsenHB_2014.pathabundance_relab.stool}
-\alias{20170526.NielsenHB_2014.pathcoverage.stool}
+\alias{NielsenHB_2014.genefamilies_relab.stool}
+\alias{NielsenHB_2014.marker_abundance.stool}
+\alias{NielsenHB_2014.marker_presence.stool}
+\alias{NielsenHB_2014.metaphlan_bugs_list.stool}
+\alias{NielsenHB_2014.pathabundance_relab.stool}
+\alias{NielsenHB_2014.pathcoverage.stool}
 \title{Data from the NielsenHB_2014 study}
 \description{
 Data from the NielsenHB_2014 study
@@ -15,27 +15,27 @@ Data from the NielsenHB_2014 study
 \section{Datasets}{
  
 
-\subsection{20170526.NielsenHB_2014.genefamilies_relab.stool}{
+\subsection{NielsenHB_2014.genefamilies_relab.stool}{
    An ExpressionSet with 396 samples and 1,730,383 features specific to the stool body site
 }
 
-\subsection{20170526.NielsenHB_2014.marker_abundance.stool}{
+\subsection{NielsenHB_2014.marker_abundance.stool}{
    An ExpressionSet with 396 samples and 222,837 features specific to the stool body site
 }
 
-\subsection{20170526.NielsenHB_2014.marker_presence.stool}{
+\subsection{NielsenHB_2014.marker_presence.stool}{
    An ExpressionSet with 396 samples and 188,446 features specific to the stool body site
 }
 
-\subsection{20170526.NielsenHB_2014.metaphlan_bugs_list.stool}{
+\subsection{NielsenHB_2014.metaphlan_bugs_list.stool}{
    An ExpressionSet with 396 samples and 1,939 features specific to the stool body site
 }
 
-\subsection{20170526.NielsenHB_2014.pathabundance_relab.stool}{
+\subsection{NielsenHB_2014.pathabundance_relab.stool}{
    An ExpressionSet with 396 samples and 17,280 features specific to the stool body site
 }
 
-\subsection{20170526.NielsenHB_2014.pathcoverage.stool}{
+\subsection{NielsenHB_2014.pathcoverage.stool}{
    An ExpressionSet with 396 samples and 17,280 features specific to the stool body site
 }
 }
@@ -84,6 +84,6 @@ Data from the NielsenHB_2014 study
 }
 
 \examples{
-20170526.NielsenHB_2014.genefamilies_relab.stool()
+NielsenHB_2014.genefamilies_relab.stool()
 
 }

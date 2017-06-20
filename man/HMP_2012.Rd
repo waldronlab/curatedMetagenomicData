@@ -2,30 +2,30 @@
 % Please edit documentation in R/HMP_2012.R
 \name{HMP_2012}
 \alias{HMP_2012}
-\alias{20170526.HMP_2012.genefamilies_relab.nasalcavity}
-\alias{20170526.HMP_2012.genefamilies_relab.oralcavity}
-\alias{20170526.HMP_2012.genefamilies_relab.stool}
-\alias{20170526.HMP_2012.genefamilies_relab.vagina}
-\alias{20170526.HMP_2012.marker_abundance.nasalcavity}
-\alias{20170526.HMP_2012.marker_abundance.oralcavity}
-\alias{20170526.HMP_2012.marker_abundance.stool}
-\alias{20170526.HMP_2012.marker_abundance.vagina}
-\alias{20170526.HMP_2012.marker_presence.nasalcavity}
-\alias{20170526.HMP_2012.marker_presence.oralcavity}
-\alias{20170526.HMP_2012.marker_presence.stool}
-\alias{20170526.HMP_2012.marker_presence.vagina}
-\alias{20170526.HMP_2012.metaphlan_bugs_list.nasalcavity}
-\alias{20170526.HMP_2012.metaphlan_bugs_list.oralcavity}
-\alias{20170526.HMP_2012.metaphlan_bugs_list.stool}
-\alias{20170526.HMP_2012.metaphlan_bugs_list.vagina}
-\alias{20170526.HMP_2012.pathabundance_relab.nasalcavity}
-\alias{20170526.HMP_2012.pathabundance_relab.oralcavity}
-\alias{20170526.HMP_2012.pathabundance_relab.stool}
-\alias{20170526.HMP_2012.pathabundance_relab.vagina}
-\alias{20170526.HMP_2012.pathcoverage.nasalcavity}
-\alias{20170526.HMP_2012.pathcoverage.oralcavity}
-\alias{20170526.HMP_2012.pathcoverage.stool}
-\alias{20170526.HMP_2012.pathcoverage.vagina}
+\alias{HMP_2012.genefamilies_relab.nasalcavity}
+\alias{HMP_2012.genefamilies_relab.oralcavity}
+\alias{HMP_2012.genefamilies_relab.stool}
+\alias{HMP_2012.genefamilies_relab.vagina}
+\alias{HMP_2012.marker_abundance.nasalcavity}
+\alias{HMP_2012.marker_abundance.oralcavity}
+\alias{HMP_2012.marker_abundance.stool}
+\alias{HMP_2012.marker_abundance.vagina}
+\alias{HMP_2012.marker_presence.nasalcavity}
+\alias{HMP_2012.marker_presence.oralcavity}
+\alias{HMP_2012.marker_presence.stool}
+\alias{HMP_2012.marker_presence.vagina}
+\alias{HMP_2012.metaphlan_bugs_list.nasalcavity}
+\alias{HMP_2012.metaphlan_bugs_list.oralcavity}
+\alias{HMP_2012.metaphlan_bugs_list.stool}
+\alias{HMP_2012.metaphlan_bugs_list.vagina}
+\alias{HMP_2012.pathabundance_relab.nasalcavity}
+\alias{HMP_2012.pathabundance_relab.oralcavity}
+\alias{HMP_2012.pathabundance_relab.stool}
+\alias{HMP_2012.pathabundance_relab.vagina}
+\alias{HMP_2012.pathcoverage.nasalcavity}
+\alias{HMP_2012.pathcoverage.oralcavity}
+\alias{HMP_2012.pathcoverage.stool}
+\alias{HMP_2012.pathcoverage.vagina}
 \title{Data from the HMP_2012 study}
 \description{
 Data from the HMP_2012 study
@@ -33,99 +33,99 @@ Data from the HMP_2012 study
 \section{Datasets}{
  
 
-\subsection{20170526.HMP_2012.genefamilies_relab.nasalcavity}{
+\subsection{HMP_2012.genefamilies_relab.nasalcavity}{
    An ExpressionSet with 91 samples and 1,964,480 features specific to the nasalcavity body site
 }
 
-\subsection{20170526.HMP_2012.genefamilies_relab.oralcavity}{
+\subsection{HMP_2012.genefamilies_relab.oralcavity}{
    An ExpressionSet with 506 samples and 1,964,480 features specific to the oralcavity body site
 }
 
-\subsection{20170526.HMP_2012.genefamilies_relab.stool}{
+\subsection{HMP_2012.genefamilies_relab.stool}{
    An ExpressionSet with 147 samples and 1,964,480 features specific to the stool body site
 }
 
-\subsection{20170526.HMP_2012.genefamilies_relab.vagina}{
+\subsection{HMP_2012.genefamilies_relab.vagina}{
    An ExpressionSet with 5 samples and 1,964,480 features specific to the vagina body site
 }
 
-\subsection{20170526.HMP_2012.marker_abundance.nasalcavity}{
+\subsection{HMP_2012.marker_abundance.nasalcavity}{
    An ExpressionSet with 91 samples and 162,107 features specific to the nasalcavity body site
 }
 
-\subsection{20170526.HMP_2012.marker_abundance.oralcavity}{
+\subsection{HMP_2012.marker_abundance.oralcavity}{
    An ExpressionSet with 506 samples and 162,107 features specific to the oralcavity body site
 }
 
-\subsection{20170526.HMP_2012.marker_abundance.stool}{
+\subsection{HMP_2012.marker_abundance.stool}{
    An ExpressionSet with 147 samples and 162,107 features specific to the stool body site
 }
 
-\subsection{20170526.HMP_2012.marker_abundance.vagina}{
+\subsection{HMP_2012.marker_abundance.vagina}{
    An ExpressionSet with 5 samples and 162,107 features specific to the vagina body site
 }
 
-\subsection{20170526.HMP_2012.marker_presence.nasalcavity}{
+\subsection{HMP_2012.marker_presence.nasalcavity}{
    An ExpressionSet with 91 samples and 158,645 features specific to the nasalcavity body site
 }
 
-\subsection{20170526.HMP_2012.marker_presence.oralcavity}{
+\subsection{HMP_2012.marker_presence.oralcavity}{
    An ExpressionSet with 506 samples and 158,645 features specific to the oralcavity body site
 }
 
-\subsection{20170526.HMP_2012.marker_presence.stool}{
+\subsection{HMP_2012.marker_presence.stool}{
    An ExpressionSet with 147 samples and 158,645 features specific to the stool body site
 }
 
-\subsection{20170526.HMP_2012.marker_presence.vagina}{
+\subsection{HMP_2012.marker_presence.vagina}{
    An ExpressionSet with 5 samples and 158,645 features specific to the vagina body site
 }
 
-\subsection{20170526.HMP_2012.metaphlan_bugs_list.nasalcavity}{
+\subsection{HMP_2012.metaphlan_bugs_list.nasalcavity}{
    An ExpressionSet with 91 samples and 1,988 features specific to the nasalcavity body site
 }
 
-\subsection{20170526.HMP_2012.metaphlan_bugs_list.oralcavity}{
+\subsection{HMP_2012.metaphlan_bugs_list.oralcavity}{
    An ExpressionSet with 506 samples and 1,988 features specific to the oralcavity body site
 }
 
-\subsection{20170526.HMP_2012.metaphlan_bugs_list.stool}{
+\subsection{HMP_2012.metaphlan_bugs_list.stool}{
    An ExpressionSet with 147 samples and 1,988 features specific to the stool body site
 }
 
-\subsection{20170526.HMP_2012.metaphlan_bugs_list.vagina}{
+\subsection{HMP_2012.metaphlan_bugs_list.vagina}{
    An ExpressionSet with 5 samples and 1,988 features specific to the vagina body site
 }
 
-\subsection{20170526.HMP_2012.pathabundance_relab.nasalcavity}{
+\subsection{HMP_2012.pathabundance_relab.nasalcavity}{
    An ExpressionSet with 91 samples and 23,271 features specific to the nasalcavity body site
 }
 
-\subsection{20170526.HMP_2012.pathabundance_relab.oralcavity}{
+\subsection{HMP_2012.pathabundance_relab.oralcavity}{
    An ExpressionSet with 506 samples and 23,271 features specific to the oralcavity body site
 }
 
-\subsection{20170526.HMP_2012.pathabundance_relab.stool}{
+\subsection{HMP_2012.pathabundance_relab.stool}{
    An ExpressionSet with 147 samples and 23,271 features specific to the stool body site
 }
 
-\subsection{20170526.HMP_2012.pathabundance_relab.vagina}{
+\subsection{HMP_2012.pathabundance_relab.vagina}{
    An ExpressionSet with 5 samples and 23,271 features specific to the vagina body site
 }
 
-\subsection{20170526.HMP_2012.pathcoverage.nasalcavity}{
+\subsection{HMP_2012.pathcoverage.nasalcavity}{
    An ExpressionSet with 91 samples and 23,271 features specific to the nasalcavity body site
 }
 
-\subsection{20170526.HMP_2012.pathcoverage.oralcavity}{
+\subsection{HMP_2012.pathcoverage.oralcavity}{
    An ExpressionSet with 506 samples and 23,271 features specific to the oralcavity body site
 }
 
-\subsection{20170526.HMP_2012.pathcoverage.stool}{
+\subsection{HMP_2012.pathcoverage.stool}{
    An ExpressionSet with 147 samples and 23,271 features specific to the stool body site
 }
 
-\subsection{20170526.HMP_2012.pathcoverage.vagina}{
+\subsection{HMP_2012.pathcoverage.vagina}{
    An ExpressionSet with 5 samples and 23,271 features specific to the vagina body site
 }
 }
@@ -174,6 +174,6 @@ Data from the HMP_2012 study
 }
 
 \examples{
-20170526.HMP_2012.genefamilies_relab.nasalcavity()
+HMP_2012.genefamilies_relab.nasalcavity()
 
 }

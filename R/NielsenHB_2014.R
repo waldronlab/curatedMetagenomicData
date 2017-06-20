@@ -2,31 +2,31 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the NielsenHB_2014 study
 #' 
-#' @aliases 20170526.NielsenHB_2014.genefamilies_relab.stool 20170526.NielsenHB_2014.marker_abundance.stool 20170526.NielsenHB_2014.marker_presence.stool 20170526.NielsenHB_2014.metaphlan_bugs_list.stool 20170526.NielsenHB_2014.pathabundance_relab.stool 20170526.NielsenHB_2014.pathcoverage.stool 
+#' @aliases NielsenHB_2014.genefamilies_relab.stool NielsenHB_2014.marker_abundance.stool NielsenHB_2014.marker_presence.stool NielsenHB_2014.metaphlan_bugs_list.stool NielsenHB_2014.pathabundance_relab.stool NielsenHB_2014.pathcoverage.stool 
 #' 
 #' @section Datasets: 
 #' 
-#' \subsection{20170526.NielsenHB_2014.genefamilies_relab.stool}{
+#' \subsection{NielsenHB_2014.genefamilies_relab.stool}{
 #'    An ExpressionSet with 396 samples and 1,730,383 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.NielsenHB_2014.marker_abundance.stool}{
+#' \subsection{NielsenHB_2014.marker_abundance.stool}{
 #'    An ExpressionSet with 396 samples and 222,837 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.NielsenHB_2014.marker_presence.stool}{
+#' \subsection{NielsenHB_2014.marker_presence.stool}{
 #'    An ExpressionSet with 396 samples and 188,446 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.NielsenHB_2014.metaphlan_bugs_list.stool}{
+#' \subsection{NielsenHB_2014.metaphlan_bugs_list.stool}{
 #'    An ExpressionSet with 396 samples and 1,939 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.NielsenHB_2014.pathabundance_relab.stool}{
+#' \subsection{NielsenHB_2014.pathabundance_relab.stool}{
 #'    An ExpressionSet with 396 samples and 17,280 features specific to the stool body site
 #' }
 #'
-#' \subsection{20170526.NielsenHB_2014.pathcoverage.stool}{
+#' \subsection{NielsenHB_2014.pathcoverage.stool}{
 #'    An ExpressionSet with 396 samples and 17,280 features specific to the stool body site
 #' }
 #' 
@@ -70,7 +70,7 @@
 #'    24997787
 #' }
 #' 
-#' @examples 20170526.NielsenHB_2014.genefamilies_relab.stool()
+#' @examples NielsenHB_2014.genefamilies_relab.stool()
 #' 
 #' @name NielsenHB_2014 
 NULL

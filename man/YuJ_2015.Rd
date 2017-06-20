@@ -2,12 +2,12 @@
 % Please edit documentation in R/YuJ_2015.R
 \name{YuJ_2015}
 \alias{YuJ_2015}
-\alias{20170526.YuJ_2015.genefamilies_relab.stool}
-\alias{20170526.YuJ_2015.marker_abundance.stool}
-\alias{20170526.YuJ_2015.marker_presence.stool}
-\alias{20170526.YuJ_2015.metaphlan_bugs_list.stool}
-\alias{20170526.YuJ_2015.pathabundance_relab.stool}
-\alias{20170526.YuJ_2015.pathcoverage.stool}
+\alias{YuJ_2015.genefamilies_relab.stool}
+\alias{YuJ_2015.marker_abundance.stool}
+\alias{YuJ_2015.marker_presence.stool}
+\alias{YuJ_2015.metaphlan_bugs_list.stool}
+\alias{YuJ_2015.pathabundance_relab.stool}
+\alias{YuJ_2015.pathcoverage.stool}
 \title{Data from the YuJ_2015 study}
 \description{
 Data from the YuJ_2015 study
@@ -15,27 +15,27 @@ Data from the YuJ_2015 study
 \section{Datasets}{
  
 
-\subsection{20170526.YuJ_2015.genefamilies_relab.stool}{
+\subsection{YuJ_2015.genefamilies_relab.stool}{
    An ExpressionSet with 128 samples and 1,532,931 features specific to the stool body site
 }
 
-\subsection{20170526.YuJ_2015.marker_abundance.stool}{
+\subsection{YuJ_2015.marker_abundance.stool}{
    An ExpressionSet with 128 samples and 125,243 features specific to the stool body site
 }
 
-\subsection{20170526.YuJ_2015.marker_presence.stool}{
+\subsection{YuJ_2015.marker_presence.stool}{
    An ExpressionSet with 128 samples and 117,525 features specific to the stool body site
 }
 
-\subsection{20170526.YuJ_2015.metaphlan_bugs_list.stool}{
+\subsection{YuJ_2015.metaphlan_bugs_list.stool}{
    An ExpressionSet with 128 samples and 1,405 features specific to the stool body site
 }
 
-\subsection{20170526.YuJ_2015.pathabundance_relab.stool}{
+\subsection{YuJ_2015.pathabundance_relab.stool}{
    An ExpressionSet with 128 samples and 15,487 features specific to the stool body site
 }
 
-\subsection{20170526.YuJ_2015.pathcoverage.stool}{
+\subsection{YuJ_2015.pathcoverage.stool}{
    An ExpressionSet with 128 samples and 15,487 features specific to the stool body site
 }
 }
@@ -76,6 +76,6 @@ Data from the YuJ_2015 study
 }
 
 \examples{
-20170526.YuJ_2015.genefamilies_relab.stool()
+YuJ_2015.genefamilies_relab.stool()
 
 }

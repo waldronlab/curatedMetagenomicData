@@ -2,12 +2,12 @@
 % Please edit documentation in R/ChngKR_2016.R
 \name{ChngKR_2016}
 \alias{ChngKR_2016}
-\alias{20170526.ChngKR_2016.genefamilies_relab.skin}
-\alias{20170526.ChngKR_2016.marker_abundance.skin}
-\alias{20170526.ChngKR_2016.marker_presence.skin}
-\alias{20170526.ChngKR_2016.metaphlan_bugs_list.skin}
-\alias{20170526.ChngKR_2016.pathabundance_relab.skin}
-\alias{20170526.ChngKR_2016.pathcoverage.skin}
+\alias{ChngKR_2016.genefamilies_relab.skin}
+\alias{ChngKR_2016.marker_abundance.skin}
+\alias{ChngKR_2016.marker_presence.skin}
+\alias{ChngKR_2016.metaphlan_bugs_list.skin}
+\alias{ChngKR_2016.pathabundance_relab.skin}
+\alias{ChngKR_2016.pathcoverage.skin}
 \title{Data from the ChngKR_2016 study}
 \description{
 Data from the ChngKR_2016 study
@@ -15,27 +15,27 @@ Data from the ChngKR_2016 study
 \section{Datasets}{
  
 
-\subsection{20170526.ChngKR_2016.genefamilies_relab.skin}{
+\subsection{ChngKR_2016.genefamilies_relab.skin}{
    An ExpressionSet with 78 samples and 823,859 features specific to the skin body site
 }
 
-\subsection{20170526.ChngKR_2016.marker_abundance.skin}{
+\subsection{ChngKR_2016.marker_abundance.skin}{
    An ExpressionSet with 78 samples and 89,597 features specific to the skin body site
 }
 
-\subsection{20170526.ChngKR_2016.marker_presence.skin}{
+\subsection{ChngKR_2016.marker_presence.skin}{
    An ExpressionSet with 78 samples and 85,656 features specific to the skin body site
 }
 
-\subsection{20170526.ChngKR_2016.metaphlan_bugs_list.skin}{
+\subsection{ChngKR_2016.metaphlan_bugs_list.skin}{
    An ExpressionSet with 78 samples and 1,219 features specific to the skin body site
 }
 
-\subsection{20170526.ChngKR_2016.pathabundance_relab.skin}{
+\subsection{ChngKR_2016.pathabundance_relab.skin}{
    An ExpressionSet with 78 samples and 10,995 features specific to the skin body site
 }
 
-\subsection{20170526.ChngKR_2016.pathcoverage.skin}{
+\subsection{ChngKR_2016.pathcoverage.skin}{
    An ExpressionSet with 78 samples and 10,995 features specific to the skin body site
 }
 }
@@ -88,6 +88,6 @@ Data from the ChngKR_2016 study
 }
 
 \examples{
-20170526.ChngKR_2016.genefamilies_relab.skin()
+ChngKR_2016.genefamilies_relab.skin()
 
 }

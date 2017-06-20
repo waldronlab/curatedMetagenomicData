@@ -2,12 +2,12 @@
 % Please edit documentation in R/LiuW_2016.R
 \name{LiuW_2016}
 \alias{LiuW_2016}
-\alias{20170526.LiuW_2016.genefamilies_relab.stool}
-\alias{20170526.LiuW_2016.marker_abundance.stool}
-\alias{20170526.LiuW_2016.marker_presence.stool}
-\alias{20170526.LiuW_2016.metaphlan_bugs_list.stool}
-\alias{20170526.LiuW_2016.pathabundance_relab.stool}
-\alias{20170526.LiuW_2016.pathcoverage.stool}
+\alias{LiuW_2016.genefamilies_relab.stool}
+\alias{LiuW_2016.marker_abundance.stool}
+\alias{LiuW_2016.marker_presence.stool}
+\alias{LiuW_2016.metaphlan_bugs_list.stool}
+\alias{LiuW_2016.pathabundance_relab.stool}
+\alias{LiuW_2016.pathcoverage.stool}
 \title{Data from the LiuW_2016 study}
 \description{
 Data from the LiuW_2016 study
@@ -15,27 +15,27 @@ Data from the LiuW_2016 study
 \section{Datasets}{
  
 
-\subsection{20170526.LiuW_2016.genefamilies_relab.stool}{
+\subsection{LiuW_2016.genefamilies_relab.stool}{
    An ExpressionSet with 110 samples and 1,178,616 features specific to the stool body site
 }
 
-\subsection{20170526.LiuW_2016.marker_abundance.stool}{
+\subsection{LiuW_2016.marker_abundance.stool}{
    An ExpressionSet with 110 samples and 81,028 features specific to the stool body site
 }
 
-\subsection{20170526.LiuW_2016.marker_presence.stool}{
+\subsection{LiuW_2016.marker_presence.stool}{
    An ExpressionSet with 110 samples and 76,593 features specific to the stool body site
 }
 
-\subsection{20170526.LiuW_2016.metaphlan_bugs_list.stool}{
+\subsection{LiuW_2016.metaphlan_bugs_list.stool}{
    An ExpressionSet with 110 samples and 1,078 features specific to the stool body site
 }
 
-\subsection{20170526.LiuW_2016.pathabundance_relab.stool}{
+\subsection{LiuW_2016.pathabundance_relab.stool}{
    An ExpressionSet with 110 samples and 12,647 features specific to the stool body site
 }
 
-\subsection{20170526.LiuW_2016.pathcoverage.stool}{
+\subsection{LiuW_2016.pathcoverage.stool}{
    An ExpressionSet with 110 samples and 12,647 features specific to the stool body site
 }
 }
@@ -72,6 +72,6 @@ Data from the LiuW_2016 study
 }
 
 \examples{
-20170526.LiuW_2016.genefamilies_relab.stool()
+LiuW_2016.genefamilies_relab.stool()
 
 }
