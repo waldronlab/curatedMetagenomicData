@@ -25,14 +25,14 @@ Before running the script, please note that
 
 * The classification analyses (Figure 1 Example 1 and Supplemental Figure 1) create very large matrices that can exceed default limits for R pointer size and the C stack limit on some systems. If you see `Error: protect(): protection stack overflow` or `Error: segfault from C stack overflow`, one of these is the issue. From GNU/Linux, these limits can be increased from the command-line as follows:
 
-```
-ulimit -s 65535   #addresses C stack overflow
-R --vanilla --max-ppsize=500000    #addresses protect() error
-```
+   ```
+   ulimit -s 65535   #addresses C stack overflow
+   R --vanilla --max-ppsize=500000    #addresses protect() error
+   ```
+   
+   If you are running on a machine with limited memory, a 32-bit installation of R, otherwise have trouble with stack overflows, or you do not want to run these classification examples, change `eval=TRUE` to `eval=FALSE` in the chunk options for the chunks named `fig1eg` and `suppfig1` to skip these analyses.
 
-If you are running on a machine with limited memory, a 32-bit installation of R, otherwise have trouble with stack overflows, or you do not want to run these classification examples, change `eval=TRUE` to `eval=FALSE` in the chunk options for the chunks named `fig1eg` and `suppfig1` to skip these analyses.
-
-* For the sake of reproducibility, the classification analyses (Figure 1 Example 1 and Supplemental Figure 1) are conducted here by considering fixed values of "ntree" and "mtry". Although these values may be tuned using more advanced strategies (such as grid search), we observed similar accuracy results but associated with a much higher computational load.
+* For the sake of reproducibility, the classification analyses (Figure 1 Example 1 and Supplemental Figure 1) are conducted here by considering fixed values of "ntree" and "mtry". Better accuracies may be obtained by tuning these parameters through more advanced strategies (such as grid search), altough we observed similar results associated with a much higher computational load.
 
 * Several hours are needed to reproduce Supplemental Figure 3.
 
