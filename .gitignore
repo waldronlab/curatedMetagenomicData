@@ -22,3 +22,4 @@ vignettes/extras/*_cache
 vignettes/extras/*_files
 vignettes/extras/.build.timestamp
 .httr-oauth
+.#*
