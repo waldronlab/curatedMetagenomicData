@@ -4,6 +4,12 @@ title: Publications
 ---
 Publications and presentations relating to *curatedMetagenomicData* will be collected here.
 
+> ### June 21, 2017
+>
+> Update of the [biorXiv](http://biorxiv.org/content/early/2017/06/21/103085){:target="_blank"} preprint of our forthcoming paper.
+>
+> [![](/curatedMetagenomicData/assets/img/paper2.png)](http://biorxiv.org/content/biorxiv/early/2017/06/21/103085.full.pdf){:target="_blank"}
+
 > ### February 22, 2017
 >
 > A poster presented by Lucas Schiffer at the Second Workshop in Statistical and Algorithmic Challenges in Microbiome Data Analysis.
