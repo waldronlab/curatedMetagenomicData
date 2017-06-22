@@ -16,7 +16,7 @@
 #' @export
 #'
 #' @examples
-#' eset <- LomanNJ_2013_Mi.metaphlan_bugs_list.stool()
+#' eset <- LomanNJ_2013.metaphlan_bugs_list.stool()
 #' ExpressionSet2MRexperiment(eset)
 #'
 #' @importFrom Biobase exprs
