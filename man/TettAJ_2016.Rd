@@ -71,7 +71,7 @@ Data from the TettAJ_2016 study
  
 
 \subsection{Title}{
-   
+   NA
 }
 
 \subsection{Author}{
@@ -83,7 +83,7 @@ Data from the TettAJ_2016 study
 }
 
 \subsection{PMID}{
-   
+   NA
 }
 }
 
