@@ -59,7 +59,7 @@
 #' @section Source: 
 #' 
 #' \subsection{Title}{
-#'    
+#'    NA
 #' }
 #'
 #' \subsection{Author}{
@@ -71,7 +71,7 @@
 #' }
 #'
 #' \subsection{PMID}{
-#'    
+#'    NA
 #' }
 #' 
 #' @examples TettAJ_2016.genefamilies_relab.skin()
