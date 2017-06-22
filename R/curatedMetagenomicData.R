@@ -1,4 +1,5 @@
 #' @importFrom utils glob2rx
+#' @importFrom S4Vectors "metadata<-"
 #'
 #' @param x
 #' A character vector of dataset names, regexes, or globs, that will be matched
