@@ -21,7 +21,7 @@ A phyloseq object
 Convert an ExpressionSet object to a phyloseq object
 }
 \examples{
-LomanNJ_2013_Mi.metaphlan_bugs_list.stool() \%>\%
+LomanNJ_2013.metaphlan_bugs_list.stool() \%>\%
 ExpressionSet2phyloseq()
 
 }

@@ -19,7 +19,7 @@ A metagenomeSeq::MRexperiment-class object
 Convert an ExpressionSet object to a metagenomeSeq::MRexperiment-class object
 }
 \examples{
-eset <- LomanNJ_2013_Mi.metaphlan_bugs_list.stool()
+eset <- LomanNJ_2013.metaphlan_bugs_list.stool()
 ExpressionSet2MRexperiment(eset)
 
 }
