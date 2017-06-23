@@ -76,6 +76,6 @@ Data from the LomanNJ_2013 study
 }
 
 \examples{
-LomanNJ_2013.genefamilies_relab.stool()
+LomanNJ_2013.metaphlan_bugs_list.stool()
 
 }

@@ -74,7 +74,7 @@
 #'    25758642
 #' }
 #' 
-#' @examples FengQ_2015.genefamilies_relab.stool()
+#' @examples FengQ_2015.metaphlan_bugs_list.stool()
 #' 
 #' @name FengQ_2015 
 NULL

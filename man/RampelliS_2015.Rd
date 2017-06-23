@@ -80,6 +80,6 @@ Data from the RampelliS_2015 study
 }
 
 \examples{
-RampelliS_2015.genefamilies_relab.stool()
+RampelliS_2015.metaphlan_bugs_list.stool()
 
 }

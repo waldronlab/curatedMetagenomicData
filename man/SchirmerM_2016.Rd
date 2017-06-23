@@ -92,6 +92,6 @@ Data from the SchirmerM_2016 study
 }
 
 \examples{
-SchirmerM_2016.genefamilies_relab.stool()
+SchirmerM_2016.metaphlan_bugs_list.stool()
 
 }

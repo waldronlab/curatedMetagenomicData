@@ -88,6 +88,6 @@ Data from the ZellerG_2014 study
 }
 
 \examples{
-ZellerG_2014.genefamilies_relab.stool()
+ZellerG_2014.metaphlan_bugs_list.stool()
 
 }

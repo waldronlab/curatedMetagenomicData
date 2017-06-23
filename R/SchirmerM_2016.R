@@ -78,7 +78,7 @@
 #'    27984736
 #' }
 #' 
-#' @examples SchirmerM_2016.genefamilies_relab.stool()
+#' @examples SchirmerM_2016.metaphlan_bugs_list.stool()
 #' 
 #' @name SchirmerM_2016 
 NULL

@@ -72,6 +72,6 @@ Data from the LiuW_2016 study
 }
 
 \examples{
-LiuW_2016.genefamilies_relab.stool()
+LiuW_2016.metaphlan_bugs_list.stool()
 
 }

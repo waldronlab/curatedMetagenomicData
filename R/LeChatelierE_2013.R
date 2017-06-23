@@ -66,7 +66,7 @@
 #'    23985870
 #' }
 #' 
-#' @examples LeChatelierE_2013.genefamilies_relab.stool()
+#' @examples LeChatelierE_2013.metaphlan_bugs_list.stool()
 #' 
 #' @name LeChatelierE_2013 
 NULL

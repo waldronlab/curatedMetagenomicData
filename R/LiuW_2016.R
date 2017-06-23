@@ -58,7 +58,7 @@
 #'    27708392
 #' }
 #' 
-#' @examples LiuW_2016.genefamilies_relab.stool()
+#' @examples LiuW_2016.metaphlan_bugs_list.stool()
 #' 
 #' @name LiuW_2016 
 NULL
