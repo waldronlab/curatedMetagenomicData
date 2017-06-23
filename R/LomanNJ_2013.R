@@ -62,7 +62,7 @@
 #'    23571589
 #' }
 #' 
-#' @examples LomanNJ_2013.genefamilies_relab.stool()
+#' @examples LomanNJ_2013.metaphlan_bugs_list.stool()
 #' 
 #' @name LomanNJ_2013 
 NULL

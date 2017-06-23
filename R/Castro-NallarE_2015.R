@@ -74,7 +74,7 @@
 #'    26336637
 #' }
 #'
-#' @examples `Castro-NallarE_2015.genefamilies_relab.oralcavity`()
+#' @examples `Castro-NallarE_2015.metaphlan_bugs_list.oralcavity`()
 #'
 #' @name Castro-NallarE_2015
 NULL

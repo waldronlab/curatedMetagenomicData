@@ -88,6 +88,6 @@ Data from the KarlssonFH_2013 study
 }
 
 \examples{
-KarlssonFH_2013.genefamilies_relab.stool()
+KarlssonFH_2013.metaphlan_bugs_list.stool()
 
 }

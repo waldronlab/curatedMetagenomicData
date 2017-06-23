@@ -88,6 +88,6 @@ Data from the TettAJ_2016 study
 }
 
 \examples{
-TettAJ_2016.genefamilies_relab.skin()
+TettAJ_2016.metaphlan_bugs_list.skin()
 
 }

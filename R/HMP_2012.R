@@ -142,7 +142,7 @@
 #'    22699609
 #' }
 #' 
-#' @examples HMP_2012.genefamilies_relab.nasalcavity()
+#' @examples HMP_2012.metaphlan_bugs_list.nasalcavity()
 #' 
 #' @name HMP_2012 
 NULL

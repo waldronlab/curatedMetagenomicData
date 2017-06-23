@@ -110,6 +110,6 @@ Data from the BritoIL_2016 study
 }
 
 \examples{
-BritoIL_2016.genefamilies_relab.oralcavity()
+BritoIL_2016.metaphlan_bugs_list.oralcavity()
 
 }

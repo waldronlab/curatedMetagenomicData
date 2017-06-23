@@ -92,6 +92,6 @@ Data from the Heitz-BuschartA_2016 study
 }
 
 \examples{
-`Heitz-BuschartA_2016.genefamilies_relab.stool`()
+`Heitz-BuschartA_2016.metaphlan_bugs_list.stool`()
 
 }

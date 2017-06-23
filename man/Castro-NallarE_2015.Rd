@@ -88,6 +88,6 @@ Data from the Castro-NallarE_2015 study
 }
 
 \examples{
-`Castro-NallarE_2015.genefamilies_relab.oralcavity`()
+`Castro-NallarE_2015.metaphlan_bugs_list.oralcavity`()
 
 }

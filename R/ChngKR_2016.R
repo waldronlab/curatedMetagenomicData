@@ -74,7 +74,7 @@
 #'    27562258
 #' }
 #' 
-#' @examples ChngKR_2016.genefamilies_relab.skin()
+#' @examples ChngKR_2016.metaphlan_bugs_list.skin()
 #' 
 #' @name ChngKR_2016 
 NULL

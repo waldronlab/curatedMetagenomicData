@@ -74,7 +74,7 @@
 #'    25432777
 #' }
 #' 
-#' @examples ZellerG_2014.genefamilies_relab.stool()
+#' @examples ZellerG_2014.metaphlan_bugs_list.stool()
 #' 
 #' @name ZellerG_2014 
 NULL

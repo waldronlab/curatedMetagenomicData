@@ -90,7 +90,7 @@
 #'    27409808
 #' }
 #' 
-#' @examples BritoIL_2016.genefamilies_relab.oralcavity()
+#' @examples BritoIL_2016.metaphlan_bugs_list.oralcavity()
 #' 
 #' @name BritoIL_2016 
 NULL

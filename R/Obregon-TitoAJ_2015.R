@@ -74,7 +74,7 @@
 #'    25807110
 #' }
 #'
-#' @examples `Obregon-TitoAJ_2015.genefamilies_relab.stool`()
+#' @examples `Obregon-TitoAJ_2015.metaphlan_bugs_list.stool`()
 #'
 #' @name Obregon-TitoAJ_2015
 NULL
