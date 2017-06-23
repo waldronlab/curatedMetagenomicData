@@ -174,6 +174,6 @@ Data from the HMP_2012 study
 }
 
 \examples{
-HMP_2012.genefamilies_relab.nasalcavity()
+HMP_2012.metaphlan_bugs_list.nasalcavity()
 
 }

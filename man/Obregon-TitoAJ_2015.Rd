@@ -88,6 +88,6 @@ Data from the Obregon-TitoAJ_2015 study
 }
 
 \examples{
-`Obregon-TitoAJ_2015.genefamilies_relab.stool`()
+`Obregon-TitoAJ_2015.metaphlan_bugs_list.stool`()
 
 }

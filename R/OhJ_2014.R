@@ -66,7 +66,7 @@
 #'    25279917
 #' }
 #' 
-#' @examples OhJ_2014.genefamilies_relab.skin()
+#' @examples OhJ_2014.metaphlan_bugs_list.skin()
 #' 
 #' @name OhJ_2014 
 NULL

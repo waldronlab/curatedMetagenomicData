@@ -88,6 +88,6 @@ Data from the QinJ_2012 study
 }
 
 \examples{
-QinJ_2012.genefamilies_relab.stool()
+QinJ_2012.metaphlan_bugs_list.stool()
 
 }

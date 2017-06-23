@@ -74,7 +74,7 @@
 #'    NA
 #' }
 #' 
-#' @examples TettAJ_2016.genefamilies_relab.skin()
+#' @examples TettAJ_2016.metaphlan_bugs_list.skin()
 #' 
 #' @name TettAJ_2016 
 NULL

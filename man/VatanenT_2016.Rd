@@ -88,6 +88,6 @@ Data from the VatanenT_2016 study
 }
 
 \examples{
-VatanenT_2016.genefamilies_relab.stool()
+VatanenT_2016.metaphlan_bugs_list.stool()
 
 }

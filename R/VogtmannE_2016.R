@@ -74,7 +74,7 @@
 #'    27171425
 #' }
 #' 
-#' @examples VogtmannE_2016.genefamilies_relab.stool()
+#' @examples VogtmannE_2016.metaphlan_bugs_list.stool()
 #' 
 #' @name VogtmannE_2016 
 NULL

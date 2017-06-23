@@ -94,7 +94,7 @@
 #'    28144631
 #' }
 #' 
-#' @examples AsnicarF_2017.genefamilies_relab.milk()
+#' @examples AsnicarF_2017.metaphlan_bugs_list.milk()
 #' 
 #' @name AsnicarF_2017 
 NULL

@@ -62,7 +62,7 @@
 #'    26408641
 #' }
 #' 
-#' @examples YuJ_2015.genefamilies_relab.stool()
+#' @examples YuJ_2015.metaphlan_bugs_list.stool()
 #' 
 #' @name YuJ_2015 
 NULL

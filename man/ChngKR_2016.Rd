@@ -88,6 +88,6 @@ Data from the ChngKR_2016 study
 }
 
 \examples{
-ChngKR_2016.genefamilies_relab.skin()
+ChngKR_2016.metaphlan_bugs_list.skin()
 
 }

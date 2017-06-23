@@ -74,7 +74,7 @@
 #'    26359913
 #' }
 #' 
-#' @examples RaymondF_2016.genefamilies_relab.stool()
+#' @examples RaymondF_2016.metaphlan_bugs_list.stool()
 #' 
 #' @name RaymondF_2016 
 NULL
