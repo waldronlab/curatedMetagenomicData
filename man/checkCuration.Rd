@@ -42,13 +42,14 @@ eset <- curatedMetagenomicData("ZellerG_2014.metaphlan_bugs_list.stool", dryrun=
 checkCuration(eset)
 data(combined_metadata)
 checkCuration(combined_metadata)
+
 \dontrun{
+template <- read.csv(system.file("extdata/template.csv",
+package = "curatedMetagenomicData"), as.is = TRUE))
 View(template)
-}
+
 data(combined_metadata)
-problems <- checkCuration(curated=data.frame(combined_metadata),
-template=template)
-\dontrun{
+problems <- checkCuration(curated = data.frame(combined_metadata))
 View(problems$values)
 }
 }
