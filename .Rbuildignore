@@ -6,5 +6,6 @@
 ^\.httr-oauth$
 ^docs$
 ^data-raw$
+_cache
 LICENSE
 CONTRIBUTING.md
