@@ -1,0 +1,22 @@
+bibentry(bibtype = "Article",
+         author = c(
+                    person(given = "Edoardo", family = "Pasolli"),
+                    person(given = "Lucas", family = "Schiffer"),
+                    person(given = "Paolo", family = "Manghi"),
+                    person(given = "Audrey", family = "Renson"),
+                    person(given = "Valerie", family = "Obenchain"),
+                    person(given = "Duy Tin", family = "Truong"),
+                    person(given = "Francesco", family = "Beghini"),
+                    person(given = "Faizan", family = "Malik"),
+                    person(given = "Marcel", family = "Ramos"),
+                    person(given = "Jennifer B", family = "Dowd"),
+                    person(given = "Curtis", family = "Huttenhower"),
+                    person(given = "Martin", family = "Morgan"),
+                    person(given = "Nicola", family = "Segata"),
+                    person(given = "Levi", family = "Waldron")),
+         title = "Accessible, curated metagenomic data through ExperimentHub",
+         year="2017",   
+         volume="103085",
+         doi="10.1093/jnci/djw146",
+         journal = "bioRxiv"
+         )
