@@ -6,7 +6,7 @@ Installing *curatedMetagenomicData* should be done through the Bioconductor pack
 
 ## Install R and Bioconductor
 
-To install the *release* version, follow instructions for installing 'R' and 'Bioconductor' from [https://www.bioconductor.org/install/](https://www.bioconductor.org/install/){:target="_blank"}. 
+To install the *release* version, follow instructions for installing `R` and `Bioconductor` from [https://www.bioconductor.org/install/](https://www.bioconductor.org/install/){:target="_blank"}. 
 
 To install the *development* version, follow the instructions at [http://bioconductor.org/developers/how-to/useDevel/](http://bioconductor.org/developers/how-to/useDevel/){:target="_blank"}. 
 
