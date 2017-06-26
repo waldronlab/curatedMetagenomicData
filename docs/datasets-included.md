@@ -3,7 +3,7 @@ layout: default
 title: Included datasets
 ---
 
-Shown below is the list of datasets currently included in *curatedMetagenomicData*.
+Shown below is the list of datasets currently included in *curatedMetagenomicData*. More details are available in the [manual](https://bioconductor.org/packages/devel/data/experiment/manuals/curatedMetagenomicData/man/curatedMetagenomicData.pdf){:target="_blank"}.
 
 | Dataset Name | PMID | Publication Year | Bodysite | Disease | Number of Samples |
 | --- | --- | --- | --- | --- | --- |
