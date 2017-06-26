@@ -2,15 +2,15 @@
 layout: default
 title: Getting Started
 ---
-Installing *curatedMetagenomicData* should be done through the Bioconductor package manager `biocLite()`. Note that accessing the most recent datasets requires the *development* version of Bioconductor. Trying to install the development version of curatedMetagenomicData on top of the release version of Bioconductor won't allow you to access datasets that have been added since the last Bioconductor release.
+Installing *curatedMetagenomicData* should be done through the Bioconductor package manager `biocLite()`. Note that accessing the most recent datasets requires the development version of Bioconductor. Trying to install the development version of curatedMetagenomicData on top of the release version of Bioconductor won't allow you to access datasets that have been added since the last Bioconductor release.
 
 ## Install R and Bioconductor
 
-To install the *release* version, follow instructions for installing `R` and `Bioconductor` from [https://www.bioconductor.org/install/](https://www.bioconductor.org/install/){:target="_blank"}. 
+To install the *release* version, follow instructions for installing 'R' and 'Bioconductor' from [https://www.bioconductor.org/install/](https://www.bioconductor.org/install/){:target="_blank"}. 
 
 To install the *development* version, follow the instructions at [http://bioconductor.org/developers/how-to/useDevel/](http://bioconductor.org/developers/how-to/useDevel/){:target="_blank"}. 
 
-If you're not sure which version to use, look at the "reference manual" for the [release](https://bioconductor.org/packages/curatedMetagenomicData/){:target="_blank"} and [development](https://bioconductor.org/packages/devel/data/experiment/html/curatedMetagenomicData.html){:target="_blank"} versions. 
+If you're not sure which version to use, look at the "Reference Manual" for the [release](https://bioconductor.org/packages/curatedMetagenomicData/){:target="_blank"} and [development](https://bioconductor.org/packages/devel/data/experiment/html/curatedMetagenomicData.html){:target="_blank"} versions. 
 
 ## Install curatedMetagenomicData
 
@@ -34,7 +34,7 @@ biocLite("waldronlab/curatedMetagenomicData", dependencies = TRUE,
 ## Accessing Data
 
 ### From within R
-*curatedMetagenomicData* and its related data can be accessed through *R* using *Bioconductor* & *ExperimentHub*. 
+*curatedMetagenomicData* and its related data can be accessed through R using Bioconductor and ExperimentHub. 
 
 The recommended way to access data from within R is with the `curatedMetagenomicData()` function. For example:
 
