@@ -53,4 +53,4 @@ See the [package vignette](https://bioconductor.org/packages/devel/data/experime
 
 ### Command line usage
 
-Set up curatedMetagenomicData as above, then use the shell script provided in the [inst/commandline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/inst/commandline) package directory. This script generates tab-separated value files and takes similar arguments to the R function.
+Set up *curatedMetagenomicData* as above, then use the shell script provided in the [inst/commandline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/inst/commandline) package directory. This script generates tab-separated value files and takes similar arguments to the R function.
