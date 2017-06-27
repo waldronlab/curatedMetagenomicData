@@ -40,7 +40,7 @@ Before running the script, please note that
    
    If you are running on a machine with limited memory, a 32-bit installation of R, otherwise have trouble with stack overflows, or you do not want to run these classification examples, change `eval=TRUE` to `eval=FALSE` in the chunk options for the chunks named `fig1eg` and `suppfig1` to skip these analyses.
 
-* For the sake of reproducibility, the classification analyses (Figure 1 Example 1 and Supplemental Figure 1) are conducted here by considering fixed values of "ntree" and "mtry". Better accuracies may be obtained by tuning these parameters through more advanced strategies (such as grid search), altough we observed similar results associated with a much higher computational load.
+* For the sake of (quick) reproducibility, the classification analyses (Figure 1 Example 1 and Supplemental Figure 1) are conducted here by considering fixed values of "ntree" and "mtry". Better accuracies may be obtained by tuning these parameters (such as through grid search), altough we observed similar results associated with a much higher computational load.
 
 * Several hours are needed to reproduce Supplemental Figure 3.
 
