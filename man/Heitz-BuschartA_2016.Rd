@@ -13,7 +13,7 @@
 Data from the Heitz-BuschartA_2016 study
 }
 \section{Datasets}{
-
+ 
 
 \subsection{Heitz-BuschartA_2016.genefamilies_relab.stool}{
    An ExpressionSet with 53 samples and 1,110,454 features specific to the stool body site
@@ -41,7 +41,7 @@ Data from the Heitz-BuschartA_2016 study
 }
 
 \section{Exploratory Data Analysis}{
-
+ 
 
 \if{html}{\figure{Heitz-BuschartA_2016_age.png}{options: width="100\%"}}
 \if{latex}{An EDA figure is available in the HTML documentation}
@@ -72,7 +72,7 @@ Data from the Heitz-BuschartA_2016 study
 }
 
 \section{Source}{
-
+ 
 
 \subsection{Title}{
    Integrated multi-omics of the human gut microbiome in a case study of familial type 1 diabetes.
