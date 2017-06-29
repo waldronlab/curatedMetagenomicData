@@ -54,87 +54,35 @@ Use of the resources in `curatedMetagenomicData` is simplified with the use of B
 
 ```{r, message=FALSE}
 # BiocInstaller::biocLite("curatedMetagenomicData")  #Bioconductor version
-# BiocInstaller::biocLite("vobencha/curatedMetagenomicData")  #bleeding edge version
-library(curatedMetagenomicData)
+# BiocInstaller::biocLite("waldronlab/curatedMetagenomicData")  #bleeding edge version
+suppressPackageStartupMessages(library(curatedMetagenomicData))
 ```
 
-# Browsing `r Biocpkg("ExperimentHub")`
+## Available samples and metadata
 
-In the next section we will demonstrate convenience functions that make `r Biocpkg("ExperimentHub")` transparent, but it can be useful and powerful to interact directly with `r Biocpkg("ExperimentHub")`. A "hub" connects you to the `r Biocpkg("ExperimentHub")` server and its metadata, without downloading any data:
+The manually curated metadata for all available samples are provided in a single table `combined_metadata`:
+
+```{r eval=FALSE}
+?combined_metadata
+View(combined_metadata)
+```
 
 ```{r}
-suppressPackageStartupMessages(library(ExperimentHub))
-eh = ExperimentHub()
+table(combined_metadata$antibiotics_current_use)
+table(combined_metadata$disease)
 ```
 
-The following queries ExperimentHub for all records matching `curatedMetagenomicData`:
 
-```{r}
-myquery = query(eh, "curatedMetagenomicData")
-```
+# Accessing datasets
 
-This is an abbreviated list of what was found:
-
-```{r}
-myquery
-```
-
-Note that the first column, "EH178" etc, are unique IDs for each dataset. For a full list, `mcols(myquery)` produces a `data.frame`. The following is unevaluated in this script, but can be used to display an interactive spreadsheet of the results:
-
-```{r, eval=FALSE}
-View(mcols(myquery))
-```
-
-Or to write the search results to a csv file:
-
-```{r, eval=FALSE}
-write.csv(mcols(myquery), file="curatedMetagenomicData_allrecords.csv")
-```
-
-# Advanced searching of `r Biocpkg("ExperimentHub")`
-
-Tags can (eventually) help identify useful datasets:
-```{r}
-head(myquery$tags)
-```
-
-Titles can be used to select body site and data type. Here are the MetaPhlan2 taxonomy tables for all the available Human Microbiome Project (HMP) body sites, found using a Perl regular expression to find "HMP" at the beginning of a string, followed by any number of characters ".*", followed by the word "metaphlan":
-
-```{r}
-grep("(?=HMP)(?=.*metaphlan)", myquery$title, perl=TRUE, val=TRUE)
-```
-
-Here are all the metabolic pathway abundance for the stool body site:
-```{r}
-grep("(?=.*stool)(?=.*metaphlan)", myquery$title, perl=TRUE, val=TRUE)
-```
-
-Or, here are all the data products available for the "Loman" study:
-```{r}
-(lomannames = grep("LomanNJ_2013", myquery$title, perl=TRUE, val=TRUE))
-```
-
-We could create a list of `ExpressionSet` objects containing all of the Loman products as follows (not evaluated):
-
-```{r, eval=FALSE}
-(idx = grep("LomanNJ_2013", myquery$title, perl=TRUE))
-loman.list = lapply(idx, function(i){
-  return(myquery[[i]])
-})
-names(loman.list) = lomannames
-loman.list
-```
-
-# Convenience functions
-
-Individual data projects can be fetched without having to think about `r Biocpkg("ExperimentHub")`. A function call to a dataset name returns a Bioconductor ExpressionSet object:
+Individual data projects can be fetched via per-dataset functions or the `curatedMetagenomicData()` function. A function call to a dataset name returns a Bioconductor ExpressionSet object:
 
 ```{r}
 suppressPackageStartupMessages(library(curatedMetagenomicData))
 loman.eset = LomanNJ_2013.metaphlan_bugs_list.stool()
 ```
 
-# Features of `ExpressionSet` Objects
+# Using `ExpressionSet` Objects
 
 All datasets are represented as `ExpressionSet` objects because of the integrative nature of the class and its ability to bind data and metadata. There are three main functions, from the `Biobase` package, that provide access to experiment-level metadata, subject-level metadata, and the data itself.
 
@@ -158,7 +106,7 @@ exprs( loman.eset )[1:6, 1:5]  #first 6 rows and 5 columns
 
 Bioconductor provides further documentation of the ExpressionSet class and has published an excellent [introduction](https://tinyurl.com/ExpressionSetIntro).
 
-## E. coli prevalence
+# E. coli prevalence
 
 Here's a direct, exploratory analysis of *E. coli* prevalence in the Loman dataset using the `ExpressionSet` object. More elegant solutions will be provided later using subsetting methods provided by the `r Biocpkg("phyloseq")` package, but for users familiar with `grep()` and the `ExpressionSet` object, such manual methods may suffice.
 
@@ -185,7 +133,7 @@ hist( x, xlab = "Relative Abundance", main="Prevalence of E. Coli",
 For the MetaPhlAn2 bugs datasets (but not other data types), you gain a lot of taxonomy-aware, ecological analysis and plotting by conversion to a `r Biocpkg("phyloseq")` class object. `r Biocpkg("curatedMetagenomicData")` provides the `ExpressionSet2phyloseq()` function to make this easy:
 
 ```{r, warning=FALSE}
-library(phyloseq)
+suppressPackageStartupMessages(library(phyloseq))
 loman.pseq = ExpressionSet2phyloseq( loman.eset )
 ```
 
@@ -209,7 +157,7 @@ Note the simplified row names of the OTU table, resulting from the default argum
 
 ## Components of a phyloseq object
 
-The  `r Biocpkg("phyloseq")` objects currently contain 3 components, with extractor functions hinted at by its show method:
+This  `r Biocpkg("phyloseq")` objects contain 3 components, with extractor functions hinted at by its show method:
 
 ```{r}
 loman.pseq
@@ -332,6 +280,77 @@ plot_ordination(loman.sp, ordinated_taxa, color="stool_texture",
 
 ```{r}
 plot_scree(ordinated_taxa, title="Screeplot")
+```
+
+# Using `r Biocpkg("ExperimentHub")` directly
+
+We recommend that most users use the convenience functions shown above to find `curatedMetagenomicData` datasets and navigate versions. However, it is also possible to use `r Biocpkg("ExperimentHub")` directly for consistency with other `r Biocpkg("ExperimentHub")` packages.
+
+## Browsing `r Biocpkg("ExperimentHub")`
+
+In the next section we will demonstrate convenience functions that make `r Biocpkg("ExperimentHub")` transparent, but it can be useful and powerful to interact directly with `r Biocpkg("ExperimentHub")`. A "hub" connects you to the `r Biocpkg("ExperimentHub")` server and its metadata, without downloading any data:
+
+```{r}
+suppressPackageStartupMessages(library(ExperimentHub))
+eh = ExperimentHub()
+```
+
+The following queries ExperimentHub for all records matching `curatedMetagenomicData`:
+
+```{r}
+myquery = query(eh, "curatedMetagenomicData")
+```
+
+This is an abbreviated list of what was found:
+
+```{r}
+myquery
+```
+
+Note that the first column, "EH178" etc, are unique IDs for each dataset. For a full list, `mcols(myquery)` produces a `data.frame`. The following is unevaluated in this script, but can be used to display an interactive spreadsheet of the results:
+
+```{r, eval=FALSE}
+View(mcols(myquery))
+```
+
+Or to write the search results to a csv file:
+
+```{r, eval=FALSE}
+write.csv(mcols(myquery), file="curatedMetagenomicData_allrecords.csv")
+```
+
+## Advanced searching of `r Biocpkg("ExperimentHub")`
+
+Tags can (eventually) help identify useful datasets:
+```{r}
+head(myquery$tags)
+```
+
+Titles can be used to select body site and data type. Here are the MetaPhlan2 taxonomy tables for all the available Human Microbiome Project (HMP) body sites, found using a Perl regular expression to find "HMP" at the beginning of a string, followed by any number of characters ".*", followed by the word "metaphlan":
+
+```{r}
+grep("(?=HMP)(?=.*metaphlan)", myquery$title, perl=TRUE, val=TRUE)
+```
+
+Here are all the metabolic pathway abundance for the stool body site:
+```{r}
+grep("(?=.*stool)(?=.*metaphlan)", myquery$title, perl=TRUE, val=TRUE)
+```
+
+Or, here are all the data products available for the "Loman" study:
+```{r}
+(lomannames = grep("LomanNJ_2013", myquery$title, perl=TRUE, val=TRUE))
+```
+
+We could create a list of `ExpressionSet` objects containing all of the Loman products as follows (not evaluated):
+
+```{r, eval=FALSE}
+(idx = grep("LomanNJ_2013", myquery$title, perl=TRUE))
+loman.list = lapply(idx, function(i){
+  return(myquery[[i]])
+})
+names(loman.list) = lomannames
+loman.list
 ```
 
 
