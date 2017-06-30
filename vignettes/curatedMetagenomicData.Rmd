@@ -7,7 +7,7 @@ abstract: >
     microbiome samples, including the Human Microbiome Project. Microbiome data and 
     associated subject, specimen, and sequencing information are integrated as 
     Bioconductor ExpressionSet objects, allowing straightfoward analyses. A conversion 
-    function also links taxonomic datasets to the `r Biocpkg("phyloseq")` package for 
+    function also links taxonomic datasets to the `r BiocStyle::Biocpkg("phyloseq")` package for 
     ecological analyses.
 output:
     BiocStyle::html_document
@@ -108,7 +108,7 @@ Bioconductor provides further documentation of the ExpressionSet class and has p
 
 # E. coli prevalence
 
-Here's a direct, exploratory analysis of *E. coli* prevalence in the Loman dataset using the `ExpressionSet` object. More elegant solutions will be provided later using subsetting methods provided by the `r Biocpkg("phyloseq")` package, but for users familiar with `grep()` and the `ExpressionSet` object, such manual methods may suffice.
+Here's a direct, exploratory analysis of *E. coli* prevalence in the Loman dataset using the `ExpressionSet` object. More elegant solutions will be provided later using subsetting methods provided by the `r BiocStyle::Biocpkg("phyloseq")` package, but for users familiar with `grep()` and the `ExpressionSet` object, such manual methods may suffice.
 
 First, which *E. coli*-related taxa are available?
 
@@ -130,7 +130,7 @@ hist( x, xlab = "Relative Abundance", main="Prevalence of E. Coli",
 
 # Taxonomy-Aware Analysis using `phyloseq`
 
-For the MetaPhlAn2 bugs datasets (but not other data types), you gain a lot of taxonomy-aware, ecological analysis and plotting by conversion to a `r Biocpkg("phyloseq")` class object. `r Biocpkg("curatedMetagenomicData")` provides the `ExpressionSet2phyloseq()` function to make this easy:
+For the MetaPhlAn2 bugs datasets (but not other data types), you gain a lot of taxonomy-aware, ecological analysis and plotting by conversion to a `r BiocStyle::Biocpkg("phyloseq")` class object. `r BiocStyle::Biocpkg("curatedMetagenomicData")` provides the `ExpressionSet2phyloseq()` function to make this easy:
 
 ```{r, warning=FALSE}
 suppressPackageStartupMessages(library(phyloseq))
@@ -157,7 +157,7 @@ Note the simplified row names of the OTU table, resulting from the default argum
 
 ## Components of a phyloseq object
 
-This  `r Biocpkg("phyloseq")` objects contain 3 components, with extractor functions hinted at by its show method:
+This  `r BiocStyle::Biocpkg("phyloseq")` objects contain 3 components, with extractor functions hinted at by its show method:
 
 ```{r}
 loman.pseq
@@ -170,13 +170,13 @@ otu_table( loman.pseq )[1:6, 1:5]
 ```
 
 The same patient or participant data that was available from  `pData( loman.eset )` is now availble using `sample_data()` on 
-the `r Biocpkg("phyloseq")` object:
+the `r BiocStyle::Biocpkg("phyloseq")` object:
 
 ```{r, warning=FALSE}
 sample_data( loman.pseq )[1:6, 1:5]
 ```
 
-But this object also is aware of the taxonomic structure, which will enable the powerful subsetting methods of the `r Biocpkg("phyloseq")` package.
+But this object also is aware of the taxonomic structure, which will enable the powerful subsetting methods of the `r BiocStyle::Biocpkg("phyloseq")` package.
 
 ```{r, warning=FALSE}
 head( tax_table( loman.pseq ) )
@@ -211,7 +211,7 @@ head( taxa_names( loman.bd ) )
 
 ## Advanced Pruning
 
-The `r Biocpkg("phyloseq")` package provides advanced pruning of taxa, such as the following which keeps only taxa that are among the most abundant 5% in at least five samples:
+The `r BiocStyle::Biocpkg("phyloseq")` package provides advanced pruning of taxa, such as the following which keeps only taxa that are among the most abundant 5% in at least five samples:
 
 ```{r, warning=FALSE}
 keepotu = genefilter_sample(loman.pseq, filterfun_sample(topp(0.05)), A=5)
@@ -219,11 +219,11 @@ summary(keepotu)
 subset_taxa(loman.pseq, keepotu)
 ```
 
-Note that `r Biocpkg("phyloseq")` also provides `topk()` for selecting the most abundant `k` taxa, and other functions for advanced pruning of taxa.
+Note that `r BiocStyle::Biocpkg("phyloseq")` also provides `topk()` for selecting the most abundant `k` taxa, and other functions for advanced pruning of taxa.
 
 ## Taxonomy Heatmap
 
-The `r Biocpkg("phyloseq")` package provides the `plot_heatmap()` function to create heatmaps using a variety of built-in dissimilarity metrics for clustering. Here, we apply the same abundance filter as above, keep only strain-level OTUs. This function supports a large number of distance and ordination methods, here we use Bray-Curtis dissimilarity for distance and PCoA as the ordination method for organizing the heatmap.
+The `r BiocStyle::Biocpkg("phyloseq")` package provides the `plot_heatmap()` function to create heatmaps using a variety of built-in dissimilarity metrics for clustering. Here, we apply the same abundance filter as above, keep only strain-level OTUs. This function supports a large number of distance and ordination methods, here we use Bray-Curtis dissimilarity for distance and PCoA as the ordination method for organizing the heatmap.
 
 ```{r, warning=FALSE}
 loman.filt = subset_taxa(loman.pseq, keepotu & !is.na(Strain))
@@ -243,7 +243,7 @@ barplot(sort(taxa_sums(loman.sp), TRUE)[1:20] / nsamples(loman.sp),
 
 ## Alpha Diversity Estimation
 
-The `r Biocpkg("phyloseq")` package calculates numerous alpha diversity measures. Here we compare three diversity in the species-level data, stratifying by stool texture:
+The `r BiocStyle::Biocpkg("phyloseq")` package calculates numerous alpha diversity measures. Here we compare three diversity in the species-level data, stratifying by stool texture:
 
 ```{r, warning=FALSE}
 alphas = c("Shannon", "Simpson", "InvSimpson")
@@ -257,7 +257,7 @@ pairs( estimate_richness(loman.sp, measures = alphas) )
 
 ## Beta Diversity / Dissimilarity Clustering
 
-Numerous beta diversity / dissimilarity are provided by the `distance()` function when provided a `r Biocpkg("phyloseq")` object, and these can be used for any kind of clustering or classification scheme. For example, here is a hierarchical clustering dendrogram produced by the `hclust()` from the base R `stats` package with "Ward" linkage:
+Numerous beta diversity / dissimilarity are provided by the `distance()` function when provided a `r BiocStyle::Biocpkg("phyloseq")` object, and these can be used for any kind of clustering or classification scheme. For example, here is a hierarchical clustering dendrogram produced by the `hclust()` from the base R `stats` package with "Ward" linkage:
 
 ```{r, warning=FALSE}
 mydist = distance(loman.sp, method="bray")
@@ -268,7 +268,7 @@ plot(myhclust, main="Bray-Curtis Dissimilarity",
 
 ## Ordination Analysis
 
-The `r Biocpkg("phyloseq")` package provides a variety of ordination methods, with convenient options for labelling points. Here is a 
+The `r BiocStyle::Biocpkg("phyloseq")` package provides a variety of ordination methods, with convenient options for labelling points. Here is a 
 Principal Coordinates Analysis plot of species-level taxa from the Loman dataset, using Bray-Curtis distance:
 
 ```{r, warning=FALSE}
@@ -282,13 +282,13 @@ plot_ordination(loman.sp, ordinated_taxa, color="stool_texture",
 plot_scree(ordinated_taxa, title="Screeplot")
 ```
 
-# Using `r Biocpkg("ExperimentHub")` directly
+# Using `r BiocStyle::Biocpkg("ExperimentHub")` directly
 
-We recommend that most users use the convenience functions shown above to find `curatedMetagenomicData` datasets and navigate versions. However, it is also possible to use `r Biocpkg("ExperimentHub")` directly for consistency with other `r Biocpkg("ExperimentHub")` packages.
+We recommend that most users use the convenience functions shown above to find `curatedMetagenomicData` datasets and navigate versions. However, it is also possible to use `r BiocStyle::Biocpkg("ExperimentHub")` directly for consistency with other `r BiocStyle::Biocpkg("ExperimentHub")` packages.
 
-## Browsing `r Biocpkg("ExperimentHub")`
+## Browsing `r BiocStyle::Biocpkg("ExperimentHub")`
 
-In the next section we will demonstrate convenience functions that make `r Biocpkg("ExperimentHub")` transparent, but it can be useful and powerful to interact directly with `r Biocpkg("ExperimentHub")`. A "hub" connects you to the `r Biocpkg("ExperimentHub")` server and its metadata, without downloading any data:
+In the next section we will demonstrate convenience functions that make `r BiocStyle::Biocpkg("ExperimentHub")` transparent, but it can be useful and powerful to interact directly with `r BiocStyle::Biocpkg("ExperimentHub")`. A "hub" connects you to the `r BiocStyle::Biocpkg("ExperimentHub")` server and its metadata, without downloading any data:
 
 ```{r}
 suppressPackageStartupMessages(library(ExperimentHub))
@@ -319,7 +319,7 @@ Or to write the search results to a csv file:
 write.csv(mcols(myquery), file="curatedMetagenomicData_allrecords.csv")
 ```
 
-## Advanced searching of `r Biocpkg("ExperimentHub")`
+## Advanced searching of `r BiocStyle::Biocpkg("ExperimentHub")`
 
 Tags can (eventually) help identify useful datasets:
 ```{r}
