@@ -77,10 +77,38 @@ table(combined_metadata$disease)
 
 Individual data projects can be fetched via per-dataset functions or the `curatedMetagenomicData()` function. A function call to a dataset name returns a Bioconductor ExpressionSet object:
 
-```{r}
+```{r, message=FALSE}
 suppressPackageStartupMessages(library(curatedMetagenomicData))
 loman.eset = LomanNJ_2013.metaphlan_bugs_list.stool()
 ```
+
+The following creates a list of two `ExpressionSet` objects providing the BritoIL_2016 and Castro-NallarE_2015 oral cavity taxonomic profiles:
+
+```{r, message=FALSE, results='hide'}
+oral <- c("BritoIL_2016.metaphlan_bugs_list.oralcavity",
+          "Castro-NallarE_2015.metaphlan_bugs_list.oralcavity")
+esl <- curatedMetagenomicData(oral, dryrun = FALSE)
+esl
+esl[[1]]
+esl[[2]]
+```
+
+And the following would provide all stool metaphlan datasets if `dryrun = FALSE` were set:
+
+```{r, eval=TRUE}
+curatedMetagenomicData("*metaphlan_bugs_list.stool*", dryrun = TRUE)
+```
+
+## Merging multiple datasets
+
+The following merges the two oral cavity datasets downloaded above into a single ExpressionSet. 
+
+```{r}
+eset <- mergeData(esl)
+eset
+```
+
+This works for any number of datasets. The function will not stop you from merging different data types (e.g. metaphlan bugs lists with gene families), but you probably don't want to do that.
 
 # Using `ExpressionSet` Objects
 
