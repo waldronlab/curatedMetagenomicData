@@ -1,0 +1,12 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^\.travis\.yml$
+^codecov\.yml$
+^appveyor\.yml$
+^\.httr-oauth$
+^docs$
+^data-raw$
+_cache
+LICENSE
+CONTRIBUTING.md
+uploads
