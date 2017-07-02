@@ -1,5 +1,7 @@
 #' @importFrom utils glob2rx
 #' @importFrom S4Vectors "metadata<-"
+#' @importClassesFrom S4Vectors SimpleList
+#' @importFrom S4Vectors SimpleList
 #'
 #' @param x
 #' A character vector of dataset names, regexes, or globs, that will be matched
@@ -25,7 +27,6 @@
 #' A list of ExpressionSet and/or phyloseq objects
 #' @export
 #' curatedMetagenomicData
-#' @importClassesFrom S4Vectors SimpleList
 #' @examples
 #' curatedMetagenomicData()
 #' curatedMetagenomicData("ZellerG*")

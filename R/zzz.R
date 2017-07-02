@@ -3,6 +3,7 @@
 #' @importFrom ExperimentHub ExperimentHub
 #' @importFrom utils globalVariables
 #' @importFrom methods is
+#' @importFrom Biobase isUnique
 #' @keywords internal
 .onLoad <- function(libname, pkgname) {
     titles <- read.csv(system.file("extdata", "metadata.csv",
