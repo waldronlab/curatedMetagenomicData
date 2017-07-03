@@ -2,7 +2,6 @@
 
 export(ExpressionSet2MRexperiment)
 export(ExpressionSet2phyloseq)
-export(checkCuration)
 export(cmdValidVersions)
 export(curatedMetagenomicData)
 export(mergeData)
