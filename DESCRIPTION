@@ -1,7 +1,7 @@
 Package: curatedMetagenomicData
 Type: Package
 Title: Curated Metagenomic Data of the Human Microbiome
-Version: 1.5.9
+Version: 1.6.0
 Author:
     Lucas Schiffer <schiffer.lucas@gmail.com>,
     Edoardo Pasolli <edoardo.pasolli@unitn.it>,
@@ -16,7 +16,7 @@ Description:
     and gene marker abundance for samples collected from different bodysites.
 URL: https://github.com/waldronlab/curatedMetagenomicData
 BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
-License: Artistic-2.0
+License: file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends:
