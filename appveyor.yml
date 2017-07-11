@@ -15,7 +15,7 @@ install:
 environment:
     r_arch: x64
     use_rtools: true
-    bioc_use_devel: true
+    bioc_use_devel: TRUE
     r_build_args: --keep-empty-dirs --no-resave-data
     r_check_args: --no-manual --no-vignettes --timings
 
