@@ -15,7 +15,8 @@ install:
 environment:
     r_arch: x64
     use_rtools: true
-    r_check_args: --no-manual --no-tests
+    r_build_args: --keep-empty-dirs --no-resave-data
+    r_check_args: --no-vignettes --timings
 
 build_script:
   - Rscript -e "source('https://bioconductor.org/biocLite.R')"
