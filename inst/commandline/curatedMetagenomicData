@@ -48,7 +48,7 @@ Will return two files, without clinical / sequencing metadata.
 
   curatedMetagenomicData -d \"*\"                 #Will show all available datasets (don't download)
   curatedMetagenomicData -d \"HMP*\"              #Will show all HMP data products (don't download)
-  curatedMetagenomicData -d \"HMP*hard_palate\"   #Will show all HMP hard palate data products (don't download)
+  curatedMetagenomicData -d \"HMP*nasalcavity\"   #Will show all HMP hard palate data products (don't download)
   curatedMetagenomicData -d \"HMP*\" \"Loman*\"   #Will show all HMP and Loman data products (don't download)
   curatedMetagenomicData -d \"*metaphlan*stool\"  #Will show all stool bug abundance tables (don't download)
 
