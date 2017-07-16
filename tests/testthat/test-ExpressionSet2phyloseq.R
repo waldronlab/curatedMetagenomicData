@@ -9,6 +9,7 @@ test_that("ExpressionSet2phyloseq returns phyloseq class object", {
 })
 
 test_that("ExpressionSet2phyloseq works with phylogenetictree = TRUE", {
+    library(phyloseq)
     test_object <-
         LomanNJ_2013.metaphlan_bugs_list.stool() %>%
         ExpressionSet2phyloseq(., phylogenetictree = TRUE)

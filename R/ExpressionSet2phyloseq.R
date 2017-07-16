@@ -30,7 +30,14 @@
 #' eset <- LomanNJ_2013.metaphlan_bugs_list.stool()
 #' ExpressionSet2phyloseq(eset)
 #' ExpressionSet2phyloseq(eset, relab=FALSE)
-#' ExpressionSet2phyloseq(eset, phylogenetictree = TRUE)
+#'
+#' ## Using a phylogenetic tree
+#' library(phyloseq)
+#' (pseq <- ExpressionSet2phyloseq(eset, phylogenetictree = TRUE))
+#' unwt <- UniFrac(pseq, weighted=FALSE, normalized=TRUE, parallel=FALSE, fast=TRUE)
+#' plot(hclust(unwt))
+#' wt <- UniFrac(pseq, weighted=TRUE, normalized=FALSE, parallel=FALSE, fast=TRUE)
+#' plot(hclust(wt))
 #'
 #' @importFrom Biobase exprs
 #' @importFrom Biobase pData
