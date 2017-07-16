@@ -13,6 +13,13 @@
 #' if FALSE, values are multiplied by read depth to approximate counts, if TRUE
 #' (default) values kept as relative abundances between 0 and 100\%.
 #'
+#' @param phylogenetictree
+#'
+#' if TRUE, a phylogenetic tree will be attached to the phyloseq object.
+#' Note, this will remove all clades not associated with
+#' a genome, e.g. kingdoms, phyla, etc. It will remove any feature that can't
+#' be matched to the Newick tree included in inst/extdata; see ?getMetaphlanTree.
+#'
 #' @return
 #'
 #' A phyloseq object
@@ -20,8 +27,10 @@
 #' @export
 #'
 #' @examples
-#' LomanNJ_2013.metaphlan_bugs_list.stool() %>%
-#' ExpressionSet2phyloseq()
+#' eset <- LomanNJ_2013.metaphlan_bugs_list.stool()
+#' ExpressionSet2phyloseq(eset)
+#' ExpressionSet2phyloseq(eset, relab=FALSE)
+#' ExpressionSet2phyloseq(eset, phylogenetictree = TRUE)
 #'
 #' @importFrom Biobase exprs
 #' @importFrom Biobase pData
@@ -29,8 +38,13 @@
 #' @importFrom dplyr data_frame
 #' @importFrom tidyr separate
 ExpressionSet2phyloseq <- function(eset, simplify = TRUE,
-                                   relab = TRUE) {
-
+                                   relab = TRUE,
+                                   phylogenetictree = FALSE) {
+    if(phylogenetictree & simplify){
+        message("Simplified names are not supported with phylogenetictree = TRUE.
+                Full names used instead.")
+        simplify <- FALSE
+    }
     if (!requireNamespace("phyloseq"))
         stop("Please install the 'phyloseq' package to make phyloseq objects")
 
@@ -55,5 +69,9 @@ ExpressionSet2phyloseq <- function(eset, simplify = TRUE,
     }
     otu.table <- phyloseq::otu_table(otu.table, taxa_are_rows = TRUE)
     tax.table <- phyloseq::tax_table(tax.table)
-    phyloseq::phyloseq(otu.table, sample.data, tax.table)
+    if(phylogenetictree){
+        phyloseq::phyloseq(otu.table, sample.data, tax.table, getMetaphlanTree())
+    }else{
+        phyloseq::phyloseq(otu.table, sample.data, tax.table)
+    }
 }

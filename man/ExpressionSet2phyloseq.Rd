@@ -4,7 +4,8 @@
 \alias{ExpressionSet2phyloseq}
 \title{Convert an ExpressionSet object to a phyloseq object}
 \usage{
-ExpressionSet2phyloseq(eset, simplify = TRUE, relab = TRUE)
+ExpressionSet2phyloseq(eset, simplify = TRUE, relab = TRUE,
+  phylogenetictree = FALSE)
 }
 \arguments{
 \item{eset}{An eset object}
@@ -13,6 +14,11 @@ ExpressionSet2phyloseq(eset, simplify = TRUE, relab = TRUE)
 
 \item{relab}{if FALSE, values are multiplied by read depth to approximate counts, if TRUE
 (default) values kept as relative abundances between 0 and 100\%.}
+
+\item{phylogenetictree}{if TRUE, a phylogenetic tree will be attached to the phyloseq object.
+Note, this will remove all clades not associated with
+a genome, e.g. kingdoms, phyla, etc. It will remove any feature that can't
+be matched to the Newick tree included in inst/extdata; see ?getMetaphlanTree.}
 }
 \value{
 A phyloseq object
@@ -21,7 +27,9 @@ A phyloseq object
 Convert an ExpressionSet object to a phyloseq object
 }
 \examples{
-LomanNJ_2013.metaphlan_bugs_list.stool() \%>\%
-ExpressionSet2phyloseq()
+eset <- LomanNJ_2013.metaphlan_bugs_list.stool()
+ExpressionSet2phyloseq(eset)
+ExpressionSet2phyloseq(eset, relab=FALSE)
+ExpressionSet2phyloseq(eset, phylogenetictree = TRUE)
 
 }
