@@ -10,7 +10,7 @@ permalink: analyses/:title/
 markdown: kramdown
 highlighter: rouge
 gems: [jekyll-paginate]
-paginate: 5
+paginate: 4
 
 navigation:
  - title: Home
