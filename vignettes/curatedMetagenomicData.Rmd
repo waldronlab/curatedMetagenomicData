@@ -204,7 +204,7 @@ loman.tree <- ExpressionSet2phyloseq( loman.eset, phylogenetictree = TRUE)
 ```
 
 ```{r}
-wt = UniFrac(pseq, weighted=TRUE, normalized=FALSE, 
+wt = UniFrac(loman.tree, weighted=TRUE, normalized=FALSE, 
              parallel=FALSE, fast=TRUE)
 plot(hclust(wt), main="Weighted UniFrac distances")
 ```
