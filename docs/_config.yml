@@ -3,7 +3,7 @@ short_title: cMD
 description: Curated and processed metagenomic data through ExperimentHub
 
 # url: https://waldronlab.github.io/curatedMetagenomicData
-baseurl: "waldronlab.github.io/curatedMetagenomicData"
+# baseurl: "waldronlab.github.io/curatedMetagenomicData"
 paginate_path: "analyses/page:num/"
 permalink: analyses/:title/
 
