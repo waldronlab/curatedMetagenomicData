@@ -82,7 +82,8 @@ suppressPackageStartupMessages(library(curatedMetagenomicData))
 loman.eset = LomanNJ_2013.metaphlan_bugs_list.stool()
 ```
 
-However, the above approach lacks additional options and versioning provided by the curatedMetagenomicData function, which returns a list of datasets. In this 
+However, the above approach lacks additional options and versioning provided by the curatedMetagenomicData function, which returns a list of datasets. In this case
+the list has length 1:
 
 ```{r}
 loman <- curatedMetagenomicData("LomanNJ_2013.metaphlan_bugs_list.stool", dryrun = FALSE)
