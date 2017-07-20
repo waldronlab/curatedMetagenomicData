@@ -154,7 +154,7 @@ loman.counts = round(loman.counts)
 loman.counts[1:6, 1:5]
 ```
 
-or just set the `relab` argument in `Expressionset2phyloseq()` to `FALSE`:
+or just set the `counts` argument in `curatedMetagenomicData()` to `TRUE`:
 
 ```{r}
 loman.eset2 = curatedMetagenomicData("LomanNJ_2013.metaphlan_bugs_list.stool",
