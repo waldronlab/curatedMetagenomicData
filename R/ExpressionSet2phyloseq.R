@@ -6,7 +6,9 @@
 #'
 #' @param simplify
 #'
-#' if TRUE the most detailed clade name is used
+#' if TRUE, only the most detailed level of the taxonomy is kept in the names,
+#' for example species or strain.  Default is TRUE because the full taxonomy
+#' is provided by the tax_table of the phyloseq object.
 #'
 #' @param relab
 #'
@@ -47,11 +49,6 @@
 ExpressionSet2phyloseq <- function(eset, simplify = TRUE,
                                    relab = TRUE,
                                    phylogenetictree = FALSE) {
-    if(phylogenetictree & simplify){
-        message("Simplified names are not supported with phylogenetictree = TRUE.
-                Full names used instead.")
-        simplify <- FALSE
-    }
     if (!requireNamespace("phyloseq"))
         stop("Please install the 'phyloseq' package to make phyloseq objects")
 
@@ -77,7 +74,8 @@ ExpressionSet2phyloseq <- function(eset, simplify = TRUE,
     otu.table <- phyloseq::otu_table(otu.table, taxa_are_rows = TRUE)
     tax.table <- phyloseq::tax_table(tax.table)
     if(phylogenetictree){
-        phyloseq::phyloseq(otu.table, sample.data, tax.table, getMetaphlanTree())
+        tree <- getMetaphlanTree(, simplify=simplify)
+        phyloseq::phyloseq(otu.table, sample.data, tax.table, tree)
     }else{
         phyloseq::phyloseq(otu.table, sample.data, tax.table)
     }

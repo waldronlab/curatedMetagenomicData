@@ -10,7 +10,9 @@ ExpressionSet2phyloseq(eset, simplify = TRUE, relab = TRUE,
 \arguments{
 \item{eset}{An eset object}
 
-\item{simplify}{if TRUE the most detailed clade name is used}
+\item{simplify}{if TRUE, only the most detailed level of the taxonomy is kept in the names,
+for example species or strain.  Default is TRUE because the full taxonomy
+is provided by the tax_table of the phyloseq object.}
 
 \item{relab}{if FALSE, values are multiplied by read depth to approximate counts, if TRUE
 (default) values kept as relative abundances between 0 and 100\%.}

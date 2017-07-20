@@ -1,5 +1,10 @@
 #' Title Return a phylogenetic tree for MetaPhlAn2 bugs
 #'
+#' @param simplify
+#' if TRUE, only the most detailed level of the taxonomy is kept in the names,
+#' for example species or strain.  Default is TRUE.
+#' @param removeGCF
+#' remove "|GCF_nnnnnnnnn" from the end of tip labels. Default is TRUE.
 #' @return a phylogenetic tree of class ape::phylo
 #' @export getMetaphlanTree
 #' @details
@@ -13,7 +18,10 @@
 #' @examples
 #' tree <- getMetaphlanTree()
 #' summary(tree)
-getMetaphlanTree <- function(){
+#' getMetaphlanTree(simplify = FALSE)
+#' getMetaphlanTree(simplify = FALSE, removeGCF = FALSE)
+#'
+getMetaphlanTree <- function(removeGCF=TRUE, simplify=TRUE){
     if (!requireNamespace("ape")) {
         stop("Please install the ape package to read Newick trees")
     }
@@ -21,6 +29,9 @@ getMetaphlanTree <- function(){
                         package="curatedMetagenomicData"))
     tree <- ape::read.tree(nwkfile)
     close(nwkfile)
-    tree$tip.label <- sub("GCF", "t__GCF", tree$tip.label)
+    if(removeGCF)
+        tree$tip.label <- sub("\\|GCF_[0-9]+$", "", tree$tip.label)
+    if(simplify)
+        tree$tip.label <- gsub(".+\\|", "", tree$tip.label)
     return(tree)
 }

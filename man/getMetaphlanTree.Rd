@@ -4,7 +4,13 @@
 \alias{getMetaphlanTree}
 \title{Title Return a phylogenetic tree for MetaPhlAn2 bugs}
 \usage{
-getMetaphlanTree()
+getMetaphlanTree(removeGCF = TRUE, simplify = TRUE)
+}
+\arguments{
+\item{removeGCF}{remove "|GCF_nnnnnnnnn" from the end of tip labels. Default is TRUE.}
+
+\item{simplify}{if TRUE, only the most detailed level of the taxonomy is kept in the names,
+for example species or strain.  Default is TRUE.}
 }
 \value{
 a phylogenetic tree of class ape::phylo
@@ -24,4 +30,7 @@ Thanks to Francesco Asnicar <f.asnicar@unitn.it> for generating this tree.
 \examples{
 tree <- getMetaphlanTree()
 summary(tree)
+getMetaphlanTree(simplify = FALSE)
+getMetaphlanTree(simplify = FALSE, removeGCF = FALSE)
+
 }
