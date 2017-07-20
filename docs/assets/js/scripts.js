@@ -11,7 +11,7 @@ $( document ).ready(function() {
 	// CSS Hacks for Current Page
 	var strURL = document.URL;
 	gettingStarted = strURL.includes("getting-started");
-	tutorials = strURL.includes("tutorials");
+	analyses = strURL.includes("analyses");
 	publications = strURL.includes("publications");
 	credits = strURL.includes("credits");
 	is404 = $("h1.pageTitle").text().includes("404");
@@ -22,8 +22,8 @@ $( document ).ready(function() {
 		$("[href='/curatedMetagenomicData/getting-started']").parent().addClass("current");
 		$("#home").addClass("post");
 		$("#home > p").first().addClass("intro");
-	} else if (tutorials) {
-		$("[href='/curatedMetagenomicData/tutorials']").parent().addClass("current");
+	} else if (analyses) {
+		$("[href='/curatedMetagenomicData/analyses']").parent().addClass("current");
 	} else if (publications) {
 		$("[href='/curatedMetagenomicData/publications']").parent().addClass("current");
 		$("#home").addClass("post");
