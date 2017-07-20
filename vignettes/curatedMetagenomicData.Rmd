@@ -165,9 +165,23 @@ suppressPackageStartupMessages(library(phyloseq))
 loman.pseq = ExpressionSet2phyloseq( loman.eset )
 ```
 
+## phylogenetic trees and UniFrac distances
+
+Set **phylogenetictree = TRUE** to include a phylogenetic tree in the `phyloseq` object:
+```{r}
+loman.tree <- ExpressionSet2phyloseq( loman.eset, phylogenetictree = TRUE)
+```
+
+```{r}
+wt = UniFrac(pseq, weighted=TRUE, normalized=FALSE, 
+             parallel=FALSE, fast=TRUE)
+plot(hclust(wt), main="Weighted UniFrac distances")
+```
+
+
 ## Estimating Absolute Raw Count Data
 
-Absolute raw count data can be estimated from the relative count data by multiplying the columns of the `ExpressionSet` data by the number of reads for each sample, as found in the `pData` column "number_reads". You could do this manually using the `sweep()` function (dividing by 100 to convert relative abundance percentages to fractions):
+Absolute raw count data can be estimated from the relative count data by multiplying the columns of the `ExpressionSet` data by the number of reads for each sample, as found in the `pData` column "number_reads". For demo purposes you could (but don't have to!) do this manually by dividing by 100 and multiplying by the number of reads:
 
 ```{r}
 loman.counts = sweep(exprs( loman.eset ) / 100, 2, loman.eset$number_reads, "*")
@@ -212,7 +226,7 @@ head( tax_table( loman.pseq ) )
 
 ## Subsetting / Pruning
 
-The process of subsetting begins with the names of phylogenetic ranks:
+The process of subsetting begins with the names of taxonomic ranks:
 
 ```{r, warning=FALSE}
 rank_names( loman.pseq )
