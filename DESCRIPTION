@@ -16,7 +16,7 @@ Description:
     and gene marker abundance for samples collected from different bodysites.
 URL: https://github.com/waldronlab/curatedMetagenomicData
 BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
-License: file LICENSE
+License: Artistic-2.0
 Encoding: UTF-8
 LazyData: true
 Depends:
