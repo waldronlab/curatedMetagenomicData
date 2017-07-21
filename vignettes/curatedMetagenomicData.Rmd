@@ -82,6 +82,16 @@ suppressPackageStartupMessages(library(curatedMetagenomicData))
 loman.eset = LomanNJ_2013.metaphlan_bugs_list.stool()
 ```
 
+However, the above approach lacks additional options and versioning provided by the curatedMetagenomicData function, which returns a list of datasets. In this case
+the list has length 1:
+
+```{r}
+loman <- curatedMetagenomicData("LomanNJ_2013.metaphlan_bugs_list.stool", dryrun = FALSE)
+loman
+loman.eset <- loman[[1]]
+loman.eset
+```
+
 The following creates a list of two `ExpressionSet` objects providing the BritoIL_2016 and Castro-NallarE_2015 oral cavity taxonomic profiles:
 
 ```{r, message=FALSE, results='hide'}
@@ -134,6 +144,25 @@ exprs( loman.eset )[1:6, 1:5]  #first 6 rows and 5 columns
 
 Bioconductor provides further documentation of the ExpressionSet class and has published an excellent [introduction](https://tinyurl.com/ExpressionSetIntro).
 
+## Estimating Absolute Raw Count Data
+
+Absolute raw count data can be estimated from the relative count data by multiplying the columns of the `ExpressionSet` data by the number of reads for each sample, as found in the `pData` column "number_reads". For demo purposes you could (but don't have to!) do this manually by dividing by 100 and multiplying by the number of reads:
+
+```{r}
+loman.counts = sweep(exprs( loman.eset ), 2, loman.eset$number_reads / 100, "*")
+loman.counts = round(loman.counts)
+loman.counts[1:6, 1:5]
+```
+
+or just set the `counts` argument in `curatedMetagenomicData()` to `TRUE`:
+
+```{r}
+loman.eset2 = curatedMetagenomicData("LomanNJ_2013.metaphlan_bugs_list.stool",
+                                     counts = TRUE, dryrun = FALSE)[[1]]
+all.equal(exprs(loman.eset2), loman.counts)
+```
+
+
 # E. coli prevalence
 
 Here's a direct, exploratory analysis of *E. coli* prevalence in the Loman dataset using the `ExpressionSet` object. More elegant solutions will be provided later using subsetting methods provided by the `r BiocStyle::Biocpkg("phyloseq")` package, but for users familiar with `grep()` and the `ExpressionSet` object, such manual methods may suffice.
@@ -165,23 +194,21 @@ suppressPackageStartupMessages(library(phyloseq))
 loman.pseq = ExpressionSet2phyloseq( loman.eset )
 ```
 
-## Estimating Absolute Raw Count Data
+Note the simplified row names of the OTU table, showing only the most detailed level of the taxonomy. This results from the default argument `simplify=TRUE`, which is convenient and lossless because taxonomic information is now attainable by `tax_table(loman.pseq2)`
 
-Absolute raw count data can be estimated from the relative count data by multiplying the columns of the `ExpressionSet` data by the number of reads for each sample, as found in the `pData` column "number_reads". You could do this manually using the `sweep()` function (dividing by 100 to convert relative abundance percentages to fractions):
+## phylogenetic trees and UniFrac distances
 
+Set **phylogenetictree = TRUE** to include a phylogenetic tree in the `phyloseq` object:
 ```{r}
-loman.counts = sweep(exprs( loman.eset ) / 100, 2, loman.eset$number_reads, "*")
-loman.counts[1:6, 1:5]
+loman.tree <- ExpressionSet2phyloseq( loman.eset, phylogenetictree = TRUE)
 ```
 
-or just set the `relab` argument in `Expressionset2phyloseq()` to `FALSE`:
-
 ```{r}
-loman.pseq2 = ExpressionSet2phyloseq( loman.eset, relab=FALSE )
-otu_table( loman.pseq2 )[1:6, 1:5]
+wt = UniFrac(loman.tree, weighted=TRUE, normalized=FALSE, 
+             parallel=FALSE, fast=TRUE)
+plot(hclust(wt), main="Weighted UniFrac distances")
 ```
 
-Note the simplified row names of the OTU table, resulting from the default argument `simplify=TRUE`. The simplified names are convenient, and lossless because taxonomic information is now attainable by `tax_table(loman.pseq2)`
 
 ## Components of a phyloseq object
 
@@ -212,7 +239,7 @@ head( tax_table( loman.pseq ) )
 
 ## Subsetting / Pruning
 
-The process of subsetting begins with the names of phylogenetic ranks:
+The process of subsetting begins with the names of taxonomic ranks:
 
 ```{r, warning=FALSE}
 rank_names( loman.pseq )

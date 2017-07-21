@@ -4,15 +4,23 @@
 \alias{ExpressionSet2phyloseq}
 \title{Convert an ExpressionSet object to a phyloseq object}
 \usage{
-ExpressionSet2phyloseq(eset, simplify = TRUE, relab = TRUE)
+ExpressionSet2phyloseq(eset, simplify = TRUE, relab = TRUE,
+  phylogenetictree = FALSE)
 }
 \arguments{
 \item{eset}{An eset object}
 
-\item{simplify}{if TRUE the most detailed clade name is used}
+\item{simplify}{if TRUE, only the most detailed level of the taxonomy is kept in the names,
+for example species or strain.  Default is TRUE because the full taxonomy
+is provided by the tax_table of the phyloseq object.}
 
 \item{relab}{if FALSE, values are multiplied by read depth to approximate counts, if TRUE
 (default) values kept as relative abundances between 0 and 100\%.}
+
+\item{phylogenetictree}{if TRUE, a phylogenetic tree will be attached to the phyloseq object.
+Note, this will remove all clades not associated with
+a genome, e.g. kingdoms, phyla, etc. It will remove any feature that can't
+be matched to the Newick tree included in inst/extdata; see ?getMetaphlanTree.}
 }
 \value{
 A phyloseq object
@@ -21,7 +29,16 @@ A phyloseq object
 Convert an ExpressionSet object to a phyloseq object
 }
 \examples{
-LomanNJ_2013.metaphlan_bugs_list.stool() \%>\%
-ExpressionSet2phyloseq()
+eset <- LomanNJ_2013.metaphlan_bugs_list.stool()
+ExpressionSet2phyloseq(eset)
+ExpressionSet2phyloseq(eset, relab=FALSE)
+
+## Using a phylogenetic tree
+library(phyloseq)
+(pseq <- ExpressionSet2phyloseq(eset, phylogenetictree = TRUE))
+unwt <- UniFrac(pseq, weighted=FALSE, normalized=TRUE, parallel=FALSE, fast=TRUE)
+plot(hclust(unwt))
+wt <- UniFrac(pseq, weighted=TRUE, normalized=FALSE, parallel=FALSE, fast=TRUE)
+plot(hclust(wt))
 
 }

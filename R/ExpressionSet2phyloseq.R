@@ -6,12 +6,21 @@
 #'
 #' @param simplify
 #'
-#' if TRUE the most detailed clade name is used
+#' if TRUE, only the most detailed level of the taxonomy is kept in the names,
+#' for example species or strain.  Default is TRUE because the full taxonomy
+#' is provided by the tax_table of the phyloseq object.
 #'
 #' @param relab
 #'
 #' if FALSE, values are multiplied by read depth to approximate counts, if TRUE
 #' (default) values kept as relative abundances between 0 and 100\%.
+#'
+#' @param phylogenetictree
+#'
+#' if TRUE, a phylogenetic tree will be attached to the phyloseq object.
+#' Note, this will remove all clades not associated with
+#' a genome, e.g. kingdoms, phyla, etc. It will remove any feature that can't
+#' be matched to the Newick tree included in inst/extdata; see ?getMetaphlanTree.
 #'
 #' @return
 #'
@@ -20,8 +29,17 @@
 #' @export
 #'
 #' @examples
-#' LomanNJ_2013.metaphlan_bugs_list.stool() %>%
-#' ExpressionSet2phyloseq()
+#' eset <- LomanNJ_2013.metaphlan_bugs_list.stool()
+#' ExpressionSet2phyloseq(eset)
+#' ExpressionSet2phyloseq(eset, relab=FALSE)
+#'
+#' ## Using a phylogenetic tree
+#' library(phyloseq)
+#' (pseq <- ExpressionSet2phyloseq(eset, phylogenetictree = TRUE))
+#' unwt <- UniFrac(pseq, weighted=FALSE, normalized=TRUE, parallel=FALSE, fast=TRUE)
+#' plot(hclust(unwt))
+#' wt <- UniFrac(pseq, weighted=TRUE, normalized=FALSE, parallel=FALSE, fast=TRUE)
+#' plot(hclust(wt))
 #'
 #' @importFrom Biobase exprs
 #' @importFrom Biobase pData
@@ -29,8 +47,8 @@
 #' @importFrom dplyr data_frame
 #' @importFrom tidyr separate
 ExpressionSet2phyloseq <- function(eset, simplify = TRUE,
-                                   relab = TRUE) {
-
+                                   relab = TRUE,
+                                   phylogenetictree = FALSE) {
     if (!requireNamespace("phyloseq"))
         stop("Please install the 'phyloseq' package to make phyloseq objects")
 
@@ -55,5 +73,10 @@ ExpressionSet2phyloseq <- function(eset, simplify = TRUE,
     }
     otu.table <- phyloseq::otu_table(otu.table, taxa_are_rows = TRUE)
     tax.table <- phyloseq::tax_table(tax.table)
-    phyloseq::phyloseq(otu.table, sample.data, tax.table)
+    if(phylogenetictree){
+        tree <- getMetaphlanTree(, simplify=simplify)
+        phyloseq::phyloseq(otu.table, sample.data, tax.table, tree)
+    }else{
+        phyloseq::phyloseq(otu.table, sample.data, tax.table)
+    }
 }

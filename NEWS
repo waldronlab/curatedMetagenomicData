@@ -1,3 +1,7 @@
+# curatedMetagenomicData 1.7.2
+
+* Added phylogenetictree = TRUE argument to ExpressionSet2phyloseq()
+
 # curatedMetagenomicData 1.5.7
 
 * doubled the number of samples to over 5,700
