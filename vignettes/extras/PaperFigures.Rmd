@@ -29,7 +29,9 @@ knitr::opts_chunk$set(warning = FALSE)
 
 # Setup
 
-Before running the script, please note that
+Before running the script, please note that:
+
+* Reproducing the results of our manuscript requires Bioconductor >= 3.6, which will be the development version until October 2017. See http://bioconductor.org/developers/how-to/useDevel/ for instructions on installing the development branch of Bioconductor.
 
 * The classification analyses (Figure 1 Example 1 and Supplemental Figure 1) create very large matrices that can exceed default limits for R pointer size and the C stack limit on some systems. If you see `Error: protect(): protection stack overflow` or `Error: segfault from C stack overflow`, one of these is the issue. From GNU/Linux, these limits can be increased from the command-line as follows:
 
@@ -51,6 +53,18 @@ Then enter the following from within R to build the html:
 ```{r, eval=FALSE}
 library(rmarkdown)
 rmarkdown::render("PaperFigures.Rmd", "html_document")
+```
+
+# Make sure a compatible version of Bioconductor is in use
+
+```{r}
+if(!suppressPackageStartupMessages(require(Biobase))){
+  stop("Please install Bioconductor, see www.bioconductor.org/install")
+}
+(ExperimentHubIsCurrent <- Biobase::package.version("ExperimentHub") >= "1.3.0")
+if(!ExperimentHubIsCurrent){
+  stop("This analysis currently requires the development branch of Bioconductor. See http://bioconductor.org/developers/how-to/useDevel/")
+}
 ```
 
 # Run
