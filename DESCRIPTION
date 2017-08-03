@@ -33,6 +33,7 @@ Imports:
     S4Vectors
 Suggests:
     BiocInstaller,
+    devtools,
     roxygen2,
     testthat,
     covr,

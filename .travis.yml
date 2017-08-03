@@ -6,6 +6,11 @@ warnings_are_errors: false
 bioc_use_devel: true
 r_build_args: --keep-empty-dirs --no-resave-data
 r_check_args: --no-vignettes --timings
+install:
+- R -e 'devtools::install_deps(dep = T)'
+script:
+- R CMD build .
+- travis_wait 80 R CMD check *tar.gz
 after_success:
 - Rscript -e 'covr::codecov()'
 notifications:
