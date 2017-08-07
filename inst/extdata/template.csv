@@ -1,53 +1,53 @@
 col.name,var.class,uniqueness,requiredness,multiplevalues,allowedvalues,description
-sampleID,integer,unique,required,FALSE,[a-zA-Z]\S+,Sample identifier.
-subjectID,integer,non-unique,required,FALSE,[a-zA-Z]\S+,Subject identifier.
-body_site,integer,non-unique,required,FALSE,stool|skin|vagina|oralcavity|nasalcavity|lung|milk,Bodysite of acquisition.
-body_subsite,integer,non-unique,optional,FALSE,anterior_nares|hard_palate|keratinized_gingiva|l_retroauricular_crease|r_retroauricular_crease|mid_vagina|palatine_tonsils|saliva|stool|supragingival_plaque|subgingival_plaque|throat|vaginal_introitus|posterior_fornix|tongue_dorsum|sputum|buccal_mucosa|left_elbow|right_ear|left_ear|right_elbow,Subsite of body site of acquisition.
-antibiotics_current_use,integer,non-unique,optional,FALSE,yes|no,Subject is currently taking antibiotics.
-antibiotics_family,integer,non-unique,optional,TRUE,dopamine_antagonists|phenylpiperidines|thienobenzodiazepines|blood_pressure_medication|diabetes_oral_medication|anti_retrovirals|beta_blockers|reverse_transcriptase_inhibitors|anti_virals|cephalosporins|penicillins|macrolides|beta_lactamase_inhibitors|nitrofurans|sulphonamides|aminoglycosides|carbapenems|fluoroquinolones|laxatives|none,Family of antibiotics currently used; Semicolon-separated.
-study_condition,integer,non-unique,required,FALSE,cellulitis|gangrene|osteoarthritis|control|NK|pyelonefritis|salmonellosis|sepsis|skininf|suspinf|arthritis|STEC|CRC|adenoma|fatty_liver|hypertension|coeliac|asthma|gestational_diabetes|cirrhosis|HBV|HDV|HEV|CMV|CDI|IBD|T2D|T1D|AD|AR|IGT|schizophrenia|ascites|wilson|otitis|bronchitis|pneumonia|respiratoryinf|cough|stomatitis|fever|pyelonephritis|infectiousgastroenteritis|tonsillitis|cystitis|abdominalhernia|psoriasis,The main disease or condition under study; control for controls.
-disease,integer,non-unique,required,TRUE,healthy|none|hepatitis|NK|CRC|STEC|adenoma|arthritis|cellulitis|gangrene|osteoarthritis|NK|pyelonefritis|salmonellosis|sepsis|skininf|suspinf|fatty_liver|hypertension|coeliac|asthma|gestational_diabetes|cirrhosis|HBV|HDV|HEV|CMV|CDI|IBD|T2D|T1D|AD|AR|IGT|schizophrenia|ascites|wilson|otitis|bronchitis|pneumonia|respiratoryinf|cough|stomatitis|fever|pyelonephritis|infectiousgastroenteritis|tonsillitis|cystitis|abdominalhernia|psoriasis,Semicolon-delimited vector of conditions; Use healthy only if subject is known to be healthy; CRC=colorectal cancer.
-disease_subtype,integer,non-unique,optional,FALSE,healthy|CD|UC|adenoma|smalladenoma|largeadenoma|advancedadenoma|adenocarcinoma|carcinoma,Disease subtype; CD=Chrohn's Disease.
+sampleID,character,unique,required,FALSE,[a-zA-Z]\S+,Sample identifier.
+subjectID,character,non-unique,required,FALSE,[a-zA-Z]\S+,Subject identifier.
+body_site,character,non-unique,required,FALSE,stool|skin|vagina|oralcavity|nasalcavity|lung|milk,Bodysite of acquisition.
+body_subsite,character,non-unique,optional,FALSE,anterior_nares|hard_palate|keratinized_gingiva|l_retroauricular_crease|r_retroauricular_crease|mid_vagina|palatine_tonsils|saliva|stool|supragingival_plaque|subgingival_plaque|throat|vaginal_introitus|posterior_fornix|tongue_dorsum|sputum|buccal_mucosa|left_elbow|right_ear|left_ear|right_elbow,Subsite of body site of acquisition.
+antibiotics_current_use,character,non-unique,optional,FALSE,yes|no,Subject is currently taking antibiotics.
+antibiotics_family,character,non-unique,optional,TRUE,dopamine_antagonists|phenylpiperidines|thienobenzodiazepines|blood_pressure_medication|diabetes_oral_medication|anti_retrovirals|beta_blockers|reverse_transcriptase_inhibitors|anti_virals|cephalosporins|penicillins|macrolides|beta_lactamase_inhibitors|nitrofurans|sulphonamides|aminoglycosides|carbapenems|fluoroquinolones|laxatives|none,Family of antibiotics currently used; Semicolon-separated.
+study_condition,character,non-unique,required,FALSE,cellulitis|gangrene|osteoarthritis|control|NK|pyelonefritis|salmonellosis|sepsis|skininf|suspinf|arthritis|STEC|CRC|adenoma|fatty_liver|hypertension|coeliac|asthma|gestational_diabetes|cirrhosis|HBV|HDV|HEV|CMV|CDI|IBD|T2D|T1D|AD|AR|IGT|schizophrenia|ascites|wilson|otitis|bronchitis|pneumonia|respiratoryinf|cough|stomatitis|fever|pyelonephritis|infectiousgastroenteritis|tonsillitis|cystitis|abdominalhernia|psoriasis,The main disease or condition under study; control for controls.
+disease,character,non-unique,required,TRUE,healthy|none|hepatitis|NK|CRC|STEC|adenoma|arthritis|cellulitis|gangrene|osteoarthritis|NK|pyelonefritis|salmonellosis|sepsis|skininf|suspinf|fatty_liver|hypertension|coeliac|asthma|gestational_diabetes|cirrhosis|HBV|HDV|HEV|CMV|CDI|IBD|T2D|T1D|AD|AR|IGT|schizophrenia|ascites|wilson|otitis|bronchitis|pneumonia|respiratoryinf|cough|stomatitis|fever|pyelonephritis|infectiousgastroenteritis|tonsillitis|cystitis|abdominalhernia|psoriasis,Semicolon-delimited vector of conditions; Use healthy only if subject is known to be healthy; CRC=colorectal cancer.
+disease_subtype,character,non-unique,optional,FALSE,healthy|CD|UC|adenoma|smalladenoma|largeadenoma|advancedadenoma|adenocarcinoma|carcinoma,Disease subtype; CD=Chrohn's Disease.
 age,integer,non-unique,optional,FALSE,[0-9]+,Subject age (years).
 infant_age,integer,non-unique,optional,FALSE,[0-9]+,Infant age (days); should be used for infants < 2 years old.
-age_category,integer,non-unique,optional,FALSE,newborn|child|schoolage|adult|senior,Age category: newborn < 1 year; 1 <= child < 12; 12 <= schoolage < 19; 19 <= adult <= 65; senior > 65.
-gender,integer,non-unique,optional,FALSE,female|male|other,Subject gender.
+age_category,character,non-unique,optional,FALSE,newborn|child|schoolage|adult|senior,Age category: newborn < 1 year; 1 <= child < 12; 12 <= schoolage < 19; 19 <= adult <= 65; senior > 65.
+gender,character,non-unique,optional,FALSE,female|male|other,Subject gender.
 visit_number,integer,non-unique,optional,FALSE,[0-9]+,Visit number for studies with repeated visits.
-BMI,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Body mass index (kg/m2).
-country,integer,non-unique,required,FALSE,CAN|DNK|EST|FJI|FIN|FRA|DEU|ITA|MNG|NLD|NOR|ESP|SWE|USA|GBR|CHN|RUS|LUX|AUT|TZA|PER|ISL|BRN|IDN|MYS|HUN|SVK|SGP,Country of acquisition using ISO3 code from http://www.fao.org/countryprofiles/iso3list/en/.
-location,integer,non-unique,optional,FALSE,.+,Free-form additional location information.
-non_westernized,integer,non-unique,optional,FALSE,yes|no,Subject belongs to a non-westernized community.
+BMI,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Body mass index (kg/m2).
+country,character,non-unique,required,FALSE,CAN|DNK|EST|FJI|FIN|FRA|DEU|ITA|MNG|NLD|NOR|ESP|SWE|USA|GBR|CHN|RUS|LUX|AUT|TZA|PER|ISL|BRN|IDN|MYS|HUN|SVK|SGP,Country of acquisition using ISO3 code from http://www.fao.org/countryprofiles/iso3list/en/.
+location,character,non-unique,optional,FALSE,.+,Free-form additional location information.
+non_westernized,character,non-unique,optional,FALSE,yes|no,Subject belongs to a non-westernized community.
 days_from_first_collection,integer,non-unique,optional,FALSE,[0-9]+,Used for time series studies.
-sequencing_platform,integer,non-unique,required,FALSE,IlluminaHiSeq|IlluminaMiSeq|IlluminaNextSeq,This will be modified as new sequencing platforms are added to the database.
-DNA_extraction_kit,integer,non-unique,optional,FALSE,Qiagen|Gnome|MoBio|MPBio|NorgenBiotek|Illuminakit|other,DNA extraction kit.
-PMID,integer,non-unique,required,FALSE,[0-9]{8}|unpublished,Identifier of the main publication in PubMed.
+sequencing_platform,character,non-unique,required,FALSE,IlluminaHiSeq|IlluminaMiSeq|IlluminaNextSeq,This will be modified as new sequencing platforms are added to the database.
+DNA_extraction_kit,character,non-unique,optional,FALSE,Qiagen|Gnome|MoBio|MPBio|NorgenBiotek|Illuminakit|other,DNA extraction kit.
+PMID,character,non-unique,required,FALSE,[0-9]{8}|unpublished,Identifier of the main publication in PubMed.
 number_reads,integer,non-unique,required,FALSE,[0-9]+,Number of final reads - calculated from raw data.
 number_bases,integer,non-unique,required,FALSE,[0-9]+,Total number of bases sequenced in the sample.
 minimum_read_length,integer,non-unique,required,FALSE,[0-9]+,Minimum read length - calculated from raw data.
 median_read_length,integer,non-unique,required,FALSE,[0-9]+,Median read length - calculated from raw data.
-NCBI_accession,integer,unique,optional,TRUE,[ES]R[SR][0-9]+,Semicolon-separated vector of NCBI accessions.
-pregnant,integer,non-unique,optional,FALSE,yes|no,Pregnancy of the subject (men: no).
-lactating,integer,non-unique,optional,FALSE,yes|no,Lactating subjects (men: no).
-birth_control_pil,integer,non-unique,optional,FALSE,yes|no,Use of the birth-control-pils at the sampling time (men: no).
-smoker,integer,non-unique,optional,FALSE,yes|no,Currently a smoker at sampling.
-ever_smoker,integer,non-unique,optional,FALSE,yes|no,Ever been a smoker.
-alcohol,integer,non-unique,optional,FALSE,yes|no,Subject is reported as a drinker.
-mumps,integer,non-unique,optional,FALSE,yes|no,Subject has been through mumps in life.
-ajcc,integer,non-unique,optional,FALSE,0|i|ii|iii|iv,AJCC staging for colorectal-cancer.
-fobt,integer,non-unique,optional,FALSE,yes|no,Fecal occult blood test.
-tnm,integer,non-unique,optional,FALSE,t4n1m1|t3nxm1|t2n0m1|tnm|t2n1m1|t4n2m1|t3n0m1|t3n2m0|t4n0m1|t4n1m0|no|t4n0m0|t3n0m0|t3n1m0|ptis|t1n0m0|t4n2m0|t3n1m1|t3n2m1|tisn0m0|t2n0m0|t1n0m1|t2n1m0,TNM classification for colorectal-cancer.
+NCBI_accession,character,unique,optional,TRUE,[ES]R[SR][0-9]+,Semicolon-separated vector of NCBI accessions.
+pregnant,character,non-unique,optional,FALSE,yes|no,Pregnancy of the subject (men: no).
+lactating,character,non-unique,optional,FALSE,yes|no,Lactating subjects (men: no).
+birth_control_pil,character,non-unique,optional,FALSE,yes|no,Use of the birth-control-pils at the sampling time (men: no).
+smoker,character,non-unique,optional,FALSE,yes|no,Currently a smoker at sampling.
+ever_smoker,character,non-unique,optional,FALSE,yes|no,Ever been a smoker.
+alcohol,character,non-unique,optional,FALSE,yes|no,Subject is reported as a drinker.
+mumps,character,non-unique,optional,FALSE,yes|no,Subject has been through mumps in life.
+ajcc,character,non-unique,optional,FALSE,0|i|ii|iii|iv,AJCC staging for colorectal-cancer.
+fobt,character,non-unique,optional,FALSE,yes|no,Fecal occult blood test.
+tnm,character,non-unique,optional,FALSE,t4n1m1|t3nxm1|t2n0m1|tnm|t2n1m1|t4n2m1|t3n0m1|t3n2m0|t4n0m1|t4n1m0|no|t4n0m0|t3n0m0|t3n1m0|ptis|t1n0m0|t4n2m0|t3n1m1|t3n2m1|tisn0m0|t2n0m0|t1n0m1|t2n1m0,TNM classification for colorectal-cancer.
 days_after_onset,integer,non-unique,optional,FALSE,[0-9]+,Days from the onset of the disease.
-stec_count,integer,non-unique,optional,FALSE,high|low|moderate,Amount of STEC colonies detected.
-shigatoxin_2_elisa,integer,non-unique,optional,FALSE,positive|negative,Enzyme-linked immunosorbent assay for Shiga-toxigenic E.coli.
-stool_texture,integer,non-unique,optional,FALSE,smooth|watery|bloody,Texture of the stool at sampling time.
-insulin(cat),integer,non-unique,optional,FALSE,yes|no,Insulin intake as a boolean.
-inr,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,International normalized ratio.
-protein_intake,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Indication about the protein intake in the Mongolians diet.
-flg-genotype,integer,non-unique,optional,FALSE,[0-9]+,Any term for filaggrin-protein genotype.
+stec_count,character,non-unique,optional,FALSE,high|low|moderate,Amount of STEC colonies detected.
+shigatoxin_2_elisa,character,non-unique,optional,FALSE,positive|negative,Enzyme-linked immunosorbent assay for Shiga-toxigenic E.coli.
+stool_texture,character,non-unique,optional,FALSE,smooth|watery|bloody,Texture of the stool at sampling time.
+insulin(cat),character,non-unique,optional,FALSE,yes|no,Insulin intake as a boolean.
+inr,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,International normalized ratio.
+protein_intake,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Indication about the protein intake in the Mongolians diet.
+flg-genotype,character,non-unique,optional,FALSE,[0-9]+,Any term for filaggrin-protein genotype.
 momeducat,integer,non-unique,optional,FALSE,[0-9]+,Years of education of the mother of the subject.
-hitchip_probe_class,integer,non-unique,optional,FALSE,lpc|hpc,High/Low species content onthe HIT-chip probe.
+hitchip_probe_class,character,non-unique,optional,FALSE,lpc|hpc,High/Low species content onthe HIT-chip probe.
 hitchip_probe_number,integer,non-unique,optional,FALSE,[0-9]+,HIT-chip probe score.
-mgs_richness,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Metagenomic species richness.
+mgs_richness,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Metagenomic species richness.
 hla_drb12,integer,non-unique,optional,FALSE,[0-9]+,Hla_drb12 allele.
 hla_dqa12,integer,non-unique,optional,FALSE,[0-9]+,Hla_dqa12 allele.
 hla_dqa11,integer,non-unique,optional,FALSE,[0-9]+,Hla_dqa11 allele.
@@ -56,29 +56,29 @@ hla_dbq12,integer,non-unique,optional,FALSE,[0-9]+,Hla_dbq12 allele.
 hla_dbq11,integer,non-unique,optional,FALSE,[0-9]+,Hla_dbq11 allele.
 ctp,integer,non-unique,optional,FALSE,[0-9]+,Cytidine triphosphate level.
 start_solidfood,integer,non-unique,optional,FALSE,[0-9]+,First day of solid food introduction (newborns).
-triglycerides,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use mg/l.
-cholesterol,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use mg/dl.
-hdl,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use mg/l.
-ldl,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use mg/l.
-adiponectin,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use mg/l.
-fasting_insulin,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use micro-units/ml.
-hba1c,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use %.
-c-peptide,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use ng/ml.
-glp-1,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use pmol/l.
-cd163,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use ng/ml.
-il-1,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use pg/ml.
-leptin,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use micrograms/l.
-glucose,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use mg/dl.
-fgf-19,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use pg/ml.
-glutamate_decarboxylase_2_antibody,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Glutamic acid decarboxylase (GAD65) antibody assay.
-creatinine,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use micro-mol/l.
-creatine,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use micro-mol/l.
-albumine,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Albumine level; curators must use g/l.
-bilubirin,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Bilubirin; curators must use mg/dl.
+triglycerides,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use mg/l.
+cholesterol,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use mg/dl.
+hdl,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use mg/l.
+ldl,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use mg/l.
+adiponectin,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use mg/l.
+fasting_insulin,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use micro-units/ml.
+hba1c,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use %.
+c-peptide,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use ng/ml.
+glp-1,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use pmol/l.
+cd163,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use ng/ml.
+il-1,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use pg/ml.
+leptin,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use micrograms/l.
+glucose,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use mg/dl.
+fgf-19,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use pg/ml.
+glutamate_decarboxylase_2_antibody,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Glutamic acid decarboxylase (GAD65) antibody assay.
+creatinine,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use micro-mol/l.
+creatine,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Curators must use micro-mol/l.
+albumine,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Albumine level; curators must use g/l.
+bilubirin,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Bilubirin; curators must use mg/dl.
 prothrombin_time,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Prothrombin time in seconds.
-dyastolic_p,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Measured in mm/Hg.
-systolic_p,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Measured in mm/Hg.
-hscrp,integer,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,High-sensitivity C-reactive protein test result.
-ferm_milk_prod_consumer,integer,non-unique,optional,FALSE,dfmp,Dfmp means yes (defined milk product).
+dyastolic_p,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Measured in mm/Hg.
+systolic_p,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Measured in mm/Hg.
+hscrp,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,High-sensitivity C-reactive protein test result.
+ferm_milk_prod_consumer,character,non-unique,optional,FALSE,dfmp,Dfmp means yes (defined milk product).
 family,integer,non-unique,optional,FALSE,[0-9]+,A number identifying the family subjects belong; not corrected for meta-analyses.
-uncurated_metadata,integer,non-unique,optional,FALSE,.+,A row for whatever field has not be included here.
+uncurated_metadata,character,non-unique,optional,FALSE,.+,A row for whatever field has not be included here.
