@@ -5,7 +5,7 @@ r: bioc-devel
 warnings_are_errors: false
 bioc_use_devel: true
 r_build_args: --keep-empty-dirs --no-resave-data
-r_check_args: --no-vignettes --timings
+r_check_args: --no-vignettes --timings --no-examples
 install:
 - R -e 'devtools::install_deps(dep = T)'
 script:
