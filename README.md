@@ -29,5 +29,6 @@ Contributions will gladly be accepted provided they fit within the context of th
 
 ## Copyright and License
 
-**curatedMetagenomicData** is Free software licensed under the Artistic License 2.0 (copied here as the LICENSE file, verbatim as required by the Perl Foundation). For the purposes of this license, the "Copyright Holders" are the authors of the manuscript (http://biorxiv.org/content/early/2017/06/21/103085). In general you may use and re-distribute original and modified versions of the software under very permissive conditions.
+## Copyright and License
 
+**curatedMetagenomicData** is Free software licensed under the Artistic License 2.0 (copied here as the LICENSE file, verbatim as required by the Perl Foundation). For the purposes of this license, the "Copyright Holders" are the authors of the manuscript (http://biorxiv.org/content/early/2017/06/21/103085). In general you may use and re-distribute original and modified versions of the software under very permissive conditions. The appropriate citation information for each dataset can be found by doing `experimentData(eset)` (where `eset` is the name of the ExpressionSet class data object), by looking at the man page of the dataset (e.g. `?HMP_2012`), or by looking at the reference manual of the [development](http://bioconductor.org/packages/devel/data/experiment/html/curatedMetagenomicData.html)  or [release](http://bioconductor.org/packages/release/data/experiment/html/curatedMetagenomicData.html) version.
