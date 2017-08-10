@@ -3,7 +3,7 @@ layout: default
 title: Included datasets
 ---
 
-Shown below is the list of datasets currently included in *curatedMetagenomicData*. More details are available in the [package manual](https://bioconductor.org/packages/devel/data/experiment/manuals/curatedMetagenomicData/man/curatedMetagenomicData.pdf){:target="_blank"}.
+Shown below is the list of datasets currently included in the [development](http://bioconductor.org/packages/devel/data/experiment/html/curatedMetagenomicData.html) version of **curatedMetagenomicData**. Not all are available in the [release](http://bioconductor.org/packages/release/data/experiment/html/curatedMetagenomicData.html) version. To run the development version, you must [upgrade to the development version of Bionductor](http://bioconductor.org/developers/how-to/useDevel/). *Simply installing the most recent curatedMetagenomicData from GitHub won't work* without the corresponding development version of ExperimentHub, and the easiest way to accomplish this is by upgrading your full Bioconductor installation.
 
 | Dataset Name | PMID | Publication Year | Bodysite | Disease | Number of Samples |
 | --- | --- | --- | --- | --- | --- |

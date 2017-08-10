@@ -26,3 +26,8 @@ For more extensive information on installing and using `curatedMetagenomicData` 
 ## Contributing
 
 Contributions will gladly be accepted provided they fit within the context of the project. Please see  [CONTRIBUTING.md](https://github.com/waldronlab/curatedMetagenomicData/blob/master/CONTRIBUTING.md) for information regarding reporting bugs, pull request, adding datasets and other issues.
+
+## Copyright and License
+
+**curatedMetagenomicData** is Free software licensed under the Artistic License 2.0 (copied here as the LICENSE file, verbatim as required by the Perl Foundation). For the purposes of this license, the "Copyright Holders" are the authors of the manuscript (http://biorxiv.org/content/early/2017/06/21/103085). In general you may use and re-distribute original and modified versions of the software under very permissive conditions.
+
