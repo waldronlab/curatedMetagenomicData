@@ -72,6 +72,30 @@ table(combined_metadata$antibiotics_current_use)
 table(combined_metadata$disease)
 ```
 
+### Read depth of all samples across all studies
+`combined_metadata` also provides technical information for each sample like sequencing platform, read length, and read depth. The following uses `combined_metadata` to create a boxplot of read depth for each sample in each study, with boxes colored by body site. First, create a ranking of datasets by median read depth:
+
+```{r}
+dsranking <- combined_metadata %>%
+  group_by(dataset_name) %>%
+  summarize(mediandepth = median(number_reads) / 1e6) %>%
+  mutate(dsorder = rank(mediandepth)) %>%
+  arrange(dsorder)
+dsranking
+```
+
+Create a factor `ds` that is ordered according to the ranking by median read depth, to show datasets in order from lowest to highest median read depth, then create the box plot.
+```{r}
+suppressPackageStartupMessages(library(ggplot2))
+mutate(combined_metadata, 
+       ds = factor(combined_metadata$dataset_name, levels=dsranking$dataset_name)) %>%
+  ggplot(aes(ds, number_reads / 1e6, fill=body_site)) + 
+  geom_boxplot() +
+  theme(axis.text.x = element_text(angle=45, hjust=1)) +
+  labs(x="Dataset", y="Read Depth (millions)")
+```
+
+For the datasets that provide both stool and oral cavity profiles, notice how much lower the read depth of oral cavity profiles is due to the higher proportions of removed human DNA reads.
 
 # Accessing datasets
 
