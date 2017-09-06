@@ -41,4 +41,13 @@
            })
 
     globalVariables(".")
+
+    readLines("./inst/extdata/curatedMetagenomicData.txt") %>%
+        paste0(collapse = "\n") %>%
+        message()
+
+    message("Consider using the development version of curatedMetagenomicData,",
+            "\n",
+            "as the database has expanded considerably since the last release.",
+            "\n", "See tinyurl.com/datasets-included for further information.")
 }
