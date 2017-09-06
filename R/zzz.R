@@ -41,13 +41,18 @@
            })
 
     globalVariables(".")
+}
 
-    readLines("./inst/extdata/curatedMetagenomicData.txt") %>%
+.onAttach <- function(libname, pkgname) {
+    system.file("extdata", "curatedMetagenomicData.txt",
+                package = "curatedMetagenomicData") %>%
+        readLines() %>%
         paste0(collapse = "\n") %>%
-        message()
+        packageStartupMessage()
 
-    message("Consider using the development version of curatedMetagenomicData,",
-            "\n",
-            "as the database has expanded considerably since the last release.",
-            "\n", "See tinyurl.com/datasets-included for further information.")
+    packageStartupMessage(
+        "Consider using the development version of curatedMetagenomicData,",
+        "\n",
+        "as the database has expanded considerably since the last release.",
+        "\n", "See tinyurl.com/datasets-included for further information.")
 }
