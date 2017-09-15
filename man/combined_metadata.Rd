@@ -4,7 +4,7 @@
 \name{combined_metadata}
 \alias{combined_metadata}
 \title{Combined metadata of all studies in curatedMetagenomicData}
-\format{A data.frame with 5716 rows and 80 variables:
+\format{A data.frame with 5976 rows and 80 variables:
 \describe{
   \item{NA}{NA}
   \item{sampleID}{Sample identifier.}
@@ -51,9 +51,9 @@
   \item{adiponectin}{Curators must use mg/l.}
   \item{insulin(cat)}{Insulin intake as a boolean.}
   \item{fgf-19}{Curators must use pg/ml.}
-  \item{hscrp}{.}
+  \item{hscrp}{High-sensitivity C-reactive protein test result.}
   \item{leptin}{Curators must use micrograms/l.}
-  \item{glutamate_decarboxylase_2_antibody}{.}
+  \item{glutamate_decarboxylase_2_antibody}{Glutamic acid decarboxylase (GAD65) antibody assay.}
   \item{creatinine}{Curators must use micro-mol/l.}
   \item{il-1}{Curators must use pg/ml.}
   \item{cd163}{Curators must use ng/ml.}
@@ -62,8 +62,8 @@
   \item{hitchip_probe_number}{HIT-chip probe score.}
   \item{protein_intake}{Indication about the protein intake in the Mongolians diet.}
   \item{days_after_onset}{Days from the onset of the disease.}
-  \item{stec_count}{.}
-  \item{shigatoxin_2_elisa}{.}
+  \item{stec_count}{Amount of STEC colonies detected.}
+  \item{shigatoxin_2_elisa}{Enzyme-linked immunosorbent assay for Shiga-toxigenic E.coli.}
   \item{stool_texture}{Texture of the stool at sampling time.}
   \item{ferm_milk_prod_consumer}{Dfmp means yes (defined milk product).}
   \item{mgs_richness}{Metagenomic species richness.}
@@ -73,7 +73,7 @@
   \item{prothrombin_time}{Prothrombin time in seconds.}
   \item{creatine}{Curators must use micro-mol/l.}
   \item{inr}{International normalized ratio.}
-  \item{ctp}{.}
+  \item{ctp}{Cytidine triphosphate level.}
   \item{albumine}{Albumine level; curators must use g/l.}
   \item{bilubirin}{Bilubirin; curators must use mg/dl.}
   \item{smoker}{Currently a smoker at sampling.}
