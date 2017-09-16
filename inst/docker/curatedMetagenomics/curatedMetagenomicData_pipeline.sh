@@ -17,9 +17,10 @@ ncores=8 #number of cores
 
 sample=$1
 runs=$2
-workdir=$3
 
-cd $workdir
+mkdir -p ${OUTPUT_PATH}
+
+cd ${OUTPUT_PATH}
 
 # while [ "$runs" ] ; do
 # 	iter=${runs%%;*}
@@ -59,4 +60,4 @@ mkdir pathabundance_relab; mv humann2/${sample}_pathabundance_relab.tsv pathabun
 mkdir pathcoverage; mv humann2/${sample}_pathcoverage.tsv pathcoverage/${sample}.tsv;
 mkdir humann2_temp; mv humann2/${sample}_humann2_temp/ humann2_temp/ #comment this line if you don't want to keep humann2 temporary files
 
-#rm -r reads humann2
+rm -r reads
