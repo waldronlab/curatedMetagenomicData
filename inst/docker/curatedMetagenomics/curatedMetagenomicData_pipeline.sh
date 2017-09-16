@@ -18,6 +18,7 @@ ncores=8 #number of cores
 sample=$1
 runs=$2
 
+echo "Working in ${OUTPUT_PATH}"
 mkdir -p ${OUTPUT_PATH}
 
 cd ${OUTPUT_PATH}
