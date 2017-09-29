@@ -1,10 +1,9 @@
-language: R
-sudo: required
+language: r
 cache: packages
 
 r: bioc-devel
 warnings_are_errors: false
-bioc_use_devel: true
+
 r_build_args: --keep-empty-dirs --no-resave-data --no-build-vignettes
 r_check_args: --no-build-vignettes --timings --no-examples
 
@@ -12,13 +11,6 @@ matrix:
   include:
     - os: linux
     - os: osx
-
-before_install:
-    - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
-    - chmod 755 ./travis-tool.sh
-
-install:
-  - ./travis-tool.sh install_bioc_deps
 
 after_success:
   - Rscript -e 'covr::codecov()'
