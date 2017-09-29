@@ -13,8 +13,12 @@ matrix:
     - os: linux
     - os: osx
 
+install:
+  - ./travis-tool.sh install_bioc_deps
+
 after_success:
-- Rscript -e 'covr::codecov()'
+  - Rscript -e 'covr::codecov()'
+
 notifications:
   slack:
     secure: cJ2lWppgwy4ablrLSSrJbUnupFsVwybDUps935T2jMqY+H7IH8wPcySneZ1AlidhOgYWR0H86lVyUsmCy3Cn/uHfORjQCX/h1I3IstZegEBUhvfShiUMCMwD/ID8V3WKK5guCdnMQ3/5rbrHsmAIUMUyHuNEVzyTzOTaxWo4W6OOr7oTxrzGw+C2xUIVU7CtiCColAIvB5kWBI+GNRqyF14vgNS1pfwpcIgWDvBxSVCLzSj/t0ddGWKFL5B/E83G0y5I1dR3dcYR/6/NvfnzqxA0Nd0x0E/7aQtNUFoEs4rg/+w6yFXAnjAgJyUTnaTzh6+F0uI/lYy2TlVCIxKggqRpRu8uFVydow7SyxrHkVSDnSvTcu84jPPdyZY4liO0tbTcwzJCRkCJhojAawO5TfjOjZqUXhS4gKJ7AZvVgEme9B5Vpfx25aW/uokGm8wbjuW3kAyfAAygKXpdWOjmlvOnTazzV3eYFRTnbmqiRjXvtWQIokfFfc9d968wb2zSt29i8HJzGCN+Lu9qrs417+xp6IcvVuRNaSnwTTHoGZYSJrIz9Y8hQyh2tpj4UFUmzCOi5Oz+JpC9ZKg6G6WcI32rvdQiJ/YTc0euh7o1KVePwEmgXo/pd1+gZTonLVOr06ADBkqaG9d1Foo4aCYi/OLNdd6WSrTLtkI5KkQoRxA=
