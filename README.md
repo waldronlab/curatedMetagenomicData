@@ -1,4 +1,6 @@
+![fa-pencil](http://fa2png.io/media/icons/font-awesome/4-7-0/pencil/20/0/2c3e50_none.png)
 [![Support Site Activity](https://bioconductor.org/shields/posts/curatedMetagenomicData.svg)](https://support.bioconductor.org/t/curatedmetagenomicdata/)
+![fa-building](http://fa2png.io/media/icons/font-awesome/4-7-0/building/20/0/2c3e50_none.png)
 [![Build Results](https://bioconductor.org/shields/build/devel/data-experiment/curatedMetagenomicData.svg)](https://bioconductor.org/checkResults/devel/data-experiment-LATEST/curatedMetagenomicData/)
 ![fa-linux](http://fa2png.io/media/icons/font-awesome/4-7-0/linux/20/0/2c3e50_none.png)
 [![Travis-CI Linux Build Status](https://travis-matrix-badges.herokuapp.com/repos/waldronlab/curatedMetagenomicData/branches/master/1)](https://travis-ci.org/waldronlab/curatedMetagenomicData)
@@ -8,6 +10,7 @@
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/waldronlab/curatedMetagenomicData?branch=master&svg=true)](https://ci.appveyor.com/project/schifferl/curatedmetagenomicdata-o9eib)
 ![fa-percent](http://fa2png.io/media/icons/font-awesome/4-7-0/percent/20/0/2c3e50_none.png)
 [![Coverage Status](https://img.shields.io/codecov/c/github/waldronlab/curatedMetagenomicData/master.svg)](https://codecov.io/github/waldronlab/curatedMetagenomicData?branch=master)
+![fa-git](http://fa2png.io/media/icons/font-awesome/4-7-0/git/20/0/2c3e50_none.png)
 [![Subversion Commits](https://bioconductor.org/shields/commits/data-experiment/curatedMetagenomicData.svg)](https://bioconductor.org/packages/devel/data/experiment/html/curatedMetagenomicData.html#svn_source)
 
 # curatedMetagenomicData
