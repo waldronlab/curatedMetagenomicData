@@ -1,8 +1,7 @@
 language: r
 cache: packages
 
-r: release
-bioc_use_devel: true
+r: bioc-devel
 warnings_are_errors: false
 
 r_build_args: --keep-empty-dirs --no-resave-data --no-build-vignettes
