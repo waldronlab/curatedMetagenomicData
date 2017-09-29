@@ -1,30 +1,9 @@
 language: r
 cache: packages
-warnings_are_errors: false
 
-r: bioc-devel
-r_packages:
-   - dplyr
-   - magrittr
-   - tidyr
-   - roxygen2
-   - testthat
-   - covr
-   - knitr
-   - rmarkdown
-   - readr
-   - RISmed
-   - ggplot2
-   - ape
-bioc_packages:
-  - Biobase
-  - ExperimentHub
-  - AnnotationHub
-  - BiocCheck
-  - BiocStyle
-  - BiocParallel
-  - metagenomeSeq
-  - phyloseq
+r: release
+bioc_use_devel: true
+warnings_are_errors: false
 
 r_build_args: --keep-empty-dirs --no-resave-data --no-build-vignettes
 r_check_args: --no-build-vignettes --timings --no-examples
