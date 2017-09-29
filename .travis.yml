@@ -1,8 +1,9 @@
 language: r
 cache: packages
+warnings_are_errors: false
 
 r: bioc-devel
-warnings_are_errors: false
+bioc_packages: Biobase ExperimentHub AnnotationHub
 
 r_build_args: --keep-empty-dirs --no-resave-data --no-build-vignettes
 r_check_args: --no-build-vignettes --timings --no-examples
