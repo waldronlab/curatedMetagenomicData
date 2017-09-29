@@ -1,12 +1,9 @@
 [![Support Site Activity](https://bioconductor.org/shields/posts/curatedMetagenomicData.svg)](https://support.bioconductor.org/t/curatedmetagenomicdata/)
 [![Build Results](https://bioconductor.org/shields/build/devel/data-experiment/curatedMetagenomicData.svg)](https://bioconductor.org/checkResults/devel/data-experiment-LATEST/curatedMetagenomicData/)
-
 ![fa-linux](http://fa2png.io/media/icons/font-awesome/4-7-0/linux/20/0/2c3e50_none.png)
 [![Travis-CI Linux Build Status](https://travis-matrix-badges.herokuapp.com/repos/waldronlab/curatedMetagenomicData/branches/master/1)](https://travis-ci.org/waldronlab/curatedMetagenomicData)
-
 ![fa-apple](http://fa2png.io/media/icons/font-awesome/4-7-0/apple/20/0/2c3e50_none.png)
 [![Travis-CI Mac Build Status](https://travis-matrix-badges.herokuapp.com/repos/waldronlab/curatedMetagenomicData/branches/master/2)](https://travis-ci.org/waldronlab/curatedMetagenomicData)
-
 ![fa-windows](http://fa2png.io/media/icons/font-awesome/4-7-0/windows/20/0/2c3e50_none.png)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/waldronlab/curatedMetagenomicData?branch=master&svg=true)](https://ci.appveyor.com/project/schifferl/curatedmetagenomicdata-o9eib)
 ![fa-percent](http://fa2png.io/media/icons/font-awesome/4-7-0/percent/20/0/2c3e50_none.png)
