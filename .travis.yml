@@ -7,11 +7,6 @@ warnings_are_errors: false
 r_build_args: --keep-empty-dirs --no-resave-data --no-build-vignettes
 r_check_args: --no-build-vignettes --timings --no-examples
 
-matrix:
-  include:
-    - os: linux
-    - os: osx
-
 after_success:
   - Rscript -e 'covr::codecov()'
 
