@@ -3,6 +3,10 @@ cache: packages
 warnings_are_errors: false
 
 r: bioc-devel
+r_packages:
+   - dplyr
+   - magrittr
+   - tidyr
 bioc_packages:
   - Biobase
   - ExperimentHub
