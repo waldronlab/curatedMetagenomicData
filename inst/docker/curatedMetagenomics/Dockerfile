@@ -9,6 +9,9 @@ RUN wget --output-document sratoolkit.tar.gz http://ftp-trace.ncbi.nlm.nih.gov/s
 RUN tar -xvzf *.tar.gz
 
 COPY curatedMetagenomicData_pipeline.sh /root/
+RUN rm /dbs/humann2/uniref/*
+RUN rm /dbs/humann2/chocophlan/*
+RUN chmod +x /root/curatedMetagenomicData_pipeline.sh
 COPY run_markers2.py /root/
 WORKDIR /root
 
