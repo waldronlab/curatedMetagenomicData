@@ -26,7 +26,7 @@ pm=/opt/metaphlan2/biobakery-metaphlan2/metaphlan2.py #metaphlan2 path (like /to
 pc=/dbs/humann2/chocophlan # chocophlan database (nucleotide-database for humann2, like /databases/chocophlan
 pp=/dbs/humann2/uniref # uniref database (protein-database for humann2, like /databases/uniref)
 pmdb=/opt/metaphlan2/biobakery-metaphlan2/db_v20/mpa_v20_m200.pkl #metaphlan2 database (like /tools/metaphlan2/db_v20/mpa_v20_m200.pkl)
-ncores=8 #number of cores
+ncores=2 #number of cores
 
 
 echo "Working in ${OUTPUT_PATH}"
