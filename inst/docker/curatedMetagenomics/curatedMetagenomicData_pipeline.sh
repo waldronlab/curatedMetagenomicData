@@ -11,22 +11,26 @@
 sample=$1
 runs=$2
 
-rm /dbs/humann2/uniref/*
-rm /dbs/humann2/chocophlan/*
-
-wget https://storage.googleapis.com/curatedmetagenomicdata/dbs/uniref/uniref90_annotated_1_1.tar.gz
-tar -xvz -C /dbs/humann2/uniref/ -f uniref90_annotated_1_1.tar.gz 
-
-wget https://storage.googleapis.com/curatedmetagenomicdata/dbs/chocophlan/full_chocophlan_plus_viral.v0.1.1.tar.gz  
-tar -xvz -C /dbs/humann2/chocophlan/ -f full_chocophlan_plus_viral.v0.1.1.tar.gz
-
-
 ### before running this script, set these paths and variables
 pm=/opt/metaphlan2/biobakery-metaphlan2/metaphlan2.py #metaphlan2 path (like /tools/metaphlan2/bin/metaphlan2.py)
 pc=/dbs/humann2/chocophlan # chocophlan database (nucleotide-database for humann2, like /databases/chocophlan
 pp=/dbs/humann2/uniref # uniref database (protein-database for humann2, like /databases/uniref)
 pmdb=/opt/metaphlan2/biobakery-metaphlan2/db_v20/mpa_v20_m200.pkl #metaphlan2 database (like /tools/metaphlan2/db_v20/mpa_v20_m200.pkl)
 ncores=2 #number of cores
+
+mkdir -p $pc
+mkdir -p $pp
+
+if [ ! "$(ls -A $pp)" ]; then
+    wget https://storage.googleapis.com/curatedmetagenomicdata/dbs/uniref/uniref90_annotated_1_1.tar.gz
+    tar -xvz -C /dbs/humann2/uniref/ -f uniref90_annotated_1_1.tar.gz
+fi
+
+if [ ! "$(ls -A $pc)" ]; then
+    wget https://storage.googleapis.com/curatedmetagenomicdata/dbs/chocophlan/full_chocophlan_plus_viral.v0.1.1.tar.gz  
+    tar -xvz -C /dbs/humann2/chocophlan/ -f full_chocophlan_plus_viral.v0.1.1.tar.gz
+fi
+
 
 
 echo "Working in ${OUTPUT_PATH}"
