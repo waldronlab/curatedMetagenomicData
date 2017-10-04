@@ -25,3 +25,15 @@ RUN=ERR262957 SAMPLE=TEST_SAMPLE dsub \
 ```sh
 docker build --tag teamcgc/curatedmetagenomicdata .
 ```
+
+## Databases
+
+Currently, the `curagedMetagenomicData_pipeline.sh` script uses publicly accessible databases for uniref and chocophlan. This could be changed but the downloads from the humann2 website using `humann2_download` were simply too slow. This approach requires staging, but it is very performant and scaleable.
+
+```
+wget https://storage.googleapis.com/curatedmetagenomicdata/dbs/uniref/uniref90_annotated_1_1.tar.gz
+tar -xvz -C /dbs/humann2/uniref/ -f uniref90_annotated_1_1.tar.gz 
+
+wget https://storage.googleapis.com/curatedmetagenomicdata/dbs/chocophlan/full_chocophlan_plus_viral.v0.1.1.tar.gz  
+tar -xvz -C /dbs/humann2/chocophlan/ -f full_chocophlan_plus_viral.v0.1.1.tar.gz
+```
