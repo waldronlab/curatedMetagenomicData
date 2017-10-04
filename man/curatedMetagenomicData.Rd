@@ -9,8 +9,7 @@
 \title{Curated Metagenomic Data of the Human Microbiome}
 \usage{
 curatedMetagenomicData(x = "*", dryrun = TRUE, counts = FALSE,
-  bugs.as.phyloseq = FALSE, x.is.glob = TRUE,
-  cmdversion = max(cmdValidVersions()))
+  bugs.as.phyloseq = FALSE, x.is.glob = TRUE)
 }
 \arguments{
 \item{x}{A character vector of dataset names, regexes, or globs, that will be matched
@@ -32,10 +31,6 @@ to phyloseq objects for use with the phyloseq package.}
 
 \item{x.is.glob}{= TRUE
 Set to FALSE to actually download the datasets}
-
-\item{cmdversion}{= max(cmdValidVersions())
-An integer version number, by default the most recent version.
-See cmdValidVersions() for possible options.}
 }
 \value{
 A list of ExpressionSet and/or phyloseq objects
