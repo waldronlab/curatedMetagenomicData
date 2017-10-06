@@ -1,3 +1,29 @@
+# curatedMetagenomicData 1.7.9
+
+* curatedMetagenomicData now contains 6058 samples from 28 studies : )
+* A total of 3,152 samples added since Bioconductor 3.5 (April, 2017) release
+* Datasets added since Bioconductor 3.5 (April, 2017) release
+    - HanniganGD_2017 (82 samples)
+    - LiJ_2014 (260 samples)
+    - AsnicarF_2017 (26 samples)
+    - BritoIL_2016 (312 samples)
+    - Castro-NallarE_2015 (32 samples)
+    - ChngKR_2016 (78 samples)
+    - FengQ_2015 (154 samples)
+    - Heitz-BuschartA_2016 (53 samples)
+    - LiuW_2016 (110 samples)
+    - RaymondF_2016 (72 samples)
+    - SchirmerM_2016 (471 samples)
+    - VatanenT_2016 (785 samples)
+    - VincentC_2016 (229 samples)
+    - VogtmannE_2016 (110 samples)
+    - XieH_2016 (250 samples)
+    - YuJ_2015 (128 samples)
+* The cmdversion argument was removed from the curatedMetagenomicData() function
+* Calls to curatedMetagenomicData() simply return the newest version of the data
+* Older versions of datasets are accessible by using the named functions
+* Support for SummarizedExperiment is forthcoming
+
 # curatedMetagenomicData 1.7.2
 
 * Added phylogenetictree = TRUE argument to ExpressionSet2phyloseq()

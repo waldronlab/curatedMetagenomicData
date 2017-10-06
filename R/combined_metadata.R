@@ -4,7 +4,7 @@
 #' 
 #' The combined sample level metadata of all studies in curatedMetagenomicData.
 #' 
-#' @format A data.frame with 5976 rows and 80 variables:
+#' @format A data.frame with 6058 rows and 80 variables:
 #' \describe{
 #'   \item{NA}{NA}
 #'   \item{sampleID}{Sample identifier.}

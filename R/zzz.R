@@ -66,10 +66,4 @@
         readLines() %>%
         paste0(collapse = "\n") %>%
         packageStartupMessage()
-
-    packageStartupMessage(
-        "Consider using the development version of curatedMetagenomicData,",
-        "\n",
-        "as the database has expanded considerably since the last release.",
-        "\n", "See tinyurl.com/datasets-included for further information.")
 }

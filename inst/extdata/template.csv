@@ -22,9 +22,9 @@ sequencing_platform,character,non-unique,required,FALSE,IlluminaHiSeq|IlluminaMi
 DNA_extraction_kit,character,non-unique,optional,FALSE,Qiagen|Gnome|MoBio|MPBio|NorgenBiotek|Illuminakit|other,DNA extraction kit.
 PMID,character,non-unique,required,FALSE,[0-9]{8}|unpublished,Identifier of the main publication in PubMed.
 number_reads,integer,non-unique,required,FALSE,[0-9]+,Number of final reads - calculated from raw data.
-number_bases,integer,non-unique,required,FALSE,[0-9]+,Total number of bases sequenced in the sample.
+number_bases,numeric,non-unique,required,FALSE,[0-9]+,Total number of bases sequenced in the sample.
 minimum_read_length,integer,non-unique,required,FALSE,[0-9]+,Minimum read length - calculated from raw data.
-median_read_length,integer,non-unique,required,FALSE,[0-9]+,Median read length - calculated from raw data.
+median_read_length,numeric,non-unique,required,FALSE,[0-9]+,Median read length - calculated from raw data.
 NCBI_accession,character,unique,optional,TRUE,[ES]R[SR][0-9]+,Semicolon-separated vector of NCBI accessions.
 pregnant,character,non-unique,optional,FALSE,yes|no,Pregnancy of the subject (men: no).
 lactating,character,non-unique,optional,FALSE,yes|no,Lactating subjects (men: no).
