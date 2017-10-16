@@ -70,29 +70,6 @@ Data from the AsnicarF_2017 study
 }
 }
 
-\section{Exploratory Data Analysis}{
- 
-
-\if{html}{\figure{AsnicarF_2017_age.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{AsnicarF_2017_body_site.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{AsnicarF_2017_country.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{AsnicarF_2017_disease.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{AsnicarF_2017_gender.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-}
-
 \section{Source}{
  
 
@@ -105,7 +82,7 @@ Data from the AsnicarF_2017 study
 }
 
 \subsection{Lab}{
-   Centre for Integrative Biology, University of Trento, Trento, Italy.
+   [1] Centre for Integrative Biology, University of Trento, Trento, Italy., [2] Azienda Provinciale per i Servizi Sanitari, Trento, Italy.
 }
 
 \subsection{PMID}{
