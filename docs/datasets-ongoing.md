@@ -14,7 +14,6 @@ Shown below is a list of forthcoming datasets that have been chosen for inclusio
 | HuangAD_2016 | 27881416 | 2016 | Stool | Other condition | 10 | 
 | KorpelaK_2016 | 26811868 | 2016 | Stool | Other condition | 256 | 
 | KosticAD_2015 | 25662751 | 2015 | Stool | T1D | 124 | 
-| LiJ_2014 | 24997786 | 2014 | Stool | Other condition | 260 | 
 | LiJ_2017 | 28143587 | 2017 | Stool | Hypertension | 196 | 
 | LiSS_2016 | 27126044 | 2016 | Stool | Other condition | 430 | 
 | LuisS_2016 | 26919743 | 2016 | Stool | Obesity | 92 | 
