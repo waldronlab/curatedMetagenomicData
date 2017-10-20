@@ -9,8 +9,8 @@ Shown below is a list of forthcoming datasets that have been chosen for inclusio
 | --- | --- | --- | --- | --- | --- | 
 | BarnardE_2016 | 28000755 | 2016 | Skin | Acne | 78 | 
 | GeveresD_2014 | 24629344 | 2014 | Stool | CD | 50 | 
-| HMP_phaseII |  |  | Several | Other condition | 1200 | 
-| HMP2 |  |  | Several | IBD, T2D | 3528 | 
+| HMP_phaseII | - | - | Several | Other condition | 1200 | 
+| HMP2 | - | - | Several | IBD, T2D | 3528 | 
 | HuangAD_2016 | 27881416 | 2016 | Stool | Other condition | 10 | 
 | KorpelaK_2016 | 26811868 | 2016 | Stool | Other condition | 256 | 
 | KosticAD_2015 | 25662751 | 2015 | Stool | T1D | 124 | 
