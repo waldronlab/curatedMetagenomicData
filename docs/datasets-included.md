@@ -12,10 +12,12 @@ Shown below is the list of datasets currently included in the [development](http
 | Castro-NallarE_2015 | 26336637 | 2015 | Oral | Schizophrenia | 32 |
 | ChngKR_2016 | 27562258 | 2016 | Skin | Atopic dermatitis | 78 |
 | FengQ_2015 | 25758642 | 2015 | Stool | CRC | 154 |
+| HanniganGD_2017 | | 2017 | Stool | CRC | 82 | 
 | Heitz-BuschartA_2016 | 27723761 | 2016 | Stool | T1D | 53 |
 | HMP_2012 | 22699609 | 2012 | Several | None | 749 |
 | KarlssonFH_2013 | 23719380 | 2013 | Stool | T2D | 145 |
 | LeChatelierE_2013 | 23985870 | 2013 | Stool | Obesity | 292 |
+| LiJ_2014 | 24997786 | 2014 | Stool | Other condition | 260 |
 | LiuW_2016 | 27708392 | 2016 | Stool | Other condition	| 110 |
 | LomanNJ_2013 | 23571589 | 2013 | Stool | STEC | 43 |
 | NielsenHB_2014 | 24997787 | 2014 | Stool | IBD | 396 |
