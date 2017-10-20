@@ -12,7 +12,7 @@ Shown below is the list of datasets currently included in the [development](http
 | Castro-NallarE_2015 | 26336637 | 2015 | Oral | Schizophrenia | 32 |
 | ChngKR_2016 | 27562258 | 2016 | Skin | Atopic dermatitis | 78 |
 | FengQ_2015 | 25758642 | 2015 | Stool | CRC | 154 |
-| HanniganGD_2017 | | 2017 | Stool | CRC | 82 | 
+| HanniganGD_2017 | - | - | Stool | CRC | 82 | 
 | Heitz-BuschartA_2016 | 27723761 | 2016 | Stool | T1D | 53 |
 | HMP_2012 | 22699609 | 2012 | Several | None | 749 |
 | KarlssonFH_2013 | 23719380 | 2013 | Stool | T2D | 145 |
@@ -28,7 +28,7 @@ Shown below is the list of datasets currently included in the [development](http
 | RampelliS_2015 | 25981789 | 2015 | Stool | Other condition | 38 |
 | RaymondF_2016 | 26359913 | 2016 | Stool | Other condition | 72 |
 | SchirmerM_2016 | 27984736 | 2016 | Stool | None | 471 |
-| TettAJ_2016 | - | 2017 | Skin	| Psoriasis | 97 |
+| TettAJ_2016 | 28649415 | 2017 | Skin	| Psoriasis | 97 |
 | VatanenT_2016 | 27259157 | 2016 | Stool | Other condition | 785 |
 | VincentC_2016 | 26975510 | 2016 | Stool | CDI | 229 |
 | VogtmannE_2016 | 27171425 | 2016 | Stool | CRC | 110 |
