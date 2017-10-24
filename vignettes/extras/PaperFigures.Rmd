@@ -311,18 +311,16 @@ eset <- ExpressionSet(assayData = as.matrix(ab), phenoData = AnnotatedDataFrame(
 ## update
 pseq <- metaphlanToPhyloseq(tax = exprs(eset), metadat = pData(eset), split = ".")
 
-samp <- data.frame(sample_data(pseq))
-
 dist_bray <- distance(pseq, method = "bray")
 
 ord_bray <- ordinate(pseq, method = "PCoA", distance = dist_bray)
 
-samp$bray_cluster_2 <- factor(pam(dist_bray, k = 2, cluster.only = TRUE))
-sample_data(pseq) <- samp
+sample_data(pseq)$bray_cluster_2 <- factor(pam(dist_bray, k = 2, cluster.only = TRUE))
+
 
 Prev <- as.numeric(otu_table(pseq)["s__Prevotella_copri", ])
-samp$Prevotella_copri <- Prev
-sample_data(pseq) <- samp
+sample_data(pseq)$Prevotella_copri <- Prev
+
 
 pc1 <- ord_bray$vectors[, 1]
 pc2 <- ord_bray$vectors[, 2]
@@ -331,17 +329,31 @@ otu_tax <- attr(otu_table(pseq), "dimnames")[[1]]
 otu_bacteroides <- otu_table(pseq)[grep("s__Bacteroides", otu_tax), ]
 sum_bacteroides <- apply(otu_bacteroides, 2, sum)
 
-df_ordinate <- data.frame(pc1, pc2, bact = sum_bacteroides, prev = Prev, bray2 = as.numeric(samp$bray_cluster_2) + 20)
-df_bact <- df_ordinate[df_ordinate$bray2 == 22, ]
-df_prev <- df_ordinate[df_ordinate$bray2 == 21, ]
+df_ordinate <- data.frame(pc1, pc2, bact = sum_bacteroides, prev = Prev, bray2 = sample_data(pseq)$bray_cluster_2)
+df_bact <- df_ordinate[df_ordinate$bray2 == 2, ]
+df_prev <- df_ordinate[df_ordinate$bray2 == 1, ]
+
+
 
 ggplot() +
-    geom_point(data = df_prev, aes(x = pc1, y = pc2, shape = factor(bray2), fill = prev), shape = 21, size = 4) +
-    scale_fill_gradient(low = "white", high = purple, guide = guide_colorbar(direction = "horizontal", title = "Prevotella copri \n(cluster 2)")) +
-    geom_point(data = df_bact, aes(x = pc1, y = pc2, shape = factor(bray2), color = bact), shape = 22, size = 4) +
-    scale_color_gradient(low = lightBlack, high = blueGreen, guide = guide_colorbar(direction = "horizontal", title = "Bacteroides \n(cluster 1)")) +
-    labs(x = "Axis 1", y = "Axis 2", title = "PCoA on species abundance, displaying 2 clusters") +
-    theme(axis.ticks = element_blank(), axis.text = element_blank(), legend.box = "vertical", legend.position = c(0.775, 0.125), plot.title = element_text(hjust = 0.5))
+  theme(panel.background = element_rect(fill = "white",
+                                        colour = "white",
+                                        linetype = "solid"),
+        panel.grid.major = element_line(size = 0.5, linetype = 'solid',
+                                        colour = gray)) +
+  geom_point(data = df_prev, aes(x = pc1, y = pc2, shape = factor(bray2), fill = prev, color=bact), size = 2, alpha=0.5, stroke=1) +
+  scale_fill_gradient(low = "white", high = purple) +
+  geom_point(data = df_bact, aes(x = pc1, y = pc2, shape = factor(bray2), color = bact), size = 3, alpha=0.5) +
+  scale_color_gradient(low = gray, high = "black") +
+  labs(x = "Axis 1", y = "Axis 2", title = "PCoA on species abundance, displaying 2 clusters") +
+  theme(axis.ticks = element_blank(), axis.text = element_blank(), 
+        legend.box = "vertical", legend.position = c(0.175, 0.125), legend.key = element_rect(fill="white"), 
+        plot.title = element_text(hjust = 0.5)) +
+  scale_shape_manual(values=c(21,18), name="Cluster") +
+  guides(shape = guide_legend(ncol=1, labels=c(1,2), order=1),
+         fill = guide_colorbar(direction = "horizontal", title = "Prevotella copri"),
+         colour = guide_colorbar(direction = "horizontal", title = "Bacteroides"))
+
 ```
 
 # Figure 1, Example 3: Abundance across samples
