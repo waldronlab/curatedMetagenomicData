@@ -35,3 +35,7 @@ Shown below is the list of datasets currently included in the [development](http
 | XieH_2016 | 27818083 | 2016 | Stool | Other condition | 250 |
 | YuJ_2015 | 26408641 | 2015 | Stool | CRC | 128 |
 | ZellerG_2014 | 25432777 | 2014 | Stool | CRC | 199 |
+
+The figure shows datasets ordered from lowest to highest median read depth, with boxes colored by body site.
+
+![alt text](/curatedMetagenomicData/assets/img/datasets_depth.png)
