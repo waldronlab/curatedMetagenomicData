@@ -38,4 +38,4 @@ Shown below is the list of datasets currently included in the [development](http
 
 The figure shows datasets ordered from lowest to highest median read depth, with boxes colored by body site.
 
-[![](/curatedMetagenomicData/assets/img/datasets_depth.png)]
+![](/curatedMetagenomicData/assets/img/datasets_depth.png)
