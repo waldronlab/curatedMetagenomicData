@@ -4,6 +4,12 @@ title: Publications
 ---
 Publications and presentations relating to *curatedMetagenomicData* will be collected here.
 
+> ### November 1, 2017
+>
+> The [paper](https://t.co/bKtkgoHtSx){:target="_blank"} is out in the November 2017 issue of Nature Methods.
+>
+> [![](/curatedMetagenomicData/assets/img/NMETH_paper.png)](https://t.co/bKtkgoHtSx){:target="_blank"}
+
 > ### June 21, 2017
 >
 > Update of the [biorXiv](http://biorxiv.org/content/early/2017/06/21/103085){:target="_blank"} preprint of our forthcoming paper.
