@@ -4,6 +4,7 @@ title: Ongoing datasets
 ---
 
 Shown below is a list of forthcoming datasets that have been chosen for inclusion in *curatedMetagenomicData*.
+Thanks to Valentina Giunchiglia for the curation of these additional datasets. 
 
 | Dataset Name | PMID | Publication Year | Bodysite | Disease | Number of Samples | 
 | --- | --- | --- | --- | --- | --- | 
