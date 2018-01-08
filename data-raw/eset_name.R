@@ -1,5 +1,0 @@
-eset_name <- function(dataset_dir, data_type, bodysite) {
-    basename(dataset_dir) %>%
-    paste(., data_type, bodysite, sep = ".") %>%
-    gsub("-", "_", .)
-}
