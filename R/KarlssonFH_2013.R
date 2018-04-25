@@ -30,32 +30,6 @@
 #'    An ExpressionSet with 145 samples and 13,392 features specific to the stool body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{KarlssonFH_2013_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{KarlssonFH_2013_antibiotics_current_use.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{KarlssonFH_2013_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{KarlssonFH_2013_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{KarlssonFH_2013_disease.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{KarlssonFH_2013_gender.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -67,7 +41,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    Department of Chemical and Biological Engineering, Chalmers University of Technology, SE-412 96 Gothenburg, Sweden.
+#'    [1] Department of Chemical and Biological Engineering, Chalmers University of Technology, SE-412 96 Gothenburg, Sweden.
 #' }
 #'
 #' \subsection{PMID}{
@@ -78,4 +52,3 @@
 #' 
 #' @name KarlssonFH_2013 
 NULL
- 

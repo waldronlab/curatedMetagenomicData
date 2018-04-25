@@ -40,25 +40,6 @@ Data from the LeChatelierE_2013 study
 }
 }
 
-\section{Exploratory Data Analysis}{
- 
-
-\if{html}{\figure{LeChatelierE_2013_antibiotics_current_use.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{LeChatelierE_2013_BMI.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{LeChatelierE_2013_body_site.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{LeChatelierE_2013_country.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-}
-
 \section{Source}{
  
 
@@ -71,7 +52,7 @@ Data from the LeChatelierE_2013 study
 }
 
 \subsection{Lab}{
-   INRA, Institut National de la Recherche Agronomique, US1367 Metagenopolis, 78350 Jouy en Josas, France.
+   [1] INRA, Institut National de la Recherche Agronomique, US1367 Metagenopolis, 78350 Jouy en Josas, France.
 }
 
 \subsection{PMID}{

@@ -40,37 +40,6 @@ Data from the SchirmerM_2016 study
 }
 }
 
-\section{Exploratory Data Analysis}{
- 
-
-\if{html}{\figure{SchirmerM_2016_age.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{SchirmerM_2016_antibiotics_current_use.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{SchirmerM_2016_BMI.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{SchirmerM_2016_body_site.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{SchirmerM_2016_country.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{SchirmerM_2016_disease.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{SchirmerM_2016_gender.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-}
-
 \section{Source}{
  
 
@@ -79,7 +48,7 @@ Data from the SchirmerM_2016 study
 }
 
 \subsection{Author}{
-   Schirmer M, Smeekens SP, Vlamakis H, Jaeger M, Oosting M, Franzosa EA, Horst RT, Jansen T, Jacobs L, Bonder MJ, Kurilshikov A, Fu J, Joosten LA, Zhernakova A, Huttenhower C, Wijmenga C, Netea MG, Xavier RJ
+   Schirmer M, Smeekens SP, Vlamakis H, Jaeger M, Oosting M, Franzosa EA, Horst RT, Jansen T, Jacobs L, Bonder MJ, Kurilshikov A, Fu J, Joosten LAB, Zhernakova A, Huttenhower C, Wijmenga C, Netea MG, Xavier RJ
 }
 
 \subsection{Lab}{

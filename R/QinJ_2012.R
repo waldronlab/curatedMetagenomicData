@@ -30,32 +30,6 @@
 #'    An ExpressionSet with 363 samples and 18,478 features specific to the stool body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{QinJ_2012_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{QinJ_2012_BMI.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{QinJ_2012_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{QinJ_2012_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{QinJ_2012_disease.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{QinJ_2012_gender.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -67,7 +41,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    BGI-Shenzhen, Shenzhen 518083, China.
+#'    [1] BGI-Shenzhen, Shenzhen 518083, China.
 #' }
 #'
 #' \subsection{PMID}{
@@ -78,4 +52,3 @@
 #' 
 #' @name QinJ_2012 
 NULL
- 

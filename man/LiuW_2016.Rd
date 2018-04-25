@@ -40,17 +40,6 @@ Data from the LiuW_2016 study
 }
 }
 
-\section{Exploratory Data Analysis}{
- 
-
-\if{html}{\figure{LiuW_2016_body_site.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{LiuW_2016_country.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-}
-
 \section{Source}{
  
 
@@ -63,7 +52,7 @@ Data from the LiuW_2016 study
 }
 
 \subsection{Lab}{
-   Key Laboratory of Dairy Biotechnology and Engineering, Education Ministry of P. R. China, Department of Food Science and Engineering, Inner Mongolia Agricultural University, Hohhot 010018, China.
+   [1] Key Laboratory of Dairy Biotechnology and Engineering, Education Ministry of P. R. China, Department of Food Science and Engineering, Inner Mongolia Agricultural University, Hohhot 010018, China., [2] RealBio Genomic Institute, Shanghai 200050, China., [3] State Key Laboratory for Diagnosis and Treatment of Infectious Disease, Collaborative Innovation Center for Diagnosis and Treatment of Infectious Diseases, the First Affiliated Hospital, Zhejiang University, Hangzhou 310003, China.
 }
 
 \subsection{PMID}{

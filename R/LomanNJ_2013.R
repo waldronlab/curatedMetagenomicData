@@ -30,20 +30,6 @@
 #'    An ExpressionSet with 43 samples and 8,657 features specific to the stool body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{LomanNJ_2013_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{LomanNJ_2013_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{LomanNJ_2013_disease.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -55,7 +41,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    Institute of Microbiology and Infection, University of Birmingham, Birmingham, England.
+#'    [1] Institute of Microbiology and Infection, University of Birmingham, Birmingham, England.
 #' }
 #'
 #' \subsection{PMID}{
@@ -66,4 +52,3 @@
 #' 
 #' @name LomanNJ_2013 
 NULL
- 

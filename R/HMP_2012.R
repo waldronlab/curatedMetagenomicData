@@ -2,7 +2,7 @@
 ## see source in data-raw/make_data_documentation.R 
 #' Data from the HMP_2012 study
 #' 
-#' @aliases HMP_2012.genefamilies_relab.nasalcavity HMP_2012.genefamilies_relab.oralcavity HMP_2012.genefamilies_relab.stool HMP_2012.genefamilies_relab.vagina HMP_2012.marker_abundance.nasalcavity HMP_2012.marker_abundance.oralcavity HMP_2012.marker_abundance.stool HMP_2012.marker_abundance.vagina HMP_2012.marker_presence.nasalcavity HMP_2012.marker_presence.oralcavity HMP_2012.marker_presence.stool HMP_2012.marker_presence.vagina HMP_2012.metaphlan_bugs_list.nasalcavity HMP_2012.metaphlan_bugs_list.oralcavity HMP_2012.metaphlan_bugs_list.stool HMP_2012.metaphlan_bugs_list.vagina HMP_2012.pathabundance_relab.nasalcavity HMP_2012.pathabundance_relab.oralcavity HMP_2012.pathabundance_relab.stool HMP_2012.pathabundance_relab.vagina HMP_2012.pathcoverage.nasalcavity HMP_2012.pathcoverage.oralcavity HMP_2012.pathcoverage.stool HMP_2012.pathcoverage.vagina 
+#' @aliases HMP_2012.genefamilies_relab.nasalcavity HMP_2012.genefamilies_relab.oralcavity HMP_2012.genefamilies_relab.skin HMP_2012.genefamilies_relab.stool HMP_2012.genefamilies_relab.vagina HMP_2012.marker_abundance.nasalcavity HMP_2012.marker_abundance.oralcavity HMP_2012.marker_abundance.skin HMP_2012.marker_abundance.stool HMP_2012.marker_abundance.vagina HMP_2012.marker_presence.nasalcavity HMP_2012.marker_presence.oralcavity HMP_2012.marker_presence.skin HMP_2012.marker_presence.stool HMP_2012.marker_presence.vagina HMP_2012.metaphlan_bugs_list.nasalcavity HMP_2012.metaphlan_bugs_list.oralcavity HMP_2012.metaphlan_bugs_list.skin HMP_2012.metaphlan_bugs_list.stool HMP_2012.metaphlan_bugs_list.vagina HMP_2012.pathabundance_relab.nasalcavity HMP_2012.pathabundance_relab.oralcavity HMP_2012.pathabundance_relab.skin HMP_2012.pathabundance_relab.stool HMP_2012.pathabundance_relab.vagina HMP_2012.pathcoverage.nasalcavity HMP_2012.pathcoverage.oralcavity HMP_2012.pathcoverage.skin HMP_2012.pathcoverage.stool HMP_2012.pathcoverage.vagina 
 #' 
 #' @section Datasets: 
 #' 
@@ -11,7 +11,11 @@
 #' }
 #'
 #' \subsection{HMP_2012.genefamilies_relab.oralcavity}{
-#'    An ExpressionSet with 506 samples and 1,964,480 features specific to the oralcavity body site
+#'    An ExpressionSet with 479 samples and 1,964,480 features specific to the oralcavity body site
+#' }
+#'
+#' \subsection{HMP_2012.genefamilies_relab.skin}{
+#'    An ExpressionSet with 27 samples and 1,964,480 features specific to the skin body site
 #' }
 #'
 #' \subsection{HMP_2012.genefamilies_relab.stool}{
@@ -27,7 +31,11 @@
 #' }
 #'
 #' \subsection{HMP_2012.marker_abundance.oralcavity}{
-#'    An ExpressionSet with 506 samples and 162,107 features specific to the oralcavity body site
+#'    An ExpressionSet with 479 samples and 162,107 features specific to the oralcavity body site
+#' }
+#'
+#' \subsection{HMP_2012.marker_abundance.skin}{
+#'    An ExpressionSet with 27 samples and 162,107 features specific to the skin body site
 #' }
 #'
 #' \subsection{HMP_2012.marker_abundance.stool}{
@@ -43,7 +51,11 @@
 #' }
 #'
 #' \subsection{HMP_2012.marker_presence.oralcavity}{
-#'    An ExpressionSet with 506 samples and 158,645 features specific to the oralcavity body site
+#'    An ExpressionSet with 479 samples and 158,645 features specific to the oralcavity body site
+#' }
+#'
+#' \subsection{HMP_2012.marker_presence.skin}{
+#'    An ExpressionSet with 27 samples and 158,645 features specific to the skin body site
 #' }
 #'
 #' \subsection{HMP_2012.marker_presence.stool}{
@@ -59,7 +71,11 @@
 #' }
 #'
 #' \subsection{HMP_2012.metaphlan_bugs_list.oralcavity}{
-#'    An ExpressionSet with 506 samples and 1,988 features specific to the oralcavity body site
+#'    An ExpressionSet with 479 samples and 1,988 features specific to the oralcavity body site
+#' }
+#'
+#' \subsection{HMP_2012.metaphlan_bugs_list.skin}{
+#'    An ExpressionSet with 27 samples and 1,988 features specific to the skin body site
 #' }
 #'
 #' \subsection{HMP_2012.metaphlan_bugs_list.stool}{
@@ -75,7 +91,11 @@
 #' }
 #'
 #' \subsection{HMP_2012.pathabundance_relab.oralcavity}{
-#'    An ExpressionSet with 506 samples and 23,271 features specific to the oralcavity body site
+#'    An ExpressionSet with 479 samples and 23,271 features specific to the oralcavity body site
+#' }
+#'
+#' \subsection{HMP_2012.pathabundance_relab.skin}{
+#'    An ExpressionSet with 27 samples and 23,271 features specific to the skin body site
 #' }
 #'
 #' \subsection{HMP_2012.pathabundance_relab.stool}{
@@ -91,7 +111,11 @@
 #' }
 #'
 #' \subsection{HMP_2012.pathcoverage.oralcavity}{
-#'    An ExpressionSet with 506 samples and 23,271 features specific to the oralcavity body site
+#'    An ExpressionSet with 479 samples and 23,271 features specific to the oralcavity body site
+#' }
+#'
+#' \subsection{HMP_2012.pathcoverage.skin}{
+#'    An ExpressionSet with 27 samples and 23,271 features specific to the skin body site
 #' }
 #'
 #' \subsection{HMP_2012.pathcoverage.stool}{
@@ -101,28 +125,6 @@
 #' \subsection{HMP_2012.pathcoverage.vagina}{
 #'    An ExpressionSet with 5 samples and 23,271 features specific to the vagina body site
 #' }
-#' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{HMP_2012_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{HMP_2012_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{HMP_2012_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{HMP_2012_disease.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{HMP_2012_gender.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
 #' 
 #' @section Source: 
 #' 
@@ -146,4 +148,3 @@
 #' 
 #' @name HMP_2012 
 NULL
- 

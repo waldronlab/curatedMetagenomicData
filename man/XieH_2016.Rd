@@ -40,25 +40,6 @@ Data from the XieH_2016 study
 }
 }
 
-\section{Exploratory Data Analysis}{
- 
-
-\if{html}{\figure{XieH_2016_age.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{XieH_2016_body_site.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{XieH_2016_country.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{XieH_2016_gender.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-}
-
 \section{Source}{
  
 
@@ -71,7 +52,7 @@ Data from the XieH_2016 study
 }
 
 \subsection{Lab}{
-   BGI-Shenzhen, Shenzhen 518083, China; China National Genebank-Shenzhen, BGI-Shenzhen, Shenzhen 518083, China.
+   [1] BGI-Shenzhen, Shenzhen 518083, China; China National Genebank-Shenzhen, BGI-Shenzhen, Shenzhen 518083, China., [2] BGI-Shenzhen, Shenzhen 518083, China; China National Genebank-Shenzhen, BGI-Shenzhen, Shenzhen 518083, China; Shenzhen Engineering Laboratory of Detection and Intervention of Human Intestinal Microbiome, BGI-Shenzhen, Shenzhen 518083, China; Macau University of Science and Technology, Taipa, Macau 999078, China., [3] BGI-Shenzhen, Shenzhen 518083, China; China National Genebank-Shenzhen, BGI-Shenzhen, Shenzhen 518083, China; Shenzhen Engineering Laboratory of Detection and Intervention of Human Intestinal Microbiome, BGI-Shenzhen, Shenzhen 518083, China., [4] BGI-Shenzhen, Shenzhen 518083, China., [5] Department of Twin Research and Genetic Epidemiology, King's College London, London SE1 7EH, UK., [6] BGI-Shenzhen, Shenzhen 518083, China; BGI Education Center, University of Chinese Academy of Sciences, Shenzhen 518083, China., [7] BGI-Shenzhen, Shenzhen 518083, China; Qingdao University-BGI Joint Innovation College, Qingdao University, Qingdao 266071, China., [8] BGI-Shenzhen, Shenzhen 518083, China; China National Genebank-Shenzhen, BGI-Shenzhen, Shenzhen 518083, China; Shenzhen Key Laboratory of Human Commensal Microorganisms and Health Research, BGI-Shenzhen, Shenzhen 518083, China., [9] BGI-Shenzhen, Shenzhen 518083, China; China National Genebank-Shenzhen, BGI-Shenzhen, Shenzhen 518083, China; BGI Education Center, University of Chinese Academy of Sciences, Shenzhen 518083, China., [10] BGI-Shenzhen, Shenzhen 518083, China; China National Genebank-Shenzhen, BGI-Shenzhen, Shenzhen 518083, China; James D. Watson Institute of Genome Sciences, Hangzhou 310058, China., [11] BGI-Shenzhen, Shenzhen 518083, China; Department of Biology, University of Copenhagen, Ole Maaloes Vej 5, 2200 Copenhagen, Denmark., [12] BGI-Shenzhen, Shenzhen 518083, China; Macau University of Science and Technology, Taipa, Macau 999078, China; Shenzhen Key Laboratory of Human Commensal Microorganisms and Health Research, BGI-Shenzhen, Shenzhen 518083, China., [13] BGI-Shenzhen, Shenzhen 518083, China; China National Genebank-Shenzhen, BGI-Shenzhen, Shenzhen 518083, China; Shenzhen Key Laboratory of Human Commensal Microorganisms and Health Research, BGI-Shenzhen, Shenzhen 518083, China. Electronic address: lijunhua@genomics.cn., [14] Department of Twin Research and Genetic Epidemiology, King's College London, London SE1 7EH, UK. Electronic address: tim.spector@kcl.ac.uk., [15] BGI-Shenzhen, Shenzhen 518083, China; China National Genebank-Shenzhen, BGI-Shenzhen, Shenzhen 518083, China; Macau University of Science and Technology, Taipa, Macau 999078, China; Shenzhen Key Laboratory of Human Commensal Microorganisms and Health Research, BGI-Shenzhen, Shenzhen 518083, China. Electronic address: jiahuijue@genomics.cn.
 }
 
 \subsection{PMID}{

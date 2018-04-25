@@ -54,28 +54,6 @@
 #'    An ExpressionSet with 16 samples and 9,274 features specific to the stool body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{AsnicarF_2017_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{AsnicarF_2017_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{AsnicarF_2017_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{AsnicarF_2017_disease.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{AsnicarF_2017_gender.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -87,7 +65,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    Centre for Integrative Biology, University of Trento, Trento, Italy.
+#'    [1] Centre for Integrative Biology, University of Trento, Trento, Italy., [2] Azienda Provinciale per i Servizi Sanitari, Trento, Italy.
 #' }
 #'
 #' \subsection{PMID}{
@@ -98,4 +76,3 @@
 #' 
 #' @name AsnicarF_2017 
 NULL
- 

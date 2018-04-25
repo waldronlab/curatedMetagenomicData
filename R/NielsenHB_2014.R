@@ -30,28 +30,6 @@
 #'    An ExpressionSet with 396 samples and 17,280 features specific to the stool body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{NielsenHB_2014_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{NielsenHB_2014_BMI.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{NielsenHB_2014_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{NielsenHB_2014_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{NielsenHB_2014_disease.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -63,7 +41,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    [1] Center for Biological Sequence Analysis, Technical University of Denmark, Kongens Lyngby, Denmark. [2] Novo Nordisk Foundation Center for Biosustainability, Technical University of Denmark, Kongens Lyngby, Denmark. [3].
+#'    [1] 1] Center for Biological Sequence Analysis, Technical University of Denmark, Kongens Lyngby, Denmark. [2] Novo Nordisk Foundation Center for Biosustainability, Technical University of Denmark, Kongens Lyngby, Denmark. [3]., [2] 1] INRA, Institut National de la Recherche Agronomique, UMR 14121 MICALIS, Jouy en Josas, France. [2] INRA, Institut National de la Recherche Agronomique, US 1367 Metagenopolis, Jouy en Josas, France. [3] Department of Computer Science, Center for Bioinformatics and Computational Biology, University of Maryland, USA. [4]., [3] 1] Center for Biological Sequence Analysis, Technical University of Denmark, Kongens Lyngby, Denmark. [2] Novo Nordisk Foundation Center for Biosustainability, Technical University of Denmark, Kongens Lyngby, Denmark., [4] Center for Biological Sequence Analysis, Technical University of Denmark, Kongens Lyngby, Denmark., [5] 1] BGI Hong Kong Research Institute, Hong Kong, China. [2] BGI-Shenzhen, Shenzhen, China. [3] School of Bioscience and Biotechnology, South China University of Technology, Guangzhou, China., [6] European Molecular Biology Laboratory, Heidelberg, Germany., [7] 1] INRA, Institut National de la Recherche Agronomique, UMR 14121 MICALIS, Jouy en Josas, France. [2] INRA, Institut National de la Recherche Agronomique, US 1367 Metagenopolis, Jouy en Josas, France., [8] 1] Commissariat a l'Energie Atomique et aux Energies Alternatives, Institut de Genomique, Evry, France. [2] Centre National de la Recherche Scientifique, Evry, France. [3] Universite d'Evry Val d'Essonne, Evry, France., [9] The Novo Nordisk Foundation Center for Basic Metabolic Research, University of Copenhagen, Copenhagen, Denmark., [10] Digestive System Research Unit, University Hospital Vall d'Hebron, Ciberehd, Barcelona, Spain., [11] 1] BGI-Shenzhen, Shenzhen, China. [2] European Molecular Biology Laboratory, Heidelberg, Germany. [3] The Novo Nordisk Foundation Center for Basic Metabolic Research, University of Copenhagen, Copenhagen, Denmark., [12] Novo Nordisk Foundation Center for Biosustainability, Technical University of Denmark, Kongens Lyngby, Denmark., [13] 1] The Novo Nordisk Foundation Center for Basic Metabolic Research, University of Copenhagen, Copenhagen, Denmark. [2] Faculty of Health Sciences, University of Southern Denmark, Odense, Denmark., [14] 1] Department of Structural Biology, VIB, Brussels, Belgium. [2] Department of Bioscience Engineering, Vrije Universiteit, Brussels, Belgium., [15] National Food Institute, Division for Epidemiology and Microbial Genomics, Technical University of Denmark, Kongens Lyngby, Denmark., [16] 1] BGI-Shenzhen, Shenzhen, China. [2] Department of Biology, University of Copenhagen, Copenhagen, Denmark., [17] 1] The Novo Nordisk Foundation Center for Basic Metabolic Research, University of Copenhagen, Copenhagen, Denmark. [2] Hagedorn Research Institute, Gentofte, Denmark. [3] Institute of Biomedical Science, Faculty of Health and Medical Sciences, University of Copenhagen, Copenhagen, Denmark. [4] Faculty of Health, Aarhus University, Aarhus, Denmark., [18] 1] BGI Hong Kong Research Institute, Hong Kong, China. [2] BGI-Shenzhen, Shenzhen, China., [19] 1] Department of Bioscience Engineering, Vrije Universiteit, Brussels, Belgium. [2] Department of Microbiology and Immunology, Rega Institute, KU Leuven, Belgium. [3] VIB Center for the Biology of Disease, Leuven, Belgium., [20] Section of Microbiology, Department of Biology, University of Copenhagen, Copenhagen, Denmark., [21] Laboratory of Microbiology, Wageningen University, Wageningen, The Netherlands., [22] 1] European Molecular Biology Laboratory, Heidelberg, Germany. [2] Department of Biological Information, Tokyo Institute of Technology, Yokohama, Japan., [23] INRA, Institut National de la Recherche Agronomique, UMR 14121 MICALIS, Jouy en Josas, France., [24] 1] European Molecular Biology Laboratory, Heidelberg, Germany. [2] Max Delbruck Centre for Molecular Medicine, Berlin, Germany., [25] 1] BGI-Shenzhen, Shenzhen, China. [2] The Novo Nordisk Foundation Center for Basic Metabolic Research, University of Copenhagen, Copenhagen, Denmark. [3] Department of Biology, University of Copenhagen, Copenhagen, Denmark. [4] Princess Al Jawhara Center of Excellence in the Research of Hereditary Disorders, King Abdulaziz University, Jeddah, Saudi Arabia., [26] 1] INRA, Institut National de la Recherche Agronomique, UMR 14121 MICALIS, Jouy en Josas, France. [2] INRA, Institut National de la Recherche Agronomique, US 1367 Metagenopolis, Jouy en Josas, France. [3] King's College London, Centre for Host-Microbiome Interactions, Dental Institute Central Office, Guy's Hospital, United Kingdom.
 #' }
 #'
 #' \subsection{PMID}{
@@ -74,4 +52,3 @@
 #' 
 #' @name NielsenHB_2014 
 NULL
- 

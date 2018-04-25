@@ -40,33 +40,6 @@ Data from the QinJ_2012 study
 }
 }
 
-\section{Exploratory Data Analysis}{
- 
-
-\if{html}{\figure{QinJ_2012_age.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{QinJ_2012_BMI.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{QinJ_2012_body_site.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{QinJ_2012_country.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{QinJ_2012_disease.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{QinJ_2012_gender.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-}
-
 \section{Source}{
  
 
@@ -79,7 +52,7 @@ Data from the QinJ_2012 study
 }
 
 \subsection{Lab}{
-   BGI-Shenzhen, Shenzhen 518083, China.
+   [1] BGI-Shenzhen, Shenzhen 518083, China.
 }
 
 \subsection{PMID}{

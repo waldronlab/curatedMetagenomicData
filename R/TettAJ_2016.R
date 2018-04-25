@@ -7,75 +7,48 @@
 #' @section Datasets: 
 #' 
 #' \subsection{TettAJ_2016.genefamilies_relab.skin}{
-#'    An ExpressionSet with 97 samples and 1,183,853 features specific to the skin body site
+#'    An ExpressionSet with 97 samples and 1,177,112 features specific to the skin body site
 #' }
 #'
 #' \subsection{TettAJ_2016.marker_abundance.skin}{
-#'    An ExpressionSet with 97 samples and 64,039 features specific to the skin body site
+#'    An ExpressionSet with 97 samples and 64,205 features specific to the skin body site
 #' }
 #'
 #' \subsection{TettAJ_2016.marker_presence.skin}{
-#'    An ExpressionSet with 97 samples and 57,428 features specific to the skin body site
+#'    An ExpressionSet with 97 samples and 59,833 features specific to the skin body site
 #' }
 #'
 #' \subsection{TettAJ_2016.metaphlan_bugs_list.skin}{
-#'    An ExpressionSet with 97 samples and 1,004 features specific to the skin body site
+#'    An ExpressionSet with 97 samples and 1,002 features specific to the skin body site
 #' }
 #'
 #' \subsection{TettAJ_2016.pathabundance_relab.skin}{
-#'    An ExpressionSet with 97 samples and 21,899 features specific to the skin body site
+#'    An ExpressionSet with 97 samples and 18,914 features specific to the skin body site
 #' }
 #'
 #' \subsection{TettAJ_2016.pathcoverage.skin}{
-#'    An ExpressionSet with 97 samples and 21,899 features specific to the skin body site
+#'    An ExpressionSet with 97 samples and 18,914 features specific to the skin body site
 #' }
-#' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{TettAJ_2016_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{TettAJ_2016_antibiotics_current_use.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{TettAJ_2016_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{TettAJ_2016_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{TettAJ_2016_disease.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{TettAJ_2016_gender.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
 #' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
-#'    NA
+#'    Unexplored diversity and strain-level structure of the skin microbiome associated with psoriasis.
 #' }
 #'
 #' \subsection{Author}{
-#'    NA
+#'    Tett A, Pasolli E, Farina S, Truong DT, Asnicar F, Zolfo M, Beghini F, Armanini F, Jousson O, De Sanctis V, Bertorelli R, Girolomoni G, Cristofolini M, Segata N
 #' }
 #'
 #' \subsection{Lab}{
-#'    NA
+#'    [1] Centre for Integrative Biology, University of Trento, Trento, Italy., [2] Istituto G.B. Mattei, Comano, Italy., [3] NGS Facility, Laboratory of Biomolecular Sequence and Structure Analysis for Health, Centre for Integrative Biology, University of Trento, Trento, Italy., [4] Department of Medicine, Section of Dermatology, University of Verona, Verona, Italy.
 #' }
 #'
 #' \subsection{PMID}{
-#'    NA
+#'    28649415
 #' }
 #' 
 #' @examples TettAJ_2016.metaphlan_bugs_list.skin()
 #' 
 #' @name TettAJ_2016 
 NULL
- 

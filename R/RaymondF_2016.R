@@ -30,32 +30,6 @@
 #'    An ExpressionSet with 72 samples and 8,562 features specific to the stool body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{RaymondF_2016_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{RaymondF_2016_antibiotics_current_use.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{RaymondF_2016_BMI.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{RaymondF_2016_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{RaymondF_2016_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{RaymondF_2016_gender.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -67,7 +41,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    Centre de Recherche en Infectiologie, CHU de Quebec-Universite Laval, Quebec, Canada.
+#'    [1] Centre de Recherche en Infectiologie, CHU de Quebec-Universite Laval, Quebec, Canada., [2] Institut National de Sante Publique du Quebec, Laboratoire de Sante Publique du Quebec, Montreal, Quebec, Canada.
 #' }
 #'
 #' \subsection{PMID}{
@@ -78,4 +52,3 @@
 #' 
 #' @name RaymondF_2016 
 NULL
- 

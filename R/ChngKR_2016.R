@@ -30,32 +30,6 @@
 #'    An ExpressionSet with 78 samples and 10,995 features specific to the skin body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{ChngKR_2016_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{ChngKR_2016_BMI.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{ChngKR_2016_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{ChngKR_2016_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{ChngKR_2016_disease.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{ChngKR_2016_gender.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -67,7 +41,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    Genome Institute of Singapore, Singapore 138672, Singapore.
+#'    [1] Genome Institute of Singapore, Singapore 138672, Singapore., [2] Institute of Medical Biology, Singapore 138648, Singapore., [3] Institute of Molecular and Cell Biology, Singapore 138673, Singapore., [4] Department of Neurology, The First Affiliated Hospital of Zhengzhou University, Zhengzhou, Henan 450001, China., [5] Institute of Biomedical Studies, Baylor University, Waco, Texas 76798, USA., [6] Department of Biological Sciences, National University of Singapore, Singapore 117543., [7] Singapore Immunology Network, Singapore 138648, Singapore., [8] Division of Plastic, Reconstructive &amp;Aesthetic Surgery, National University Health System, Singapore 119074, Singapore., [9] National Skin Centre, Singapore 308205, Singapore., [10] Department of Microbiology and Immunology, National University of Singapore, Singapore 117545, Singapore.
 #' }
 #'
 #' \subsection{PMID}{
@@ -78,4 +52,3 @@
 #' 
 #' @name ChngKR_2016 
 NULL
- 

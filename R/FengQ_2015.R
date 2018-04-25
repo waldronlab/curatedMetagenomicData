@@ -30,32 +30,6 @@
 #'    An ExpressionSet with 154 samples and 16,866 features specific to the stool body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{FengQ_2015_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{FengQ_2015_BMI.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{FengQ_2015_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{FengQ_2015_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{FengQ_2015_disease.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{FengQ_2015_gender.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -67,7 +41,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    [1] BGI-Shenzhen, Shenzhen 518083, China [2] Department of Biology, University of Copenhagen, Ole Maaloes Vej 5, 2200 Copenhagen, Denmark.
+#'    [1] 1] BGI-Shenzhen, Shenzhen 518083, China [2] Department of Biology, University of Copenhagen, Ole Maaloes Vej 5, 2200 Copenhagen, Denmark., [2] 1] BGI-Shenzhen, Shenzhen 518083, China [2] School of Bioscience and Biotechnology, South China University of Technology, Guangzhou 510006, China., [3] BGI-Shenzhen, Shenzhen 518083, China., [4] Department of Internal Medicine, Hospital Oberndorf, Teaching Hospital of the Paracelsus Private University of Salzburg, Paracelsusstrasse 37, 5110 Oberndorf, Austria., [5] 1] BGI-Shenzhen, Shenzhen 518083, China [2] School of Bioscience and Biotechnology, South China University of Technology, Guangzhou 510006, China [3] BGI Hong Kong Research Institute, Hong Kong, China., [6] 1] BGI-Shenzhen, Shenzhen 518083, China [2] Princess Al Jawhara Center of Excellence in the Research of Hereditary Disorders, King Abdulaziz University, Jeddah 21589, Saudi Arabia., [7] 1] BGI-Shenzhen, Shenzhen 518083, China [2] The Novo Nordisk Foundation Center for Basic Metabolic Research, Faculty of Health and Medical Sciences, University of Copenhagen, 2200 Copenhagen, Denmark., [8] First Department of Internal Medicine, Medical University Innsbruck, Anichstrasse 35, 6020 Innsbruck, Austria., [9] 1] BGI-Shenzhen, Shenzhen 518083, China [2] Department of Biology, University of Copenhagen, Ole Maaloes Vej 5, 2200 Copenhagen, Denmark [3] Princess Al Jawhara Center of Excellence in the Research of Hereditary Disorders, King Abdulaziz University, Jeddah 21589, Saudi Arabia [4] Macau University of Science and Technology, Avenida Wai long, Taipa, Macau 999078, China.
 #' }
 #'
 #' \subsection{PMID}{
@@ -78,4 +52,3 @@
 #' 
 #' @name FengQ_2015 
 NULL
- 

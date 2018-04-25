@@ -30,20 +30,6 @@
 #'    An ExpressionSet with 128 samples and 15,487 features specific to the stool body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{YuJ_2015_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{YuJ_2015_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{YuJ_2015_disease.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -55,7 +41,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    Department of Medicine &amp; Therapeutics, State Key Laboratory of Digestive Disease, Institute of Digestive Disease, LKS Institute of Health Sciences, CUHK Shenzhen Research Institute, The Chinese University of Hong Kong, Hong Kong.
+#'    [1] Department of Medicine &amp; Therapeutics, State Key Laboratory of Digestive Disease, Institute of Digestive Disease, LKS Institute of Health Sciences, CUHK Shenzhen Research Institute, The Chinese University of Hong Kong, Hong Kong., [2] BGI-Shenzhen, Shenzhen, China., [3] Department of Biology, University of Copenhagen, Copenhagen, Denmark., [4] Department of Veterinary Disease Biology, Faculty of Health and Medical Sciences, University of Copenhagen, Copenhagen, Denmark., [5] Princess Al Jawhara Center of Excellence in the Research of Hereditary Disorders, King Abdulaziz University, Jeddah, Saudi Arabia., [6] Department of Surgical Gastroenterology, Hvidovre Hospital, Hvidovre, Denmark., [7] National Institute of Nutrition and Seafood Research, Bergen, Norway., [8] Department of Internal Medicine, Hospital Oberndorf, Q3 Teaching Hospital of the Paracelsus Private University of Salzburg, Oberndorf, Austria., [9] First Department of Internal Medicine, Medical University Innsbruck, Innsbruck, Austria., [10] The Novo Nordisk Foundation Center for Basic Metabolic Research, Faculty of Health and Medical Sciences, University of Copenhagen, Copenhagen, Denmark., [11] Macau University of Science and Technology, Macau, China.
 #' }
 #'
 #' \subsection{PMID}{
@@ -66,4 +52,3 @@
 #' 
 #' @name YuJ_2015 
 NULL
- 

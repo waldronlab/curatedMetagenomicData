@@ -16,55 +16,28 @@ Data from the VogtmannE_2016 study
  
 
 \subsection{VogtmannE_2016.genefamilies_relab.stool}{
-   An ExpressionSet with 110 samples and 2,229,881 features specific to the stool body site
+   An ExpressionSet with 110 samples and 1,511,515 features specific to the stool body site
 }
 
 \subsection{VogtmannE_2016.marker_abundance.stool}{
-   An ExpressionSet with 110 samples and 1,009,074 features specific to the stool body site
+   An ExpressionSet with 110 samples and 110,990 features specific to the stool body site
 }
 
 \subsection{VogtmannE_2016.marker_presence.stool}{
-   An ExpressionSet with 110 samples and 986,069 features specific to the stool body site
+   An ExpressionSet with 110 samples and 107,190 features specific to the stool body site
 }
 
 \subsection{VogtmannE_2016.metaphlan_bugs_list.stool}{
-   An ExpressionSet with 110 samples and 11,432 features specific to the stool body site
+   An ExpressionSet with 110 samples and 1,296 features specific to the stool body site
 }
 
 \subsection{VogtmannE_2016.pathabundance_relab.stool}{
-   An ExpressionSet with 110 samples and 18,706 features specific to the stool body site
+   An ExpressionSet with 110 samples and 14,809 features specific to the stool body site
 }
 
 \subsection{VogtmannE_2016.pathcoverage.stool}{
-   An ExpressionSet with 110 samples and 18,706 features specific to the stool body site
+   An ExpressionSet with 110 samples and 14,809 features specific to the stool body site
 }
-}
-
-\section{Exploratory Data Analysis}{
- 
-
-\if{html}{\figure{VogtmannE_2016_age.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{VogtmannE_2016_BMI.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{VogtmannE_2016_body_site.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{VogtmannE_2016_country.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{VogtmannE_2016_disease.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{VogtmannE_2016_gender.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
 }
 
 \section{Source}{
@@ -79,7 +52,7 @@ Data from the VogtmannE_2016 study
 }
 
 \subsection{Lab}{
-   Division of Cancer Epidemiology &amp; Genetics, National Cancer Institute, Bethesda, Maryland, United States of America.
+   [1] Division of Cancer Epidemiology &amp; Genetics, National Cancer Institute, Bethesda, Maryland, United States of America., [2] Division of Cancer Prevention, National Cancer Institute, Bethesda, Maryland, United States of America., [3] Structural and Computational Biology Unit, European Molecular Biology Laboratory, Heidelberg, Germany., [4] Department of Applied Tumor Biology, Institute of Pathology, University Hospital Heidelberg, Heidelberg, Germany., [5] Clinical Cooperation Unit Applied Tumor Biology, German Cancer Research Center (DKFZ), Heidelberg, Germany., [6] Molecular Medicine Partnership Unit (MMPU), University Hospital Heidelberg and European Molecular Biology Laboratory, Heidelberg, Germany., [7] Genomics Core Facility, European Molecular Biology Laboratory, Heidelberg, Germany., [8] Max Delbruck Centre for Molecular Medicine, Berlin, Germany., [9] Department of Bioinformatics Biocenter, University of Wurzburg, Wurzburg, Germany.
 }
 
 \subsection{PMID}{

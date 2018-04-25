@@ -4,7 +4,7 @@
 #' 
 #' The combined sample level metadata of all studies in curatedMetagenomicData.
 #' 
-#' @format A data.frame with 6058 rows and 80 variables:
+#' @format A data.frame with 12444 rows and 87 variables:
 #' \describe{
 #'   \item{NA}{NA}
 #'   \item{sampleID}{Sample identifier.}
@@ -86,6 +86,13 @@
 #'   \item{start_solidfood}{First day of solid food introduction (newborns).}
 #'   \item{ajcc}{AJCC staging for colorectal-cancer.}
 #'   \item{fobt}{Fecal occult blood test.}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
 #' }
 #' 
 #' @source See dataset specific help functions for source information 

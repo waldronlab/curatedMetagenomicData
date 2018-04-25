@@ -54,24 +54,6 @@
 #'    An ExpressionSet with 172 samples and 22,539 features specific to the stool body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{BritoIL_2016_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{BritoIL_2016_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{BritoIL_2016_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{BritoIL_2016_gender.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -83,7 +65,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    NA
+#'    [1] Department of Biological Engineering, Massachusetts Institute of Technology, Cambridge, MA., [2] Broad Institute of MIT and Harvard, Cambridge, MA., [3] Sandia National Laboratories, Livermore, CA., [4] Wildlife Conservation Society, Suva, Fiji., [5] Edith Cowan University, Western Australia., [6] University of Helsinki, Helsinki, Finland., [7] Massachusetts General Hospital, Boston, MA., [8] Center for Microbiome, Informatics and Therapeutics, Massachusetts Institute of Technology, Cambridge, MA.
 #' }
 #'
 #' \subsection{PMID}{
@@ -94,4 +76,3 @@
 #' 
 #' @name BritoIL_2016 
 NULL
- 

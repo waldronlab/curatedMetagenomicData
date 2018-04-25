@@ -40,25 +40,6 @@ Data from the OhJ_2014 study
 }
 }
 
-\section{Exploratory Data Analysis}{
- 
-
-\if{html}{\figure{OhJ_2014_body_site.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{OhJ_2014_country.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{OhJ_2014_disease.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{OhJ_2014_gender.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-}
-
 \section{Source}{
  
 
@@ -71,7 +52,7 @@ Data from the OhJ_2014 study
 }
 
 \subsection{Lab}{
-   Translational and Functional Genomics Branch, National Human Genome Research Institute, NIH, Bethesda, Maryland 20892, USA.
+   [1] Translational and Functional Genomics Branch, National Human Genome Research Institute, NIH, Bethesda, Maryland 20892, USA., [2] 1] Dermatology Branch, Center for Cancer Research, National Cancer Institute, NIH, Bethesda, Maryland 20892, USA [2]., [3] 1] Translational and Functional Genomics Branch, National Human Genome Research Institute, NIH, Bethesda, Maryland 20892, USA [2].
 }
 
 \subsection{PMID}{

@@ -30,32 +30,6 @@
 #'    An ExpressionSet with 229 samples and 16,254 features specific to the stool body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{VincentC_2016_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{VincentC_2016_antibiotics_current_use.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{VincentC_2016_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{VincentC_2016_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{VincentC_2016_disease.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{VincentC_2016_gender.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -67,7 +41,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    Department of Microbiology and Immunology, McGill University, Montreal, Quebec, Canada.
+#'    [1] Department of Microbiology and Immunology, McGill University, Montreal, Quebec, Canada., [2] Genome Quebec Innovation Centre, McGill University, Montreal, Quebec, Canada., [3] Jewish General Hospital, Montreal, Quebec, Canada., [4] Devil's Staircase Consulting, North Vancouver, British Columbia, Canada., [5] New York Genome Center, New York, NY, USA., [6] Department of Human Genetics, McGill University, Montreal, Quebec, Canada., [7] School of Population and Public Health, University of British Columbia, Vancouver, British Columbia, Canada. amee.manges@ubc.ca.
 #' }
 #'
 #' \subsection{PMID}{
@@ -78,4 +52,3 @@
 #' 
 #' @name VincentC_2016 
 NULL
- 

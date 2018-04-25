@@ -16,55 +16,28 @@ Data from the ZellerG_2014 study
  
 
 \subsection{ZellerG_2014.genefamilies_relab.stool}{
-   An ExpressionSet with 199 samples and 2,040,556 features specific to the stool body site
+   An ExpressionSet with 199 samples and 1,847,962 features specific to the stool body site
 }
 
 \subsection{ZellerG_2014.marker_abundance.stool}{
-   An ExpressionSet with 199 samples and 828,890 features specific to the stool body site
+   An ExpressionSet with 199 samples and 138,412 features specific to the stool body site
 }
 
 \subsection{ZellerG_2014.marker_presence.stool}{
-   An ExpressionSet with 199 samples and 735,085 features specific to the stool body site
+   An ExpressionSet with 199 samples and 133,484 features specific to the stool body site
 }
 
 \subsection{ZellerG_2014.metaphlan_bugs_list.stool}{
-   An ExpressionSet with 199 samples and 10,503 features specific to the stool body site
+   An ExpressionSet with 199 samples and 1,585 features specific to the stool body site
 }
 
 \subsection{ZellerG_2014.pathabundance_relab.stool}{
-   An ExpressionSet with 199 samples and 19,367 features specific to the stool body site
+   An ExpressionSet with 199 samples and 18,579 features specific to the stool body site
 }
 
 \subsection{ZellerG_2014.pathcoverage.stool}{
-   An ExpressionSet with 199 samples and 19,367 features specific to the stool body site
+   An ExpressionSet with 199 samples and 18,579 features specific to the stool body site
 }
-}
-
-\section{Exploratory Data Analysis}{
- 
-
-\if{html}{\figure{ZellerG_2014_age.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{ZellerG_2014_BMI.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{ZellerG_2014_body_site.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{ZellerG_2014_country.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{ZellerG_2014_disease.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{ZellerG_2014_gender.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
 }
 
 \section{Source}{
@@ -79,7 +52,7 @@ Data from the ZellerG_2014 study
 }
 
 \subsection{Lab}{
-   Structural and Computational Biology Unit, European Molecular Biology Laboratory, Heidelberg, Germany.
+   [1] Structural and Computational Biology Unit, European Molecular Biology Laboratory, Heidelberg, Germany., [2] Structural and Computational Biology Unit, European Molecular Biology Laboratory, Heidelberg, Germany Department of Gastroenterology and LIC-EA4393-EC2M3, APHP and UPEC Universite Paris-Est Creteil, Creteil, France., [3] Structural and Computational Biology Unit, European Molecular Biology Laboratory, Heidelberg, Germany Department of Applied Tumor Biology, Institute of Pathology University Hospital Heidelberg, Heidelberg, Germany Clinical Cooperation Unit Applied Tumor Biology, German Cancer Research Center (DKFZ), Heidelberg, Germany Molecular Medicine Partnership Unit (MMPU), University Hospital Heidelberg and European Molecular Biology Laboratory, Heidelberg, Germany., [4] Department of Gastroenterology and LIC-EA4393-EC2M3, APHP and UPEC Universite Paris-Est Creteil, Creteil, France., [5] Division of Preventive Oncology, National Center for Tumor Diseases (NCT) Heidelberg, Heidelberg, Germany German Cancer Research Center (DKFZ), Heidelberg, Germany., [6] Department of Surgery, APHP and UPEC Universite Paris-Est Creteil, Creteil, France., [7] Genomics Core Facility, European Molecular Biology Laboratory, Heidelberg, Germany., [8] Department of General, Visceral and Transplantation Surgery, University Hospital Heidelberg, Heidelberg, Germany., [9] Department of Radiology, APHP and UPEC Universite Paris-Est Creteil, Creteil, France., [10] Department of Medical Oncology, APHP and UPEC Universite Paris-Est Creteil, Creteil, France., [11] Department of Pathology and LIC-EA4393-EC2M3, APHP and UPEC Universite Paris-Est Creteil, Creteil, France., [12] Department of Biological Information, Tokyo Institute of Technology, Tokyo, Japan., [13] Department of Applied Tumor Biology, Institute of Pathology University Hospital Heidelberg, Heidelberg, Germany Clinical Cooperation Unit Applied Tumor Biology, German Cancer Research Center (DKFZ), Heidelberg, Germany Molecular Medicine Partnership Unit (MMPU), University Hospital Heidelberg and European Molecular Biology Laboratory, Heidelberg, Germany., [14] Division of Preventive Oncology, National Center for Tumor Diseases (NCT) Heidelberg, Heidelberg, Germany German Cancer Research Center (DKFZ), Heidelberg, Germany Fred Hutchinson Cancer Research Center (FHCRC), Seattle, WA, USA., [15] Department of Gastroenterology and LIC-EA4393-EC2M3, APHP and UPEC Universite Paris-Est Creteil, Creteil, France iradj.sobhani@hmn.aphp.fr bork@embl.de., [16] Structural and Computational Biology Unit, European Molecular Biology Laboratory, Heidelberg, Germany Molecular Medicine Partnership Unit (MMPU), University Hospital Heidelberg and European Molecular Biology Laboratory, Heidelberg, Germany Max Delbruck Centre for Molecular Medicine, Berlin, Germany iradj.sobhani@hmn.aphp.fr bork@embl.de.
 }
 
 \subsection{PMID}{

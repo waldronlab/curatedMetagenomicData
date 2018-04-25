@@ -30,24 +30,6 @@
 #'    An ExpressionSet with 38 samples and 6,798 features specific to the stool body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{RampelliS_2015_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{RampelliS_2015_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{RampelliS_2015_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{RampelliS_2015_gender.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -59,7 +41,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    Department of Pharmacy and Biotechnology, University of Bologna, Bologna 40126, Italy.
+#'    [1] Department of Pharmacy and Biotechnology, University of Bologna, Bologna 40126, Italy., [2] Plant Foods in Hominin Dietary Ecology Research Group, Max Planck Institute for Evolutionary Anthropology, Leipzig 04103, Germany. Electronic address: stephanie_schnorr@eva.mpg.de., [3] Institute of Biomedical Technologies, Italian National Research Council, Segrate, Milan 20090, Italy., [4] Metabolism, Anthropometry, and Nutrition Laboratory, Department of Anthropology, University of Nevada, Las Vegas, NV 89154-5003, USA., [5] Plant Foods in Hominin Dietary Ecology Research Group, Max Planck Institute for Evolutionary Anthropology, Leipzig 04103, Germany., [6] Department of Pharmacy and Biotechnology, University of Bologna, Bologna 40126, Italy. Electronic address: marco.candela@unibo.it.
 #' }
 #'
 #' \subsection{PMID}{
@@ -70,4 +52,3 @@
 #' 
 #' @name RampelliS_2015 
 NULL
- 
