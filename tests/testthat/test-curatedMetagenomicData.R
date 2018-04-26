@@ -3,6 +3,7 @@ context("curatedMetagenomicData")
 test_that("curatedMetagenomicData works", {
     allds <- curatedMetagenomicData("*", dryrun = TRUE)
     allstudies1 <- sub("\\..+", "", allds) %>%
+        gsub("-", "_", x = .) %>%
         unique %>%
         sort
     data("combined_metadata")
