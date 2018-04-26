@@ -77,6 +77,7 @@ table(combined_metadata$disease)
 
 ```{r}
 dsranking <- combined_metadata %>%
+  as.data.frame() %>% 
   group_by(dataset_name) %>%
   summarize(mediandepth = median(number_reads) / 1e6) %>%
   mutate(dsorder = rank(mediandepth)) %>%
@@ -87,8 +88,9 @@ dsranking
 Create a factor `ds` that is ordered according to the ranking by median read depth, to show datasets in order from lowest to highest median read depth, then create the box plot.
 ```{r}
 suppressPackageStartupMessages(library(ggplot2))
-mutate(combined_metadata, 
-       ds = factor(combined_metadata$dataset_name, levels=dsranking$dataset_name)) %>%
+combined_metadata %>%
+  as.data.frame() %>%
+  mutate(ds = factor(combined_metadata$dataset_name, levels=dsranking$dataset_name)) %>%
   ggplot(aes(ds, number_reads / 1e6, fill=body_site)) + 
   geom_boxplot() +
   theme(axis.text.x = element_text(angle=45, hjust=1)) +
