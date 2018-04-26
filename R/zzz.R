@@ -58,6 +58,10 @@
     }, xx = titles, yy = dates)
 
     globalVariables(".")
+    globalVariables("body_site")
+    globalVariables("data_type")
+    globalVariables("run_date")
+    globalVariables("study")
 }
 
 .onAttach <- function(libname, pkgname) {
