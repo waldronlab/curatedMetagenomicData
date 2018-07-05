@@ -4,7 +4,7 @@ combine_metadata <- function(tar_gz_file, metadata) {
     metadata <- select(metadata, dataset_name, everything())
     if(file.exists("./data/combined_metadata.rda")) {
         load("./data/combined_metadata.rda")
-        combined_metadata <- full_join(combined_metadata, metadata)
+        combined_metadata <- full_join(as.data.frame(combined_metadata), metadata)
     } else {
         combined_metadata <- metadata
     }
