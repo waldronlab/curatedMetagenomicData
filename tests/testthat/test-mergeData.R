@@ -19,7 +19,8 @@ test_that("mergeData produces a correct result", {
     expect_equal(all(exprs(esl[[2]]) - exprs(eset)[2:4, 3:4] == 0), TRUE)
     expect_equal(colnames(pData(eset)), c("var1", "var2", "studyID"))
     df2 <- pData(eset[, eset$studyID=="eset1"]); rownames(df2) <- sub("eset:", "", rownames(df2))
-    expect_equal(df2[, 1:2], pData(esl[[1]]))
+    expect_equal(df2$var1, esl[[1]]$var1)
+    expect_equal(df2$var2, esl[[1]]$var2)
 })
 
 test_that("countries and studies align.", {
