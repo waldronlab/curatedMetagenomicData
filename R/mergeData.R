@@ -91,12 +91,9 @@ joinListOfDFs <-
         FUN = function(x, y) merge(x, y, all=TRUE)
         bigdf <- Reduce(FUN, obj)
         rownames(bigdf) <- bigdf$mergedsubjectID
-        bigdf <- bigdf[, -match("mergedsubjectID", colnames(bigdf))]
         if (is(addstudycolumn, "character")) {
-            studyID <- lapply(seq_along(obj), function(i) {
-                rep(names(obj)[i], nrow(obj[[i]]))
-            })
-            bigdf[[addstudycolumn]] <- do.call(c, studyID)
+            bigdf[[addstudycolumn]] <- sub(paste0(rowdelim, ".+"), "", bigdf$mergedsubjectID)
         }
+        bigdf <- bigdf[, -match("mergedsubjectID", colnames(bigdf))]
         return(bigdf)
     }
