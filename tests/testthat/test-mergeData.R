@@ -18,6 +18,15 @@ test_that("mergeData produces a correct result", {
     expect_equal(all(exprs(eset)[1:3, 1:2] - exprs(esl[[1]]) == 0), TRUE)
     expect_equal(all(exprs(esl[[2]]) - exprs(eset)[2:4, 3:4] == 0), TRUE)
     expect_equal(colnames(pData(eset)), c("var1", "var2", "studyID"))
+    df2 <- pData(eset[, eset$studyID=="eset1"]); rownames(df2) <- sub("eset:", "", rownames(df2))
+    expect_equal(df2$var1, esl[[1]]$var1)
+    expect_equal(df2$var2, esl[[1]]$var2)
+})
+
+test_that("countries and studies align.", {
+    esl <- curatedMetagenomicData(c("SchirmerM_2016.metaphlan_bugs_list.stool", "ZellerG_2014.metaphlan_bugs_list.stool"), dryrun = FALSE)
+    eset <- mergeData(esl)
+    expect_true(all(eset[, eset$studyID=="SchirmerM_2016.metaphlan_bugs_list.stool"]$country == "NLD"))
 })
 
 test_that("mergeData accepts only a list of ExpressionSet objects", {
