@@ -30,7 +30,8 @@ If TRUE, tables of taxonomic abundance (metaphlan datasets) will be converted
 to phyloseq objects for use with the phyloseq package.}
 
 \item{x.is.glob}{= TRUE
-Set to FALSE to actually download the datasets}
+Set to FALSE to to treat x as a regular expression. If TRUE,
+`x` is provided to \code{glob2rx} first to generate a regular expression.}
 }
 \value{
 A list of ExpressionSet and/or phyloseq objects

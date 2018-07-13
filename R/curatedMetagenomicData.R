@@ -15,7 +15,9 @@
 #' If TRUE, tables of taxonomic abundance (metaphlan datasets) will be converted
 #' to phyloseq objects for use with the phyloseq package.
 #' @param x.is.glob = TRUE
-#' Set to FALSE to actually download the datasets
+#' Set to FALSE to to treat x as a regular expression. If TRUE,
+#' `x` is provided to \code{glob2rx} first to generate a regular expression.
+#'
 #' @param dryrun = TRUE
 #' Only return the names of datasets to be downloaded, not the datasets
 #' themselves. If FALSE, return the datasets rather than the names.
