@@ -32,7 +32,7 @@ Imports:
     methods,
     S4Vectors
 Suggests:
-    BiocInstaller,
+    BiocManager,
     devtools,
     roxygen2,
     testthat,
