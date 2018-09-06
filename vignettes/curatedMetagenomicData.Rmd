@@ -54,7 +54,7 @@ These datasets are documented in the
 Because `curatedMetagenomicData` utilizes Bioconductor's `r BiocStyle::Biocpkg("ExperimentHub")` platform, data are stored as Amazon S3 buckets and only downloaded individually when requested. Local caching occurs automatically; see `r BiocStyle::Biocpkg("ExperimentHub")` documentation to customize options such as where the cache is stored (by default it is `~/.ExperimentHub`). In case you haven't installed it yet, do:
 
 ```{r, message=FALSE}
-# BiocInstaller::biocLite("curatedMetagenomicData")
+# BiocManager::install("curatedMetagenomicData")
 library(curatedMetagenomicData)
 ```
 

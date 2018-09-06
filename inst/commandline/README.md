@@ -1,7 +1,7 @@
 You must install 'R', 'Bioconductor', and *curatedMetagenomicData* using the instructions from main README.md at www.github.com/waldronlab/curatedMetagenomicData. 
 Additionally, you must install the 'docopt' package from within 'R':
 ```
-BiocInstaller::biocLite("docopt")
+BiocManager::install("docopt")
 ```
 
 Then:

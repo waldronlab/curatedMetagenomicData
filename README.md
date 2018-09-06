@@ -23,7 +23,7 @@ Install `curatedMetagenomicData` through Bioconductor using `BiocInstaller` and 
 from the command line.
 
 ```
-BiocInstaller::biocLite("curatedMetagenomicData")
+BiocManager::install("curatedMetagenomicData")
 browseVignettes("curatedMetagenomicData")
 ```
 
