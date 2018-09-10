@@ -1,9 +1,9 @@
 get_metadata <- function(resource_name, resource_maintainer,
-                         resource_biocVersion) {
+                         resource_version) {
     resource_object <- get_resource(resource_name)
     Title <- gsub(".rda", "", resource_name)
     Description <- get_Description(resource_name)
-    BiocVersion <- as.character(resource_biocVersion)
+    BiocVersion <- as.character(resource_version)
     Genome <- as.character("")
     SourceType <- as.character("FASTQ")
     SourceUrl <- as.character("")
