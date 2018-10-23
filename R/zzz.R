@@ -36,6 +36,11 @@
     ns <- asNamespace(pkgname)
     mapply(function(xx, yy) {
         func = function(cmdversion = yy, metadata = FALSE) {
+            ## Deprecate munged dataset names, introduced for Bioc 3.8 release Oct 2018
+            deprecation.regex <- "Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ"
+            if(grepl(deprecation.regex, xx)){
+                .Deprecated(sub("_", "-", xx))
+            }
             cmdversion <- as.integer(cmdversion)
             if(length(cmdversion) > 1 | !.cmdIsValidVersion(cmdversion))
                 stop("Must provide a single valid version number, see
