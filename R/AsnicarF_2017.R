@@ -15,11 +15,11 @@
 #' }
 #'
 #' \subsection{AsnicarF_2017.marker_abundance.milk}{
-#'    An ExpressionSet with 8 samples and 53,228 features specific to the milk body site
+#'    An ExpressionSet with 8 samples and 53,078 features specific to the milk body site
 #' }
 #'
 #' \subsection{AsnicarF_2017.marker_abundance.stool}{
-#'    An ExpressionSet with 16 samples and 53,228 features specific to the stool body site
+#'    An ExpressionSet with 16 samples and 53,078 features specific to the stool body site
 #' }
 #'
 #' \subsection{AsnicarF_2017.marker_presence.milk}{

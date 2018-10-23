@@ -17,6 +17,7 @@ get_metadata <- function(resource_name, resource_maintainer,
     DispatchClass <- get_DispatchClass(resource_name)
     ResourceName <- as.character(resource_name)
     Tags <- get_Tags(resource_name, resource_object)
+    print(Description)
     data_frame(Title, Description, BiocVersion, Genome, SourceType, SourceUrl,
                SourceVersion, Species, TaxonomyId, Coordinate_1_based,
                DataProvider, Maintainer, RDataClass, DispatchClass,

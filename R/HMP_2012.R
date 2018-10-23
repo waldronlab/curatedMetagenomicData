@@ -7,11 +7,11 @@
 #' @section Datasets: 
 #' 
 #' \subsection{HMP_2012.genefamilies_relab.nasalcavity}{
-#'    An ExpressionSet with 91 samples and 1,964,480 features specific to the nasalcavity body site
+#'    An ExpressionSet with 93 samples and 1,964,480 features specific to the nasalcavity body site
 #' }
 #'
 #' \subsection{HMP_2012.genefamilies_relab.oralcavity}{
-#'    An ExpressionSet with 479 samples and 1,964,480 features specific to the oralcavity body site
+#'    An ExpressionSet with 415 samples and 1,964,480 features specific to the oralcavity body site
 #' }
 #'
 #' \subsection{HMP_2012.genefamilies_relab.skin}{
@@ -23,15 +23,15 @@
 #' }
 #'
 #' \subsection{HMP_2012.genefamilies_relab.vagina}{
-#'    An ExpressionSet with 5 samples and 1,964,480 features specific to the vagina body site
+#'    An ExpressionSet with 67 samples and 1,964,480 features specific to the vagina body site
 #' }
 #'
 #' \subsection{HMP_2012.marker_abundance.nasalcavity}{
-#'    An ExpressionSet with 91 samples and 162,107 features specific to the nasalcavity body site
+#'    An ExpressionSet with 93 samples and 162,107 features specific to the nasalcavity body site
 #' }
 #'
 #' \subsection{HMP_2012.marker_abundance.oralcavity}{
-#'    An ExpressionSet with 479 samples and 162,107 features specific to the oralcavity body site
+#'    An ExpressionSet with 415 samples and 162,107 features specific to the oralcavity body site
 #' }
 #'
 #' \subsection{HMP_2012.marker_abundance.skin}{
@@ -43,15 +43,15 @@
 #' }
 #'
 #' \subsection{HMP_2012.marker_abundance.vagina}{
-#'    An ExpressionSet with 5 samples and 162,107 features specific to the vagina body site
+#'    An ExpressionSet with 67 samples and 162,107 features specific to the vagina body site
 #' }
 #'
 #' \subsection{HMP_2012.marker_presence.nasalcavity}{
-#'    An ExpressionSet with 91 samples and 158,645 features specific to the nasalcavity body site
+#'    An ExpressionSet with 93 samples and 158,645 features specific to the nasalcavity body site
 #' }
 #'
 #' \subsection{HMP_2012.marker_presence.oralcavity}{
-#'    An ExpressionSet with 479 samples and 158,645 features specific to the oralcavity body site
+#'    An ExpressionSet with 415 samples and 158,645 features specific to the oralcavity body site
 #' }
 #'
 #' \subsection{HMP_2012.marker_presence.skin}{
@@ -63,15 +63,15 @@
 #' }
 #'
 #' \subsection{HMP_2012.marker_presence.vagina}{
-#'    An ExpressionSet with 5 samples and 158,645 features specific to the vagina body site
+#'    An ExpressionSet with 67 samples and 158,645 features specific to the vagina body site
 #' }
 #'
 #' \subsection{HMP_2012.metaphlan_bugs_list.nasalcavity}{
-#'    An ExpressionSet with 91 samples and 1,988 features specific to the nasalcavity body site
+#'    An ExpressionSet with 93 samples and 1,988 features specific to the nasalcavity body site
 #' }
 #'
 #' \subsection{HMP_2012.metaphlan_bugs_list.oralcavity}{
-#'    An ExpressionSet with 479 samples and 1,988 features specific to the oralcavity body site
+#'    An ExpressionSet with 415 samples and 1,988 features specific to the oralcavity body site
 #' }
 #'
 #' \subsection{HMP_2012.metaphlan_bugs_list.skin}{
@@ -83,15 +83,15 @@
 #' }
 #'
 #' \subsection{HMP_2012.metaphlan_bugs_list.vagina}{
-#'    An ExpressionSet with 5 samples and 1,988 features specific to the vagina body site
+#'    An ExpressionSet with 67 samples and 1,988 features specific to the vagina body site
 #' }
 #'
 #' \subsection{HMP_2012.pathabundance_relab.nasalcavity}{
-#'    An ExpressionSet with 91 samples and 23,271 features specific to the nasalcavity body site
+#'    An ExpressionSet with 93 samples and 23,271 features specific to the nasalcavity body site
 #' }
 #'
 #' \subsection{HMP_2012.pathabundance_relab.oralcavity}{
-#'    An ExpressionSet with 479 samples and 23,271 features specific to the oralcavity body site
+#'    An ExpressionSet with 415 samples and 23,271 features specific to the oralcavity body site
 #' }
 #'
 #' \subsection{HMP_2012.pathabundance_relab.skin}{
@@ -103,15 +103,15 @@
 #' }
 #'
 #' \subsection{HMP_2012.pathabundance_relab.vagina}{
-#'    An ExpressionSet with 5 samples and 23,271 features specific to the vagina body site
+#'    An ExpressionSet with 67 samples and 23,271 features specific to the vagina body site
 #' }
 #'
 #' \subsection{HMP_2012.pathcoverage.nasalcavity}{
-#'    An ExpressionSet with 91 samples and 23,271 features specific to the nasalcavity body site
+#'    An ExpressionSet with 93 samples and 23,271 features specific to the nasalcavity body site
 #' }
 #'
 #' \subsection{HMP_2012.pathcoverage.oralcavity}{
-#'    An ExpressionSet with 479 samples and 23,271 features specific to the oralcavity body site
+#'    An ExpressionSet with 415 samples and 23,271 features specific to the oralcavity body site
 #' }
 #'
 #' \subsection{HMP_2012.pathcoverage.skin}{
@@ -123,7 +123,7 @@
 #' }
 #'
 #' \subsection{HMP_2012.pathcoverage.vagina}{
-#'    An ExpressionSet with 5 samples and 23,271 features specific to the vagina body site
+#'    An ExpressionSet with 67 samples and 23,271 features specific to the vagina body site
 #' }
 #' 
 #' @section Source: 
