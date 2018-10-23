@@ -41,6 +41,12 @@ curatedMetagenomicData <- function(x = "*",
     # cmdversion <- as.integer(cmdversion)
     # if(length(cmdversion) > 1 | !.cmdIsValidVersion(cmdversion))
         # stop("Must provide a single valid version number, see cmdValidVersions().")
+    ## Deprecate munged dataset names, introduced for Bioc 3.8 release Oct 2018
+    deprecation.regex <- "Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ"
+    if(grepl(deprecation.regex, x)){
+        .Deprecated(new="curatedMetagenomicData",
+                    msg="Use Castro-NallarE instead of Castro_NallarE, Heitz-BuschartA instead of Heitz_BuschartA, and Obregon-TitoAJ instead of Obregon_TitoAJ")
+    }
     requested.datasets <- x
     all.datasets <- ls("package:curatedMetagenomicData")
     all.datasets <-
