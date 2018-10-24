@@ -1,4 +1,4 @@
-context("curatedMetagenomicData")
+context("no munged names")
 
 ## Change this to expect_error for Bioconductor 3.9,
 ## and remove the functions in Bioconductor >3.9.
