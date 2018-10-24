@@ -3,7 +3,7 @@
 if(!suppressPackageStartupMessages(require("docopt"))){
   stop("You must have the docopt R package installed. Assuming you have
              installed R & Bioconductor (www.bioconductor.org/install), type:\n
-             BiocInstaller::biocLite(\"docopt\") \n
+             BiocManager::install(\"docopt\") \n
              from your R prompt.")
 }
 
@@ -66,7 +66,7 @@ required.packages <- c("curatedMetagenomicData", "Biobase")
 for (pkg in required.packages){
   if(!suppressPackageStartupMessages(require(pkg, character.only=TRUE))){
     stop(paste0("Make sure Bioconductor is installed (www.bioconductor.org/install), then type:\n
-                BiocInstaller::biocLite(\"", pkg, "\") \n
+                BiocManager::install(\"", pkg, "\") \n
                 from your R prompt."))
   }
 }
