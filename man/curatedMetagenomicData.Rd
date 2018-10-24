@@ -5,7 +5,6 @@
 \name{curatedMetagenomicData}
 \alias{curatedMetagenomicData}
 \alias{curatedMetagenomicData-package}
-\alias{curatedMetagenomicData}
 \title{Curated Metagenomic Data of the Human Microbiome}
 \usage{
 curatedMetagenomicData(x = "*", dryrun = TRUE, counts = FALSE,

@@ -16,55 +16,28 @@ Data from the Obregon-TitoAJ_2015 study
  
 
 \subsection{Obregon-TitoAJ_2015.genefamilies_relab.stool}{
-   An ExpressionSet with 58 samples and 1,192,381 features specific to the stool body site
+   An ExpressionSet with 58 samples and 1,185,621 features specific to the stool body site
 }
 
 \subsection{Obregon-TitoAJ_2015.marker_abundance.stool}{
-   An ExpressionSet with 58 samples and 195,319 features specific to the stool body site
+   An ExpressionSet with 58 samples and 96,336 features specific to the stool body site
 }
 
 \subsection{Obregon-TitoAJ_2015.marker_presence.stool}{
-   An ExpressionSet with 58 samples and 150,346 features specific to the stool body site
+   An ExpressionSet with 58 samples and 86,352 features specific to the stool body site
 }
 
 \subsection{Obregon-TitoAJ_2015.metaphlan_bugs_list.stool}{
-   An ExpressionSet with 58 samples and 1,548 features specific to the stool body site
+   An ExpressionSet with 58 samples and 1,094 features specific to the stool body site
 }
 
 \subsection{Obregon-TitoAJ_2015.pathabundance_relab.stool}{
-   An ExpressionSet with 58 samples and 10,438 features specific to the stool body site
+   An ExpressionSet with 58 samples and 9,801 features specific to the stool body site
 }
 
 \subsection{Obregon-TitoAJ_2015.pathcoverage.stool}{
-   An ExpressionSet with 58 samples and 10,438 features specific to the stool body site
+   An ExpressionSet with 58 samples and 9,801 features specific to the stool body site
 }
-}
-
-\section{Exploratory Data Analysis}{
- 
-
-\if{html}{\figure{Obregon-TitoAJ_2015_age.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{Obregon-TitoAJ_2015_BMI.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{Obregon-TitoAJ_2015_body_site.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{Obregon-TitoAJ_2015_country.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{Obregon-TitoAJ_2015_disease.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
-
-
-\if{html}{\figure{Obregon-TitoAJ_2015_gender.png}{options: width="100\%"}}
-\if{latex}{An EDA figure is available in the HTML documentation}
 }
 
 \section{Source}{
@@ -79,7 +52,7 @@ Data from the Obregon-TitoAJ_2015 study
 }
 
 \subsection{Lab}{
-   [1] Department of Anthropology, University of Oklahoma, Dale Hall Tower, 521 Norman, Oklahoma 73019, USA [2] Universidad Cientifica del Sur, Lima 18, Peru [3] City of Hope, NCI-designated Comprehensive Cancer Center, Duarte, California 91010, USA.
+   [1] 1] Department of Anthropology, University of Oklahoma, Dale Hall Tower, 521 Norman, Oklahoma 73019, USA [2] Universidad Cientifica del Sur, Lima 18, Peru [3] City of Hope, NCI-designated Comprehensive Cancer Center, Duarte, California 91010, USA., [2] 1] Department of Anthropology, University of Oklahoma, Dale Hall Tower, 521 Norman, Oklahoma 73019, USA [2] Universidad Cientifica del Sur, Lima 18, Peru, [3] City of Hope, NCI-designated Comprehensive Cancer Center, Duarte, California 91010, USA., [4] Department of Anthropology, University of Oklahoma, Dale Hall Tower, 521 Norman, Oklahoma 73019, USA., [5] Department of Chemistry and Biochemistry, University of Colorado, Boulder, Colorado 80309, USA., [6] Departments of Pediatrics and Computer Science &amp;Engineering University of California San Diego, La Jolla, CA 92093, USA., [7] Oklahoma Medical Research Foundation, Oklahoma City, Oklahoma 73104, USA., [8] Instituto Nacional de Salud, Lima 11, Peru, [9] Old Dominion University, Norfolk, Virginia 23529, USA., [10] Universidad Cientifica del Sur, Lima 18, Peru
 }
 
 \subsection{PMID}{

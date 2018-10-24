@@ -20,7 +20,7 @@ Data from the ChngKR_2016 study
 }
 
 \subsection{ChngKR_2016.marker_abundance.skin}{
-   An ExpressionSet with 78 samples and 89,597 features specific to the skin body site
+   An ExpressionSet with 78 samples and 89,589 features specific to the skin body site
 }
 
 \subsection{ChngKR_2016.marker_presence.skin}{
