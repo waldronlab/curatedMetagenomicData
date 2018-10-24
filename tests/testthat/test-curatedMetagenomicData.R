@@ -7,7 +7,13 @@ test_that("curatedMetagenomicData works", {
         sort
     data("combined_metadata")
     allstudies2 <- unique(combined_metadata$dataset_name) %>% sort
-    expect_equal(allstudies1, allstudies2) #cMD and combined_metadata match
+    extrastudies1 <- paste(allstudies1[!allstudies1 %in% allstudies2], collapse=" ")
+    extrastudies2 <- paste(allstudies2[!allstudies2 %in% allstudies1], collapse=" ")
+    expect_equal(allstudies1, allstudies2,
+                 info = paste("curatedMetagenomicData() and combined_metadata return the same datasets\n",
+                              "in curatedMetagenomicData() but not combined_metadata: ", extrastudies1,
+                              "\n in combined_metadata but not curatedMetagenomicData(): ", extrastudies2,
+                              collapse=""))
     datatypes <- c("pathcoverage", "pathabundance_relab", "metaphlan_bugs_list",
                    "marker_presence", "marker_abundance", "genefamilies_relab") %>%
         paste(., collapse="|")
