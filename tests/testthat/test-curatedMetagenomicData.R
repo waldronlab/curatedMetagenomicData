@@ -7,6 +7,10 @@ test_that("curatedMetagenomicData works", {
         sort
     data("combined_metadata")
     allstudies2 <- unique(combined_metadata$dataset_name) %>% sort
+    munged_combined_metadata <- grep("^[A-Za-z]+_[A-Za-z]", allstudies2, value = TRUE)
+    expect_false(length(munged_combined_metadata) > 0,
+                  info = paste("Munged datasets in combined_metadata$dataset_name: ",
+                               munged_combined_metadata, collapse = " "))
     extrastudies1 <- paste(allstudies1[!allstudies1 %in% allstudies2], collapse=" ")
     extrastudies2 <- paste(allstudies2[!allstudies2 %in% allstudies1], collapse=" ")
     expect_equal(allstudies1, allstudies2,
