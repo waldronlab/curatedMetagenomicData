@@ -30,36 +30,6 @@
 #'    An ExpressionSet with 53 samples and 10,281 features specific to the stool body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{Heitz-BuschartA_2016_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{Heitz-BuschartA_2016_antibiotics_current_use.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{Heitz-BuschartA_2016_BMI.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{Heitz-BuschartA_2016_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{Heitz-BuschartA_2016_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{Heitz-BuschartA_2016_disease.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{Heitz-BuschartA_2016_gender.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -71,7 +41,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    Luxembourg Centre for Systems Biomedicine, 7 avenue des Hauts-Fourneaux, 4362 Esch-sur-Alzette, Luxembourg.
+#'    [1] Luxembourg Centre for Systems Biomedicine, 7 avenue des Hauts-Fourneaux, 4362 Esch-sur-Alzette, Luxembourg., [2] Integrated BioBank of Luxembourg, 6 rue Nicolas Ernest Barble, 1210 Luxembourg, Luxembourg., [3] Department of Internal Medicine II, Saarland University Medical Center, 66421 Homburg, Germany., [4] Centre Hospitalier Emile Mayrisch, Rue Emile Mayrisch, 4240 Esch-sur-Alzette, Luxembourg., [5] Clinique Pediatrique - Centre Hospitalier de Luxembourg, 4 rue Nicolas Ernest Barble, 1210 Luxembourg.
 #' }
 #'
 #' \subsection{PMID}{
@@ -82,4 +52,3 @@
 #' 
 #' @name Heitz-BuschartA_2016 
 NULL
- 
