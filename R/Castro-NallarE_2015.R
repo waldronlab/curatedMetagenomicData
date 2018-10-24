@@ -30,32 +30,6 @@
 #'    An ExpressionSet with 32 samples and 9,237 features specific to the oralcavity body site
 #' }
 #' 
-#' @section Exploratory Data Analysis: 
-#' 
-#' \if{html}{\figure{Castro-NallarE_2015_age.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{Castro-NallarE_2015_antibiotics_current_use.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{Castro-NallarE_2015_body_site.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{Castro-NallarE_2015_country.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{Castro-NallarE_2015_disease.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#'
-#' \if{html}{\figure{Castro-NallarE_2015_gender.png}{options: width="100\%"}}
-#' \if{latex}{An EDA figure is available in the HTML documentation}
-#'
-#' 
 #' @section Source: 
 #' 
 #' \subsection{Title}{
@@ -67,7 +41,7 @@
 #' }
 #'
 #' \subsection{Lab}{
-#'    Computational Biology Institute, George Washington University , Ashburn, VA , USA ; Center for Bioinformatics and Integrative Biology, Universidad Andres Bello, Facultad de Ciencias Biologicas , Santiago , Chile.
+#'    [1] Computational Biology Institute, George Washington University , Ashburn, VA , USA ; Center for Bioinformatics and Integrative Biology, Universidad Andres Bello, Facultad de Ciencias Biologicas , Santiago , Chile., [2] Computational Biology Institute, George Washington University , Ashburn, VA , USA., [3] Computational Biology Institute, George Washington University , Ashburn, VA , USA ; CIBIO-InBIO, Centro de Investigacao em Biodiversidade e Recursos Geneticos, Universidade do Porto , Vairao , USA ; Division of Emergency Medicine, Children's National Medical Center , Washington, D.C. , USA., [4] Stanley Neurovirology Laboratory, Johns Hopkins School of Medicine , Baltimore, MD , USA., [5] Sheppard Pratt Hospital , Baltimore, MD , USA., [6] Schroeder Statistical Consulting LLC , Ellicott City, MD , USA.
 #' }
 #'
 #' \subsection{PMID}{
@@ -78,4 +52,3 @@
 #' 
 #' @name Castro-NallarE_2015 
 NULL
- 
