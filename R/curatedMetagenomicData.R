@@ -56,6 +56,8 @@ curatedMetagenomicData <- function(x = "*",
                paste(glob2rx(requested.datasets), collapse = "|"),
                requested.datasets)
     matched.datasets <- grep(regex, all.datasets, value = TRUE)
+    ## Don't wildcard match on munged dataset names
+    matched.datasets <- grep("^[A-Za-z]+_[A-Za-z]", matched.datasets, invert = TRUE, value = TRUE)
     if (dryrun) {
         message(
             "Dry run: see return values for datasets that would be downloaded. ",
