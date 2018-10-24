@@ -12,8 +12,11 @@
 \description{
 Data from the Castro-NallarE_2015 study
 }
+\details{
+Note that Castro_NallarE_2015 is deprecated, use Castro-NallarE_2015 instead.
+}
 \section{Datasets}{
- 
+
 
 \subsection{Castro-NallarE_2015.genefamilies_relab.oralcavity}{
    An ExpressionSet with 32 samples and 588,014 features specific to the oralcavity body site
@@ -41,7 +44,7 @@ Data from the Castro-NallarE_2015 study
 }
 
 \section{Source}{
- 
+
 
 \subsection{Title}{
    Composition, taxonomy and functional diversity of the oropharynx microbiome in individuals with schizophrenia and controls.

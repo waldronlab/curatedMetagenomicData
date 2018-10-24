@@ -12,8 +12,11 @@
 \description{
 Data from the Obregon-TitoAJ_2015 study
 }
+\details{
+Note that Obregon_TitoAJ_2015 is deprecated, use Obregon-TitoAJ_2015 instead.
+}
 \section{Datasets}{
- 
+
 
 \subsection{Obregon-TitoAJ_2015.genefamilies_relab.stool}{
    An ExpressionSet with 58 samples and 1,185,621 features specific to the stool body site
@@ -41,7 +44,7 @@ Data from the Obregon-TitoAJ_2015 study
 }
 
 \section{Source}{
- 
+
 
 \subsection{Title}{
    Subsistence strategies in traditional societies distinguish gut microbiomes.
