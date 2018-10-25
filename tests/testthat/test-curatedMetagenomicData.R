@@ -12,7 +12,8 @@ test_that("curatedMetagenomicData works", {
     ## studies from inst/extdata/metadata.csv
     filename <- system.file("extdata/metadata.csv", package="curatedMetagenomicData")
     allstudies.metadata.csv <- read.csv(filename, as.is = TRUE)$Title %>%
-        grep("^[0-9]", ., invert = TRUE, value = TRUE) %>%
+        grep("^201804", ., invert = TRUE, value = TRUE) %>%
+        sub("^[0-9]+\\.", "", .) %>%
         sub("\\..+", "", .) %>%
         unique %>%
         sort
