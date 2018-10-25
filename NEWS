@@ -3,16 +3,16 @@
 * curatedMetagenomicData now contains 7,152 samples from 41 studies
 * A total of 766 samples added since Bioconductor 3.7 (May 2018) relaese
 * Datasets added since Bioconductor 3.7 (May 2018) release:
-    - Bengtsson-PalmeJ_2015
-    - DavidLA_2015
-    - KosticAD_2015
-    - LiSS_2016
-    - LoombaR_2017
-    - OlmMR_2017
-    - PasolliE_2018
-    - ShiB_2015
-    - ThomasAM_2018a
-    - WenC_2017
+    - Bengtsson-PalmeJ_2015 (70 samples)
+    - DavidLA_2015 (49 samples)
+    - KosticAD_2015 (124 samples)
+    - LiSS_2016 (55 samples)
+    - LoombaR_2017 (86 samples)
+    - OlmMR_2017 (45 samples)
+    - PasolliE_2018 (112 samples)
+    - ShiB_2015 (48 samples)
+    - ThomasAM_2018a (80 samples)
+    - WenC_2017 (97 samples)
 * Fixed a bug in expressionset names where "-"s would be replaced with "_"
 * As a result of this fix, the following datasets are deprecated and will be removed in the next release:
     - Bengtsson_PalmeJ_2015
