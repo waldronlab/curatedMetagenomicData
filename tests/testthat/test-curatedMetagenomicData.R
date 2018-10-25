@@ -1,6 +1,6 @@
 context("curatedMetagenomicData")
 
-test_that("curatedMetagenomicData works", {
+test_that("Does curatedMetagenomicData work?", {
     ## studies from curatedMetagenomicData()
     allds <- curatedMetagenomicData("*", dryrun = TRUE)
     allstudies.cmd <- sub("\\..+", "", allds) %>%
@@ -42,15 +42,14 @@ test_that("curatedMetagenomicData works", {
     checkMunging(allstudies.combined_metadata, "combined_metadata")
     checkMunging(allstudies.cmd, "curatedMetagenomicData()")
     checkMunging(allstudies.metadata.csv, "inst/extdata/metadata.csv")
-    ##
-    datatypes <- c("pathcoverage", "pathabundance_relab", "metaphlan_bugs_list",
-                   "marker_presence", "marker_abundance", "genefamilies_relab") %>%
-        paste(., collapse="|")
-    allstudies3 <- sub(datatypes, "", allds) %>% unique
-    expect_equal(length(allds), length(allstudies3) * 6,
-                 info="6 data products per study")
-    expect_true(all(grepl(datatypes, allds)),
-                info="all datasets are of known data type")
+    ## Check that every dataset 6 data products
+    ## number of  data products per study
+    nproducts <- strsplit(allds, "\\.") %>%
+        sapply(., function(x) paste(x[c(1, 3)], collapse=".")) %>%
+        table()
+    not6products <- nproducts[nproducts != 6]
+    expect_true(length(not6products)==0,
+                info = paste(names(not6products), not6products, sep=": "))
 })
 
 test_that("BritoIL_2016 and Castro-NallarE", {
