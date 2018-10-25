@@ -3,7 +3,7 @@ make_metadata <- function() {
     col_names <- !file.exists("./inst/extdata/metadata.csv")
     resource_list <- dir("./uploads")
     resource_maintainer <- read.dcf("DESCRIPTION", "Maintainer")
-    resource_biocVersion <- biocVersion()
+    resource_biocVersion <- BiocManager::version()
     lapply(resource_list, get_metadata, resource_maintainer,
              resource_biocVersion) %>%
         parallel_rbind() %>%
