@@ -1,4 +1,4 @@
-# curatedMetagenomicData 1.11.7
+# curatedMetagenomicData 1.12.0
 
 * curatedMetagenomicData now contains 7,152 samples from 41 studies
 * A total of 766 samples added since Bioconductor 3.7 (May 2018) relaese
@@ -40,7 +40,7 @@
       GitHub repository curatedMetagenomicDataHighLoad
 * All data has been reprocessed to ensure updated and correct curation
 
-# curatedMetagenomicData 1.7.9
+# curatedMetagenomicData 1.8.0
 
 * curatedMetagenomicData now contains 6058 samples from 28 studies : )
 * A total of 3,152 samples added since Bioconductor 3.5 (April, 2017) release
@@ -64,34 +64,26 @@
 * The cmdversion argument was removed from the curatedMetagenomicData() function
 * Calls to curatedMetagenomicData() simply return the newest version of the data
 * Older versions of datasets are accessible by using the named functions
-* Support for SummarizedExperiment is forthcoming
-
-# curatedMetagenomicData 1.7.2
-
 * Added phylogenetictree = TRUE argument to ExpressionSet2phyloseq()
 
-# curatedMetagenomicData 1.5.7
+# curatedMetagenomicData 1.6.0
 
 * doubled the number of samples to over 5,700
 * made naming of metadata more complete and strict, see inst/extdata/template.csv
 * mergeData() function for convenient merging of datasets
 * combined_metadata table providing all sample information for all studies
 
-# curatedMetagenomicData 1.3.5
+# curatedMetagenomicData 1.4.0
 
 * Data updated to include accession numbers
 * Minor updates to PaperFigures.Rmd vignette for reproducibility
 
-# curatedMetagenomicData 1.1.9
+# curatedMetagenomicData 1.2.0
 
 * Vast improvements to documentation, now more informative and compact
 * New function to coerce data to an MRexperiment class
 * New workhorse function to access data with wildcard search
 * Fun intro message for developers
-
-# curatedMetagenomicData 1.1.4
-
-* Version bumped to reflect latest y version of Bioconductor
 * Fixed a bug related to ExperimentHub that caused checks to fail
 
 # curatedMetagenomicData 1.0.4
