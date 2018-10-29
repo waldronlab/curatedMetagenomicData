@@ -1,7 +1,7 @@
 Package: curatedMetagenomicData
 Type: Package
 Title: Curated Metagenomic Data of the Human Microbiome
-Version: 1.11.8
+Version: 1.11.9
 Author:
     Lucas Schiffer <schiffer.lucas@gmail.com>,
     Edoardo Pasolli <edoardo.pasolli@unitn.it>,
@@ -49,5 +49,9 @@ Suggests:
     phyloseq,
     ape
 VignetteBuilder: knitr
-biocViews: Homo_sapiens_Data, ReproducibleResearch, MicrobiomeData
+biocViews: 
+    Homo_sapiens_Data, 
+    ReproducibleResearch, 
+    MicrobiomeData, 
+    ExperimentHub
 RoxygenNote: 6.1.0
