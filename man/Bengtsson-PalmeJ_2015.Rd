@@ -13,7 +13,7 @@
 Data from the Bengtsson-PalmeJ_2015 study
 }
 \section{Datasets}{
- 
+
 
 \subsection{Bengtsson-PalmeJ_2015.genefamilies_relab.stool}{
    An ExpressionSet with 70 samples and 1,301,172 features specific to the stool body site
@@ -41,7 +41,7 @@ Data from the Bengtsson-PalmeJ_2015 study
 }
 
 \section{Source}{
- 
+
 
 \subsection{Title}{
    The Human Gut Microbiome as a Transporter of Antibiotic Resistance Genes between Continents.
@@ -61,6 +61,6 @@ Data from the Bengtsson-PalmeJ_2015 study
 }
 
 \examples{
-Bengtsson-PalmeJ_2015.metaphlan_bugs_list.stool()
+`Bengtsson-PalmeJ_2015.metaphlan_bugs_list.stool`()
 
 }
