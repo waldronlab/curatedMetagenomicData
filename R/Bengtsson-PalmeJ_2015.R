@@ -48,7 +48,7 @@
 #'    26259788
 #' }
 #' 
-#' @examples Bengtsson-PalmeJ_2015.metaphlan_bugs_list.stool()
+#' @examples `Bengtsson-PalmeJ_2015.metaphlan_bugs_list.stool`()
 #' 
 #' @name Bengtsson-PalmeJ_2015 
 NULL

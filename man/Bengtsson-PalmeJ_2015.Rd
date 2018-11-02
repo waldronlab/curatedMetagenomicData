@@ -61,6 +61,6 @@ Data from the Bengtsson-PalmeJ_2015 study
 }
 
 \examples{
-Bengtsson-PalmeJ_2015.metaphlan_bugs_list.stool()
+`Bengtsson-PalmeJ_2015.metaphlan_bugs_list.stool`()
 
 }
