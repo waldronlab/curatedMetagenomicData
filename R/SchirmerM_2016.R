@@ -48,7 +48,7 @@
 #'    27984736
 #' }
 #' 
-#' @examples SchirmerM_2016.metaphlan_bugs_list.stool()
+#' @examples `SchirmerM_2016.metaphlan_bugs_list.stool`()
 #' 
 #' @name SchirmerM_2016 
 NULL

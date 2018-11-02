@@ -96,7 +96,7 @@
 #'    28073918
 #' }
 #' 
-#' @examples OlmMR_2017.metaphlan_bugs_list.oralcavity()
+#' @examples `OlmMR_2017.metaphlan_bugs_list.oralcavity`()
 #' 
 #' @name OlmMR_2017 
 NULL

@@ -48,7 +48,7 @@
 #'    25981789
 #' }
 #' 
-#' @examples RampelliS_2015.metaphlan_bugs_list.stool()
+#' @examples `RampelliS_2015.metaphlan_bugs_list.stool`()
 #' 
 #' @name RampelliS_2015 
 NULL

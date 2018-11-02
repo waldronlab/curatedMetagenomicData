@@ -48,7 +48,7 @@
 #'    NA
 #' }
 #' 
-#' @examples PasolliE_2018.metaphlan_bugs_list.stool()
+#' @examples `PasolliE_2018.metaphlan_bugs_list.stool`()
 #' 
 #' @name PasolliE_2018 
 NULL

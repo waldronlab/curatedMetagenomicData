@@ -48,7 +48,7 @@
 #'    23571589
 #' }
 #' 
-#' @examples LomanNJ_2013.metaphlan_bugs_list.stool()
+#' @examples `LomanNJ_2013.metaphlan_bugs_list.stool`()
 #' 
 #' @name LomanNJ_2013 
 NULL

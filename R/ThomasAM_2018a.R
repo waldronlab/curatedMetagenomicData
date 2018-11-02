@@ -48,7 +48,7 @@
 #'    NA
 #' }
 #' 
-#' @examples ThomasAM_2018a.metaphlan_bugs_list.stool()
+#' @examples `ThomasAM_2018a.metaphlan_bugs_list.stool`()
 #' 
 #' @name ThomasAM_2018a 
 NULL

@@ -48,7 +48,7 @@
 #'    27818083
 #' }
 #' 
-#' @examples XieH_2016.metaphlan_bugs_list.stool()
+#' @examples `XieH_2016.metaphlan_bugs_list.stool`()
 #' 
 #' @name XieH_2016 
 NULL
