@@ -48,7 +48,7 @@
 #'    NA
 #' }
 #' 
-#' @examples HanniganGD_2017.metaphlan_bugs_list.stool()
+#' @examples `HanniganGD_2017.metaphlan_bugs_list.stool`()
 #' 
 #' @name HanniganGD_2017 
 NULL

@@ -48,7 +48,7 @@
 #'    28839072
 #' }
 #' 
-#' @examples SmitsSA_2017.metaphlan_bugs_list.stool()
+#' @examples `SmitsSA_2017.metaphlan_bugs_list.stool`()
 #' 
 #' @name SmitsSA_2017 
 NULL

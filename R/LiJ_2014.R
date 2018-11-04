@@ -48,7 +48,7 @@
 #'    24997786
 #' }
 #' 
-#' @examples LiJ_2014.metaphlan_bugs_list.stool()
+#' @examples `LiJ_2014.metaphlan_bugs_list.stool`()
 #' 
 #' @name LiJ_2014 
 NULL

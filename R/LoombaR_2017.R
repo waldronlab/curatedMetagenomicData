@@ -48,7 +48,7 @@
 #'    28467925
 #' }
 #' 
-#' @examples LoombaR_2017.metaphlan_bugs_list.stool()
+#' @examples `LoombaR_2017.metaphlan_bugs_list.stool`()
 #' 
 #' @name LoombaR_2017 
 NULL

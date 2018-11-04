@@ -48,7 +48,7 @@
 #'    27562258
 #' }
 #' 
-#' @examples ChngKR_2016.metaphlan_bugs_list.skin()
+#' @examples `ChngKR_2016.metaphlan_bugs_list.skin`()
 #' 
 #' @name ChngKR_2016 
 NULL

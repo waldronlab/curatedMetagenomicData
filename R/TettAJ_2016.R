@@ -48,7 +48,7 @@
 #'    28649415
 #' }
 #' 
-#' @examples TettAJ_2016.metaphlan_bugs_list.skin()
+#' @examples `TettAJ_2016.metaphlan_bugs_list.skin`()
 #' 
 #' @name TettAJ_2016 
 NULL

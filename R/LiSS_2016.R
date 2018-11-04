@@ -48,7 +48,7 @@
 #'    27126044
 #' }
 #' 
-#' @examples LiSS_2016.metaphlan_bugs_list.stool()
+#' @examples `LiSS_2016.metaphlan_bugs_list.stool`()
 #' 
 #' @name LiSS_2016 
 NULL

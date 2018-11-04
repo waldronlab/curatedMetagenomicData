@@ -48,7 +48,7 @@
 #'    23719380
 #' }
 #' 
-#' @examples KarlssonFH_2013.metaphlan_bugs_list.stool()
+#' @examples `KarlssonFH_2013.metaphlan_bugs_list.stool`()
 #' 
 #' @name KarlssonFH_2013 
 NULL

@@ -48,7 +48,7 @@
 #'    25991682
 #' }
 #' 
-#' @examples DavidLA_2015.metaphlan_bugs_list.stool()
+#' @examples `DavidLA_2015.metaphlan_bugs_list.stool`()
 #' 
 #' @name DavidLA_2015 
 NULL

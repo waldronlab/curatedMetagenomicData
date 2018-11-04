@@ -48,7 +48,7 @@
 #'    25079328
 #' }
 #' 
-#' @examples QinN_2014.metaphlan_bugs_list.stool()
+#' @examples `QinN_2014.metaphlan_bugs_list.stool`()
 #' 
 #' @name QinN_2014 
 NULL

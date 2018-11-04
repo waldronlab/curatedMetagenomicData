@@ -48,7 +48,7 @@
 #'    27259157
 #' }
 #' 
-#' @examples VatanenT_2016.metaphlan_bugs_list.stool()
+#' @examples `VatanenT_2016.metaphlan_bugs_list.stool`()
 #' 
 #' @name VatanenT_2016 
 NULL

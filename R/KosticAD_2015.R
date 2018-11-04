@@ -48,7 +48,7 @@
 #'    25662751
 #' }
 #' 
-#' @examples KosticAD_2015.metaphlan_bugs_list.stool()
+#' @examples `KosticAD_2015.metaphlan_bugs_list.stool`()
 #' 
 #' @name KosticAD_2015 
 NULL

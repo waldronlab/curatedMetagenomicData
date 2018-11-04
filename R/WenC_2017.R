@@ -48,7 +48,7 @@
 #'    28750650
 #' }
 #' 
-#' @examples WenC_2017.metaphlan_bugs_list.stool()
+#' @examples `WenC_2017.metaphlan_bugs_list.stool`()
 #' 
 #' @name WenC_2017 
 NULL

@@ -48,7 +48,7 @@
 #'    24997787
 #' }
 #' 
-#' @examples NielsenHB_2014.metaphlan_bugs_list.stool()
+#' @examples `NielsenHB_2014.metaphlan_bugs_list.stool`()
 #' 
 #' @name NielsenHB_2014 
 NULL

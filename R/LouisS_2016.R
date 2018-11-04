@@ -48,7 +48,7 @@
 #'    26919743
 #' }
 #' 
-#' @examples LouisS_2016.metaphlan_bugs_list.stool()
+#' @examples `LouisS_2016.metaphlan_bugs_list.stool`()
 #' 
 #' @name LouisS_2016 
 NULL

@@ -44,7 +44,7 @@
 #'    25691586
 #' }
 #' 
-#' @examples ShiB_2015.metaphlan_bugs_list.oralcavity()
+#' @examples `ShiB_2015.metaphlan_bugs_list.oralcavity`()
 #' 
 #' @name ShiB_2015 
 NULL
