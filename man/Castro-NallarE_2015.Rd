@@ -8,6 +8,13 @@
 \alias{Castro-NallarE_2015.metaphlan_bugs_list.oralcavity}
 \alias{Castro-NallarE_2015.pathabundance_relab.oralcavity}
 \alias{Castro-NallarE_2015.pathcoverage.oralcavity}
+\alias{Castro_NallarE_2015}
+\alias{Castro_NallarE_2015.genefamilies_relab.oralcavity}
+\alias{Castro_NallarE_2015.marker_abundance.oralcavity}
+\alias{Castro_NallarE_2015.marker_presence.oralcavity}
+\alias{Castro_NallarE_2015.metaphlan_bugs_list.oralcavity}
+\alias{Castro_NallarE_2015.pathabundance_relab.oralcavity}
+\alias{Castro_NallarE_2015.pathcoverage.oralcavity}
 \title{Data from the Castro-NallarE_2015 study}
 \description{
 Data from the Castro-NallarE_2015 study

@@ -8,6 +8,13 @@
 \alias{Heitz-BuschartA_2016.metaphlan_bugs_list.stool}
 \alias{Heitz-BuschartA_2016.pathabundance_relab.stool}
 \alias{Heitz-BuschartA_2016.pathcoverage.stool}
+\alias{Heitz_BuschartA_2016}
+\alias{Heitz_BuschartA_2016.genefamilies_relab.stool}
+\alias{Heitz_BuschartA_2016.marker_abundance.stool}
+\alias{Heitz_BuschartA_2016.marker_presence.stool}
+\alias{Heitz_BuschartA_2016.metaphlan_bugs_list.stool}
+\alias{Heitz_BuschartA_2016.pathabundance_relab.stool}
+\alias{Heitz_BuschartA_2016.pathcoverage.stool}
 \title{Data from the Heitz-BuschartA_2016 study}
 \description{
 Data from the Heitz-BuschartA_2016 study

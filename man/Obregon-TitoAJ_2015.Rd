@@ -8,6 +8,13 @@
 \alias{Obregon-TitoAJ_2015.metaphlan_bugs_list.stool}
 \alias{Obregon-TitoAJ_2015.pathabundance_relab.stool}
 \alias{Obregon-TitoAJ_2015.pathcoverage.stool}
+\alias{Obregon_TitoAJ_2015}
+\alias{Obregon_TitoAJ_2015.genefamilies_relab.stool}
+\alias{Obregon_TitoAJ_2015.marker_abundance.stool}
+\alias{Obregon_TitoAJ_2015.marker_presence.stool}
+\alias{Obregon_TitoAJ_2015.metaphlan_bugs_list.stool}
+\alias{Obregon_TitoAJ_2015.pathabundance_relab.stool}
+\alias{Obregon_TitoAJ_2015.pathcoverage.stool}
 \title{Data from the Obregon-TitoAJ_2015 study}
 \description{
 Data from the Obregon-TitoAJ_2015 study
