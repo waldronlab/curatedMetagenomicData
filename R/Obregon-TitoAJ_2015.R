@@ -3,8 +3,8 @@
 #' Data from the Obregon-TitoAJ_2015 study
 #'
 #' @aliases Obregon-TitoAJ_2015.genefamilies_relab.stool Obregon-TitoAJ_2015.marker_abundance.stool Obregon-TitoAJ_2015.marker_presence.stool Obregon-TitoAJ_2015.metaphlan_bugs_list.stool Obregon-TitoAJ_2015.pathabundance_relab.stool Obregon-TitoAJ_2015.pathcoverage.stool
-#' @aliases Obregon_TitoAJ_2015 Obregon_TitoAJ_2015.genefamilies_relab.stool Obregon_TitoAJ_2015.marker_abundance.stool Obregon_TitoAJ_2015.marker_presence.stool Obregon_TitoAJ_2015.metaphlan_bugs_list.stool Obregon_TitoAJ_2015.pathabundance_relab.stool Obregon_TitoAJ_2015.pathcoverage.stool
-#' @details Note that Obregon_TitoAJ_2015 is deprecated, use Obregon-TitoAJ_2015 instead.
+#'
+#' @details Note that Obregon_TitoAJ_2015 is defunct, use Obregon-TitoAJ_2015 instead.
 #'
 #' @section Datasets:
 #'

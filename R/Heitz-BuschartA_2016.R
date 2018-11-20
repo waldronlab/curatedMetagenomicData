@@ -3,8 +3,8 @@
 #' Data from the Heitz-BuschartA_2016 study
 #'
 #' @aliases Heitz-BuschartA_2016.genefamilies_relab.stool Heitz-BuschartA_2016.marker_abundance.stool Heitz-BuschartA_2016.marker_presence.stool Heitz-BuschartA_2016.metaphlan_bugs_list.stool Heitz-BuschartA_2016.pathabundance_relab.stool Heitz-BuschartA_2016.pathcoverage.stool
-#' @aliases Heitz_BuschartA_2016 Heitz_BuschartA_2016.genefamilies_relab.stool Heitz_BuschartA_2016.marker_abundance.stool Heitz_BuschartA_2016.marker_presence.stool Heitz_BuschartA_2016.metaphlan_bugs_list.stool Heitz_BuschartA_2016.pathabundance_relab.stool Heitz_BuschartA_2016.pathcoverage.stool
-#' @details Note that Heitz_BuschartA_2016 is deprecated, use Heitz-BuschartA_2016 instead.
+#'
+#' @details Note that Heitz_BuschartA_2016 is defunct, use Heitz-BuschartA_2016 instead.
 #' @section Datasets:
 #'
 #' \subsection{Heitz-BuschartA_2016.genefamilies_relab.stool}{
