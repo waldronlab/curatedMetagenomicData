@@ -3,8 +3,8 @@
 #' Data from the Castro-NallarE_2015 study
 #'
 #' @aliases Castro-NallarE_2015.genefamilies_relab.oralcavity Castro-NallarE_2015.marker_abundance.oralcavity Castro-NallarE_2015.marker_presence.oralcavity Castro-NallarE_2015.metaphlan_bugs_list.oralcavity Castro-NallarE_2015.pathabundance_relab.oralcavity Castro-NallarE_2015.pathcoverage.oralcavity
-#' @aliases Castro_NallarE_2015 Castro_NallarE_2015.genefamilies_relab.stool Castro_NallarE_2015.marker_abundance.stool Castro_NallarE_2015.marker_presence.stool Castro_NallarE_2015.metaphlan_bugs_list.stool Castro_NallarE_2015.pathabundance_relab.stool Castro_NallarE_2015.pathcoverage.stool
-#' @details Note that Castro_NallarE_2015 is deprecated, use Castro-NallarE_2015 instead.
+#'
+#' @details Note that Castro_NallarE_2015 is defunct, use Castro-NallarE_2015 instead.
 #'
 #' @section Datasets:
 #'

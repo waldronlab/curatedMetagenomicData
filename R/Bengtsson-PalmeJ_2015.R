@@ -3,7 +3,7 @@
 #' Data from the Bengtsson-PalmeJ_2015 study
 #'
 #' @aliases Bengtsson-PalmeJ_2015.genefamilies_relab.stool Bengtsson-PalmeJ_2015.marker_abundance.stool Bengtsson-PalmeJ_2015.marker_presence.stool Bengtsson-PalmeJ_2015.metaphlan_bugs_list.stool Bengtsson-PalmeJ_2015.pathabundance_relab.stool Bengtsson-PalmeJ_2015.pathcoverage.stool
-#'
+#' @details Note that Bengtsson_PalmeJ_2015 is defunct, use Bengtsson-PalmeJ_2015 instead.
 #' @section Datasets:
 #'
 #' \subsection{Bengtsson-PalmeJ_2015.genefamilies_relab.stool}{

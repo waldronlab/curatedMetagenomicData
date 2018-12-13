@@ -2,10 +2,10 @@ context("no munged names")
 
 ## Change this to expect_error for Bioconductor 3.9,
 ## and remove the functions in Bioconductor >3.9.
-test_that("Deprecate munged dataset names", {
-    expect_warning(Castro_NallarE_2015.metaphlan_bugs_list.oralcavity())
-    expect_warning(Heitz_BuschartA_2016.marker_presence.stool())
-    expect_warning(Obregon_TitoAJ_2015.metaphlan_bugs_list.stool())
+test_that("Make defunct munged dataset names", {
+    expect_error(Castro_NallarE_2015.metaphlan_bugs_list.oralcavity())
+    expect_error(Heitz_BuschartA_2016.marker_presence.stool())
+    expect_error(Obregon_TitoAJ_2015.metaphlan_bugs_list.stool())
 })
 
 ## Make sure there are no other munged names

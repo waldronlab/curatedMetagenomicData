@@ -36,10 +36,11 @@
     ns <- asNamespace(pkgname)
     mapply(function(xx, yy) {
         func = function(cmdversion = yy, metadata = FALSE) {
-            ## Deprecate munged dataset names, introduced for Bioc 3.8 release Oct 2018
-            deprecation.regex <- "Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ"
-            if(grepl(deprecation.regex, xx)){
-                .Deprecated(sub("_", "-", xx))
+            ## Make defunct munged dataset names, introduced for Bioc 3.8 release Oct 2018
+            defunct.regex <- "Bengtsson_PalmeJ|Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ"
+            if(grepl(defunct.regex, xx)){
+                .Defunct(sub("_", "-", xx))
+                stop("Function is defunct.")
             }
             cmdversion <- as.integer(cmdversion)
             if(length(cmdversion) > 1 | !.cmdIsValidVersion(cmdversion))
@@ -52,8 +53,12 @@
             if (!length(ehid))
                 stop(paste0("resource ", xx,
                             " not found in ExperimentHub\n",
-                            "Try a different cmdversion, see",
-                            " cmdValidVersions() for possible values"))
+                            ## cmdversion is not currently working
+                            # "Try a different cmdversion, see",
+                            # " cmdValidVersions() for possible values"))
+                            "Check your internet connection. If you are",
+                            " looking for a previous version of a dataset,",
+                            " use ExperimentHub::ExperimentHub() instead."))
             if (metadata)
                 eh[ehid]
             else eh[[ehid]]
