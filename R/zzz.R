@@ -36,10 +36,11 @@
     ns <- asNamespace(pkgname)
     mapply(function(xx, yy) {
         func = function(cmdversion = yy, metadata = FALSE) {
-            ## Deprecate munged dataset names, introduced for Bioc 3.8 release Oct 2018
+            ## Make defunct munged dataset names, introduced for Bioc 3.8 release Oct 2018
             defunct.regex <- "Bengtsson_PalmeJ|Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ"
             if(grepl(defunct.regex, xx)){
                 .Defunct(sub("_", "-", xx))
+                stop("Function is defunct.")
             }
             cmdversion <- as.integer(cmdversion)
             if(length(cmdversion) > 1 | !.cmdIsValidVersion(cmdversion))
