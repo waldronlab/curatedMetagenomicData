@@ -61,6 +61,6 @@ Data from the ThomasAM_2018a study
 }
 
 \examples{
-ThomasAM_2018a.metaphlan_bugs_list.stool()
+`ThomasAM_2018a.metaphlan_bugs_list.stool`()
 
 }

@@ -61,6 +61,6 @@ Data from the LoombaR_2017 study
 }
 
 \examples{
-LoombaR_2017.metaphlan_bugs_list.stool()
+`LoombaR_2017.metaphlan_bugs_list.stool`()
 
 }

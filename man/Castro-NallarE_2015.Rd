@@ -13,7 +13,7 @@
 Data from the Castro-NallarE_2015 study
 }
 \details{
-Note that Castro_NallarE_2015 is deprecated, use Castro-NallarE_2015 instead.
+Note that Castro_NallarE_2015 is defunct, use Castro-NallarE_2015 instead.
 }
 \section{Datasets}{
 

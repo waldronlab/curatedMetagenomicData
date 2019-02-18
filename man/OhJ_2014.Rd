@@ -61,6 +61,6 @@ Data from the OhJ_2014 study
 }
 
 \examples{
-OhJ_2014.metaphlan_bugs_list.skin()
+`OhJ_2014.metaphlan_bugs_list.skin`()
 
 }

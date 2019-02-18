@@ -12,6 +12,9 @@
 \description{
 Data from the Bengtsson-PalmeJ_2015 study
 }
+\details{
+Note that Bengtsson_PalmeJ_2015 is defunct, use Bengtsson-PalmeJ_2015 instead.
+}
 \section{Datasets}{
 
 

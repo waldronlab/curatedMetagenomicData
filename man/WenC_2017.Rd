@@ -61,6 +61,6 @@ Data from the WenC_2017 study
 }
 
 \examples{
-WenC_2017.metaphlan_bugs_list.stool()
+`WenC_2017.metaphlan_bugs_list.stool`()
 
 }

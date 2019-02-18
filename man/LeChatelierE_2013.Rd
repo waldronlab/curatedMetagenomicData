@@ -61,6 +61,6 @@ Data from the LeChatelierE_2013 study
 }
 
 \examples{
-LeChatelierE_2013.metaphlan_bugs_list.stool()
+`LeChatelierE_2013.metaphlan_bugs_list.stool`()
 
 }

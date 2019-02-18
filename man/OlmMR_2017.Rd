@@ -121,6 +121,6 @@ Data from the OlmMR_2017 study
 }
 
 \examples{
-OlmMR_2017.metaphlan_bugs_list.oralcavity()
+`OlmMR_2017.metaphlan_bugs_list.oralcavity`()
 
 }

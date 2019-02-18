@@ -61,6 +61,6 @@ Data from the KosticAD_2015 study
 }
 
 \examples{
-KosticAD_2015.metaphlan_bugs_list.stool()
+`KosticAD_2015.metaphlan_bugs_list.stool`()
 
 }

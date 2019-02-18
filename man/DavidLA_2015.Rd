@@ -61,6 +61,6 @@ Data from the DavidLA_2015 study
 }
 
 \examples{
-DavidLA_2015.metaphlan_bugs_list.stool()
+`DavidLA_2015.metaphlan_bugs_list.stool`()
 
 }

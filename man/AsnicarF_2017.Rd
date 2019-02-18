@@ -91,6 +91,6 @@ Data from the AsnicarF_2017 study
 }
 
 \examples{
-AsnicarF_2017.metaphlan_bugs_list.milk()
+`AsnicarF_2017.metaphlan_bugs_list.milk`()
 
 }

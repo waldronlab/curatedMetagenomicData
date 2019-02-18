@@ -61,6 +61,6 @@ Data from the LouisS_2016 study
 }
 
 \examples{
-LouisS_2016.metaphlan_bugs_list.stool()
+`LouisS_2016.metaphlan_bugs_list.stool`()
 
 }

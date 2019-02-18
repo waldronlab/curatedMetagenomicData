@@ -61,6 +61,6 @@ Data from the VogtmannE_2016 study
 }
 
 \examples{
-VogtmannE_2016.metaphlan_bugs_list.stool()
+`VogtmannE_2016.metaphlan_bugs_list.stool`()
 
 }

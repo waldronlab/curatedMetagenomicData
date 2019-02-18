@@ -56,6 +56,6 @@ Data from the ShiB_2015 study
 }
 
 \examples{
-ShiB_2015.metaphlan_bugs_list.oralcavity()
+`ShiB_2015.metaphlan_bugs_list.oralcavity`()
 
 }

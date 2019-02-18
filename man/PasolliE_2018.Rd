@@ -61,6 +61,6 @@ Data from the PasolliE_2018 study
 }
 
 \examples{
-PasolliE_2018.metaphlan_bugs_list.stool()
+`PasolliE_2018.metaphlan_bugs_list.stool`()
 
 }

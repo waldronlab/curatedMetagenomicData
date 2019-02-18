@@ -61,6 +61,6 @@ Data from the FengQ_2015 study
 }
 
 \examples{
-FengQ_2015.metaphlan_bugs_list.stool()
+`FengQ_2015.metaphlan_bugs_list.stool`()
 
 }

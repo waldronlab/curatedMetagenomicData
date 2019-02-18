@@ -61,6 +61,6 @@ Data from the HanniganGD_2017 study
 }
 
 \examples{
-HanniganGD_2017.metaphlan_bugs_list.stool()
+`HanniganGD_2017.metaphlan_bugs_list.stool`()
 
 }

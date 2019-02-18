@@ -61,6 +61,6 @@ Data from the NielsenHB_2014 study
 }
 
 \examples{
-NielsenHB_2014.metaphlan_bugs_list.stool()
+`NielsenHB_2014.metaphlan_bugs_list.stool`()
 
 }

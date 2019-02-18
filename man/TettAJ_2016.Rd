@@ -61,6 +61,6 @@ Data from the TettAJ_2016 study
 }
 
 \examples{
-TettAJ_2016.metaphlan_bugs_list.skin()
+`TettAJ_2016.metaphlan_bugs_list.skin`()
 
 }

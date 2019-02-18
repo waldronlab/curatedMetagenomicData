@@ -13,7 +13,7 @@
 Data from the Heitz-BuschartA_2016 study
 }
 \details{
-Note that Heitz_BuschartA_2016 is deprecated, use Heitz-BuschartA_2016 instead.
+Note that Heitz_BuschartA_2016 is defunct, use Heitz-BuschartA_2016 instead.
 }
 \section{Datasets}{
 

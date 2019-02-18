@@ -61,6 +61,6 @@ Data from the YuJ_2015 study
 }
 
 \examples{
-YuJ_2015.metaphlan_bugs_list.stool()
+`YuJ_2015.metaphlan_bugs_list.stool`()
 
 }

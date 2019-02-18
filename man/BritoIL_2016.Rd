@@ -91,6 +91,6 @@ Data from the BritoIL_2016 study
 }
 
 \examples{
-BritoIL_2016.metaphlan_bugs_list.oralcavity()
+`BritoIL_2016.metaphlan_bugs_list.oralcavity`()
 
 }

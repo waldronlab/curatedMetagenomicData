@@ -61,6 +61,6 @@ Data from the LiJ_2014 study
 }
 
 \examples{
-LiJ_2014.metaphlan_bugs_list.stool()
+`LiJ_2014.metaphlan_bugs_list.stool`()
 
 }

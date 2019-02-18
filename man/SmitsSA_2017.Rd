@@ -61,6 +61,6 @@ Data from the SmitsSA_2017 study
 }
 
 \examples{
-SmitsSA_2017.metaphlan_bugs_list.stool()
+`SmitsSA_2017.metaphlan_bugs_list.stool`()
 
 }

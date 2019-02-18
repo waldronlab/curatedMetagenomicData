@@ -61,6 +61,6 @@ Data from the RaymondF_2016 study
 }
 
 \examples{
-RaymondF_2016.metaphlan_bugs_list.stool()
+`RaymondF_2016.metaphlan_bugs_list.stool`()
 
 }

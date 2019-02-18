@@ -61,6 +61,6 @@ Data from the VincentC_2016 study
 }
 
 \examples{
-VincentC_2016.metaphlan_bugs_list.stool()
+`VincentC_2016.metaphlan_bugs_list.stool`()
 
 }

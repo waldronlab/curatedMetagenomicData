@@ -13,7 +13,7 @@
 Data from the Obregon-TitoAJ_2015 study
 }
 \details{
-Note that Obregon_TitoAJ_2015 is deprecated, use Obregon-TitoAJ_2015 instead.
+Note that Obregon_TitoAJ_2015 is defunct, use Obregon-TitoAJ_2015 instead.
 }
 \section{Datasets}{
 

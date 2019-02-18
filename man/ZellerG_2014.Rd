@@ -61,6 +61,6 @@ Data from the ZellerG_2014 study
 }
 
 \examples{
-ZellerG_2014.metaphlan_bugs_list.stool()
+`ZellerG_2014.metaphlan_bugs_list.stool`()
 
 }

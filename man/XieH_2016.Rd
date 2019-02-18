@@ -61,6 +61,6 @@ Data from the XieH_2016 study
 }
 
 \examples{
-XieH_2016.metaphlan_bugs_list.stool()
+`XieH_2016.metaphlan_bugs_list.stool`()
 
 }
