@@ -6,7 +6,7 @@ BiocManager::install("docopt")
 
 Then:
 
-1. Download the *curatedMetagenomicData* [shell script](https://raw.githubusercontent.com/waldronlab/curatedMetagenomicData/master/inst/commandline/curatedMetagenomicData){:target="_blank"}.
+1. Download the *curatedMetagenomicData* [shell script](https://raw.githubusercontent.com/waldronlab/curatedMetagenomicData/master/inst/commandline/curatedMetagenomicData).
 
 2. Make sure the shell script has executable permissions (i.e., `chmod a+x curatedMetagenomicData`)
 
