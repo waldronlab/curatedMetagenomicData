@@ -7,7 +7,6 @@
 ![fa-pencil](http://fa2png.io/media/icons/font-awesome/4-7-0/pencil/20/0/2c3e50_none.png)
 [![Support Site Activity](https://bioconductor.org/shields/posts/curatedMetagenomicData.svg)](https://support.bioconductor.org/t/curatedmetagenomicdata/)
 
-
 # curatedMetagenomicData
 
 *curatedMetagenomicData* uses [Bioconductor's](https://www.bioconductor.org)
