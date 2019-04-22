@@ -7,12 +7,13 @@
 \alias{ShiB_2015.marker_presence.oralcavity}
 \alias{ShiB_2015.metaphlan_bugs_list.oralcavity}
 \alias{ShiB_2015.pathabundance_relab.oralcavity}
+\alias{ShiB_2015.pathcoverage.oralcavity}
 \title{Data from the ShiB_2015 study}
 \description{
 Data from the ShiB_2015 study
 }
 \section{Datasets}{
- 
+
 
 \subsection{ShiB_2015.genefamilies_relab.oralcavity}{
    An ExpressionSet with 48 samples and 601,260 features specific to the oralcavity body site
@@ -36,7 +37,7 @@ Data from the ShiB_2015 study
 }
 
 \section{Source}{
- 
+
 
 \subsection{Title}{
    Dynamic changes in the subgingival microbiome and their potential for diagnosis and prognosis of periodontitis.
