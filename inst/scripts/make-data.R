@@ -1,4 +1,5 @@
 library(dplyr)
+
 read.dcf("DESCRIPTION", "Suggests") %>%
     gsub("\n", "", .) %>%
     strsplit(",") %>%
