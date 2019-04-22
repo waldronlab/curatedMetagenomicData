@@ -4,7 +4,7 @@
 #' 
 #' The combined sample level metadata of all studies in curatedMetagenomicData.
 #' 
-#' @format A data.frame with 12444 rows and 87 variables:
+#' @format A data.frame with 7212 rows and 105 variables:
 #' \describe{
 #'   \item{NA}{NA}
 #'   \item{sampleID}{Sample identifier.}
@@ -33,7 +33,7 @@
 #'   \item{antibiotics_family}{Family of antibiotics currently used; Semicolon-separated.}
 #'   \item{momeducat}{Years of education of the mother of the subject.}
 #'   \item{alcohol}{Subject is reported as a drinker.}
-#'   \item{flg-genotype}{Any term for filaggrin-protein genotype.}
+#'   \item{NA}{NA}
 #'   \item{disease_subtype}{Disease subtype; CD=Chrohn's Disease.}
 #'   \item{hdl}{Curators must use mg/l.}
 #'   \item{triglycerides}{Curators must use mg/l.}
@@ -43,21 +43,21 @@
 #'   \item{body_subsite}{Subsite of body site of acquisition.}
 #'   \item{visit_number}{Visit number for studies with repeated visits.}
 #'   \item{days_from_first_collection}{Used for time series studies.}
-#'   \item{c-peptide}{Curators must use ng/ml.}
+#'   \item{NA}{NA}
 #'   \item{family}{A number identifying the family subjects belong; not corrected for meta-analyses.}
 #'   \item{cholesterol}{Curators must use mg/dl.}
 #'   \item{glucose}{Curators must use mg/dl.}
 #'   \item{mumps}{Subject has been through mumps in life.}
 #'   \item{adiponectin}{Curators must use mg/l.}
-#'   \item{insulin(cat)}{Insulin intake as a boolean.}
-#'   \item{fgf-19}{Curators must use pg/ml.}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
 #'   \item{hscrp}{High-sensitivity C-reactive protein test result.}
 #'   \item{leptin}{Curators must use micrograms/l.}
 #'   \item{glutamate_decarboxylase_2_antibody}{Glutamic acid decarboxylase (GAD65) antibody assay.}
 #'   \item{creatinine}{Curators must use micro-mol/l.}
-#'   \item{il-1}{Curators must use pg/ml.}
+#'   \item{NA}{NA}
 #'   \item{cd163}{Curators must use ng/ml.}
-#'   \item{glp-1}{Curators must use pmol/l.}
+#'   \item{NA}{NA}
 #'   \item{hitchip_probe_class}{High/Low species content onthe HIT-chip probe.}
 #'   \item{hitchip_probe_number}{HIT-chip probe score.}
 #'   \item{protein_intake}{Indication about the protein intake in the Mongolians diet.}
@@ -87,6 +87,24 @@
 #'   \item{ajcc}{AJCC staging for colorectal-cancer.}
 #'   \item{fobt}{Fecal occult blood test.}
 #'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{NA}{NA}
+#'   \item{uncurated_metadata}{A row for whatever field has not be included here.}
 #'   \item{NA}{NA}
 #'   \item{NA}{NA}
 #'   \item{NA}{NA}
