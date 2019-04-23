@@ -1,3 +1,15 @@
+# curatedMetagenomicData 1.14.0
+
+* curatedMetagenomicData now contains XXXX samples from XX studies
+* A total of XXX samples added since Bioconductor 3.8 (October 2018)
+* Datasets added since Bioconductor 3.7 (October 2018):
+    - ThomasAM_2018b (XX samples)
+    - FerrettiP_2018 (XX samples)
+    - ChengpingW_2017 (XXX samples)
+* HMP_2012 metadata fixed...
+* ChengpingW_2017 is the new name for WenC_2017
+* WenC_2017 needs to be depreciated!
+
 # curatedMetagenomicData 1.12.0
 
 * curatedMetagenomicData now contains 7,152 samples from 41 studies
