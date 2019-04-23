@@ -7,7 +7,7 @@
 \alias{ShiB_2015.marker_presence.oralcavity}
 \alias{ShiB_2015.metaphlan_bugs_list.oralcavity}
 \alias{ShiB_2015.pathabundance_relab.oralcavity}
-\alias{20181025.ShiB_2015.pathcoverage.oralcavity}
+\alias{ShiB_2015.pathcoverage.oralcavity}
 \title{Data from the ShiB_2015 study}
 \description{
 Data from the ShiB_2015 study
@@ -35,7 +35,7 @@ Data from the ShiB_2015 study
    An ExpressionSet with 48 samples and 6,934 features specific to the oralcavity body site
 }
 
-\subsection{20181025.ShiB_2015.pathcoverage.oralcavity}{
+\subsection{ShiB_2015.pathcoverage.oralcavity}{
    An ExpressionSet with 48 samples and 6,934 features specific to the oralcavity body site
 }
 }
