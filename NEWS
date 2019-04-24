@@ -8,6 +8,7 @@
     - FerrettiP_2018 (215 samples)
     - ThomasAM_2018b (60 samples)
 * Fixed an error in the metadata for HMP_2012 where posterior fornix samples were incorrectly tagged as 'oralcavity'
+* Removed metadata from HMP_2012 attributing the study to Federal Urdu University... Karachi, Pakistan
 * WenC_2017 has been renamed ChengpingW_2017
 * WenC_2017 is deprecated and will be removed in the next release
 
