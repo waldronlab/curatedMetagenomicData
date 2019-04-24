@@ -4,7 +4,7 @@
 \name{combined_metadata}
 \alias{combined_metadata}
 \title{Combined metadata of all studies in curatedMetagenomicData}
-\format{A data.frame with 7969 rows and 106 variables:
+\format{A data.frame with 8248 rows and 106 variables:
 \describe{
   \item{NA}{NA}
   \item{sampleID}{Sample identifier.}
