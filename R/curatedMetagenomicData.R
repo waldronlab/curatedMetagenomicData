@@ -50,6 +50,12 @@ curatedMetagenomicData <- function(x = "*",
                     Heitz-BuschartA instead of Heitz_BuschartA,
                     and Obregon-TitoAJ instead of Obregon_TitoAJ")
     }
+    deprecated.regex <- "WenC_2017"
+    if(any(grepl(deprecated.regex, x))){
+        .Deprecated(new="curatedMetagenomicData",
+                 msg="WenC_2017 is deprecated and will be made defunct. Use
+                 ChengpingW_2017 instead.")
+    }
     requested.datasets <- x
     all.datasets <- ls("package:curatedMetagenomicData")
     all.datasets <-
