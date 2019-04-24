@@ -12,8 +12,11 @@
 \description{
 Data from the WenC_2017 study
 }
+\details{
+Note that WenC_2017 is deprecated and will be made defunct, use ChengpingW_2017 instead.
+}
 \section{Datasets}{
- 
+
 
 \subsection{WenC_2017.genefamilies_relab.stool}{
    An ExpressionSet with 97 samples and 1,160,257 features specific to the stool body site
@@ -41,7 +44,7 @@ Data from the WenC_2017 study
 }
 
 \section{Source}{
- 
+
 
 \subsection{Title}{
    Quantitative metagenomics reveals unique gut microbiome biomarkers in ankylosing spondylitis.
