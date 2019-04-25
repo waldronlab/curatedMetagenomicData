@@ -653,7 +653,7 @@ dist_rjs <- sqrt(dist_js)
 
 ord_bray <- ordinate(pseq, method = "PCoA", distance = dist_bray)
 
-samp$bray_cluster_2 <- factor(pam(dist_bray, k = 2, cluster.only = T))
+samp$bray_cluster_2 <- factor(pam(dist_bray, k = 2, cluster.only = TRUE))
 
 Prev <- as.numeric(otu_table(pseq)["s__Prevotella_copri", ])
 samp$Prevotella_copri <- Prev
@@ -708,11 +708,11 @@ df_ord_dataset_disease %>%
 # Supplemental Figure 3. Clustering scores for enterotypes in gut WGS samples
 
 ```{r suppfig3}
-pam_bray <- sapply(2:10, function(i) pam(dist_bray, k = i, cluster.only = T))
-pam_js <- sapply(2:10, function(i) pam(dist_js, k = i, cluster.only = T))
-pam_rjs <- sapply(2:10, function(i) pam(dist_rjs, k = i, cluster.only = T))
+pam_bray <- sapply(2:10, function(i) pam(dist_bray, k = i, cluster.only = TRUE))
+pam_js <- sapply(2:10, function(i) pam(dist_js, k = i, cluster.only = TRUE))
+pam_rjs <- sapply(2:10, function(i) pam(dist_rjs, k = i, cluster.only = TRUE))
 
-plot_cluster_validation = function(bray, js, rjs, legend = T, ...) {
+plot_cluster_validation = function(bray, js, rjs, legend = TRUE, ...) {
     plot(2:10, bray, type = "b", pch = 1, xlab = "Number of Clusters", ...)
     lines(2:10, js, type = "b", pch = 2, lty = 2)
     lines(2:10, rjs, type = "b", pch = 22, lty = 3)
@@ -725,13 +725,13 @@ ch_bray <- apply(pam_bray, 2, function(i) cluster.stats(dist_bray, i)$ch)
 ch_js <- apply(pam_js, 2, function(i) cluster.stats(dist_js, i)$ch)
 ch_rjs <- apply(pam_rjs, 2, function(i) cluster.stats(dist_rjs, i)$ch)
 
-plot_cluster_validation(ch_bray, ch_js, ch_rjs, legend = T, ylab = "Calinski-Harabasz score", ylim = c(0, 450))
+plot_cluster_validation(ch_bray, ch_js, ch_rjs, legend = TRUE, ylab = "Calinski-Harabasz score", ylim = c(0, 450))
 
 si_bray <- apply(pam_bray, 2, function(i) mean(silhouette(i, dist_bray)[, 3]))
 si_js <- apply(pam_js, 2, function(i) mean(silhouette(i, dist_js)[, 3]))
 si_rjs <- apply(pam_rjs, 2, function(i) mean(silhouette(i, dist_rjs)[, 3]))
 
-plot_cluster_validation(si_bray, si_js, si_rjs, legend = F, ylab = "Average silhouette width", ylim = c(0, 1))
+plot_cluster_validation(si_bray, si_js, si_rjs, legend = FALSE, ylab = "Average silhouette width", ylim = c(0, 1))
 abline(0.75, 0, lty = 5, col = darkGray)
 abline(0.5, 0, lty = 5, col = darkGray)
 abline(0.25, 0, lty = 5, col = darkGray)
@@ -744,7 +744,7 @@ ps_bray <- prediction.strength(dist_bray, Gmin = 2, Gmax = 10, clustermethod = p
 ps_js <- prediction.strength(dist_js, Gmin = 2, Gmax = 10, clustermethod = pamkCBI)
 ps_rjs <- prediction.strength(dist_rjs, Gmin = 2, Gmax = 10, clustermethod = pamkCBI)
 
-plot_cluster_validation(ps_bray$mean.pred[2:10], ps_js$mean.pred[2:10], ps_rjs$mean.pred[2:10], ylab = "Prediction Strength", ylim = c(0, 1.1), legend = F)
+plot_cluster_validation(ps_bray$mean.pred[2:10], ps_js$mean.pred[2:10], ps_rjs$mean.pred[2:10], ylab = "Prediction Strength", ylim = c(0, 1.1), legend = FALSE)
 abline(0.9, 0, lty = 5, col = darkGray)
 abline(0.8, 0, lty = 8, col = darkGray)
 text("Strong support", x = 9, y = 1, col = darkGray)
