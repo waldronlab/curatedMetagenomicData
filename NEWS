@@ -2,7 +2,7 @@
 
 * curatedMetagenomicData now contains 8,087 samples from 45 studies
 * A total of 935 samples added since Bioconductor 3.8 (October 2018)
-* Datasets added since Bioconductor 3.7 (October 2018):
+* Datasets added since Bioconductor 3.8 (October 2018):
     - BackhedF_2015 (381 samples)
     - CosteaPI_2017 (279 samples)
     - FerrettiP_2018 (215 samples)
