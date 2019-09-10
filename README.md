@@ -1,11 +1,13 @@
 ![fa-music](http://fa2png.io/media/icons/font-awesome/4-7-0/music/20/0/2c3e50_none.png)
-[![Build Results](https://bioconductor.org/shields/build/devel/data-experiment/curatedMetagenomicData.svg)](https://bioconductor.org/checkResults/devel/data-experiment-LATEST/curatedMetagenomicData/)
+[![ci-bioc](https://bioconductor.org/shields/build/devel/data-experiment/curatedMetagenomicData.svg)](https://bioconductor.org/checkResults/devel/data-experiment-LATEST/curatedMetagenomicData/)
 ![fa-linux](http://fa2png.io/media/icons/font-awesome/4-7-0/linux/20/0/2c3e50_none.png)
-[![Travis-CI Build Status](https://travis-ci.org/waldronlab/curatedMetagenomicData.svg?branch=master)](https://travis-ci.org/waldronlab/curatedMetagenomicData)
+[![ci-linux](https://travis-ci.org/waldronlab/curatedMetagenomicData.svg?branch=master)](https://travis-ci.org/waldronlab/curatedMetagenomicData)
 ![fa-percent](http://fa2png.io/media/icons/font-awesome/4-7-0/percent/20/0/2c3e50_none.png)
-[![Coverage Status](https://img.shields.io/codecov/c/github/waldronlab/curatedMetagenomicData/master.svg)](https://codecov.io/github/waldronlab/curatedMetagenomicData?branch=master)
+[![codecov](https://img.shields.io/codecov/c/github/waldronlab/curatedMetagenomicData/master.svg)](https://codecov.io/github/waldronlab/curatedMetagenomicData?branch=master)
+![fa-download](http://fa2png.io/media/icons/font-awesome/4-7-0/download/20/0/2c3e50_none.png)
+[![downloads](https://bioconductor.org/shields/downloads/devel/curatedMetagenomicData.svg)](http://bioconductor.org/packages/stats/data-experiment/curatedMetagenomicData/)
 ![fa-pencil](http://fa2png.io/media/icons/font-awesome/4-7-0/pencil/20/0/2c3e50_none.png)
-[![Support Site Activity](https://bioconductor.org/shields/posts/curatedMetagenomicData.svg)](https://support.bioconductor.org/t/curatedmetagenomicdata/)
+[![posts](https://bioconductor.org/shields/posts/curatedMetagenomicData.svg)](https://support.bioconductor.org/t/curatedmetagenomicdata/)
 
 # curatedMetagenomicData
 
