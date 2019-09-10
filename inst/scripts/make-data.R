@@ -1,11 +1,14 @@
-library(dplyr)
+if (!require("magrittr", character.only = TRUE)) {
+    BiocManager::install("magrittr")
+    require("magrittr", character.only = TRUE)
+}
 
-read.dcf("DESCRIPTION", "Suggests") %>%
-    gsub("\n", "", .) %>%
-    strsplit(",") %>%
-    unlist() %>%
+base::read.dcf("DESCRIPTION", "Suggests") %>%
+    base::gsub("\n", "", x = .) %>%
+    base::strsplit(",") %>%
+    base::unlist() %>%
     for (i in .) {
-        if(!require(i, character.only = TRUE)) {
+        if (!require(i, character.only = TRUE)) {
             BiocManager::install(i)
             require(i, character.only = TRUE)
         }
