@@ -5,7 +5,7 @@
 ![fa-percent](http://fa2png.io/media/icons/font-awesome/4-7-0/percent/20/0/2c3e50_none.png)
 [![codecov](https://img.shields.io/codecov/c/github/waldronlab/curatedMetagenomicData/master.svg)](https://codecov.io/github/waldronlab/curatedMetagenomicData?branch=master)
 ![fa-download](http://fa2png.io/media/icons/font-awesome/4-7-0/download/20/0/2c3e50_none.png)
-[![downloads](https://bioconductor.org/shields/downloads/devel/curatedMetagenomicData.svg)](http://bioconductor.org/packages/stats/data-experiment/curatedMetagenomicData/)
+[![downloads](https://www.bioconductor.org/shields/downloads/curatedMetagenomicData.svg)](http://bioconductor.org/packages/stats/data-experiment/curatedMetagenomicData/)
 ![fa-pencil](http://fa2png.io/media/icons/font-awesome/4-7-0/pencil/20/0/2c3e50_none.png)
 [![posts](https://bioconductor.org/shields/posts/curatedMetagenomicData.svg)](https://support.bioconductor.org/t/curatedmetagenomicdata/)
 
