@@ -1,20 +1,20 @@
 # curatedMetagenomicData 1.16.0
 
-* curatedMetagenomicData now contains X,XXX samples from XX studies
-* A total of XXX samples added since Bioconductor 3.9 (April 2019)
+* curatedMetagenomicData now contains 10,296 samples from 57 studies
+* A total of 2,209 samples added since Bioconductor 3.9 (April 2019)
 * Datasets added since Bioconductor 3.9 (April 2019):
-    - DhakanDB_2019 (XXX samples)
-    - GopalakrishnanV_2018 (XXX samples)
-    - HansenLBS_2018 (XXX samples)
-    - JieZ_2017 (XXX samples)
-    - KieserS_2018 (XXX samples)
-    - MatsonV_2018 (XXX samples)
-    - PehrssonE_2016 (XXX samples)
-    - TettAJ_2019_a (XXX samples)
-    - TettAJ_2019_b (XXX samples)
-    - TettAJ_2019_c (XXX samples)
-    - YeZ_2018 (XXX samples)
-    - ZeeviD_2015 (XXX samples)
+    - DhakanDB_2019 (110 samples)
+    - GopalakrishnanV_2018 (25 samples)
+    - HansenLBS_2018 (208 samples)
+    - JieZ_2017 (385 samples)
+    - KieserS_2018 (27 samples)
+    - MatsonV_2018 (39 samples)
+    - PehrssonE_2016 (191 samples)
+    - TettAJ_2019_a (68 samples)
+    - TettAJ_2019_b (44 samples)
+    - TettAJ_2019_c (50 samples)
+    - YeZ_2018 (65 samples)
+    - ZeeviD_2015 (900 samples)
 
 # curatedMetagenomicData 1.14.0
 
