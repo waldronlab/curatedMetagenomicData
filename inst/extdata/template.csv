@@ -80,5 +80,5 @@ dyastolic_p,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Measured in mm/Hg.
 systolic_p,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,Measured in mm/Hg.
 hscrp,numeric,non-unique,optional,FALSE,[0-9]+\.?[0-9]*,High-sensitivity C-reactive protein test result.
 ferm_milk_prod_consumer,character,non-unique,optional,FALSE,dfmp,Dfmp means yes (defined milk product).
-family,integer,non-unique,optional,FALSE,[0-9]+,A number identifying the family subjects belong; not corrected for meta-analyses.
+family,character,non-unique,optional,FALSE,.+,A number or string identifying the family subjects belong; not corrected for meta-analyses.
 uncurated_metadata,character,non-unique,optional,FALSE,.+,A row for whatever field has not be included here.
