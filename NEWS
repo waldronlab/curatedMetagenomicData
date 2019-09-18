@@ -1,4 +1,4 @@
-# curatedMetagenomicData 1.15.X
+# curatedMetagenomicData 1.16.0
 
 * curatedMetagenomicData now contains X,XXX samples from XX studies
 * A total of XXX samples added since Bioconductor 3.9 (April 2019)
@@ -10,6 +10,9 @@
     - KieserS_2018 (XXX samples)
     - MatsonV_2018 (XXX samples)
     - PehrssonE_2016 (XXX samples)
+    - TettAJ_2019_a (XXX samples)
+    - TettAJ_2019_b (XXX samples)
+    - TettAJ_2019_c (XXX samples)
     - YeZ_2018 (XXX samples)
     - ZeeviD_2015 (XXX samples)
 
