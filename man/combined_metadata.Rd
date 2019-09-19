@@ -4,7 +4,7 @@
 \name{combined_metadata}
 \alias{combined_metadata}
 \title{Combined metadata of all studies in curatedMetagenomicData}
-\format{A data.frame with 8248 rows and 106 variables:
+\format{A data.frame with 10296 rows and 107 variables:
 \describe{
   \item{NA}{NA}
   \item{sampleID}{Sample identifier.}
@@ -44,7 +44,7 @@
   \item{visit_number}{Visit number for studies with repeated visits.}
   \item{days_from_first_collection}{Used for time series studies.}
   \item{NA}{NA}
-  \item{family}{A number identifying the family subjects belong; not corrected for meta-analyses.}
+  \item{family}{A number or string identifying the family subjects belong; not corrected for meta-analyses.}
   \item{cholesterol}{Curators must use mg/dl.}
   \item{glucose}{Curators must use mg/dl.}
   \item{mumps}{Subject has been through mumps in life.}
@@ -105,6 +105,7 @@
   \item{NA}{NA}
   \item{NA}{NA}
   \item{uncurated_metadata}{A row for whatever field has not be included here.}
+  \item{NA}{NA}
   \item{NA}{NA}
   \item{NA}{NA}
   \item{NA}{NA}
