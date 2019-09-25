@@ -11,7 +11,7 @@ test_that("Make defunct munged dataset names", {
 ## Make sure there are no other munged names
 test_that("No underscores in dataset names", {
     allds <- curatedMetagenomicData("*", dryrun = TRUE)
-    deprecation.regex <- "Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ"
+    deprecation.regex <- "Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ|TettAJ_2019"
     allds <- grep(deprecation.regex, allds, invert = TRUE, value = TRUE)
     allnames <- sub("\\..+", "", allds)
     allnames <- sub("_2[0-9]{3}", "", allnames)
