@@ -5,7 +5,8 @@ test_that("Does curatedMetagenomicData work?", {
     allds <- curatedMetagenomicData("*", dryrun = TRUE)
     allstudies.cmd <- sub("\\..+", "", allds) %>%
         unique %>%
-        sort
+        sort %>%
+        grep("WenC_2017", ., invert = TRUE, value = TRUE)
     ## studies from combined_metadata
     data("combined_metadata")
     allstudies.combined_metadata <- unique(combined_metadata$dataset_name) %>% sort
@@ -16,7 +17,8 @@ test_that("Does curatedMetagenomicData work?", {
         sub("^[0-9]+\\.", "", .) %>%
         sub("\\..+", "", .) %>%
         unique %>%
-        sort
+        sort %>%
+        grep("WenC_2017", ., invert = TRUE, value = TRUE)
     ## compare curatedMetagenomicData() to combined_metadata
     extrastudies1 <- paste(setdiff(allstudies.cmd, allstudies.combined_metadata), collapse=" ")
     extrastudies2 <- paste(setdiff(allstudies.combined_metadata, allstudies.cmd), collapse=" ")
