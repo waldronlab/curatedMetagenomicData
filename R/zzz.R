@@ -37,7 +37,7 @@
     mapply(function(xx, yy) {
         func = function(cmdversion = yy, metadata = FALSE) {
             ## Make defunct munged dataset names, introduced for Bioc 3.8 release Oct 2018
-            defunct.regex <- "Bengtsson_PalmeJ|Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ"
+            defunct.regex <- "Bengtsson_PalmeJ|Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ|WenC_2017"
             if(grepl(defunct.regex, xx)){
                 .Defunct(sub("_", "-", xx))
                 stop("Function is defunct.")

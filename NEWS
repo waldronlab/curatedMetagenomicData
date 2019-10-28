@@ -1,6 +1,6 @@
 # curatedMetagenomicData 1.16.0
 
-* curatedMetagenomicData now contains 10,296 samples from 57 studies
+* curatedMetagenomicData now contains 10,199 samples from 57 studies
 * A total of 2,209 samples added since Bioconductor 3.9 (April 2019)
 * Datasets added since Bioconductor 3.9 (April 2019):
     - DhakanDB_2019 (110 samples)

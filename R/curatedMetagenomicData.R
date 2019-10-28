@@ -42,19 +42,14 @@ curatedMetagenomicData <- function(x = "*",
     # if(length(cmdversion) > 1 | !.cmdIsValidVersion(cmdversion))
         # stop("Must provide a single valid version number, see cmdValidVersions().")
     ## Deprecate munged dataset names, introduced for Bioc 3.8 release Oct 2018
-    defunct.regex <- "Bengtsson_PalmeJ|Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ"
+    defunct.regex <- "Bengtsson_PalmeJ|Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ|WenC_2017"
     if(any(grepl(defunct.regex, x))){
         .Defunct(new="curatedMetagenomicData",
                     msg="Use Bengtsson-PalmeJ instead of Bengtsson_PalmeJ,
                     Castro-NallarE instead of Castro_NallarE,
                     Heitz-BuschartA instead of Heitz_BuschartA,
-                    and Obregon-TitoAJ instead of Obregon_TitoAJ")
-    }
-    deprecated.regex <- "WenC_2017"
-    if(any(grepl(deprecated.regex, x))){
-        .Deprecated(new="curatedMetagenomicData",
-                 msg="WenC_2017 is deprecated and will be made defunct. Use
-                 ChengpingW_2017 instead.")
+                    Obregon-TitoAJ instead of Obregon_TitoAJ,
+                    and ChengpingW_2017 instead of WenC_2017")
     }
     requested.datasets <- x
     all.datasets <- ls("package:curatedMetagenomicData")
