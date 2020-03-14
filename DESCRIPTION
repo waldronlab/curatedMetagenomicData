@@ -54,4 +54,4 @@ biocViews:
 VignetteBuilder: knitr
 URL: https://github.com/waldronlab/curatedMetagenomicData
 BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0

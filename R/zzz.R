@@ -3,6 +3,7 @@
 #' @importFrom dplyr arrange
 #' @importFrom dplyr desc
 #' @importFrom dplyr distinct
+#' @importFrom dplyr filter
 #' @importFrom dplyr mutate
 #' @importFrom magrittr %$%
 #' @importFrom AnnotationHub query
@@ -26,6 +27,7 @@
     title_df %>%
         arrange(desc(run_date), study, data_type, body_site) %>%
         distinct(study, data_type, body_site, .keep_all = TRUE) %>%
+        filter(study != "WenC_2017") %>%
         mutate(run_date = as.character(run_date)) %>%
         mutate(run_date = as.integer(run_date)) %$% {
             titles <<- paste(study, data_type, body_site, sep =".")
@@ -37,7 +39,7 @@
     mapply(function(xx, yy) {
         func = function(cmdversion = yy, metadata = FALSE) {
             ## Make defunct munged dataset names, introduced for Bioc 3.8 release Oct 2018
-            defunct.regex <- "Bengtsson_PalmeJ|Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ|WenC_2017"
+            defunct.regex <- "Bengtsson_PalmeJ|Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ|WenC"
             if(grepl(defunct.regex, xx)){
                 .Defunct(sub("_", "-", xx))
                 stop("Function is defunct.")
