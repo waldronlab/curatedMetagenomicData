@@ -4,8 +4,12 @@
 \alias{ExpressionSet2phyloseq}
 \title{Convert an ExpressionSet object to a phyloseq object}
 \usage{
-ExpressionSet2phyloseq(eset, simplify = TRUE, relab = TRUE,
-  phylogenetictree = FALSE)
+ExpressionSet2phyloseq(
+  eset,
+  simplify = TRUE,
+  relab = TRUE,
+  phylogenetictree = FALSE
+)
 }
 \arguments{
 \item{eset}{An eset object}

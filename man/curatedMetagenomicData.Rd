@@ -4,11 +4,15 @@
 \docType{package}
 \name{curatedMetagenomicData}
 \alias{curatedMetagenomicData}
-\alias{curatedMetagenomicData-package}
 \title{Curated Metagenomic Data of the Human Microbiome}
 \usage{
-curatedMetagenomicData(x = "*", dryrun = TRUE, counts = FALSE,
-  bugs.as.phyloseq = FALSE, x.is.glob = TRUE)
+curatedMetagenomicData(
+  x = "*",
+  dryrun = TRUE,
+  counts = FALSE,
+  bugs.as.phyloseq = FALSE,
+  x.is.glob = TRUE
+)
 }
 \arguments{
 \item{x}{A character vector of dataset names, regexes, or globs, that will be matched
