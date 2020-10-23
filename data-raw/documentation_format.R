@@ -3,7 +3,9 @@ documentation_format <- function(template_csv) {
     nrow_combined_metadata <- nrow(combined_metadata)
     ncol_combined_metadata <- ncol(combined_metadata)
     colnames(combined_metadata) %>%
-        match(template_csv$col.name) %>% {
+        match(template_csv$col.name) %>%
+        na.omit() %>%
+        as.integer() %>% {
             items <- template_csv$col.name[.]
             descriptions <-
                 template_csv$description[.] %>%

@@ -11,4 +11,5 @@ add_version_number <- function() {
         }
 
     write_file(current_date, "./inst/extdata/versions.txt", append = TRUE)
+    write_file("\n", "./inst/extdata/versions.txt", append = TRUE)
 }
