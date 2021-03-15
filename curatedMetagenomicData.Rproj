@@ -14,6 +14,7 @@ LaTeX: pdfLaTeX
 
 AutoAppendNewline: Yes
 StripTrailingWhitespace: Yes
+LineEndingConversion: Posix
 
 BuildType: Package
 PackageUseDevtools: Yes
@@ -21,3 +22,6 @@ PackageInstallArgs: --no-multiarch --with-keep.source
 PackageBuildArgs: --keep-empty-dirs --no-resave-data
 PackageCheckArgs: --no-vignettes --timings
 PackageRoxygenize: rd,collate,namespace
+
+QuitChildProcessesOnExit: Yes
+DisableExecuteRprofile: Yes
