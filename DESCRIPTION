@@ -24,6 +24,21 @@ biocViews:
     ReproducibleResearch
 Version: 1.21.0
 License: Artistic-2.0
+Depends:
+    R (>= 4.1)
+Imports:
+    Biobase,
+    AnnotationHub,
+    ExperimentHub,
+    S4Vectors,
+    SummarizedExperiment,
+    dplyr,
+    magrittr,
+    rlang,
+    stringr,
+    tibble,
+    tidyr,
+    tidyselect
 Suggests:
     BiocStyle,
     knitr,

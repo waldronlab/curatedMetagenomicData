@@ -2,16 +2,34 @@
 % Please edit documentation in R/curatedMetagenomicData.R
 \name{curatedMetagenomicData}
 \alias{curatedMetagenomicData}
-\title{Title}
+\title{Download Metadata/Data for Any/All Studies in curatedMetagenomicData}
 \usage{
-curatedMetagenomicData(x)
+curatedMetagenomicData(x = "", dryrun = TRUE, counts = FALSE)
 }
 \arguments{
-\item{x}{description}
+\item{x}{character containing regular expression(s) to be matched to
+curatedMetagenomicData}
+
+\item{dryrun}{logical indicating if the user would like to return metadata
+(the default); when set to \code{TRUE} a \code{SummarizedExperiment} is returned}
+
+\item{counts}{logical indicating if the user would like to return relative
+abundance data as counts}
 }
 \value{
-description
+a \code{data.frame} of metadata when \code{dryrun = TRUE}, and a
+\code{SummarizedExperiment} when \code{dryrun = FALSE}
 }
 \description{
-Description
+This is a simplified interface to what was previously a rather complicated
+package. Users can first look through the \code{metadata}, which has information
+about every sample currently available in the package (and those that are
+forthcoming), to "shop" before downloading anything. Then a query to
+curatedMetagenomicData related ExperimentHub data can be perfected with
+\code{dryrun = TRUE} before it is finally set to \code{TRUE} and a
+\code{SummarizedExperiment} is returned.
+}
+\examples{
+curatedMetagenomicData(x = "AsnicarF_2017.marker_presence")
+
 }
