@@ -7,27 +7,28 @@
 curatedMetagenomicData(x = "", dryrun = TRUE, counts = FALSE)
 }
 \arguments{
-\item{x}{character containing regular expression(s) to be matched to
-curatedMetagenomicData}
+\item{x}{regular expression(s) to be matched against curatedMetagenomicData;
+if multiple, they are combined by logical \code{&}}
 
-\item{dryrun}{logical indicating if the user would like to return metadata
-(the default); when set to \code{TRUE} a \code{SummarizedExperiment} is returned}
+\item{dryrun}{\code{logical} indicating if the user would like to return metadata
+(the default); when set to \code{FALSE} a \code{SummarizedExperiment} is returned}
 
-\item{counts}{logical indicating if the user would like to return relative
-abundance data as counts}
+\item{counts}{\code{logical} indicating if the user would like to return data as
+relative abundances (the default); or return data as counts}
 }
 \value{
-a \code{data.frame} of metadata when \code{dryrun = TRUE}, and a
+a \code{data.frame} of ExperimentHub metadata when \code{dryrun = TRUE}, and a
 \code{SummarizedExperiment} when \code{dryrun = FALSE}
 }
 \description{
-This is a simplified interface to what was previously a rather complicated
-package. Users can first look through the \code{metadata}, which has information
-about every sample currently available in the package (and those that are
-forthcoming), to "shop" before downloading anything. Then a query to
-curatedMetagenomicData related ExperimentHub data can be perfected with
-\code{dryrun = TRUE} before it is finally set to \code{TRUE} and a
-\code{SummarizedExperiment} is returned.
+\code{curatedMetagenomicData()} is a simplified interface to what was previously a
+rather complicated way to access data in the package. Users should first look
+through the \code{metadata}, which has information about every sample currently
+available in the \code{curatedMetagenomicData} (and those that are forthcoming),
+to "shop" for a study they would like to download. Then, a query to access
+data can be perfected while \code{dryrun = TRUE} because it only returns metadata.
+Finally, \code{dryrun} can be set to \code{FALSE} and a \code{SummarizedExperiment} object
+will be returned.
 }
 \examples{
 curatedMetagenomicData(x = "AsnicarF_2017.marker_presence")

@@ -1,23 +1,24 @@
 #' Download Metadata/Data for Any/All Studies in curatedMetagenomicData
 #'
-#' This is a simplified interface to what was previously a rather complicated
-#' package. Users can first look through the `metadata`, which has information
-#' about every sample currently available in the package (and those that are
-#' forthcoming), to "shop" before downloading anything. Then a query to
-#' curatedMetagenomicData related ExperimentHub data can be perfected with
-#' `dryrun = TRUE` before it is finally set to `TRUE` and a
-#' `SummarizedExperiment` is returned.
+#' `curatedMetagenomicData()` is a simplified interface to what was previously a
+#' rather complicated way to access data in the package. Users should first look
+#' through the `metadata`, which has information about every sample currently
+#' available in the `curatedMetagenomicData` (and those that are forthcoming),
+#' to "shop" for a study they would like to download. Then, a query to access
+#' data can be perfected while `dryrun = TRUE` because it only returns metadata.
+#' Finally, `dryrun` can be set to `FALSE` and a `SummarizedExperiment` object
+#' will be returned.
 #'
-#' @param x character containing regular expression(s) to be matched to
-#' curatedMetagenomicData
+#' @param x regular expression(s) to be matched against curatedMetagenomicData;
+#' if multiple, they are combined by logical `&`
 #'
-#' @param dryrun logical indicating if the user would like to return metadata
-#' (the default); when set to `TRUE` a `SummarizedExperiment` is returned
+#' @param dryrun `logical` indicating if the user would like to return metadata
+#' (the default); when set to `FALSE` a `SummarizedExperiment` is returned
 #'
-#' @param counts logical indicating if the user would like to return relative
-#' abundance data as counts
+#' @param counts `logical` indicating if the user would like to return data as
+#' relative abundances (the default); or return data as counts
 #'
-#' @return a `data.frame` of metadata when `dryrun = TRUE`, and a
+#' @return a `data.frame` of ExperimentHub metadata when `dryrun = TRUE`, and a
 #' `SummarizedExperiment` when `dryrun = FALSE`
 #' @export
 #'
@@ -47,6 +48,8 @@
 #' @importFrom tibble column_to_rownames
 #' @importFrom dplyr select
 #' @importFrom S4Vectors DataFrame
+#' @importFrom magrittr multiply_by
+#' @importFrom magrittr divide_by
 #' @importFrom S4Vectors SimpleList
 #' @importFrom SummarizedExperiment SummarizedExperiment
 curatedMetagenomicData <- function(x = "", dryrun = TRUE, counts = FALSE) {
@@ -149,7 +152,13 @@ curatedMetagenomicData <- function(x = "", dryrun = TRUE, counts = FALSE) {
 
     if (counts) {
         if (dplyr::pull(resources, .data[["dataType"]]) == "realative_abundance") {
-            #TODO
+            eh_matrix <-
+                base::t(eh_matrix) %>%
+                magrittr::multiply_by(colData[["number_reads"]]) %>%
+                magrittr::divide_by(100) %>%
+                base::t() %>%
+                base::round()
+
         } else {
             warning("Data type can not be made into counts", call. = FALSE)
         }
