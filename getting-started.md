@@ -16,18 +16,17 @@ If you're not sure which version to use, look at the "Reference Manual" for the 
 
 ### Through R/Bioconductor
 
-This is the usual way to install *curatedMetagenomicData* and is preferred in most cases. You must have Bioconductor installed already.
+This is the usual way to install *curatedMetagenomicData* and is preferred in most cases. You must have BiocManager installed already.
 
 {% highlight r %}
-library(BiocInstaller)
-biocLite("curatedMetagenomicData")
+BiocManager::install("curatedMetagenomicData")
 {% endhighlight %}
 
 If you are running the development version of Bioconductor, you can also install directly from Github for the "bleeding edge" version, which may contain bugs:
 
 {% highlight r %}
 library(BiocInstaller)
-biocLite("waldronlab/curatedMetagenomicData", dependencies = TRUE,
+BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE,
          build_vignettes = TRUE)
 {% endhighlight %}
 
