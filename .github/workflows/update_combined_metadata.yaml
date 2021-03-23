@@ -7,21 +7,18 @@ on:
 jobs:
   build_combined_metadata:
     runs-on: ubuntu-latest
+    container: bioconductor/bioconductor_docker:devel
     steps:
-    - name: Install system dependencies
-      run: sudo apt-get -y install libcurl4-openssl-dev
 
-    - name: Set up R
-      uses: r-lib/actions/setup-r@v1
+    - name: Checkout curatedMetagenomicData
+      uses: actions/checkout@v2
 
     - name: Install remotes and curatedMetagenomicDataCuration
       run: |
         install.packages("remotes")
+        remotes::install_github("waldronlab/omicidxClientR")
         remotes::install_github("waldronlab/curatedMetagenomicDataCuration")
       shell: Rscript {0}
-
-    - name: Checkout curatedMetagenomicData
-      uses: actions/checkout@v2
 
     - name: Generate combined_metadata.rda
       run: |
