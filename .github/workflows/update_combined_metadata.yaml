@@ -23,8 +23,6 @@ jobs:
     - name: Generate combined_metadata.rda
       id: generate_metadata
       run: |
-        library("dplyr")
-        library("data.table")
         library("curatedMetagenomicDataCuration")
         message(paste("****", Sys.time(), "Make combined metadata ****"))
         combined_metadata <-
