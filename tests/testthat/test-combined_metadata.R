@@ -1,4 +1,4 @@
-load("../../data/combined_metadata.rda")
+data(combined_metadata)
 
 test_that("combined_metadata has dimensions greater or equal to 132 x 20400", {
     expect_gte(nrow(combined_metadata), 20400)
