@@ -4,7 +4,7 @@
 ^codecov\.yml$
 ^appveyor\.yml$
 ^\.httr-oauth$
-^\.github\.yml$
+^\.github$
 ^docs$
 ^data-raw$
 _cache
