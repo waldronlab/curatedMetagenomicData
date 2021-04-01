@@ -16,14 +16,16 @@ jobs:
     - name: Install curatedMetagenomicDataCuration
       run: |
         install.packages("remotes")
+        install.packages("testthat")
         remotes::install_github("waldronlab/omicidxClientR")
         remotes::install_github("waldronlab/curatedMetagenomicDataCuration")
       shell: Rscript {0}
 
-    - name: Generate combined_metadata.rda
+    - name: Generate and test combined_metadata.rda
       id: generate_metadata
       run: |
         library("curatedMetagenomicDataCuration")
+        library("testthat")
         message(paste("****", Sys.time(), "Make combined metadata ****"))
         combined_metadata <-
             curatedMetagenomicDataCuration:::makeCombinedMetadata()
@@ -36,10 +38,9 @@ jobs:
         tryCatch(curatedMetagenomicDataCuration::checkCuration(combined_metadata),
              warning = function(w) {
                  status <<- "failing"
-                 message("**** Setting status to", status, "****")
                  message(paste(w, "\n"))
         })
-        # Save status and color for badge in file for next step
+        testthat::test_file("tests/testthat/test-combined_metadata.R")
         color = if (status == "passing") "brightgreen" else "red"
         message(paste("::set-output name=status::", status, sep=""))
         message(paste("::set-output name=color::", color, sep=""))
@@ -48,12 +49,6 @@ jobs:
     - name: Get actions URL
       id: actions_url
       run: echo "::set-output name=url::${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-
-    - name: Test combined_metadata.rda
-      run: |
-        install.packages("testthat")
-        testthat::test_file("tests/testthat/test-combined_metadata.R")
-      shell: Rscript {0}
 
     - name: Commit and create pull request for updated combined_metadata.rda
       uses: peter-evans/create-pull-request@v3
