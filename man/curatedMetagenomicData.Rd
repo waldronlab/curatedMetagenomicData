@@ -24,9 +24,9 @@ a \code{data.frame} of ExperimentHub metadata when \code{dryrun = TRUE}, and a
 \code{curatedMetagenomicData()} is a simplified interface to what was previously a
 rather complicated way to access data in the package. Users should first look
 through the \code{metadata}, which has information about every sample currently
-available in the \code{curatedMetagenomicData} (and those that are forthcoming),
-to "shop" for a study they would like to download. Then, a query to access
-data can be perfected while \code{dryrun = TRUE} because it only returns metadata.
+available in \code{curatedMetagenomicData} (and those that are forthcoming), to
+"shop" for a study they would like to download. Then, a query to access data
+can be perfected while \code{dryrun = TRUE} because it only returns metadata.
 Finally, \code{dryrun} can be set to \code{FALSE} and a \code{SummarizedExperiment} object
 will be returned.
 }

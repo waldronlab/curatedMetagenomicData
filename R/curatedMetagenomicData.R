@@ -3,9 +3,9 @@
 #' `curatedMetagenomicData()` is a simplified interface to what was previously a
 #' rather complicated way to access data in the package. Users should first look
 #' through the `metadata`, which has information about every sample currently
-#' available in the `curatedMetagenomicData` (and those that are forthcoming),
-#' to "shop" for a study they would like to download. Then, a query to access
-#' data can be perfected while `dryrun = TRUE` because it only returns metadata.
+#' available in `curatedMetagenomicData` (and those that are forthcoming), to
+#' "shop" for a study they would like to download. Then, a query to access data
+#' can be perfected while `dryrun = TRUE` because it only returns metadata.
 #' Finally, `dryrun` can be set to `FALSE` and a `SummarizedExperiment` object
 #' will be returned.
 #'
@@ -40,10 +40,8 @@
 #' @importFrom rlang .data
 #' @importFrom dplyr group_by
 #' @importFrom dplyr slice_max
-#' @importFrom dplyr slice_head
 #' @importFrom dplyr ungroup
 #' @importFrom dplyr pull
-#' @importFrom Biobase exprs
 #' @importFrom dplyr filter
 #' @importFrom tibble column_to_rownames
 #' @importFrom dplyr select
@@ -65,13 +63,13 @@ curatedMetagenomicData <- function(x = "", dryrun = TRUE, counts = FALSE) {
     resources <-
         magrittr::extract(resources, versioned)
 
-    # is_matrix <-
-    #     stringr::str_split(resources, "\\.") %>%
-    #     base::sapply(base::length) %>%
-    #     magrittr::equals(3)
-    #
-    # resources <-
-    #     magrittr::extract(resources, is_matrix)
+    is_matrix <-
+        stringr::str_split(resources, "\\.") %>%
+        base::sapply(base::length) %>%
+        magrittr::equals(3)
+
+    resources <-
+        magrittr::extract(resources, is_matrix)
 
     if (base::length(resources) == 0) {
         stop("No resources found in curatedMetagenomicData", call. = FALSE)
@@ -119,7 +117,6 @@ curatedMetagenomicData <- function(x = "", dryrun = TRUE, counts = FALSE) {
         tidyr::separate(.data[["title"]], into_cols, sep = "\\.") %>%
         dplyr::group_by(.data[["studyName"]], .data[["dataType"]]) %>%
         dplyr::slice_max(.data[["dateAdded"]]) %>%
-        dplyr::slice_head() %>% # can go away later
         dplyr::ungroup()
 
     if (base::nrow(resources) != 1) {
@@ -131,9 +128,6 @@ curatedMetagenomicData <- function(x = "", dryrun = TRUE, counts = FALSE) {
 
     eh_matrix <-
         to_return[[eh_subset]]
-
-    eh_matrix <- # can go away later
-        Biobase::exprs(eh_matrix) # can go away later
 
     keep_cols <-
         base::colnames(eh_matrix)
@@ -151,7 +145,7 @@ curatedMetagenomicData <- function(x = "", dryrun = TRUE, counts = FALSE) {
         S4Vectors::DataFrame()
 
     if (counts) {
-        if (dplyr::pull(resources, .data[["dataType"]]) == "realative_abundance") {
+        if (dplyr::pull(resources, .data[["dataType"]]) == "relative_abundance") {
             eh_matrix <-
                 base::t(eh_matrix) %>%
                 magrittr::multiply_by(colData[["number_reads"]]) %>%

@@ -27,7 +27,6 @@ License: Artistic-2.0
 Depends:
     R (>= 4.1)
 Imports:
-    Biobase,
     AnnotationHub,
     ExperimentHub,
     S4Vectors,
