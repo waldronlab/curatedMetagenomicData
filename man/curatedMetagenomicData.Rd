@@ -2,35 +2,52 @@
 % Please edit documentation in R/curatedMetagenomicData.R
 \name{curatedMetagenomicData}
 \alias{curatedMetagenomicData}
-\title{Download Metadata/Data for Any/All Studies in curatedMetagenomicData}
+\title{Access Curated Metagenomic Data}
 \usage{
-curatedMetagenomicData(x = "", dryrun = TRUE, counts = FALSE)
+curatedMetagenomicData(x, dryrun = TRUE, print = TRUE, counts = FALSE)
 }
 \arguments{
-\item{x}{regular expression(s) to be matched against curatedMetagenomicData;
-if multiple, they are combined by logical \code{&}}
+\item{x}{description}
 
-\item{dryrun}{\code{logical} indicating if the user would like to return metadata
-(the default); when set to \code{FALSE} a \code{SummarizedExperiment} is returned}
+\item{dryrun}{description}
 
-\item{counts}{\code{logical} indicating if the user would like to return data as
-relative abundances (the default); or return data as counts}
+\item{print}{description}
+
+\item{counts}{description}
 }
 \value{
-a \code{data.frame} of ExperimentHub metadata when \code{dryrun = TRUE}, and a
-\code{SummarizedExperiment} when \code{dryrun = FALSE}
+description
 }
 \description{
-\code{curatedMetagenomicData()} is a simplified interface to what was previously a
-rather complicated way to access data in the package. Users should first look
-through the \code{metadata}, which has information about every sample currently
-available in \code{curatedMetagenomicData} (and those that are forthcoming), to
-"shop" for a study they would like to download. Then, a query to access data
-can be perfected while \code{dryrun = TRUE} because it only returns metadata.
-Finally, \code{dryrun} can be set to \code{FALSE} and a \code{SummarizedExperiment} object
-will be returned.
+To access curated metagenomic data users will use \code{curatedMetagenomicData()},
+after "shopping" the \link[=sampleMetadata]{sample metadata} for studies they are
+interested in. The \code{dryrun} argument allows users to perfect a query prior to
+(down)loading a data set. When \code{dryrun = TRUE} and \code{print = TRUE}, the names
+of matched data sets will be printed nicely before a character vector of
+names is returned invisibly. When \code{dryrun = TRUE} and \code{print = FALSE}, only
+the invisible character vector of names is returned. The later behavior is
+useful in the context of \link[base:lapply]{lapply} and \link[purrr:map]{map}
+functions to (down)load multiple data sets without messages. When
+\code{dryrun = FALSE}, a (sparse) matrix is (down)loaded and used to construct a
+\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
+object with corresponding metadata from \link[=sampleMetadata]{sample metadata}.
+If there is more than one date corresponding to the data set, the more recent
+one is selected automatically. Finally, if a \code{relative_abundance} data set is
+requested with \code{counts = TRUE}, relative abundance proportions will be
+multiplied by read depth (i.e. \code{number_reads}) and rounded to the nearest
+integer prior to being returned as a
+\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
+object with corresponding metadata from \link[=sampleMetadata]{sample metadata}.
 }
 \examples{
-curatedMetagenomicData(x = "AsnicarF_2017.marker_presence")
+curatedMetagenomicData("2021-04-02")
+
+curatedMetagenomicData("AsnicarF_2017")
+
+curatedMetagenomicData("AsnicarF_2017.relative_abundance")
+
+curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
+
+curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, counts = TRUE)
 
 }

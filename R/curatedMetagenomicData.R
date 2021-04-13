@@ -1,40 +1,54 @@
-#' Download Metadata/Data for Any/All Studies in curatedMetagenomicData
+#' Access Curated Metagenomic Data
 #'
-#' `curatedMetagenomicData()` is a simplified interface to what was previously a
-#' rather complicated way to access data in the package. Users should first look
-#' through the `metadata`, which has information about every sample currently
-#' available in `curatedMetagenomicData` (and those that are forthcoming), to
-#' "shop" for a study they would like to download. Then, a query to access data
-#' can be perfected while `dryrun = TRUE` because it only returns metadata.
-#' Finally, `dryrun` can be set to `FALSE` and a `SummarizedExperiment` object
-#' will be returned.
+#' To access curated metagenomic data users will use `curatedMetagenomicData()`,
+#' after "shopping" the [sample metadata][sampleMetadata] for studies they are
+#' interested in. The `dryrun` argument allows users to perfect a query prior to
+#' (down)loading a data set. When `dryrun = TRUE` and `print = TRUE`, the names
+#' of matched data sets will be printed nicely before a character vector of
+#' names is returned invisibly. When `dryrun = TRUE` and `print = FALSE`, only
+#' the invisible character vector of names is returned. The later behavior is
+#' useful in the context of [lapply][base::lapply()] and [map][purrr::map()]
+#' functions to (down)load multiple data sets without messages. When
+#' `dryrun = FALSE`, a (sparse) matrix is (down)loaded and used to construct a
+#' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
+#' object with corresponding metadata from [sample metadata][sampleMetadata].
+#' If there is more than one date corresponding to the data set, the more recent
+#' one is selected automatically. Finally, if a `relative_abundance` data set is
+#' requested with `counts = TRUE`, relative abundance proportions will be
+#' multiplied by read depth (i.e. `number_reads`) and rounded to the nearest
+#' integer prior to being returned as a
+#' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
+#' object with corresponding metadata from [sample metadata][sampleMetadata].
 #'
-#' @param x regular expression(s) to be matched against curatedMetagenomicData;
-#' if multiple, they are combined by logical `&`
+#' @param x description
 #'
-#' @param dryrun `logical` indicating if the user would like to return metadata
-#' (the default); when set to `FALSE` a `SummarizedExperiment` is returned
+#' @param dryrun description
 #'
-#' @param counts `logical` indicating if the user would like to return data as
-#' relative abundances (the default); or return data as counts
+#' @param print description
 #'
-#' @return a `data.frame` of ExperimentHub metadata when `dryrun = TRUE`, and a
-#' `SummarizedExperiment` when `dryrun = FALSE`
+#' @param counts description
+#'
+#' @return description
 #' @export
 #'
 #' @examples
-#' curatedMetagenomicData(x = "AsnicarF_2017.marker_presence")
+#' curatedMetagenomicData("2021-04-02")
 #'
+#' curatedMetagenomicData("AsnicarF_2017")
+#'
+#' curatedMetagenomicData("AsnicarF_2017.relative_abundance")
+#'
+#' curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
+#'
+#' curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, counts = TRUE)
+#'
+#' @importFrom stringr str_subset
 #' @importFrom ExperimentHub ExperimentHub
-#' @importFrom ExperimentHub listResources
-#' @importFrom stringr str_starts
-#' @importFrom magrittr extract
-#' @importFrom stringr str_split
-#' @importFrom magrittr equals
 #' @importFrom stringr str_c
 #' @importFrom AnnotationHub query
-#' @importFrom magrittr %>%
 #' @importFrom S4Vectors mcols
+#' @importFrom magrittr extract
+#' @importFrom magrittr %>%
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr separate
 #' @importFrom rlang .data
@@ -50,51 +64,28 @@
 #' @importFrom magrittr divide_by
 #' @importFrom S4Vectors SimpleList
 #' @importFrom SummarizedExperiment SummarizedExperiment
-curatedMetagenomicData <- function(x = "", dryrun = TRUE, counts = FALSE) {
-    EH <-
-        ExperimentHub::ExperimentHub()
+curatedMetagenomicData <- function(x, dryrun = TRUE, print = TRUE, counts = FALSE) {
+    if (base::missing(x)) {
+        stop("Thou shalt not search for nothing", call. = FALSE)
+    }
 
     resources <-
-        ExperimentHub::listResources(EH, "curatedMetagenomicData", filterBy = x)
-
-    versioned <-
-        stringr::str_starts(resources, "[0-9]")
-
-    resources <-
-        magrittr::extract(resources, versioned)
-
-    is_matrix <-
-        stringr::str_split(resources, "\\.") %>%
-        base::sapply(base::length) %>%
-        magrittr::equals(3)
-
-    resources <-
-        magrittr::extract(resources, is_matrix)
+        stringr::str_subset(Title, x)
 
     if (base::length(resources) == 0) {
         stop("No resources found in curatedMetagenomicData", call. = FALSE)
     }
 
     if (dryrun) {
-        resources <-
-            stringr::str_c(resources, collapse = "|")
+        if (print) {
+            base::cat(resources, sep = "\n")
+        }
 
-        to_return <-
-            AnnotationHub::query(EH, resources) %>%
-            S4Vectors::mcols() %>%
-            base::as.data.frame()
-
-        keep_rows <-
-            base::rownames(to_return)
-
-        keep_cols <-
-            base::c("title", "description", "rdataclass")
-
-        to_return <-
-            magrittr::extract(to_return, keep_rows, keep_cols)
-
-        return(to_return)
+        return(base::invisible(resources))
     }
+
+    EH <-
+        ExperimentHub::ExperimentHub()
 
     resources <-
         stringr::str_c(resources, collapse = "|")
@@ -133,7 +124,7 @@ curatedMetagenomicData <- function(x = "", dryrun = TRUE, counts = FALSE) {
         base::colnames(eh_matrix)
 
     meta_data <-
-        dplyr::filter(curatedMetagenomicData::metadata, .data[["studyName"]] == resources[["studyName"]]) %>%
+        dplyr::filter(sampleMetadata, .data[["studyName"]] == resources[["studyName"]]) %>%
         tibble::column_to_rownames(var = "sampleID") %>%
         dplyr::select(where(~ base::all(!base::is.na(.x))))
 
