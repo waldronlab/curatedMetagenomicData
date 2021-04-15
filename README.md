@@ -10,4 +10,4 @@ Please note that the curatedMetagenomicData project is released with a [Contribu
 
 ---
 
-Pasolli, E., Schiffer, L., Manghi, P. *et al.* Accessible, curated metagenomic data through ExperimentHub. *Nat. Methods* **14**, 1023--1024 (2017)
+Pasolli, E., Schiffer, L., Manghi, P. *et al.* Accessible, curated metagenomic data through ExperimentHub. *Nat. Methods* **14**, 1023-1024 (2017)

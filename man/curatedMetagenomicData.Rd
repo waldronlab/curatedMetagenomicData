@@ -4,19 +4,26 @@
 \alias{curatedMetagenomicData}
 \title{Access Curated Metagenomic Data}
 \usage{
-curatedMetagenomicData(x, dryrun = TRUE, print = TRUE, counts = FALSE)
+curatedMetagenomicData(pattern, dryrun = TRUE, print = TRUE, counts = FALSE)
 }
 \arguments{
-\item{x}{description}
+\item{pattern}{regular expression pattern to look for in the titles of
+resources available in curatedMetagenomicData; \code{""} will return all resources}
 
-\item{dryrun}{description}
+\item{dryrun}{if \code{TRUE} (the default), a character vector of resource names
+is returned invisibly; if \code{FALSE}, a \code{SummarizedExperiment} is returned}
 
-\item{print}{description}
+\item{print}{if \code{TRUE} (the default), resource names will be printed nicely
+before a character vector of resource names is returned invisibly; if
+\code{FALSE}, only a character vector of resource names is returned invisibly}
 
-\item{counts}{description}
+\item{counts}{if \code{FALSE} (the default), relative abundance proportions are
+returned; if \code{TRUE}, relative abundance proportions are multiplied by read
+depth and rounded to the nearest integer prior to being returned}
 }
 \value{
-description
+if \code{dryrun = TRUE}, a character vector of resource names is returned
+invisibly; if \code{dryrun = FALSE}, a \code{SummarizedExperiment} is returned
 }
 \description{
 To access curated metagenomic data users will use \code{curatedMetagenomicData()},

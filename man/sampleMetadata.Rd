@@ -11,6 +11,6 @@ An object of class \code{data.frame} with 20284 rows and 134 columns.
 sampleMetadata
 }
 \description{
-The combined sample-level metadata of all studies in curatedMetagenomicData.
+Manually curated sample metadata for all samples in curatedMetagenomicData.
 }
 \keyword{datasets}

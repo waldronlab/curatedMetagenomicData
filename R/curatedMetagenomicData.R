@@ -20,15 +20,22 @@
 #' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
 #' object with corresponding metadata from [sample metadata][sampleMetadata].
 #'
-#' @param x description
+#' @param pattern regular expression pattern to look for in the titles of
+#' resources available in curatedMetagenomicData; `""` will return all resources
 #'
-#' @param dryrun description
+#' @param dryrun if `TRUE` (the default), a character vector of resource names
+#' is returned invisibly; if `FALSE`, a `SummarizedExperiment` is returned
 #'
-#' @param print description
+#' @param print if `TRUE` (the default), resource names will be printed nicely
+#' before a character vector of resource names is returned invisibly; if
+#' `FALSE`, only a character vector of resource names is returned invisibly
 #'
-#' @param counts description
+#' @param counts if `FALSE` (the default), relative abundance proportions are
+#' returned; if `TRUE`, relative abundance proportions are multiplied by read
+#' depth and rounded to the nearest integer prior to being returned
 #'
-#' @return description
+#' @return if `dryrun = TRUE`, a character vector of resource names is returned
+#' invisibly; if `dryrun = FALSE`, a `SummarizedExperiment` is returned
 #' @export
 #'
 #' @examples
@@ -64,13 +71,13 @@
 #' @importFrom magrittr divide_by
 #' @importFrom S4Vectors SimpleList
 #' @importFrom SummarizedExperiment SummarizedExperiment
-curatedMetagenomicData <- function(x, dryrun = TRUE, print = TRUE, counts = FALSE) {
-    if (base::missing(x)) {
+curatedMetagenomicData <- function(pattern, dryrun = TRUE, print = TRUE, counts = FALSE) {
+    if (base::missing(pattern)) {
         stop("Thou shalt not search for nothing", call. = FALSE)
     }
 
     resources <-
-        stringr::str_subset(Title, x)
+        stringr::str_subset(Title, pattern)
 
     if (base::length(resources) == 0) {
         stop("No resources found in curatedMetagenomicData", call. = FALSE)

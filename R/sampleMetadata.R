@@ -1,4 +1,4 @@
 #' Manually Curated Sample Metadata
 #'
-#' The combined sample-level metadata of all studies in curatedMetagenomicData.
+#' Manually curated sample metadata for all samples in curatedMetagenomicData.
 "sampleMetadata"
