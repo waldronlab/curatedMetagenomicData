@@ -1,5 +1,11 @@
+^README\.Rmd$
 ^curatedMetagenomicData\.Rproj$
 ^CODE_OF_CONDUCT\.md$
 ^CONTRIBUTING\.md$
+^_pkgdown\.yml$
 ^data-raw$
+^docs$
+^pkgdown$
+^vignettes/articles$
+^\.github$
 ^\.Rproj\.user$

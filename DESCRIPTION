@@ -2,7 +2,7 @@ Package: curatedMetagenomicData
 Title: Curated Metagenomic Data of the Human Microbiome
 Description:
     The curatedMetagenomicData package provides microbial taxonomic, functional,
-    and gene marker abundance for samples collected from different bodysites.
+    and gene marker abundance for samples collected from different body sites.
 Authors@R:
     c(person(given = "Lucas", family = "schiffer", role = c("aut", "cre"),
              email = "schifferl@bu.edu",
@@ -22,7 +22,7 @@ biocViews:
     Homo_sapiens_Data,
     MicrobiomeData,
     ReproducibleResearch
-Version: 1.21.0
+Version: 2.99.0
 License: Artistic-2.0
 Depends:
     R (>= 4.1)
