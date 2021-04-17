@@ -1,0 +1,22 @@
+---
+title: "Our Pipeline"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r, include = FALSE}
+library(curatedMetagenomicData)
+```
+
+# Curation
+
+# HighLoad
+
+# Download
+
+# Pipeline

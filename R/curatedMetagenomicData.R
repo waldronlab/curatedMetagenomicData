@@ -127,13 +127,17 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, print = TRUE, counts 
     eh_matrix <-
         to_return[[eh_subset]]
 
-    keep_cols <-
-        base::colnames(eh_matrix)
-
     meta_data <-
         dplyr::filter(sampleMetadata, .data[["studyName"]] == resources[["studyName"]]) %>%
         tibble::column_to_rownames(var = "sampleID") %>%
         dplyr::select(where(~ base::all(!base::is.na(.x))))
+
+    meta_rows <-
+        base::rownames(meta_data)
+
+    keep_cols <-
+        base::colnames(eh_matrix) %>%
+        base::intersect(meta_rows)
 
     col_names <-
         base::colnames(meta_data)
@@ -156,8 +160,12 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, print = TRUE, counts 
         }
     }
 
+    row_names <-
+        base::rownames(eh_matrix)
+
     assays <-
-        S4Vectors::SimpleList(eh_matrix)
+        magrittr::extract(eh_matrix, row_names, keep_cols) %>%
+        S4Vectors::SimpleList()
 
     base::names(assays) <-
         dplyr::pull(resources, .data[["dataType"]])
