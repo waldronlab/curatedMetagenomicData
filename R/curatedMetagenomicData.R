@@ -1,89 +1,174 @@
-#' @importFrom utils glob2rx
-#' @importFrom S4Vectors "metadata<-"
-#' @importClassesFrom S4Vectors SimpleList
-#' @importFrom S4Vectors SimpleList
+#' Access Curated Metagenomic Data
 #'
-#' @param x
-#' A character vector of dataset names, regexes, or globs, that will be matched
-#' to available datasets. If x.is.glob is TRUE (default), wildcards such as "*"
-#' and "?" are supported (see ?glob2rx), otherwise, regexes are supported (see
-#' ?grep)
-#' @param counts = FALSE
-#' If TRUE, relative abundances will be multiplied by read depth, then rounded to
-#' the nearest integer.
-#' @param bugs.as.phyloseq = FALSE
-#' If TRUE, tables of taxonomic abundance (metaphlan datasets) will be converted
-#' to phyloseq objects for use with the phyloseq package.
-#' @param x.is.glob = TRUE
-#' Set to FALSE to to treat x as a regular expression. If TRUE,
-#' `x` is provided to \code{glob2rx} first to generate a regular expression.
+#' To access curated metagenomic data users will use `curatedMetagenomicData()`,
+#' after "shopping" the [sample metadata][sampleMetadata] for studies they are
+#' interested in. The `dryrun` argument allows users to perfect a query prior to
+#' (down)loading a data set. When `dryrun = TRUE` and `print = TRUE`, the names
+#' of matched data sets will be printed nicely before a character vector of
+#' names is returned invisibly. When `dryrun = TRUE` and `print = FALSE`, only
+#' the invisible character vector of names is returned. The later behavior is
+#' useful in the context of [lapply][base::lapply()] and [map][purrr::map()]
+#' functions to (down)load multiple data sets without messages. When
+#' `dryrun = FALSE`, a (sparse) matrix is (down)loaded and used to construct a
+#' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
+#' object with corresponding metadata from [sample metadata][sampleMetadata].
+#' If there is more than one date corresponding to the data set, the more recent
+#' one is selected automatically. Finally, if a `relative_abundance` data set is
+#' requested with `counts = TRUE`, relative abundance proportions will be
+#' multiplied by read depth (i.e. `number_reads`) and rounded to the nearest
+#' integer prior to being returned as a
+#' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
+#' object with corresponding metadata from [sample metadata][sampleMetadata].
 #'
-#' @param dryrun = TRUE
-#' Only return the names of datasets to be downloaded, not the datasets
-#' themselves. If FALSE, return the datasets rather than the names.
+#' @param pattern regular expression pattern to look for in the titles of
+#' resources available in curatedMetagenomicData; `""` will return all resources
 #'
-#' @return
-#' A list of ExpressionSet and/or phyloseq objects
+#' @param dryrun if `TRUE` (the default), a character vector of resource names
+#' is returned invisibly; if `FALSE`, a `SummarizedExperiment` is returned
+#'
+#' @param print if `TRUE` (the default), resource names will be printed nicely
+#' before a character vector of resource names is returned invisibly; if
+#' `FALSE`, only a character vector of resource names is returned invisibly
+#'
+#' @param counts if `FALSE` (the default), relative abundance proportions are
+#' returned; if `TRUE`, relative abundance proportions are multiplied by read
+#' depth and rounded to the nearest integer prior to being returned
+#'
+#' @return if `dryrun = TRUE`, a character vector of resource names is returned
+#' invisibly; if `dryrun = FALSE`, a `SummarizedExperiment` is returned
 #' @export
-#' curatedMetagenomicData
+#'
 #' @examples
-#' curatedMetagenomicData()
-#' curatedMetagenomicData("ZellerG*")
-#' curatedMetagenomicData("ZellerG.+marker", x.is.glob=FALSE)
-#' curatedMetagenomicData("ZellerG_2014.metaphlan_bugs_list.stool", dryrun=FALSE)
-#' curatedMetagenomicData("ZellerG_2014.metaphlan_bugs_list.stool",
-#'         counts=TRUE, dryrun=FALSE, bugs.as.phyloseq=TRUE)
-curatedMetagenomicData <- function(x = "*",
-                                   dryrun = TRUE,
-                                   counts = FALSE,
-                                   bugs.as.phyloseq = FALSE,
-                                   x.is.glob = TRUE) {
-    # cmdversion <- as.integer(cmdversion)
-    # if(length(cmdversion) > 1 | !.cmdIsValidVersion(cmdversion))
-        # stop("Must provide a single valid version number, see cmdValidVersions().")
-    ## Deprecate munged dataset names, introduced for Bioc 3.8 release Oct 2018
-    defunct.regex <- "Bengtsson_PalmeJ|Castro_NallarE|Heitz_BuschartA|Obregon_TitoAJ|WenC"
-    if(any(grepl(defunct.regex, x))){
-        .Defunct(new="curatedMetagenomicData",
-                    msg="Use Bengtsson-PalmeJ instead of Bengtsson_PalmeJ,
-                    Castro-NallarE instead of Castro_NallarE,
-                    Heitz-BuschartA instead of Heitz_BuschartA,
-                    Obregon-TitoAJ instead of Obregon_TitoAJ,
-                    and ChengpingW instead of WenC")
+#' curatedMetagenomicData("2021-04-02")
+#'
+#' curatedMetagenomicData("AsnicarF_2017")
+#'
+#' curatedMetagenomicData("AsnicarF_2017.relative_abundance")
+#'
+#' curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
+#'
+#' curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, counts = TRUE)
+#'
+#' @importFrom stringr str_subset
+#' @importFrom ExperimentHub ExperimentHub
+#' @importFrom stringr str_c
+#' @importFrom AnnotationHub query
+#' @importFrom S4Vectors mcols
+#' @importFrom magrittr extract
+#' @importFrom magrittr %>%
+#' @importFrom tibble as_tibble
+#' @importFrom tidyr separate
+#' @importFrom rlang .data
+#' @importFrom dplyr group_by
+#' @importFrom dplyr slice_max
+#' @importFrom dplyr ungroup
+#' @importFrom dplyr pull
+#' @importFrom dplyr filter
+#' @importFrom tibble column_to_rownames
+#' @importFrom dplyr select
+#' @importFrom S4Vectors DataFrame
+#' @importFrom magrittr multiply_by
+#' @importFrom magrittr divide_by
+#' @importFrom S4Vectors SimpleList
+#' @importFrom SummarizedExperiment SummarizedExperiment
+curatedMetagenomicData <- function(pattern, dryrun = TRUE, print = TRUE, counts = FALSE) {
+    if (base::missing(pattern)) {
+        stop("Thou shalt not search for nothing", call. = FALSE)
     }
-    requested.datasets <- x
-    all.datasets <- ls("package:curatedMetagenomicData")
-    all.datasets <-
-        grep("marker|gene|path|metaphlan_bugs", all.datasets, value = TRUE)
-    regex <-
-        ifelse(x.is.glob,
-               paste(glob2rx(requested.datasets), collapse = "|"),
-               requested.datasets)
-    matched.datasets <- grep(regex, all.datasets, value = TRUE)
-    ## Don't wildcard match on munged dataset names
-    matched.datasets <- grep("^[A-Za-z]+_[A-Za-z]", matched.datasets, invert = TRUE, value = TRUE)
+
+    resources <-
+        stringr::str_subset(Title, pattern)
+
+    if (base::length(resources) == 0) {
+        stop("No resources found in curatedMetagenomicData", call. = FALSE)
+    }
+
     if (dryrun) {
-        message(
-            "Dry run: see return values for datasets that would be downloaded. ",
-            "Run with `dryrun=FALSE` to actually download these datasets.")
-        return(matched.datasets)
+        if (print) {
+            base::cat(resources, sep = "\n")
+        }
+
+        return(base::invisible(resources))
     }
-    if (!any(matched.datasets %in% all.datasets))
-        stop("requested datasets do not match any available datasets.")
-    eset.list <- lapply(seq_along(matched.datasets), function(i) {
-        message(paste0("Working on ", matched.datasets[i]))
-        eset <- do.call(get(matched.datasets[i]), args = list())
-        if (counts) {
-            exprs(eset) <-
-                round(sweep(exprs(eset), 2, eset$number_reads / 100, "*"))
+
+    EH <-
+        ExperimentHub::ExperimentHub()
+
+    resources <-
+        stringr::str_c(resources, collapse = "|")
+
+    to_return <-
+        AnnotationHub::query(EH, resources)
+
+    to_subset <-
+        S4Vectors::mcols(to_return)
+
+    keep_rows <-
+        base::rownames(to_subset)
+
+    into_cols <-
+        base::c("dateAdded", "studyName", "dataType")
+
+    resources <-
+        magrittr::extract(to_subset, keep_rows, "title", drop = FALSE) %>%
+        tibble::as_tibble(rownames = "rowname") %>%
+        tidyr::separate(.data[["title"]], into_cols, sep = "\\.") %>%
+        dplyr::group_by(.data[["studyName"]], .data[["dataType"]]) %>%
+        dplyr::slice_max(.data[["dateAdded"]]) %>%
+        dplyr::ungroup()
+
+    if (base::nrow(resources) != 1) {
+        stop("Only a single resource should be loaded", call. = FALSE)
+    }
+
+    eh_subset <-
+        dplyr::pull(resources, .data[["rowname"]])
+
+    eh_matrix <-
+        to_return[[eh_subset]]
+
+    meta_data <-
+        dplyr::filter(sampleMetadata, .data[["studyName"]] == resources[["studyName"]]) %>%
+        tibble::column_to_rownames(var = "sampleID") %>%
+        dplyr::select(where(~ base::all(!base::is.na(.x))))
+
+    meta_rows <-
+        base::rownames(meta_data)
+
+    keep_cols <-
+        base::colnames(eh_matrix) %>%
+        base::intersect(meta_rows)
+
+    col_names <-
+        base::colnames(meta_data)
+
+    colData <-
+        magrittr::extract(meta_data, keep_cols, col_names) %>%
+        S4Vectors::DataFrame()
+
+    if (counts) {
+        if (dplyr::pull(resources, .data[["dataType"]]) == "relative_abundance") {
+            eh_matrix <-
+                base::t(eh_matrix) %>%
+                magrittr::multiply_by(colData[["number_reads"]]) %>%
+                magrittr::divide_by(100) %>%
+                base::t() %>%
+                base::round()
+
+        } else {
+            warning("Data type can not be made into counts", call. = FALSE)
         }
-        if(bugs.as.phyloseq && grepl("metaphlan", matched.datasets[i])){
-            eset <- ExpressionSet2phyloseq(eset)
-        }
-        return(eset)
-    })
-    eset.list <- S4Vectors::SimpleList(eset.list)
-    # metadata(eset.list) <- list(cmdversion = cmdversion)
-    names(eset.list) <- matched.datasets
-    return(eset.list)
+    }
+
+    row_names <-
+        base::rownames(eh_matrix)
+
+    assays <-
+        magrittr::extract(eh_matrix, row_names, keep_cols) %>%
+        S4Vectors::SimpleList()
+
+    base::names(assays) <-
+        dplyr::pull(resources, .data[["dataType"]])
+
+    SummarizedExperiment::SummarizedExperiment(assays = assays, colData = colData)
 }

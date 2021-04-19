@@ -1,0 +1,28 @@
+---
+title: "Available Studies"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r, echo = FALSE}
+library(curatedMetagenomicData)
+```
+
+```{r, echo = FALSE}
+sampleMetadata %>%
+  dplyr::rename(Study = studyName) %>%
+  dplyr::rename(Curator = curator) %>%
+  dplyr::add_count(Study, name = "Samples") %>%
+  dplyr::mutate(PMID = stringr::str_replace(PMID, "unpublished", "")) %>%
+  dplyr::mutate(Curator = stringr::str_replace_all(Curator, "_", " ")) %>%
+  dplyr::mutate(Curator = stringr::str_replace_all(Curator, ",", ", ")) %>%
+  dplyr::mutate(Curator = stringr::str_replace_all(Curator, ";", ", ")) %>%
+  dplyr::distinct(Study, Samples, PMID, Curator) %>%
+  gt::gt()
+```
+

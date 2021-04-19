@@ -1,3 +1,7 @@
+# curatedMetagenomicData 3.0.0
+
+* curatedMetagenomicData now contains 20,284 samples from 86 studies
+
 # curatedMetagenomicData 1.16.0
 
 * curatedMetagenomicData now contains 10,199 samples from 57 studies

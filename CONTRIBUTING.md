@@ -1,51 +1,17 @@
-# Contributing to curatedMetagenomicData
+# Contributing
 
-*curatedMetagenomicData* aims to embody the spirit of open-source software,
-reproducibility, and to provide an ever growing collection of metagenomic data.
-As such, reports of bugs and curation errors, and suggestions and curation of
-relevant new metagenomic datasets will gladly be accepted.
+## Support
 
-The package is described at
-https://waldronlab.github.io/curatedMetagenomicData/, including information for
-installation and example analyses. 
+If something remains unclear after you've thoroughly read the documentation and articles at <https://waldronlab.io/curatedMetagenomicData>, please don't hesitate to contact us via the Bioconductor support site. Look through our old post at <https://support.bioconductor.org/tag/curatedMetagenomicData> first; and if there's nothing that helps, ask a question with the `curatedMetagenomicData` tag and we'll respond quickly.
 
-## Reporting Bugs and Errors in Curation
+## Issues
 
-Development of the *curatedMetagenomicData* package occurs on GitHub. Please
-visit the
-[project repository](https://github.com/waldronlab/curatedMetagenomicData) and
-report software bugs and data problems on our
-[issue tracker](https://github.com/waldronlab/curatedMetagenomicData/issues).
+If you've found an issue that causes unintended behavior, please report it to us through a GitHub issue if someone has not already done so. Be sure to include a small example of how we can reproduce the unintended behavior so we can fix it quickly. Please don't open issues for feature requests.
 
-## Pull Request
+## Pull Requests
 
-If you are able to fix a bug yourself, or wish to add an analysis example, we
-would welcome a pull request. If the pull request builds cleanly on the
-continuous itegration servers it will be merged as soon as is possible.
+We will welcome pull request that fit within the scope of the package and help resolve outstanding issues. If you would like to submit a pull request that adds a feature, please get in touch first to make sure the addition is needed.
 
-## Addition of Datasets to curatedMetagenomicData
+## Feature Requests
 
-Authors welcome the addition of new metagenomic datasets provided that the raw
-data are hosted by NCBI/SRA and can be run through our
-[MetaPhlAn2 and HUMAnN2 pipeline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/inst/pipeline).
-You can request the addition of a dataset by opening an issue on the
-[issue tracker](https://github.com/waldronlab/curatedMetagenomicData/issues),
-pointing us to the publication and raw data. 
-
-You can speed up our ability to incorporate a new dataset by providing curated
-metadata. See https://github.com/waldronlab/curatedMetagenomicDataCuration for
-instructions on how to curate a new dataset.
-
-## Using the curatedMetagenomicData Pipeline Yourself
-
-The process of adding a dataset is documented in the
-[wiki](https://github.com/waldronlab/curatedMetagenomicData/wiki/The-curatedMetagenomicData-pipelines). Critical components are the
-[High Computational Load Pipeline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/inst/pipeline)
-and the
-[curatedMetagenomicData Generating Pipeline](https://github.com/waldronlab/curatedMetagenomicData/tree/master/data-raw).
-
-## Other Issues
-
-If you have an issue that is not documented elsewhere, visit the Bioconductor
-support site at https://support.bioconductor.org/, briefly describe your issue,
-and add the tag curatedMetagenomicData.
+We will gladly consider feature request and, upon acceptance, implement them or advise you on how to do so and submit a pull request. In either case, please get in touch first and we will add the feature request to our Trello board.
