@@ -1,0 +1,14 @@
+pandoc: 2.11.4
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  articles/available-studies: available-studies.html
+  articles/our-pipeline: our-pipeline.html
+  articles/paper-figures: paper-figures.html
+  articles/version-three: version-three.html
+  curatedMetagenomicData: curatedMetagenomicData.html
+last_built: 2021-04-19T17:12Z
+urls:
+  reference: https://waldronlab.io/curatedMetagenomicData/reference
+  article: https://waldronlab.io/curatedMetagenomicData/articles
+

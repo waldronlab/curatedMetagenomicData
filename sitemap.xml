@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/index.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/reference/curatedMetagenomicData.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/reference/sampleMetadata.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/articles/articles/available-studies.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/articles/articles/our-pipeline.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/articles/articles/paper-figures.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/articles/articles/version-three.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/articles/curatedMetagenomicData.html</loc>
+  </url>
+</urlset>
