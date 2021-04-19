@@ -26,22 +26,51 @@ BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, b
 
 ## Examples
 
-…
-
 ``` r
 library(curatedMetagenomicData)
 ```
 
+``` r
+curatedMetagenomicData("AsnicarF_2017")
+#> 2021-03-31.AsnicarF_2017.gene_families
+#> 2021-03-31.AsnicarF_2017.marker_abundance
+#> 2021-03-31.AsnicarF_2017.marker_presence
+#> 2021-03-31.AsnicarF_2017.pathway_abundance
+#> 2021-03-31.AsnicarF_2017.pathway_coverage
+#> 2021-03-31.AsnicarF_2017.relative_abundance
+```
+
+``` r
+curatedMetagenomicData("AsnicarF_2017.relative_abundance")
+#> 2021-03-31.AsnicarF_2017.relative_abundance
+```
+
+``` r
+curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
+#> class: SummarizedExperiment 
+#> dim: 550 24 
+#> metadata(0):
+#> assays(1): relative_abundance
+#> rownames(550): k__Bacteria k__Bacteria|p__Proteobacteria ...
+#>   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus|s__Streptococcus_gordonii
+#>   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia_sp_HMSC24B09
+#> rowData names(0):
+#> colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14
+#>   MV_MIM5_t3F15
+#> colData names(20): studyName subjectID ... curator NCBI_accession
+```
+
 ## Contributing
 
-…
+All are welcome to contribute to the curatedMetagenomicData project
+provided contributions are appropriate. Please see the contributing
+guide.
 
 ## Code of Conduct
 
 Please note that the curatedMetagenomicData project is released with a
-[Contributor Code of
-Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
-By contributing to this project, you agree to abide by its terms.
+code of conduct. By contributing to this project, you agree to abide by
+its terms.
 
 ------------------------------------------------------------------------
 

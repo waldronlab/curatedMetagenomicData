@@ -36,19 +36,29 @@ BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, b
 
 ## Examples
 
-...
-
-```{r}
+```{r, message=FALSE}
 library(curatedMetagenomicData)
+```
+
+```{r, message=FALSE}
+curatedMetagenomicData("AsnicarF_2017")
+```
+
+```{r, message=FALSE}
+curatedMetagenomicData("AsnicarF_2017.relative_abundance")
+```
+
+```{r, message=FALSE}
+curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
 ```
 
 ## Contributing
 
-...
+All are welcome to contribute to the curatedMetagenomicData project provided contributions are appropriate. Please see the contributing guide.
 
 ## Code of Conduct
   
-Please note that the curatedMetagenomicData project is released with a [Contributor Code of Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html). By contributing to this project, you agree to abide by its terms.
+Please note that the curatedMetagenomicData project is released with a code of conduct. By contributing to this project, you agree to abide by its terms.
 
 ---
 
