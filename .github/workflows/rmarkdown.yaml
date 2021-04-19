@@ -3,7 +3,7 @@ on:
     paths:
       - '**.Rmd'
 
-name: readme
+name: rmarkdown
 
 jobs:
   build:
