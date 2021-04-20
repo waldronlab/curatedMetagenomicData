@@ -24,4 +24,3 @@ PackageCheckArgs: --no-vignettes --timings
 PackageRoxygenize: rd,collate,namespace
 
 QuitChildProcessesOnExit: Yes
-DisableExecuteRprofile: Yes
