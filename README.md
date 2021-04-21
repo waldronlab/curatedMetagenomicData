@@ -10,7 +10,7 @@ The curatedMetagenomicData package provides microbial taxonomic,
 functional, and gene marker abundance for samples collected from
 different body sites.
 
-## Installation
+## R Installation
 
 You can install curatedMetagenomicData from Bioconductor with:
 
@@ -18,13 +18,34 @@ You can install curatedMetagenomicData from Bioconductor with:
 BiocManager::install("curatedMetagenomicData")
 ```
 
-You can install curatedMetagenomicData from GitHub with:
+You can install the last version of curatedMetagenomicData 1 ([v1.20.0](https://github.com/waldronlab/curatedMetagenomicData/releases/tag/v1.20.0)) from GitHub with:
 
 ``` r
-BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, build_vignettes = TRUE)
+BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, build_vignettes = TRUE, ref = "v1.20.0")
 ```
 
-## Examples
+## Command-line installation
+
+You must first install the R package, see instructions above. Then you can place the command-line tool on your path as follows:
+```
+CMDLIB=$(R -e 'find.package("curatedMetagenomicData")' | grep -o -e "/.*\w")/commandline
+echo -e "export PATH=\$PATH:$CMDLIB" >> ~/.bashrc
+chmod +x $RLIB/curatedMetagenomicData
+```
+
+### Command-line usage
+
+```
+Usage:
+  curatedMetagenomicData [--metadata] [--counts] [--dryrun] [<NAME>]...
+  curatedMetagenomicData [-mcd] [<NAME>]...
+  curatedMetagenomicData -l | --list
+  curatedMetagenomicData -h | --help
+```
+
+## Examples in R
+
+See the package vignette for more detailed examples.
 
 ``` r
 library(curatedMetagenomicData)
