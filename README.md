@@ -30,7 +30,7 @@ You must first install the R package, see instructions above. Then you can place
 ```
 CMDLIB=$(R -e 'find.package("curatedMetagenomicData")' | grep -o -e "/.*\w")/commandline
 echo -e "export PATH=\$PATH:$CMDLIB" >> ~/.bashrc
-chmod +x $RLIB/curatedMetagenomicData
+chmod +x $CMDLIB/curatedMetagenomicData
 ```
 
 ### Command-line usage
