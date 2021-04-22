@@ -107,10 +107,6 @@
     </div>
 
     
-        <div class="abstract">
-      <p class="abstract">Abstract</p>
-      <p>The curatedMetagenomicData package provides microbial taxonomic, functional, and gene marker abundance for samples collected from different body sites.</p>
-    </div>
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/curatedMetagenomicData">curatedMetagenomicData</a></span><span class="op">)</span></code></pre></div>
@@ -280,7 +276,7 @@
 <h1 class="hasAnchor">
 <a href="#multiple-downloads" class="anchor"></a>Multiple (Down)loads</h1>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_2017.pathway"</span>, print <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">%&gt;%</span>
+<code class="sourceCode R"><span class="fu"><a href="../reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_2017.pathway"</span>, print <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> |&gt;
   <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">curatedMetagenomicData</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 <pre><code>## snapshotDate(): 2021-04-08</code></pre>
 <pre><code>## see ?curatedMetagenomicData and browseVignettes('curatedMetagenomicData') for documentation</code></pre>
@@ -356,7 +352,7 @@
 ## [25] GenomicRanges_1.43.4          promises_1.2.0.1             
 ## [27] XVector_0.31.1                Matrix_1.3-2                 
 ## [29] htmltools_0.5.1.1             httpuv_1.5.5                 
-## [31] pkgconfig_2.0.3               bookdown_0.21                
+## [31] pkgconfig_2.0.3               bookdown_0.22                
 ## [33] zlibbioc_1.37.0               purrr_0.3.4                  
 ## [35] xtable_1.8-4                  later_1.1.0.1                
 ## [37] tibble_3.1.1                  KEGGREST_1.31.1              
