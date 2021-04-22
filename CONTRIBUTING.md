@@ -2,7 +2,7 @@
 
 ## Bug Reports
 
-If you've found an issue that causes unintended behavior, please report it to us through a GitHub issue if someone has not already done so. Be sure to include a small example of how we can reproduce the unintended behavior so we can fix it quickly. Please don't open issues for feature requests.
+If you've found an issue that causes unintended behavior, please report it to us through a GitHub issue if someone has not already done so. Be sure to include a small example of how we can reproduce the unintended behavior so we can fix it quickly.
 
 ## Feature Requests
 
@@ -10,7 +10,7 @@ We will gladly consider feature request and, upon acceptance, implement them or 
 
 ## User Support
 
-If something remains unclear after you've thoroughly read the documentation and articles at <https://waldronlab.io/curatedMetagenomicData>, please don't hesitate to contact us via the Bioconductor support site. Look through our old post at <https://support.bioconductor.org/tag/curatedMetagenomicData> first; and if there's nothing that helps, ask a question with the `curatedMetagenomicData` tag and we'll respond quickly.
+If something remains unclear after you've thoroughly read all sections of the package website, please don't hesitate to contact us via the Bioconductor support site. Read through the posts at https://support.bioconductor.org/tag/curatedMetagenomicData first; and if there's nothing that helps, ask a question with the `curatedMetagenomicData` tag and we'll respond quickly.
 
 ## Pull Requests
 
