@@ -1,11 +1,16 @@
 Package: curatedMetagenomicData
 Title: Curated Metagenomic Data of the Human Microbiome
 Description:
-    The curatedMetagenomicData package provides microbial taxonomic, functional,
-    and gene marker abundance for samples collected from different body sites.
+    Donec placerat diam felis, vitae semper nibh imperdiet ac. Donec pretium
+    eleifend est in mollis. Aliquam posuere congue posuere. Sed viverra
+    fringilla sapien sollicitudin ullamcorper. Curabitur posuere feugiat ligula
+    sed euismod. Curabitur vulputate viverra ante, sit amet aliquam libero
+    eleifend et. Aenean imperdiet convallis ligula, eget maximus quam finibus
+    id. Sed eu eros erat. Aliquam ornare justo a diam imperdiet mollis. Etiam
+    bibendum ultricies eros.
 Authors@R:
     c(person(given = "Lucas", family = "schiffer", role = c("aut", "cre"),
-             email = "schifferl@bu.edu",
+             email = "schiffer.lucas@gmail.com",
              comment = c(ORCID = "0000-0003-3628-0326")),
       person(given = "Levi", family = "Waldron", role = "aut"),
       person(given = "Edoardo", family = "Pasolli", role = "ctb"),

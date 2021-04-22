@@ -7,9 +7,6 @@ author:
     Boston, MA, U.S.A.
   email: schifferl@bu.edu
 package: curatedMetagenomicData
-abstract: >
-  The curatedMetagenomicData package provides microbial taxonomic, functional,
-  and gene marker abundance for samples collected from different body sites.
 output: 
   BiocStyle::html_document
 vignette: >
@@ -37,7 +34,7 @@ curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
 # Multiple (Down)loads
 
 ```{r}
-curatedMetagenomicData("AsnicarF_2017.pathway", print = FALSE) %>%
+curatedMetagenomicData("AsnicarF_2017.pathway", print = FALSE) |>
   sapply(curatedMetagenomicData, dryrun = FALSE)
 ```
 
