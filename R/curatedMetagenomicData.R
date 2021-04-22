@@ -128,7 +128,7 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, print = TRUE, counts 
         to_return[[eh_subset]]
 
     meta_data <-
-        dplyr::filter(sampleMetadata, .data[["studyName"]] == resources[["studyName"]]) %>%
+        dplyr::filter(curatedMetagenomicData::sampleMetadata, .data[["studyName"]] == resources[["studyName"]]) %>%
         tibble::column_to_rownames(var = "sampleID") %>%
         dplyr::select(where(~ base::all(!base::is.na(.x))))
 

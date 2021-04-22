@@ -37,9 +37,8 @@ BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, b
 You must first install the R package, see instructions above. Then you
 can place the command-line tool on your path as follows:
 
-    CMDLIB=$(R -e 'find.package("curatedMetagenomicData")' | grep -o -e "/.*\w")/commandline
+    CMDLIB=$(R -e 'find.package("curatedMetagenomicData")' | grep -o -e "/.*\w")/exec
     echo -e "export PATH=\$PATH:$CMDLIB" >> ~/.bashrc
-    chmod +x $CMDLIB/curatedMetagenomicData
 
 ### Command-line usage
 
