@@ -11,18 +11,46 @@ knitr::opts_chunk$set(
 
 ```{r, echo = FALSE}
 library(curatedMetagenomicData)
+library(magrittr)
 ```
 
 ```{r, echo = FALSE}
 sampleMetadata %>%
-  dplyr::rename(Study = studyName) %>%
-  dplyr::rename(Curator = curator) %>%
-  dplyr::add_count(Study, name = "Samples") %>%
-  dplyr::mutate(PMID = stringr::str_replace(PMID, "unpublished", "")) %>%
-  dplyr::mutate(Curator = stringr::str_replace_all(Curator, "_", " ")) %>%
-  dplyr::mutate(Curator = stringr::str_replace_all(Curator, ",", ", ")) %>%
-  dplyr::mutate(Curator = stringr::str_replace_all(Curator, ";", ", ")) %>%
-  dplyr::distinct(Study, Samples, PMID, Curator) %>%
-  gt::gt()
+    dplyr::rename(Study = studyName) %>%
+    dplyr::rename(Curator = curator) %>%
+    dplyr::rename(Disease = disease) %>%
+    dplyr::rename(`Body Site` = body_site) %>%
+    dplyr::rename(`Body Subsite` = body_subsite) %>%
+    dplyr::select(Study, PMID, Curator, Disease, `Body Site`, `Body Subsite`) %>%
+    dplyr::mutate(PMID = stringr::str_replace(PMID, "unpublished", NA_character_)) %>%
+    dplyr::mutate(Curator = stringr::str_replace_all(Curator, ",", ";")) %>%
+    dplyr::group_by(Study) %>%
+    dplyr::summarize(
+        Study = stringr::str_c(base::unique(Study), collapse = ";"),
+        PMID = stringr::str_c(base::unique(PMID), collapse = ";"),
+        Curator = stringr::str_c(base::unique(Curator), collapse = ";"),
+        Disease = stringr::str_c(base::unique(Disease), collapse = ";"),
+        `Body Site` = stringr::str_c(base::unique(`Body Site`), collapse = ";"),
+        `Body Subsite` = stringr::str_c(base::unique(`Body Subsite`), collapse = ";"),
+        Samples = dplyr::n()
+    ) %>%
+    dplyr::group_by(Study) %>%
+    dplyr::mutate(
+        PMID = stringr::str_c(base::unique(stringr::str_sort(stringr::str_split(PMID, ";", simplify = TRUE))), collapse = ", "),
+        Curator = stringr::str_c(base::unique(stringr::str_split(Curator, ";", simplify = TRUE)), collapse = ", "),
+        Disease = stringr::str_c(base::unique(stringr::str_sort(stringr::str_split(Disease, ";", simplify = TRUE))), collapse = ", "),
+        `Body Site` = stringr::str_c(base::unique(stringr::str_sort(stringr::str_split(`Body Site`, ";", simplify = TRUE))), collapse = ", "),
+        `Body Subsite` = stringr::str_c(base::unique(stringr::str_sort(stringr::str_split(`Body Subsite`, ";", simplify = TRUE))), collapse = ", ")
+    ) %>%
+    dplyr::mutate(Curator = stringr::str_replace_all(Curator, "_", " ")) %>%
+    dplyr::mutate(Disease = stringr::str_replace_all(Disease, "_", " ")) %>%
+    dplyr::mutate(`Body Site` = stringr::str_replace_all(`Body Site`, "cavity", "_cavity")) %>%
+    dplyr::mutate(`Body Site` = stringr::str_replace_all(`Body Site`, "_", " ")) %>%
+    dplyr::mutate(`Body Subsite` = stringr::str_replace_all(`Body Subsite`, ", l_", ", left_")) %>%
+    dplyr::mutate(`Body Subsite` = stringr::str_replace_all(`Body Subsite`, ", r_", ", right_")) %>%
+    dplyr::mutate(`Body Subsite` = stringr::str_replace_all(`Body Subsite`, "_", " ")) %>% 
+    dplyr::ungroup() %>%
+    dplyr::mutate(dplyr::across(.cols = dplyr::everything(), .fns = ~ tidyr::replace_na(.x, ""))) %>%
+    gt::gt()
 ```
 
