@@ -38,6 +38,7 @@ Imports:
     SummarizedExperiment,
     dplyr,
     magrittr,
+    purrr,
     rlang,
     stringr,
     tibble,
