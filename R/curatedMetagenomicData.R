@@ -127,6 +127,9 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, print = TRUE, counts 
     eh_matrix <-
         to_return[[eh_subset]]
 
+    row_names <-
+        base::rownames(eh_matrix)
+
     meta_data <-
         dplyr::filter(curatedMetagenomicData::sampleMetadata, .data[["studyName"]] == resources[["studyName"]]) %>%
         tibble::column_to_rownames(var = "sampleID") %>%
@@ -138,6 +141,9 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, print = TRUE, counts 
     keep_cols <-
         base::colnames(eh_matrix) %>%
         base::intersect(meta_rows)
+
+    eh_matrix <-
+        magrittr::extract(eh_matrix, row_names, keep_cols)
 
     col_names <-
         base::colnames(meta_data)
@@ -160,12 +166,8 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, print = TRUE, counts 
         }
     }
 
-    row_names <-
-        base::rownames(eh_matrix)
-
     assays <-
-        magrittr::extract(eh_matrix, row_names, keep_cols) %>%
-        S4Vectors::SimpleList()
+        S4Vectors::SimpleList(eh_matrix)
 
     base::names(assays) <-
         dplyr::pull(resources, .data[["dataType"]])
