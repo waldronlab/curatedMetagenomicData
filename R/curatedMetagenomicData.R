@@ -107,13 +107,13 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, print = TRUE, counts 
         base::rownames(to_subset)
 
     into_cols <-
-        base::c("dateAdded", "studyName", "dataType")
+        base::c("dateAdded", "dataset_name", "dataType")
 
     resources <-
         magrittr::extract(to_subset, keep_rows, "title", drop = FALSE) %>%
         tibble::as_tibble(rownames = "rowname") %>%
         tidyr::separate(.data[["title"]], into_cols, sep = "\\.") %>%
-        dplyr::group_by(.data[["studyName"]], .data[["dataType"]]) %>%
+        dplyr::group_by(.data[["dataset_name"]], .data[["dataType"]]) %>%
         dplyr::slice_max(.data[["dateAdded"]]) %>%
         dplyr::ungroup()
 
@@ -131,7 +131,7 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, print = TRUE, counts 
         base::rownames(eh_matrix)
 
     meta_data <-
-        dplyr::filter(curatedMetagenomicData::sampleMetadata, .data[["studyName"]] == resources[["studyName"]]) %>%
+        dplyr::filter(curatedMetagenomicData::sampleMetadata, .data[["dataset_name"]] == resources[["dataset_name"]]) %>%
         tibble::column_to_rownames(var = "sampleID") %>%
         dplyr::select(where(~ base::all(!base::is.na(.x))))
 

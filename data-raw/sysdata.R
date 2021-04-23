@@ -23,12 +23,12 @@ col_types <-
     )
 
 into_cols <-
-    base::c("dateAdded", "studyName", "dataType")
+    base::c("dateAdded", "dataset_name", "dataType")
 
 Title <-
     readr::read_csv("inst/extdata/metadata.csv", col_types = col_types) %>%
     tidyr::separate(Title, into_cols, sep = "\\.", remove = FALSE) %>%
-    dplyr::arrange(studyName, dateAdded, dataType) %>%
+    dplyr::arrange(dataset_name, dateAdded, dataType) %>%
     dplyr::pull(.data[["Title"]])
 
 usethis::use_data(Title, internal = TRUE, overwrite = TRUE)
