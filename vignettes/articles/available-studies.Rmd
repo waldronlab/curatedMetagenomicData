@@ -16,7 +16,7 @@ library(magrittr)
 
 ```{r, echo = FALSE}
 sampleMetadata %>%
-    dplyr::rename(Study = studyName) %>%
+    dplyr::rename(Study = dataset_name) %>%
     dplyr::rename(Curator = curator) %>%
     dplyr::rename(Disease = disease) %>%
     dplyr::rename(`Body Site` = body_site) %>%

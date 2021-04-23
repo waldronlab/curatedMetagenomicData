@@ -83,7 +83,7 @@ curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
 #> rowData names(0):
 #> colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14
 #>   MV_MIM5_t3F15
-#> colData names(20): studyName subjectID ... curator NCBI_accession
+#> colData names(20): dataset_name subjectID ... curator NCBI_accession
 ```
 
 ## Contributing
