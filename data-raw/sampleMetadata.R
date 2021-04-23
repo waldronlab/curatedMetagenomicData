@@ -23,7 +23,7 @@ validName <-
     stringr::str_remove("\\..+") %>%
     base::unique()
 
-sampleMetadata <-
+combined_metadata <-
     base::system.file("curated", package = "curatedMetagenomicDataCuration") %>%
     base::dir(pattern = "tsv", full.names = TRUE, recursive = TRUE) %>%
     purrr::set_names(nm = ~ base::basename(.x)) %>%
@@ -34,4 +34,4 @@ sampleMetadata <-
     dplyr::filter(dataset_name %in% validName) %>%
     base::as.data.frame()
 
-usethis::use_data(sampleMetadata, overwrite = TRUE)
+usethis::use_data(combined_metadata, overwrite = TRUE)

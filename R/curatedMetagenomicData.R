@@ -1,7 +1,7 @@
 #' Access Curated Metagenomic Data
 #'
 #' To access curated metagenomic data users will use `curatedMetagenomicData()`,
-#' after "shopping" the [sample metadata][sampleMetadata] for studies they are
+#' after "shopping" the [sample metadata][combined_metadata] for studies they are
 #' interested in. The `dryrun` argument allows users to perfect a query prior to
 #' (down)loading a data set. When `dryrun = TRUE` and `print = TRUE`, the names
 #' of matched data sets will be printed nicely before a character vector of
@@ -11,14 +11,14 @@
 #' functions to (down)load multiple data sets without messages. When
 #' `dryrun = FALSE`, a (sparse) matrix is (down)loaded and used to construct a
 #' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
-#' object with corresponding metadata from [sample metadata][sampleMetadata].
+#' object with corresponding metadata from [sample metadata][combined_metadata].
 #' If there is more than one date corresponding to the data set, the more recent
 #' one is selected automatically. Finally, if a `relative_abundance` data set is
 #' requested with `counts = TRUE`, relative abundance proportions will be
 #' multiplied by read depth (i.e. `number_reads`) and rounded to the nearest
 #' integer prior to being returned as a
 #' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
-#' object with corresponding metadata from [sample metadata][sampleMetadata].
+#' object with corresponding metadata from [sample metadata][combined_metadata].
 #'
 #' @param pattern regular expression pattern to look for in the titles of
 #' resources available in curatedMetagenomicData; `""` will return all resources
@@ -131,7 +131,7 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, print = TRUE, counts 
         base::rownames(eh_matrix)
 
     meta_data <-
-        dplyr::filter(curatedMetagenomicData::sampleMetadata, .data[["dataset_name"]] == resources[["dataset_name"]]) %>%
+        dplyr::filter(curatedMetagenomicData::combined_metadata, .data[["dataset_name"]] == resources[["dataset_name"]]) %>%
         tibble::column_to_rownames(var = "sampleID") %>%
         dplyr::select(where(~ base::all(!base::is.na(.x))))
 

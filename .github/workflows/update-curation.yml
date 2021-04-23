@@ -48,8 +48,8 @@ jobs:
           library("curatedMetagenomicDataCuration")
           message(paste("\n****", Sys.time(), "Check curation ****"))
           status <- "passing"
-          data(sampleMetadata)
-          tryCatch(curatedMetagenomicDataCuration::checkCuration(sampleMetadata),
+          data(combined_metadata)
+          tryCatch(curatedMetagenomicDataCuration::checkCuration(combined_metadata),
                warning = function(w) {
                    status <<- "failing"
                    message(paste(w, "\n"))
