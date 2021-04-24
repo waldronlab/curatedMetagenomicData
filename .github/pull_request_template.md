@@ -1,13 +1,3 @@
----
-title: ''
-labels: 'Pull Request'
-assignees: 'schifferl'
----
-
-We will welcome pull request that fit within the scope of the package and help
-resolve outstanding issues. If you would like to submit a pull request that adds
-a feature, please get in touch first to make sure the addition is needed.
-
 **Why are you submitting this pull request**
 Please provide a brief description of what this pull request addresses.
 
