@@ -1,10 +1,7 @@
 ---
-name: Pull Request
-about: Create a pull request
 title: ''
 labels: 'Pull Request'
 assignees: 'schifferl'
-
 ---
 
 We will welcome pull request that fit within the scope of the package and help
