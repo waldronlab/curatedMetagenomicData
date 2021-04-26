@@ -22,7 +22,7 @@ library(curatedMetagenomicData)
 # Sample Metadata
 
 ```{r}
-dplyr::glimpse(sampleMetadata)
+dplyr::glimpse(combined_metadata)
 ```
 
 # Metagenomic Data

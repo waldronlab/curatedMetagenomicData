@@ -27,7 +27,7 @@ invisibly; if \code{dryrun = FALSE}, a \code{SummarizedExperiment} is returned
 }
 \description{
 To access curated metagenomic data users will use \code{curatedMetagenomicData()},
-after "shopping" the \link[=sampleMetadata]{sample metadata} for studies they are
+after "shopping" the \link[=combined_metadata]{sample metadata} for studies they are
 interested in. The \code{dryrun} argument allows users to perfect a query prior to
 (down)loading a data set. When \code{dryrun = TRUE} and \code{print = TRUE}, the names
 of matched data sets will be printed nicely before a character vector of
@@ -37,14 +37,14 @@ useful in the context of \link[base:lapply]{lapply} and \link[purrr:map]{map}
 functions to (down)load multiple data sets without messages. When
 \code{dryrun = FALSE}, a (sparse) matrix is (down)loaded and used to construct a
 \link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
-object with corresponding metadata from \link[=sampleMetadata]{sample metadata}.
+object with corresponding metadata from \link[=combined_metadata]{sample metadata}.
 If there is more than one date corresponding to the data set, the more recent
 one is selected automatically. Finally, if a \code{relative_abundance} data set is
 requested with \code{counts = TRUE}, relative abundance proportions will be
 multiplied by read depth (i.e. \code{number_reads}) and rounded to the nearest
 integer prior to being returned as a
 \link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
-object with corresponding metadata from \link[=sampleMetadata]{sample metadata}.
+object with corresponding metadata from \link[=combined_metadata]{sample metadata}.
 }
 \examples{
 curatedMetagenomicData("2021-04-02")
