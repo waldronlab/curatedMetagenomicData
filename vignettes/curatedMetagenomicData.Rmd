@@ -22,7 +22,7 @@ library(curatedMetagenomicData)
 # Sample Metadata
 
 ```{r}
-dplyr::glimpse(combined_metadata)
+dplyr::glimpse(sampleMetadata)
 ```
 
 # Metagenomic Data
@@ -34,8 +34,7 @@ curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
 # Multiple (Down)loads
 
 ```{r}
-curatedMetagenomicData("AsnicarF_2017.pathway", print = FALSE) |>
-  sapply(curatedMetagenomicData, dryrun = FALSE)
+curatedMetagenomicData("AsnicarF_2017.pathway", dryrun = FALSE)
 ```
 
 # Session Info {.unnumbered}

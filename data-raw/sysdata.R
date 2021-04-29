@@ -1,5 +1,3 @@
-library(magrittr)
-
 phylogenetic_tree_file <-
     base::as.character("https://raw.githubusercontent.com/biobakery/MetaPhlAn/master/metaphlan/utils/mpa_v30_CHOCOPhlAn_201901_species_tree.nwk")
 

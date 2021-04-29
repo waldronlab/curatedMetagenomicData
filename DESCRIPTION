@@ -36,6 +36,7 @@ Imports:
     ExperimentHub,
     S4Vectors,
     SummarizedExperiment,
+    TreeSummarizedExperiment,
     dplyr,
     magrittr,
     purrr,

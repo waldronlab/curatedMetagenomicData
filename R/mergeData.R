@@ -8,12 +8,10 @@
 #' @export
 #'
 #' @examples
-#' curatedMetagenomicData("AsnicarF_20.+.pathway_abundance", print = FALSE) |>
-#'     sapply(curatedMetagenomicData, dryrun = FALSE) |>
+#' curatedMetagenomicData("AsnicarF_20.+.pathway_abundance", dryrun = FALSE) %>%
 #'     mergeData()
 #'
-#' curatedMetagenomicData("AsnicarF_20.+.relative_abundance", print = FALSE) |>
-#'     sapply(curatedMetagenomicData, dryrun = FALSE) |>
+#' curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE) %>%
 #'     mergeData()
 #'
 #' @importFrom purrr map_chr
@@ -30,6 +28,7 @@
 #' @importFrom S4Vectors DataFrame
 #' @importFrom SummarizedExperiment colData
 #' @importFrom dplyr bind_rows
+#' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment
 mergeData <- function(x) {
     assay_name <-
@@ -66,5 +65,9 @@ mergeData <- function(x) {
         tibble::column_to_rownames() %>%
         S4Vectors::DataFrame()
 
-    SummarizedExperiment::SummarizedExperiment(assays = assays, rowData = rowData, colData = colData)
+    if (assay_name == "relative_abundance") {
+        TreeSummarizedExperiment::TreeSummarizedExperiment(assays = assays, rowData = rowData, colData = colData, rowTree = phylogeneticTree)
+    } else {
+        SummarizedExperiment::SummarizedExperiment(assays = assays, rowData = rowData, colData = colData)
+    }
 }

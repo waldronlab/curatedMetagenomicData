@@ -32,22 +32,6 @@ from GitHub with:
 BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, build_vignettes = TRUE, ref = "v1.20.0")
 ```
 
-## Command-line installation
-
-You must first install the R package, see instructions above. Then you
-can place the command-line tool on your path as follows:
-
-    CMDLIB=$(R -e 'find.package("curatedMetagenomicData")' | grep -o -e "/.*\w")/exec
-    echo -e "export PATH=\$PATH:$CMDLIB" >> ~/.bashrc
-
-### Command-line usage
-
-    Usage:
-      curatedMetagenomicData [--metadata] [--counts] [--dryrun] [<NAME>]...
-      curatedMetagenomicData [-mcd] [<NAME>]...
-      curatedMetagenomicData -l | --list
-      curatedMetagenomicData -h | --help
-
 ## Examples
 
 See the package vignette for more detailed examples.
@@ -73,17 +57,29 @@ curatedMetagenomicData("AsnicarF_2017.relative_abundance")
 
 ``` r
 curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
-#> class: SummarizedExperiment 
-#> dim: 550 24 
+#> snapshotDate(): 2021-04-27
+#> $`2021-03-31.AsnicarF_2017.relative_abundance`
+#> class: TreeSummarizedExperiment 
+#> dim: 301 24 
 #> metadata(0):
 #> assays(1): relative_abundance
-#> rownames(550): k__Bacteria k__Bacteria|p__Proteobacteria ...
+#> rownames(301):
+#>   k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Escherichia|s__Escherichia_coli
+#>   k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Bifidobacteriales|f__Bifidobacteriaceae|g__Bifidobacterium|s__Bifidobacterium_bifidum
+#>   ...
 #>   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus|s__Streptococcus_gordonii
 #>   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia_sp_HMSC24B09
 #> rowData names(0):
 #> colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14
 #>   MV_MIM5_t3F15
-#> colData names(20): dataset_name subjectID ... curator NCBI_accession
+#> colData names(20): studyName subjectID ... curator NCBI_accession
+#> reducedDimNames(0):
+#> mainExpName: NULL
+#> altExpNames(0):
+#> rowLinks: a LinkDataFrame (301 rows)
+#> rowTree: 1 phylo tree(s) (10430 leaves)
+#> colLinks: NULL
+#> colTree: NULL
 ```
 
 ## Contributing

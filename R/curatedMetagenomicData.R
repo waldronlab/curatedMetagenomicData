@@ -1,7 +1,7 @@
 #' Access Curated Metagenomic Data
 #'
 #' To access curated metagenomic data users will use `curatedMetagenomicData()`,
-#' after "shopping" the [sample metadata][combined_metadata] for studies they are
+#' after "shopping" the [sample metadata][sampleMetadata] for studies they are
 #' interested in. The `dryrun` argument allows users to perfect a query prior to
 #' (down)loading a data set. When `dryrun = TRUE` and `print = TRUE`, the names
 #' of matched data sets will be printed nicely before a character vector of
@@ -11,14 +11,14 @@
 #' functions to (down)load multiple data sets without messages. When
 #' `dryrun = FALSE`, a (sparse) matrix is (down)loaded and used to construct a
 #' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
-#' object with corresponding metadata from [sample metadata][combined_metadata].
+#' object with corresponding metadata from [sample metadata][sampleMetadata].
 #' If there is more than one date corresponding to the data set, the more recent
 #' one is selected automatically. Finally, if a `relative_abundance` data set is
 #' requested with `counts = TRUE`, relative abundance proportions will be
 #' multiplied by read depth (i.e. `number_reads`) and rounded to the nearest
 #' integer prior to being returned as a
 #' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
-#' object with corresponding metadata from [sample metadata][combined_metadata].
+#' object with corresponding metadata from [sample metadata][sampleMetadata].
 #'
 #' @param pattern regular expression pattern to look for in the titles of
 #' resources available in curatedMetagenomicData; `""` will return all resources
@@ -50,6 +50,8 @@
 #' curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, counts = TRUE)
 #'
 #' @importFrom stringr str_subset
+#' @importFrom purrr list_along
+#' @importFrom magrittr set_names
 #' @importFrom ExperimentHub ExperimentHub
 #' @importFrom stringr str_c
 #' @importFrom AnnotationHub query
@@ -70,35 +72,36 @@
 #' @importFrom magrittr multiply_by
 #' @importFrom magrittr divide_by
 #' @importFrom S4Vectors SimpleList
+#' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment
-curatedMetagenomicData <- function(pattern, dryrun = TRUE, print = TRUE, counts = FALSE) {
+curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
     if (base::missing(pattern)) {
         stop("Thou shalt not search for nothing", call. = FALSE)
     }
 
     resources <-
-        stringr::str_subset(Title, pattern)
+        stringr::str_subset(title, pattern)
 
     if (base::length(resources) == 0) {
         stop("No resources found in curatedMetagenomicData", call. = FALSE)
     }
 
     if (dryrun) {
-        if (print) {
-            base::cat(resources, sep = "\n")
-        }
+        base::cat(resources, sep = "\n")
 
         return(base::invisible(resources))
     }
 
-    EH <-
-        ExperimentHub::ExperimentHub()
+    resource_list <-
+        purrr::list_along(resources) %>%
+        magrittr::set_names(resources)
 
     resources <-
         stringr::str_c(resources, collapse = "|")
 
     to_return <-
-        AnnotationHub::query(EH, resources)
+        ExperimentHub::ExperimentHub() %>%
+        AnnotationHub::query(resources)
 
     to_subset <-
         S4Vectors::mcols(to_return)
@@ -107,70 +110,77 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, print = TRUE, counts 
         base::rownames(to_subset)
 
     into_cols <-
-        base::c("dateAdded", "dataset_name", "dataType")
+        base::c("dateAdded", "studyName", "dataType")
 
     resources <-
         magrittr::extract(to_subset, keep_rows, "title", drop = FALSE) %>%
         tibble::as_tibble(rownames = "rowname") %>%
         tidyr::separate(.data[["title"]], into_cols, sep = "\\.") %>%
-        dplyr::group_by(.data[["dataset_name"]], .data[["dataType"]]) %>%
+        dplyr::group_by(.data[["studyName"]], .data[["dataType"]]) %>%
         dplyr::slice_max(.data[["dateAdded"]]) %>%
         dplyr::ungroup()
 
-    if (base::nrow(resources) != 1) {
-        stop("Only a single resource should be loaded", call. = FALSE)
-    }
+    resource_index <-
+        base::nrow(resources) %>%
+        base::seq_len()
 
-    eh_subset <-
-        dplyr::pull(resources, .data[["rowname"]])
+    for (i in resource_index) {
+        eh_subset <-
+            resources[[i, "rowname"]]
 
-    eh_matrix <-
-        to_return[[eh_subset]]
+        eh_matrix <-
+            base::suppressMessages(to_return[[eh_subset]])
 
-    row_names <-
-        base::rownames(eh_matrix)
+        row_names <-
+            base::rownames(eh_matrix)
 
-    meta_data <-
-        dplyr::filter(curatedMetagenomicData::combined_metadata, .data[["dataset_name"]] == resources[["dataset_name"]]) %>%
-        tibble::column_to_rownames(var = "sampleID") %>%
-        dplyr::select(where(~ base::all(!base::is.na(.x))))
+        meta_data <-
+            dplyr::filter(curatedMetagenomicData::sampleMetadata, .data[["studyName"]] == resources[[i, "studyName"]]) %>%
+            tibble::column_to_rownames(var = "sampleID") %>%
+            dplyr::select(where(~ base::all(!base::is.na(.x))))
 
-    meta_rows <-
-        base::rownames(meta_data)
+        meta_rows <-
+            base::rownames(meta_data)
 
-    keep_cols <-
-        base::colnames(eh_matrix) %>%
-        base::intersect(meta_rows)
+        keep_cols <-
+            base::colnames(eh_matrix) %>%
+            base::intersect(meta_rows)
 
-    eh_matrix <-
-        magrittr::extract(eh_matrix, row_names, keep_cols)
+        eh_matrix <-
+            magrittr::extract(eh_matrix, row_names, keep_cols)
 
-    col_names <-
-        base::colnames(meta_data)
+        col_names <-
+            base::colnames(meta_data)
 
-    colData <-
-        magrittr::extract(meta_data, keep_cols, col_names) %>%
-        S4Vectors::DataFrame()
+        colData <-
+            magrittr::extract(meta_data, keep_cols, col_names) %>%
+            S4Vectors::DataFrame()
 
-    if (counts) {
-        if (dplyr::pull(resources, .data[["dataType"]]) == "relative_abundance") {
+        if (counts) {
             eh_matrix <-
                 base::t(eh_matrix) %>%
                 magrittr::multiply_by(colData[["number_reads"]]) %>%
                 magrittr::divide_by(100) %>%
                 base::t() %>%
                 base::round()
+        }
 
+        assays <-
+            S4Vectors::SimpleList(eh_matrix)
+
+        base::names(assays) <-
+            resources[[i, "dataType"]]
+
+        if (resources[[i, "dataType"]] == "relative_abundance") {
+            # TODO row_tree = phylogeneticTree[[row_names]] to remove warning
+
+            resource_list[[i]] <-
+                TreeSummarizedExperiment::TreeSummarizedExperiment(assays = assays, colData = colData, rowTree = phylogeneticTree)
         } else {
-            warning("Data type can not be made into counts", call. = FALSE)
+            resource_list[[i]] <-
+                SummarizedExperiment::SummarizedExperiment(assays = assays, colData = colData)
         }
     }
 
-    assays <-
-        S4Vectors::SimpleList(eh_matrix)
-
-    base::names(assays) <-
-        dplyr::pull(resources, .data[["dataType"]])
-
-    SummarizedExperiment::SummarizedExperiment(assays = assays, colData = colData)
+    return(resource_list)
 }

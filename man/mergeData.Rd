@@ -16,12 +16,10 @@ a \code{SummarizedExperiment} is returned
 Description
 }
 \examples{
-curatedMetagenomicData("AsnicarF_20.+.pathway_abundance", print = FALSE) |>
-    sapply(curatedMetagenomicData, dryrun = FALSE) |>
+curatedMetagenomicData("AsnicarF_20.+.pathway_abundance", dryrun = FALSE) \%>\%
     mergeData()
 
-curatedMetagenomicData("AsnicarF_20.+.relative_abundance", print = FALSE) |>
-    sapply(curatedMetagenomicData, dryrun = FALSE) |>
+curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE) \%>\%
     mergeData()
 
 }
