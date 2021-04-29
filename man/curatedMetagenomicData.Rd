@@ -16,34 +16,28 @@ is returned invisibly; if \code{FALSE}, a \code{SummarizedExperiment} is returne
 \item{counts}{if \code{FALSE} (the default), relative abundance proportions are
 returned; if \code{TRUE}, relative abundance proportions are multiplied by read
 depth and rounded to the nearest integer prior to being returned}
-
-\item{print}{if \code{TRUE} (the default), resource names will be printed nicely
-before a character vector of resource names is returned invisibly; if
-\code{FALSE}, only a character vector of resource names is returned invisibly}
 }
 \value{
 if \code{dryrun = TRUE}, a character vector of resource names is returned
-invisibly; if \code{dryrun = FALSE}, a \code{SummarizedExperiment} is returned
+invisibly; if \code{dryrun = FALSE}, a \code{list} is returned
 }
 \description{
 To access curated metagenomic data users will use \code{curatedMetagenomicData()},
 after "shopping" the \link[=sampleMetadata]{sample metadata} for studies they are
 interested in. The \code{dryrun} argument allows users to perfect a query prior to
-(down)loading a data set. When \code{dryrun = TRUE} and \code{print = TRUE}, the names
-of matched data sets will be printed nicely before a character vector of
-names is returned invisibly. When \code{dryrun = TRUE} and \code{print = FALSE}, only
-the invisible character vector of names is returned. The later behavior is
-useful in the context of \link[base:lapply]{lapply} and \link[purrr:map]{map}
-functions to (down)load multiple data sets without messages. When
-\code{dryrun = FALSE}, a (sparse) matrix is (down)loaded and used to construct a
-\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
+(down)loading a data set. When \code{dryrun = TRUE}, the names of matched data
+sets will be printed nicely before a character vector of names is returned
+invisibly. When\code{dryrun = FALSE}, a (sparse) matrix is (down)loaded and used
+to construct a
+\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment} or
+\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
 object with corresponding metadata from \link[=sampleMetadata]{sample metadata}.
 If there is more than one date corresponding to the data set, the more recent
 one is selected automatically. Finally, if a \code{relative_abundance} data set is
 requested with \code{counts = TRUE}, relative abundance proportions will be
 multiplied by read depth (i.e. \code{number_reads}) and rounded to the nearest
 integer prior to being returned as a
-\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
+\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
 object with corresponding metadata from \link[=sampleMetadata]{sample metadata}.
 }
 \examples{

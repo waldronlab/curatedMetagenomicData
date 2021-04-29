@@ -3,21 +3,19 @@
 #' To access curated metagenomic data users will use `curatedMetagenomicData()`,
 #' after "shopping" the [sample metadata][sampleMetadata] for studies they are
 #' interested in. The `dryrun` argument allows users to perfect a query prior to
-#' (down)loading a data set. When `dryrun = TRUE` and `print = TRUE`, the names
-#' of matched data sets will be printed nicely before a character vector of
-#' names is returned invisibly. When `dryrun = TRUE` and `print = FALSE`, only
-#' the invisible character vector of names is returned. The later behavior is
-#' useful in the context of [lapply][base::lapply()] and [map][purrr::map()]
-#' functions to (down)load multiple data sets without messages. When
-#' `dryrun = FALSE`, a (sparse) matrix is (down)loaded and used to construct a
-#' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
+#' (down)loading a data set. When `dryrun = TRUE`, the names of matched data
+#' sets will be printed nicely before a character vector of names is returned
+#' invisibly. When`dryrun = FALSE`, a (sparse) matrix is (down)loaded and used
+#' to construct a
+#' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class] or
+#' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
 #' object with corresponding metadata from [sample metadata][sampleMetadata].
 #' If there is more than one date corresponding to the data set, the more recent
 #' one is selected automatically. Finally, if a `relative_abundance` data set is
 #' requested with `counts = TRUE`, relative abundance proportions will be
 #' multiplied by read depth (i.e. `number_reads`) and rounded to the nearest
 #' integer prior to being returned as a
-#' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
+#' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
 #' object with corresponding metadata from [sample metadata][sampleMetadata].
 #'
 #' @param pattern regular expression pattern to look for in the titles of
@@ -26,16 +24,12 @@
 #' @param dryrun if `TRUE` (the default), a character vector of resource names
 #' is returned invisibly; if `FALSE`, a `SummarizedExperiment` is returned
 #'
-#' @param print if `TRUE` (the default), resource names will be printed nicely
-#' before a character vector of resource names is returned invisibly; if
-#' `FALSE`, only a character vector of resource names is returned invisibly
-#'
 #' @param counts if `FALSE` (the default), relative abundance proportions are
 #' returned; if `TRUE`, relative abundance proportions are multiplied by read
 #' depth and rounded to the nearest integer prior to being returned
 #'
 #' @return if `dryrun = TRUE`, a character vector of resource names is returned
-#' invisibly; if `dryrun = FALSE`, a `SummarizedExperiment` is returned
+#' invisibly; if `dryrun = FALSE`, a `list` is returned
 #' @export
 #'
 #' @examples
