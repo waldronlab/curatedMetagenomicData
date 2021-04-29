@@ -14,6 +14,36 @@ library(curatedMetagenomicData)
 ```
 
 # Curation
+### curatedMetagenomicData 3 provides manually curated, highly refined, per-sample metadata.
+The process of manual curation is substantially founded on 3 sources:
+
+1. papers and paper supplementary-materials
+2. NCBI
+3. other publications referrring to or considering this particular paper
+
+The process of manual curation besides involves 2 general kinds of sources:
+
+1. Explicit (supplementary tables assign a value of a parameter to a sample)
+2. Implicit (the sentence "all the subjects in the study were non-smokers.")
+
+In general, then, the curation process can be carried out in two different moments:
+
+1. Before the uploading of the dataset into curatedMetagenomicData 3
+2. Retroactively: often, new information becomes publicly available when a publication re-analyses previously published data
+
+#### From the paper (Methods section):
+*Data inside curatedMetagenomicData 3 are constantly refined and analysed by metagenomic researchers. Metadata are not taken solely by the supplementary information available in their publications, but also from implicit sources: if, as a title of example, all the samples in a given cohort are said to be non-smokers, the curator will add to the metadata table in preparation that the samples are non-smokers. The inclusion of every metadata is also ruled by a controlled vocabulary. Between the manual curation and translation according to a uniform vocabulary, metadata tables are checked by an automatic grammar-checker, which ensures the correctness of the metadata relative to the established vocabulary. In addition, when new metadata are found relatively to a different publication with respect to the one in which they are found, curators of metadata intervene retro-actively on the dataset on which new information has been discovered. This gradual procedure ensures the most complete collection of publicly available metadata at the present.*
+
+### Syntax check
+Curation is based on a coded vocabulary. A curated metadata table is considered correct when sticks to out Grammar.
+
+All the manually curated metadata tables are available at:
+[curatedMetagenomicDataCuration](https://github.com/waldronlab/curatedMetagenomicDataCuration/tree/master/inst/curated)
+The Grammar is available at:
+[Grammar](https://github.com/waldronlab/curatedMetagenomicDataCuration/blob/master/inst/extdata/template.csv)
+Besides, our Grammar-checker constantly updates a report of the current status of the curated metadata.
+[syntax-checking report](https://waldronlab.io/curatedMetagenomicDataCuration/articles/curatedMetagenomicDataCuration.html)
+
 
 # HighLoad
 
