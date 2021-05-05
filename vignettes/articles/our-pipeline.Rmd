@@ -39,10 +39,12 @@ Curation is based on a coded vocabulary. A curated metadata table is considered 
 
 All the manually curated metadata tables are available at:
 [curatedMetagenomicDataCuration](https://github.com/waldronlab/curatedMetagenomicDataCuration/tree/master/inst/curated)
+
 The Grammar is available at:
 [Grammar](https://github.com/waldronlab/curatedMetagenomicDataCuration/blob/master/inst/extdata/template.csv)
-Besides, our Grammar-checker constantly updates a report of the current status of the curated metadata.
-[syntax-checking report](https://waldronlab.io/curatedMetagenomicDataCuration/articles/curatedMetagenomicDataCuration.html)
+
+Besides, our Grammar-checker constantly updates a report of the current status of the curated metadata 
+[(syntax-checking report)](https://waldronlab.io/curatedMetagenomicDataCuration/articles/curatedMetagenomicDataCuration.html).
 
 
 # HighLoad
