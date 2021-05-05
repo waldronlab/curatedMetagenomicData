@@ -3,7 +3,7 @@ Title: Curated Metagenomic Data of the Human Microbiome
 Description: curatedMetagenomicData provides standardized, curated human
     microbiome data for novel analysis. The package includes gene families,
     marker abundance, marker presence, pathway abundance, pathway coverage,
-    and reltive abundance for samples collected from different body sites. The
+    and relative abundance for samples collected from different body sites. The
     bacterial, fungal, archaeal, and taxonomic abundance of each sample's raw
     data were calculated with MetaPhlAn3 and the metabolic functional potential
     was calculated with HUMAnN3. The curated metadata and profiled raw data
