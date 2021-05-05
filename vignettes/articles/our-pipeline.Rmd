@@ -55,7 +55,7 @@ Samples in this package are profiled with **MetaPhlAn 3** and **HUMAnN 3**, tool
 #### MetaPhlAn 3 alignes metagenomic reads to species-specific marker-genes and builds a coverage-based metagenomic profile of the sample.
 MetaPhlAn 3 output contains a taxonomic caharacterization of the sample from the **Kingdom to the species level**.
 In addition, this package also stores a RPKM profile of the clade-specific MetaPhlAn 3 markers, and a profile 
-storing the list of markers found in that sample solely.
+storing the list of markers found in that sample.
 
 #### HUMAnN 3 quantifies the functional modules carried by the metagenomic sample, at two main levels of resolution.
 1. **UniRef90 gene-families**
