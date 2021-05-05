@@ -48,6 +48,17 @@ Besides, our Grammar-checker constantly updates a report of the current status o
 # HighLoad
 
 # Download
+For inclusion into curatedMetagenomicData 3, samples are downloaded dircelty from **NCBI** (depending on the data-availability statement).
+This is true for almost all datasets. A few datasets originated from different sources:
+The cohorts belonging to the Human Microbiome Project (**HMP**) have been downloaded from (portal-HMP)[https://hmpdacc.org/]
+The [LifeLines-deep](http://www.humanfunctionalgenomics.org/site/?page_id=86) and the [VilaAV_2018](https://stm.sciencemag.org/content/10/472/eaap8914) cohorts were obtained from **EGA**.
+
+Samples are compared with the information available in their publications. The number of samples in a given datasets
+should mirror almost exactly that mentioned in the publication. Differences are possibile, and mainly due to:
+1. the amount of metadata retrieved covers only a fraction of the samples
+2. 16S, metatranscriptomics or virome samples are present under the same code in NCBI (and excluded)
+
+Samples are included when their inclusion would be an effective gain for the community. Large cohorts can be added, in some cases, even if the main attributes of their samples are not of public domain, provided that their inclusion doens't constitute a clear source of error. Example: samples studied in relation to their diet are included even if the dietary questionaries are not available; samples belonging to a case/control study can be included only if the membership to cases or controls is clearly available in the resources highligthed above.
 
 # Pipeline 
 Samples in this package are profiled with **MetaPhlAn 3** and **HUMAnN 3**, tools available in the bioBakery 3 suite.
@@ -63,7 +74,15 @@ storing the list of markers found in that sample.
 In addition, HUMAnN3 gene-families can be re-grouped in several ways, like: **KEGG-reactions**, **Gene-Ontology**, and **Enzyme-Commission** (EC) numbers.
 One key-aspect of each output of HUMAnN 3 is, then, the (optional) stratification of each feature into contributing species and genera.  
 
-[bioBakery 3 paper](10.7554/eLife.65088)
+[bioBakery 3 paper](https://elifesciences.org/articles/65088)
+
 [MetaPhlAn 3](https://huttenhower.sph.harvard.edu/metaphlan/)
+
 [HUMAnN 3](https://huttenhower.sph.harvard.edu/humann/)
+
+The taxonomic profile stored in MetaPhlAn 3 output is the foundation of this package. It is the best
+proxy we have depict the microbial ecosystem of a sample. Therefore, one last step of exclusion is 
+performed for those samples whose MetaPhlAn 3 profiles is empty (that can happen because the sample-file
+is too small or because the amount of dark-matter in the samples largerly overcomes the known-one). 
+The number of samples in each dataset may so vary with respect to the original publication also for this reason.
 
