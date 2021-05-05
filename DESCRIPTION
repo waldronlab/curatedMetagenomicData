@@ -1,13 +1,13 @@
 Package: curatedMetagenomicData
 Title: Curated Metagenomic Data of the Human Microbiome
-Description:
-    Donec placerat diam felis, vitae semper nibh imperdiet ac. Donec pretium
-    eleifend est in mollis. Aliquam posuere congue posuere. Sed viverra
-    fringilla sapien sollicitudin ullamcorper. Curabitur posuere feugiat ligula
-    sed euismod. Curabitur vulputate viverra ante, sit amet aliquam libero
-    eleifend et. Aenean imperdiet convallis ligula, eget maximus quam finibus
-    id. Sed eu eros erat. Aliquam ornare justo a diam imperdiet mollis. Etiam
-    bibendum ultricies eros.
+Description: curatedMetagenomicData provides standardized, curated human
+    microbiome data for novel analysis. The package includes gene families,
+    marker abundance, marker presence, pathway abundance, pathway coverage,
+    and relative abundance for samples collected from different body sites. The
+    bacterial, fungal, archaeal, and taxonomic abundance of each sample's raw
+    data were calculated with MetaPhlAn3 and the metabolic functional potential
+    was calculated with HUMAnN3. The curated metadata and profiled raw data
+    are available as SummarizedExperiments or TreeSummarizedExperiments.
 Authors@R:
     c(person(given = "Lucas", family = "schiffer", role = c("aut", "cre"),
              email = "schiffer.lucas@gmail.com",
@@ -21,7 +21,9 @@ Authors@R:
       person(given = "Marcel", family = "Ramos", role = "ctb"),
       person(given = "Valerie", family = "Obenchain", role = "ctb"),
       person(given = "Kelly", family = "Eckenrode", role = "ctb"),
-      person(given = "Nicola", family = "Segata", role = "ctb"))
+      person(given = "Nicola", family = "Segata", role = "ctb"),
+      person(given = "Samuel", family = "Gamboa-Tuz", role = "ctb"),
+      person(given = "Jennifer", family = "Wokaty", role = "ctb"))
 biocViews:
     ExperimentHub,
     Homo_sapiens_Data,
