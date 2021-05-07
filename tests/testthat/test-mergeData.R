@@ -37,7 +37,7 @@ test_that("returnType is correct.", {
     relative_abundance <- curatedMetagenomicData("AsnicarF_.+relative_abundance", dryrun = FALSE)
     test_relative_abundance <- mergeData(relative_abundance)
 
-    expect_s4_class(marker_presence, "SummarizedExperiment")
-    expect_s4_class(relative_abundance, "TreeSummarizedExperiment")
+    expect_s4_class(test_marker_presence, "SummarizedExperiment")
+    expect_s4_class(test_relative_abundance, "TreeSummarizedExperiment")
 
 })
