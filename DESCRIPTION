@@ -33,13 +33,13 @@ biocViews:
 Version: 2.99.0
 License: Artistic-2.0
 Depends:
-    R (>= 4.1)
+    R (>= 4.1),
+    SummarizedExperiment,
+    TreeSummarizedExperiment
 Imports:
     AnnotationHub,
     ExperimentHub,
     S4Vectors,
-    SummarizedExperiment,
-    TreeSummarizedExperiment,
     dplyr,
     magrittr,
     purrr,
