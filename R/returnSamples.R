@@ -18,7 +18,6 @@
 #' @importFrom magrittr %>%
 #' @importFrom stringr str_c
 #' @importFrom SummarizedExperiment colData
-#' @importFrom S4Vectors DataFrame
 returnSamples <- function(sampleMetadata, dataType, counts = FALSE) {
     to_return <-
         base::unique(sampleMetadata[["study_name"]]) %>%
@@ -33,8 +32,16 @@ returnSamples <- function(sampleMetadata, dataType, counts = FALSE) {
     to_return <-
         to_return[keep_rows, sampleMetadata[["sample_id"]]]
 
+    col_names <-
+        SummarizedExperiment::colData(to_return) %>%
+        base::colnames()
+
+    keep_cols <-
+        base::colnames(sampleMetadata) %>%
+        base::intersect(col_names)
+
     SummarizedExperiment::colData(to_return) <-
-        S4Vectors::DataFrame(sampleMetadata)
+        SummarizedExperiment::colData(to_return)[sampleMetadata[["sample_id"]], keep_cols]
 
     to_return
 }
