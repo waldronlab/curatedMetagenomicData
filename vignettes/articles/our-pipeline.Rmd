@@ -46,14 +46,11 @@ The Grammar is available at:
 Besides, our Grammar-checker constantly updates a report of the current status of the curated metadata 
 [(syntax-checking report)](https://waldronlab.io/curatedMetagenomicDataCuration/articles/curatedMetagenomicDataCuration.html).
 
-
-# HighLoad
-
 # Download
-For inclusion into curatedMetagenomicData 3, samples are downloaded dircelty from **NCBI** (depending on the data-availability statement).
+For inclusion into curatedMetagenomicData 3, samples are downloaded dircelty from [**NCBI**](https://www.ncbi.nlm.nih.gov/) (depending on the data-availability statement).
 This is true for almost all datasets. A few datasets originated from different sources:
-The cohorts belonging to the Human Microbiome Project (**HMP**) have been downloaded from (portal-HMP)[https://hmpdacc.org/]
-The [LifeLines-deep](http://www.humanfunctionalgenomics.org/site/?page_id=86) and the [VilaAV_2018](https://stm.sciencemag.org/content/10/472/eaap8914) cohorts were obtained from **EGA**.
+The cohorts belonging to the Human Microbiome Project (**HMP**) have been downloaded from [portal-HMP](https://hmpdacc.org/)
+The [LifeLines-deep](http://www.humanfunctionalgenomics.org/site/?page_id=86) and the [VilaAV_2018](https://stm.sciencemag.org/content/10/472/eaap8914) cohorts were obtained from [**EGA**](https://ega-archive.org/).
 
 Samples are compared with the information available in their publications. The number of samples in a given datasets
 should mirror almost exactly that mentioned in the publication. Differences are possibile, and mainly due to:
@@ -65,12 +62,12 @@ Samples are included when their inclusion would be an effective gain for the com
 # Pipeline 
 Samples in this package are profiled with **MetaPhlAn 3** and **HUMAnN 3**, tools available in the bioBakery 3 suite.
 
-#### MetaPhlAn 3 alignes metagenomic reads to species-specific marker-genes and builds a coverage-based metagenomic profile of the sample.
+MetaPhlAn 3 alignes metagenomic reads to species-specific marker-genes and builds a coverage-based metagenomic profile of the sample.
 MetaPhlAn 3 output contains a taxonomic caharacterization of the sample from the **Kingdom to the species level**.
 In addition, this package also stores a RPKM profile of the clade-specific MetaPhlAn 3 markers, and a profile 
 storing the list of markers found in that sample.
 
-#### HUMAnN 3 quantifies the functional modules carried by the metagenomic sample, at two main levels of resolution.
+HUMAnN 3 quantifies the functional modules carried by the metagenomic sample, at two main levels of resolution.
 1. **UniRef90 gene-families**
 2. **Metacyc pathways** (available in two forms: pathway-relative abundance, and pathway-coverage)
 In addition, HUMAnN3 gene-families can be re-grouped in several ways, like: **KEGG-reactions**, **Gene-Ontology**, and **Enzyme-Commission** (EC) numbers.
