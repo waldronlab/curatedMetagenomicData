@@ -3,6 +3,7 @@
 export("%>%")
 export(curatedMetagenomicData)
 export(mergeData)
+export(returnSamples)
 importFrom(AnnotationHub,query)
 importFrom(ExperimentHub,ExperimentHub)
 importFrom(S4Vectors,DataFrame)

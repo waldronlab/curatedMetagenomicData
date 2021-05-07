@@ -6,9 +6,14 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The curatedMetagenomicData package provides microbial taxonomic,
-functional, and gene marker abundance for samples collected from
-different body sites.
+curatedMetagenomicData provides standardized, curated human microbiome
+data for novel analyses. The package includes gene families, marker
+abundance, marker presence, pathway abundance, pathway coverage, and
+relative abundance for samples collected from different body sites. The
+bacterial, fungal, archaeal, and taxonomic abundance of each sample’s
+raw data were calculated with MetaPhlAn3 and the metabolic functional
+potential was calculated with HUMAnN3. The curated metadata and profiled
+raw data are available as (Tree)SummarizedExperiment objects.
 
 ## Installation
 
@@ -57,7 +62,7 @@ curatedMetagenomicData("AsnicarF_2017.relative_abundance")
 
 ``` r
 curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
-#> snapshotDate(): 2021-04-27
+#> snapshotDate(): 2021-05-05
 #> $`2021-03-31.AsnicarF_2017.relative_abundance`
 #> class: TreeSummarizedExperiment 
 #> dim: 301 24 

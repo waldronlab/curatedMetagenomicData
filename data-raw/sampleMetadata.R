@@ -2,9 +2,27 @@ BiocManager::install("waldronlab/curatedMetagenomicDataCuration")
 
 col_types <-
     readr::cols(
-        family = readr::col_character(),
-        PMID = readr::col_character()
+        col.name = readr::col_character(),
+        col.class = readr::col_character(),
+        uniqueness = readr::col_character(),
+        requiredness = readr::col_character(),
+        multiplevalues = readr::col_logical(),
+        allowedvalues = readr::col_character(),
+        description = readr::col_character()
     )
+
+glue_str <-
+    base::system.file("extdata", "template.csv", package = "curatedMetagenomicDataCuration") %>%
+    readr::read_csv(col_types = col_types) %>%
+    glue::glue_data('{col.name} = readr::col_{col.class}()') %>%
+    glue::glue_collapse(sep = ", ")
+
+cols_str <-
+    glue::glue('readr::cols({glue_str})')
+
+col_types <-
+    base::parse(text = cols_str) %>%
+    base::eval()
 
 base::load("R/sysdata.rda")
 
@@ -19,9 +37,9 @@ sampleMetadata <-
     purrr::set_names(nm = ~ base::basename(.x)) %>%
     purrr::set_names(nm = ~ stringr::str_remove(.x, "_metadata.tsv")) %>%
     purrr::map(~ readr::read_tsv(.x, col_types = col_types)) %>%
-    purrr::imap(~ dplyr::mutate(.x, studyName = .y, .before = "sampleID")) %>%
+    purrr::imap(~ dplyr::mutate(.x, study_name = .y, .before = "sample_id")) %>%
     purrr::reduce(dplyr::bind_rows) %>%
-    dplyr::filter(studyName %in% valid_name) %>%
+    dplyr::filter(study_name %in% valid_name) %>%
     base::as.data.frame()
 
 usethis::use_data(sampleMetadata, overwrite = TRUE)

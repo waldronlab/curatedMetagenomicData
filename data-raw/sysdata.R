@@ -19,12 +19,12 @@ col_types <-
     )
 
 into_cols <-
-    base::c("dateAdded", "studyName", "dataType")
+    base::c("date_added", "study_name", "data_type")
 
 title <-
     readr::read_csv("inst/extdata/metadata.csv", col_types = col_types) %>%
     tidyr::separate(Title, into_cols, sep = "\\.", remove = FALSE) %>%
-    dplyr::arrange(studyName, dateAdded, dataType) %>%
+    dplyr::arrange(study_name, date_added, data_type) %>%
     dplyr::pull(.data[["Title"]])
 
 usethis::use_data(phylogeneticTree, title, internal = TRUE, overwrite = TRUE)

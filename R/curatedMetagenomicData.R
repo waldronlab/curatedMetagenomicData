@@ -104,14 +104,14 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
         base::rownames(to_subset)
 
     into_cols <-
-        base::c("dateAdded", "studyName", "dataType")
+        base::c("date_added", "study_name", "data_type")
 
     resources <-
         magrittr::extract(to_subset, keep_rows, "title", drop = FALSE) %>%
         tibble::as_tibble(rownames = "rowname") %>%
         tidyr::separate(.data[["title"]], into_cols, sep = "\\.") %>%
-        dplyr::group_by(.data[["studyName"]], .data[["dataType"]]) %>%
-        dplyr::slice_max(.data[["dateAdded"]]) %>%
+        dplyr::group_by(.data[["study_name"]], .data[["data_type"]]) %>%
+        dplyr::slice_max(.data[["date_added"]]) %>%
         dplyr::ungroup()
 
     resource_index <-
@@ -129,8 +129,8 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
             base::rownames(eh_matrix)
 
         meta_data <-
-            dplyr::filter(curatedMetagenomicData::sampleMetadata, .data[["studyName"]] == resources[[i, "studyName"]]) %>%
-            tibble::column_to_rownames(var = "sampleID") %>%
+            dplyr::filter(curatedMetagenomicData::sampleMetadata, .data[["study_name"]] == resources[[i, "study_name"]]) %>%
+            tibble::column_to_rownames(var = "sample_id") %>%
             dplyr::select(where(~ base::all(!base::is.na(.x))))
 
         meta_rows <-
@@ -163,9 +163,9 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
             S4Vectors::SimpleList(eh_matrix)
 
         base::names(assays) <-
-            resources[[i, "dataType"]]
+            resources[[i, "data_type"]]
 
-        if (resources[[i, "dataType"]] == "relative_abundance") {
+        if (resources[[i, "data_type"]] == "relative_abundance") {
             # TODO row_tree = phylogeneticTree[[row_names]] to remove warning
 
             resource_list[[i]] <-
