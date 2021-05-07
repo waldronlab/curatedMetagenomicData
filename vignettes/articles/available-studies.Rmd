@@ -11,12 +11,11 @@ knitr::opts_chunk$set(
 
 ```{r, echo = FALSE}
 library(curatedMetagenomicData)
-library(magrittr)
 ```
 
 ```{r, echo = FALSE}
 sampleMetadata %>%
-    dplyr::rename(Study = studyName) %>%
+    dplyr::rename(Study = study_name) %>%
     dplyr::rename(Curator = curator) %>%
     dplyr::rename(Disease = disease) %>%
     dplyr::rename(`Body Site` = body_site) %>%
