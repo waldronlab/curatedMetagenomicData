@@ -43,21 +43,19 @@
 <meta property="og:description" content="To access curated metagenomic data users will use curatedMetagenomicData(),
 after &quot;shopping&quot; the sample metadata for studies they are
 interested in. The dryrun argument allows users to perfect a query prior to
-(down)loading a data set. When dryrun = TRUE and print = TRUE, the names
-of matched data sets will be printed nicely before a character vector of
-names is returned invisibly. When dryrun = TRUE and print = FALSE, only
-the invisible character vector of names is returned. The later behavior is
-useful in the context of lapply and map
-functions to (down)load multiple data sets without messages. When
-dryrun = FALSE, a (sparse) matrix is (down)loaded and used to construct a
-SummarizedExperiment
+(down)loading a data set. When dryrun = TRUE, the names of matched data
+sets will be printed nicely before a character vector of names is returned
+invisibly. Whendryrun = FALSE, a (sparse) matrix is (down)loaded and used
+to construct a
+SummarizedExperiment or
+TreeSummarizedExperiment
 object with corresponding metadata from sample metadata.
 If there is more than one date corresponding to the data set, the more recent
 one is selected automatically. Finally, if a relative_abundance data set is
 requested with counts = TRUE, relative abundance proportions will be
 multiplied by read depth (i.e. number_reads) and rounded to the nearest
 integer prior to being returned as a
-SummarizedExperiment
+TreeSummarizedExperiment
 object with corresponding metadata from sample metadata." />
 
 
@@ -162,25 +160,23 @@ object with corresponding metadata from sample metadata." />
     <p>To access curated metagenomic data users will use <code>curatedMetagenomicData()</code>,
 after "shopping" the <a href='sampleMetadata.html'>sample metadata</a> for studies they are
 interested in. The <code>dryrun</code> argument allows users to perfect a query prior to
-(down)loading a data set. When <code>dryrun = TRUE</code> and <code>print = TRUE</code>, the names
-of matched data sets will be printed nicely before a character vector of
-names is returned invisibly. When <code>dryrun = TRUE</code> and <code>print = FALSE</code>, only
-the invisible character vector of names is returned. The later behavior is
-useful in the context of <a href='https://rdrr.io/r/base/lapply.html'>lapply</a> and <a href='https://purrr.tidyverse.org/reference/map.html'>map</a>
-functions to (down)load multiple data sets without messages. When
-<code>dryrun = FALSE</code>, a (sparse) matrix is (down)loaded and used to construct a
-<a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>SummarizedExperiment</a>
+(down)loading a data set. When <code>dryrun = TRUE</code>, the names of matched data
+sets will be printed nicely before a character vector of names is returned
+invisibly. When<code>dryrun = FALSE</code>, a (sparse) matrix is (down)loaded and used
+to construct a
+<a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>SummarizedExperiment</a> or
+<a href='https://rdrr.io/pkg/TreeSummarizedExperiment/man/TreeSummarizedExperiment-class.html'>TreeSummarizedExperiment</a>
 object with corresponding metadata from <a href='sampleMetadata.html'>sample metadata</a>.
 If there is more than one date corresponding to the data set, the more recent
 one is selected automatically. Finally, if a <code>relative_abundance</code> data set is
 requested with <code>counts = TRUE</code>, relative abundance proportions will be
 multiplied by read depth (i.e. <code>number_reads</code>) and rounded to the nearest
 integer prior to being returned as a
-<a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>SummarizedExperiment</a>
+<a href='https://rdrr.io/pkg/TreeSummarizedExperiment/man/TreeSummarizedExperiment-class.html'>TreeSummarizedExperiment</a>
 object with corresponding metadata from <a href='sampleMetadata.html'>sample metadata</a>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='va'>pattern</span>, dryrun <span class='op'>=</span> <span class='cn'>TRUE</span>, print <span class='op'>=</span> <span class='cn'>TRUE</span>, counts <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='va'>pattern</span>, dryrun <span class='op'>=</span> <span class='cn'>TRUE</span>, counts <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -196,12 +192,6 @@ resources available in curatedMetagenomicData; <code>""</code> will return all r
 is returned invisibly; if <code>FALSE</code>, a <code>SummarizedExperiment</code> is returned</p></td>
     </tr>
     <tr>
-      <th>print</th>
-      <td><p>if <code>TRUE</code> (the default), resource names will be printed nicely
-before a character vector of resource names is returned invisibly; if
-<code>FALSE</code>, only a character vector of resource names is returned invisibly</p></td>
-    </tr>
-    <tr>
       <th>counts</th>
       <td><p>if <code>FALSE</code> (the default), relative abundance proportions are
 returned; if <code>TRUE</code>, relative abundance proportions are multiplied by read
@@ -212,7 +202,7 @@ depth and rounded to the nearest integer prior to being returned</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>if <code>dryrun = TRUE</code>, a character vector of resource names is returned
-invisibly; if <code>dryrun = FALSE</code>, a <code>SummarizedExperiment</code> is returned</p>
+invisibly; if <code>dryrun = FALSE</code>, a <code>list</code> is returned</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='st'>"2021-04-02"</span><span class='op'>)</span>
@@ -244,29 +234,53 @@ invisibly; if <code>dryrun = FALSE</code>, a <code>SummarizedExperiment</code> i
 <span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='st'>"AsnicarF_2017.relative_abundance"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 2021-03-31.AsnicarF_2017.relative_abundance</div><div class='input'>
 <span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='st'>"AsnicarF_2017.relative_abundance"</span>, dryrun <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-04-08</span></div><div class='output co'>#&gt; <span class='message'>see ?curatedMetagenomicData and browseVignettes('curatedMetagenomicData') for documentation</span></div><div class='output co'>#&gt; <span class='message'>loading from cache</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
-#&gt; dim: 550 24 
+</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-05-05</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 249 row(s) couldn't be matched to the tree and are/is removed. </span></div><div class='output co'>#&gt; $`2021-03-31.AsnicarF_2017.relative_abundance`
+#&gt; class: TreeSummarizedExperiment 
+#&gt; dim: 301 24 
 #&gt; metadata(0):
 #&gt; assays(1): relative_abundance
-#&gt; rownames(550): k__Bacteria k__Bacteria|p__Proteobacteria ...
+#&gt; rownames(301):
+#&gt;   k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Escherichia|s__Escherichia_coli
+#&gt;   k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Bifidobacteriales|f__Bifidobacteriaceae|g__Bifidobacterium|s__Bifidobacterium_bifidum
+#&gt;   ...
 #&gt;   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus|s__Streptococcus_gordonii
 #&gt;   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia_sp_HMSC24B09
 #&gt; rowData names(0):
 #&gt; colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14
 #&gt;   MV_MIM5_t3F15
-#&gt; colData names(20): studyName subjectID ... curator NCBI_accession</div><div class='input'>
+#&gt; colData names(20): study_name subject_id ... curator NCBI_accession
+#&gt; reducedDimNames(0):
+#&gt; mainExpName: NULL
+#&gt; altExpNames(0):
+#&gt; rowLinks: a LinkDataFrame (301 rows)
+#&gt; rowTree: 1 phylo tree(s) (10430 leaves)
+#&gt; colLinks: NULL
+#&gt; colTree: NULL
+#&gt; </div><div class='input'>
 <span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='st'>"AsnicarF_2017.relative_abundance"</span>, dryrun <span class='op'>=</span> <span class='cn'>FALSE</span>, counts <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-04-08</span></div><div class='output co'>#&gt; <span class='message'>see ?curatedMetagenomicData and browseVignettes('curatedMetagenomicData') for documentation</span></div><div class='output co'>#&gt; <span class='message'>loading from cache</span></div><div class='output co'>#&gt; <span class='warning'>Warning: longer object length is not a multiple of shorter object length</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
-#&gt; dim: 550 24 
+</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-05-05</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 249 row(s) couldn't be matched to the tree and are/is removed. </span></div><div class='output co'>#&gt; $`2021-03-31.AsnicarF_2017.relative_abundance`
+#&gt; class: TreeSummarizedExperiment 
+#&gt; dim: 301 24 
 #&gt; metadata(0):
 #&gt; assays(1): relative_abundance
-#&gt; rownames(550): k__Bacteria k__Bacteria|p__Proteobacteria ...
+#&gt; rownames(301):
+#&gt;   k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Escherichia|s__Escherichia_coli
+#&gt;   k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Bifidobacteriales|f__Bifidobacteriaceae|g__Bifidobacterium|s__Bifidobacterium_bifidum
+#&gt;   ...
 #&gt;   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus|s__Streptococcus_gordonii
 #&gt;   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia_sp_HMSC24B09
 #&gt; rowData names(0):
 #&gt; colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14
 #&gt;   MV_MIM5_t3F15
-#&gt; colData names(20): studyName subjectID ... curator NCBI_accession</div><div class='input'>
+#&gt; colData names(20): study_name subject_id ... curator NCBI_accession
+#&gt; reducedDimNames(0):
+#&gt; mainExpName: NULL
+#&gt; altExpNames(0):
+#&gt; rowLinks: a LinkDataFrame (301 rows)
+#&gt; rowTree: 1 phylo tree(s) (10430 leaves)
+#&gt; colLinks: NULL
+#&gt; colTree: NULL
+#&gt; </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -4,10 +4,19 @@
     <loc>https://waldronlab.io/curatedMetagenomicData/index.html</loc>
   </url>
   <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/reference/combined_metadata.html</loc>
+  </url>
+  <url>
     <loc>https://waldronlab.io/curatedMetagenomicData/reference/curatedMetagenomicData.html</loc>
   </url>
   <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/reference/defunct.html</loc>
+    <loc>https://waldronlab.io/curatedMetagenomicData/reference/mergeData.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/reference/returnSamples.html</loc>
   </url>
   <url>
     <loc>https://waldronlab.io/curatedMetagenomicData/reference/sampleMetadata.html</loc>

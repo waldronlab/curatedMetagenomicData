@@ -107,6 +107,39 @@
 <div id="curation" class="section level1">
 <h1 class="hasAnchor">
 <a href="#curation" class="anchor"></a>Curation</h1>
+<div id="curatedmetagenomicdata-3-provides-manually-curated-highly-refined-per-sample-metadata-" class="section level3">
+<h3 class="hasAnchor">
+<a href="#curatedmetagenomicdata-3-provides-manually-curated-highly-refined-per-sample-metadata-" class="anchor"></a>curatedMetagenomicData 3 provides manually curated, highly refined, per-sample metadata.</h3>
+<p>The process of manual curation is substantially founded on 3 sources:</p>
+<ol style="list-style-type: decimal">
+<li>papers and paper supplementary-materials</li>
+<li>NCBI</li>
+<li>other publications referrring to or considering this particular paper</li>
+</ol>
+<p>The process of manual curation besides involves 2 general kinds of sources:</p>
+<ol style="list-style-type: decimal">
+<li>Explicit (supplementary tables assign a value of a parameter to a sample)</li>
+<li>Implicit (the sentence “all the subjects in the study were non-smokers.”)</li>
+</ol>
+<p>In general, then, the curation process can be carried out in two different moments:</p>
+<ol style="list-style-type: decimal">
+<li>Before the uploading of the dataset into curatedMetagenomicData 3</li>
+<li>Retroactively: often, new information becomes publicly available when a publication re-analyses previously published data</li>
+</ol>
+<div id="from-the-paper-methods-section" class="section level4">
+<h4 class="hasAnchor">
+<a href="#from-the-paper-methods-section" class="anchor"></a>From the paper (Methods section):</h4>
+<p><em>Data inside curatedMetagenomicData 3 are constantly refined and analysed by metagenomic researchers. Metadata are not taken solely by the supplementary information available in their publications, but also from implicit sources: if, as a title of example, all the samples in a given cohort are said to be non-smokers, the curator will add to the metadata table in preparation that the samples are non-smokers. The inclusion of every metadata is also ruled by a controlled vocabulary. Between the manual curation and translation according to a uniform vocabulary, metadata tables are checked by an automatic grammar-checker, which ensures the correctness of the metadata relative to the established vocabulary. In addition, when new metadata are found relatively to a different publication with respect to the one in which they are found, curators of metadata intervene retro-actively on the dataset on which new information has been discovered. This gradual procedure ensures the most complete collection of publicly available metadata at the present.</em></p>
+</div>
+</div>
+<div id="syntax-check" class="section level3">
+<h3 class="hasAnchor">
+<a href="#syntax-check" class="anchor"></a>Syntax check</h3>
+<p>Curation is based on a coded vocabulary. A curated metadata table is considered correct when sticks to out Grammar.</p>
+<p>All the manually curated metadata tables are available at: <a href="https://github.com/waldronlab/curatedMetagenomicDataCuration/tree/master/inst/curated">curatedMetagenomicDataCuration</a></p>
+<p>The Grammar is available at: <a href="https://github.com/waldronlab/curatedMetagenomicDataCuration/blob/master/inst/extdata/template.csv">Grammar</a></p>
+<p>Besides, our Grammar-checker constantly updates a report of the current status of the curated metadata <a href="https://waldronlab.io/curatedMetagenomicDataCuration/articles/curatedMetagenomicDataCuration.html">(syntax-checking report)</a>.</p>
+</div>
 </div>
 <div id="highload" class="section level1">
 <h1 class="hasAnchor">
@@ -115,10 +148,32 @@
 <div id="download" class="section level1">
 <h1 class="hasAnchor">
 <a href="#download" class="anchor"></a>Download</h1>
+<p>For inclusion into curatedMetagenomicData 3, samples are downloaded dircelty from <strong>NCBI</strong> (depending on the data-availability statement). This is true for almost all datasets. A few datasets originated from different sources: The cohorts belonging to the Human Microbiome Project (<strong>HMP</strong>) have been downloaded from (portal-HMP)[<a href="https://hmpdacc.org/" class="uri">https://hmpdacc.org/</a>] The <a href="http://www.humanfunctionalgenomics.org/site/?page_id=86">LifeLines-deep</a> and the <a href="https://stm.sciencemag.org/content/10/472/eaap8914">VilaAV_2018</a> cohorts were obtained from <strong>EGA</strong>.</p>
+<p>Samples are compared with the information available in their publications. The number of samples in a given datasets should mirror almost exactly that mentioned in the publication. Differences are possibile, and mainly due to: 1. the amount of metadata retrieved covers only a fraction of the samples 2. 16S, metatranscriptomics or virome samples are present under the same code in NCBI (and excluded)</p>
+<p>Samples are included when their inclusion would be an effective gain for the community. Large cohorts can be added, in some cases, even if the main attributes of their samples are not of public domain, provided that their inclusion doens’t constitute a clear source of error. Example: samples studied in relation to their diet are included even if the dietary questionaries are not available; samples belonging to a case/control study can be included only if the membership to cases or controls is clearly available in the resources highligthed above.</p>
 </div>
 <div id="pipeline" class="section level1">
 <h1 class="hasAnchor">
 <a href="#pipeline" class="anchor"></a>Pipeline</h1>
+<p>Samples in this package are profiled with <strong>MetaPhlAn 3</strong> and <strong>HUMAnN 3</strong>, tools available in the bioBakery 3 suite.</p>
+<div id="metaphlan-3-alignes-metagenomic-reads-to-species-specific-marker-genes-and-builds-a-coverage-based-metagenomic-profile-of-the-sample-" class="section level4">
+<h4 class="hasAnchor">
+<a href="#metaphlan-3-alignes-metagenomic-reads-to-species-specific-marker-genes-and-builds-a-coverage-based-metagenomic-profile-of-the-sample-" class="anchor"></a>MetaPhlAn 3 alignes metagenomic reads to species-specific marker-genes and builds a coverage-based metagenomic profile of the sample.</h4>
+<p>MetaPhlAn 3 output contains a taxonomic caharacterization of the sample from the <strong>Kingdom to the species level</strong>. In addition, this package also stores a RPKM profile of the clade-specific MetaPhlAn 3 markers, and a profile storing the list of markers found in that sample.</p>
+</div>
+<div id="humann-3-quantifies-the-functional-modules-carried-by-the-metagenomic-sample-at-two-main-levels-of-resolution-" class="section level4">
+<h4 class="hasAnchor">
+<a href="#humann-3-quantifies-the-functional-modules-carried-by-the-metagenomic-sample-at-two-main-levels-of-resolution-" class="anchor"></a>HUMAnN 3 quantifies the functional modules carried by the metagenomic sample, at two main levels of resolution.</h4>
+<ol style="list-style-type: decimal">
+<li><strong>UniRef90 gene-families</strong></li>
+<li>
+<strong>Metacyc pathways</strong> (available in two forms: pathway-relative abundance, and pathway-coverage) In addition, HUMAnN3 gene-families can be re-grouped in several ways, like: <strong>KEGG-reactions</strong>, <strong>Gene-Ontology</strong>, and <strong>Enzyme-Commission</strong> (EC) numbers. One key-aspect of each output of HUMAnN 3 is, then, the (optional) stratification of each feature into contributing species and genera.</li>
+</ol>
+<p><a href="https://elifesciences.org/articles/65088">bioBakery 3 paper</a></p>
+<p><a href="https://huttenhower.sph.harvard.edu/metaphlan/">MetaPhlAn 3</a></p>
+<p><a href="https://huttenhower.sph.harvard.edu/humann/">HUMAnN 3</a></p>
+<p>The taxonomic profile stored in MetaPhlAn 3 output is the foundation of this package. It is the best proxy we have depict the microbial ecosystem of a sample. Therefore, one last step of exclusion is performed for those samples whose MetaPhlAn 3 profiles is empty (that can happen because the sample-file is too small or because the amount of dark-matter in the samples largerly overcomes the known-one). The number of samples in each dataset may so vary with respect to the original publication also for this reason.</p>
+</div>
 </div>
   </div>
 
