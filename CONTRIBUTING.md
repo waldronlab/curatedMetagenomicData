@@ -6,7 +6,7 @@ If you've found an issue that causes unintended behavior, please report it to us
 
 ## Feature Requests
 
-We will gladly consider feature request and, upon acceptance, implement them or advise you on how to do so and submit a pull request. In either case, please get in touch first and we will add the feature request to our Trello board.
+We will gladly consider feature request and, upon acceptance, implement them or advise you on how to do so and submit a pull request. In either case, please get in touch first through a GitHub issue and we will discuss the feature request.
 
 ## User Support
 

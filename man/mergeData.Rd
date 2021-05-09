@@ -2,24 +2,16 @@
 % Please edit documentation in R/mergeData.R
 \name{mergeData}
 \alias{mergeData}
-\title{Title}
+\title{Merge curatedMetagenomicData List}
 \usage{
-mergeData(x)
+mergeData(mergeList)
 }
 \arguments{
-\item{x}{a list}
+\item{mergeList}{description}
 }
 \value{
-a \code{SummarizedExperiment} is returned
+description
 }
 \description{
 Description
-}
-\examples{
-curatedMetagenomicData("AsnicarF_20.+.pathway_abundance", dryrun = FALSE) \%>\%
-    mergeData()
-
-curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE) \%>\%
-    mergeData()
-
 }

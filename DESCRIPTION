@@ -20,9 +20,9 @@ Authors@R:
       person(given = "Audrey", family = "Renson", role = "ctb"),
       person(given = "Chloe", family = "Mirzayi", role = "ctb"),
       person(given = "Paolo", family = "Manghi", role = "ctb"),
+      person(given = "Samuel", family = "Gamboa-Tuz", role = "ctb"),
       person(given = "Marcel", family = "Ramos", role = "ctb"),
       person(given = "Valerie", family = "Obenchain", role = "ctb"),
-      person(given = "Samuel", family = "Gamboa-Tuz", role = "ctb"),
       person(given = "Kelly", family = "Eckenrode", role = "ctb"),
       person(given = "Nicola", family = "Segata", role = "ctb"))
 biocViews:
@@ -49,10 +49,10 @@ Imports:
     tidyr,
     tidyselect
 Suggests:
-    testthat (>= 3.0.0),
     BiocStyle,
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat
 URL: https://github.com/waldronlab/curatedMetagenomicData
 BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
 Encoding: UTF-8
@@ -60,4 +60,3 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
-Config/testthat/edition: 3

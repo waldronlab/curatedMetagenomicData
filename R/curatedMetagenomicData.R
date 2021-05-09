@@ -1,83 +1,57 @@
 #' Access Curated Metagenomic Data
 #'
-#' To access curated metagenomic data users will use `curatedMetagenomicData()`,
-#' after "shopping" the [sample metadata][sampleMetadata] for studies they are
-#' interested in. The `dryrun` argument allows users to perfect a query prior to
-#' (down)loading a data set. When `dryrun = TRUE`, the names of matched data
-#' sets will be printed nicely before a character vector of names is returned
-#' invisibly. When`dryrun = FALSE`, a (sparse) matrix is (down)loaded and used
-#' to construct a
-#' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class] or
-#' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
-#' object with corresponding metadata from [sample metadata][sampleMetadata].
-#' If there is more than one date corresponding to the data set, the more recent
-#' one is selected automatically. Finally, if a `relative_abundance` data set is
-#' requested with `counts = TRUE`, relative abundance proportions will be
-#' multiplied by read depth (i.e. `number_reads`) and rounded to the nearest
-#' integer prior to being returned as a
-#' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
-#' object with corresponding metadata from [sample metadata][sampleMetadata].
+#' Description
 #'
-#' @param pattern regular expression pattern to look for in the titles of
-#' resources available in curatedMetagenomicData; `""` will return all resources
+#' @param pattern description
 #'
-#' @param dryrun if `TRUE` (the default), a character vector of resource names
-#' is returned invisibly; if `FALSE`, a `SummarizedExperiment` is returned
+#' @param dryrun description
 #'
-#' @param counts if `FALSE` (the default), relative abundance proportions are
-#' returned; if `TRUE`, relative abundance proportions are multiplied by read
-#' depth and rounded to the nearest integer prior to being returned
+#' @param counts description
 #'
-#' @return if `dryrun = TRUE`, a character vector of resource names is returned
-#' invisibly; if `dryrun = FALSE`, a `list` is returned
+#' @return description
 #' @export
 #'
-#' @examples
-#' curatedMetagenomicData("2021-04-02")
-#'
-#' curatedMetagenomicData("AsnicarF_2017")
-#'
-#' curatedMetagenomicData("AsnicarF_2017.relative_abundance")
-#'
-#' curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
-#'
-#' curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, counts = TRUE)
+# @examples
 #'
 #' @importFrom stringr str_subset
 #' @importFrom purrr list_along
+#' @importFrom magrittr %>%
 #' @importFrom magrittr set_names
-#' @importFrom ExperimentHub ExperimentHub
 #' @importFrom stringr str_c
+#' @importFrom ExperimentHub ExperimentHub
 #' @importFrom AnnotationHub query
 #' @importFrom S4Vectors mcols
 #' @importFrom magrittr extract
-#' @importFrom magrittr %>%
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr separate
 #' @importFrom rlang .data
 #' @importFrom dplyr group_by
 #' @importFrom dplyr slice_max
 #' @importFrom dplyr ungroup
-#' @importFrom dplyr pull
 #' @importFrom dplyr filter
 #' @importFrom tibble column_to_rownames
 #' @importFrom dplyr select
+#' @importFrom magrittr extract
 #' @importFrom S4Vectors DataFrame
 #' @importFrom magrittr multiply_by
 #' @importFrom magrittr divide_by
 #' @importFrom S4Vectors SimpleList
+#' @importFrom dplyr mutate
+#' @importFrom dplyr across
+#' @importFrom stringr str_remove_all
+#' @importFrom stringr str_replace_all
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment
 curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
     if (base::missing(pattern)) {
-        stop("Thou shalt not search for nothing", call. = FALSE)
+        stop("the pattern argument is missing", call. = FALSE)
     }
 
     resources <-
         stringr::str_subset(title, pattern)
 
     if (base::length(resources) == 0) {
-        stop("No resources found in curatedMetagenomicData", call. = FALSE)
+        stop("no resources found in curatedMetagenomicData", call. = FALSE)
     }
 
     if (dryrun) {
@@ -150,31 +124,52 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
             magrittr::extract(meta_data, keep_cols, col_names) %>%
             S4Vectors::DataFrame()
 
-        if (counts) {
-            eh_matrix <-
-                base::t(eh_matrix) %>%
-                magrittr::multiply_by(colData[["number_reads"]]) %>%
-                magrittr::divide_by(100) %>%
-                base::t() %>%
-                base::round()
-        }
-
-        assays <-
-            S4Vectors::SimpleList(eh_matrix)
-
-        base::names(assays) <-
-            resources[[i, "data_type"]]
-
         if (resources[[i, "data_type"]] == "relative_abundance") {
-            # TODO row_tree = phylogeneticTree[[row_names]] to remove warning
+            keep_tips <-
+                base::intersect(row_names, phylogeneticTree[["tip.label"]])
+
+            eh_matrix <-
+                magrittr::extract(eh_matrix, keep_tips, keep_cols)
+
+            if (counts) {
+                eh_matrix <-
+                    base::t(eh_matrix) %>%
+                    magrittr::multiply_by(colData[["number_reads"]]) %>%
+                    magrittr::divide_by(100) %>%
+                    base::t() %>%
+                    base::round()
+            }
+
+            assays <-
+                S4Vectors::SimpleList(eh_matrix)
+
+            base::names(assays) <-
+                resources[[i, "data_type"]]
+
+            tax_names <-
+                base::c("kingdom", "phylum", "class", "order", "family", "genus", "species")
+
+            rowData <-
+                base::data.frame(rowname = keep_tips) %>%
+                tidyr::separate(rowname, tax_names, sep = "\\|", remove = FALSE, fill = "right") %>%
+                dplyr::mutate(dplyr::across(.cols = -rowname, .fns = ~ stringr::str_remove_all(.x, "[a-z]__"))) %>%
+                dplyr::mutate(dplyr::across(.cols = -rowname, .fns = ~ stringr::str_replace_all(.x, "_", " "))) %>%
+                tibble::column_to_rownames() %>%
+                S4Vectors::DataFrame()
 
             resource_list[[i]] <-
-                TreeSummarizedExperiment::TreeSummarizedExperiment(assays = assays, colData = colData, rowTree = phylogeneticTree)
+                TreeSummarizedExperiment::TreeSummarizedExperiment(assays = assays, rowData = rowData, colData = colData, rowTree = phylogeneticTree)
         } else {
+            assays <-
+                S4Vectors::SimpleList(eh_matrix)
+
+            base::names(assays) <-
+                resources[[i, "data_type"]]
+
             resource_list[[i]] <-
                 SummarizedExperiment::SummarizedExperiment(assays = assays, colData = colData)
         }
     }
 
-    return(resource_list)
+    resource_list
 }

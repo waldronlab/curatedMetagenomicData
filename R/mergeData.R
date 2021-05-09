@@ -1,18 +1,13 @@
-#' Title
+#' Merge curatedMetagenomicData List
 #'
 #' Description
 #'
-#' @param x a list
+#' @param mergeList description
 #'
-#' @return a `SummarizedExperiment` is returned
+#' @return description
 #' @export
 #'
-#' @examples
-#' curatedMetagenomicData("AsnicarF_20.+.pathway_abundance", dryrun = FALSE) %>%
-#'     mergeData()
-#'
-#' curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE) %>%
-#'     mergeData()
+# @examples
 #'
 #' @importFrom purrr map_chr
 #' @importFrom magrittr %>%
@@ -30,17 +25,17 @@
 #' @importFrom dplyr bind_rows
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment
-mergeData <- function(x) {
+mergeData <- function(mergeList) {
     assay_name <-
-        purrr::map_chr(x, SummarizedExperiment::assayNames) %>%
+        purrr::map_chr(mergeList, SummarizedExperiment::assayNames) %>%
         base::unique()
 
     if (base::length(assay_name) != 1) {
-        stop("Different assay types can not be combined", call. = FALSE)
+        stop("different assay types can not be merged", call. = FALSE)
     }
 
     assays <-
-        purrr::map(x, SummarizedExperiment::assay) %>%
+        purrr::map(mergeList, SummarizedExperiment::assay) %>%
         purrr::map(base::as.data.frame) %>%
         purrr::map(tibble::rownames_to_column) %>%
         purrr::reduce(dplyr::full_join, by = "rowname") %>%
@@ -50,7 +45,7 @@ mergeData <- function(x) {
         magrittr::set_names(assay_name)
 
     rowData <-
-        purrr::map(x, SummarizedExperiment::rowData) %>%
+        purrr::map(mergeList, SummarizedExperiment::rowData) %>%
         purrr::map(base::as.data.frame) %>%
         purrr::map(tibble::rownames_to_column) %>%
         purrr::reduce(dplyr::full_join, by = "rowname") %>%
@@ -58,7 +53,7 @@ mergeData <- function(x) {
         S4Vectors::DataFrame()
 
     colData <-
-        purrr::map(x, SummarizedExperiment::colData) %>%
+        purrr::map(mergeList, SummarizedExperiment::colData) %>%
         purrr::map(base::as.data.frame) %>%
         purrr::map(tibble::rownames_to_column) %>%
         dplyr::bind_rows() %>%

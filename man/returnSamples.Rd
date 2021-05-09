@@ -2,7 +2,7 @@
 % Please edit documentation in R/returnSamples.R
 \name{returnSamples}
 \alias{returnSamples}
-\title{Title}
+\title{Return Samples Across Studies}
 \usage{
 returnSamples(sampleMetadata, dataType, counts = FALSE)
 }

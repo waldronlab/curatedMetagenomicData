@@ -1,20 +1,18 @@
-#' Title
+#' Return Samples Across Studies
 #'
 #' Description
 #'
 #' @param sampleMetadata description
+#'
 #' @param dataType description
+#'
 #' @param counts description
 #'
 #' @return description
 #' @export
 #'
 # @examples
-# sampleMetadata %>%
-#     dplyr::filter(age <= 8) %>%
-#     dplyr::select(where(~ !base::all(base::is.na(.x)))) %>%
-#     returnSamples("marker_presence")
-#
+#'
 #' @importFrom magrittr %>%
 #' @importFrom stringr str_c
 #' @importFrom SummarizedExperiment colData

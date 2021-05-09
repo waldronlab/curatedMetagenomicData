@@ -7,48 +7,15 @@
 curatedMetagenomicData(pattern, dryrun = TRUE, counts = FALSE)
 }
 \arguments{
-\item{pattern}{regular expression pattern to look for in the titles of
-resources available in curatedMetagenomicData; \code{""} will return all resources}
+\item{pattern}{description}
 
-\item{dryrun}{if \code{TRUE} (the default), a character vector of resource names
-is returned invisibly; if \code{FALSE}, a \code{SummarizedExperiment} is returned}
+\item{dryrun}{description}
 
-\item{counts}{if \code{FALSE} (the default), relative abundance proportions are
-returned; if \code{TRUE}, relative abundance proportions are multiplied by read
-depth and rounded to the nearest integer prior to being returned}
+\item{counts}{description}
 }
 \value{
-if \code{dryrun = TRUE}, a character vector of resource names is returned
-invisibly; if \code{dryrun = FALSE}, a \code{list} is returned
+description
 }
 \description{
-To access curated metagenomic data users will use \code{curatedMetagenomicData()},
-after "shopping" the \link[=sampleMetadata]{sample metadata} for studies they are
-interested in. The \code{dryrun} argument allows users to perfect a query prior to
-(down)loading a data set. When \code{dryrun = TRUE}, the names of matched data
-sets will be printed nicely before a character vector of names is returned
-invisibly. When\code{dryrun = FALSE}, a (sparse) matrix is (down)loaded and used
-to construct a
-\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment} or
-\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
-object with corresponding metadata from \link[=sampleMetadata]{sample metadata}.
-If there is more than one date corresponding to the data set, the more recent
-one is selected automatically. Finally, if a \code{relative_abundance} data set is
-requested with \code{counts = TRUE}, relative abundance proportions will be
-multiplied by read depth (i.e. \code{number_reads}) and rounded to the nearest
-integer prior to being returned as a
-\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
-object with corresponding metadata from \link[=sampleMetadata]{sample metadata}.
-}
-\examples{
-curatedMetagenomicData("2021-04-02")
-
-curatedMetagenomicData("AsnicarF_2017")
-
-curatedMetagenomicData("AsnicarF_2017.relative_abundance")
-
-curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
-
-curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, counts = TRUE)
-
+Description
 }
