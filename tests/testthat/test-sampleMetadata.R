@@ -1,5 +1,3 @@
-BiocManager::install("waldronlab/curatedMetagenomicDataCuration")
-
 data("sampleMetadata", "combined_metadata")
 
 test_that("all studies from cMD (metadata file) are in sampleMetadata", {
@@ -21,8 +19,7 @@ test_that("all studies from cMD (metadata file) are in sampleMetadata", {
 
 test_that("all required columns are present in sampleMetadata", {
 
-    requiredColumns <- system.file("extdata/template.csv", package = "curatedMetagenomicDataCuration") %>%
-        read.csv() %>%
+    requiredColumns <- read.csv("https://raw.githubusercontent.com/waldronlab/curatedMetagenomicDataCuration/master/inst/extdata/template.csv") %>%
         subset(requiredness == "required") %>%
         .[["col.name"]]
 
