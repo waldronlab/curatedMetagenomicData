@@ -50,7 +50,6 @@ Imports:
     tidyselect
 Suggests:
     BiocStyle,
-    curatedMetagenomicDataCuration,
     knitr,
     rmarkdown,
     testthat

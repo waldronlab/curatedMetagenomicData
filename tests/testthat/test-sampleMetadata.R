@@ -1,3 +1,5 @@
+BiocManager::install("waldronlab/curatedMetagenomicDataCuration")
+
 data("sampleMetadata", "combined_metadata")
 
 test_that("all studies from cMD (metadata file) are in sampleMetadata", {
