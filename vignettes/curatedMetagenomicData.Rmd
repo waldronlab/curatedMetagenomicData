@@ -15,30 +15,13 @@ vignette: >
   %\VignetteEncoding{UTF-8}  
 ---
 
-```{r}
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r, include = FALSE}
 library(curatedMetagenomicData)
-```
-
-# Sample Metadata
-
-```{r}
-dplyr::glimpse(sampleMetadata)
-```
-
-# Metagenomic Data
-
-```{r}
-curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
-```
-
-# Multiple (Down)loads
-
-```{r}
-curatedMetagenomicData("AsnicarF_2017.pathway", dryrun = FALSE)
-```
-
-# Session Info {.unnumbered}
-
-```{r, echo = FALSE}
-sessionInfo()
 ```

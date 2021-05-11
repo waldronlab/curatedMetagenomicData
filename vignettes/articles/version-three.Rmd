@@ -9,6 +9,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-```{r}
+```{r, include = FALSE}
 library(curatedMetagenomicData)
 ```
