@@ -91,7 +91,7 @@
 
       
 
-      </header><script src="our-pipeline_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
+      </header><script src="our-pipeline_files/header-attrs-2.8/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Our Pipeline</h1>
@@ -141,14 +141,10 @@
 <p>Besides, our Grammar-checker constantly updates a report of the current status of the curated metadata <a href="https://waldronlab.io/curatedMetagenomicDataCuration/articles/curatedMetagenomicDataCuration.html">(syntax-checking report)</a>.</p>
 </div>
 </div>
-<div id="highload" class="section level1">
-<h1 class="hasAnchor">
-<a href="#highload" class="anchor"></a>HighLoad</h1>
-</div>
 <div id="download" class="section level1">
 <h1 class="hasAnchor">
 <a href="#download" class="anchor"></a>Download</h1>
-<p>For inclusion into curatedMetagenomicData 3, samples are downloaded dircelty from <strong>NCBI</strong> (depending on the data-availability statement). This is true for almost all datasets. A few datasets originated from different sources: The cohorts belonging to the Human Microbiome Project (<strong>HMP</strong>) have been downloaded from (portal-HMP)[<a href="https://hmpdacc.org/" class="uri">https://hmpdacc.org/</a>] The <a href="http://www.humanfunctionalgenomics.org/site/?page_id=86">LifeLines-deep</a> and the <a href="https://stm.sciencemag.org/content/10/472/eaap8914">VilaAV_2018</a> cohorts were obtained from <strong>EGA</strong>.</p>
+<p>For inclusion into curatedMetagenomicData 3, samples are downloaded dircelty from <a href="https://www.ncbi.nlm.nih.gov/"><strong>NCBI</strong></a> (depending on the data-availability statement). This is true for almost all datasets. A few datasets originated from different sources: The cohorts belonging to the Human Microbiome Project (<strong>HMP</strong>) have been downloaded from <a href="https://hmpdacc.org/">portal-HMP</a> The <a href="http://www.humanfunctionalgenomics.org/site/?page_id=86">LifeLines-deep</a> and the <a href="https://stm.sciencemag.org/content/10/472/eaap8914">VilaAV_2018</a> cohorts were obtained from <a href="https://ega-archive.org/"><strong>EGA</strong></a>.</p>
 <p>Samples are compared with the information available in their publications. The number of samples in a given datasets should mirror almost exactly that mentioned in the publication. Differences are possibile, and mainly due to: 1. the amount of metadata retrieved covers only a fraction of the samples 2. 16S, metatranscriptomics or virome samples are present under the same code in NCBI (and excluded)</p>
 <p>Samples are included when their inclusion would be an effective gain for the community. Large cohorts can be added, in some cases, even if the main attributes of their samples are not of public domain, provided that their inclusion doens’t constitute a clear source of error. Example: samples studied in relation to their diet are included even if the dietary questionaries are not available; samples belonging to a case/control study can be included only if the membership to cases or controls is clearly available in the resources highligthed above.</p>
 </div>
@@ -156,24 +152,12 @@
 <h1 class="hasAnchor">
 <a href="#pipeline" class="anchor"></a>Pipeline</h1>
 <p>Samples in this package are profiled with <strong>MetaPhlAn 3</strong> and <strong>HUMAnN 3</strong>, tools available in the bioBakery 3 suite.</p>
-<div id="metaphlan-3-alignes-metagenomic-reads-to-species-specific-marker-genes-and-builds-a-coverage-based-metagenomic-profile-of-the-sample-" class="section level4">
-<h4 class="hasAnchor">
-<a href="#metaphlan-3-alignes-metagenomic-reads-to-species-specific-marker-genes-and-builds-a-coverage-based-metagenomic-profile-of-the-sample-" class="anchor"></a>MetaPhlAn 3 alignes metagenomic reads to species-specific marker-genes and builds a coverage-based metagenomic profile of the sample.</h4>
-<p>MetaPhlAn 3 output contains a taxonomic caharacterization of the sample from the <strong>Kingdom to the species level</strong>. In addition, this package also stores a RPKM profile of the clade-specific MetaPhlAn 3 markers, and a profile storing the list of markers found in that sample.</p>
-</div>
-<div id="humann-3-quantifies-the-functional-modules-carried-by-the-metagenomic-sample-at-two-main-levels-of-resolution-" class="section level4">
-<h4 class="hasAnchor">
-<a href="#humann-3-quantifies-the-functional-modules-carried-by-the-metagenomic-sample-at-two-main-levels-of-resolution-" class="anchor"></a>HUMAnN 3 quantifies the functional modules carried by the metagenomic sample, at two main levels of resolution.</h4>
-<ol style="list-style-type: decimal">
-<li><strong>UniRef90 gene-families</strong></li>
-<li>
-<strong>Metacyc pathways</strong> (available in two forms: pathway-relative abundance, and pathway-coverage) In addition, HUMAnN3 gene-families can be re-grouped in several ways, like: <strong>KEGG-reactions</strong>, <strong>Gene-Ontology</strong>, and <strong>Enzyme-Commission</strong> (EC) numbers. One key-aspect of each output of HUMAnN 3 is, then, the (optional) stratification of each feature into contributing species and genera.</li>
-</ol>
+<p>MetaPhlAn 3 alignes metagenomic reads to species-specific marker-genes and builds a coverage-based metagenomic profile of the sample. MetaPhlAn 3 output contains a taxonomic caharacterization of the sample from the <strong>Kingdom to the species level</strong>. In addition, this package also stores a RPKM profile of the clade-specific MetaPhlAn 3 markers, and a profile storing the list of markers found in that sample.</p>
+<p>HUMAnN 3 quantifies the functional modules carried by the metagenomic sample, at two main levels of resolution. 1. <strong>UniRef90 gene-families</strong> 2. <strong>Metacyc pathways</strong> (available in two forms: pathway-relative abundance, and pathway-coverage) In addition, HUMAnN3 gene-families can be re-grouped in several ways, like: <strong>KEGG-reactions</strong>, <strong>Gene-Ontology</strong>, and <strong>Enzyme-Commission</strong> (EC) numbers. One key-aspect of each output of HUMAnN 3 is, then, the (optional) stratification of each feature into contributing species and genera.</p>
 <p><a href="https://elifesciences.org/articles/65088">bioBakery 3 paper</a></p>
 <p><a href="https://huttenhower.sph.harvard.edu/metaphlan/">MetaPhlAn 3</a></p>
 <p><a href="https://huttenhower.sph.harvard.edu/humann/">HUMAnN 3</a></p>
 <p>The taxonomic profile stored in MetaPhlAn 3 output is the foundation of this package. It is the best proxy we have depict the microbial ecosystem of a sample. Therefore, one last step of exclusion is performed for those samples whose MetaPhlAn 3 profiles is empty (that can happen because the sample-file is too small or because the amount of dark-matter in the samples largerly overcomes the known-one). The number of samples in each dataset may so vary with respect to the original publication also for this reason.</p>
-</div>
 </div>
   </div>
 

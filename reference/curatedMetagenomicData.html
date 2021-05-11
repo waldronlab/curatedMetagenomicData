@@ -40,23 +40,21 @@
 
 
 <meta property="og:title" content="Access Curated Metagenomic Data — curatedMetagenomicData" />
-<meta property="og:description" content="To access curated metagenomic data users will use curatedMetagenomicData(),
-after &quot;shopping&quot; the sample metadata for studies they are
+<meta property="og:description" content="To access curated metagenomic data users will use curatedMetagenomicData()
+after &quot;shopping&quot; the sampleMetadata data.frame for resources they are
 interested in. The dryrun argument allows users to perfect a query prior to
-(down)loading a data set. When dryrun = TRUE, the names of matched data
-sets will be printed nicely before a character vector of names is returned
-invisibly. Whendryrun = FALSE, a (sparse) matrix is (down)loaded and used
-to construct a
-SummarizedExperiment or
+returning resources. When dryrun = TRUE, matched resources will be printed
+before they are returned invisibly as a character vector. When
+dryrun = FALSE, a list of resources containing
+SummarizedExperiment
+and/or
 TreeSummarizedExperiment
-object with corresponding metadata from sample metadata.
-If there is more than one date corresponding to the data set, the more recent
-one is selected automatically. Finally, if a relative_abundance data set is
-requested with counts = TRUE, relative abundance proportions will be
-multiplied by read depth (i.e. number_reads) and rounded to the nearest
-integer prior to being returned as a
-TreeSummarizedExperiment
-object with corresponding metadata from sample metadata." />
+objects, each with corresponding sample metadata, is returned. Multiple
+resources can be returned simultaneously and if there is more than one date
+corresponding to a resource, the most recent one is selected automatically.
+Finally, if a relative_abundance resource is requested and counts = TRUE,
+relative abundance proportions will be multiplied by read depth and rounded
+to the nearest integer." />
 
 
 
@@ -157,23 +155,21 @@ object with corresponding metadata from sample metadata." />
     </div>
 
     <div class="ref-description">
-    <p>To access curated metagenomic data users will use <code>curatedMetagenomicData()</code>,
-after "shopping" the <a href='sampleMetadata.html'>sample metadata</a> for studies they are
+    <p>To access curated metagenomic data users will use <code>curatedMetagenomicData()</code>
+after "shopping" the <a href='sampleMetadata.html'>sampleMetadata</a> <code>data.frame</code> for resources they are
 interested in. The <code>dryrun</code> argument allows users to perfect a query prior to
-(down)loading a data set. When <code>dryrun = TRUE</code>, the names of matched data
-sets will be printed nicely before a character vector of names is returned
-invisibly. When<code>dryrun = FALSE</code>, a (sparse) matrix is (down)loaded and used
-to construct a
-<a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>SummarizedExperiment</a> or
+returning resources. When <code>dryrun = TRUE</code>, matched resources will be printed
+before they are returned invisibly as a character vector. When
+<code>dryrun = FALSE</code>, a <code>list</code> of resources containing
+<a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>SummarizedExperiment</a>
+and/or
 <a href='https://rdrr.io/pkg/TreeSummarizedExperiment/man/TreeSummarizedExperiment-class.html'>TreeSummarizedExperiment</a>
-object with corresponding metadata from <a href='sampleMetadata.html'>sample metadata</a>.
-If there is more than one date corresponding to the data set, the more recent
-one is selected automatically. Finally, if a <code>relative_abundance</code> data set is
-requested with <code>counts = TRUE</code>, relative abundance proportions will be
-multiplied by read depth (i.e. <code>number_reads</code>) and rounded to the nearest
-integer prior to being returned as a
-<a href='https://rdrr.io/pkg/TreeSummarizedExperiment/man/TreeSummarizedExperiment-class.html'>TreeSummarizedExperiment</a>
-object with corresponding metadata from <a href='sampleMetadata.html'>sample metadata</a>.</p>
+objects, each with corresponding sample metadata, is returned. Multiple
+resources can be returned simultaneously and if there is more than one date
+corresponding to a resource, the most recent one is selected automatically.
+Finally, if a <code>relative_abundance</code> resource is requested and <code>counts = TRUE</code>,
+relative abundance proportions will be multiplied by read depth and rounded
+to the nearest integer.</p>
     </div>
 
     <pre class="usage"><span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='va'>pattern</span>, dryrun <span class='op'>=</span> <span class='cn'>TRUE</span>, counts <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
@@ -189,7 +185,7 @@ resources available in curatedMetagenomicData; <code>""</code> will return all r
     <tr>
       <th>dryrun</th>
       <td><p>if <code>TRUE</code> (the default), a character vector of resource names
-is returned invisibly; if <code>FALSE</code>, a <code>SummarizedExperiment</code> is returned</p></td>
+is returned invisibly; if <code>FALSE</code>, a <code>list</code> of resources is returned</p></td>
     </tr>
     <tr>
       <th>counts</th>
@@ -202,39 +198,40 @@ depth and rounded to the nearest integer prior to being returned</p></td>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>if <code>dryrun = TRUE</code>, a character vector of resource names is returned
-invisibly; if <code>dryrun = FALSE</code>, a <code>list</code> is returned</p>
+invisibly; if <code>dryrun = FALSE</code>, a <code>list</code> of resources is returned</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Above "resources" refers to resources that exists in Bioconductor's
+ExperimentHub service. In the context of curatedMetagenomicData, these are
+study-level (sparse) matrix objects used to create
+<a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>SummarizedExperiment</a>
+and/or
+<a href='https://rdrr.io/pkg/TreeSummarizedExperiment/man/TreeSummarizedExperiment-class.html'>TreeSummarizedExperiment</a>
+objects that are ultimately returned as the <code>list</code> of resources. Only the
+<code>gene_families</code> <code>dataType</code> (see <a href='returnSamples.html'>returnSamples</a>) is stored as a sparse matrix
+in ExperimentHub - this has no practical consequences for users and is done
+to optimize storage. When searching for "resources", users will use the
+<code>study_name</code> value from the <a href='sampleMetadata.html'>sampleMetadata</a> <code>data.frame</code>.</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><a href='mergeData.html'>mergeData</a>, <a href='returnSamples.html'>returnSamples</a>, <a href='sampleMetadata.html'>sampleMetadata</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='st'>"2021-04-02"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 2021-04-02.ChuDM_2017.gene_families
-#&gt; 2021-04-02.ChuDM_2017.marker_abundance
-#&gt; 2021-04-02.ChuDM_2017.marker_presence
-#&gt; 2021-04-02.ChuDM_2017.pathway_abundance
-#&gt; 2021-04-02.ChuDM_2017.pathway_coverage
-#&gt; 2021-04-02.ChuDM_2017.relative_abundance
-#&gt; 2021-04-02.LiSS_2016.gene_families
-#&gt; 2021-04-02.LiSS_2016.marker_abundance
-#&gt; 2021-04-02.LiSS_2016.marker_presence
-#&gt; 2021-04-02.LiSS_2016.pathway_abundance
-#&gt; 2021-04-02.LiSS_2016.pathway_coverage
-#&gt; 2021-04-02.LiSS_2016.relative_abundance
-#&gt; 2021-04-02.PehrssonE_2016.gene_families
-#&gt; 2021-04-02.PehrssonE_2016.marker_abundance
-#&gt; 2021-04-02.PehrssonE_2016.marker_presence
-#&gt; 2021-04-02.PehrssonE_2016.pathway_abundance
-#&gt; 2021-04-02.PehrssonE_2016.pathway_coverage
-#&gt; 2021-04-02.PehrssonE_2016.relative_abundance</div><div class='input'>
-<span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='st'>"AsnicarF_2017"</span><span class='op'>)</span>
+    <pre class="examples"><div class='input'><span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='st'>"AsnicarF_20.+"</span><span class='op'>)</span>
 </div><div class='output co'>#&gt; 2021-03-31.AsnicarF_2017.gene_families
 #&gt; 2021-03-31.AsnicarF_2017.marker_abundance
 #&gt; 2021-03-31.AsnicarF_2017.marker_presence
 #&gt; 2021-03-31.AsnicarF_2017.pathway_abundance
 #&gt; 2021-03-31.AsnicarF_2017.pathway_coverage
-#&gt; 2021-03-31.AsnicarF_2017.relative_abundance</div><div class='input'>
-<span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='st'>"AsnicarF_2017.relative_abundance"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 2021-03-31.AsnicarF_2017.relative_abundance</div><div class='input'>
+#&gt; 2021-03-31.AsnicarF_2017.relative_abundance
+#&gt; 2021-03-31.AsnicarF_2021.gene_families
+#&gt; 2021-03-31.AsnicarF_2021.marker_abundance
+#&gt; 2021-03-31.AsnicarF_2021.marker_presence
+#&gt; 2021-03-31.AsnicarF_2021.pathway_abundance
+#&gt; 2021-03-31.AsnicarF_2021.pathway_coverage
+#&gt; 2021-03-31.AsnicarF_2021.relative_abundance</div><div class='input'>
 <span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='st'>"AsnicarF_2017.relative_abundance"</span>, dryrun <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-05-05</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 249 row(s) couldn't be matched to the tree and are/is removed. </span></div><div class='output co'>#&gt; $`2021-03-31.AsnicarF_2017.relative_abundance`
+</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-05-05</span></div><div class='output co'>#&gt; $`2021-03-31.AsnicarF_2017.relative_abundance`
 #&gt; class: TreeSummarizedExperiment 
 #&gt; dim: 301 24 
 #&gt; metadata(0):
@@ -245,10 +242,10 @@ invisibly; if <code>dryrun = FALSE</code>, a <code>list</code> is returned</p>
 #&gt;   ...
 #&gt;   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus|s__Streptococcus_gordonii
 #&gt;   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia_sp_HMSC24B09
-#&gt; rowData names(0):
+#&gt; rowData names(7): kingdom phylum ... genus species
 #&gt; colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14
 #&gt;   MV_MIM5_t3F15
-#&gt; colData names(20): study_name subject_id ... curator NCBI_accession
+#&gt; colData names(20): study_name subject_id ... lactating curator
 #&gt; reducedDimNames(0):
 #&gt; mainExpName: NULL
 #&gt; altExpNames(0):
@@ -257,8 +254,8 @@ invisibly; if <code>dryrun = FALSE</code>, a <code>list</code> is returned</p>
 #&gt; colLinks: NULL
 #&gt; colTree: NULL
 #&gt; </div><div class='input'>
-<span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='st'>"AsnicarF_2017.relative_abundance"</span>, dryrun <span class='op'>=</span> <span class='cn'>FALSE</span>, counts <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-05-05</span></div><div class='output co'>#&gt; <span class='warning'>Warning: 249 row(s) couldn't be matched to the tree and are/is removed. </span></div><div class='output co'>#&gt; $`2021-03-31.AsnicarF_2017.relative_abundance`
+<span class='fu'>curatedMetagenomicData</span><span class='op'>(</span><span class='st'>"AsnicarF_20.+.relative_abundance"</span>, dryrun <span class='op'>=</span> <span class='cn'>FALSE</span>, counts <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-05-05</span></div><div class='output co'>#&gt; $`2021-03-31.AsnicarF_2017.relative_abundance`
 #&gt; class: TreeSummarizedExperiment 
 #&gt; dim: 301 24 
 #&gt; metadata(0):
@@ -269,14 +266,36 @@ invisibly; if <code>dryrun = FALSE</code>, a <code>list</code> is returned</p>
 #&gt;   ...
 #&gt;   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus|s__Streptococcus_gordonii
 #&gt;   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia_sp_HMSC24B09
-#&gt; rowData names(0):
+#&gt; rowData names(7): kingdom phylum ... genus species
 #&gt; colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14
 #&gt;   MV_MIM5_t3F15
-#&gt; colData names(20): study_name subject_id ... curator NCBI_accession
+#&gt; colData names(20): study_name subject_id ... lactating curator
 #&gt; reducedDimNames(0):
 #&gt; mainExpName: NULL
 #&gt; altExpNames(0):
 #&gt; rowLinks: a LinkDataFrame (301 rows)
+#&gt; rowTree: 1 phylo tree(s) (10430 leaves)
+#&gt; colLinks: NULL
+#&gt; colTree: NULL
+#&gt; 
+#&gt; $`2021-03-31.AsnicarF_2021.relative_abundance`
+#&gt; class: TreeSummarizedExperiment 
+#&gt; dim: 639 1098 
+#&gt; metadata(0):
+#&gt; assays(1): relative_abundance
+#&gt; rownames(639):
+#&gt;   k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides|s__Bacteroides_vulgatus
+#&gt;   k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides|s__Bacteroides_stercoris
+#&gt;   ...
+#&gt;   k__Bacteria|p__Synergistetes|c__Synergistia|o__Synergistales|f__Synergistaceae|g__Pyramidobacter|s__Pyramidobacter_sp_C12_8
+#&gt;   k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Micrococcales|f__Brevibacteriaceae|g__Brevibacterium|s__Brevibacterium_aurantiacum
+#&gt; rowData names(7): kingdom phylum ... genus species
+#&gt; colnames(1098): SAMEA7041133 SAMEA7041134 ... SAMEA7045952 SAMEA7045953
+#&gt; colData names(20): study_name subject_id ... NCBI_accession curator
+#&gt; reducedDimNames(0):
+#&gt; mainExpName: NULL
+#&gt; altExpNames(0):
+#&gt; rowLinks: a LinkDataFrame (639 rows)
 #&gt; rowTree: 1 phylo tree(s) (10430 leaves)
 #&gt; colLinks: NULL
 #&gt; colTree: NULL

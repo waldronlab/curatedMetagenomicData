@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Title — returnSamples • curatedMetagenomicData</title>
+<title>Return Samples Across Studies — returnSamples • curatedMetagenomicData</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,15 @@
 
 
 
-<meta property="og:title" content="Title — returnSamples" />
-<meta property="og:description" content="Description" />
+<meta property="og:title" content="Return Samples Across Studies — returnSamples" />
+<meta property="og:description" content="To return samples across studies, users will use returnSamples() along with
+the sampleMetadata data.frame subset to include only desired samples and
+metadata. The subset sampleMetadata data.frame will be used to get the
+desired resources, mergeData will be used to merge them, and the subset
+sampleMetadata data.frame will be used again to subset the
+SummarizedExperiment or
+TreeSummarizedExperiment
+object to include only desired samples and metadata." />
 
 
 
@@ -135,13 +142,20 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Title</h1>
+    <h1>Return Samples Across Studies</h1>
     <small class="dont-index">Source: <a href='https://github.com/waldronlab/curatedMetagenomicData/blob/master/R/returnSamples.R'><code>R/returnSamples.R</code></a></small>
     <div class="hidden name"><code>returnSamples.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Description</p>
+    <p>To return samples across studies, users will use <code>returnSamples()</code> along with
+the <a href='sampleMetadata.html'>sampleMetadata</a> <code>data.frame</code> subset to include only desired samples and
+metadata. The subset <a href='sampleMetadata.html'>sampleMetadata</a> <code>data.frame</code> will be used to get the
+desired resources, <a href='mergeData.html'>mergeData</a> will be used to merge them, and the subset
+<a href='sampleMetadata.html'>sampleMetadata</a> <code>data.frame</code> will be used again to subset the
+<a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>SummarizedExperiment</a> or
+<a href='https://rdrr.io/pkg/TreeSummarizedExperiment/man/TreeSummarizedExperiment-class.html'>TreeSummarizedExperiment</a>
+object to include only desired samples and metadata.</p>
     </div>
 
     <pre class="usage"><span class='fu'>returnSamples</span><span class='op'>(</span><span class='va'>sampleMetadata</span>, <span class='va'>dataType</span>, counts <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
@@ -151,22 +165,70 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>sampleMetadata</th>
-      <td><p>description</p></td>
+      <td><p>the <a href='sampleMetadata.html'>sampleMetadata</a> <code>data.frame</code> subset to include
+only desired samples and metadata</p></td>
     </tr>
     <tr>
       <th>dataType</th>
-      <td><p>description</p></td>
+      <td><p>the data type to be returned; one of the following:</p><ul>
+<li><p><code>"gene_families"</code></p></li>
+<li><p><code>"marker_abundance"</code></p></li>
+<li><p><code>"marker_presence"</code></p></li>
+<li><p><code>"pathway_abundance"</code></p></li>
+<li><p><code>"pathway_coverage"</code></p></li>
+<li><p><code>"relative_abundance"</code></p></li>
+</ul></td>
     </tr>
     <tr>
       <th>counts</th>
-      <td><p>description</p></td>
+      <td><p>if <code>FALSE</code> (the default), relative abundance proportions are
+returned; if <code>TRUE</code>, relative abundance proportions are multiplied by read
+depth and rounded to the nearest integer prior to being returned</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>description</p>
+    <p>when <code>dataType = "relative_abundance"</code>, a
+<a href='https://rdrr.io/pkg/TreeSummarizedExperiment/man/TreeSummarizedExperiment-class.html'>TreeSummarizedExperiment</a>
+object is returned; otherwise, a
+<a href='https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html'>SummarizedExperiment</a>
+object is returned</p>
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
+    <p>At present, curatedMetagenomicData resources exists only as entire studies
+which requires potentially getting many resources for a limited number of
+samples. Furthermore, because it is necessary to use <a href='mergeData.html'>mergeData</a> internally,
+the same caveats detailed under <strong>Details</strong> in <a href='mergeData.html'>mergeData</a> apply here.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='va'>sampleMetadata</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>age</span> <span class='op'>&gt;=</span> <span class='fl'>18</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='op'>!</span><span class='fu'>base</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>alcohol</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>body_site</span> <span class='op'>==</span> <span class='st'>"stool"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='fu'>where</span><span class='op'>(</span><span class='op'>~</span> <span class='op'>!</span><span class='fu'>base</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'>base</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>.x</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>returnSamples</span><span class='op'>(</span><span class='st'>"relative_abundance"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-05-05</span></div><div class='output co'>#&gt; class: TreeSummarizedExperiment 
+#&gt; dim: 833 702 
+#&gt; metadata(0):
+#&gt; assays(1): relative_abundance
+#&gt; rownames(833):
+#&gt;   k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Prevotella|s__Prevotella_copri
+#&gt;   k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Prevotellaceae|g__Prevotella|s__Prevotella_sp_CAG_520
+#&gt;   ...
+#&gt;   k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Corynebacteriales|f__Corynebacteriaceae|g__Corynebacterium|s__Corynebacterium_aurimucosum
+#&gt;   k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Corynebacteriales|f__Corynebacteriaceae|g__Corynebacterium|s__Corynebacterium_coyleae
+#&gt; rowData names(7): kingdom phylum ... genus species
+#&gt; colnames(702): JAS_1 JAS_10 ... YSZC12003_37879 YSZC12003_37880
+#&gt; colData names(36): study_name subject_id ... systolic_p zigosity
+#&gt; reducedDimNames(0):
+#&gt; mainExpName: NULL
+#&gt; altExpNames(0):
+#&gt; rowLinks: a LinkDataFrame (833 rows)
+#&gt; rowTree: 1 phylo tree(s) (10430 leaves)
+#&gt; colLinks: NULL
+#&gt; colTree: NULL</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

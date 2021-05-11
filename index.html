@@ -13,14 +13,14 @@
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Curated Metagenomic Data of the Human Microbiome">
 <meta property="og:description" content="
-    curatedMetagenomicData provides standardized, curated human microbiome data
-    for novel analyses. The package includes gene families, marker abundance,
-    marker presence, pathway abundance, pathway coverage, and relative abundance
-    for samples collected from different body sites. The bacterial, fungal,
-    archaeal, and taxonomic abundance of each sample's raw data were calculated
-    with MetaPhlAn3 and the metabolic functional potential was calculated with
-    HUMAnN3. The curated metadata and profiled raw data are available as
-    (Tree)SummarizedExperiment objects.">
+    The curatedMetagenomicData package provides standardized, curated human
+    microbiome data for novel analyses. It includes gene families, marker
+    abundance, marker presence, pathway abundance, pathway coverage, and
+    relative abundance for samples collected from different body sites. The
+    bacterial, fungal, and archaeal taxonomic abundances for each sample were
+    calculated with MetaPhlAn3 and metabolic functional potential was calculated
+    with HUMAnN3. The manually curated sample metadata and standardized
+    metagenomic data are available as (Tree)SummarizedExperiment objects.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -106,38 +106,46 @@
 <a href="#curatedmetagenomicdata" class="anchor"></a>curatedMetagenomicData</h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
-<p>curatedMetagenomicData provides standardized, curated human microbiome data for novel analyses. The package includes gene families, marker abundance, marker presence, pathway abundance, pathway coverage, and relative abundance for samples collected from different body sites. The bacterial, fungal, archaeal, and taxonomic abundance of each sample’s raw data were calculated with MetaPhlAn3 and the metabolic functional potential was calculated with HUMAnN3. The curated metadata and profiled raw data are available as (Tree)SummarizedExperiment objects.</p>
+<p>The curatedMetagenomicData package provides standardized, curated human microbiome data for novel analyses. It includes gene families, marker abundance, marker presence, pathway abundance, pathway coverage, and relative abundance for samples collected from different body sites. The bacterial, fungal, and archaeal taxonomic abundances for each sample were calculated with MetaPhlAn3 and metabolic functional potential was calculated with HUMAnN3. The manually curated sample metadata and standardized metagenomic data are available as (Tree)SummarizedExperiment objects.</p>
+<div id="versions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#versions" class="anchor"></a>Versions</h2>
+<p>To avoid some confusion preemptively - there was <em>never</em> a version 2.0.0 of curatedMetagenomicData. Version 1.0.0 was released in 2017 and version 3.0.0 was released in 2021; we skipped directly to version 3.0.0 to align with MetaPhlAn3 and HUMAnN3. Version 3.0.0 features significant changes and, to be sure, they will take some adjustment. While users are encouraged to upgrade to the latest (and greatest) version, the previous version (<a href="https://github.com/waldronlab/curatedMetagenomicData/releases/tag/v1.20.0">1.20.0</a>) of curatedMetagenomicData will remain installable for the foreseeable future (see below). However, users should consider switching because version 3.0.0 now uses the appropriate modern Bioconductor data structures (<code>SummarizedExperiment</code> and <code>TreeSummarizedExperiment</code>). As such, all of the previous version 1.0.0 methods that worked on <code>ExpressionSet</code> objects are irrelevant and have moved directly to defunct in version 3.0.0. Finally, to avoid additional confusion, the resources pertaining to each release are only available in their respective releases. It would be possible to access them with methods from the <code>ExperimentHub</code> package, but doing so is strongly discouraged.</p>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install curatedMetagenomicData from Bioconductor with:</p>
+<p>You can install the current version of curatedMetagenomicData from Bioconductor with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"curatedMetagenomicData"</span><span class="op">)</span></code></pre></div>
-<p>You can install curatedMetagenomicData from GitHub with:</p>
+<p>You can install the current version of curatedMetagenomicData from GitHub with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"waldronlab/curatedMetagenomicData"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p>You can install the last version of curatedMetagenomicData 1 (<a href="https://github.com/waldronlab/curatedMetagenomicData/releases/tag/v1.20.0">v1.20.0</a>) from GitHub with:</p>
+<p>You can install the previous version of curatedMetagenomicData from GitHub with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"waldronlab/curatedMetagenomicData"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span>, ref <span class="op">=</span> <span class="st">"v1.20.0"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
-<p>See the package vignette for more detailed examples.</p>
+<p>Find and access curated metagenomic data using <code><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData()</a></code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/curatedMetagenomicData">curatedMetagenomicData</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_2017"</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu"><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_20.+"</span><span class="op">)</span>
 <span class="co">#&gt; 2021-03-31.AsnicarF_2017.gene_families</span>
 <span class="co">#&gt; 2021-03-31.AsnicarF_2017.marker_abundance</span>
 <span class="co">#&gt; 2021-03-31.AsnicarF_2017.marker_presence</span>
 <span class="co">#&gt; 2021-03-31.AsnicarF_2017.pathway_abundance</span>
 <span class="co">#&gt; 2021-03-31.AsnicarF_2017.pathway_coverage</span>
-<span class="co">#&gt; 2021-03-31.AsnicarF_2017.relative_abundance</span></code></pre></div>
+<span class="co">#&gt; 2021-03-31.AsnicarF_2017.relative_abundance</span>
+<span class="co">#&gt; 2021-03-31.AsnicarF_2021.gene_families</span>
+<span class="co">#&gt; 2021-03-31.AsnicarF_2021.marker_abundance</span>
+<span class="co">#&gt; 2021-03-31.AsnicarF_2021.marker_presence</span>
+<span class="co">#&gt; 2021-03-31.AsnicarF_2021.pathway_abundance</span>
+<span class="co">#&gt; 2021-03-31.AsnicarF_2021.pathway_coverage</span>
+<span class="co">#&gt; 2021-03-31.AsnicarF_2021.relative_abundance</span></code></pre></div>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_2017.relative_abundance"</span><span class="op">)</span>
-<span class="co">#&gt; 2021-03-31.AsnicarF_2017.relative_abundance</span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_2017.relative_abundance"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
 <span class="co">#&gt; snapshotDate(): 2021-05-05</span>
 <span class="co">#&gt; $`2021-03-31.AsnicarF_2017.relative_abundance`</span>
@@ -151,10 +159,10 @@
 <span class="co">#&gt;   ...</span>
 <span class="co">#&gt;   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus|s__Streptococcus_gordonii</span>
 <span class="co">#&gt;   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia_sp_HMSC24B09</span>
-<span class="co">#&gt; rowData names(0):</span>
+<span class="co">#&gt; rowData names(7): kingdom phylum ... genus species</span>
 <span class="co">#&gt; colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14</span>
 <span class="co">#&gt;   MV_MIM5_t3F15</span>
-<span class="co">#&gt; colData names(20): studyName subjectID ... curator NCBI_accession</span>
+<span class="co">#&gt; colData names(20): study_name subject_id ... lactating curator</span>
 <span class="co">#&gt; reducedDimNames(0):</span>
 <span class="co">#&gt; mainExpName: NULL</span>
 <span class="co">#&gt; altExpNames(0):</span>
@@ -162,16 +170,64 @@
 <span class="co">#&gt; rowTree: 1 phylo tree(s) (10430 leaves)</span>
 <span class="co">#&gt; colLinks: NULL</span>
 <span class="co">#&gt; colTree: NULL</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_20.+.relative_abundance"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span>, counts <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="co">#&gt; snapshotDate(): 2021-05-05</span>
+<span class="co">#&gt; $`2021-03-31.AsnicarF_2017.relative_abundance`</span>
+<span class="co">#&gt; class: TreeSummarizedExperiment </span>
+<span class="co">#&gt; dim: 301 24 </span>
+<span class="co">#&gt; metadata(0):</span>
+<span class="co">#&gt; assays(1): relative_abundance</span>
+<span class="co">#&gt; rownames(301):</span>
+<span class="co">#&gt;   k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacterales|f__Enterobacteriaceae|g__Escherichia|s__Escherichia_coli</span>
+<span class="co">#&gt;   k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Bifidobacteriales|f__Bifidobacteriaceae|g__Bifidobacterium|s__Bifidobacterium_bifidum</span>
+<span class="co">#&gt;   ...</span>
+<span class="co">#&gt;   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Streptococcaceae|g__Streptococcus|s__Streptococcus_gordonii</span>
+<span class="co">#&gt;   k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Aerococcaceae|g__Abiotrophia|s__Abiotrophia_sp_HMSC24B09</span>
+<span class="co">#&gt; rowData names(7): kingdom phylum ... genus species</span>
+<span class="co">#&gt; colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14</span>
+<span class="co">#&gt;   MV_MIM5_t3F15</span>
+<span class="co">#&gt; colData names(20): study_name subject_id ... lactating curator</span>
+<span class="co">#&gt; reducedDimNames(0):</span>
+<span class="co">#&gt; mainExpName: NULL</span>
+<span class="co">#&gt; altExpNames(0):</span>
+<span class="co">#&gt; rowLinks: a LinkDataFrame (301 rows)</span>
+<span class="co">#&gt; rowTree: 1 phylo tree(s) (10430 leaves)</span>
+<span class="co">#&gt; colLinks: NULL</span>
+<span class="co">#&gt; colTree: NULL</span>
+<span class="co">#&gt; </span>
+<span class="co">#&gt; $`2021-03-31.AsnicarF_2021.relative_abundance`</span>
+<span class="co">#&gt; class: TreeSummarizedExperiment </span>
+<span class="co">#&gt; dim: 639 1098 </span>
+<span class="co">#&gt; metadata(0):</span>
+<span class="co">#&gt; assays(1): relative_abundance</span>
+<span class="co">#&gt; rownames(639):</span>
+<span class="co">#&gt;   k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides|s__Bacteroides_vulgatus</span>
+<span class="co">#&gt;   k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides|s__Bacteroides_stercoris</span>
+<span class="co">#&gt;   ...</span>
+<span class="co">#&gt;   k__Bacteria|p__Synergistetes|c__Synergistia|o__Synergistales|f__Synergistaceae|g__Pyramidobacter|s__Pyramidobacter_sp_C12_8</span>
+<span class="co">#&gt;   k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Micrococcales|f__Brevibacteriaceae|g__Brevibacterium|s__Brevibacterium_aurantiacum</span>
+<span class="co">#&gt; rowData names(7): kingdom phylum ... genus species</span>
+<span class="co">#&gt; colnames(1098): SAMEA7041133 SAMEA7041134 ... SAMEA7045952 SAMEA7045953</span>
+<span class="co">#&gt; colData names(20): study_name subject_id ... NCBI_accession curator</span>
+<span class="co">#&gt; reducedDimNames(0):</span>
+<span class="co">#&gt; mainExpName: NULL</span>
+<span class="co">#&gt; altExpNames(0):</span>
+<span class="co">#&gt; rowLinks: a LinkDataFrame (639 rows)</span>
+<span class="co">#&gt; rowTree: 1 phylo tree(s) (10430 leaves)</span>
+<span class="co">#&gt; colLinks: NULL</span>
+<span class="co">#&gt; colTree: NULL</span></code></pre></div>
+<p>See the package vignette for more detailed examples.</p>
 </div>
 <div id="contributing" class="section level2">
 <h2 class="hasAnchor">
 <a href="#contributing" class="anchor"></a>Contributing</h2>
-<p>All are welcome to contribute to the curatedMetagenomicData project provided contributions are appropriate. Please see the contributing guide.</p>
+<p>All are welcome to contribute to the curatedMetagenomicData package provided contributions are appropriate. Please see the contributing guide.</p>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
 <a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
-<p>Please note that the curatedMetagenomicData project is released with a code of conduct. By contributing to this project, you agree to abide by its terms.</p>
+<p>Please note that the curatedMetagenomicData package is released with a code of conduct. By contributing, you agree to abide by its terms.</p>
 <hr>
 <p>Pasolli E, Schiffer L, Manghi P, Renson A, Obenchain V, Truong D, Beghini F, Malik F, Ramos M, Dowd J, Huttenhower C, Morgan M, Segata N, Waldron L (2017). Accessible, curated metagenomic data through ExperimentHub. <em>Nat. Methods</em>, <strong>14</strong>(11), 1023-1024. ISSN 1548-7091, 1548-7105, doi: <a href="https://doi.org/10.1038/nmeth.4468">10.1038/nmeth.4468</a>.</p>
 </div>
