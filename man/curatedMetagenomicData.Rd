@@ -7,15 +7,58 @@
 curatedMetagenomicData(pattern, dryrun = TRUE, counts = FALSE)
 }
 \arguments{
-\item{pattern}{description}
+\item{pattern}{regular expression pattern to look for in the titles of
+resources available in curatedMetagenomicData; \code{""} will return all resources}
 
-\item{dryrun}{description}
+\item{dryrun}{if \code{TRUE} (the default), a character vector of resource names
+is returned invisibly; if \code{FALSE}, a \code{list} of resources is returned}
 
-\item{counts}{description}
+\item{counts}{if \code{FALSE} (the default), relative abundance proportions are
+returned; if \code{TRUE}, relative abundance proportions are multiplied by read
+depth and rounded to the nearest integer prior to being returned}
 }
 \value{
-description
+if \code{dryrun = TRUE}, a character vector of resource names is returned
+invisibly; if \code{dryrun = FALSE}, a \code{list} of resources is returned
 }
 \description{
-Description
+To access curated metagenomic data users will use \code{curatedMetagenomicData()}
+after "shopping" the \link{sampleMetadata} \code{data.frame} for resources they are
+interested in. The \code{dryrun} argument allows users to perfect a query prior to
+returning resources. When \code{dryrun = TRUE}, matched resources will be printed
+before they are returned invisibly as a character vector. When
+\code{dryrun = FALSE}, a \code{list} of resources containing
+\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
+and/or
+\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
+objects, each with corresponding sample metadata, is returned. Multiple
+resources can be returned simultaneously and if there is more than one date
+corresponding to a resource, the most recent one is selected automatically.
+Finally, if a \code{relative_abundance} resource is requested and \code{counts = TRUE},
+relative abundance proportions will be multiplied by read depth and rounded
+to the nearest integer.
+}
+\details{
+Above "resources" refers to resources that exists in Bioconductor's
+ExperimentHub service. In the context of curatedMetagenomicData, these are
+study-level (sparse) matrix objects used to create
+\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
+and/or
+\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
+objects that are ultimately returned as the \code{list} of resources. Only the
+\code{gene_families} \code{dataType} (see \link{returnSamples}) is stored as a sparse matrix
+in ExperimentHub - this has no practical consequences for users and is done
+to optimize storage. When searching for "resources", users will use the
+\code{study_name} value from the \link{sampleMetadata} \code{data.frame}.
+}
+\examples{
+curatedMetagenomicData("AsnicarF_20.+")
+
+curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
+
+curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
+
+}
+\seealso{
+\link{mergeData}, \link{returnSamples}, \link{sampleMetadata}
 }

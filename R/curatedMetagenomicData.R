@@ -1,17 +1,55 @@
 #' Access Curated Metagenomic Data
 #'
-#' Description
+#' To access curated metagenomic data users will use `curatedMetagenomicData()`
+#' after "shopping" the [sampleMetadata] `data.frame` for resources they are
+#' interested in. The `dryrun` argument allows users to perfect a query prior to
+#' returning resources. When `dryrun = TRUE`, matched resources will be printed
+#' before they are returned invisibly as a character vector. When
+#' `dryrun = FALSE`, a `list` of resources containing
+#' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
+#' and/or
+#' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
+#' objects, each with corresponding sample metadata, is returned. Multiple
+#' resources can be returned simultaneously and if there is more than one date
+#' corresponding to a resource, the most recent one is selected automatically.
+#' Finally, if a `relative_abundance` resource is requested and `counts = TRUE`,
+#' relative abundance proportions will be multiplied by read depth and rounded
+#' to the nearest integer.
 #'
-#' @param pattern description
+#' Above "resources" refers to resources that exists in Bioconductor's
+#' ExperimentHub service. In the context of curatedMetagenomicData, these are
+#' study-level (sparse) matrix objects used to create
+#' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
+#' and/or
+#' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
+#' objects that are ultimately returned as the `list` of resources. Only the
+#' `gene_families` `dataType` (see [returnSamples]) is stored as a sparse matrix
+#' in ExperimentHub - this has no practical consequences for users and is done
+#' to optimize storage. When searching for "resources", users will use the
+#' `study_name` value from the [sampleMetadata] `data.frame`.
 #'
-#' @param dryrun description
+#' @param pattern regular expression pattern to look for in the titles of
+#' resources available in curatedMetagenomicData; `""` will return all resources
 #'
-#' @param counts description
+#' @param dryrun if `TRUE` (the default), a character vector of resource names
+#' is returned invisibly; if `FALSE`, a `list` of resources is returned
 #'
-#' @return description
+#' @param counts if `FALSE` (the default), relative abundance proportions are
+#' returned; if `TRUE`, relative abundance proportions are multiplied by read
+#' depth and rounded to the nearest integer prior to being returned
+#'
+#' @return if `dryrun = TRUE`, a character vector of resource names is returned
+#' invisibly; if `dryrun = FALSE`, a `list` of resources is returned
 #' @export
 #'
-# @examples
+#' @seealso [mergeData], [returnSamples], [sampleMetadata]
+#'
+#' @examples
+#' curatedMetagenomicData("AsnicarF_20.+")
+#'
+#' curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
+#'
+#' curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
 #'
 #' @importFrom stringr str_subset
 #' @importFrom purrr list_along
@@ -51,7 +89,7 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
         stringr::str_subset(title, pattern)
 
     if (base::length(resources) == 0) {
-        stop("no resources found in curatedMetagenomicData", call. = FALSE)
+        stop("no resources available in curatedMetagenomicData", call. = FALSE)
     }
 
     if (dryrun) {

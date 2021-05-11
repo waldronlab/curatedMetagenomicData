@@ -7,11 +7,46 @@
 mergeData(mergeList)
 }
 \arguments{
-\item{mergeList}{description}
+\item{mergeList}{a \code{list} returned from \link{curatedMetagenomicData} where all of
+the elements are of the same \code{dataType} (see \link{returnSamples})}
 }
 \value{
-description
+when \code{mergeList} elements are of \code{dataType} (see \link{returnSamples})
+\code{relative_abundance}, a
+\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
+object is returned; otherwise, a
+\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
+object is returned
 }
 \description{
-Description
+To merge the \code{list} elements returned from \link{curatedMetagenomicData} into a
+single
+\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment} or
+\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
+object, users will use \code{mergeData()} provided elements are the same
+\code{dataType} (see \link{returnSamples}). This is useful for analysis across entire
+studies (e.g. meta-analysis); however, when doing analysis across individual
+samples (e.g. mega-analysis) \link{returnSamples} is preferable.
+}
+\details{
+Internally, \code{mergeData()} must full join \code{assays} and \code{rowData} slots of each
+\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment} or
+\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
+object (\code{colData} is merged slightly more efficiently by row binding). While
+\code{dplyr} methods are used for maximum efficiency, users should be aware that
+memory requirements can be large when merging many \code{list} elements.
+}
+\examples{
+curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) \%>\%
+    mergeData()
+
+curatedMetagenomicData("LiJ_20.+.pathway_abundance", dryrun = FALSE) \%>\%
+    mergeData()
+
+curatedMetagenomicData("LiJ_20.+.relative_abundance", dryrun = FALSE) \%>\%
+    mergeData()
+
+}
+\seealso{
+\link{curatedMetagenomicData}, \link{returnSamples}
 }

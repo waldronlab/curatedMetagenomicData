@@ -1,6 +1,11 @@
 # curatedMetagenomicData 3.0.0
 
-* curatedMetagenomicData now contains 20,284 samples from 86 studies
+* curatedMetagenomicData now contains 20,283 samples from 86 studies
+* A total of 10,084 samples added since Bioconductor 3.XX (XXX 20XX)
+* Datasets added since Bioconductor 3.XX (XXX 20XX):
+    - XXX (XXX samples)
+    - XXX (XXX samples)
+* The long awaited upgrade to (Tree)SummarizedExperiment has happened
 
 # curatedMetagenomicData 1.16.0
 

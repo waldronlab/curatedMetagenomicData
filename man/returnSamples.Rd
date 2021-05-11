@@ -7,15 +7,52 @@
 returnSamples(sampleMetadata, dataType, counts = FALSE)
 }
 \arguments{
-\item{sampleMetadata}{description}
+\item{sampleMetadata}{the \link{sampleMetadata} \code{data.frame} subset to include
+only desired samples and metadata}
 
-\item{dataType}{description}
+\item{dataType}{the data type to be returned; one of the following:
+\itemize{
+\item \code{"gene_families"}
+\item \code{"marker_abundance"}
+\item \code{"marker_presence"}
+\item \code{"pathway_abundance"}
+\item \code{"pathway_coverage"}
+\item \code{"relative_abundance"}
+}}
 
-\item{counts}{description}
+\item{counts}{if \code{FALSE} (the default), relative abundance proportions are
+returned; if \code{TRUE}, relative abundance proportions are multiplied by read
+depth and rounded to the nearest integer prior to being returned}
 }
 \value{
-description
+when \code{dataType = "relative_abundance"}, a
+\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
+object is returned; otherwise, a
+\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
+object is returned
 }
 \description{
-Description
+To return samples across studies, users will use \code{returnSamples()} along with
+the \link{sampleMetadata} \code{data.frame} subset to include only desired samples and
+metadata. The subset \link{sampleMetadata} \code{data.frame} will be used to get the
+desired resources, \link{mergeData} will be used to merge them, and the subset
+\link{sampleMetadata} \code{data.frame} will be used again to subset the
+\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment} or
+\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
+object to include only desired samples and metadata.
+}
+\details{
+At present, curatedMetagenomicData resources exists only as entire studies
+which requires potentially getting many resources for a limited number of
+samples. Furthermore, because it is necessary to use \link{mergeData} internally,
+the same caveats detailed under \strong{Details} in \link{mergeData} apply here.
+}
+\examples{
+sampleMetadata \%>\%
+    dplyr::filter(age >= 18) \%>\%
+    dplyr::filter(!base::is.na(alcohol)) \%>\%
+    dplyr::filter(body_site == "stool") \%>\%
+    dplyr::select(where(~ !base::all(base::is.na(.x)))) \%>\%
+    returnSamples("relative_abundance")
+
 }

@@ -1,17 +1,48 @@
 #' Return Samples Across Studies
 #'
-#' Description
+#' To return samples across studies, users will use `returnSamples()` along with
+#' the [sampleMetadata] `data.frame` subset to include only desired samples and
+#' metadata. The subset [sampleMetadata] `data.frame` will be used to get the
+#' desired resources, [mergeData] will be used to merge them, and the subset
+#' [sampleMetadata] `data.frame` will be used again to subset the
+#' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class] or
+#' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
+#' object to include only desired samples and metadata.
 #'
-#' @param sampleMetadata description
+#' At present, curatedMetagenomicData resources exists only as entire studies
+#' which requires potentially getting many resources for a limited number of
+#' samples. Furthermore, because it is necessary to use [mergeData] internally,
+#' the same caveats detailed under **Details** in [mergeData] apply here.
 #'
-#' @param dataType description
+#' @param sampleMetadata the [sampleMetadata] `data.frame` subset to include
+#' only desired samples and metadata
 #'
-#' @param counts description
+#' @param dataType the data type to be returned; one of the following:
+#' * `"gene_families"`
+#' * `"marker_abundance"`
+#' * `"marker_presence"`
+#' * `"pathway_abundance"`
+#' * `"pathway_coverage"`
+#' * `"relative_abundance"`
 #'
-#' @return description
+#' @param counts if `FALSE` (the default), relative abundance proportions are
+#' returned; if `TRUE`, relative abundance proportions are multiplied by read
+#' depth and rounded to the nearest integer prior to being returned
+#'
+#' @return when `dataType = "relative_abundance"`, a
+#' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
+#' object is returned; otherwise, a
+#' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
+#' object is returned
 #' @export
 #'
-# @examples
+#' @examples
+#' sampleMetadata %>%
+#'     dplyr::filter(age >= 18) %>%
+#'     dplyr::filter(!base::is.na(alcohol)) %>%
+#'     dplyr::filter(body_site == "stool") %>%
+#'     dplyr::select(where(~ !base::all(base::is.na(.x)))) %>%
+#'     returnSamples("relative_abundance")
 #'
 #' @importFrom magrittr %>%
 #' @importFrom stringr str_c
