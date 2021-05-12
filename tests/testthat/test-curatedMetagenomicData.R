@@ -10,8 +10,16 @@ test_that("fake resources do not exists", {
 })
 
 test_that("all metadata.csv resources exists", {
+    metadata_file_path <-
+        base::system.file("extdata/metadata.csv", package = "curatedMetagenomicData")
+
+    if (!base::file.exists(metadata_file_path)) {
+        metadata_file_path <-
+            base::as.character("../../inst/extdata/metadata.csv")
+    }
+
     metadata_resources <-
-        readr::read_csv("../../inst/extdata/metadata.csv") %>%
+        readr::read_csv(metadata_file_path, col_types = "ccccccccclcccccc") %>%
         dplyr::pull("Title") %>%
         base::sort()
 

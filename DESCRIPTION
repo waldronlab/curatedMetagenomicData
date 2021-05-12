@@ -51,6 +51,7 @@ Imports:
 Suggests:
     BiocStyle,
     knitr,
+    readr,
     rmarkdown,
     testthat
 URL: https://github.com/waldronlab/curatedMetagenomicData

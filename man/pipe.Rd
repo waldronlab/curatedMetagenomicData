@@ -2,19 +2,30 @@
 % Please edit documentation in R/utils-pipe.R
 \name{\%>\%}
 \alias{\%>\%}
-\title{Pipe operator}
+\title{Pipe Operator}
 \usage{
 lhs \%>\% rhs
 }
 \arguments{
-\item{lhs}{A value or the magrittr placeholder.}
+\item{lhs}{a value or the magrittr placeholder}
 
-\item{rhs}{A function call using the magrittr semantics.}
+\item{rhs}{a function call using the magrittr semantics}
 }
 \value{
-The result of calling \code{rhs(lhs)}.
+The result of calling \code{rhs(lhs)}
 }
 \description{
 See \code{magrittr::\link[magrittr:pipe]{\%>\%}} for details.
+}
+\examples{
+curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) \%>\%
+    mergeData()
+
+curatedMetagenomicData("LiJ_20.+.pathway_abundance", dryrun = FALSE) \%>\%
+    mergeData()
+
+curatedMetagenomicData("LiJ_20.+.relative_abundance", dryrun = FALSE) \%>\%
+    mergeData()
+
 }
 \keyword{internal}

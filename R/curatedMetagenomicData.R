@@ -193,9 +193,9 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
 
             rowData <-
                 base::data.frame(rowname = keep_tips) %>%
-                tidyr::separate(rowname, tax_names, sep = "\\|", remove = FALSE, fill = "right") %>%
-                dplyr::mutate(dplyr::across(.cols = -rowname, .fns = ~ stringr::str_remove_all(.x, "[a-z]__"))) %>%
-                dplyr::mutate(dplyr::across(.cols = -rowname, .fns = ~ stringr::str_replace_all(.x, "_", " "))) %>%
+                tidyr::separate(.data[["rowname"]], tax_names, sep = "\\|", remove = FALSE, fill = "right") %>%
+                dplyr::mutate(dplyr::across(.cols = -"rowname", .fns = ~ stringr::str_remove_all(.x, "[a-z]__"))) %>%
+                dplyr::mutate(dplyr::across(.cols = -"rowname", .fns = ~ stringr::str_replace_all(.x, "_", " "))) %>%
                 tibble::column_to_rownames() %>%
                 S4Vectors::DataFrame()
 
