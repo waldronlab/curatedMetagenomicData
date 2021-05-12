@@ -27,6 +27,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-home">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -45,12 +47,6 @@
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="articles/curatedMetagenomicData.html">Get started</a>
 </li>
@@ -103,34 +99,34 @@
   <div class="contents col-md-9">
 <div id="curatedmetagenomicdata" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#curatedmetagenomicdata" class="anchor"></a>curatedMetagenomicData</h1></div>
+<a href="#curatedmetagenomicdata" class="anchor" aria-hidden="true"></a>curatedMetagenomicData</h1></div>
 <!-- badges: start -->
 <!-- badges: end -->
 <p>The curatedMetagenomicData package provides standardized, curated human microbiome data for novel analyses. It includes gene families, marker abundance, marker presence, pathway abundance, pathway coverage, and relative abundance for samples collected from different body sites. The bacterial, fungal, and archaeal taxonomic abundances for each sample were calculated with MetaPhlAn3 and metabolic functional potential was calculated with HUMAnN3. The manually curated sample metadata and standardized metagenomic data are available as (Tree)SummarizedExperiment objects.</p>
 <div id="versions" class="section level2">
 <h2 class="hasAnchor">
-<a href="#versions" class="anchor"></a>Versions</h2>
-<p>To avoid some confusion preemptively - there was <em>never</em> a version 2.0.0 of curatedMetagenomicData. Version 1.0.0 was released in 2017 and version 3.0.0 was released in 2021; we skipped directly to version 3.0.0 to align with MetaPhlAn3 and HUMAnN3. Version 3.0.0 features significant changes and, to be sure, they will take some adjustment. While users are encouraged to upgrade to the latest (and greatest) version, the previous version (<a href="https://github.com/waldronlab/curatedMetagenomicData/releases/tag/v1.20.0">1.20.0</a>) of curatedMetagenomicData will remain installable for the foreseeable future (see below). However, users should consider switching because version 3.0.0 now uses the appropriate modern Bioconductor data structures (<code>SummarizedExperiment</code> and <code>TreeSummarizedExperiment</code>). As such, all of the previous version 1.0.0 methods that worked on <code>ExpressionSet</code> objects are irrelevant and have moved directly to defunct in version 3.0.0. Finally, to avoid additional confusion, the resources pertaining to each release are only available in their respective releases. It would be possible to access them with methods from the <code>ExperimentHub</code> package, but doing so is strongly discouraged.</p>
+<a href="#versions" class="anchor" aria-hidden="true"></a>Versions</h2>
+<p>To avoid some confusion preemptively - there was <em>never</em> a version 2.0.0 of curatedMetagenomicData. Version 1.0.0 was released in 2017 and version 3.0.0 was released in 2021; we skipped directly to version 3.0.0 to align with MetaPhlAn3 and HUMAnN3. Version 3.0.0 features significant changes and, to be sure, they will take some adjustment. While users are encouraged to upgrade to the latest (and greatest) version, the previous version (<a href="https://github.com/waldronlab/curatedMetagenomicData/releases/tag/v1.20.0" class="external-link">1.20.0</a>) of curatedMetagenomicData will remain installable for the foreseeable future (see below). However, users should consider switching because version 3.0.0 now uses the appropriate modern Bioconductor data structures (<code>SummarizedExperiment</code> and <code>TreeSummarizedExperiment</code>). As such, all of the previous version 1.0.0 methods that worked on <code>ExpressionSet</code> objects are irrelevant and have moved directly to defunct in version 3.0.0. Finally, to avoid additional confusion, the resources pertaining to each release are only available in their respective releases. It would be possible to access them with methods from the <code>ExperimentHub</code> package, but doing so is strongly discouraged.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
-<a href="#installation" class="anchor"></a>Installation</h2>
+<a href="#installation" class="anchor" aria-hidden="true"></a>Installation</h2>
 <p>You can install the current version of curatedMetagenomicData from Bioconductor with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"curatedMetagenomicData"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"curatedMetagenomicData"</span><span class="op">)</span></code></pre></div>
 <p>You can install the current version of curatedMetagenomicData from GitHub with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"waldronlab/curatedMetagenomicData"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"waldronlab/curatedMetagenomicData"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>You can install the previous version of curatedMetagenomicData from GitHub with:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html">install</a></span><span class="op">(</span><span class="st">"waldronlab/curatedMetagenomicData"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span>, ref <span class="op">=</span> <span class="st">"v1.20.0"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"waldronlab/curatedMetagenomicData"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span>, ref <span class="op">=</span> <span class="st">"v1.20.0"</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h2>
+<a href="#examples" class="anchor" aria-hidden="true"></a>Examples</h2>
 <p>Find and access curated metagenomic data using <code><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData()</a></code>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/curatedMetagenomicData">curatedMetagenomicData</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_20.+"</span><span class="op">)</span>
 <span class="co">#&gt; 2021-03-31.AsnicarF_2017.gene_families</span>
@@ -221,22 +217,22 @@
 </div>
 <div id="contributing" class="section level2">
 <h2 class="hasAnchor">
-<a href="#contributing" class="anchor"></a>Contributing</h2>
+<a href="#contributing" class="anchor" aria-hidden="true"></a>Contributing</h2>
 <p>All are welcome to contribute to the curatedMetagenomicData package provided contributions are appropriate. Please see the contributing guide.</p>
 </div>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
-<a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
+<a href="#code-of-conduct" class="anchor" aria-hidden="true"></a>Code of Conduct</h2>
 <p>Please note that the curatedMetagenomicData package is released with a code of conduct. By contributing, you agree to abide by its terms.</p>
 <hr>
-<p>Pasolli E, Schiffer L, Manghi P, Renson A, Obenchain V, Truong D, Beghini F, Malik F, Ramos M, Dowd J, Huttenhower C, Morgan M, Segata N, Waldron L (2017). Accessible, curated metagenomic data through ExperimentHub. <em>Nat. Methods</em>, <strong>14</strong>(11), 1023-1024. ISSN 1548-7091, 1548-7105, doi: <a href="https://doi.org/10.1038/nmeth.4468">10.1038/nmeth.4468</a>.</p>
+<p>Pasolli E, Schiffer L, Manghi P, Renson A, Obenchain V, Truong D, Beghini F, Malik F, Ramos M, Dowd J, Huttenhower C, Morgan M, Segata N, Waldron L (2017). Accessible, curated metagenomic data through ExperimentHub. <em>Nat. Methods</em>, <strong>14</strong>(11), 1023-1024. ISSN 1548-7091, 1548-7105, doi: <a href="https://doi.org/10.1038/nmeth.4468" class="external-link">10.1038/nmeth.4468</a>.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <div class="links">
-<h2>Links</h2>
+<h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
 <li>Download from BIOC at <br><a href="https://www.bioconductor.org/packages/curatedMetagenomicData">https://​www.bioconductor.org/​packages/​curatedMetagenomicData</a>
 </li>
@@ -246,44 +242,52 @@
 </li>
 </ul>
 </div>
+
 <div class="license">
-<h2>License</h2>
+<h2 data-toc-skip>License</h2>
 <ul class="list-unstyled">
 <li><a href="https://www.r-project.org/Licenses/Artistic-2.0">Artistic-2.0</a></li>
 </ul>
 </div>
+
 <div class="community">
-<h2>Community</h2>
+<h2 data-toc-skip>Community</h2>
 <ul class="list-unstyled">
 <li><a href="CONTRIBUTING.html">Contributing guide</a></li>
 <li><a href="CODE_OF_CONDUCT.html">Code of conduct</a></li>
 </ul>
 </div>
+
 <div class="citation">
-<h2>Citation</h2>
+<h2 data-toc-skip>Citation</h2>
 <ul class="list-unstyled">
 <li><a href="authors.html">Citing curatedMetagenomicData</a></li>
 </ul>
 </div>
+
 <div class="developers">
-<h2>Developers</h2>
+<h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Lucas schiffer <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0003-3628-0326" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>Levi Waldron <br><small class="roles"> Author </small>  </li>
-<li><a href="authors.html">All authors...</a></li>
+<li><a href="authors.html">More on authors...</a></li>
 </ul>
 </div>
+
+
 
   </div>
 </div>
 
 
       <footer><div class="copyright">
-  <p>Developed by Lucas schiffer, Levi Waldron.</p>
+  <p></p>
+<p>Developed by Lucas schiffer, Levi Waldron.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p>
 </div>
 
       </footer>
@@ -291,6 +295,8 @@
 
   
 
+
+  
 
   </body>
 </html>
