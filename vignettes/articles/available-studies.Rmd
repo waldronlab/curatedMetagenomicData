@@ -13,6 +13,12 @@ knitr::opts_chunk$set(
 library(curatedMetagenomicData)
 ```
 
+```{r, include = FALSE}
+if (!requireNamespace("gt", quietly = TRUE)) {
+    install.packages("gt")
+}
+```
+
 ```{r, echo = FALSE}
 sampleMetadata %>%
     dplyr::rename(Study = study_name) %>%
