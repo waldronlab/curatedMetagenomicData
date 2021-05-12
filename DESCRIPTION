@@ -55,7 +55,7 @@ Suggests:
     rmarkdown,
     testthat,
     phyloseq,
-    mia
+    mia,
     ggplot2
 URL: https://github.com/waldronlab/curatedMetagenomicData
 BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
