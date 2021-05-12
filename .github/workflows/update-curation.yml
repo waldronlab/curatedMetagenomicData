@@ -3,10 +3,6 @@ on:
     branches:
       - main
       - master
-  push:
-    branches:
-      - main
-      - master
   schedule:
     - cron: "0 5 * * 6"
 
@@ -30,7 +26,9 @@ jobs:
           restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
 
       - name: Install dependencies
-        run: remotes::install_deps(dependencies = TRUE)
+        run: |
+          remotes::install_deps(dependencies = TRUE)
+          install.packages(c("magrittr", "readr", "usethis"))
         shell: Rscript {0}
 
       - name: Install package
@@ -41,19 +39,31 @@ jobs:
           Rscript data-raw/sysdata.R
           Rscript data-raw/sampleMetadata.R
 
+      - name: Update combined_metadata
+        run: |
+          data(sampleMetadata)
+          combined_metadata <- sampleMetadata
+          usethis::use_data(combined_metadata, overwrite = TRUE)
+        shell: Rscript {0}
+
       - name: Test curation
         id: update_curation
         run: |
           library("curatedMetagenomicData")
-          library("curatedMetagenomicDataCuration")
-          message(paste("\n****", Sys.time(), "Check curation ****"))
+          message(paste("\n****", Sys.time(), "Test curation****"))
           status <- "passing"
-          data(combined_metadata)
-          tryCatch(curatedMetagenomicDataCuration::checkCuration(combined_metadata),
+          data(sampleMetadata)
+          tryCatch(curatedMetagenomicDataCuration::checkCuration(sampleMetadata),
                warning = function(w) {
                    status <<- "failing"
                    message(paste(w, "\n"))
           })
+          ocs <- testthat::test_file("tests/testthat/test-sampleMetadata.R")
+          for (oc in ocs) {
+              if (length(oc$results) > 1) {
+                  status <<- "failing"
+              }
+          }
           color = if (status == "passing") "brightgreen" else "red"
           message(paste("::set-output name=status::", status, sep=""))
           message(paste("::set-output name=color::", color, sep=""))
