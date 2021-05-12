@@ -5,7 +5,7 @@
 \alias{sampleMetadata}
 \title{Manually Curated Sample Metadata}
 \format{
-An object of class \code{data.frame} with 20283 rows and 134 columns.
+An object of class \code{data.frame} with 20283 rows and 130 columns.
 }
 \usage{
 sampleMetadata

@@ -52,10 +52,10 @@
 #' curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
 #'
 #' @importFrom stringr str_subset
-#' @importFrom purrr list_along
-#' @importFrom magrittr %>%
-#' @importFrom magrittr set_names
 #' @importFrom stringr str_c
+#' @importFrom magrittr %>%
+#' @importFrom purrr list_along
+#' @importFrom magrittr set_names
 #' @importFrom ExperimentHub ExperimentHub
 #' @importFrom AnnotationHub query
 #' @importFrom S4Vectors mcols
@@ -93,7 +93,8 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
     }
 
     if (dryrun) {
-        base::cat(resources, sep = "\n")
+        stringr::str_c(resources, collapse = "\n") %>%
+            base::message()
 
         return(base::invisible(resources))
     }
@@ -176,6 +177,9 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
                     magrittr::divide_by(100) %>%
                     base::t() %>%
                     base::round()
+
+                base::mode(eh_matrix) <-
+                    "integer"
             }
 
             assays <-

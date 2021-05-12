@@ -1,43 +1,376 @@
-test_that("you can't merge different data types.", {
+test_that("cannot merge single element list", {
+    merge_list <-
+        curatedMetagenomicData("HMP_2012.marker_presence", dryrun = FALSE, counts = FALSE)
 
-    mergeList <- curatedMetagenomicData("AsnicarF_2017.marker_", dryrun = FALSE)
-    expect_error(mergeData(mergeList))
-
+    expect_error(mergeData(merge_list))
 })
 
-test_that("merge results are correct.", {
+test_that("cannot merge list elements when dataType is different", {
+    merge_list <-
+        curatedMetagenomicData("HMP_2012.marker_", dryrun = FALSE, counts = FALSE)
 
-    AsnicarF_2017 <- curatedMetagenomicData("AsnicarF_2017.marker_presence", dryrun = FALSE)[[1]]
-    AsnicarF_2021 <- curatedMetagenomicData("AsnicarF_2021.marker_presence", dryrun = FALSE)[[1]]
-
-    mergeList <- curatedMetagenomicData("AsnicarF_.+marker_presence", dryrun = FALSE)
-
-    testData <- mergeData(mergeList)
-    testData2017 <- testData[rownames(AsnicarF_2017), colnames(AsnicarF_2017)]
-    testData2021 <- testData[rownames(AsnicarF_2021), colnames(AsnicarF_2021)]
-
-    colData(testData2017) <- colData(testData2017)[, colnames(colData(AsnicarF_2017))]
-    colData(testData2021) <- colData(testData2021)[, colnames(colData(AsnicarF_2021))]
-
-    expect_equal(assay(AsnicarF_2017), assay(testData2017))
-    expect_equal(colData(AsnicarF_2017), colData(testData2017))
-    expect_equal(rowData(AsnicarF_2017), rowData(testData2017))
-
-    expect_equal(assay(AsnicarF_2021), assay(testData2021))
-    expect_equal(colData(AsnicarF_2021), colData(testData2021))
-    expect_equal(rowData(AsnicarF_2021), rowData(testData2021))
-
+    expect_error(mergeData(merge_list))
 })
 
-test_that("returnType is correct.", {
+test_that("cannot merge list elements when colnames are not unique", {
+    merge_list <-
+        curatedMetagenomicData("LeChatelierE_2013.marker_abundance|NielsenHB_2014.marker_abundance", dryrun = FALSE, counts = FALSE)
 
-    marker_presence <- curatedMetagenomicData("AsnicarF_.+marker_presence", dryrun = FALSE)
-    test_marker_presence <- mergeData(marker_presence)
+    expect_error(mergeData(merge_list))
+})
 
-    relative_abundance <- curatedMetagenomicData("AsnicarF_.+relative_abundance", dryrun = FALSE)
-    test_relative_abundance <- mergeData(relative_abundance)
+test_that("merge result is correct when dataType is not relative_abundance", {
+    merge_list <-
+        curatedMetagenomicData("LiJ_20.+.marker_presence", dryrun = FALSE, counts = FALSE)
 
-    expect_s4_class(test_marker_presence, "SummarizedExperiment")
-    expect_s4_class(test_relative_abundance, "TreeSummarizedExperiment")
+    study_one <-
+        merge_list[[1]]
 
+    row_order <-
+        base::rownames(study_one) %>%
+        base::sort()
+
+    col_order <-
+        base::colnames(study_one) %>%
+        base::sort()
+
+    study_one <-
+        magrittr::extract(study_one, row_order, col_order)
+
+    row_order <-
+        SummarizedExperiment::colData(study_one) %>%
+        base::rownames()
+
+    col_order <-
+        SummarizedExperiment::colData(study_one) %>%
+        base::colnames() %>%
+        base::sort()
+
+    SummarizedExperiment::colData(study_one) <-
+        SummarizedExperiment::colData(study_one) %>%
+        magrittr::extract(row_order, col_order)
+
+    study_two <-
+        merge_list[[2]]
+
+    row_order <-
+        base::rownames(study_two) %>%
+        base::sort()
+
+    col_order <-
+        base::colnames(study_two) %>%
+        base::sort()
+
+    study_two <-
+        magrittr::extract(study_two, row_order, col_order)
+
+    row_order <-
+        SummarizedExperiment::colData(study_two) %>%
+        base::rownames()
+
+    col_order <-
+        SummarizedExperiment::colData(study_two) %>%
+        base::colnames() %>%
+        base::sort()
+
+    SummarizedExperiment::colData(study_two) <-
+        SummarizedExperiment::colData(study_two) %>%
+        magrittr::extract(row_order, col_order)
+
+    study_name_one <-
+        SummarizedExperiment::colData(study_one) %>%
+        base::as.data.frame() %>%
+        dplyr::pull("study_name") %>%
+        base::unique()
+
+    study_name_two <-
+        SummarizedExperiment::colData(study_two) %>%
+        base::as.data.frame() %>%
+        dplyr::pull("study_name") %>%
+        base::unique()
+
+    merge_result <-
+        mergeData(merge_list)
+
+    merge_one <-
+        SummarizedExperiment::subset(merge_result, select = study_name == study_name_one)
+
+    keep_rows <-
+        SummarizedExperiment::assay(merge_one) %>%
+        base::apply(1, base::anyNA) %>%
+        magrittr::not()
+
+    keep_cols <-
+        base::colnames(merge_one)
+
+    merge_one <-
+        magrittr::extract(merge_one, keep_rows, keep_cols)
+
+    SummarizedExperiment::colData(merge_one) <-
+        SummarizedExperiment::colData(merge_one) %>%
+        base::as.data.frame() %>%
+        dplyr::select(where(~ !base::all(base::is.na(.x)))) %>%
+        S4Vectors::DataFrame()
+
+    row_order <-
+        base::rownames(merge_one) %>%
+        base::sort()
+
+    col_order <-
+        base::colnames(merge_one) %>%
+        base::sort()
+
+    merge_one <-
+        magrittr::extract(merge_one, row_order, col_order)
+
+    row_order <-
+        SummarizedExperiment::colData(merge_one) %>%
+        base::rownames()
+
+    col_order <-
+        SummarizedExperiment::colData(merge_one) %>%
+        base::colnames() %>%
+        base::sort()
+
+    SummarizedExperiment::colData(merge_one) <-
+        SummarizedExperiment::colData(merge_one) %>%
+        magrittr::extract(row_order, col_order)
+
+    merge_two <-
+        SummarizedExperiment::subset(merge_result, select = study_name == study_name_two)
+
+    keep_rows <-
+        SummarizedExperiment::assay(merge_two) %>%
+        base::apply(1, base::anyNA) %>%
+        magrittr::not()
+
+    keep_cols <-
+        base::colnames(merge_two)
+
+    merge_two <-
+        magrittr::extract(merge_two, keep_rows, keep_cols)
+
+    SummarizedExperiment::colData(merge_two) <-
+        SummarizedExperiment::colData(merge_two) %>%
+        base::as.data.frame() %>%
+        dplyr::select(where(~ !base::all(base::is.na(.x)))) %>%
+        S4Vectors::DataFrame()
+
+    row_order <-
+        base::rownames(merge_two) %>%
+        base::sort()
+
+    col_order <-
+        base::colnames(merge_two) %>%
+        base::sort()
+
+    merge_two <-
+        magrittr::extract(merge_two, row_order, col_order)
+
+    row_order <-
+        SummarizedExperiment::colData(merge_two) %>%
+        base::rownames()
+
+    col_order <-
+        SummarizedExperiment::colData(merge_two) %>%
+        base::colnames() %>%
+        base::sort()
+
+    SummarizedExperiment::colData(merge_two) <-
+        SummarizedExperiment::colData(merge_two) %>%
+        magrittr::extract(row_order, col_order)
+
+    expect_equal(SummarizedExperiment::assay(study_one), SummarizedExperiment::assay(merge_one))
+    expect_equal(SummarizedExperiment::colData(study_one), SummarizedExperiment::colData(merge_one))
+    expect_equal(SummarizedExperiment::rowData(study_one), SummarizedExperiment::rowData(merge_one))
+
+    expect_equal(SummarizedExperiment::assay(study_two), SummarizedExperiment::assay(merge_two))
+    expect_equal(SummarizedExperiment::colData(study_two), SummarizedExperiment::colData(merge_two))
+    expect_equal(SummarizedExperiment::rowData(study_two), SummarizedExperiment::rowData(merge_two))
+})
+
+test_that("merge result is correct when dataType is relative_abundance", {
+    merge_list <-
+        curatedMetagenomicData("LiJ_20.+.relative_abundance", dryrun = FALSE, counts = FALSE)
+
+    study_one <-
+        merge_list[[1]]
+
+    row_order <-
+        base::rownames(study_one) %>%
+        base::sort()
+
+    col_order <-
+        base::colnames(study_one) %>%
+        base::sort()
+
+    study_one <-
+        magrittr::extract(study_one, row_order, col_order)
+
+    row_order <-
+        SummarizedExperiment::colData(study_one) %>%
+        base::rownames()
+
+    col_order <-
+        SummarizedExperiment::colData(study_one) %>%
+        base::colnames() %>%
+        base::sort()
+
+    SummarizedExperiment::colData(study_one) <-
+        SummarizedExperiment::colData(study_one) %>%
+        magrittr::extract(row_order, col_order)
+
+    study_two <-
+        merge_list[[2]]
+
+    row_order <-
+        base::rownames(study_two) %>%
+        base::sort()
+
+    col_order <-
+        base::colnames(study_two) %>%
+        base::sort()
+
+    study_two <-
+        magrittr::extract(study_two, row_order, col_order)
+
+    row_order <-
+        SummarizedExperiment::colData(study_two) %>%
+        base::rownames()
+
+    col_order <-
+        SummarizedExperiment::colData(study_two) %>%
+        base::colnames() %>%
+        base::sort()
+
+    SummarizedExperiment::colData(study_two) <-
+        SummarizedExperiment::colData(study_two) %>%
+        magrittr::extract(row_order, col_order)
+
+    study_name_one <-
+        SummarizedExperiment::colData(study_one) %>%
+        base::as.data.frame() %>%
+        dplyr::pull("study_name") %>%
+        base::unique()
+
+    study_name_two <-
+        SummarizedExperiment::colData(study_two) %>%
+        base::as.data.frame() %>%
+        dplyr::pull("study_name") %>%
+        base::unique()
+
+    merge_result <-
+        mergeData(merge_list)
+
+    merge_one <-
+        SummarizedExperiment::subset(merge_result, select = study_name == study_name_one)
+
+    keep_rows <-
+        SummarizedExperiment::assay(merge_one) %>%
+        base::apply(1, base::anyNA) %>%
+        magrittr::not()
+
+    keep_cols <-
+        base::colnames(merge_one)
+
+    merge_one <-
+        magrittr::extract(merge_one, keep_rows, keep_cols)
+
+    SummarizedExperiment::colData(merge_one) <-
+        SummarizedExperiment::colData(merge_one) %>%
+        base::as.data.frame() %>%
+        dplyr::select(where(~ !base::all(base::is.na(.x)))) %>%
+        S4Vectors::DataFrame()
+
+    row_order <-
+        base::rownames(merge_one) %>%
+        base::sort()
+
+    col_order <-
+        base::colnames(merge_one) %>%
+        base::sort()
+
+    merge_one <-
+        magrittr::extract(merge_one, row_order, col_order)
+
+    row_order <-
+        SummarizedExperiment::colData(merge_one) %>%
+        base::rownames()
+
+    col_order <-
+        SummarizedExperiment::colData(merge_one) %>%
+        base::colnames() %>%
+        base::sort()
+
+    SummarizedExperiment::colData(merge_one) <-
+        SummarizedExperiment::colData(merge_one) %>%
+        magrittr::extract(row_order, col_order)
+
+    merge_two <-
+        SummarizedExperiment::subset(merge_result, select = study_name == study_name_two)
+
+    keep_rows <-
+        SummarizedExperiment::assay(merge_two) %>%
+        base::apply(1, base::anyNA) %>%
+        magrittr::not()
+
+    keep_cols <-
+        base::colnames(merge_two)
+
+    merge_two <-
+        magrittr::extract(merge_two, keep_rows, keep_cols)
+
+    SummarizedExperiment::colData(merge_two) <-
+        SummarizedExperiment::colData(merge_two) %>%
+        base::as.data.frame() %>%
+        dplyr::select(where(~ !base::all(base::is.na(.x)))) %>%
+        S4Vectors::DataFrame()
+
+    row_order <-
+        base::rownames(merge_two) %>%
+        base::sort()
+
+    col_order <-
+        base::colnames(merge_two) %>%
+        base::sort()
+
+    merge_two <-
+        magrittr::extract(merge_two, row_order, col_order)
+
+    row_order <-
+        SummarizedExperiment::colData(merge_two) %>%
+        base::rownames()
+
+    col_order <-
+        SummarizedExperiment::colData(merge_two) %>%
+        base::colnames() %>%
+        base::sort()
+
+    SummarizedExperiment::colData(merge_two) <-
+        SummarizedExperiment::colData(merge_two) %>%
+        magrittr::extract(row_order, col_order)
+
+    expect_equal(SummarizedExperiment::assay(study_one), SummarizedExperiment::assay(merge_one))
+    expect_equal(SummarizedExperiment::colData(study_one), SummarizedExperiment::colData(merge_one))
+    expect_equal(SummarizedExperiment::rowData(study_one), SummarizedExperiment::rowData(merge_one))
+
+    expect_equal(SummarizedExperiment::assay(study_two), SummarizedExperiment::assay(merge_two))
+    expect_equal(SummarizedExperiment::colData(study_two), SummarizedExperiment::colData(merge_two))
+    expect_equal(SummarizedExperiment::rowData(study_two), SummarizedExperiment::rowData(merge_two))
+})
+
+test_that("return type is SummarizedExperiment when dataType is not relative_abundance", {
+    merge_result <-
+        curatedMetagenomicData("LiJ_20.+.marker_presence", dryrun = FALSE, counts = FALSE) %>%
+        mergeData()
+
+    expect_s4_class(merge_result, "SummarizedExperiment")
+})
+
+test_that("return type is TreeSummarizedExperiment when dataType is relative_abundance", {
+    merge_result <-
+        curatedMetagenomicData("LiJ_20.+.relative_abundance", dryrun = FALSE, counts = FALSE) %>%
+        mergeData()
+
+    expect_s4_class(merge_result, "TreeSummarizedExperiment")
 })

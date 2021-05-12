@@ -47,7 +47,17 @@
 #' @importFrom magrittr %>%
 #' @importFrom stringr str_c
 #' @importFrom SummarizedExperiment colData
+#' @importFrom tibble column_to_rownames
+#' @importFrom S4Vectors DataFrame
 returnSamples <- function(sampleMetadata, dataType, counts = FALSE) {
+    if (base::is.null(sampleMetadata[["study_name"]])) {
+        stop("study_name must be present in sampleMetadata", call. = FALSE)
+    }
+
+    if (base::is.null(sampleMetadata[["sample_id"]])) {
+        stop("sample_id must be present in sampleMetadata", call. = FALSE)
+    }
+
     to_return <-
         base::unique(sampleMetadata[["study_name"]]) %>%
         stringr::str_c(dataType, sep = ".") %>%
@@ -61,16 +71,9 @@ returnSamples <- function(sampleMetadata, dataType, counts = FALSE) {
     to_return <-
         to_return[keep_rows, sampleMetadata[["sample_id"]]]
 
-    col_names <-
-        SummarizedExperiment::colData(to_return) %>%
-        base::colnames()
-
-    keep_cols <-
-        base::colnames(sampleMetadata) %>%
-        base::intersect(col_names)
-
     SummarizedExperiment::colData(to_return) <-
-        SummarizedExperiment::colData(to_return)[sampleMetadata[["sample_id"]], keep_cols]
+        tibble::column_to_rownames(sampleMetadata, var = "sample_id") %>%
+        S4Vectors::DataFrame()
 
     to_return
 }

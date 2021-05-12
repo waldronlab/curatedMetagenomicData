@@ -42,9 +42,9 @@
 #' @importFrom purrr map_chr
 #' @importFrom magrittr %>%
 #' @importFrom purrr map
+#' @importFrom purrr reduce
 #' @importFrom SummarizedExperiment assay
 #' @importFrom tibble rownames_to_column
-#' @importFrom purrr reduce
 #' @importFrom dplyr full_join
 #' @importFrom tibble column_to_rownames
 #' @importFrom S4Vectors SimpleList
@@ -56,12 +56,24 @@
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment
 mergeData <- function(mergeList) {
+    if (base::length(mergeList) == 1) {
+        stop("mergeList contains only a single element", call. = FALSE)
+    }
+
     assay_name <-
         purrr::map_chr(mergeList, SummarizedExperiment::assayNames) %>%
         base::unique()
 
     if (base::length(assay_name) != 1) {
         stop("dataType of list elements is different", call. = FALSE)
+    }
+
+    duplicate_colnames <-
+        purrr::map(mergeList, base::colnames) %>%
+        purrr::reduce(base::intersect)
+
+    if (base::length(duplicate_colnames) != 0) {
+        stop("colnames/sample_id values are not unique", call. = FALSE)
     }
 
     assays <-

@@ -40,6 +40,7 @@ sampleMetadata <-
     purrr::imap(~ dplyr::mutate(.x, study_name = .y, .before = "sample_id")) %>%
     purrr::reduce(dplyr::bind_rows) %>%
     dplyr::filter(study_name %in% valid_name) %>%
+    dplyr::select(where(~ !base::all(base::is.na(.x)))) %>%
     base::as.data.frame()
 
 usethis::use_data(sampleMetadata, overwrite = TRUE)
