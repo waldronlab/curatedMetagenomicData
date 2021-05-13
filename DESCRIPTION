@@ -30,7 +30,7 @@ biocViews:
     Homo_sapiens_Data,
     MicrobiomeData,
     ReproducibleResearch
-Version: 1.99.0
+Version: 2.99.0
 License: Artistic-2.0
 Depends:
     R (>= 4.1),
@@ -50,7 +50,10 @@ Imports:
     tidyselect
 Suggests:
     BiocStyle,
+    ggplot2,
     knitr,
+    mia,
+    phyloseq,
     readr,
     rmarkdown,
     testthat
