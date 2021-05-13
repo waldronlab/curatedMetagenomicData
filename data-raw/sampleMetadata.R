@@ -1,3 +1,5 @@
+library(magrittr)
+
 BiocManager::install("waldronlab/curatedMetagenomicDataCuration")
 
 col_types <-
