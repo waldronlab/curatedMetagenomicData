@@ -53,10 +53,7 @@ Suggests:
     knitr,
     readr,
     rmarkdown,
-    testthat,
-    phyloseq,
-    mia,
-    ggplot2
+    testthat
 URL: https://github.com/waldronlab/curatedMetagenomicData
 BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
 Encoding: UTF-8

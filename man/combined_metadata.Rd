@@ -3,14 +3,17 @@
 \docType{data}
 \name{combined_metadata}
 \alias{combined_metadata}
-\title{Manually Curated Sample Metadata}
+\title{Start Using 'sampleMetadata' Instead}
 \format{
-An object of class \code{data.frame} with 20283 rows and 134 columns.
+An object of class \code{data.frame} with 20283 rows and 130 columns.
 }
 \usage{
 combined_metadata
 }
 \description{
-Manually curated sample metadata for all samples in curatedMetagenomicData.
+Start using 'sampleMetadata' instead, 'combined_metadata' will be removed in the next release.
+}
+\seealso{
+\link{sampleMetadata}
 }
 \keyword{datasets}

@@ -1,4 +1,7 @@
-#' Manually Curated Sample Metadata
+# REMOVE THIS FILE AFTER RELEASE_3_13
+#' Start Using 'sampleMetadata' Instead
 #'
-#' Manually curated sample metadata for all samples in curatedMetagenomicData.
+#' Start using 'sampleMetadata' instead, 'combined_metadata' will be removed in the next release.
+#'
+#' @seealso [sampleMetadata]
 "combined_metadata"
