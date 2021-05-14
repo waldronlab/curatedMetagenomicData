@@ -47,6 +47,9 @@
 #' @importFrom tibble rownames_to_column
 #' @importFrom dplyr full_join
 #' @importFrom tibble column_to_rownames
+#' @importFrom dplyr mutate
+#' @importFrom dplyr across
+#' @importFrom tidyr replace_na
 #' @importFrom S4Vectors SimpleList
 #' @importFrom magrittr set_names
 #' @importFrom SummarizedExperiment rowData
@@ -82,6 +85,7 @@ mergeData <- function(mergeList) {
         purrr::map(tibble::rownames_to_column) %>%
         purrr::reduce(dplyr::full_join, by = "rowname") %>%
         tibble::column_to_rownames() %>%
+        dplyr::mutate(dplyr::across(.fns = ~ tidyr::replace_na(.x, 0))) %>%
         base::as.matrix() %>%
         S4Vectors::SimpleList() %>%
         magrittr::set_names(assay_name)
