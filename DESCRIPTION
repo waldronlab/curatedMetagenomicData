@@ -50,10 +50,7 @@ Imports:
     tidyselect
 Suggests:
     BiocStyle,
-    ggplot2,
     knitr,
-    mia,
-    phyloseq,
     readr,
     rmarkdown,
     testthat
