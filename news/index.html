@@ -44,8 +44,6 @@
 
 
 
-
-
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -57,16 +55,9 @@
 
 
 
-
-  
-
-  
-
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -80,13 +71,19 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">curatedMetagenomicData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.99.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.99.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../articles/curatedMetagenomicData.html">Get started</a>
 </li>
 <li>
@@ -104,9 +101,6 @@
     </li>
     <li>
       <a href="../articles/articles/our-pipeline.html">Our Pipeline</a>
-    </li>
-    <li>
-      <a href="../articles/articles/paper-figures.html">Paper Figures</a>
     </li>
     <li>
       <a href="../articles/articles/version-three.html">Version Three</a>
@@ -143,22 +137,81 @@
 
     <div id="curatedmetagenomicdata-300" class="section level1">
 <h1 class="page-header" data-toc-text="3.0.0">
-<a href="#curatedmetagenomicdata-300" class="anchor" aria-hidden="true"></a>curatedMetagenomicData 3.0.0</h1>
-<ul><li>curatedMetagenomicData now contains 20,283 samples from 86 studies</li>
-<li>A total of 10,084 samples added since Bioconductor 3.XX (XXX 20XX)</li>
-<li>Datasets added since Bioconductor 3.XX (XXX 20XX):
-<ul><li>XXX (XXX samples)</li>
-<li>XXX (XXX samples)</li>
-</ul></li>
-<li>The long awaited upgrade to (Tree)SummarizedExperiment has happened</li>
-</ul></div>
+<a href="#curatedmetagenomicdata-300" class="anchor"></a>curatedMetagenomicData 3.0.0</h1>
+<ul>
+<li>curatedMetagenomicData now contains 20,283 samples from 86 studies</li>
+<li>A total of 10,084 samples added since Bioconductor 3.10 (October 2019)</li>
+<li>Studies added since Bioconductor 3.10 (October 2019):
+<ul>
+<li>AsnicarF_2021 (1098 samples)</li>
+<li>BrooksB_2017 (408 samples)</li>
+<li>ChuDM_2017 (86 samples)</li>
+<li>DeFilippisF_2019 (97 samples)</li>
+<li>GhensiP_2019 (113 samples)</li>
+<li>GuptaA_2019 (60 samples)</li>
+<li>HallAB_2017 (259 samples)</li>
+<li>HMP_2019_ibdmdb (1628 samples)</li>
+<li>HMP_2019_t2d (296 samples)</li>
+<li>IjazUZ_2017 (94 samples)</li>
+<li>KaurK_2020 (31 samples)</li>
+<li>KeohaneDM_2020 (117 samples)</li>
+<li>LassalleF_2017 (23 samples)</li>
+<li>LifeLinesDeep_2016 (1135 samples)</li>
+<li>LokmerA_2019 (57 samples)</li>
+<li>MehtaRS_2018 (928 samples)</li>
+<li>NagySzakalD_2017 (100 samples)</li>
+<li>PasolliE_2019 (112 samples)</li>
+<li>RosaBA_2018 (24 samples)</li>
+<li>RubelMA_2020 (175 samples)</li>
+<li>SankaranarayananK_2015 (37 samples)</li>
+<li>ShaoY_2019 (1644 samples)</li>
+<li>ThomasAM_2019_c (80 samples)</li>
+<li>VilaAV_2018 (355 samples)</li>
+<li>WampachL_2018 (63 samples)</li>
+<li>WirbelJ_2018 (125 samples)</li>
+<li>YachidaS_2019 (616 samples)</li>
+<li>YassourM_2016 (36 samples)</li>
+<li>YassourM_2018 (271 samples)</li>
+<li>ZhuF_2020 (171 samples)</li>
+</ul>
+</li>
+<li>All raw data has been reprocessed with MetaPhlAn3 &amp; HUMAnN3</li>
+<li>The <code><a href="../reference/curatedMetagenomicData.html">curatedMetagenomicData()</a></code> method has been refactored for efficiency
+<ul>
+<li>It now returns SummarizedExperiment/TreeSummarizedExperiment objects</li>
+<li>Sample metadata always stays up to date and is updated weekly</li>
+<li>It is now the primary (and only) means to access data</li>
+</ul>
+</li>
+<li>The <code><a href="../reference/mergeData.html">mergeData()</a></code> method has been refactored for accuracy and efficiency</li>
+<li>The <code><a href="../reference/returnSamples.html">returnSamples()</a></code> method has been added for returns across studies</li>
+<li>The <code>sampleMetadata</code> object replaces the <code>combined_metadata</code> object</li>
+<li>The <code>combined_metadata</code> object will be removed in the next release</li>
+<li>A number of methods have moved directly to defunct status:
+<ul>
+<li><code><a href="../reference/curatedMetagenomicData-defunct.html">cmdValidVersions()</a></code></li>
+<li><code><a href="../reference/curatedMetagenomicData-defunct.html">getMetaphlanTree()</a></code></li>
+<li><code><a href="../reference/curatedMetagenomicData-defunct.html">ExpressionSet2MRexperiment()</a></code></li>
+<li><code><a href="../reference/curatedMetagenomicData-defunct.html">ExpressionSet2phyloseq()</a></code></li>
+</ul>
+</li>
+<li>All named accessors (e.g. <code><a href="../reference/curatedMetagenomicData-defunct.html">HMP_2012.pathcoverage.stool()</a></code>) have become defunct
+<ul>
+<li>These were very hard to maintain and document; the package is now simpler</li>
+<li>The <code><a href="../reference/curatedMetagenomicData.html">curatedMetagenomicData()</a></code> method replaces all named accessors</li>
+</ul>
+</li>
+</ul>
+</div>
     <div id="curatedmetagenomicdata-1160" class="section level1">
 <h1 class="page-header" data-toc-text="1.16.0">
-<a href="#curatedmetagenomicdata-1160" class="anchor" aria-hidden="true"></a>curatedMetagenomicData 1.16.0</h1>
-<ul><li>curatedMetagenomicData now contains 10,199 samples from 57 studies</li>
+<a href="#curatedmetagenomicdata-1160" class="anchor"></a>curatedMetagenomicData 1.16.0</h1>
+<ul>
+<li>curatedMetagenomicData now contains 10,199 samples from 57 studies</li>
 <li>A total of 2,209 samples added since Bioconductor 3.9 (April 2019)</li>
 <li>Datasets added since Bioconductor 3.9 (April 2019):
-<ul><li>DhakanDB_2019 (110 samples)</li>
+<ul>
+<li>DhakanDB_2019 (110 samples)</li>
 <li>GopalakrishnanV_2018 (25 samples)</li>
 <li>HansenLBS_2018 (208 samples)</li>
 <li>JieZ_2017 (385 samples)</li>
@@ -170,31 +223,39 @@
 <li>TettAJ_2019_c (50 samples)</li>
 <li>YeZ_2018 (65 samples)</li>
 <li>ZeeviD_2015 (900 samples)</li>
-</ul></li>
-</ul></div>
+</ul>
+</li>
+</ul>
+</div>
     <div id="curatedmetagenomicdata-1140" class="section level1">
 <h1 class="page-header" data-toc-text="1.14.0">
-<a href="#curatedmetagenomicdata-1140" class="anchor" aria-hidden="true"></a>curatedMetagenomicData 1.14.0</h1>
-<ul><li>curatedMetagenomicData now contains 8,087 samples from 45 studies</li>
+<a href="#curatedmetagenomicdata-1140" class="anchor"></a>curatedMetagenomicData 1.14.0</h1>
+<ul>
+<li>curatedMetagenomicData now contains 8,087 samples from 45 studies</li>
 <li>A total of 935 samples added since Bioconductor 3.8 (October 2018)</li>
 <li>Datasets added since Bioconductor 3.8 (October 2018):
-<ul><li>BackhedF_2015 (381 samples)</li>
+<ul>
+<li>BackhedF_2015 (381 samples)</li>
 <li>CosteaPI_2017 (279 samples)</li>
 <li>FerrettiP_2018 (215 samples)</li>
 <li>ThomasAM_2018b (60 samples)</li>
-</ul></li>
+</ul>
+</li>
 <li>Fixed an error in the metadata for HMP_2012 where posterior fornix samples were incorrectly tagged as ‘oralcavity’</li>
 <li>Removed metadata from HMP_2012 attributing the study to Federal Urdu University… Karachi, Pakistan</li>
 <li>WenC_2017 has been renamed ChengpingW_2017</li>
 <li>WenC_2017 is deprecated and will be removed in the next release</li>
-</ul></div>
+</ul>
+</div>
     <div id="curatedmetagenomicdata-1120" class="section level1">
 <h1 class="page-header" data-toc-text="1.12.0">
-<a href="#curatedmetagenomicdata-1120" class="anchor" aria-hidden="true"></a>curatedMetagenomicData 1.12.0</h1>
-<ul><li>curatedMetagenomicData now contains 7,152 samples from 41 studies</li>
+<a href="#curatedmetagenomicdata-1120" class="anchor"></a>curatedMetagenomicData 1.12.0</h1>
+<ul>
+<li>curatedMetagenomicData now contains 7,152 samples from 41 studies</li>
 <li>A total of 766 samples added since Bioconductor 3.7 (May 2018) relaese</li>
 <li>Datasets added since Bioconductor 3.7 (May 2018) release:
-<ul><li>Bengtsson-PalmeJ_2015 (70 samples)</li>
+<ul>
+<li>Bengtsson-PalmeJ_2015 (70 samples)</li>
 <li>DavidLA_2015 (49 samples)</li>
 <li>KosticAD_2015 (124 samples)</li>
 <li>LiSS_2016 (55 samples)</li>
@@ -204,41 +265,53 @@
 <li>ShiB_2015 (48 samples)</li>
 <li>ThomasAM_2018a (80 samples)</li>
 <li>WenC_2017 (97 samples)</li>
-</ul></li>
+</ul>
+</li>
 <li>Fixed a bug in expressionset names where “-”s would be replaced with "_"</li>
 <li>As a result of this fix, the following datasets are deprecated and will be removed in the next release:
-<ul><li>Bengtsson_PalmeJ_2015</li>
+<ul>
+<li>Bengtsson_PalmeJ_2015</li>
 <li>Castro_NallarE_2015</li>
 <li>Heitz_BuschartA_2016</li>
 <li>Obregon_TitoAJ_2015</li>
-</ul></li>
-</ul></div>
+</ul>
+</li>
+</ul>
+</div>
     <div id="curatedmetagenomicdata-1100" class="section level1">
 <h1 class="page-header" data-toc-text="1.10.0">
-<a href="#curatedmetagenomicdata-1100" class="anchor" aria-hidden="true"></a>curatedMetagenomicData 1.10.0</h1>
-<ul><li>curatedMetagenomicData now contains 6386 samples from 31 studies : )</li>
+<a href="#curatedmetagenomicdata-1100" class="anchor"></a>curatedMetagenomicData 1.10.0</h1>
+<ul>
+<li>curatedMetagenomicData now contains 6386 samples from 31 studies : )</li>
 <li>A total of 328 samples added since Bioconductor 3.6 (October, 2017) release</li>
 <li>Datasets added since Bioconductor 3.6 (October, 2017) release
-<ul><li>LiJ_2017 (196 samples)</li>
+<ul>
+<li>LiJ_2017 (196 samples)</li>
 <li>LouisS_2016 (92 samples)</li>
 <li>SmitsSA_2017 (40 samples)</li>
-</ul></li>
+</ul>
+</li>
 <li>A curator field has been added to metadata to credit the work of curators</li>
 <li>curatedMetagenomicData is currently on a diet and being refactored:
-<ul><li>The docs directory used to build the github pages site has been moved to a branch, making the R package smaller</li>
+<ul>
+<li>The docs directory used to build the github pages site has been moved to a branch, making the R package smaller</li>
 <li>All code used for processing of raw data in R is moving to a seperate GitHub repository curatedMetagenomicDataPipeline</li>
 <li>Curation takes place in the curatedMetagenomicDataCuration repository and curation is automatically checked; contributions are welcomed</li>
 <li>All code used for processing of raw data beyond R is moving to a seperate GitHub repository curatedMetagenomicDataHighLoad</li>
-</ul></li>
+</ul>
+</li>
 <li>All data has been reprocessed to ensure updated and correct curation</li>
-</ul></div>
+</ul>
+</div>
     <div id="curatedmetagenomicdata-180" class="section level1">
 <h1 class="page-header" data-toc-text="1.8.0">
-<a href="#curatedmetagenomicdata-180" class="anchor" aria-hidden="true"></a>curatedMetagenomicData 1.8.0</h1>
-<ul><li>curatedMetagenomicData now contains 6058 samples from 28 studies : )</li>
+<a href="#curatedmetagenomicdata-180" class="anchor"></a>curatedMetagenomicData 1.8.0</h1>
+<ul>
+<li>curatedMetagenomicData now contains 6058 samples from 28 studies : )</li>
 <li>A total of 3,152 samples added since Bioconductor 3.5 (April, 2017) release</li>
 <li>Datasets added since Bioconductor 3.5 (April, 2017) release
-<ul><li>HanniganGD_2017 (82 samples)</li>
+<ul>
+<li>HanniganGD_2017 (82 samples)</li>
 <li>LiJ_2014 (260 samples)</li>
 <li>AsnicarF_2017 (26 samples)</li>
 <li>BritoIL_2016 (312 samples)</li>
@@ -254,59 +327,73 @@
 <li>VogtmannE_2016 (110 samples)</li>
 <li>XieH_2016 (250 samples)</li>
 <li>YuJ_2015 (128 samples)</li>
-</ul></li>
+</ul>
+</li>
 <li>The cmdversion argument was removed from the curatedMetagenomicData() function</li>
 <li>Calls to curatedMetagenomicData() simply return the newest version of the data</li>
 <li>Older versions of datasets are accessible by using the named functions</li>
 <li>Added phylogenetictree = TRUE argument to ExpressionSet2phyloseq()</li>
-</ul></div>
+</ul>
+</div>
     <div id="curatedmetagenomicdata-160" class="section level1">
 <h1 class="page-header" data-toc-text="1.6.0">
-<a href="#curatedmetagenomicdata-160" class="anchor" aria-hidden="true"></a>curatedMetagenomicData 1.6.0</h1>
-<ul><li>doubled the number of samples to over 5,700</li>
+<a href="#curatedmetagenomicdata-160" class="anchor"></a>curatedMetagenomicData 1.6.0</h1>
+<ul>
+<li>doubled the number of samples to over 5,700</li>
 <li>made naming of metadata more complete and strict, see inst/extdata/template.csv</li>
 <li>mergeData() function for convenient merging of datasets</li>
 <li>combined_metadata table providing all sample information for all studies</li>
-</ul></div>
+</ul>
+</div>
     <div id="curatedmetagenomicdata-140" class="section level1">
 <h1 class="page-header" data-toc-text="1.4.0">
-<a href="#curatedmetagenomicdata-140" class="anchor" aria-hidden="true"></a>curatedMetagenomicData 1.4.0</h1>
-<ul><li>Data updated to include accession numbers</li>
+<a href="#curatedmetagenomicdata-140" class="anchor"></a>curatedMetagenomicData 1.4.0</h1>
+<ul>
+<li>Data updated to include accession numbers</li>
 <li>Minor updates to PaperFigures.Rmd vignette for reproducibility</li>
-</ul></div>
+</ul>
+</div>
     <div id="curatedmetagenomicdata-120" class="section level1">
 <h1 class="page-header" data-toc-text="1.2.0">
-<a href="#curatedmetagenomicdata-120" class="anchor" aria-hidden="true"></a>curatedMetagenomicData 1.2.0</h1>
-<ul><li>Vast improvements to documentation, now more informative and compact</li>
+<a href="#curatedmetagenomicdata-120" class="anchor"></a>curatedMetagenomicData 1.2.0</h1>
+<ul>
+<li>Vast improvements to documentation, now more informative and compact</li>
 <li>New function to coerce data to an MRexperiment class</li>
 <li>New workhorse function to access data with wildcard search</li>
 <li>Fun intro message for developers</li>
 <li>Fixed a bug related to ExperimentHub that caused checks to fail</li>
-</ul></div>
+</ul>
+</div>
     <div id="curatedmetagenomicdata-104" class="section level1">
 <h1 class="page-header" data-toc-text="1.0.4">
-<a href="#curatedmetagenomicdata-104" class="anchor" aria-hidden="true"></a>curatedMetagenomicData 1.0.4</h1>
-<ul><li>Fixed a bug related to ExperimentHub that caused checks to fail</li>
-</ul></div>
+<a href="#curatedmetagenomicdata-104" class="anchor"></a>curatedMetagenomicData 1.0.4</h1>
+<ul>
+<li>Fixed a bug related to ExperimentHub that caused checks to fail</li>
+</ul>
+</div>
     <div id="curatedmetagenomicdata-100" class="section level1">
 <h1 class="page-header" data-toc-text="1.0.0">
-<a href="#curatedmetagenomicdata-100" class="anchor" aria-hidden="true"></a>curatedMetagenomicData 1.0.0</h1>
-<ul><li>Package vignette is updated to reflect in the intended use of ExperimentHub</li>
+<a href="#curatedmetagenomicdata-100" class="anchor"></a>curatedMetagenomicData 1.0.0</h1>
+<ul>
+<li>Package vignette is updated to reflect in the intended use of ExperimentHub</li>
 <li>Object level documentation is update for completeness and aliased</li>
 <li>Minor description file changes to ensure collation order</li>
 <li>Version bumped to reflect latest y version of Bioconductor</li>
 <li>All data is reprocessed in R (v3.3.2)</li>
-</ul></div>
+</ul>
+</div>
     <div id="curatedmetagenomicdata-0998" class="section level1">
 <h1 class="page-header" data-toc-text="0.99.8">
-<a href="#curatedmetagenomicdata-0998" class="anchor" aria-hidden="true"></a>curatedMetagenomicData 0.99.8</h1>
-<ul><li>Codebase is completely refactored to ExperimentHub specifications</li>
+<a href="#curatedmetagenomicdata-0998" class="anchor"></a>curatedMetagenomicData 0.99.8</h1>
+<ul>
+<li>Codebase is completely refactored to ExperimentHub specifications</li>
 <li>Package vignette is updated to Rmd syntax and uses BiocStyle</li>
 <li>New parallel functions allow for faster data processing</li>
 <li>Documentation updated to use roxygen2</li>
 <li>All data is reprocessed in R (v3.3.1)</li>
 <li>All raw data is reprocessed with MetaPhlAn2 (v2.2.0) &amp; HUMAnN2 (v0.7.0)</li>
-</ul></div>
+</ul>
+</div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -320,11 +407,11 @@
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by Lucas schiffer, Levi Waldron.</p></p>
+  <p>Developed by Lucas schiffer, Levi Waldron.</p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
@@ -332,8 +419,6 @@
 
   
 
-
-  
 
   </body>
 </html>

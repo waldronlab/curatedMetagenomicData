@@ -19,8 +19,6 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -33,12 +31,18 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../../index.html">curatedMetagenomicData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.99.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.99.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
+<li>
+  <a href="../../index.html">
+    <span class="fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
 <li>
   <a href="../../articles/curatedMetagenomicData.html">Get started</a>
 </li>
@@ -59,9 +63,6 @@
       <a href="../../articles/articles/our-pipeline.html">Our Pipeline</a>
     </li>
     <li>
-      <a href="../../articles/articles/paper-figures.html">Paper Figures</a>
-    </li>
-    <li>
       <a href="../../articles/articles/version-three.html">Version Three</a>
     </li>
   </ul>
@@ -72,7 +73,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/waldronlab/curatedMetagenomicData/" class="external-link">
+  <a href="https://github.com/waldronlab/curatedMetagenomicData/">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -93,14 +94,18 @@
       <h1 data-toc-skip>Version Three</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/waldronlab/curatedMetagenomicData/blob/master/vignettes/articles/version-three.Rmd" class="external-link"><code>vignettes/articles/version-three.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/waldronlab/curatedMetagenomicData/blob/master/vignettes/articles/version-three.Rmd"><code>vignettes/articles/version-three.Rmd</code></a></small>
       <div class="hidden name"><code>version-three.Rmd</code></div>
 
     </div>
 
     
     
-
+<p>The release of curatedMetagenomicData version 3.0.0 (we skipped version 2.0.0) is a long awaited and major milestone for the whole team - it has been years in the making and took countless hours of work across many time zones. We are very proud of the product and want to let you know what has changed and why you should update to the latest (and greatest) version. However, we know that some of the changes might be big adjustments and we’ve made sure that curatedMetagenomicData version 1.20.0 will remain installable for the foreseeable future.</p>
+<p>Next, just to be clear and avoid confusion, we skipped version 2.0.0 and for good reason. The data in curatedMetagenomicData version 1.0.0 (released in 2017) came from MetaPhlAn2 and HUMAnN2; the data in curatedMetagenomicData version 3.0.0 (released in 2021) comes from MetaPhlAn3 and HUMAnN3. The skipping of version 2.0.0 and release of 3.0.0 instead was done to align our version numbers with MetaPhlAn3 and HUMAnN3 - it may cause a bit of confusion at first but should ultimately lead to more clarity as we stay in step with their versions. Yes, the same would have been desirable for the first release, but hindsight is 20/20 and we just didn’t think of it.</p>
+<p>Now, the reasons to upgrade to curatedMetagenomicData version 3.0.0 are numerous, but at the top of the list is that curatedMetagenomicData now uses appropriate modern Bioconductor data structures (SummarizedExperiment and TreeSummarizedExperiment). The outdated ExpressionSet objects that were previously returned have been removed, and methods that operated on them have moved directly to defunct status. The same has happened to all named accessors (e.g. <code><a href="../../reference/curatedMetagenomicData-defunct.html">HMP_2012.pathcoverage.stool()</a></code>) to make the package easier to maintain and document. The <code><a href="../../reference/curatedMetagenomicData.html">curatedMetagenomicData()</a></code> method replaces all named accessors and it is an excellent method that you may already be familiar with - it is another epic upgrade in version 3.0.0. The method (and the whole code base really) has been completely refactored for accuracy and efficency; <code><a href="../../reference/curatedMetagenomicData.html">curatedMetagenomicData()</a></code> is now the primary (and only) means to access data. It quickly returns list containing SummarizedExperiment and TreeSummarizedExperiment elements that can be passed on to other methods.</p>
+<p>The first of these is <code><a href="../../reference/mergeData.html">mergeData()</a></code>, which is also a complete refactoring of the older method, that can be used to join to studies of the same data type together. This is likely useful in the context of meta-analysis for analysis across entire studies, where a single unified SummarizedExperiment or TreeSummarizedExperiment can be used to quickly quantify differences in effect size across studies. However, if analysis across individual samples (e.g. mega-analysis) is desired, <code><a href="../../reference/returnSamples.html">returnSamples()</a></code> will now accommodate returns based on a subset of rows and columns in <code>sampleMetadata</code>. We suspect this was a feature frequently implemented by users and have now included it in the package for consistency of methodology. Not only does it allow users to get exactly the samples they want, but it allows for the creation of user-defined or calculated metadata variables that will propagate to SummarizedExperiment or TreeSummarizedExperiment objects that are returned.</p>
+<p>Otherwise, there are a few last things for users to know. We have almost doubled the number of samples in the package: curatedMetagenomicData now contains 20,283 samples from 86 studies, with a total of 10,084 samples added since Bioconductor 3.10 (October 2019). The updating of manually curated sample metadata from the curation effort has been automated and sample metadata always stays up to date now with weekly updates. The <code>sampleMetadata</code> object replaces the <code>combined_metadata</code> object; the <code>combined_metadata</code> object will be removed in the next release. Finally, with these and other internal infrastructure changes we are now ready for the future and any change in data structure it might bring. We hope you like the updates as much as we do and will understand they were necessary - from the entire team, thank you for using curatedMetagenomicData.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -112,13 +117,11 @@
 
 
       <footer><div class="copyright">
-  <p></p>
-<p>Developed by Lucas schiffer, Levi Waldron.</p>
+  <p>Developed by Lucas schiffer, Levi Waldron.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link external-link">pkgdown</a> 1.6.1.9001.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
@@ -126,8 +129,6 @@
 
   
 
-
-  
 
   </body>
 </html>

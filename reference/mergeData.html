@@ -52,8 +52,6 @@ samples (e.g. mega-analysis) returnSamples is preferable." />
 
 
 
-
-
 <!-- mathjax -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script>
@@ -65,18 +63,9 @@ samples (e.g. mega-analysis) returnSamples is preferable." />
 
 
 
-<!-- dependencies from examples -->
-
-
-  
-
-  
-
   </head>
 
   <body data-spy="scroll" data-target="#toc">
-    
-
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -90,13 +79,19 @@ samples (e.g. mega-analysis) returnSamples is preferable." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">curatedMetagenomicData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">1.99.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.99.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../articles/curatedMetagenomicData.html">Get started</a>
 </li>
 <li>
@@ -114,9 +109,6 @@ samples (e.g. mega-analysis) returnSamples is preferable." />
     </li>
     <li>
       <a href="../articles/articles/our-pipeline.html">Our Pipeline</a>
-    </li>
-    <li>
-      <a href="../articles/articles/paper-figures.html">Paper Figures</a>
     </li>
     <li>
       <a href="../articles/articles/version-three.html">Version Three</a>
@@ -196,61 +188,55 @@ memory requirements can be large when merging many <code>list</code> elements.</
     <div class='dont-index'><p><a href='curatedMetagenomicData.html'>curatedMetagenomicData</a>, <a href='returnSamples.html'>returnSamples</a></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><span class='r-in'><span class='fu'><a href='curatedMetagenomicData.html'>curatedMetagenomicData</a></span><span class='op'>(</span><span class='st'>"LiJ_20.+.marker_abundance"</span>, dryrun <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'><a href='pipe.html'>%&gt;%</a></span></span>
-<span class='r-in'>    <span class='fu'>mergeData</span><span class='op'>(</span><span class='op'>)</span></span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> snapshotDate(): 2021-05-05</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> class: SummarizedExperiment </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> dim: 77712 456 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> metadata(0):</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> assays(1): marker_abundance</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> rownames(77712): 39491__A0A395UVM9__DXB76_04540</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   39491__A0A395UZL1__DXB76_05950 ... 1262937__R7LHU6__BN805_01557</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   712117__F3PBR4__HMPREF9056_02502</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> rowData names(0):</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> colnames(456): DLF005-IE DLM006-IE ... nHM612836 nHMX11726</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> colData names(28): study_name subject_id ... location smoker</span>
-<span class='r-in'></span>
-<span class='r-in'><span class='fu'><a href='curatedMetagenomicData.html'>curatedMetagenomicData</a></span><span class='op'>(</span><span class='st'>"LiJ_20.+.pathway_abundance"</span>, dryrun <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'><a href='pipe.html'>%&gt;%</a></span></span>
-<span class='r-in'>    <span class='fu'>mergeData</span><span class='op'>(</span><span class='op'>)</span></span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> snapshotDate(): 2021-05-05</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> class: SummarizedExperiment </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> dim: 27110 456 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> metadata(0):</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> assays(1): pathway_abundance</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> rownames(27110): UNMAPPED UNINTEGRATED ... PWY-7539:</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   6-hydroxymethyl-dihydropterin diphosphate biosynthesis III</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   (Chlamydia)|g__Prevotella.s__Prevotella_buccae LACTOSECAT-PWY:</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   lactose and galactose degradation</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   I|g__Escherichia.s__Escherichia_coli</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> rowData names(0):</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> colnames(456): DLF005-IE DLM006-IE ... nHM612836 nHMX11726</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> colData names(28): study_name subject_id ... location smoker</span>
-<span class='r-in'></span>
-<span class='r-in'><span class='fu'><a href='curatedMetagenomicData.html'>curatedMetagenomicData</a></span><span class='op'>(</span><span class='st'>"LiJ_20.+.relative_abundance"</span>, dryrun <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'><a href='pipe.html'>%&gt;%</a></span></span>
-<span class='r-in'>    <span class='fu'>mergeData</span><span class='op'>(</span><span class='op'>)</span></span>
-<span class='r-msg co'><span class='r-pr'>#&gt;</span> snapshotDate(): 2021-05-05</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> class: TreeSummarizedExperiment </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> dim: 688 456 </span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> metadata(0):</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> assays(1): relative_abundance</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> rownames(688):</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides|s__Bacteroides_plebeius</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides|s__Bacteroides_caccae</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   ...</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Neisseriales|f__Neisseriaceae|g__Neisseria|s__Neisseria_elongata</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span>   k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacterales|f__Morganellaceae|g__Providencia|s__Providencia_alcalifaciens</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> rowData names(7): kingdom phylum ... genus species</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> colnames(456): DLF005-IE DLM006-IE ... nHM612836 nHMX11726</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> colData names(28): study_name subject_id ... location smoker</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> reducedDimNames(0):</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> mainExpName: NULL</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> altExpNames(0):</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> rowLinks: a LinkDataFrame (688 rows)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> rowTree: 1 phylo tree(s) (10430 leaves)</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> colLinks: NULL</span>
-<span class='r-out co'><span class='r-pr'>#&gt;</span> colTree: NULL</span>
-<span class='r-in'></span>
-</pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='curatedMetagenomicData.html'>curatedMetagenomicData</a></span><span class='op'>(</span><span class='st'>"LiJ_20.+.marker_abundance"</span>, dryrun <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mergeData</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-05-05</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
+#&gt; dim: 77712 456 
+#&gt; metadata(0):
+#&gt; assays(1): marker_abundance
+#&gt; rownames(77712): 39491__A0A395UVM9__DXB76_04540
+#&gt;   39491__A0A395UZL1__DXB76_05950 ... 1262937__R7LHU6__BN805_01557
+#&gt;   712117__F3PBR4__HMPREF9056_02502
+#&gt; rowData names(0):
+#&gt; colnames(456): DLF005-IE DLM006-IE ... nHM612836 nHMX11726
+#&gt; colData names(28): study_name subject_id ... location smoker</div><div class='input'>
+<span class='fu'><a href='curatedMetagenomicData.html'>curatedMetagenomicData</a></span><span class='op'>(</span><span class='st'>"LiJ_20.+.pathway_abundance"</span>, dryrun <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mergeData</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-05-05</span></div><div class='output co'>#&gt; class: SummarizedExperiment 
+#&gt; dim: 27110 456 
+#&gt; metadata(0):
+#&gt; assays(1): pathway_abundance
+#&gt; rownames(27110): UNMAPPED UNINTEGRATED ... PWY-7539:
+#&gt;   6-hydroxymethyl-dihydropterin diphosphate biosynthesis III
+#&gt;   (Chlamydia)|g__Prevotella.s__Prevotella_buccae LACTOSECAT-PWY:
+#&gt;   lactose and galactose degradation
+#&gt;   I|g__Escherichia.s__Escherichia_coli
+#&gt; rowData names(0):
+#&gt; colnames(456): DLF005-IE DLM006-IE ... nHM612836 nHMX11726
+#&gt; colData names(28): study_name subject_id ... location smoker</div><div class='input'>
+<span class='fu'><a href='curatedMetagenomicData.html'>curatedMetagenomicData</a></span><span class='op'>(</span><span class='st'>"LiJ_20.+.relative_abundance"</span>, dryrun <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'>mergeData</span><span class='op'>(</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-05-05</span></div><div class='output co'>#&gt; class: TreeSummarizedExperiment 
+#&gt; dim: 688 456 
+#&gt; metadata(0):
+#&gt; assays(1): relative_abundance
+#&gt; rownames(688):
+#&gt;   k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides|s__Bacteroides_plebeius
+#&gt;   k__Bacteria|p__Bacteroidetes|c__Bacteroidia|o__Bacteroidales|f__Bacteroidaceae|g__Bacteroides|s__Bacteroides_caccae
+#&gt;   ...
+#&gt;   k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Neisseriales|f__Neisseriaceae|g__Neisseria|s__Neisseria_elongata
+#&gt;   k__Bacteria|p__Proteobacteria|c__Gammaproteobacteria|o__Enterobacterales|f__Morganellaceae|g__Providencia|s__Providencia_alcalifaciens
+#&gt; rowData names(7): Kingdom Phylum ... Genus Species
+#&gt; colnames(456): DLF005-IE DLM006-IE ... nHM612836 nHMX11726
+#&gt; colData names(28): study_name subject_id ... location smoker
+#&gt; reducedDimNames(0):
+#&gt; mainExpName: NULL
+#&gt; altExpNames(0):
+#&gt; rowLinks: a LinkDataFrame (688 rows)
+#&gt; rowTree: 1 phylo tree(s) (10430 leaves)
+#&gt; colLinks: NULL
+#&gt; colTree: NULL</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -262,11 +248,11 @@ memory requirements can be large when merging many <code>list</code> elements.</
 
       <footer>
       <div class="copyright">
-  <p><p>Developed by Lucas schiffer, Levi Waldron.</p></p>
+  <p>Developed by Lucas schiffer, Levi Waldron.</p>
 </div>
 
 <div class="pkgdown">
-  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
@@ -274,8 +260,6 @@ memory requirements can be large when merging many <code>list</code> elements.</
 
   
 
-
-  
 
   </body>
 </html>

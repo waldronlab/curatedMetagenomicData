@@ -1,46 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/404.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/CODE_OF_CONDUCT.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/CONTRIBUTING.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/LICENSE-text.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/articles/articles/available-studies.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/articles/articles/our-pipeline.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/articles/articles/paper-figures.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/articles/articles/version-three.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/articles/curatedMetagenomicData.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/articles/index.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/authors.html</loc>
-  </url>
-  <url>
     <loc>https://waldronlab.io/curatedMetagenomicData/index.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/pull_request_template.html</loc>
   </url>
   <url>
     <loc>https://waldronlab.io/curatedMetagenomicData/reference/combined_metadata.html</loc>
@@ -50,9 +11,6 @@
   </url>
   <url>
     <loc>https://waldronlab.io/curatedMetagenomicData/reference/curatedMetagenomicData.html</loc>
-  </url>
-  <url>
-    <loc>https://waldronlab.io/curatedMetagenomicData/reference/index.html</loc>
   </url>
   <url>
     <loc>https://waldronlab.io/curatedMetagenomicData/reference/mergeData.html</loc>
@@ -65,5 +23,17 @@
   </url>
   <url>
     <loc>https://waldronlab.io/curatedMetagenomicData/reference/sampleMetadata.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/articles/articles/available-studies.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/articles/articles/our-pipeline.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/articles/articles/version-three.html</loc>
+  </url>
+  <url>
+    <loc>https://waldronlab.io/curatedMetagenomicData/articles/curatedMetagenomicData.html</loc>
   </url>
 </urlset>
