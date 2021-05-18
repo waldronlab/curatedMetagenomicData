@@ -3,20 +3,7 @@ title: "Available Studies"
 ---
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
-
-```{r, include = FALSE}
 library(curatedMetagenomicData)
-```
-
-```{r, include = FALSE}
-if (!requireNamespace("gt", quietly = TRUE)) {
-    install.packages("gt")
-}
 ```
 
 ```{r, echo = FALSE}
@@ -56,6 +43,6 @@ sampleMetadata %>%
     dplyr::mutate(`Body Subsite` = stringr::str_replace_all(`Body Subsite`, "_", " ")) %>% 
     dplyr::ungroup() %>%
     dplyr::mutate(dplyr::across(.cols = dplyr::everything(), .fns = ~ tidyr::replace_na(.x, ""))) %>%
-    gt::gt()
+    DT::datatable(options = list(dom = "ltip"), extensions = "Responsive")
 ```
 

@@ -4,25 +4,7 @@
     startup_message <-
         base::c(
             "",
-            "=================================================================",
-            "",
-            "This is curatedMetagenomicData version 3.0.0 and much has changed",
-            "",
-            "- use the 'curatedMetagenomicData()' method to access data",
-            "- it is finally posssible to return samples across studies",
-            "",
-            "- stop using 'combined_metadata', start using 'sampleMetadata'",
-            "- 'combined_metadata' will be removed in the next release",
-            "",
-            "- the 'mergeData()' method has been completely refactored",
-            "- the long awaited 'returnSamples()' method has been added",
-            "",
-            "- if you like the package, tell your friends",
-            "- if you hate the package, install v. 1.20.0",
-            "",
-            "Visit https://waldronlab.io/curatedMetagenomicData/ for more info",
-            "",
-            "=================================================================",
+            "curatedMetagenomicData 3.0.0: see bit.ly/curatedMetagenomicData-3",
             ""
         ) %>%
         base::paste(collapse = "\n")

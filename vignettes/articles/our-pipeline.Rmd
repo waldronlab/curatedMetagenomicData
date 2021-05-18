@@ -2,86 +2,20 @@
 title: "Our Pipeline"
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
-```
+The curatedMetagenomicData package provides standardized, curated human microbiome data for novel analyses. It includes gene families, marker abundance, marker presence, pathway abundance, pathway coverage, and relative abundance for samples collected from different body sites. The bacterial, fungal, and archaeal taxonomic abundances for each sample were calculated with [MetaPhlAn3](https://github.com/biobakery/MetaPhlAn) and metabolic functional potential was calculated with [HUMAnN3](https://github.com/biobakery/humann). The manually curated sample metadata and standardized metagenomic data are available as (Tree)SummarizedExperiment objects.
 
-```{r, include = FALSE}
-library(curatedMetagenomicData)
-```
+To create the objects that are ultimately returned to users there are a number of steps taken beyond what is contained in the curatedMetagenomicData package - this document is intended to add some clarity and transparency to the process. Roughly, the process is as follows: a study is selected for inclusion, metadata for each sample in the study is manually curated, raw data for each sample is downloaded (usually from NCBI SRA), raw data is processed into the six data types mentioned above using MetaPhlAn3 and HUMAnN3, processed data for all samples in a study are combined into a matrix for each data type, the six matrices are saved as R objects and uploaded to ExperimentHub, and, finally, the matrices are used to construct (Tree)SummarizedExperiment objects on the fly that are returned to users.
 
 # Curation
-### curatedMetagenomicData 3 provides manually curated, highly refined, per-sample metadata.
-The process of manual curation is substantially founded on 3 sources:
 
-1. papers and paper supplementary-materials
-2. NCBI
-3. other publications referrring to or considering this particular paper
+The curation process takes place on GitHub in the [curatedMetagenomicDataCuration](https://github.com/waldronlab/curatedMetagenomicDataCuration) repository. Sample metadata for every sample included in curatedMetagenomicData is manually curated by humans and checked against a standardized template for accuracy. The process is labor intensive and information comes from three principle sources: journal articles (and their supplementary materials), metadata included when samples were uploaded to NCBI, and other publications referring to or augmenting the original journal articles. Not only is explicit information (i.e. tables that enumerate the values of variables for each sample) sought out, but implicit information (e.g. "all the subjects in the study were non-smokers") is also included where it occurs in text. The manually curated sample metadata is continuously updated with the advent of new information (this is common when reanalyses find issues) and these changes propagate from the curation repository to the R package weekly.
 
-The process of manual curation besides involves 2 general kinds of sources:
+# Processing
 
-1. Explicit (supplementary tables assign a value of a parameter to a sample)
-2. Implicit (the sentence "all the subjects in the study were non-smokers.")
+Raw data are processed using [MetaPhlAn3](https://github.com/biobakery/MetaPhlAn) and [HUMAnN3](https://github.com/biobakery/humann)...
 
-In general, then, the curation process can be carried out in two different moments:
+# R Pipeline
 
-1. Before the uploading of the dataset into curatedMetagenomicData 3
-2. Retroactively: often, new information becomes publicly available when a publication re-analyses previously published data
+Once processed by [MetaPhlAn3](https://github.com/biobakery/MetaPhlAn) and [HUMAnN3](https://github.com/biobakery/humann), samples are output as a collection of `tsv` files that are not obviously or immediately useful - there is an pipeline written in R to process these outputs into relevant matrix objects for user consumption. The [curatedMetagenomicDataPipeline](https://github.com/waldronlab/curatedMetagenomicDataPipeline) repository is public on GitHub and details the methods that are used to construct and save the six matrices for each study that are uploaded to ExperimentHub. The `gene_families` data type is large and stored as a sparse matrix, while the other data types are store as regular matrix objects. The upload to ExperimentHub is ultimately done using the aws-cli with credentials from Bioconductor specific to the curatedMetagenomicData package.
 
-#### From the paper (Methods section):
-*Data inside curatedMetagenomicData 3 are constantly refined and analysed by metagenomic researchers. Metadata are not taken solely by the supplementary information available in their publications, but also from implicit sources: if, as a title of example, all the samples in a given cohort are said to be non-smokers, the curator will add to the metadata table in preparation that the samples are non-smokers. The inclusion of every metadata is also ruled by a controlled vocabulary. Between the manual curation and translation according to a uniform vocabulary, metadata tables are checked by an automatic grammar-checker, which ensures the correctness of the metadata relative to the established vocabulary. In addition, when new metadata are found relatively to a different publication with respect to the one in which they are found, curators of metadata intervene retro-actively on the dataset on which new information has been discovered. This gradual procedure ensures the most complete collection of publicly available metadata at the present.*
-
-### Syntax check
-Curation is based on a coded vocabulary. A curated metadata table is considered correct when sticks to out Grammar.
-
-All the manually curated metadata tables are available at:
-[curatedMetagenomicDataCuration](https://github.com/waldronlab/curatedMetagenomicDataCuration/tree/master/inst/curated)
-
-The Grammar is available at:
-[Grammar](https://github.com/waldronlab/curatedMetagenomicDataCuration/blob/master/inst/extdata/template.csv)
-
-Besides, our Grammar-checker constantly updates a report of the current status of the curated metadata 
-[(syntax-checking report)](https://waldronlab.io/curatedMetagenomicDataCuration/articles/curatedMetagenomicDataCuration.html).
-
-# Download
-For inclusion into curatedMetagenomicData 3, samples are downloaded dircelty from [**NCBI**](https://www.ncbi.nlm.nih.gov/) (depending on the data-availability statement).
-This is true for almost all datasets. A few datasets originated from different sources:
-The cohorts belonging to the Human Microbiome Project (**HMP**) have been downloaded from [portal-HMP](https://hmpdacc.org/)
-The [LifeLines-deep](http://www.humanfunctionalgenomics.org/site/?page_id=86) and the [VilaAV_2018](https://stm.sciencemag.org/content/10/472/eaap8914) cohorts were obtained from [**EGA**](https://ega-archive.org/).
-
-Samples are compared with the information available in their publications. The number of samples in a given datasets
-should mirror almost exactly that mentioned in the publication. Differences are possibile, and mainly due to:
-1. the amount of metadata retrieved covers only a fraction of the samples
-2. 16S, metatranscriptomics or virome samples are present under the same code in NCBI (and excluded)
-
-Samples are included when their inclusion would be an effective gain for the community. Large cohorts can be added, in some cases, even if the main attributes of their samples are not of public domain, provided that their inclusion doens't constitute a clear source of error. Example: samples studied in relation to their diet are included even if the dietary questionaries are not available; samples belonging to a case/control study can be included only if the membership to cases or controls is clearly available in the resources highligthed above.
-
-# Pipeline 
-Samples in this package are profiled with **MetaPhlAn 3** and **HUMAnN 3**, tools available in the bioBakery 3 suite.
-
-MetaPhlAn 3 alignes metagenomic reads to species-specific marker-genes and builds a coverage-based metagenomic profile of the sample.
-MetaPhlAn 3 output contains a taxonomic caharacterization of the sample from the **Kingdom to the species level**.
-In addition, this package also stores a RPKM profile of the clade-specific MetaPhlAn 3 markers, and a profile 
-storing the list of markers found in that sample.
-
-HUMAnN 3 quantifies the functional modules carried by the metagenomic sample, at two main levels of resolution.
-1. **UniRef90 gene-families**
-2. **Metacyc pathways** (available in two forms: pathway-relative abundance, and pathway-coverage)
-In addition, HUMAnN3 gene-families can be re-grouped in several ways, like: **KEGG-reactions**, **Gene-Ontology**, and **Enzyme-Commission** (EC) numbers.
-One key-aspect of each output of HUMAnN 3 is, then, the (optional) stratification of each feature into contributing species and genera.  
-
-[bioBakery 3 paper](https://elifesciences.org/articles/65088)
-
-[MetaPhlAn 3](https://huttenhower.sph.harvard.edu/metaphlan/)
-
-[HUMAnN 3](https://huttenhower.sph.harvard.edu/humann/)
-
-The taxonomic profile stored in MetaPhlAn 3 output is the foundation of this package. It is the best
-proxy we have depict the microbial ecosystem of a sample. Therefore, one last step of exclusion is 
-performed for those samples whose MetaPhlAn 3 profiles is empty (that can happen because the sample-file
-is too small or because the amount of dark-matter in the samples largerly overcomes the known-one). 
-The number of samples in each dataset may so vary with respect to the original publication also for this reason.
-
+As for why we construct matrix objects: the process of combining the samples into a matrix can take many hours even on heavy-duty equipment (many cores, many GB of RAM). This is both the advantage and crux of curatedMetagenomicData - subseting the matrix takes mere seconds and simple laptops are powerful enough; however, the ability to download many single samples across studies is lost. We accomplish the later in the R package by matrix subsetting and merging in the `returnSamples()` method. All alternatives considered, this is the optimal trade-off, but we are working towards something more efficient in the future - stay tuned!

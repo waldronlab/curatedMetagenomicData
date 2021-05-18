@@ -189,7 +189,7 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
                 resources[[i, "data_type"]]
 
             tax_names <-
-                base::c("kingdom", "phylum", "class", "order", "family", "genus", "species")
+                base::c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 
             rowData <-
                 base::data.frame(rowname = keep_tips) %>%

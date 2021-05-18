@@ -50,13 +50,14 @@ Imports:
     tidyselect
 Suggests:
     BiocStyle,
-    ggplot2,
+    DT,
     knitr,
     mia,
-    phyloseq,
     readr,
     rmarkdown,
-    testthat
+    scater,
+    testthat,
+    vegan
 URL: https://github.com/waldronlab/curatedMetagenomicData
 BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
 Encoding: UTF-8

@@ -97,8 +97,8 @@ test_that("merge result is correct when dataType is not relative_abundance", {
 
     keep_rows <-
         SummarizedExperiment::assay(merge_one) %>%
-        base::apply(1, base::anyNA) %>%
-        magrittr::not()
+        base::rowSums() %>%
+        magrittr::is_greater_than(0)
 
     keep_cols <-
         base::colnames(merge_one)
@@ -141,8 +141,8 @@ test_that("merge result is correct when dataType is not relative_abundance", {
 
     keep_rows <-
         SummarizedExperiment::assay(merge_two) %>%
-        base::apply(1, base::anyNA) %>%
-        magrittr::not()
+        base::rowSums() %>%
+        magrittr::is_greater_than(0)
 
     keep_cols <-
         base::colnames(merge_two)
@@ -267,8 +267,8 @@ test_that("merge result is correct when dataType is relative_abundance", {
 
     keep_rows <-
         SummarizedExperiment::assay(merge_one) %>%
-        base::apply(1, base::anyNA) %>%
-        magrittr::not()
+        base::rowSums() %>%
+        magrittr::is_greater_than(0)
 
     keep_cols <-
         base::colnames(merge_one)
@@ -311,8 +311,8 @@ test_that("merge result is correct when dataType is relative_abundance", {
 
     keep_rows <-
         SummarizedExperiment::assay(merge_two) %>%
-        base::apply(1, base::anyNA) %>%
-        magrittr::not()
+        base::rowSums() %>%
+        magrittr::is_greater_than(0)
 
     keep_cols <-
         base::colnames(merge_two)

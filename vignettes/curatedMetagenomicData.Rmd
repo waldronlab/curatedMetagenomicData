@@ -7,6 +7,15 @@ author:
     Boston, MA, U.S.A.
   email: schifferl@bu.edu
 package: curatedMetagenomicData
+abstract: >
+    The curatedMetagenomicData package provides standardized, curated human
+    microbiome data for novel analyses. It includes gene families, marker
+    abundance, marker presence, pathway abundance, pathway coverage, and
+    relative abundance for samples collected from different body sites. The
+    bacterial, fungal, and archaeal taxonomic abundances for each sample were
+    calculated with MetaPhlAn3 and metabolic functional potential was calculated
+    with HUMAnN3. The manually curated sample metadata and standardized
+    metagenomic data are available as (Tree)SummarizedExperiment objects.
 output: 
   BiocStyle::html_document
 vignette: >
@@ -15,195 +24,229 @@ vignette: >
   %\VignetteEncoding{UTF-8}  
 ---
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+# Installation
+
+Most users should simply install the current version of `r Biocpkg("curatedMetagenomicData")` from Bioconductor, unless they have good reason not to. Changes to the package are always commited to GitHub first, and it might be desirable to have the absolute latest changes by installing `r Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub; although, this is not recommended for most users. Finally, we have made extensive changes in `r Biocpkg("curatedMetagenomicData")` `3.0.0` and some users might want to revert to the previous version of `r Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub for older analyses. The previous version of `r Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub, `1.20.0`, will remain installable for the foreseeable future.
+
+To install the current version of `r Biocpkg("curatedMetagenomicData")` from Bioconductor, use `r CRANpkg("BiocManager")` as follows.
+
+```{r, eval = FALSE}
+BiocManager::install("curatedMetagenomicData")
 ```
 
-```{r, include = FALSE}
+To install the current version of `r Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub, use `r CRANpkg("BiocManager")` as follows.
+
+```{r, eval = FALSE}
+BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, build_vignettes = TRUE)
+```
+
+To install the previous version of `r Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub, use `r CRANpkg("BiocManager")` as follows.
+
+```{r, eval = FALSE}
+BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, build_vignettes = TRUE, ref = "v1.20.0")
+```
+
+# R Packages
+
+To demonstrate the functionality of `r Biocpkg("curatedMetagenomicData")`, `r CRANpkg("dplyr")` and `r CRANpkg("DT")` are needed.
+
+```{r, message = FALSE}
 library(curatedMetagenomicData)
+library(dplyr)
+library(DT)
 ```
 
+# Sample Metadata
 
-# Taxonomy-aware analysis using phyloseq
+The `r Biocpkg("curatedMetagenomicData")` package contains a `data.frame`, `sampleMetadata`, of manually curated sample metadata to help users understand the nature of studies and samples available prior to returning resources. Beyond this, it serves two purposes: 1) to define `study_name` which is used with the `curatedMetagenomicData()` method to query and return resources, and 2) to define `sample_id` which is used with the `returnSamples()` method to return samples across studies.
 
-Relative abundance data is delivered as a TreeSummarizedExperiment-class object, which allows
-operations using functions from the [TreeSummarizedExperiment](https://www.bioconductor.org/packages/release/bioc/html/TreeSummarizedExperiment.html)
-package. This data can be converted to a phyloseq-class object to work with functions from the
-[phyloseq](https://bioconductor.org/packages/release/bioc/html/phyloseq.html) package.
-Conversion from TreeSummarizedExperiment to phyloseq is supported by other packages, such as the [mia](https://bioconductor.org/packages/devel/bioc/html/mia.html)
-package in Bioconductor.
+To demonstrate, the first ten rows and columns (without any `NA` values) of `sampleMetadata` for the `AsnicarF_2017` study are shown in the table below.
 
-```{r}
-suppressMessages({
-  library(mia)
-  library(phyloseq)
-})
-
+```{r, collapse = TRUE}
+sampleMetadata %>%
+    filter(study_name == "AsnicarF_2017") %>%
+    select(where(~ !any(is.na(.x)))) %>%
+    slice(1:10) %>%
+    select(1:10) %>%
+    datatable(options = list(dom = "t"), extensions = "Responsive")
 ```
 
-An example using the relative abundance data from the LomanNJ_2013 study:
+# Data Access
 
-```{r, message=FALSE, warning=FALSE}
-loman.tse <- curatedMetagenomicData(".+LomanNJ_2013.relative.abundance", dryrun = FALSE, counts = FALSE)[[1]]
-loman.tse <- loman.tse[rowData(loman.tse)$kingdom == "Bacteria",]
-class(loman.tse)
+To access curated metagenomic data, users will use the `curatedMetagenomicData()` method both to query and return resources. The first argument `pattern` is a regular expression pattern to look for in the titles of resources available in `r Biocpkg("curatedMetagenomicData")`; `""` will return all resources. The title of each resource is a three part string with "." as a delimiter - the fields are `runDate`, `studyName`, and `dataType`. The `runDate` is the date we created the resource and can mostly be ignored by users because if there is more than one date corresponding to a resource, the most recent one is selected automatically. It would be used if a specific `runDate` was needed, but only a single copy of each resource exists currently.
+
+Multiple resources can be queried or returned with a single call to `curatedMetagenomicData()`, only the titles of resources are returned by default.
+
+```{r, collapse = TRUE}
+curatedMetagenomicData("AsnicarF_20.+")
 ```
 
-Convert to phyloseq-class object:
+When the second argument `dryrun` is set to `FALSE`, a `list` of `SummarizedExperiment` and/or `TreeSummarizedExperiment` objects is returned. When a single resource is requested, a single element `list` is returned.
 
-```{r}
-loman.pseq <- mia::makePhyloseqFromTreeSummarizedExperiment(loman.tse, abund_values = "relative_abundance")
-loman.pseq
-class(loman.pseq)
+```{r, collapse = TRUE}
+curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
 ```
 
-## Phylogenetic trees and UniFrac distances
+When the third argument `counts` is set to `TRUE`, relative abundance proportions are multiplied by read depth and rounded to the nearest integer prior to being returned. Also, when multiple resources are requested, the `list` will contain named elements corresponding to each SummarizedExperiment and/or TreeSummarizedExperiment object.
 
-Since the phylogenetic tree from MetaPhlAn3 is already integrated in the data, computing UniFrac distances can be achieved with:
-
-```{r}
-wt <- UniFrac(loman.pseq, weighted = TRUE, normalized = TRUE, parallel = FALSE, fast = TRUE)
-plot(hclust(wt), main = "LomanNJ_2013 - Weighted UniFrac distances")
+```{r, collapse = TRUE}
+curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
 ```
 
-## Components of a phyloseq object
+# Merge Data
 
-This phyloseq objects contain 4 components with extractor functions hinted at by its show method:
+To merge the `list` elements returned from the `curatedMetagenomicData` method into a single `SummarizedExperiment` or `TreeSummarizedExperiment` object, users will use the `mergeData()` method provided elements are the same `dataType`.
 
-```{r}
-loman.pseq
+```{r, collapse = TRUE}
+curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) %>%
+    mergeData()
 ```
 
-`otu_table()` returns the Operational Taxanomic Unit (OTU) table. 
+The `mergeData()` method works for every `dataType` and will always return the appropriate data structure (a single `SummarizedExperiment` or `TreeSummarizedExperiment` object).
 
-```{r}
-otu_table(loman.pseq)[1:5, 1:5]
+```{r, collapse = TRUE}
+curatedMetagenomicData("LiJ_20.+.pathway_abundance", dryrun = FALSE) %>%
+    mergeData()
 ```
 
-`sample_data()` returns the sample metadata:
+This is useful for analysis across entire studies (e.g. meta-analysis); however, when doing analysis across individual samples (e.g. mega-analysis) the `returnSamples()` method is preferable.
 
-```{r}
-sample_data(loman.pseq)[1:5, 1:5]
+```{r, collapse = TRUE}
+curatedMetagenomicData("LiJ_20.+.relative_abundance", dryrun = FALSE) %>%
+    mergeData()
 ```
 
-`tax_table()`returns the taxonomy information:
+# Return Samples
 
-```{r}
-tax_table(loman.pseq)[1:5, 1:5]
+To return samples across studies, users will use the `returnSamples()` method along with the `sampleMetadata` `data.frame` subset to include only desired samples and metadata. The subset `sampleMetadata` `data.frame` (as the first argument, `sampleMetadata`) will be used to get the desired resources, the `mergeData()` method will be used to merge them, and the subset `sampleMetadata` `data.frame` will be used again to subset the `SummarizedExperiment` or `TreeSummarizedExperiment` object to include only desired samples and metadata.
+
+The `returnSamples()` method requires a second argument `dataType` (`"gene_families"`, `"marker_abundance"`, `"marker_presence"`, `"pathway_abundance"`, `"pathway_coverage"`, or `"relative_abundance"`) be specified. It is often most convenient to subset the `sampleMetadata` `data.frame` using `r CRANpkg("dplyr")` syntax.
+
+```{r, collapse = TRUE}
+sampleMetadata %>%
+    filter(age >= 18) %>%
+    filter(!is.na(alcohol)) %>%
+    filter(body_site == "stool") %>%
+    select(where(~ !all(is.na(.x)))) %>%
+    returnSamples("relative_abundance")
 ```
 
-`phy_tree()` returns the phylogenetic tree:
+Users should also know that the `counts` argument applies to the `returnSamples()` method as well, and can be 
+passed as the third argument. Finally, users should also know that any arbitrary columns added to `sampleMetadata` will be present in the `colData` of the `SummarizedExperiment` or `TreeSummarizedExperiment` object that is returned.
 
-```{r}
-phy_tree(loman.pseq)
+# Example Analysis
+
+To demonstrate the utility of `r Biocpkg("curatedMetagenomicData")`, an example analysis is presented below. However, readers should know analysis is generally beyond the scope of `r Biocpkg("curatedMetagenomicData")` and the analysis presented here is for demonstration purposes alone. It is best to consider the output of `r Biocpkg("curatedMetagenomicData")` as the input for analysis more than anything else.
+
+## R Packages
+
+To demonstrate the utility of `r Biocpkg("curatedMetagenomicData")`, `r CRANpkg("stringr")`, `r Biocpkg("mia")`,  `r Biocpkg("scater")`, and `r CRANpkg("vegan")` packages are needed.
+
+```{r, message = FALSE}
+library(stringr)
+library(mia)
+library(scater)
+library(vegan)
 ```
 
-## Subsetting / pruning
+## Prepare Data
 
-Subset can be applied on the phyloseq object to obtain information of specific taxa levels:
+In our hypothetical study examine the association of alcohol consumption and stool microbial composition across all annotated samples in `r Biocpkg("curatedMetagenomicData")`. We will examine the alpha diversity (within subject diversity), beta diversity (between subject diversity), and conclude with a few notes on differential abundance analysis.
 
+### Return Samples
 
-```{r}
-rank_names(loman.pseq)
+First, as above, we use the `returnSamples()` method to return the relevant samples across all studies available in `r Biocpkg("curatedMetagenomicData")`. We want adults over the age of 18, for whom alcohol consumption status is known, and we only want stool samples. The `select(where...` line below simply removes metadata columns which are all `NA` values - they exist in another study but are all `NA` once subsetting has been done. Lastly, the `"relative_abundance"` `dataType` is requested because it contains the relevant information about microbial composition.
 
+```{r, collapse = TRUE, message = FALSE}
+alcoholStudy <-
+    filter(sampleMetadata, age >= 18) %>%
+    filter(!is.na(alcohol)) %>%
+    filter(body_site == "stool") %>%
+    select(where(~ !all(is.na(.x)))) %>%
+    returnSamples("relative_abundance")
 ```
 
-To keep only phylum-level data:
+### Mutate colData
 
-```{r}
-loman.bd = subset_taxa(loman.pseq, phylum == "Bacteroidetes")
-loman.bd
-head(taxa_names( loman.bd ))
+Most of the values in the `sampleMetadata` `data.frame` (which become `colData`) are in lower snake case (e.g. `snake_case`) and don't look nice in plots. Here, the values of the `alcohol` variable are made into title case using `r CRANpkg("stringr")` so they will look nice in plots.
+
+```{r, collapse = TRUE}
+colData(alcoholStudy) <-
+    colData(alcoholStudy) %>%
+    as.data.frame() %>%
+    mutate(alcohol = str_replace_all(alcohol, "no", "No")) %>%
+    mutate(alcohol = str_replace_all(alcohol, "yes", "Yes")) %>%
+    DataFrame()
 ```
 
-## Advanced pruning
+### Agglomerate Ranks
 
-The phyloseq package provides advanced pruning of taxa. The follwing code keeps only
-taxa that are among the most abundant 5% in at least ten samples:
+Next, the `splitByRanks` method from `r Biocpkg("mia")` is used to create alternative experiment for each level of the taxonomic tree (e.g. Genus). This allows for diversity and differential abundance analysis at specific taxonomic levels; with this step complete, our data is ready to analyze.
 
-```{r}
-keepotu = genefilter_sample(loman.pseq, filterfun_sample(topp(0.05)), A = 10)
-summary(keepotu)
-subset_taxa(loman.pseq, keepotu)
-
+```{r, collapse = TRUE}
+altExps(alcoholStudy) <-
+    splitByRanks(alcoholStudy)
 ```
 
-Note that phyloseq also provides `topk()` for selecting the most abundant k taxa,
-and other functions for advanced pruning of taxa.
+## Alpha Diversity
 
-## Taxonomy heatmap
+Alpha diversity is a measure of the within sample diversity of features (relative abundance proportions here) and seeks to quantify the evenness (i.e. are the amounts of different microbes the same) and richness (i.e. are they are large variety of microbial taxa present). The Shannon index (H') is a commonly used measure of alpha diversity, it's estimated here using the `estimateDiversity()` method from the `r Biocpkg("mia")` package.
 
-The phyloseq package provides the `plot_heatmap()` function to create heatmaps using a variety of built-in
-dissimilarity metrics for clustering. Here, we apply the same abundance filter as above. This function supports 
-a large number of distance and ordination methods, here we use Bray-Curtis dissimilarity for distance and PCoA
-as the ordination method for organizing the heatmap.
+To quickly plot the results of alpha diversity estimation, the `plotColData()` method from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax.
 
-```{r, message=FALSE, warning=FALSE}
-loman.filt = subset_taxa(loman.pseq, keepotu)
-plot_heatmap(loman.filt, method="PCoA", distance="bray") +
-  ggplot2::theme(axis.text.y = ggplot2::element_blank(),
-                 axis.ticks.y = ggplot2::element_blank())
+```{r, collapse = TRUE, fig.cap = "Alpha Diversity - Shannon Index (H')"}
+alcoholStudy %>%
+    estimateDiversity(abund_values = "relative_abundance", index = "shannon") %>%
+    plotColData(x = "alcohol", y = "shannon", colour_by = "alcohol", shape_by = "alcohol") +
+    labs(x = "Alcohol", y = "Alpha Diversity (H')") +
+    guides(color = guide_none(), shape = guide_none()) +
+    theme(legend.position = "none")
 ```
 
+The figure suggest that those who consume alcohol have higher Shannon alpha diversity than those who do not consume alcohol; however, the difference does not appear to be significant, at least qualitatively.
 
-## Taxonomy histogram
+## Beta Diversity
 
-Here we plot the top 20 most abundant species (not strains), defined by the sum of abundance across all samples in the dataset:
+Beta diversity is a measure of the between sample diversity of features (relative abundance proportions here) and seeks to quantify the magnitude of differences (or similarity) between every given pair of samples. Below it is accessed by Bray–Curtis Principal Coordinates Analysis (PCoA), which is a linear method, and Uniform Manifold Approximation and Projection (UMAP), which is a non-linear method.
 
-```{r, fig.height=8.5}
-par(mar = c(20, 4, 0, 0) + 0.15) #increase margin size on the bottom
-barplot(sort(taxa_sums(loman.pseq), TRUE)[1:20] / nsamples(loman.pseq),
-        ylab = "Total counts", las = 2)
+### Bray–Curtis PCoA
 
+To calculate pairwise Bray–Curtis distance for every sample in our study we will use the `runMDS()` method from the `r Biocpkg("scater")` package along with the `vegdist()` method from the `r CRANpkg("vegan")` package.
 
+To quickly plot the results of beta diversity analysis, the `plotReducedDim()` method from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax.
+
+```{r, collapse = TRUE, fig.cap = "Beta Diversity - Bray–Curtis PCoA"}
+alcoholStudy %>%
+    runMDS(FUN = vegdist, method = "bray", exprs_values = "relative_abundance", altexp = "Genus", name = "BrayCurtis") %>%
+    plotReducedDim("BrayCurtis",colour_by = "alcohol", shape_by = "alcohol") +
+    labs(x = "PCo 1", y = "PCo 2") +
+    guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +
+    theme(legend.position = c(0.90, 0.85))
 ```
 
-## Alpha diversity estimation
+### UMAP
 
-The phyloseq package calculates numerous alpha diversity measures. Here we compare three diversity
-in the species-level data,stratifying by stool texture:
+To calculate the UMAP coordinates of every sample in our study we will use the `runUMAP()` method from the `r Biocpkg("scater")` package package, as it handles the task in a single line.
 
-```{r, message=FALSE, warning=FALSE}
-alphas = c("Shannon", "Simpson", "InvSimpson")
-plot_richness(loman.pseq, "stool_texture", measures = alphas)
+To quickly plot the results of beta diversity analysis, the `plotReducedDim()` method from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax is used again.
+
+```{r, collapse = TRUE, fig.cap = "Beta Diversity - UMAP (Uniform Manifold Approximation and Projection)"}
+alcoholStudy %>%
+    runUMAP(exprs_values = "relative_abundance", altexp = "Genus", name = "UMAP") %>%
+    plotReducedDim("UMAP",colour_by = "alcohol", shape_by = "alcohol") +
+    labs(x = "UMAP 1", y = "UMAP 2") +
+    guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +
+    theme(legend.position = c(0.90, 0.85))
 ```
 
-Let’s compare these three alpha diversity measures:
+## Differential Abundance
 
-```{r, message=FALSE, warning=FALSE}
-pairs(estimate_richness(loman.pseq, measures = alphas))
+Next, it would be desirable to establish which microbes are differentially abundant between the two groups (those who consume alcohol, and those who do not). The `r Biocpkg("lefser")` and `r Biocpkg("ANCOMBC")` packages feature excellent methods to perform this tasks; however, code is not included here to avoid including many `Suggests` package - `r Biocpkg("curatedMetagenomicData")` had far too many of these in the the previous version and is now very lean. There is a repository of analyses, [curatedMetagenomicAnalyses](https://github.com/waldronlab/curatedMetagenomicAnalyses), on GitHub and a forthcoming paper that will feature extensive demonstrations of analyses - but for now, the suggestions above will have to suffice.
 
-```
+# Type Conversion
 
-## Beta diversity / dissimilarity clustering
+Finally, the `r Biocpkg("curatedMetagenomicData")` package previously had methods for conversion to `phyloseq` class objects, and they have been removed in the latest release. It is likely that some users will still want to do analysis using `r Biocpkg("phyloseq")`, and we would like to help them do so - it is just easier if we don't have to maintain the conversion method ourselves. As such, the `r Biocpkg("mia")` package has a method, `makePhyloseqFromTreeSummarizedExperiment`, that will readily do the conversion - users needing this functionality are advised to use it.
 
-Numerous beta diversity/dissimilarity distances are provided by the `distance()` function when provided a phyloseq object,
-and these can be used for any kind of clustering or classification scheme. For example, here is a hierarchical
-clustering dendrogram produced by the `hclust()` from the base R stats package with “Ward” linkage:
-
-
-```{r}
-mydist = distance(loman.pseq, method="bray")
-myhclust = hclust( mydist )
-plot(myhclust, main="LomanNJ_2013 - Bray-Curtis Dissimilarity", 
-     method="ward.D", xlab="Samples", sub = "")
-```
-
-## Ordination analysis
-
-The phyloseq package provides a variety of ordination methods, with convenient options
-for labeling points. Here is a Principal Coordinates Analysis plot of species-level
-taxa from the Loman dataset, using Bray-Curtis distance:
-
-```{r}
-ordinated_taxa = ordinate(loman.pseq, method="PCoA", distance="bray")
-plot_ordination(loman.pseq, ordinated_taxa, color="stool_texture", 
-                title = "LomanNJ_2013 - Bray-Curtis Principal Coordinates Analysis")
-```
-
-```{r}
-plot_scree(ordinated_taxa, title="LomanNJ_2013 - Screeplot")
+```{r, eval = FALSE}
+makePhyloseqFromTreeSummarizedExperiment(alcoholStudy, abund_values = "relative_abundance")
 ```
