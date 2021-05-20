@@ -68,14 +68,9 @@ BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, b
 
 To access curated metagenomic data, users will use the
 `curatedMetagenomicData()` method both to query and return resources.
-
-``` r
-library(curatedMetagenomicData)
-```
-
 Multiple resources can be queried or returned with a single call to
-`curatedMetagenomicData()`, only the titles of resources are returned by
-default.
+`curatedMetagenomicData()`, but only the titles of resources are
+returned by default.
 
 ``` r
 curatedMetagenomicData("AsnicarF_20.+")
@@ -129,7 +124,7 @@ When the third argument `counts` is set to `TRUE`, relative abundance
 proportions are multiplied by read depth and rounded to the nearest
 integer prior to being returned. Also, when multiple resources are
 requested, the `list` will contain named elements corresponding to each
-SummarizedExperiment and/or TreeSummarizedExperiment object.
+`SummarizedExperiment` and/or `TreeSummarizedExperiment` object.
 
 ``` r
 curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
@@ -180,8 +175,6 @@ curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, count
 ## colTree: NULL
 ```
 
-See the package vignette for more detailed examples.
-
 ## Contributing
 
 All are welcome to contribute to the curatedMetagenomicData package
@@ -198,6 +191,6 @@ code of conduct. By contributing, you agree to abide by its terms.
 Pasolli E, Schiffer L, Manghi P, Renson A, Obenchain V, Truong D,
 Beghini F, Malik F, Ramos M, Dowd J, Huttenhower C, Morgan M, Segata N,
 Waldron L (2017). Accessible, curated metagenomic data through
-ExperimentHub. *Nat. Methods*, **14**(11), 1023-1024. ISSN 1548-7091,
+ExperimentHub. *Nat. Methods*, **14** (11), 1023-1024. ISSN 1548-7091,
 1548-7105, doi:
 [10.1038/nmeth.4468](https://doi.org/10.1038/nmeth.4468).
