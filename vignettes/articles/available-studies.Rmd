@@ -43,6 +43,5 @@ sampleMetadata %>%
     dplyr::mutate(`Body Subsite` = stringr::str_replace_all(`Body Subsite`, "_", " ")) %>% 
     dplyr::ungroup() %>%
     dplyr::mutate(dplyr::across(.cols = dplyr::everything(), .fns = ~ tidyr::replace_na(.x, ""))) %>%
-    DT::datatable(options = list(dom = "ltip"), extensions = "Responsive")
+    DT::datatable(options = list(dom = "t", pageLength = 100), extensions = "Responsive")
 ```
-

@@ -33,9 +33,9 @@
     - YassourM_2016 (36 samples)
     - YassourM_2018 (271 samples)
     - ZhuF_2020 (171 samples)
-* All raw data has been reprocessed with MetaPhlAn3 & HUMAnN3
+* All raw data has been reprocessed with MetaPhlAn3 (v3.0.0) & HUMAnN3 (v3.0.0.alpha.3)
 * The `curatedMetagenomicData()` method has been refactored for efficiency
-    - It now returns SummarizedExperiment/TreeSummarizedExperiment objects
+    - It now returns `SummarizedExperiment`/`TreeSummarizedExperiment` objects
     - Sample metadata always stays up to date and is updated weekly
     - It is now the primary (and only) means to access data
 * The `mergeData()` method has been refactored for accuracy and efficiency

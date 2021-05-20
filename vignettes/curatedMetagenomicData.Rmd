@@ -26,21 +26,21 @@ vignette: >
 
 # Installation
 
-Most users should simply install the current version of `r Biocpkg("curatedMetagenomicData")` from Bioconductor, unless they have good reason not to. Changes to the package are always commited to GitHub first, and it might be desirable to have the absolute latest changes by installing `r Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub; although, this is not recommended for most users. Finally, we have made extensive changes in `r Biocpkg("curatedMetagenomicData")` `3.0.0` and some users might want to revert to the previous version of `r Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub for older analyses. The previous version of `r Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub, `1.20.0`, will remain installable for the foreseeable future.
+Most users should simply install the current version of `r BiocStyle::Biocpkg("curatedMetagenomicData")` from Bioconductor, unless they have good reason not to. Changes to the package are always commited to GitHub first, and it might be desirable to have the absolute latest changes by installing `r BiocStyle::Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub; although, this is not recommended for most users. Finally, we have made extensive changes in `r BiocStyle::Biocpkg("curatedMetagenomicData")` `3.0.0` and some users might want to revert to the previous version of `r BiocStyle::Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub for older analyses. The previous version of `r BiocStyle::Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub, `1.20.0`, will remain installable for the foreseeable future.
 
-To install the current version of `r Biocpkg("curatedMetagenomicData")` from Bioconductor, use `r CRANpkg("BiocManager")` as follows.
+To install the current version of `r BiocStyle::Biocpkg("curatedMetagenomicData")` from Bioconductor, use `r BiocStyle::CRANpkg("BiocManager")` as follows.
 
 ```{r, eval = FALSE}
 BiocManager::install("curatedMetagenomicData")
 ```
 
-To install the current version of `r Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub, use `r CRANpkg("BiocManager")` as follows.
+To install the current version of `r BiocStyle::Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub, use `r BiocStyle::CRANpkg("BiocManager")` as follows.
 
 ```{r, eval = FALSE}
 BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, build_vignettes = TRUE)
 ```
 
-To install the previous version of `r Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub, use `r CRANpkg("BiocManager")` as follows.
+To install the previous version of `r BiocStyle::Githubpkg("waldronlab/curatedMetagenomicData")` from GitHub, use `r BiocStyle::CRANpkg("BiocManager")` as follows.
 
 ```{r, eval = FALSE}
 BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, build_vignettes = TRUE, ref = "v1.20.0")
@@ -48,17 +48,20 @@ BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, b
 
 # R Packages
 
-To demonstrate the functionality of `r Biocpkg("curatedMetagenomicData")`, `r CRANpkg("dplyr")` and `r CRANpkg("DT")` are needed.
+```{r, include = FALSE}
+library(curatedMetagenomicData)
+```
+
+To demonstrate the functionality of `r Biocpkg("curatedMetagenomicData")`, the `r CRANpkg("dplyr")` and `r CRANpkg("DT")` packages are needed.
 
 ```{r, message = FALSE}
-library(curatedMetagenomicData)
 library(dplyr)
 library(DT)
 ```
 
 # Sample Metadata
 
-The `r Biocpkg("curatedMetagenomicData")` package contains a `data.frame`, `sampleMetadata`, of manually curated sample metadata to help users understand the nature of studies and samples available prior to returning resources. Beyond this, it serves two purposes: 1) to define `study_name` which is used with the `curatedMetagenomicData()` method to query and return resources, and 2) to define `sample_id` which is used with the `returnSamples()` method to return samples across studies.
+The `r Biocpkg("curatedMetagenomicData")` package contains a `data.frame`, `sampleMetadata`, of manually curated sample metadata to help users understand the nature of studies and samples available prior to returning resources. Beyond this, it serves two purposes: 1) to define `study_name`, which is used with the `curatedMetagenomicData()` method to query and return resources, and 2) to define `sample_id`, which is used with the `returnSamples()` method to return samples across studies.
 
 To demonstrate, the first ten rows and columns (without any `NA` values) of `sampleMetadata` for the `AsnicarF_2017` study are shown in the table below.
 
@@ -73,7 +76,7 @@ sampleMetadata %>%
 
 # Data Access
 
-To access curated metagenomic data, users will use the `curatedMetagenomicData()` method both to query and return resources. The first argument `pattern` is a regular expression pattern to look for in the titles of resources available in `r Biocpkg("curatedMetagenomicData")`; `""` will return all resources. The title of each resource is a three part string with "." as a delimiter - the fields are `runDate`, `studyName`, and `dataType`. The `runDate` is the date we created the resource and can mostly be ignored by users because if there is more than one date corresponding to a resource, the most recent one is selected automatically. It would be used if a specific `runDate` was needed, but only a single copy of each resource exists currently.
+To access curated metagenomic data, users will use the `curatedMetagenomicData()` method both to query and return resources. The first argument `pattern` is a regular expression pattern to look for in the titles of resources available in `r Biocpkg("curatedMetagenomicData")`; `""` will return all resources. The title of each resource is a three part string with "." as a delimiter - the fields are `runDate`, `studyName`, and `dataType`. The `runDate` is the date we created the resource and can mostly be ignored by users because if there is more than one date corresponding to a resource, the most recent one is selected automatically. It would be used if a specific `runDate` was needed, but only a single copy of each resource exists as of this writing.
 
 Multiple resources can be queried or returned with a single call to `curatedMetagenomicData()`, only the titles of resources are returned by default.
 
@@ -87,7 +90,7 @@ When the second argument `dryrun` is set to `FALSE`, a `list` of `SummarizedExpe
 curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
 ```
 
-When the third argument `counts` is set to `TRUE`, relative abundance proportions are multiplied by read depth and rounded to the nearest integer prior to being returned. Also, when multiple resources are requested, the `list` will contain named elements corresponding to each SummarizedExperiment and/or TreeSummarizedExperiment object.
+When the third argument `counts` is set to `TRUE`, relative abundance proportions are multiplied by read depth and rounded to the nearest integer prior to being returned. Also, when multiple resources are requested, the `list` will contain named elements corresponding to each `SummarizedExperiment` and/or `TreeSummarizedExperiment` object.
 
 ```{r, collapse = TRUE}
 curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
@@ -95,7 +98,7 @@ curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, count
 
 # Merge Data
 
-To merge the `list` elements returned from the `curatedMetagenomicData` method into a single `SummarizedExperiment` or `TreeSummarizedExperiment` object, users will use the `mergeData()` method provided elements are the same `dataType`.
+To merge the `list` elements returned from the `curatedMetagenomicData()` method into a single `SummarizedExperiment` or `TreeSummarizedExperiment` object, users will use the `mergeData()` method, provided elements are the same `dataType`.
 
 ```{r, collapse = TRUE}
 curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) %>%
@@ -132,15 +135,15 @@ sampleMetadata %>%
 ```
 
 Users should also know that the `counts` argument applies to the `returnSamples()` method as well, and can be 
-passed as the third argument. Finally, users should also know that any arbitrary columns added to `sampleMetadata` will be present in the `colData` of the `SummarizedExperiment` or `TreeSummarizedExperiment` object that is returned.
+passed as the third argument. Finally, users should know that any arbitrary columns added to `sampleMetadata` will be present in the `colData` of the `SummarizedExperiment` or `TreeSummarizedExperiment` object that is returned.
 
 # Example Analysis
 
-To demonstrate the utility of `r Biocpkg("curatedMetagenomicData")`, an example analysis is presented below. However, readers should know analysis is generally beyond the scope of `r Biocpkg("curatedMetagenomicData")` and the analysis presented here is for demonstration purposes alone. It is best to consider the output of `r Biocpkg("curatedMetagenomicData")` as the input for analysis more than anything else.
+To demonstrate the utility of `r Biocpkg("curatedMetagenomicData")`, an example analysis is presented below. However, readers should know analysis is generally beyond the scope of `r Biocpkg("curatedMetagenomicData")` and the analysis presented here is for demonstration alone. It is best to consider the output of `r Biocpkg("curatedMetagenomicData")` as the input of analysis more than anything else.
 
 ## R Packages
 
-To demonstrate the utility of `r Biocpkg("curatedMetagenomicData")`, `r CRANpkg("stringr")`, `r Biocpkg("mia")`,  `r Biocpkg("scater")`, and `r CRANpkg("vegan")` packages are needed.
+To demonstrate the utility of `r Biocpkg("curatedMetagenomicData")`, the `r CRANpkg("stringr")`, `r Biocpkg("mia")`,  `r Biocpkg("scater")`, and `r CRANpkg("vegan")` packages are needed.
 
 ```{r, message = FALSE}
 library(stringr)
@@ -151,11 +154,11 @@ library(vegan)
 
 ## Prepare Data
 
-In our hypothetical study examine the association of alcohol consumption and stool microbial composition across all annotated samples in `r Biocpkg("curatedMetagenomicData")`. We will examine the alpha diversity (within subject diversity), beta diversity (between subject diversity), and conclude with a few notes on differential abundance analysis.
+In our hypothetical study, let's examine the association of alcohol consumption and stool microbial composition across all annotated samples in `r Biocpkg("curatedMetagenomicData")`. We will examine the alpha diversity (within subject diversity), beta diversity (between subject diversity), and conclude with a few notes on differential abundance analysis.
 
 ### Return Samples
 
-First, as above, we use the `returnSamples()` method to return the relevant samples across all studies available in `r Biocpkg("curatedMetagenomicData")`. We want adults over the age of 18, for whom alcohol consumption status is known, and we only want stool samples. The `select(where...` line below simply removes metadata columns which are all `NA` values - they exist in another study but are all `NA` once subsetting has been done. Lastly, the `"relative_abundance"` `dataType` is requested because it contains the relevant information about microbial composition.
+First, as above, we use the `returnSamples()` method to return the relevant samples across all studies available in `r Biocpkg("curatedMetagenomicData")`. We want adults over the age of 18, for whom alcohol consumption status is known, and we want only stool samples. The `select(where...` line below simply removes metadata columns which are all `NA` values - they exist in another study but are all `NA` once subsetting has been done. Lastly, the `"relative_abundance"` `dataType` is requested because it contains the relevant information about microbial composition.
 
 ```{r, collapse = TRUE, message = FALSE}
 alcoholStudy <-
@@ -168,7 +171,7 @@ alcoholStudy <-
 
 ### Mutate colData
 
-Most of the values in the `sampleMetadata` `data.frame` (which become `colData`) are in lower snake case (e.g. `snake_case`) and don't look nice in plots. Here, the values of the `alcohol` variable are made into title case using `r CRANpkg("stringr")` so they will look nice in plots.
+Most of the values in the `sampleMetadata` `data.frame` (which becomes `colData`) are in lower snake case (e.g. `snake_case`) and don't look nice in plots. Here, the values of the `alcohol` variable are made into title case using `r CRANpkg("stringr")` so they will look nice in plots.
 
 ```{r, collapse = TRUE}
 colData(alcoholStudy) <-
@@ -181,7 +184,7 @@ colData(alcoholStudy) <-
 
 ### Agglomerate Ranks
 
-Next, the `splitByRanks` method from `r Biocpkg("mia")` is used to create alternative experiment for each level of the taxonomic tree (e.g. Genus). This allows for diversity and differential abundance analysis at specific taxonomic levels; with this step complete, our data is ready to analyze.
+Next, the `splitByRanks` method from `r Biocpkg("mia")` is used to create alternative experiments for each level of the taxonomic tree (e.g. Genus). This allows for diversity and differential abundance analysis at specific taxonomic levels; with this step complete, our data is ready to analyze.
 
 ```{r, collapse = TRUE}
 altExps(alcoholStudy) <-
@@ -228,7 +231,7 @@ alcoholStudy %>%
 
 To calculate the UMAP coordinates of every sample in our study we will use the `runUMAP()` method from the `r Biocpkg("scater")` package package, as it handles the task in a single line.
 
-To quickly plot the results of beta diversity analysis, the `plotReducedDim()` method from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax is used again.
+To quickly plot the results of beta diversity analysis, the `plotReducedDim()` method from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax again.
 
 ```{r, collapse = TRUE, fig.cap = "Beta Diversity - UMAP (Uniform Manifold Approximation and Projection)"}
 alcoholStudy %>%
@@ -241,7 +244,7 @@ alcoholStudy %>%
 
 ## Differential Abundance
 
-Next, it would be desirable to establish which microbes are differentially abundant between the two groups (those who consume alcohol, and those who do not). The `r Biocpkg("lefser")` and `r Biocpkg("ANCOMBC")` packages feature excellent methods to perform this tasks; however, code is not included here to avoid including many `Suggests` package - `r Biocpkg("curatedMetagenomicData")` had far too many of these in the the previous version and is now very lean. There is a repository of analyses, [curatedMetagenomicAnalyses](https://github.com/waldronlab/curatedMetagenomicAnalyses), on GitHub and a forthcoming paper that will feature extensive demonstrations of analyses - but for now, the suggestions above will have to suffice.
+Next, it would be desirable to establish which microbes are differentially abundant between the two groups (those who consume alcohol, and those who do not). The `r Biocpkg("lefser")` and `r Biocpkg("ANCOMBC")` packages feature excellent methods to perform this tasks; however, code is not included here to avoid including many `Suggests` packages - `r Biocpkg("curatedMetagenomicData")` had far too many of these in the the previous version and is now very lean. There is a repository of analyses, [curatedMetagenomicAnalyses](https://github.com/waldronlab/curatedMetagenomicAnalyses), on GitHub and a forthcoming paper that will feature extensive demonstrations of analyses - but for now, the suggestions above will have to suffice.
 
 # Type Conversion
 
