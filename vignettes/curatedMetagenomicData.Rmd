@@ -94,7 +94,8 @@ curatedMetagenomicData("AsnicarF_20.+")
 If you are more comfortable with wildcard-like searching, the following is equivalent:
 
 ```{r, collapse = TRUE}
-curatedMetagenomicData(glob2rx("AsnicarF_20*"))
+glob2rx("*AsnicarF_20*") %>%
+    curatedMetagenomicData()
 ```
 
 When the second argument `dryrun` is set to `FALSE`, a `list` of `SummarizedExperiment` and/or `TreeSummarizedExperiment` objects is returned. When a single resource is requested, a single element `list` is returned.

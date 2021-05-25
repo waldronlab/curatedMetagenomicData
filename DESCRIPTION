@@ -30,7 +30,7 @@ biocViews:
     Homo_sapiens_Data,
     MicrobiomeData,
     ReproducibleResearch
-Version: 3.1.0
+Version: 3.1.1
 License: Artistic-2.0
 Depends:
     R (>= 4.1),
@@ -57,6 +57,7 @@ Suggests:
     rmarkdown,
     scater,
     testthat,
+    uwot,
     vegan
 URL: https://github.com/waldronlab/curatedMetagenomicData
 BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues

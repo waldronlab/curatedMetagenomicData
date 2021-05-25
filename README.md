@@ -19,14 +19,14 @@ standardized metagenomic data are available as
 ## Installation
 
 Most users should simply install the current version of
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.13/curatedMetagenomicData)*
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.14/curatedMetagenomicData)*
 from Bioconductor, unless they have good reason not to. Changes to the
 package are always commited to GitHub first, and it might be desirable
 to have the absolute latest changes by installing
 *[curatedMetagenomicData](https://github.com/waldronlab/curatedMetagenomicData)*
 from GitHub; although, this is not recommended for most users. Finally,
 we have made extensive changes in
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.13/curatedMetagenomicData)*
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.14/curatedMetagenomicData)*
 `3.0.0` and some users might want to revert to the previous version of
 *[curatedMetagenomicData](https://github.com/waldronlab/curatedMetagenomicData)*
 from GitHub for older analyses. The previous version of
@@ -35,7 +35,7 @@ from GitHub, `1.20.0`, will remain installable for the foreseeable
 future.
 
 To install the current version of
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.13/curatedMetagenomicData)*
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.14/curatedMetagenomicData)*
 from Bioconductor, use
 *[BiocManager](https://CRAN.R-project.org/package=BiocManager)* as
 follows.
