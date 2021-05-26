@@ -10,8 +10,6 @@ author:
   affiliation: 
   - Graduate School of Public Health and Health Policy, City University of New
     York, New York, NY, U.S.A.
-  - Institute for Implementation Science in Population Health, City University
-    of New York, New York, NY, U.S.A.
   email: levi.waldron@sph.cuny.edu
 package: curatedMetagenomicData
 abstract: >
