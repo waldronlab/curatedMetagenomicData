@@ -39,7 +39,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">curatedMetagenomicData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.99.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.0.1</span>
       </span>
     </div>
 
@@ -121,11 +121,8 @@
 <div id="examples" class="section level2">
 <h2 class="hasAnchor">
 <a href="#examples" class="anchor"></a>Examples</h2>
-<p>To access curated metagenomic data, users will use the <code><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData()</a></code> method both to query and return resources.</p>
+<p>To access curated metagenomic data, users will use the <code><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData()</a></code> method both to query and return resources. Multiple resources can be queried or returned with a single call to <code><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData()</a></code>, but only the titles of resources are returned by default.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/curatedMetagenomicData">curatedMetagenomicData</a></span><span class="op">)</span></code></pre></div>
-<p>Multiple resources can be queried or returned with a single call to <code><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData()</a></code>, only the titles of resources are returned by default.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_20.+"</span><span class="op">)</span>
 <span class="co">## 2021-03-31.AsnicarF_2017.gene_families</span>
 <span class="co">## 2021-03-31.AsnicarF_2017.marker_abundance</span>
@@ -140,9 +137,8 @@
 <span class="co">## 2021-03-31.AsnicarF_2021.pathway_coverage</span>
 <span class="co">## 2021-03-31.AsnicarF_2021.relative_abundance</span></code></pre></div>
 <p>When the second argument <code>dryrun</code> is set to <code>FALSE</code>, a <code>list</code> of <code>SummarizedExperiment</code> and/or <code>TreeSummarizedExperiment</code> objects is returned. When a single resource is requested, a single element <code>list</code> is returned.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_2017.relative_abundance"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span>
-<span class="co">## snapshotDate(): 2021-05-05</span>
 <span class="co">## $`2021-03-31.AsnicarF_2017.relative_abundance`</span>
 <span class="co">## class: TreeSummarizedExperiment </span>
 <span class="co">## dim: 301 24 </span>
@@ -165,10 +161,9 @@
 <span class="co">## rowTree: 1 phylo tree(s) (10430 leaves)</span>
 <span class="co">## colLinks: NULL</span>
 <span class="co">## colTree: NULL</span></code></pre></div>
-<p>When the third argument <code>counts</code> is set to <code>TRUE</code>, relative abundance proportions are multiplied by read depth and rounded to the nearest integer prior to being returned. Also, when multiple resources are requested, the <code>list</code> will contain named elements corresponding to each SummarizedExperiment and/or TreeSummarizedExperiment object.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<p>When the third argument <code>counts</code> is set to <code>TRUE</code>, relative abundance proportions are multiplied by read depth and rounded to the nearest integer prior to being returned. Also, when multiple resources are requested, the <code>list</code> will contain named elements corresponding to each <code>SummarizedExperiment</code> and/or <code>TreeSummarizedExperiment</code> object.</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_20.+.relative_abundance"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span>, counts <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">## snapshotDate(): 2021-05-05</span>
 <span class="co">## $`2021-03-31.AsnicarF_2017.relative_abundance`</span>
 <span class="co">## class: TreeSummarizedExperiment </span>
 <span class="co">## dim: 301 24 </span>
@@ -213,7 +208,6 @@
 <span class="co">## rowTree: 1 phylo tree(s) (10430 leaves)</span>
 <span class="co">## colLinks: NULL</span>
 <span class="co">## colTree: NULL</span></code></pre></div>
-<p>See the package vignette for more detailed examples.</p>
 </div>
 <div id="contributing" class="section level2">
 <h2 class="hasAnchor">
@@ -225,7 +219,7 @@
 <a href="#code-of-conduct" class="anchor"></a>Code of Conduct</h2>
 <p>Please note that the curatedMetagenomicData package is released with a code of conduct. By contributing, you agree to abide by its terms.</p>
 <hr>
-<p>Pasolli E, Schiffer L, Manghi P, Renson A, Obenchain V, Truong D, Beghini F, Malik F, Ramos M, Dowd J, Huttenhower C, Morgan M, Segata N, Waldron L (2017). Accessible, curated metagenomic data through ExperimentHub. <em>Nat. Methods</em>, <strong>14</strong>(11), 1023-1024. ISSN 1548-7091, 1548-7105, doi: <a href="https://doi.org/10.1038/nmeth.4468">10.1038/nmeth.4468</a>.</p>
+<p>Pasolli E, Schiffer L, Manghi P, Renson A, Obenchain V, Truong D, Beghini F, Malik F, Ramos M, Dowd J, Huttenhower C, Morgan M, Segata N, Waldron L (2017). Accessible, curated metagenomic data through ExperimentHub. <em>Nat. Methods</em>, <strong>14</strong> (11), 1023-1024. ISSN 1548-7091, 1548-7105, doi: <a href="https://doi.org/10.1038/nmeth.4468">10.1038/nmeth.4468</a>.</p>
 </div>
 </div>
   </div>
