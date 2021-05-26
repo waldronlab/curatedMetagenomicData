@@ -131,6 +131,9 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
         base::nrow(resources) %>%
         base::seq_len()
 
+    resource_names <-
+        base::names(resource_list)
+
     for (i in resource_index) {
         eh_subset <-
             resources[[i, "rowname"]]
@@ -166,6 +169,28 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
         if (resources[[i, "data_type"]] == "relative_abundance") {
             keep_tips <-
                 base::intersect(row_names, phylogeneticTree[["tip.label"]])
+
+            drop_rows <-
+                base::setdiff(row_names, keep_tips) %>%
+                stringr::str_subset("s__") %>%
+                base::sort()
+
+            if (base::length(drop_rows) != 0) {
+                drop_name <-
+                    stringr::str_c("$`", resource_names[[i]], "`\n")
+
+                drop_text <-
+                    base::as.character("dropping rows without rowTree matches:\n")
+
+                drop_rows <-
+                    stringr::str_c("  ", drop_rows, collapse = "\n")
+
+                if (i == 1) {
+                    base::message("\n", drop_name, drop_text, drop_rows, "\n")
+                } else {
+                    base::message(drop_name, drop_text, drop_rows, "\n")
+                }
+            }
 
             eh_matrix <-
                 magrittr::extract(eh_matrix, keep_tips, keep_cols)

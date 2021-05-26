@@ -76,12 +76,26 @@ sampleMetadata %>%
 
 # Data Access
 
+There are three main ways to access data from curatedMetagenomicData:
+1. The `curatedMetagenomicData()` function to search and return individual datasets
+2. The `returnSamples()` function to access merged datasets based on filtered metadata
+3. Through the command-line interface. This is not part of the Bioconductor package or discussed here; see https://github.com/waldronlab/curatedMetagenomicDataCLI
+
+## The curatedMetagenomicData function
+
 To access curated metagenomic data, users will use the `curatedMetagenomicData()` method both to query and return resources. The first argument `pattern` is a regular expression pattern to look for in the titles of resources available in `r Biocpkg("curatedMetagenomicData")`; `""` will return all resources. The title of each resource is a three part string with "." as a delimiter - the fields are `runDate`, `studyName`, and `dataType`. The `runDate` is the date we created the resource and can mostly be ignored by users because if there is more than one date corresponding to a resource, the most recent one is selected automatically. It would be used if a specific `runDate` was needed, but only a single copy of each resource exists as of this writing.
 
-Multiple resources can be queried or returned with a single call to `curatedMetagenomicData()`, only the titles of resources are returned by default.
+Multiple resources can be queried or returned with a single call to `curatedMetagenomicData()`, only the titles of resources are returned by default. The following search term is a regex that matches all six data types from all datasets starting with *AsnicarF_20*:
 
 ```{r, collapse = TRUE}
 curatedMetagenomicData("AsnicarF_20.+")
+```
+
+If you are more comfortable with wildcard-like searching, the following is equivalent:
+
+```{r, collapse = TRUE}
+glob2rx("*AsnicarF_20*") %>%
+    curatedMetagenomicData()
 ```
 
 When the second argument `dryrun` is set to `FALSE`, a `list` of `SummarizedExperiment` and/or `TreeSummarizedExperiment` objects is returned. When a single resource is requested, a single element `list` is returned.
@@ -96,7 +110,9 @@ When the third argument `counts` is set to `TRUE`, relative abundance proportion
 curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
 ```
 
-# Merge Data
+If you are interested only in taxonomic relative abundance, include *relative_abundance* in your search term, like above or with searches like `glob2rx(AsnicarF_20*abundance)`. 
+
+### Merging `curatedMetagenomicData()` results
 
 To merge the `list` elements returned from the `curatedMetagenomicData()` method into a single `SummarizedExperiment` or `TreeSummarizedExperiment` object, users will use the `mergeData()` method, provided elements are the same `dataType`.
 
@@ -119,9 +135,9 @@ curatedMetagenomicData("LiJ_20.+.relative_abundance", dryrun = FALSE) %>%
     mergeData()
 ```
 
-# Return Samples
+## The `returnSamples()` function for merged datasets based on filtered metadata
 
-To return samples across studies, users will use the `returnSamples()` method along with the `sampleMetadata` `data.frame` subset to include only desired samples and metadata. The subset `sampleMetadata` `data.frame` (as the first argument, `sampleMetadata`) will be used to get the desired resources, the `mergeData()` method will be used to merge them, and the subset `sampleMetadata` `data.frame` will be used again to subset the `SummarizedExperiment` or `TreeSummarizedExperiment` object to include only desired samples and metadata.
+The `returnSamples()` takes a subset of the `sampleMetadata` object as input, and returns a single `SummarizedExperiment` or `TreeSummarizedExperiment` containing one of `r Biocpkg("curatedMetagenomicData")`'s data types, with this metadata subset as its `colData`. To use this method, filter/select rows and columns of interest from the `sampleMetadata` object, maintaining at least one row, and the sampleID and study_name columns. Provide the resulting `data.frame` as the first argument to the `returnSamples()` function. 
 
 The `returnSamples()` method requires a second argument `dataType` (`"gene_families"`, `"marker_abundance"`, `"marker_presence"`, `"pathway_abundance"`, `"pathway_coverage"`, or `"relative_abundance"`) be specified. It is often most convenient to subset the `sampleMetadata` `data.frame` using `r CRANpkg("dplyr")` syntax.
 
@@ -134,7 +150,7 @@ sampleMetadata %>%
     returnSamples("relative_abundance")
 ```
 
-Users should also know that the `counts` argument applies to the `returnSamples()` method as well, and can be 
+The `counts` argument applies to the `returnSamples()` method as well, and can be 
 passed as the third argument. Finally, users should know that any arbitrary columns added to `sampleMetadata` will be present in the `colData` of the `SummarizedExperiment` or `TreeSummarizedExperiment` object that is returned.
 
 # Example Analysis

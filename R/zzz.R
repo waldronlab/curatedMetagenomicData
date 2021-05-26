@@ -4,7 +4,7 @@
     startup_message <-
         base::c(
             "",
-            "curatedMetagenomicData 3.0.0: see bit.ly/curatedMetagenomicData-3",
+            "curatedMetagenomicData 3.0.1: see bit.ly/curatedMetagenomicData-3",
             ""
         ) %>%
         base::paste(collapse = "\n")

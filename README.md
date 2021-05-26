@@ -95,7 +95,6 @@ is returned.
 
 ``` r
 curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
-## snapshotDate(): 2021-05-05
 ## $`2021-03-31.AsnicarF_2017.relative_abundance`
 ## class: TreeSummarizedExperiment 
 ## dim: 301 24 
@@ -128,7 +127,6 @@ requested, the `list` will contain named elements corresponding to each
 
 ``` r
 curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
-## snapshotDate(): 2021-05-05
 ## $`2021-03-31.AsnicarF_2017.relative_abundance`
 ## class: TreeSummarizedExperiment 
 ## dim: 301 24 
