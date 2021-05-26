@@ -6,6 +6,13 @@ author:
   - Section of Computational Biomedicine, Boston University School of Medicine,
     Boston, MA, U.S.A.
   email: schifferl@bu.edu
+- name: Levi Waldron, PhD
+  affiliation: 
+  - Graduate School of Public Health and Health Policy, City University of New
+    York, New York, NY, U.S.A.
+  - Institute for Implementation Science in Population Health, City University
+    of New York, New York, NY, U.S.A.
+  email: levi.waldron@sph.cuny.edu
 package: curatedMetagenomicData
 abstract: >
     The curatedMetagenomicData package provides standardized, curated human
@@ -85,7 +92,7 @@ There are three main ways to access data from curatedMetagenomicData:
 
 To access curated metagenomic data, users will use the `curatedMetagenomicData()` method both to query and return resources. The first argument `pattern` is a regular expression pattern to look for in the titles of resources available in `r Biocpkg("curatedMetagenomicData")`; `""` will return all resources. The title of each resource is a three part string with "." as a delimiter - the fields are `runDate`, `studyName`, and `dataType`. The `runDate` is the date we created the resource and can mostly be ignored by users because if there is more than one date corresponding to a resource, the most recent one is selected automatically. It would be used if a specific `runDate` was needed, but only a single copy of each resource exists as of this writing.
 
-Multiple resources can be queried or returned with a single call to `curatedMetagenomicData()`, only the titles of resources are returned by default. The following search term is a regex that matches all six data types from all datasets starting with *AsnicarF_20*:
+Multiple resources can be queried or returned with a single call to `curatedMetagenomicData()`, only the titles of resources are returned by default. The following search term is a regex that matches all six data types from all datasets starting with `*AsnicarF_20*`:
 
 ```{r, collapse = TRUE}
 curatedMetagenomicData("AsnicarF_20.+")
@@ -100,37 +107,37 @@ glob2rx("*AsnicarF_20*") %>%
 
 When the second argument `dryrun` is set to `FALSE`, a `list` of `SummarizedExperiment` and/or `TreeSummarizedExperiment` objects is returned. When a single resource is requested, a single element `list` is returned.
 
-```{r, collapse = TRUE}
+```{r, collapse = TRUE, message = FALSE}
 curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
 ```
 
 When the third argument `counts` is set to `TRUE`, relative abundance proportions are multiplied by read depth and rounded to the nearest integer prior to being returned. Also, when multiple resources are requested, the `list` will contain named elements corresponding to each `SummarizedExperiment` and/or `TreeSummarizedExperiment` object.
 
-```{r, collapse = TRUE}
+```{r, collapse = TRUE, message = FALSE}
 curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
 ```
 
-If you are interested only in taxonomic relative abundance, include *relative_abundance* in your search term, like above or with searches like `glob2rx(AsnicarF_20*abundance)`. 
+If you are interested only in taxonomic relative abundance, include `*relative_abundance*` in your search term, like above or with searches like `glob2rx(*AsnicarF_20*abundance)`. 
 
 ### Merging `curatedMetagenomicData()` results
 
 To merge the `list` elements returned from the `curatedMetagenomicData()` method into a single `SummarizedExperiment` or `TreeSummarizedExperiment` object, users will use the `mergeData()` method, provided elements are the same `dataType`.
 
-```{r, collapse = TRUE}
+```{r, collapse = TRUE, message = FALSE}
 curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) %>%
     mergeData()
 ```
 
 The `mergeData()` method works for every `dataType` and will always return the appropriate data structure (a single `SummarizedExperiment` or `TreeSummarizedExperiment` object).
 
-```{r, collapse = TRUE}
+```{r, collapse = TRUE, message = FALSE}
 curatedMetagenomicData("LiJ_20.+.pathway_abundance", dryrun = FALSE) %>%
     mergeData()
 ```
 
 This is useful for analysis across entire studies (e.g. meta-analysis); however, when doing analysis across individual samples (e.g. mega-analysis) the `returnSamples()` method is preferable.
 
-```{r, collapse = TRUE}
+```{r, collapse = TRUE, message = FALSE}
 curatedMetagenomicData("LiJ_20.+.relative_abundance", dryrun = FALSE) %>%
     mergeData()
 ```
@@ -141,7 +148,7 @@ The `returnSamples()` takes a subset of the `sampleMetadata` object as input, an
 
 The `returnSamples()` method requires a second argument `dataType` (`"gene_families"`, `"marker_abundance"`, `"marker_presence"`, `"pathway_abundance"`, `"pathway_coverage"`, or `"relative_abundance"`) be specified. It is often most convenient to subset the `sampleMetadata` `data.frame` using `r CRANpkg("dplyr")` syntax.
 
-```{r, collapse = TRUE}
+```{r, collapse = TRUE, message = FALSE}
 sampleMetadata %>%
     filter(age >= 18) %>%
     filter(!is.na(alcohol)) %>%
@@ -189,7 +196,7 @@ alcoholStudy <-
 
 Most of the values in the `sampleMetadata` `data.frame` (which becomes `colData`) are in lower snake case (e.g. `snake_case`) and don't look nice in plots. Here, the values of the `alcohol` variable are made into title case using `r CRANpkg("stringr")` so they will look nice in plots.
 
-```{r, collapse = TRUE}
+```{r, collapse = TRUE, message = FALSE}
 colData(alcoholStudy) <-
     colData(alcoholStudy) %>%
     as.data.frame() %>%
@@ -202,7 +209,7 @@ colData(alcoholStudy) <-
 
 Next, the `splitByRanks` method from `r Biocpkg("mia")` is used to create alternative experiments for each level of the taxonomic tree (e.g. Genus). This allows for diversity and differential abundance analysis at specific taxonomic levels; with this step complete, our data is ready to analyze.
 
-```{r, collapse = TRUE}
+```{r, collapse = TRUE, message = FALSE}
 altExps(alcoholStudy) <-
     splitByRanks(alcoholStudy)
 ```
@@ -237,7 +244,7 @@ To quickly plot the results of beta diversity analysis, the `plotReducedDim()` m
 ```{r, collapse = TRUE, fig.cap = "Beta Diversity - Bray–Curtis PCoA"}
 alcoholStudy %>%
     runMDS(FUN = vegdist, method = "bray", exprs_values = "relative_abundance", altexp = "Genus", name = "BrayCurtis") %>%
-    plotReducedDim("BrayCurtis",colour_by = "alcohol", shape_by = "alcohol") +
+    plotReducedDim("BrayCurtis", colour_by = "alcohol", shape_by = "alcohol") +
     labs(x = "PCo 1", y = "PCo 2") +
     guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +
     theme(legend.position = c(0.90, 0.85))
@@ -252,7 +259,7 @@ To quickly plot the results of beta diversity analysis, the `plotReducedDim()` m
 ```{r, collapse = TRUE, fig.cap = "Beta Diversity - UMAP (Uniform Manifold Approximation and Projection)"}
 alcoholStudy %>%
     runUMAP(exprs_values = "relative_abundance", altexp = "Genus", name = "UMAP") %>%
-    plotReducedDim("UMAP",colour_by = "alcohol", shape_by = "alcohol") +
+    plotReducedDim("UMAP", colour_by = "alcohol", shape_by = "alcohol") +
     labs(x = "UMAP 1", y = "UMAP 2") +
     guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +
     theme(legend.position = c(0.90, 0.85))
