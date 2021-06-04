@@ -1,10 +1,3 @@
-test_that("cannot merge single element list", {
-    merge_list <-
-        curatedMetagenomicData("HMP_2012.marker_presence", dryrun = FALSE, counts = FALSE)
-
-    expect_error(mergeData(merge_list))
-})
-
 test_that("cannot merge list elements when dataType is different", {
     merge_list <-
         curatedMetagenomicData("HMP_2012.marker_", dryrun = FALSE, counts = FALSE)
