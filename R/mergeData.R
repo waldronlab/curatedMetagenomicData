@@ -60,7 +60,7 @@
 #' @importFrom SummarizedExperiment SummarizedExperiment
 mergeData <- function(mergeList) {
     if (base::length(mergeList) == 1) {
-        stop("mergeList contains only a single element", call. = FALSE)
+        return(mergeList[[1]])
     }
 
     assay_name <-

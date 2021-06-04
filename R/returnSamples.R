@@ -47,6 +47,8 @@
 #' @importFrom magrittr %>%
 #' @importFrom stringr str_c
 #' @importFrom SummarizedExperiment colData
+#' @importFrom dplyr filter
+#' @importFrom rlang .data
 #' @importFrom tibble column_to_rownames
 #' @importFrom S4Vectors DataFrame
 returnSamples <- function(sampleMetadata, dataType, counts = FALSE) {
@@ -68,11 +70,36 @@ returnSamples <- function(sampleMetadata, dataType, counts = FALSE) {
     keep_rows <-
         base::rownames(to_return)
 
+    col_names <-
+        base::colnames(to_return)
+
+    if (base::length(sampleMetadata[["sample_id"]]) != base::length(col_names)) {
+        drop_text <-
+            base::as.character("dropping columns without assay matches:\n")
+
+        drop_cols <-
+            base::setdiff(sampleMetadata[["sample_id"]], col_names) %>%
+            stringr::str_c(collapse = ", ")
+
+        if (dataType == "relative_abundance") {
+            base::message(drop_text, "  ", drop_cols, "\n")
+        } else {
+            base::message("\n", drop_text, "  ", drop_cols, "\n")
+        }
+
+        keep_cols <-
+            base::intersect(col_names, sampleMetadata[["sample_id"]])
+    } else {
+        keep_cols <-
+            sampleMetadata[["sample_id"]]
+    }
+
     to_return <-
-        to_return[keep_rows, sampleMetadata[["sample_id"]]]
+        to_return[keep_rows, keep_cols]
 
     SummarizedExperiment::colData(to_return) <-
-        tibble::column_to_rownames(sampleMetadata, var = "sample_id") %>%
+        dplyr::filter(sampleMetadata, .data[["sample_id"]] %in% keep_cols) %>%
+        tibble::column_to_rownames(var = "sample_id") %>%
         S4Vectors::DataFrame()
 
     to_return
