@@ -79,7 +79,7 @@ object to include only desired samples and metadata." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">curatedMetagenomicData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.0.2</span>
       </span>
     </div>
 
@@ -205,7 +205,49 @@ the same caveats detailed under <strong>Details</strong> in <a href='mergeData.h
     <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>body_site</span> <span class='op'>==</span> <span class='st'>"stool"</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
     <span class='fu'>dplyr</span><span class='fu'>::</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/select.html'>select</a></span><span class='op'>(</span><span class='fu'>where</span><span class='op'>(</span><span class='op'>~</span> <span class='op'>!</span><span class='fu'>base</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/base/all.html'>all</a></span><span class='op'>(</span><span class='fu'>base</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>.x</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
     <span class='fu'>returnSamples</span><span class='op'>(</span><span class='st'>"relative_abundance"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-05-05</span></div><div class='output co'>#&gt; class: TreeSummarizedExperiment 
+</div><div class='output co'>#&gt; <span class='message'>snapshotDate(): 2021-05-18</span></div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>$`2021-03-31.KaurK_2020.relative_abundance`</span>
+#&gt; <span class='message'>dropping rows without rowTree matches:</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Atopobiaceae|g__Olsenella|s__Olsenella_profusa</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Collinsella|s__Collinsella_stercoris</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Enorma|s__[Collinsella]_massiliensis</span>
+#&gt; <span class='message'>  k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Ruminococcus|s__Ruminococcus_champanellensis</span>
+#&gt; <span class='message'>  k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Sutterellaceae|g__Sutterella|s__Sutterella_parvirubra</span></div><div class='output co'>#&gt; <span class='message'>$`2021-03-31.KeohaneDM_2020.relative_abundance`</span>
+#&gt; <span class='message'>dropping rows without rowTree matches:</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Collinsella|s__Collinsella_stercoris</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Enorma|s__[Collinsella]_massiliensis</span>
+#&gt; <span class='message'>  k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Ruminococcus|s__Ruminococcus_champanellensis</span>
+#&gt; <span class='message'>  k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Sutterellaceae|g__Sutterella|s__Sutterella_parvirubra</span></div><div class='output co'>#&gt; <span class='message'>$`2021-03-31.QinN_2014.relative_abundance`</span>
+#&gt; <span class='message'>dropping rows without rowTree matches:</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Atopobiaceae|g__Olsenella|s__Olsenella_profusa</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Collinsella|s__Collinsella_stercoris</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Enorma|s__[Collinsella]_massiliensis</span>
+#&gt; <span class='message'>  k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_unclassified|g__Gemella|s__Gemella_bergeri</span>
+#&gt; <span class='message'>  k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Carnobacteriaceae|g__Granulicatella|s__Granulicatella_elegans</span>
+#&gt; <span class='message'>  k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Ruminococcus|s__Ruminococcus_champanellensis</span>
+#&gt; <span class='message'>  k__Bacteria|p__Firmicutes|c__Erysipelotrichia|o__Erysipelotrichales|f__Erysipelotrichaceae|g__Bulleidia|s__Bulleidia_extructa</span>
+#&gt; <span class='message'>  k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Sutterellaceae|g__Sutterella|s__Sutterella_parvirubra</span>
+#&gt; <span class='message'>  k__Bacteria|p__Synergistetes|c__Synergistia|o__Synergistales|f__Synergistaceae|g__Cloacibacillus|s__Cloacibacillus_evryensis</span></div><div class='output co'>#&gt; <span class='message'>$`2021-03-31.ThomasAM_2018a.relative_abundance`</span>
+#&gt; <span class='message'>dropping rows without rowTree matches:</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Atopobiaceae|g__Olsenella|s__Olsenella_profusa</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Collinsella|s__Collinsella_stercoris</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Enorma|s__[Collinsella]_massiliensis</span>
+#&gt; <span class='message'>  k__Bacteria|p__Firmicutes|c__Bacilli|o__Bacillales|f__Bacillales_unclassified|g__Gemella|s__Gemella_bergeri</span>
+#&gt; <span class='message'>  k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Carnobacteriaceae|g__Granulicatella|s__Granulicatella_elegans</span>
+#&gt; <span class='message'>  k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Ruminococcus|s__Ruminococcus_champanellensis</span>
+#&gt; <span class='message'>  k__Bacteria|p__Firmicutes|c__Erysipelotrichia|o__Erysipelotrichales|f__Erysipelotrichaceae|g__Bulleidia|s__Bulleidia_extructa</span>
+#&gt; <span class='message'>  k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Sutterellaceae|g__Sutterella|s__Sutterella_parvirubra</span>
+#&gt; <span class='message'>  k__Bacteria|p__Synergistetes|c__Synergistia|o__Synergistales|f__Synergistaceae|g__Cloacibacillus|s__Cloacibacillus_evryensis</span></div><div class='output co'>#&gt; <span class='message'>$`2021-03-31.XieH_2016.relative_abundance`</span>
+#&gt; <span class='message'>dropping rows without rowTree matches:</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Atopobiaceae|g__Olsenella|s__Olsenella_profusa</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Collinsella|s__Collinsella_stercoris</span>
+#&gt; <span class='message'>  k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Enorma|s__[Collinsella]_massiliensis</span>
+#&gt; <span class='message'>  k__Bacteria|p__Firmicutes|c__Bacilli|o__Lactobacillales|f__Carnobacteriaceae|g__Granulicatella|s__Granulicatella_elegans</span>
+#&gt; <span class='message'>  k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Ruminococcus|s__Ruminococcus_champanellensis</span>
+#&gt; <span class='message'>  k__Bacteria|p__Firmicutes|c__Erysipelotrichia|o__Erysipelotrichales|f__Erysipelotrichaceae|g__Bulleidia|s__Bulleidia_extructa</span>
+#&gt; <span class='message'>  k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Sutterellaceae|g__Sutterella|s__Sutterella_parvirubra</span>
+#&gt; <span class='message'>  k__Bacteria|p__Synergistetes|c__Synergistia|o__Synergistales|f__Synergistaceae|g__Cloacibacillus|s__Cloacibacillus_evryensis</span></div><div class='output co'>#&gt; <span class='message'>dropping columns without assay matches:</span>
+#&gt; <span class='message'>  </span></div><div class='output co'>#&gt; class: TreeSummarizedExperiment 
 #&gt; dim: 833 702 
 #&gt; metadata(0):
 #&gt; assays(1): relative_abundance
