@@ -49,10 +49,9 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           commit-message: update metadata files
-          branch: update-metadata
+          branch: update-metadata/release
           delete-branch: true
-          base: RELEASE_3_13
-          title: 'update metadata files'
+          title: update metadata files
           labels: Pull Request
           assignees: schifferl
           reviewers: schifferl
