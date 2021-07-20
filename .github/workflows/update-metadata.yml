@@ -1,6 +1,6 @@
 on:
-  push:
-  pull_request:
+  schedule:
+    - cron: "0 12 * * 3"
 
 name: update-metadata
 
@@ -36,14 +36,14 @@ jobs:
           source("data-raw/combined_metadata.R")
         shell: Rscript {0}
 
-      - name: Get actions URL
-        id: actions_url
-        run: echo "::set-output name=url::${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
-
       - name: Update documentation
         run: |
           roxygen2::roxygenize()
         shell: Rscript {0}
+
+      - name: Get actions URL
+        id: actions_url
+        run: echo "::set-output name=url::${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v3
