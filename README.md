@@ -4,6 +4,7 @@
 # curatedMetagenomicData
 
 <!-- badges: start -->
+
 [![Codecov](https://codecov.io/gh/waldronlab/curatedMetagenomicData/branch/master/graph/badge.svg)](https://codecov.io/gh/waldronlab/curatedMetagenomicData)
 <!-- badges: end -->
 
