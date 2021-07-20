@@ -6,7 +6,7 @@
 <!-- badges: start -->
 
 [![GitHub Workflow
-Status](https://img.shields.io/github/workflow/status/waldronlab/curatedMetagenomicData/R-CMD-check-bioc)](https://github.com/waldronlab/curatedMetagenomicData/actions/workflows/check-bioc.yml)
+Status](https://img.shields.io/github/workflow/status/waldronlab/curatedMetagenomicData/check-bioc)](https://github.com/waldronlab/curatedMetagenomicData/actions/workflows/check-bioc.yml)
 [![CodeFactor
 Grade](https://img.shields.io/codefactor/grade/github/waldronlab/curatedMetagenomicData)](https://www.codefactor.io/repository/github/waldronlab/curatedmetagenomicdata)
 [![Codecov](https://img.shields.io/codecov/c/github/waldronlab/curatedMetagenomicData)](https://codecov.io/gh/waldronlab/curatedMetagenomicData)
