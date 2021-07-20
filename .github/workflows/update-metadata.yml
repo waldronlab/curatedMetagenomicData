@@ -1,0 +1,56 @@
+on:
+  schedule:
+    - cron: "0 12 * * 3"
+
+name: update-metadata
+
+jobs:
+  update-curation:
+    runs-on: ubuntu-latest
+    container: bioconductor/bioconductor_docker:devel
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+
+      - name: Restore R package cache
+        uses: actions/cache@v2
+        with:
+          path: /usr/local/lib/R/site-library
+          key: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-${{ hashFiles('.github/R-version') }}-1-
+
+      - name: Install dependencies
+        run: |
+          remotes::install_deps(dependencies = TRUE)
+        shell: Rscript {0}
+
+      - name: Install package
+        run: R CMD INSTALL .
+
+      - name: Update metadata
+        run: |
+          source("data-raw/sampleMetadata.R")
+        shell: Rscript {0}
+
+      - name: Update documentation
+        run: |
+          roxygen2::roxygenize()
+        shell: Rscript {0}
+
+      - name: Get actions URL
+        id: actions_url
+        run: echo "::set-output name=url::${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: update metadata files
+          branch: update-metadata/devel
+          delete-branch: true
+          title: update metadata files
+          labels: Pull Request
+          assignees: schifferl
+          reviewers: schifferl
