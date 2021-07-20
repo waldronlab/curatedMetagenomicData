@@ -1,5 +1,3 @@
-library(magrittr)
-
 phylogenetic_tree_file <-
     base::as.character("https://raw.githubusercontent.com/biobakery/MetaPhlAn/master/metaphlan/utils/mpa_v30_CHOCOPhlAn_201901_species_tree.nwk")
 
@@ -24,9 +22,9 @@ into_cols <-
     base::c("date_added", "study_name", "data_type")
 
 title <-
-    readr::read_csv("inst/extdata/metadata.csv", col_types = col_types) %>%
-    tidyr::separate(Title, into_cols, sep = "\\.", remove = FALSE) %>%
-    dplyr::arrange(study_name, date_added, data_type) %>%
+    readr::read_csv("inst/extdata/metadata.csv", col_types = col_types) |>
+    tidyr::separate(Title, into_cols, sep = "\\.", remove = FALSE) |>
+    dplyr::arrange(study_name, date_added, data_type) |>
     dplyr::pull(.data[["Title"]])
 
 usethis::use_data(phylogeneticTree, title, internal = TRUE, overwrite = TRUE)
