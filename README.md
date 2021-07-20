@@ -5,8 +5,6 @@
 
 <!-- badges: start -->
 
-[![GitHub Workflow
-Status](https://img.shields.io/github/workflow/status/waldronlab/curatedMetagenomicData/check-package)](https://github.com/waldronlab/curatedMetagenomicData/actions/workflows/check-package.yml)
 [![CodeFactor
 Grade](https://img.shields.io/codefactor/grade/github/waldronlab/curatedMetagenomicData)](https://www.codefactor.io/repository/github/waldronlab/curatedmetagenomicdata)
 [![Codecov](https://img.shields.io/codecov/c/github/waldronlab/curatedMetagenomicData)](https://codecov.io/gh/waldronlab/curatedMetagenomicData)
