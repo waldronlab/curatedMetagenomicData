@@ -24,7 +24,7 @@ on:
   push:
   pull_request:
 
-name: check-bioc
+name: check-package
 
 ## These environment variables control whether to run GHA code later on that is
 ## specific to testthat, covr, and pkgdown.
