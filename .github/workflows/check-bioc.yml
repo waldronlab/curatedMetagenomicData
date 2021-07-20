@@ -24,7 +24,7 @@ on:
   push:
   pull_request:
 
-name: R-CMD-check-bioc
+name: check-bioc
 
 ## These environment variables control whether to run GHA code later on that is
 ## specific to testthat, covr, and pkgdown.
