@@ -1,4 +1,3 @@
-# REMOVE THIS FILE AFTER RELEASE_3_13
 .onLoad <- function(libname, pkgname) {
     # Startup Message
     startup_message <-
