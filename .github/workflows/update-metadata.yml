@@ -7,7 +7,7 @@ name: update-metadata
 jobs:
   update-curation:
     runs-on: ubuntu-latest
-    container: bioconductor/bioconductor_docker:RELEASE_3_13
+    container: bioconductor/bioconductor_docker:latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
