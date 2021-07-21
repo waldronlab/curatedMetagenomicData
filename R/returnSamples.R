@@ -45,10 +45,14 @@
 #'     returnSamples("relative_abundance")
 #'
 #' @importFrom magrittr %>%
+#' @importFrom dplyr select
+#' @importFrom rlang .data
+#' @importFrom dplyr add_count
+#' @importFrom dplyr mutate
+#' @importFrom dplyr pull
 #' @importFrom stringr str_c
 #' @importFrom SummarizedExperiment colData
 #' @importFrom dplyr filter
-#' @importFrom rlang .data
 #' @importFrom tibble column_to_rownames
 #' @importFrom S4Vectors DataFrame
 returnSamples <- function(sampleMetadata, dataType, counts = FALSE) {
@@ -59,6 +63,12 @@ returnSamples <- function(sampleMetadata, dataType, counts = FALSE) {
     if (base::is.null(sampleMetadata[["sample_id"]])) {
         stop("sample_id must be present in sampleMetadata", call. = FALSE)
     }
+
+    sampleMetadata[["sample_id"]] <-
+        dplyr::select(sampleMetadata, .data[["sample_id"]], .data[["study_name"]]) %>%
+        dplyr::add_count(.data[["sample_id"]]) %>%
+        dplyr::mutate(sample_id = base::ifelse(.data[["n"]] > 1, base::paste(.data[["sample_id"]], .data[["study_name"]], sep = "."), .data[["sample_id"]])) %>%
+        dplyr::pull(.data[["sample_id"]])
 
     to_return <-
         base::unique(sampleMetadata[["study_name"]]) %>%
@@ -71,7 +81,8 @@ returnSamples <- function(sampleMetadata, dataType, counts = FALSE) {
         base::rownames(to_return)
 
     col_names <-
-        base::colnames(to_return)
+        base::colnames(to_return) %>%
+        base::intersect(sampleMetadata[["sample_id"]])
 
     if (base::length(sampleMetadata[["sample_id"]]) != base::length(col_names)) {
         drop_text <-
