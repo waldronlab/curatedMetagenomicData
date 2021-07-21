@@ -5,13 +5,6 @@ test_that("cannot merge list elements when dataType is different", {
     expect_error(mergeData(merge_list))
 })
 
-test_that("cannot merge list elements when colnames are not unique", {
-    merge_list <-
-        curatedMetagenomicData("LeChatelierE_2013.marker_abundance|NielsenHB_2014.marker_abundance", dryrun = FALSE, counts = FALSE)
-
-    expect_error(mergeData(merge_list))
-})
-
 test_that("merge result is correct when dataType is not relative_abundance", {
     merge_list <-
         curatedMetagenomicData("LiJ_20.+.marker_presence", dryrun = FALSE, counts = FALSE)

@@ -43,6 +43,8 @@
 #' @importFrom magrittr %>%
 #' @importFrom purrr map
 #' @importFrom purrr reduce
+#' @importFrom SummarizedExperiment colData
+#' @importFrom dplyr pull
 #' @importFrom SummarizedExperiment assay
 #' @importFrom tibble rownames_to_column
 #' @importFrom dplyr full_join
@@ -54,7 +56,6 @@
 #' @importFrom magrittr set_names
 #' @importFrom SummarizedExperiment rowData
 #' @importFrom S4Vectors DataFrame
-#' @importFrom SummarizedExperiment colData
 #' @importFrom dplyr bind_rows
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment
@@ -76,7 +77,21 @@ mergeData <- function(mergeList) {
         purrr::reduce(base::intersect)
 
     if (base::length(duplicate_colnames) != 0) {
-        stop("colnames/sample_id values are not unique", call. = FALSE)
+        merge_list_index <-
+            base::seq_along(mergeList)
+
+        for (i in merge_list_index) {
+            col_name <-
+                base::colnames(mergeList[[i]])
+
+            study_name <-
+                SummarizedExperiment::colData(mergeList[[i]]) %>%
+                base::as.data.frame() %>%
+                dplyr::pull("study_name")
+
+            base::colnames(mergeList[[i]]) <-
+                base::ifelse(col_name %in% duplicate_colnames, base::paste(col_name, study_name, sep = "."), col_name)
+        }
     }
 
     assays <-
