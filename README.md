@@ -25,7 +25,7 @@ standardized metagenomic data are available as
 Most users should simply install the current version of
 *[curatedMetagenomicData](https://bioconductor.org/packages/3.13/curatedMetagenomicData)*
 from Bioconductor, unless they have good reason not to. Changes to the
-package are always commited to GitHub first, and it might be desirable
+package are always committed to GitHub first, and it might be desirable
 to have the absolute latest changes by installing
 *[curatedMetagenomicData](https://github.com/waldronlab/curatedMetagenomicData)*
 from GitHub; although, this is not recommended for most users. Finally,
