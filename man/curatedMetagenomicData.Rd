@@ -4,7 +4,12 @@
 \alias{curatedMetagenomicData}
 \title{Access Curated Metagenomic Data}
 \usage{
-curatedMetagenomicData(pattern, dryrun = TRUE, counts = FALSE)
+curatedMetagenomicData(
+  pattern,
+  dryrun = TRUE,
+  counts = FALSE,
+  rownames = "long"
+)
 }
 \arguments{
 \item{pattern}{regular expression pattern to look for in the titles of
@@ -16,6 +21,8 @@ is returned invisibly; if \code{FALSE}, a \code{list} of resources is returned}
 \item{counts}{if \code{FALSE} (the default), relative abundance proportions are
 returned; if \code{TRUE}, relative abundance proportions are multiplied by read
 depth and rounded to the nearest integer prior to being returned}
+
+\item{rownames}{description}
 }
 \value{
 if \code{dryrun = TRUE}, a character vector of resource names is returned

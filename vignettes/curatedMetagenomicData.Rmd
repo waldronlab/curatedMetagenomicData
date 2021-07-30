@@ -241,7 +241,7 @@ To quickly plot the results of beta diversity analysis, the `plotReducedDim()` m
 
 ```{r, collapse = TRUE, fig.cap = "Beta Diversity - Bray–Curtis PCoA"}
 alcoholStudy %>%
-    runMDS(FUN = vegdist, method = "bray", exprs_values = "relative_abundance", altexp = "Genus", name = "BrayCurtis") %>%
+    runMDS(FUN = vegdist, method = "bray", exprs_values = "relative_abundance", altexp = "genus", name = "BrayCurtis") %>%
     plotReducedDim("BrayCurtis", colour_by = "alcohol", shape_by = "alcohol") +
     labs(x = "PCo 1", y = "PCo 2") +
     guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +
@@ -256,7 +256,7 @@ To quickly plot the results of beta diversity analysis, the `plotReducedDim()` m
 
 ```{r, collapse = TRUE, fig.cap = "Beta Diversity - UMAP (Uniform Manifold Approximation and Projection)"}
 alcoholStudy %>%
-    runUMAP(exprs_values = "relative_abundance", altexp = "Genus", name = "UMAP") %>%
+    runUMAP(exprs_values = "relative_abundance", altexp = "genus", name = "UMAP") %>%
     plotReducedDim("UMAP", colour_by = "alcohol", shape_by = "alcohol") +
     labs(x = "UMAP 1", y = "UMAP 2") +
     guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +

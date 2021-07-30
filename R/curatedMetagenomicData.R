@@ -38,6 +38,8 @@
 #' returned; if `TRUE`, relative abundance proportions are multiplied by read
 #' depth and rounded to the nearest integer prior to being returned
 #'
+#' @param rownames description
+#'
 #' @return if `dryrun = TRUE`, a character vector of resource names is returned
 #' invisibly; if `dryrun = FALSE`, a `list` of resources is returned
 #' @export
@@ -80,7 +82,7 @@
 #' @importFrom stringr str_replace_all
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment
-curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
+curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE, rownames = "long") {
     if (base::missing(pattern)) {
         stop("the pattern argument is missing", call. = FALSE)
     }
@@ -190,10 +192,110 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
                 } else {
                     base::message(drop_name, drop_text, drop_rows, "\n")
                 }
+
+                eh_matrix <-
+                    magrittr::extract(eh_matrix, keep_tips, keep_cols)
             }
 
-            eh_matrix <-
-                magrittr::extract(eh_matrix, keep_tips, keep_cols)
+            if (rownames == "long") {
+                rowData <-
+                    dplyr::select(taxonomyData, -.data[["txid"]]) %>%
+                    tibble::column_to_rownames() %>%
+                    S4Vectors::DataFrame()
+
+                rank_names <-
+                    base::colnames(rowData)
+
+                rowData <-
+                    magrittr::extract(rowData, keep_tips, rank_names)
+            }
+
+            if (rownames == "short") {
+                rowData <-
+                    dplyr::select(taxonomyData, -.data[["txid"]]) %>%
+                    dplyr::filter(!base::is.na(.data[["species"]])) %>%
+                    dplyr::filter(.data[["rowname"]] %in% keep_tips) %>%
+                    dplyr::add_count(.data[["species"]]) %>%
+                    dplyr::filter(.data[["n"]] == 1) %>%
+                    dplyr::select(-.data[["n"]]) %>%
+                    tibble::column_to_rownames() %>%
+                    S4Vectors::DataFrame()
+
+                old_names <-
+                    base::rownames(rowData)
+
+                drop_tips <-
+                    base::setdiff(keep_tips, old_names) %>%
+                    base::sort()
+
+                keep_tips <-
+                    base::intersect(keep_tips, old_names)
+
+                new_names <-
+                    magrittr::extract(rowData, keep_tips, "species")
+
+                rank_names <-
+                    base::colnames(rowData)
+
+                rowData <-
+                    magrittr::extract(rowData, keep_tips, rank_names)
+            }
+
+            if (rownames == "NCBI") {
+                rowData <-
+                    dplyr::filter(taxonomyData, !base::is.na(.data[["txid"]])) %>%
+                    dplyr::filter(.data[["rowname"]] %in% keep_tips) %>%
+                    tibble::column_to_rownames() %>%
+                    S4Vectors::DataFrame()
+
+                old_names <-
+                    base::rownames(rowData)
+
+                drop_tips <-
+                    base::setdiff(keep_tips, old_names) %>%
+                    base::sort()
+
+                keep_tips <-
+                    base::intersect(keep_tips, old_names)
+
+                new_names <-
+                    magrittr::extract(rowData, keep_tips, "txid")
+
+                rank_names <-
+                    base::colnames(rowData) %>%
+                    stringr::str_subset("txid", negate = TRUE)
+
+                rowData <-
+                    magrittr::extract(rowData, keep_tips, rank_names)
+            }
+
+            if (rownames != "long") {
+                if (base::length(drop_tips) != 0) {
+                    drop_name <-
+                        stringr::str_c("$`", resource_names[[i]], "`\n")
+
+                    drop_text <-
+                        base::as.character("dropping rows without rowData matches:\n")
+
+                    drop_tips <-
+                        stringr::str_c("  ", drop_tips, collapse = "\n")
+
+                    if (base::length(drop_rows) == 0 & i == 1) {
+                        base::message("\n", drop_name, drop_text, drop_tips, "\n")
+                    }
+
+                    if (base::length(drop_rows) == 0 & i != 1) {
+                        base::message(drop_name, drop_text, drop_tips, "\n")
+                    }
+
+                    if (base::length(drop_rows) != 0) {
+                        base::message(drop_text, drop_tips, "\n")
+                    }
+
+                    eh_matrix <-
+                        magrittr::extract(eh_matrix, keep_tips, keep_cols)
+                }
+            }
 
             if (counts) {
                 eh_matrix <-
@@ -213,19 +315,19 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
             base::names(assays) <-
                 resources[[i, "data_type"]]
 
-            tax_names <-
-                base::c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
+            tree_summarized_experiment <-
+                TreeSummarizedExperiment::TreeSummarizedExperiment(assays = assays, rowData = rowData, colData = colData, rowTree = phylogeneticTree)
 
-            rowData <-
-                base::data.frame(rowname = keep_tips) %>%
-                tidyr::separate(.data[["rowname"]], tax_names, sep = "\\|", remove = FALSE, fill = "right") %>%
-                dplyr::mutate(dplyr::across(.cols = -"rowname", .fns = ~ stringr::str_remove_all(.x, "[a-z]__"))) %>%
-                dplyr::mutate(dplyr::across(.cols = -"rowname", .fns = ~ stringr::str_replace_all(.x, "_", " "))) %>%
-                tibble::column_to_rownames() %>%
-                S4Vectors::DataFrame()
+            if (rownames != "long") {
+                base::rownames(tree_summarized_experiment) <-
+                    new_names
+
+                base::rownames(tree_summarized_experiment@rowLinks) <-
+                    new_names
+            }
 
             resource_list[[i]] <-
-                TreeSummarizedExperiment::TreeSummarizedExperiment(assays = assays, rowData = rowData, colData = colData, rowTree = phylogeneticTree)
+                tree_summarized_experiment
         } else {
             assays <-
                 S4Vectors::SimpleList(eh_matrix)
