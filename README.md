@@ -177,6 +177,12 @@ curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, count
 ## colTree: NULL
 ```
 
+### Example Analyses
+
+See
+[curatedMetagenomicAnalyses](https://github.com/waldronlab/curatedMetagenomicAnalyses)
+for analyses in R and Python using curatedMetagenomicData.
+
 ## Contributing
 
 All are welcome to contribute to the curatedMetagenomicData package

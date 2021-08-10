@@ -59,6 +59,11 @@ When the third argument `counts` is set to `TRUE`, relative abundance proportion
 curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
 ```
 
+### Example Analyses
+
+See [curatedMetagenomicAnalyses](https://github.com/waldronlab/curatedMetagenomicAnalyses)
+for analyses in R and Python using curatedMetagenomicData.
+
 ## Contributing
 
 All are welcome to contribute to the curatedMetagenomicData package provided contributions are appropriate. Please see the contributing guide.
