@@ -1,7 +1,7 @@
 # curatedMetagenomicData 3.0.0
 
-* curatedMetagenomicData now contains 20,283 samples from 86 studies
-* A total of 10,084 samples added since Bioconductor 3.10 (October 2019)
+* curatedMetagenomicData now contains 20,282 samples from 86 studies
+* A total of 10,083 samples added since Bioconductor 3.10 (October 2019)
 * Studies added since Bioconductor 3.10 (October 2019):
     - AsnicarF_2021 (1098 samples)
     - BrooksB_2017 (408 samples)
@@ -10,7 +10,7 @@
     - GhensiP_2019 (113 samples)
     - GuptaA_2019 (60 samples)
     - HallAB_2017 (259 samples)
-    - HMP_2019_ibdmdb (1628 samples)
+    - HMP_2019_ibdmdb (1627 samples)
     - HMP_2019_t2d (296 samples)
     - IjazUZ_2017 (94 samples)
     - KaurK_2020 (31 samples)
