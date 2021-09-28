@@ -96,6 +96,7 @@ mergeData <- function(mergeList) {
 
     assays <-
         purrr::map(mergeList, SummarizedExperiment::assay) %>%
+        purrr::map(base::as.matrix) %>%
         purrr::map(base::as.data.frame) %>%
         purrr::map(tibble::rownames_to_column) %>%
         purrr::reduce(dplyr::full_join, by = "rowname") %>%
