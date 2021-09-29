@@ -40,9 +40,11 @@
 #'     mergeData()
 #'
 #' @importFrom purrr map_chr
+#' @importFrom SummarizedExperiment assayNames
 #' @importFrom magrittr %>%
 #' @importFrom purrr map
 #' @importFrom purrr reduce
+#' @importFrom magrittr extract
 #' @importFrom SummarizedExperiment colData
 #' @importFrom dplyr pull
 #' @importFrom SummarizedExperiment assay
@@ -72,9 +74,15 @@ mergeData <- function(mergeList) {
         stop("dataType of list elements is different", call. = FALSE)
     }
 
-    duplicate_colnames <-
+    col_names <-
         purrr::map(mergeList, base::colnames) %>%
-        purrr::reduce(base::intersect)
+        purrr::reduce(base::c)
+
+    is_duplicated <-
+        base::duplicated(col_names)
+
+    duplicate_colnames <-
+        magrittr::extract(col_names, is_duplicated)
 
     if (base::length(duplicate_colnames) != 0) {
         merge_list_index <-
