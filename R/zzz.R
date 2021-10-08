@@ -1,16 +1,4 @@
 .onLoad <- function(libname, pkgname) {
-    # Startup Message
-    startup_message <-
-        base::c(
-            "",
-            "curatedMetagenomicData 3.0.8: see bit.ly/curatedMetagenomicData-3",
-            ""
-        ) %>%
-        base::paste(collapse = "\n")
-
-
-    base::packageStartupMessage(startup_message)
-
     # Package Namespace
     pakcage_namespace <-
         base::asNamespace(pkgname)
