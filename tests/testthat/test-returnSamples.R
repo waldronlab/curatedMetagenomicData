@@ -20,7 +20,7 @@ test_that("sample_id must be present in sampleMetadata", {
     expect_error(returnSamples(sample_metadata, "relative_abundance"))
 })
 
-test_that("results have few samples when assay does not contain all samples", {
+test_that("results have fewer samples than sampleMetadata when assay does not contain all samples", {
     sample_metadata <-
         dplyr::filter(sampleMetadata, study_name == "HMP_2019_ibdmdb") |>
         dplyr::select(where(~ !base::all(base::is.na(.x))))
@@ -33,6 +33,15 @@ test_that("results have few samples when assay does not contain all samples", {
         base::nrow(sample_metadata)
 
     expect_lt(ncol_returned, nrow_metadata)
+})
+
+test_that("message has an additional new line when dataType is not relative_abundance", {
+    sample_metadata <-
+        dplyr::filter(sampleMetadata, study_name == "HMP_2019_ibdmdb") |>
+        dplyr::select(where(~ !base::all(base::is.na(.x))))
+
+    expect_message(returnSamples(sample_metadata, "relative_abundance"), regexp = "^dropping columns without assay matches:\n")
+    expect_message(returnSamples(sample_metadata, "pathway_coverage"), regexp = "^\ndropping columns without assay matches:\n")
 })
 
 test_that("sampleMetadata is equal to colData without sorting", {
