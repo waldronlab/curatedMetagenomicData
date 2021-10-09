@@ -6,7 +6,7 @@ test_that("study_name must be present in sampleMetadata", {
         dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
         dplyr::select(-study_name)
 
-    expect_error(returnSamples("relative_abundance"))
+    expect_error(returnSamples(sample_metadata, "relative_abundance"))
 })
 
 test_that("sample_id must be present in sampleMetadata", {
@@ -17,7 +17,22 @@ test_that("sample_id must be present in sampleMetadata", {
         dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
         dplyr::select(-sample_id)
 
-    expect_error(returnSamples("relative_abundance"))
+    expect_error(returnSamples(sample_metadata, "relative_abundance"))
+})
+
+test_that("results have few samples when assay does not contain all samples", {
+    sample_metadata <-
+        dplyr::filter(sampleMetadata, study_name == "HMP_2019_ibdmdb") |>
+        dplyr::select(where(~ !base::all(base::is.na(.x))))
+
+    ncol_returned <-
+        returnSamples(sample_metadata, "relative_abundance") |>
+        base::ncol()
+
+    nrow_metadata <-
+        base::nrow(sample_metadata)
+
+    expect_lt(ncol_returned, nrow_metadata)
 })
 
 test_that("sampleMetadata is equal to colData without sorting", {
