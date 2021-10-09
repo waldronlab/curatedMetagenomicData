@@ -1,8 +1,44 @@
+test_that("merge result is the equal to the first element of mergeList when its length == 1", {
+    merge_list <-
+        curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, counts = FALSE)
+
+    expect_equal(mergeData(merge_list), merge_list[[1]])
+})
+
 test_that("cannot merge list elements when dataType is different", {
     merge_list <-
         curatedMetagenomicData("HMP_2012.marker_", dryrun = FALSE, counts = FALSE)
 
     expect_error(mergeData(merge_list))
+})
+
+test_that("duplicate column names are appended with study_name in output", {
+    merge_list <-
+        curatedMetagenomicData("(?:LeChatelierE_2013|NielsenHB_2014).relative_abundance", dryrun = FALSE, counts = FALSE)
+
+    col_names <-
+        purrr::map(merge_list, base::colnames) |>
+        purrr::reduce(base::c)
+
+    is_duplicated <-
+        base::duplicated(col_names)
+
+    duplicate_colnames <-
+        magrittr::extract(col_names, is_duplicated)
+
+    study_one_colnames <-
+        base::paste(duplicate_colnames, "LeChatelierE_2013", sep = ".")
+
+    study_two_colnames <-
+        base::paste(duplicate_colnames, "NielsenHB_2014", sep = ".")
+
+    merge_list_colnames <-
+        mergeData(merge_list) |>
+        base::colnames()
+
+    expect_false(base::any(duplicate_colnames %in% merge_list_colnames))
+    expect_true(base::all(study_one_colnames %in% merge_list_colnames))
+    expect_true(base::all(study_two_colnames %in% merge_list_colnames))
 })
 
 test_that("merge result is correct when dataType is not relative_abundance", {
