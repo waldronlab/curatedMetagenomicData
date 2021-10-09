@@ -19,12 +19,12 @@ test_that("all metadata.csv resources exists", {
     }
 
     metadata_resources <-
-        readr::read_csv(metadata_file_path, col_types = "ccccccccclcccccc") %>%
-        dplyr::pull("Title") %>%
+        readr::read_csv(metadata_file_path, col_types = "ccccccccclcccccc") |>
+        dplyr::pull("Title") |>
         base::sort()
 
     returned_resources <-
-        curatedMetagenomicData("", dryrun = TRUE, counts = FALSE) %>%
+        curatedMetagenomicData("", dryrun = TRUE, counts = FALSE) |>
         base::sort()
 
     expect_equal(metadata_resources, returned_resources)
@@ -67,7 +67,7 @@ test_that("first assay matrix is all double numbers when dataType is relative_ab
         curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE, counts = FALSE)
 
     all_double_numbers <-
-        SummarizedExperiment::assay(returned_resources[[1]]) %>%
+        SummarizedExperiment::assay(returned_resources[[1]]) |>
         base::is.double()
 
     expect_true(all_double_numbers)
@@ -78,7 +78,7 @@ test_that("first assay matrix is all integer numbers when dataType is relative_a
         curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE, counts = TRUE)
 
     all_integer_numbers <-
-        SummarizedExperiment::assay(returned_resources[[1]]) %>%
+        SummarizedExperiment::assay(returned_resources[[1]]) |>
         base::is.integer()
 
     expect_true(all_integer_numbers)
@@ -89,32 +89,32 @@ test_that("first list element colData matches sampleMetadata when dataType is no
         curatedMetagenomicData("HMP_2012.marker_presence", dryrun = FALSE, counts = FALSE)
 
     resource_col_data <-
-        SummarizedExperiment::colData(returned_resources[[1]]) %>%
-        base::as.data.frame() %>%
+        SummarizedExperiment::colData(returned_resources[[1]]) |>
+        base::as.data.frame() |>
         tibble::rownames_to_column(var = "sample_id")
 
     resource_col_names <-
-        base::colnames(resource_col_data) %>%
+        base::colnames(resource_col_data) |>
         base::sort()
 
     resource_col_data <-
-        dplyr::select(resource_col_data, tidyselect::all_of(resource_col_names)) %>%
+        dplyr::select(resource_col_data, tidyselect::all_of(resource_col_names)) |>
         dplyr::arrange(sample_id)
 
     resource_study_name <-
-        dplyr::pull(resource_col_data, "study_name") %>%
+        dplyr::pull(resource_col_data, "study_name") |>
         base::unique()
 
     sample_metadata_data_frame <-
-        dplyr::filter(sampleMetadata, study_name == resource_study_name) %>%
+        dplyr::filter(sampleMetadata, study_name == resource_study_name) |>
         dplyr::select(where(~ !base::all(base::is.na(.x))))
 
     sample_metadata_col_names <-
-        base::colnames(sample_metadata_data_frame) %>%
+        base::colnames(sample_metadata_data_frame) |>
         base::sort()
 
     sample_metadata_data_frame <-
-        dplyr::select(sample_metadata_data_frame, tidyselect::all_of(sample_metadata_col_names)) %>%
+        dplyr::select(sample_metadata_data_frame, tidyselect::all_of(sample_metadata_col_names)) |>
         dplyr::arrange(sample_id)
 
     expect_equal(resource_col_data, sample_metadata_data_frame)
@@ -125,32 +125,32 @@ test_that("first list element colData matches sampleMetadata when dataType is re
         curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE, counts = FALSE)
 
     resource_col_data <-
-        SummarizedExperiment::colData(returned_resources[[1]]) %>%
-        base::as.data.frame() %>%
+        SummarizedExperiment::colData(returned_resources[[1]]) |>
+        base::as.data.frame() |>
         tibble::rownames_to_column(var = "sample_id")
 
     resource_col_names <-
-        base::colnames(resource_col_data) %>%
+        base::colnames(resource_col_data) |>
         base::sort()
 
     resource_col_data <-
-        dplyr::select(resource_col_data, tidyselect::all_of(resource_col_names)) %>%
+        dplyr::select(resource_col_data, tidyselect::all_of(resource_col_names)) |>
         dplyr::arrange(sample_id)
 
     resource_study_name <-
-        dplyr::pull(resource_col_data, "study_name") %>%
+        dplyr::pull(resource_col_data, "study_name") |>
         base::unique()
 
     sample_metadata_data_frame <-
-        dplyr::filter(sampleMetadata, study_name == resource_study_name) %>%
+        dplyr::filter(sampleMetadata, study_name == resource_study_name) |>
         dplyr::select(where(~ !base::all(base::is.na(.x))))
 
     sample_metadata_col_names <-
-        base::colnames(sample_metadata_data_frame) %>%
+        base::colnames(sample_metadata_data_frame) |>
         base::sort()
 
     sample_metadata_data_frame <-
-        dplyr::select(sample_metadata_data_frame, tidyselect::all_of(sample_metadata_col_names)) %>%
+        dplyr::select(sample_metadata_data_frame, tidyselect::all_of(sample_metadata_col_names)) |>
         dplyr::arrange(sample_id)
 
     expect_equal(resource_col_data, sample_metadata_data_frame)

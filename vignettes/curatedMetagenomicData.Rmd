@@ -71,11 +71,11 @@ The `r Biocpkg("curatedMetagenomicData")` package contains a `data.frame`, `samp
 To demonstrate, the first ten rows and columns (without any `NA` values) of `sampleMetadata` for the `AsnicarF_2017` study are shown in the table below.
 
 ```{r, collapse = TRUE}
-sampleMetadata %>%
-    filter(study_name == "AsnicarF_2017") %>%
-    select(where(~ !any(is.na(.x)))) %>%
-    slice(1:10) %>%
-    select(1:10) %>%
+sampleMetadata |>
+    filter(study_name == "AsnicarF_2017") |>
+    select(where(~ !any(is.na(.x)))) |>
+    slice(1:10) |>
+    select(1:10) |>
     datatable(options = list(dom = "t"), extensions = "Responsive")
 ```
 
@@ -99,7 +99,7 @@ curatedMetagenomicData("AsnicarF_20.+")
 If you are more comfortable with wildcard-like searching, the following is equivalent:
 
 ```{r, collapse = TRUE}
-glob2rx("*AsnicarF_20*") %>%
+glob2rx("*AsnicarF_20*") |>
     curatedMetagenomicData()
 ```
 
@@ -122,21 +122,21 @@ If you are interested only in taxonomic relative abundance, include `*relative_a
 To merge the `list` elements returned from the `curatedMetagenomicData()` method into a single `SummarizedExperiment` or `TreeSummarizedExperiment` object, users will use the `mergeData()` method, provided elements are the same `dataType`.
 
 ```{r, collapse = TRUE, message = FALSE}
-curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) %>%
+curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) |>
     mergeData()
 ```
 
 The `mergeData()` method works for every `dataType` and will always return the appropriate data structure (a single `SummarizedExperiment` or `TreeSummarizedExperiment` object).
 
 ```{r, collapse = TRUE, message = FALSE}
-curatedMetagenomicData("LiJ_20.+.pathway_abundance", dryrun = FALSE) %>%
+curatedMetagenomicData("LiJ_20.+.pathway_abundance", dryrun = FALSE) |>
     mergeData()
 ```
 
 This is useful for analysis across entire studies (e.g. meta-analysis); however, when doing analysis across individual samples (e.g. mega-analysis) the `returnSamples()` method is preferable.
 
 ```{r, collapse = TRUE, message = FALSE}
-curatedMetagenomicData("LiJ_20.+.relative_abundance", dryrun = FALSE) %>%
+curatedMetagenomicData("LiJ_20.+.relative_abundance", dryrun = FALSE) |>
     mergeData()
 ```
 
@@ -147,11 +147,11 @@ The `returnSamples()` takes a subset of the `sampleMetadata` object as input, an
 The `returnSamples()` method requires a second argument `dataType` (`"gene_families"`, `"marker_abundance"`, `"marker_presence"`, `"pathway_abundance"`, `"pathway_coverage"`, or `"relative_abundance"`) be specified. It is often most convenient to subset the `sampleMetadata` `data.frame` using `r CRANpkg("dplyr")` syntax.
 
 ```{r, collapse = TRUE, message = FALSE}
-sampleMetadata %>%
-    filter(age >= 18) %>%
-    filter(!is.na(alcohol)) %>%
-    filter(body_site == "stool") %>%
-    select(where(~ !all(is.na(.x)))) %>%
+sampleMetadata |>
+    filter(age >= 18) |>
+    filter(!is.na(alcohol)) |>
+    filter(body_site == "stool") |>
+    select(where(~ !all(is.na(.x)))) |>
     returnSamples("relative_abundance")
 ```
 
@@ -183,10 +183,10 @@ First, as above, we use the `returnSamples()` method to return the relevant samp
 
 ```{r, collapse = TRUE, message = FALSE}
 alcoholStudy <-
-    filter(sampleMetadata, age >= 18) %>%
-    filter(!is.na(alcohol)) %>%
-    filter(body_site == "stool") %>%
-    select(where(~ !all(is.na(.x)))) %>%
+    filter(sampleMetadata, age >= 18) |>
+    filter(!is.na(alcohol)) |>
+    filter(body_site == "stool") |>
+    select(where(~ !all(is.na(.x)))) |>
     returnSamples("relative_abundance")
 ```
 
@@ -196,10 +196,10 @@ Most of the values in the `sampleMetadata` `data.frame` (which becomes `colData`
 
 ```{r, collapse = TRUE, message = FALSE}
 colData(alcoholStudy) <-
-    colData(alcoholStudy) %>%
-    as.data.frame() %>%
-    mutate(alcohol = str_replace_all(alcohol, "no", "No")) %>%
-    mutate(alcohol = str_replace_all(alcohol, "yes", "Yes")) %>%
+    colData(alcoholStudy) |>
+    as.data.frame() |>
+    mutate(alcohol = str_replace_all(alcohol, "no", "No")) |>
+    mutate(alcohol = str_replace_all(alcohol, "yes", "Yes")) |>
     DataFrame()
 ```
 
@@ -219,8 +219,8 @@ Alpha diversity is a measure of the within sample diversity of features (relativ
 To quickly plot the results of alpha diversity estimation, the `plotColData()` method from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax.
 
 ```{r, collapse = TRUE, fig.cap = "Alpha Diversity - Shannon Index (H')"}
-alcoholStudy %>%
-    estimateDiversity(abund_values = "relative_abundance", index = "shannon") %>%
+alcoholStudy |>
+    estimateDiversity(abund_values = "relative_abundance", index = "shannon") |>
     plotColData(x = "alcohol", y = "shannon", colour_by = "alcohol", shape_by = "alcohol") +
     labs(x = "Alcohol", y = "Alpha Diversity (H')") +
     guides(color = guide_none(), shape = guide_none()) +
@@ -240,8 +240,8 @@ To calculate pairwise Bray–Curtis distance for every sample in our study we wi
 To quickly plot the results of beta diversity analysis, the `plotReducedDim()` method from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax.
 
 ```{r, collapse = TRUE, fig.cap = "Beta Diversity - Bray–Curtis PCoA"}
-alcoholStudy %>%
-    runMDS(FUN = vegdist, method = "bray", exprs_values = "relative_abundance", altexp = "Genus", name = "BrayCurtis") %>%
+alcoholStudy |>
+    runMDS(FUN = vegdist, method = "bray", exprs_values = "relative_abundance", altexp = "Genus", name = "BrayCurtis") |>
     plotReducedDim("BrayCurtis", colour_by = "alcohol", shape_by = "alcohol") +
     labs(x = "PCo 1", y = "PCo 2") +
     guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +
@@ -255,8 +255,8 @@ To calculate the UMAP coordinates of every sample in our study we will use the `
 To quickly plot the results of beta diversity analysis, the `plotReducedDim()` method from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax again.
 
 ```{r, collapse = TRUE, fig.cap = "Beta Diversity - UMAP (Uniform Manifold Approximation and Projection)"}
-alcoholStudy %>%
-    runUMAP(exprs_values = "relative_abundance", altexp = "Genus", name = "UMAP") %>%
+alcoholStudy |>
+    runUMAP(exprs_values = "relative_abundance", altexp = "Genus", name = "UMAP") |>
     plotReducedDim("UMAP", colour_by = "alcohol", shape_by = "alcohol") +
     labs(x = "UMAP 1", y = "UMAP 2") +
     guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +

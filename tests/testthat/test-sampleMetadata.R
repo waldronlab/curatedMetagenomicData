@@ -12,7 +12,7 @@ test_that("there are no columns of all NA values", {
         base::ncol(sampleMetadata)
 
     not_na_ncols <-
-        dplyr::select(sampleMetadata, where(~ !base::all(base::is.na(.x)))) %>%
+        dplyr::select(sampleMetadata, where(~ !base::all(base::is.na(.x)))) |>
         base::ncol()
 
     expect_equal(total_ncols, not_na_ncols)

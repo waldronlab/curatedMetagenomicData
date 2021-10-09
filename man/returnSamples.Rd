@@ -48,11 +48,11 @@ samples. Furthermore, because it is necessary to use \link{mergeData} internally
 the same caveats detailed under \strong{Details} in \link{mergeData} apply here.
 }
 \examples{
-sampleMetadata \%>\%
-    dplyr::filter(age >= 18) \%>\%
-    dplyr::filter(!base::is.na(alcohol)) \%>\%
-    dplyr::filter(body_site == "stool") \%>\%
-    dplyr::select(where(~ !base::all(base::is.na(.x)))) \%>\%
+sampleMetadata |>
+    dplyr::filter(age >= 18) |>
+    dplyr::filter(!base::is.na(alcohol)) |>
+    dplyr::filter(body_site == "stool") |>
+    dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
     returnSamples("relative_abundance")
 
 }

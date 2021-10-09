@@ -53,7 +53,6 @@
 #'
 #' @importFrom stringr str_subset
 #' @importFrom stringr str_c
-#' @importFrom magrittr %>%
 #' @importFrom purrr list_along
 #' @importFrom magrittr set_names
 #' @importFrom ExperimentHub ExperimentHub
@@ -93,21 +92,21 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
     }
 
     if (dryrun) {
-        stringr::str_c(resources, collapse = "\n") %>%
+        stringr::str_c(resources, collapse = "\n") |>
             base::message()
 
         return(base::invisible(resources))
     }
 
     resource_list <-
-        purrr::list_along(resources) %>%
+        purrr::list_along(resources) |>
         magrittr::set_names(resources)
 
     resources <-
         stringr::str_c(resources, collapse = "|")
 
     to_return <-
-        ExperimentHub::ExperimentHub() %>%
+        ExperimentHub::ExperimentHub() |>
         AnnotationHub::query(resources)
 
     to_subset <-
@@ -120,15 +119,15 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
         base::c("date_added", "study_name", "data_type")
 
     resources <-
-        magrittr::extract(to_subset, keep_rows, "title", drop = FALSE) %>%
-        tibble::as_tibble(rownames = "rowname") %>%
-        tidyr::separate(.data[["title"]], into_cols, sep = "\\.") %>%
-        dplyr::group_by(.data[["study_name"]], .data[["data_type"]]) %>%
-        dplyr::slice_max(.data[["date_added"]]) %>%
+        magrittr::extract(to_subset, keep_rows, "title", drop = FALSE) |>
+        tibble::as_tibble(rownames = "rowname") |>
+        tidyr::separate(.data[["title"]], into_cols, sep = "\\.") |>
+        dplyr::group_by(.data[["study_name"]], .data[["data_type"]]) |>
+        dplyr::slice_max(.data[["date_added"]]) |>
         dplyr::ungroup()
 
     resource_index <-
-        base::nrow(resources) %>%
+        base::nrow(resources) |>
         base::seq_len()
 
     resource_names <-
@@ -145,15 +144,15 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
             base::rownames(eh_matrix)
 
         meta_data <-
-            dplyr::filter(curatedMetagenomicData::sampleMetadata, .data[["study_name"]] == resources[[i, "study_name"]]) %>%
-            tibble::column_to_rownames(var = "sample_id") %>%
+            dplyr::filter(curatedMetagenomicData::sampleMetadata, .data[["study_name"]] == resources[[i, "study_name"]]) |>
+            tibble::column_to_rownames(var = "sample_id") |>
             dplyr::select(where(~ !base::all(base::is.na(.x))))
 
         meta_rows <-
             base::rownames(meta_data)
 
         keep_cols <-
-            base::colnames(eh_matrix) %>%
+            base::colnames(eh_matrix) |>
             base::intersect(meta_rows)
 
         eh_matrix <-
@@ -163,7 +162,7 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
             base::colnames(meta_data)
 
         colData <-
-            magrittr::extract(meta_data, keep_cols, col_names) %>%
+            magrittr::extract(meta_data, keep_cols, col_names) |>
             S4Vectors::DataFrame()
 
         if (resources[[i, "data_type"]] == "relative_abundance") {
@@ -171,8 +170,8 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
                 base::intersect(row_names, phylogeneticTree[["tip.label"]])
 
             drop_rows <-
-                base::setdiff(row_names, keep_tips) %>%
-                stringr::str_subset("s__") %>%
+                base::setdiff(row_names, keep_tips) |>
+                stringr::str_subset("s__") |>
                 base::sort()
 
             if (base::length(drop_rows) != 0) {
@@ -197,10 +196,10 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
 
             if (counts) {
                 eh_matrix <-
-                    base::t(eh_matrix) %>%
-                    magrittr::multiply_by(colData[["number_reads"]]) %>%
-                    magrittr::divide_by(100) %>%
-                    base::t() %>%
+                    base::t(eh_matrix) |>
+                    magrittr::multiply_by(colData[["number_reads"]]) |>
+                    magrittr::divide_by(100) |>
+                    base::t() |>
                     base::round()
 
                 base::mode(eh_matrix) <-
@@ -217,11 +216,11 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
                 base::c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
 
             rowData <-
-                base::data.frame(rowname = keep_tips) %>%
-                tidyr::separate(.data[["rowname"]], tax_names, sep = "\\|", remove = FALSE, fill = "right") %>%
-                dplyr::mutate(dplyr::across(.cols = -"rowname", .fns = ~ stringr::str_remove_all(.x, "[a-z]__"))) %>%
-                dplyr::mutate(dplyr::across(.cols = -"rowname", .fns = ~ stringr::str_replace_all(.x, "_", " "))) %>%
-                tibble::column_to_rownames() %>%
+                base::data.frame(rowname = keep_tips) |>
+                tidyr::separate(.data[["rowname"]], tax_names, sep = "\\|", remove = FALSE, fill = "right") |>
+                dplyr::mutate(dplyr::across(.cols = -"rowname", .fns = ~ stringr::str_remove_all(.x, "[a-z]__"))) |>
+                dplyr::mutate(dplyr::across(.cols = -"rowname", .fns = ~ stringr::str_replace_all(.x, "_", " "))) |>
+                tibble::column_to_rownames() |>
                 S4Vectors::DataFrame()
 
             resource_list[[i]] <-
