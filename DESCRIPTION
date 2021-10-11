@@ -6,9 +6,10 @@ Description:
     abundance, marker presence, pathway abundance, pathway coverage, and
     relative abundance for samples collected from different body sites. The
     bacterial, fungal, and archaeal taxonomic abundances for each sample were
-    calculated with MetaPhlAn3 and metabolic functional potential was calculated
-    with HUMAnN3. The manually curated sample metadata and standardized
-    metagenomic data are available as (Tree)SummarizedExperiment objects.
+    calculated with MetaPhlAn3, and metabolic functional potential was
+    calculated with HUMAnN3. The manually curated sample metadata and
+    standardized metagenomic data are available as (Tree)SummarizedExperiment
+    objects.
 Authors@R:
     c(person(given = "Lucas", family = "schiffer", role = c("aut", "cre"),
              email = "schiffer.lucas@gmail.com",
@@ -30,10 +31,10 @@ biocViews:
     Homo_sapiens_Data,
     MicrobiomeData,
     ReproducibleResearch
-Version: 3.0.9
+Version: 3.0.10
 License: Artistic-2.0
 Depends:
-    R (>= 4.1),
+    R (>= 4.1.0),
     SummarizedExperiment,
     TreeSummarizedExperiment
 Imports:
@@ -57,6 +58,7 @@ Suggests:
     rmarkdown,
     scater,
     testthat,
+    utils,
     uwot,
     vegan
 URL: https://github.com/waldronlab/curatedMetagenomicData

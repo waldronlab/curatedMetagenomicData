@@ -10,35 +10,22 @@ quality](https://img.shields.io/codefactor/grade/github/waldronlab/curatedMetage
 [![coverage](https://img.shields.io/codecov/c/github/waldronlab/curatedMetagenomicData)](https://codecov.io/gh/waldronlab/curatedMetagenomicData)
 <!-- badges: end -->
 
-The curatedMetagenomicData package provides standardized, curated human
-microbiome data for novel analyses. It includes gene families, marker
-abundance, marker presence, pathway abundance, pathway coverage, and
-relative abundance for samples collected from different body sites. The
-bacterial, fungal, and archaeal taxonomic abundances for each sample
-were calculated with MetaPhlAn3 and metabolic functional potential was
-calculated with HUMAnN3. The manually curated sample metadata and
-standardized metagenomic data are available as
+The
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.13/curatedMetagenomicData)*
+package provides standardized, curated human microbiome data for novel
+analyses. It includes gene families, marker abundance, marker presence,
+pathway abundance, pathway coverage, and relative abundance for samples
+collected from different body sites. The bacterial, fungal, and archaeal
+taxonomic abundances for each sample were calculated with
+[MetaPhlAn3](https://github.com/biobakery/MetaPhlAn), and metabolic
+functional potential was calculated with
+[HUMAnN3](https://github.com/biobakery/humann). The manually curated
+sample metadata and standardized metagenomic data are available as
 (Tree)SummarizedExperiment objects.
 
 ## Installation
 
-Most users should simply install the current version of
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.13/curatedMetagenomicData)*
-from Bioconductor, unless they have good reason not to. Changes to the
-package are always committed to GitHub first, and it might be desirable
-to have the absolute latest changes by installing
-*[curatedMetagenomicData](https://github.com/waldronlab/curatedMetagenomicData)*
-from GitHub; although, this is not recommended for most users. Finally,
-we have made extensive changes in
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.13/curatedMetagenomicData)*
-`3.0.0` and some users might want to revert to the previous version of
-*[curatedMetagenomicData](https://github.com/waldronlab/curatedMetagenomicData)*
-from GitHub for older analyses. The previous version of
-*[curatedMetagenomicData](https://github.com/waldronlab/curatedMetagenomicData)*
-from GitHub, `1.20.0`, will remain installable for the foreseeable
-future.
-
-To install the current version of
+To install
 *[curatedMetagenomicData](https://bioconductor.org/packages/3.13/curatedMetagenomicData)*
 from Bioconductor, use
 *[BiocManager](https://CRAN.R-project.org/package=BiocManager)* as
@@ -48,8 +35,8 @@ follows.
 BiocManager::install("curatedMetagenomicData")
 ```
 
-To install the current version of
-*[curatedMetagenomicData](https://github.com/waldronlab/curatedMetagenomicData)*
+To install
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.13/curatedMetagenomicData)*
 from GitHub, use
 *[BiocManager](https://CRAN.R-project.org/package=BiocManager)* as
 follows.
@@ -58,15 +45,9 @@ follows.
 BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, build_vignettes = TRUE)
 ```
 
-To install the previous version of
-*[curatedMetagenomicData](https://github.com/waldronlab/curatedMetagenomicData)*
-from GitHub, use
-*[BiocManager](https://CRAN.R-project.org/package=BiocManager)* as
-follows.
-
-``` r
-BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, build_vignettes = TRUE, ref = "v1.20.0")
-```
+Most users should simply install
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.13/curatedMetagenomicData)*
+from Bioconductor.
 
 ## Examples
 
@@ -177,22 +158,21 @@ curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, count
 ## colTree: NULL
 ```
 
-### Example Analyses
+## Analyses
 
 See
 [curatedMetagenomicAnalyses](https://github.com/waldronlab/curatedMetagenomicAnalyses)
-for analyses in R and Python using curatedMetagenomicData.
+for analyses in R and Python using
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.13/curatedMetagenomicData)*.
 
 ## Contributing
 
-All are welcome to contribute to the curatedMetagenomicData package
-provided contributions are appropriate. Please see the contributing
-guide.
-
-## Code of Conduct
-
-Please note that the curatedMetagenomicData package is released with a
-code of conduct. By contributing, you agree to abide by its terms.
+To contribute to the
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.13/curatedMetagenomicData)*
+R/Bioconductor package, first read the [contributing
+guidelines](CONTRIBUTING.md) and then open an issue. Also note that in
+contributing you agree to abide by the [code of
+conduct](CODE_OF_CONDUCT.md).
 
 ------------------------------------------------------------------------
 
