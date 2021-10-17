@@ -61,7 +61,7 @@ library(DT)
 
 # Sample Metadata
 
-The `r Biocpkg("curatedMetagenomicData")` package contains a `data.frame`, `sampleMetadata`, of manually curated sample metadata to help users understand the nature of studies and samples available prior to returning resources. Beyond this, it serves two purposes: 1) to define `study_name`, which is used with the `curatedMetagenomicData()` method to query and return resources, and 2) to define `sample_id`, which is used with the `returnSamples()` method to return samples across studies.
+The `r Biocpkg("curatedMetagenomicData")` package contains a `data.frame`, `sampleMetadata`, of manually curated sample metadata to help users understand the nature of studies and samples available prior to returning resources. Beyond this, it serves two purposes: 1) to define `study_name`, which is used with the `curatedMetagenomicData()` function to query and return resources, and 2) to define `sample_id`, which is used with the `returnSamples()` function to return samples across studies.
 
 To demonstrate, the first ten rows and columns (without any `NA` values) of `sampleMetadata` for the `AsnicarF_2017` study are shown in the table below.
 
@@ -78,69 +78,60 @@ sampleMetadata |>
 
 There are three main ways to access data resources in curatedMetagenomicData.
 
-1. The `curatedMetagenomicData()` function to search and return individual datasets
-2. The `returnSamples()` function to access merged datasets based on filtered metadata
-3. Through the command-line interface, [curatedMetagenomicDataCLI](https://github.com/waldronlab/curatedMetagenomicDataCLI), but it is not part of the Bioconductor package or discussed here.
+1. The `curatedMetagenomicData()` function to search for and return resources.
+2. The `returnSamples()` function to return samples across studies.
+3. Through the [curatedMetagenomicDataTerminal](https://github.com/waldronlab/curatedMetagenomicDataTerminal) command-line interface.
 
 ## `curatedMetagenomicData()`
 
-To access curated metagenomic data, users will use the `curatedMetagenomicData()` method both to query and return resources. The first argument `pattern` is a regular expression pattern to look for in the titles of resources available in `r Biocpkg("curatedMetagenomicData")`; `""` will return all resources. The title of each resource is a three part string with "." as a delimiter - the fields are `runDate`, `studyName`, and `dataType`. The `runDate` is the date we created the resource and can mostly be ignored by users because if there is more than one date corresponding to a resource, the most recent one is selected automatically. It would be used if a specific `runDate` was needed, but only a single copy of each resource exists as of this writing.
+To access curated metagenomic data, users will use the `curatedMetagenomicData()` function both to query and return resources. The first argument `pattern` is a regular expression pattern to look for in the titles of resources available in `r Biocpkg("curatedMetagenomicData")`; `""` will return all resources. The title of each resource is a three part string with "." as a delimiter – the fields are `runDate`, `studyName`, and `dataType`. The `runDate` is the date we created the resource and can mostly be ignored by users because if there is more than one date corresponding to a resource, the most recent one is selected automatically – it would be used if a specific `runDate` was needed.
 
-Multiple resources can be queried or returned with a single call to `curatedMetagenomicData()`, only the titles of resources are returned by default. The following search term is a regex that matches all six data types from all datasets starting with `*AsnicarF_20*`:
+Multiple resources can be queried or returned with a single call to `curatedMetagenomicData()`, but only the titles of resources are returned by default.
 
 ```{r, collapse = TRUE}
 curatedMetagenomicData("AsnicarF_20.+")
 ```
 
-If you are more comfortable with wildcard-like searching, the following is equivalent:
-
-```{r, collapse = TRUE}
-glob2rx("*AsnicarF_20*") |>
-    curatedMetagenomicData()
-```
-
-When the second argument `dryrun` is set to `FALSE`, a `list` of `SummarizedExperiment` and/or `TreeSummarizedExperiment` objects is returned. When a single resource is requested, a single element `list` is returned.
+When the `dryrun` argument is set to `FALSE`, a `list` of `SummarizedExperiment` and/or `TreeSummarizedExperiment` objects is returned. The `rownames` argument determines the type of `rownames` to use for `relative_abundance` resources: either `"long"` (the default), `"short"` (species name), or `"NCBI"` (NCBI Taxonomy ID). When a single resource is requested, a single element `list` is returned.
 
 ```{r, collapse = TRUE, message = FALSE}
-curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
+curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, rownames = "short")
 ```
 
-When the third argument `counts` is set to `TRUE`, relative abundance proportions are multiplied by read depth and rounded to the nearest integer prior to being returned. Also, when multiple resources are requested, the `list` will contain named elements corresponding to each `SummarizedExperiment` and/or `TreeSummarizedExperiment` object.
+When the `counts` argument is set to `TRUE`, relative abundance proportions are multiplied by read depth and rounded to the nearest integer prior to being returned. Also, when multiple resources are requested, the `list` will contain named elements corresponding to each `SummarizedExperiment` and/or `TreeSummarizedExperiment` object.
 
 ```{r, collapse = TRUE, message = FALSE}
-curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
+curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE, rownames = "short")
 ```
-
-If you are interested only in taxonomic relative abundance, include `*relative_abundance*` in your search term, like above or with searches like `glob2rx(*AsnicarF_20*abundance)`. 
 
 ### `mergeData()`
 
-To merge the `list` elements returned from the `curatedMetagenomicData()` method into a single `SummarizedExperiment` or `TreeSummarizedExperiment` object, users will use the `mergeData()` method, provided elements are the same `dataType`.
+To merge the `list` elements returned from the `curatedMetagenomicData()` function into a single `SummarizedExperiment` or `TreeSummarizedExperiment` object, users will use the `mergeData()` function, provided elements are of the same `dataType`.
 
 ```{r, collapse = TRUE, message = FALSE}
 curatedMetagenomicData("AsnicarF_20.+.marker_abundance", dryrun = FALSE) |>
     mergeData()
 ```
 
-The `mergeData()` method works for every `dataType` and will always return the appropriate data structure (a single `SummarizedExperiment` or `TreeSummarizedExperiment` object).
+The `mergeData()` function works for every `dataType` and will always return the appropriate data structure (a single `SummarizedExperiment` or `TreeSummarizedExperiment` object).
 
 ```{r, collapse = TRUE, message = FALSE}
 curatedMetagenomicData("AsnicarF_20.+.pathway_abundance", dryrun = FALSE) |>
     mergeData()
 ```
 
-This is useful for analysis across entire studies (e.g. meta-analysis); however, when doing analysis across individual samples (e.g. mega-analysis) the `returnSamples()` method is preferable.
+This is useful for analysis across entire studies (e.g. meta-analysis); however, when doing analysis across individual samples (e.g. mega-analysis) the `returnSamples()` function is preferable.
 
 ```{r, collapse = TRUE, message = FALSE}
-curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE) |>
+curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, rownames = "short") |>
     mergeData()
 ```
 
 ## `returnSamples()`
 
-The `returnSamples()` takes a subset of the `sampleMetadata` object as input, and returns a single `SummarizedExperiment` or `TreeSummarizedExperiment` containing one of `r Biocpkg("curatedMetagenomicData")`'s data types, with this metadata subset as its `colData`. To use this method, filter/select rows and columns of interest from the `sampleMetadata` object, maintaining at least one row, and the sampleID and study_name columns. Provide the resulting `data.frame` as the first argument to the `returnSamples()` function. 
+The `returnSamples()` function takes the `sampleMetadata` `data.frame` subset to include only desired samples and metadata as input, and returns a single `SummarizedExperiment` or `TreeSummarizedExperiment` object that includes only desired samples and metadata. To use this function, filter rows and/or select columns of interest from the `sampleMetadata` `data.frame`, maintaining at least one row, and the `sample_id` and `study_name` columns. Then provide the subset `data.frame` as the first argument to the `returnSamples()` function.
 
-The `returnSamples()` method requires a second argument `dataType` (`"gene_families"`, `"marker_abundance"`, `"marker_presence"`, `"pathway_abundance"`, `"pathway_coverage"`, or `"relative_abundance"`) be specified. It is often most convenient to subset the `sampleMetadata` `data.frame` using `r CRANpkg("dplyr")` syntax.
+The `returnSamples()` function requires a second argument `dataType` (either `"gene_families"`, `"marker_abundance"`, `"marker_presence"`, `"pathway_abundance"`, `"pathway_coverage"`, or `"relative_abundance"`) to be specified. It is often most convenient to subset the `sampleMetadata` `data.frame` using `r CRANpkg("dplyr")` syntax.
 
 ```{r, collapse = TRUE, message = FALSE}
 sampleMetadata |>
@@ -148,11 +139,10 @@ sampleMetadata |>
     filter(!is.na(alcohol)) |>
     filter(body_site == "stool") |>
     select(where(~ !all(is.na(.x)))) |>
-    returnSamples("relative_abundance")
+    returnSamples("relative_abundance", rownames = "short")
 ```
 
-The `counts` argument applies to the `returnSamples()` method as well, and can be 
-passed as the third argument. Finally, users should know that any arbitrary columns added to `sampleMetadata` will be present in the `colData` of the `SummarizedExperiment` or `TreeSummarizedExperiment` object that is returned.
+The `counts` and `rownames` arguments apply to `returnSamples()` as well, and can be passed the function. Finally, users should know that any arbitrary columns added to `sampleMetadata` will be present in the `colData` of the `SummarizedExperiment` or `TreeSummarizedExperiment` object that is returned.
 
 # Example Analysis
 
@@ -175,7 +165,7 @@ In our hypothetical study, let's examine the association of alcohol consumption 
 
 ### Return Samples
 
-First, as above, we use the `returnSamples()` method to return the relevant samples across all studies available in `r Biocpkg("curatedMetagenomicData")`. We want adults over the age of 18, for whom alcohol consumption status is known, and we want only stool samples. The `select(where...` line below simply removes metadata columns which are all `NA` values - they exist in another study but are all `NA` once subsetting has been done. Lastly, the `"relative_abundance"` `dataType` is requested because it contains the relevant information about microbial composition.
+First, as above, we use the `returnSamples()` function to return the relevant samples across all studies available in `r Biocpkg("curatedMetagenomicData")`. We want adults over the age of 18, for whom alcohol consumption status is known, and we want only stool samples. The `select(where...` line below simply removes metadata columns which are all `NA` values – they exist in another study but are all `NA` once subsetting has been done. Lastly, the `"relative_abundance"` `dataType` is requested because it contains the relevant information about microbial composition.
 
 ```{r, collapse = TRUE, message = FALSE}
 alcoholStudy <-
@@ -183,12 +173,12 @@ alcoholStudy <-
     filter(!is.na(alcohol)) |>
     filter(body_site == "stool") |>
     select(where(~ !all(is.na(.x)))) |>
-    returnSamples("relative_abundance")
+    returnSamples("relative_abundance", rownames = "short")
 ```
 
 ### Mutate colData
 
-Most of the values in the `sampleMetadata` `data.frame` (which becomes `colData`) are in lower snake case (e.g. `snake_case`) and don't look nice in plots. Here, the values of the `alcohol` variable are made into title case using `r CRANpkg("stringr")` so they will look nice in plots.
+Most of the values in the `sampleMetadata` `data.frame` (which becomes `colData`) are in snake case (e.g. `snake_case`) and don't look nice in plots. Here, the values of the `alcohol` variable are made into title case using `r CRANpkg("stringr")` so they will look nice in plots.
 
 ```{r, collapse = TRUE, message = FALSE}
 colData(alcoholStudy) <-
@@ -201,7 +191,7 @@ colData(alcoholStudy) <-
 
 ### Agglomerate Ranks
 
-Next, the `splitByRanks` method from `r Biocpkg("mia")` is used to create alternative experiments for each level of the taxonomic tree (e.g. Genus). This allows for diversity and differential abundance analysis at specific taxonomic levels; with this step complete, our data is ready to analyze.
+Next, the `splitByRanks` function from `r Biocpkg("mia")` is used to create alternative experiments for each level of the taxonomic tree (e.g. Genus). This allows for diversity and differential abundance analysis at specific taxonomic levels; with this step complete, our data is ready to analyze.
 
 ```{r, collapse = TRUE, message = FALSE}
 altExps(alcoholStudy) <-
@@ -210,16 +200,16 @@ altExps(alcoholStudy) <-
 
 ## Alpha Diversity
 
-Alpha diversity is a measure of the within sample diversity of features (relative abundance proportions here) and seeks to quantify the evenness (i.e. are the amounts of different microbes the same) and richness (i.e. are they are large variety of microbial taxa present). The Shannon index (H') is a commonly used measure of alpha diversity, it's estimated here using the `estimateDiversity()` method from the `r Biocpkg("mia")` package.
+Alpha diversity is a measure of the within sample diversity of features (relative abundance proportions here) and seeks to quantify the evenness (i.e. are the amounts of different microbes the same) and richness (i.e. are they are large variety of microbial taxa present). The Shannon index (H') is a commonly used measure of alpha diversity, it's estimated here using the `estimateDiversity()` function from the `r Biocpkg("mia")` package.
 
-To quickly plot the results of alpha diversity estimation, the `plotColData()` method from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax.
+To quickly plot the results of alpha diversity estimation, the `plotColData()` function from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax.
 
-```{r, collapse = TRUE, fig.cap = "Alpha Diversity - Shannon Index (H')"}
+```{r, collapse = TRUE, fig.cap = "Alpha Diversity – Shannon Index (H')"}
 alcoholStudy |>
     estimateDiversity(abund_values = "relative_abundance", index = "shannon") |>
     plotColData(x = "alcohol", y = "shannon", colour_by = "alcohol", shape_by = "alcohol") +
     labs(x = "Alcohol", y = "Alpha Diversity (H')") +
-    guides(color = guide_none(), shape = guide_none()) +
+    guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +
     theme(legend.position = "none")
 ```
 
@@ -227,17 +217,17 @@ The figure suggest that those who consume alcohol have higher Shannon alpha dive
 
 ## Beta Diversity
 
-Beta diversity is a measure of the between sample diversity of features (relative abundance proportions here) and seeks to quantify the magnitude of differences (or similarity) between every given pair of samples. Below it is accessed by Bray–Curtis Principal Coordinates Analysis (PCoA), which is a linear method, and Uniform Manifold Approximation and Projection (UMAP), which is a non-linear method.
+Beta diversity is a measure of the between sample diversity of features (relative abundance proportions here) and seeks to quantify the magnitude of differences (or similarity) between every given pair of samples. Below it is assessed by Bray–Curtis Principal Coordinates Analysis (PCoA) and Uniform Manifold Approximation and Projection (UMAP).
 
 ### Bray–Curtis PCoA
 
-To calculate pairwise Bray–Curtis distance for every sample in our study we will use the `runMDS()` method from the `r Biocpkg("scater")` package along with the `vegdist()` method from the `r CRANpkg("vegan")` package.
+To calculate pairwise Bray–Curtis distance for every sample in our study we will use the `runMDS()` function from the `r Biocpkg("scater")` package along with the `vegdist()` function from the `r CRANpkg("vegan")` package.
 
-To quickly plot the results of beta diversity analysis, the `plotReducedDim()` method from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax.
+To quickly plot the results of beta diversity analysis, the `plotReducedDim()` function from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax.
 
-```{r, collapse = TRUE, fig.cap = "Beta Diversity - Bray–Curtis PCoA"}
+```{r, collapse = TRUE, fig.cap = "Beta Diversity – Bray–Curtis PCoA"}
 alcoholStudy |>
-    runMDS(FUN = vegdist, method = "bray", exprs_values = "relative_abundance", altexp = "Genus", name = "BrayCurtis") |>
+    runMDS(FUN = vegdist, method = "bray", exprs_values = "relative_abundance", altexp = "genus", name = "BrayCurtis") |>
     plotReducedDim("BrayCurtis", colour_by = "alcohol", shape_by = "alcohol") +
     labs(x = "PCo 1", y = "PCo 2") +
     guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +
@@ -246,13 +236,13 @@ alcoholStudy |>
 
 ### UMAP
 
-To calculate the UMAP coordinates of every sample in our study we will use the `runUMAP()` method from the `r Biocpkg("scater")` package package, as it handles the task in a single line.
+To calculate the UMAP coordinates of every sample in our study we will use the `runUMAP()` function from the `r Biocpkg("scater")` package package, as it handles the task in a single line.
 
-To quickly plot the results of beta diversity analysis, the `plotReducedDim()` method from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax again.
+To quickly plot the results of beta diversity analysis, the `plotReducedDim()` function from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax again.
 
-```{r, collapse = TRUE, fig.cap = "Beta Diversity - UMAP (Uniform Manifold Approximation and Projection)"}
+```{r, collapse = TRUE, fig.cap = "Beta Diversity – UMAP (Uniform Manifold Approximation and Projection)"}
 alcoholStudy |>
-    runUMAP(exprs_values = "relative_abundance", altexp = "Genus", name = "UMAP") |>
+    runUMAP(exprs_values = "relative_abundance", altexp = "genus", name = "UMAP") |>
     plotReducedDim("UMAP", colour_by = "alcohol", shape_by = "alcohol") +
     labs(x = "UMAP 1", y = "UMAP 2") +
     guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +
@@ -261,11 +251,11 @@ alcoholStudy |>
 
 ## Differential Abundance
 
-Next, it would be desirable to establish which microbes are differentially abundant between the two groups (those who consume alcohol, and those who do not). The `r Biocpkg("lefser")` and `r Biocpkg("ANCOMBC")` packages feature excellent methods to perform this tasks; however, code is not included here to avoid including many `Suggests` packages - `r Biocpkg("curatedMetagenomicData")` had far too many of these in the the previous version and is now very lean. There is a repository of analyses, [curatedMetagenomicAnalyses](https://github.com/waldronlab/curatedMetagenomicAnalyses), on GitHub and a forthcoming paper that will feature extensive demonstrations of analyses - but for now, the suggestions above will have to suffice.
+Next, it would be desirable to establish which microbes are differentially abundant between the two groups (those who consume alcohol, and those who do not). The `r Biocpkg("lefser")` and `r Biocpkg("ANCOMBC")` packages are excellent resources for this tasks; however, code is not included here to avoid including excessive `Suggests` packages – `r Biocpkg("curatedMetagenomicData")` had far too many of these in the the past and is now very lean. There is a repository of analyses, [curatedMetagenomicAnalyses](https://github.com/waldronlab/curatedMetagenomicAnalyses), on GitHub and a forthcoming paper that will feature extensive demonstrations of analyses – but for now, the suggestions above will have to suffice.
 
 # Type Conversion
 
-Finally, the `r Biocpkg("curatedMetagenomicData")` package previously had methods for conversion to `phyloseq` class objects, and they have been removed in the latest release. It is likely that some users will still want to do analysis using `r Biocpkg("phyloseq")`, and we would like to help them do so - it is just easier if we don't have to maintain the conversion method ourselves. As such, the `r Biocpkg("mia")` package has a method, `makePhyloseqFromTreeSummarizedExperiment`, that will readily do the conversion - users needing this functionality are advised to use it.
+Finally, the `r Biocpkg("curatedMetagenomicData")` package previously had functions for conversion to `phyloseq` class objects, and they have been removed. It is likely that some users will still want to do analysis using `r Biocpkg("phyloseq")`, and we would like to help them do so – it is just easier if we don't have to maintain the conversion function ourselves. As such, the `r Biocpkg("mia")` package has a function, `makePhyloseqFromTreeSummarizedExperiment`, that will readily do the conversion – users needing this functionality are advised to use it.
 
 ```{r, eval = FALSE}
 makePhyloseqFromTreeSummarizedExperiment(alcoholStudy, abund_values = "relative_abundance")
@@ -273,6 +263,6 @@ makePhyloseqFromTreeSummarizedExperiment(alcoholStudy, abund_values = "relative_
 
 # Session Info
 
-```{r}
+```{r, echo = FALSE}
 utils::sessionInfo()
 ```

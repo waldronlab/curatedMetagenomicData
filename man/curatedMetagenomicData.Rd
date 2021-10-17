@@ -4,7 +4,12 @@
 \alias{curatedMetagenomicData}
 \title{Access Curated Metagenomic Data}
 \usage{
-curatedMetagenomicData(pattern, dryrun = TRUE, counts = FALSE)
+curatedMetagenomicData(
+  pattern,
+  dryrun = TRUE,
+  counts = FALSE,
+  rownames = "long"
+)
 }
 \arguments{
 \item{pattern}{regular expression pattern to look for in the titles of
@@ -16,6 +21,10 @@ is returned invisibly; if \code{FALSE}, a \code{list} of resources is returned}
 \item{counts}{if \code{FALSE} (the default), relative abundance proportions are
 returned; if \code{TRUE}, relative abundance proportions are multiplied by read
 depth and rounded to the nearest integer prior to being returned}
+
+\item{rownames}{the type of \code{rownames} to use for \code{relative_abundance}
+resources, one of: \code{"long"} (the default), \code{"short"} (species name), or
+\code{"NCBI"} (NCBI Taxonomy ID)}
 }
 \value{
 if \code{dryrun = TRUE}, a character vector of resource names is returned
@@ -47,7 +56,7 @@ and/or
 \link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
 objects that are ultimately returned as the \code{list} of resources. Only the
 \code{gene_families} \code{dataType} (see \link{returnSamples}) is stored as a sparse matrix
-in ExperimentHub - this has no practical consequences for users and is done
+in ExperimentHub – this has no practical consequences for users and is done
 to optimize storage. When searching for "resources", users will use the
 \code{study_name} value from the \link{sampleMetadata} \code{data.frame}.
 }

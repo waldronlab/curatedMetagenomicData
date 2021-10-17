@@ -29,6 +29,10 @@
 #' returned; if `TRUE`, relative abundance proportions are multiplied by read
 #' depth and rounded to the nearest integer prior to being returned
 #'
+#' @param rownames the type of `rownames` to use for `relative_abundance`
+#' resources, one of: `"long"` (the default), `"short"` (species name), or
+#' `"NCBI"` (NCBI Taxonomy ID)
+#'
 #' @return when `dataType = "relative_abundance"`, a
 #' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
 #' object is returned; otherwise, a
@@ -54,7 +58,7 @@
 #' @importFrom dplyr filter
 #' @importFrom tibble column_to_rownames
 #' @importFrom S4Vectors DataFrame
-returnSamples <- function(sampleMetadata, dataType, counts = FALSE) {
+returnSamples <- function(sampleMetadata, dataType, counts = FALSE, rownames = "long") {
     if (is.null(sampleMetadata[["study_name"]])) {
         stop("study_name must be present in sampleMetadata", call. = FALSE)
     }
@@ -73,7 +77,7 @@ returnSamples <- function(sampleMetadata, dataType, counts = FALSE) {
         unique(sampleMetadata[["study_name"]]) |>
         str_c(dataType, sep = ".") |>
         str_c(collapse = "|") |>
-        curatedMetagenomicData(dryrun = FALSE, counts = counts) |>
+        curatedMetagenomicData(dryrun = FALSE, counts = counts, rownames = rownames) |>
         mergeData()
 
     keep_rows <-

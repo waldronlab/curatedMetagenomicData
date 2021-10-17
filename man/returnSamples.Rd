@@ -4,7 +4,7 @@
 \alias{returnSamples}
 \title{Return Samples Across Studies}
 \usage{
-returnSamples(sampleMetadata, dataType, counts = FALSE)
+returnSamples(sampleMetadata, dataType, counts = FALSE, rownames = "long")
 }
 \arguments{
 \item{sampleMetadata}{the \link{sampleMetadata} \code{data.frame} subset to include
@@ -23,6 +23,10 @@ only desired samples and metadata}
 \item{counts}{if \code{FALSE} (the default), relative abundance proportions are
 returned; if \code{TRUE}, relative abundance proportions are multiplied by read
 depth and rounded to the nearest integer prior to being returned}
+
+\item{rownames}{the type of \code{rownames} to use for \code{relative_abundance}
+resources, one of: \code{"long"} (the default), \code{"short"} (species name), or
+\code{"NCBI"} (NCBI Taxonomy ID)}
 }
 \value{
 when \code{dataType = "relative_abundance"}, a

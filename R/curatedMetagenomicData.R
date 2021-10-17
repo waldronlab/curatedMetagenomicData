@@ -24,7 +24,7 @@
 #' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
 #' objects that are ultimately returned as the `list` of resources. Only the
 #' `gene_families` `dataType` (see [returnSamples]) is stored as a sparse matrix
-#' in ExperimentHub - this has no practical consequences for users and is done
+#' in ExperimentHub – this has no practical consequences for users and is done
 #' to optimize storage. When searching for "resources", users will use the
 #' `study_name` value from the [sampleMetadata] `data.frame`.
 #'
@@ -37,6 +37,10 @@
 #' @param counts if `FALSE` (the default), relative abundance proportions are
 #' returned; if `TRUE`, relative abundance proportions are multiplied by read
 #' depth and rounded to the nearest integer prior to being returned
+#'
+#' @param rownames the type of `rownames` to use for `relative_abundance`
+#' resources, one of: `"long"` (the default), `"short"` (species name), or
+#' `"NCBI"` (NCBI Taxonomy ID)
 #'
 #' @return if `dryrun = TRUE`, a character vector of resource names is returned
 #' invisibly; if `dryrun = FALSE`, a `list` of resources is returned
@@ -53,8 +57,6 @@
 #'
 #' @importFrom stringr str_subset
 #' @importFrom stringr str_c
-#' @importFrom purrr list_along
-#' @importFrom magrittr set_names
 #' @importFrom ExperimentHub ExperimentHub
 #' @importFrom AnnotationHub query
 #' @importFrom S4Vectors mcols
@@ -65,27 +67,28 @@
 #' @importFrom dplyr group_by
 #' @importFrom dplyr slice_max
 #' @importFrom dplyr ungroup
+#' @importFrom purrr list_along
+#' @importFrom magrittr set_names
 #' @importFrom dplyr filter
 #' @importFrom tibble column_to_rownames
 #' @importFrom dplyr select
-#' @importFrom magrittr extract
 #' @importFrom S4Vectors DataFrame
 #' @importFrom magrittr multiply_by
 #' @importFrom magrittr divide_by
 #' @importFrom S4Vectors SimpleList
-#' @importFrom dplyr mutate
-#' @importFrom dplyr across
-#' @importFrom stringr str_remove_all
-#' @importFrom stringr str_replace_all
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
+#' @importFrom SummarizedExperiment rowData<-
+#' @importFrom mia agglomerateByRank
+#' @importFrom TreeSummarizedExperiment rownames<-
+#' @importFrom SummarizedExperiment rowData
 #' @importFrom SummarizedExperiment SummarizedExperiment
-curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
+curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE, rownames = "long") {
     if (missing(pattern)) {
         stop("the pattern argument is missing", call. = FALSE)
     }
 
     resources <-
-        str_subset(title, pattern)
+        str_subset(resourceTitles, pattern)
 
     if (length(resources) == 0) {
         stop("no resources available in curatedMetagenomicData", call. = FALSE)
@@ -97,10 +100,6 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
 
         return(invisible(resources))
     }
-
-    resource_list <-
-        list_along(resources) |>
-        set_names(resources)
 
     resources <-
         str_c(resources, collapse = "|")
@@ -121,10 +120,14 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
     resources <-
         extract(to_subset, keep_rows, "title", drop = FALSE) |>
         as_tibble(rownames = "rowname") |>
-        separate(.data[["title"]], into_cols, sep = "\\.") |>
+        separate(.data[["title"]], into_cols, sep = "\\.", remove = FALSE) |>
         group_by(.data[["study_name"]], .data[["data_type"]]) |>
         slice_max(.data[["date_added"]]) |>
         ungroup()
+
+    resource_list <-
+        list_along(resources[["title"]]) |>
+        set_names(resources[["title"]])
 
     resource_index <-
         nrow(resources) |>
@@ -212,19 +215,30 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE) {
             names(assays) <-
                 resources[[i, "data_type"]]
 
-            tax_names <-
-                c("Kingdom", "Phylum", "Class", "Order", "Family", "Genus", "Species")
+            tree_summarized_experiment <-
+                TreeSummarizedExperiment(assays = assays, colData = colData, rowTree = phylogeneticTree)
 
-            rowData <-
-                data.frame(rowname = keep_tips) |>
-                separate(.data[["rowname"]], tax_names, sep = "\\|", remove = FALSE, fill = "right") |>
-                mutate(across(.cols = -"rowname", .fns = ~ str_remove_all(.x, "[a-z]__"))) |>
-                mutate(across(.cols = -"rowname", .fns = ~ str_replace_all(.x, "_", " "))) |>
-                column_to_rownames() |>
-                DataFrame()
+            keep_ranks <-
+                c("superkingdom", "phylum", "class", "order", "family", "genus", "species")
+
+            if (rownames == "NCBI") {
+                rowData(tree_summarized_experiment) <-
+                    extract(rowDataNCBI, keep_tips, keep_ranks)
+            } else {
+                rowData(tree_summarized_experiment) <-
+                    extract(rowDataLong, keep_tips, keep_ranks)
+            }
+
+            if (rownames != "long") {
+                tree_summarized_experiment <-
+                    agglomerateByRank(tree_summarized_experiment, rank = "species", na.rm = TRUE)
+
+                rownames(tree_summarized_experiment) <-
+                    rowData(tree_summarized_experiment)[["species"]]
+            }
 
             resource_list[[i]] <-
-                TreeSummarizedExperiment(assays = assays, rowData = rowData, colData = colData, rowTree = phylogeneticTree)
+                tree_summarized_experiment
         } else {
             assays <-
                 SimpleList(eh_matrix)

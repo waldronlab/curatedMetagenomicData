@@ -41,16 +41,16 @@ To access curated metagenomic data, users will use the `curatedMetagenomicData()
 curatedMetagenomicData("AsnicarF_20.+")
 ```
 
-When the second argument `dryrun` is set to `FALSE`, a `list` of `SummarizedExperiment` and/or `TreeSummarizedExperiment` objects is returned. When a single resource is requested, a single element `list` is returned.
+When the `dryrun` argument is set to `FALSE`, a `list` of `SummarizedExperiment` and/or `TreeSummarizedExperiment` objects is returned. The `rownames` argument determines the type of `rownames` to use for `relative_abundance` resources: either `"long"` (the default), `"short"` (species name), or `"NCBI"` (NCBI Taxonomy ID). When a single resource is requested, a single element `list` is returned.
 
 ```{r, collapse = TRUE, message = FALSE}
-curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
+curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, rownames = "short")
 ```
 
-When the third argument `counts` is set to `TRUE`, relative abundance proportions are multiplied by read depth and rounded to the nearest integer prior to being returned. Also, when multiple resources are requested, the `list` will contain named elements corresponding to each `SummarizedExperiment` and/or `TreeSummarizedExperiment` object.
+When the `counts` argument is set to `TRUE`, relative abundance proportions are multiplied by read depth and rounded to the nearest integer prior to being returned. Also, when multiple resources are requested, the `list` will contain named elements corresponding to each `SummarizedExperiment` and/or `TreeSummarizedExperiment` object.
 
 ```{r, collapse = TRUE, message = FALSE}
-curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
+curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE, rownames = "short")
 ```
 
 ## Analyses
@@ -59,7 +59,7 @@ See [curatedMetagenomicAnalyses](https://github.com/waldronlab/curatedMetagenomi
 
 ## Contributing
 
-To contribute to the `r BiocStyle::Biocpkg("curatedMetagenomicData")` R/Bioconductor package, first read the [contributing guidelines](CONTRIBUTING.md) and then open an issue. Also note that in contributing you agree to abide by the [code of conduct](CODE_OF_CONDUCT.md).
+To contribute to the `r BiocStyle::Biocpkg("curatedMetagenomicData")` R/Bioconductor package, first read the [contributing guidelines](CONTRIBUTING.md) and then open an issue. Also, note that in contributing you agree to abide by the [code of conduct](CODE_OF_CONDUCT.md).
 
 ---
 

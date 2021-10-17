@@ -58,6 +58,9 @@
 #' @importFrom SummarizedExperiment rowData
 #' @importFrom S4Vectors DataFrame
 #' @importFrom dplyr bind_rows
+#' @importFrom TreeSummarizedExperiment rowLinks
+#' @importFrom dplyr distinct
+#' @importFrom rlang .data
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment
 mergeData <- function(mergeList) {
@@ -136,7 +139,19 @@ mergeData <- function(mergeList) {
         DataFrame()
 
     if (assay_name == "relative_abundance") {
-        TreeSummarizedExperiment(assays = assays, rowData = rowData, colData = colData, rowTree = phylogeneticTree)
+        row_names <-
+            rownames(rowData)
+
+        rowNodeLab <-
+            map(mergeList, rowLinks) |>
+            map(as.data.frame) |>
+            map(rownames_to_column) |>
+            bind_rows() |>
+            distinct(.data[["rowname"]], .keep_all = TRUE) |>
+            column_to_rownames() |>
+            extract(row_names, "nodeLab")
+
+        TreeSummarizedExperiment(assays = assays, rowData = rowData, colData = colData, rowTree = phylogeneticTree, rowNodeLab = rowNodeLab)
     } else {
         SummarizedExperiment(assays = assays, rowData = rowData, colData = colData)
     }
