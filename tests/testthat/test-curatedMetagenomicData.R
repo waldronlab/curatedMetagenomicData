@@ -84,6 +84,40 @@ test_that("first assay matrix is all integer numbers when dataType is relative_a
     expect_true(all_integer_numbers)
 })
 
+test_that('first list element row names all contain pipes when `rownames = "long"`', {
+    returned_resources <-
+        curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE, counts = TRUE, rownames = "long")
+
+    all_contain_pipes <-
+        base::rownames(returned_resources[[1]]) |>
+        stringr::str_detect("\\|") |>
+        base::all()
+
+    expect_true(all_contain_pipes)
+})
+
+test_that('first list element row names contain no pipes when `rownames = "short"`', {
+    returned_resources <-
+        curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE, counts = TRUE, rownames = "short")
+
+    none_contain_pipes <-
+        base::rownames(returned_resources[[1]]) |>
+        stringr::str_detect("\\|", negate = TRUE) |>
+        base::all()
+
+    expect_true(none_contain_pipes)
+})
+
+test_that('first list element row names all coercible to integer when `rownames = "NCBI"`', {
+    returned_resources <-
+        curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE, counts = TRUE, rownames = "NCBI")
+
+    resource_row_names <-
+        base::rownames(returned_resources[[1]])
+
+    expect_silent(base::as.integer(resource_row_names))
+})
+
 test_that("first list element colData matches sampleMetadata when dataType is not relative_abundance", {
     returned_resources <-
         curatedMetagenomicData("HMP_2012.marker_presence", dryrun = FALSE, counts = FALSE)
