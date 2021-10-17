@@ -1,7 +1,48 @@
+# curatedMetagenomicData 3.2.0
+
+* A number of studies were reprocessed because reads had erroneously been discarded:
+    - AsnicarF_2017
+    - BackhedF_2015
+    - Bengtsson-PalmeJ_2015
+    - BrooksB_2017
+    - ChengpingW_2017
+    - CosteaPI_2017
+    - GopalakrishnanV_2018
+    - HallAB_2017
+    - HansenLBS_2018
+    - HMP_2019_ibdmdb
+    - IjazUZ_2017
+    - JieZ_2017
+    - KarlssonFH_2013
+    - KaurK_2020
+    - KieserS_2018
+    - LiJ_2017
+    - LiuW_2016
+    - LokmerA_2019
+    - LoombaR_2017
+    - MatsonV_2018
+    - MehtaRS_2018
+    - NagySzakalD_2017
+    - OhJ_2014
+    - PehrssonE_2016
+    - QinJ_2012
+    - RosaBA_2018
+    - RubelMA_2020
+    - ShiB_2015
+    - YachidaS_2019
+* The `curatedMetagenomicData()` function now has a `rownames` argument:
+    - `"long"`, the default character string derived from MetaPhlAn3
+    - `"short"`, the NCBI Taxonomy species name from CHOCOPhlAn database
+        + `"short"` row names are validated against NCBI taxonomy with `taxize`
+    - `"NCBI"`, the NCBI Taxonomy ID from CHOCOPhlAn database
+        + `"NCBI"` row names are validated against NCBI taxonomy with `taxize`
+        + `rowData` becomes NCBI Taxonomy ID numbers instead of taxa names
+* The `combined_metadata` object has been removed
+
 # curatedMetagenomicData 3.0.0
 
-* curatedMetagenomicData now contains 20,283 samples from 86 studies
-* A total of 10,084 samples added since Bioconductor 3.10 (October 2019)
+* curatedMetagenomicData now contains 20,282 samples from 86 studies
+* A total of 10,083 samples added since Bioconductor 3.10 (October 2019)
 * Studies added since Bioconductor 3.10 (October 2019):
     - AsnicarF_2021 (1098 samples)
     - BrooksB_2017 (408 samples)
@@ -10,7 +51,7 @@
     - GhensiP_2019 (113 samples)
     - GuptaA_2019 (60 samples)
     - HallAB_2017 (259 samples)
-    - HMP_2019_ibdmdb (1628 samples)
+    - HMP_2019_ibdmdb (1627 samples)
     - HMP_2019_t2d (296 samples)
     - IjazUZ_2017 (94 samples)
     - KaurK_2020 (31 samples)
@@ -34,22 +75,22 @@
     - YassourM_2018 (271 samples)
     - ZhuF_2020 (171 samples)
 * All raw data has been reprocessed with MetaPhlAn3 (v3.0.0) & HUMAnN3 (v3.0.0.alpha.3)
-* The `curatedMetagenomicData()` method has been refactored for efficiency
+* The `curatedMetagenomicData()` function has been refactored for efficiency
     - It now returns `SummarizedExperiment`/`TreeSummarizedExperiment` objects
     - Sample metadata always stays up to date and is updated weekly
     - It is now the primary (and only) means to access data
-* The `mergeData()` method has been refactored for accuracy and efficiency
-* The `returnSamples()` method has been added for returns across studies
+* The `mergeData()` function has been refactored for accuracy and efficiency
+* The `returnSamples()` function has been added for returns across studies
 * The `sampleMetadata` object replaces the `combined_metadata` object
 * The `combined_metadata` object will be removed in the next release
-* A number of methods have moved directly to defunct status:
+* A number of functions have moved directly to defunct status:
     - `cmdValidVersions()`
     - `getMetaphlanTree()`
     - `ExpressionSet2MRexperiment()`
     - `ExpressionSet2phyloseq()`
 * All named accessors (e.g. `HMP_2012.pathcoverage.stool()`) have become defunct
     - These were very hard to maintain and document; the package is now simpler
-    - The `curatedMetagenomicData()` method replaces all named accessors
+    - The `curatedMetagenomicData()` function replaces all named accessors
 
 # curatedMetagenomicData 1.16.0
 

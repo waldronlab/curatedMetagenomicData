@@ -30,19 +30,20 @@
 #' @seealso [curatedMetagenomicData], [returnSamples]
 #'
 #' @examples
-#' curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) %>%
+#' curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) |>
 #'     mergeData()
 #'
-#' curatedMetagenomicData("LiJ_20.+.pathway_abundance", dryrun = FALSE) %>%
+#' curatedMetagenomicData("LiJ_20.+.pathway_abundance", dryrun = FALSE) |>
 #'     mergeData()
 #'
-#' curatedMetagenomicData("LiJ_20.+.relative_abundance", dryrun = FALSE) %>%
+#' curatedMetagenomicData("LiJ_20.+.relative_abundance", dryrun = FALSE) |>
 #'     mergeData()
 #'
 #' @importFrom purrr map_chr
-#' @importFrom magrittr %>%
+#' @importFrom SummarizedExperiment assayNames
 #' @importFrom purrr map
 #' @importFrom purrr reduce
+#' @importFrom magrittr extract
 #' @importFrom SummarizedExperiment colData
 #' @importFrom dplyr pull
 #' @importFrom SummarizedExperiment assay
@@ -57,79 +58,101 @@
 #' @importFrom SummarizedExperiment rowData
 #' @importFrom S4Vectors DataFrame
 #' @importFrom dplyr bind_rows
+#' @importFrom TreeSummarizedExperiment rowLinks
+#' @importFrom dplyr distinct
+#' @importFrom rlang .data
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment
 mergeData <- function(mergeList) {
-    if (base::length(mergeList) == 1) {
+    if (length(mergeList) == 1) {
         return(mergeList[[1]])
     }
 
     assay_name <-
-        purrr::map_chr(mergeList, SummarizedExperiment::assayNames) %>%
-        base::unique()
+        map_chr(mergeList, assayNames) |>
+        unique()
 
-    if (base::length(assay_name) != 1) {
+    if (length(assay_name) != 1) {
         stop("dataType of list elements is different", call. = FALSE)
     }
 
-    duplicate_colnames <-
-        purrr::map(mergeList, base::colnames) %>%
-        purrr::reduce(base::intersect)
+    col_names <-
+        map(mergeList, colnames) |>
+        reduce(c)
 
-    if (base::length(duplicate_colnames) != 0) {
+    is_duplicated <-
+        duplicated(col_names)
+
+    duplicate_colnames <-
+        extract(col_names, is_duplicated)
+
+    if (length(duplicate_colnames) != 0) {
         merge_list_index <-
-            base::seq_along(mergeList)
+            seq_along(mergeList)
 
         for (i in merge_list_index) {
             col_name <-
-                base::colnames(mergeList[[i]])
+                colnames(mergeList[[i]])
 
             study_name <-
-                SummarizedExperiment::colData(mergeList[[i]]) %>%
-                base::as.data.frame() %>%
-                dplyr::pull("study_name")
+                colData(mergeList[[i]]) |>
+                as.data.frame() |>
+                pull("study_name")
 
-            base::colnames(mergeList[[i]]) <-
-                base::ifelse(col_name %in% duplicate_colnames, base::paste(col_name, study_name, sep = "."), col_name)
+            colnames(mergeList[[i]]) <-
+                ifelse(col_name %in% duplicate_colnames, paste(col_name, study_name, sep = "."), col_name)
         }
     }
 
     assays <-
-        purrr::map(mergeList, SummarizedExperiment::assay) %>%
-        purrr::map(base::as.data.frame) %>%
-        purrr::map(tibble::rownames_to_column) %>%
-        purrr::reduce(dplyr::full_join, by = "rowname") %>%
-        tibble::column_to_rownames() %>%
-        dplyr::mutate(dplyr::across(.fns = ~ tidyr::replace_na(.x, 0))) %>%
-        base::as.matrix() %>%
-        S4Vectors::SimpleList() %>%
-        magrittr::set_names(assay_name)
+        map(mergeList, assay) |>
+        map(as.matrix) |>
+        map(as.data.frame) |>
+        map(rownames_to_column) |>
+        reduce(full_join, by = "rowname") |>
+        column_to_rownames() |>
+        mutate(across(.fns = ~ replace_na(.x, 0))) |>
+        as.matrix() |>
+        SimpleList() |>
+        set_names(assay_name)
 
     rowData <-
-        purrr::map(mergeList, SummarizedExperiment::rowData) %>%
-        purrr::map(base::as.data.frame) %>%
-        purrr::map(tibble::rownames_to_column)
+        map(mergeList, rowData) |>
+        map(as.data.frame) |>
+        map(rownames_to_column)
 
     join_by <-
-        purrr::map(rowData, base::colnames) %>%
-        purrr::reduce(base::intersect)
+        map(rowData, colnames) |>
+        reduce(intersect)
 
     rowData <-
-        purrr::reduce(rowData, dplyr::full_join, by = join_by) %>%
-        tibble::column_to_rownames() %>%
-        S4Vectors::DataFrame()
+        reduce(rowData, full_join, by = join_by) |>
+        column_to_rownames() |>
+        DataFrame()
 
     colData <-
-        purrr::map(mergeList, SummarizedExperiment::colData) %>%
-        purrr::map(base::as.data.frame) %>%
-        purrr::map(tibble::rownames_to_column) %>%
-        dplyr::bind_rows() %>%
-        tibble::column_to_rownames() %>%
-        S4Vectors::DataFrame()
+        map(mergeList, colData) |>
+        map(as.data.frame) |>
+        map(rownames_to_column) |>
+        bind_rows() |>
+        column_to_rownames() |>
+        DataFrame()
 
     if (assay_name == "relative_abundance") {
-        TreeSummarizedExperiment::TreeSummarizedExperiment(assays = assays, rowData = rowData, colData = colData, rowTree = phylogeneticTree)
+        row_names <-
+            rownames(rowData)
+
+        rowNodeLab <-
+            map(mergeList, rowLinks) |>
+            map(as.data.frame) |>
+            map(rownames_to_column) |>
+            bind_rows() |>
+            distinct(.data[["rowname"]], .keep_all = TRUE) |>
+            column_to_rownames() |>
+            extract(row_names, "nodeLab")
+
+        TreeSummarizedExperiment(assays = assays, rowData = rowData, colData = colData, rowTree = phylogeneticTree, rowNodeLab = rowNodeLab)
     } else {
-        SummarizedExperiment::SummarizedExperiment(assays = assays, rowData = rowData, colData = colData)
+        SummarizedExperiment(assays = assays, rowData = rowData, colData = colData)
     }
 }

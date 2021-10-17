@@ -27,7 +27,7 @@ col_types <-
 base::load("R/sysdata.rda")
 
 valid_name <-
-    stringr::str_extract(title, "[A-Z].+") |>
+    stringr::str_extract(resourceTitles, "[A-Z].+") |>
     stringr::str_remove("\\..+") |>
     base::unique()
 

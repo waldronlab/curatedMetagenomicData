@@ -29,6 +29,10 @@
 #' returned; if `TRUE`, relative abundance proportions are multiplied by read
 #' depth and rounded to the nearest integer prior to being returned
 #'
+#' @param rownames the type of `rownames` to use for `relative_abundance`
+#' resources, one of: `"long"` (the default), `"short"` (species name), or
+#' `"NCBI"` (NCBI Taxonomy ID)
+#'
 #' @return when `dataType = "relative_abundance"`, a
 #' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
 #' object is returned; otherwise, a
@@ -37,69 +41,68 @@
 #' @export
 #'
 #' @examples
-#' sampleMetadata %>%
-#'     dplyr::filter(age >= 18) %>%
-#'     dplyr::filter(!base::is.na(alcohol)) %>%
-#'     dplyr::filter(body_site == "stool") %>%
-#'     dplyr::select(where(~ !base::all(base::is.na(.x)))) %>%
+#' sampleMetadata |>
+#'     dplyr::filter(age >= 18) |>
+#'     dplyr::filter(!base::is.na(alcohol)) |>
+#'     dplyr::filter(body_site == "stool") |>
+#'     dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
 #'     returnSamples("relative_abundance")
 #'
-#' @importFrom magrittr %>%
 #' @importFrom dplyr select
 #' @importFrom rlang .data
 #' @importFrom dplyr add_count
 #' @importFrom dplyr mutate
 #' @importFrom dplyr pull
 #' @importFrom stringr str_c
-#' @importFrom SummarizedExperiment colData
+#' @importFrom SummarizedExperiment colData<-
 #' @importFrom dplyr filter
 #' @importFrom tibble column_to_rownames
 #' @importFrom S4Vectors DataFrame
-returnSamples <- function(sampleMetadata, dataType, counts = FALSE) {
-    if (base::is.null(sampleMetadata[["study_name"]])) {
+returnSamples <- function(sampleMetadata, dataType, counts = FALSE, rownames = "long") {
+    if (is.null(sampleMetadata[["study_name"]])) {
         stop("study_name must be present in sampleMetadata", call. = FALSE)
     }
 
-    if (base::is.null(sampleMetadata[["sample_id"]])) {
+    if (is.null(sampleMetadata[["sample_id"]])) {
         stop("sample_id must be present in sampleMetadata", call. = FALSE)
     }
 
     sampleMetadata[["sample_id"]] <-
-        dplyr::select(sampleMetadata, .data[["sample_id"]], .data[["study_name"]]) %>%
-        dplyr::add_count(.data[["sample_id"]]) %>%
-        dplyr::mutate(sample_id = base::ifelse(.data[["n"]] > 1, base::paste(.data[["sample_id"]], .data[["study_name"]], sep = "."), .data[["sample_id"]])) %>%
-        dplyr::pull(.data[["sample_id"]])
+        select(sampleMetadata, .data[["sample_id"]], .data[["study_name"]]) |>
+        add_count(.data[["sample_id"]]) |>
+        mutate(sample_id = ifelse(.data[["n"]] > 1, paste(.data[["sample_id"]], .data[["study_name"]], sep = "."), .data[["sample_id"]])) |>
+        pull(.data[["sample_id"]])
 
     to_return <-
-        base::unique(sampleMetadata[["study_name"]]) %>%
-        stringr::str_c(dataType, sep = ".") %>%
-        stringr::str_c(collapse = "|") %>%
-        curatedMetagenomicData(dryrun = FALSE, counts = counts) %>%
+        unique(sampleMetadata[["study_name"]]) |>
+        str_c(dataType, sep = ".") |>
+        str_c(collapse = "|") |>
+        curatedMetagenomicData(dryrun = FALSE, counts = counts, rownames = rownames) |>
         mergeData()
 
     keep_rows <-
-        base::rownames(to_return)
+        rownames(to_return)
 
     col_names <-
-        base::colnames(to_return) %>%
-        base::intersect(sampleMetadata[["sample_id"]])
+        colnames(to_return) |>
+        intersect(sampleMetadata[["sample_id"]])
 
-    if (base::length(sampleMetadata[["sample_id"]]) != base::length(col_names)) {
+    if (length(sampleMetadata[["sample_id"]]) != length(col_names)) {
         drop_text <-
-            base::as.character("dropping columns without assay matches:\n")
+            as.character("dropping columns without assay matches:\n")
 
         drop_cols <-
-            base::setdiff(sampleMetadata[["sample_id"]], col_names) %>%
-            stringr::str_c(collapse = ", ")
+            setdiff(sampleMetadata[["sample_id"]], col_names) |>
+            str_c(collapse = ", ")
 
         if (dataType == "relative_abundance") {
-            base::message(drop_text, "  ", drop_cols, "\n")
+            message(drop_text, "  ", drop_cols, "\n")
         } else {
-            base::message("\n", drop_text, "  ", drop_cols, "\n")
+            message("\n", drop_text, "  ", drop_cols, "\n")
         }
 
         keep_cols <-
-            base::intersect(col_names, sampleMetadata[["sample_id"]])
+            intersect(col_names, sampleMetadata[["sample_id"]])
     } else {
         keep_cols <-
             sampleMetadata[["sample_id"]]
@@ -108,10 +111,10 @@ returnSamples <- function(sampleMetadata, dataType, counts = FALSE) {
     to_return <-
         to_return[keep_rows, keep_cols]
 
-    SummarizedExperiment::colData(to_return) <-
-        dplyr::filter(sampleMetadata, .data[["sample_id"]] %in% keep_cols) %>%
-        tibble::column_to_rownames(var = "sample_id") %>%
-        S4Vectors::DataFrame()
+    colData(to_return) <-
+        filter(sampleMetadata, .data[["sample_id"]] %in% keep_cols) |>
+        column_to_rownames(var = "sample_id") |>
+        DataFrame()
 
     to_return
 }
