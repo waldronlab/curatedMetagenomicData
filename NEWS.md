@@ -1,42 +1,15 @@
 # curatedMetagenomicData 3.2.0
 
-* A number of studies were reprocessed because reads had erroneously been discarded:
-    - AsnicarF_2017
-    - BackhedF_2015
-    - Bengtsson-PalmeJ_2015
-    - BrooksB_2017
-    - ChengpingW_2017
-    - CosteaPI_2017
-    - GopalakrishnanV_2018
-    - HallAB_2017
-    - HansenLBS_2018
-    - HMP_2019_ibdmdb
-    - IjazUZ_2017
-    - JieZ_2017
-    - KarlssonFH_2013
-    - KaurK_2020
-    - KieserS_2018
-    - LiJ_2017
-    - LiuW_2016
-    - LokmerA_2019
-    - LoombaR_2017
-    - MatsonV_2018
-    - MehtaRS_2018
-    - NagySzakalD_2017
-    - OhJ_2014
-    - PehrssonE_2016
-    - QinJ_2012
-    - RosaBA_2018
-    - RubelMA_2020
-    - ShiB_2015
-    - YachidaS_2019
 * The `curatedMetagenomicData()` function now has a `rownames` argument:
     - `"long"`, the default character string derived from MetaPhlAn3
-    - `"short"`, the NCBI Taxonomy species name from CHOCOPhlAn database
+    - `"short"`, the NCBI Taxonomy species name from the CHOCOPhlAn database
         + `"short"` row names are validated against NCBI taxonomy with `taxize`
-    - `"NCBI"`, the NCBI Taxonomy ID from CHOCOPhlAn database
-        + `"NCBI"` row names are validated against NCBI taxonomy with `taxize`
+    - `"NCBI"`, the NCBI Taxonomy ID from the CHOCOPhlAn database
+        + `"NCBI"` row names are validated against NCBI Taxonomy with `taxize`
         + `rowData` becomes NCBI Taxonomy ID numbers instead of taxa names
+* The sparse matrix data structure was switched from `dgTMatrix` to `dgCMatrix`
+* A few studies were reprocessed because of a minor error related to MetaPhlAn3
+* Changes inside the package were made to address bugs discovered by users
 * The `combined_metadata` object has been removed
 
 # curatedMetagenomicData 3.0.0
