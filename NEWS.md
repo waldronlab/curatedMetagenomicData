@@ -3,7 +3,7 @@
 * The `curatedMetagenomicData()` function now has a `rownames` argument:
     - `"long"`, the default character string derived from MetaPhlAn3
     - `"short"`, the NCBI Taxonomy species name from the CHOCOPhlAn database
-        + `"short"` row names are validated against NCBI taxonomy with `taxize`
+        + `"short"` row names are validated against NCBI Taxonomy with `taxize`
     - `"NCBI"`, the NCBI Taxonomy ID from the CHOCOPhlAn database
         + `"NCBI"` row names are validated against NCBI Taxonomy with `taxize`
         + `rowData` becomes NCBI Taxonomy ID numbers instead of taxa names
