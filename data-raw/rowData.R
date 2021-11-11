@@ -1,5 +1,5 @@
 marker_info_file <-
-    base::as.character("https://zenodo.org/record/3955744/files/mpa_v30_CHOCOPhlAn_201901_marker_info.txt.bz2")
+    base::as.character("https://zenodo.org/record/5668382/files/mpa_v30_CHOCOPhlAn_201901_marker_info.txt.bz2")
 
 marker_info_path <-
     base::tempfile()
