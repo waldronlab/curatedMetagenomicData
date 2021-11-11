@@ -6,7 +6,7 @@ articles:
   our-pipeline: articles/our-pipeline.html
   version-three: articles/version-three.html
   curatedMetagenomicData: curatedMetagenomicData.html
-last_built: 2021-11-11T15:20Z
+last_built: 2021-11-11T15:36Z
 urls:
   reference: https://waldronlab.io/curatedMetagenomicData/reference
   article: https://waldronlab.io/curatedMetagenomicData/articles
