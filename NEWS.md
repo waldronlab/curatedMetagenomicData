@@ -1,4 +1,4 @@
-# curatedMetagenomicData 3.2.0 
+# curatedMetagenomicData 3.2.0
 
 * The `curatedMetagenomicData()` function now has a `rownames` argument:
     - `"long"`, the default character string derived from MetaPhlAn3
