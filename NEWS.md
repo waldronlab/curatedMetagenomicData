@@ -1,3 +1,14 @@
+# curatedMetagenomicData 3.4.0
+
+* curatedMetagenomicData now contains 20,533 samples from 90 studies
+* A total of 251 samples added since Bioconductor 3.14 (October 2021)
+* Studies added since Bioconductor 3.14 (October 2021):
+    - FrankelAE_2017 (39 samples)
+    - LeeKA_2022 (165 samples)
+    - PetersBA_2019 (27 samples)
+    - WindTT_2020 (20 samples)
+* Both `"short"` and `"NCBI"` row names were re-validated against NCBI Taxonomy
+
 # curatedMetagenomicData 3.2.0
 
 * The `curatedMetagenomicData()` function now has a `rownames` argument:
