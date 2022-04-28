@@ -1,12 +1,12 @@
-pandoc: 2.14.0.3
-pkgdown: 2.0.1.9000
-pkgdown_sha: 10cd5e0bd6f282000be7ad8a460a1baa63369486
+pandoc: 2.17.1.1
+pkgdown: 2.0.3
+pkgdown_sha: ~
 articles:
   available-studies: available-studies.html
   our-pipeline: our-pipeline.html
   version-three: version-three.html
   curatedMetagenomicData: curatedMetagenomicData.html
-last_built: 2021-12-16T20:12Z
+last_built: 2022-04-28T17:20Z
 urls:
   reference: https://waldronlab.io/curatedMetagenomicData/reference
   article: https://waldronlab.io/curatedMetagenomicData/articles

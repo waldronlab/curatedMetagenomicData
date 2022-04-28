@@ -24,7 +24,7 @@ object to include only desired samples and metadata."><!-- mathjax --><script sr
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">curatedMetagenomicData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.4.0</span>
       </span>
     </div>
 
@@ -36,7 +36,7 @@ object to include only desired samples and metadata."><!-- mathjax --><script sr
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -133,7 +133,7 @@ the same caveats detailed under <strong>Details</strong> in <a href="mergeData.h
 <span class="r-in">    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">body_site</span> <span class="op">==</span> <span class="st">"stool"</span><span class="op">)</span> |&gt;</span>
 <span class="r-in">    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="op">~</span> <span class="op">!</span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> |&gt;</span>
 <span class="r-in">    <span class="fu">returnSamples</span><span class="op">(</span><span class="st">"relative_abundance"</span><span class="op">)</span></span>
-<span class="r-msg co"><span class="r-pr">#&gt;</span> snapshotDate(): 2021-10-19</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> snapshotDate(): 2022-04-26</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> $`2021-10-14.KaurK_2020.relative_abundance`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> dropping rows without rowTree matches:</span>
@@ -191,8 +191,7 @@ the same caveats detailed under <strong>Details</strong> in <a href="mergeData.h
 <span class="r-out co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Corynebacteriales|f__Corynebacteriaceae|g__Corynebacterium|s__Corynebacterium_coyleae</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> rowData names(7): superkingdom phylum ... genus species</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> colnames(702): JAS_1 JAS_10 ... YSZC12003_37879 YSZC12003_37880</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> colData names(46): study_name subject_id ...</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   age_twins_started_to_live_apart zigosity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> colData names(45): study_name subject_id ... ctp zigosity</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> reducedDimNames(0):</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mainExpName: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> altExpNames(0):</span>
@@ -215,7 +214,7 @@ the same caveats detailed under <strong>Details</strong> in <a href="mergeData.h
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer></div>

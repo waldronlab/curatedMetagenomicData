@@ -42,7 +42,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">curatedMetagenomicData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.2.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.4.0</span>
       </span>
     </div>
 
@@ -55,7 +55,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -100,17 +100,17 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The <em><a href="https://bioconductor.org/packages/3.14/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em> package provides standardized, curated human microbiome data for novel analyses. It includes gene families, marker abundance, marker presence, pathway abundance, pathway coverage, and relative abundance for samples collected from different body sites. The bacterial, fungal, and archaeal taxonomic abundances for each sample were calculated with <a href="https://github.com/biobakery/MetaPhlAn" class="external-link">MetaPhlAn3</a>, and metabolic functional potential was calculated with <a href="https://github.com/biobakery/humann" class="external-link">HUMAnN3</a>. The manually curated sample metadata and standardized metagenomic data are available as (Tree)SummarizedExperiment objects.</p>
+<p>The <em><a href="https://bioconductor.org/packages/3.15/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em> package provides standardized, curated human microbiome data for novel analyses. It includes gene families, marker abundance, marker presence, pathway abundance, pathway coverage, and relative abundance for samples collected from different body sites. The bacterial, fungal, and archaeal taxonomic abundances for each sample were calculated with <a href="https://github.com/biobakery/MetaPhlAn" class="external-link">MetaPhlAn3</a>, and metabolic functional potential was calculated with <a href="https://github.com/biobakery/humann" class="external-link">HUMAnN3</a>. The manually curated sample metadata and standardized metagenomic data are available as (Tree)SummarizedExperiment objects.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>To install <em><a href="https://bioconductor.org/packages/3.14/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em> from Bioconductor, use <em><a href="https://CRAN.R-project.org/package=BiocManager" class="external-link">BiocManager</a></em> as follows.</p>
+<p>To install <em><a href="https://bioconductor.org/packages/3.15/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em> from Bioconductor, use <em><a href="https://CRAN.R-project.org/package=BiocManager" class="external-link">BiocManager</a></em> as follows.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"curatedMetagenomicData"</span><span class="op">)</span></code></pre></div>
-<p>To install <em><a href="https://bioconductor.org/packages/3.14/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em> from GitHub, use <em><a href="https://CRAN.R-project.org/package=BiocManager" class="external-link">BiocManager</a></em> as follows.</p>
+<p>To install <em><a href="https://bioconductor.org/packages/3.15/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em> from GitHub, use <em><a href="https://CRAN.R-project.org/package=BiocManager" class="external-link">BiocManager</a></em> as follows.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"waldronlab/curatedMetagenomicData"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p>Most users should simply install <em><a href="https://bioconductor.org/packages/3.14/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em> from Bioconductor.</p>
+<p>Most users should simply install <em><a href="https://bioconductor.org/packages/3.15/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em> from Bioconductor.</p>
 </div>
 <div class="section level2">
 <h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
@@ -142,7 +142,7 @@
 <span class="co">## $`2021-10-14.AsnicarF_2017.relative_abundance`</span>
 <span class="co">## class: TreeSummarizedExperiment </span>
 <span class="co">## dim: 296 24 </span>
-<span class="co">## metadata(0):</span>
+<span class="co">## metadata(1): agglomerated_by_rank</span>
 <span class="co">## assays(1): relative_abundance</span>
 <span class="co">## rownames(296): Escherichia coli Bifidobacterium bifidum ...</span>
 <span class="co">##   Streptococcus gordonii Abiotrophia sp. HMSC24B09</span>
@@ -163,7 +163,7 @@
 <span class="co">## $`2021-10-14.AsnicarF_2017.relative_abundance`</span>
 <span class="co">## class: TreeSummarizedExperiment </span>
 <span class="co">## dim: 296 24 </span>
-<span class="co">## metadata(0):</span>
+<span class="co">## metadata(1): agglomerated_by_rank</span>
 <span class="co">## assays(1): relative_abundance</span>
 <span class="co">## rownames(296): Escherichia coli Bifidobacterium bifidum ...</span>
 <span class="co">##   Streptococcus gordonii Abiotrophia sp. HMSC24B09</span>
@@ -182,13 +182,13 @@
 <span class="co">## $`2021-03-31.AsnicarF_2021.relative_abundance`</span>
 <span class="co">## class: TreeSummarizedExperiment </span>
 <span class="co">## dim: 633 1098 </span>
-<span class="co">## metadata(0):</span>
+<span class="co">## metadata(1): agglomerated_by_rank</span>
 <span class="co">## assays(1): relative_abundance</span>
 <span class="co">## rownames(633): Phocaeicola vulgatus Bacteroides stercoris ...</span>
 <span class="co">##   Pyramidobacter sp. C12-8 Brevibacterium aurantiacum</span>
 <span class="co">## rowData names(7): superkingdom phylum ... genus species</span>
 <span class="co">## colnames(1098): SAMEA7041133 SAMEA7041134 ... SAMEA7045952 SAMEA7045953</span>
-<span class="co">## colData names(21): study_name subject_id ... curator BMI</span>
+<span class="co">## colData names(22): study_name subject_id ... BMI family</span>
 <span class="co">## reducedDimNames(0):</span>
 <span class="co">## mainExpName: NULL</span>
 <span class="co">## altExpNames(0):</span>
@@ -200,12 +200,12 @@
 <div class="section level2">
 <h2 id="analyses">Analyses<a class="anchor" aria-label="anchor" href="#analyses"></a>
 </h2>
-<p>See <a href="https://github.com/waldronlab/curatedMetagenomicAnalyses" class="external-link">curatedMetagenomicAnalyses</a> for analyses in R and Python using <em><a href="https://bioconductor.org/packages/3.14/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>.</p>
+<p>See <a href="https://github.com/waldronlab/curatedMetagenomicAnalyses" class="external-link">curatedMetagenomicAnalyses</a> for analyses in R and Python using <em><a href="https://bioconductor.org/packages/3.15/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>.</p>
 </div>
 <div class="section level2">
 <h2 id="contributing">Contributing<a class="anchor" aria-label="anchor" href="#contributing"></a>
 </h2>
-<p>To contribute to the <em><a href="https://bioconductor.org/packages/3.14/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em> R/Bioconductor package, first read the <a href="CONTRIBUTING.html">contributing guidelines</a> and then open an issue. Also, note that in contributing you agree to abide by the <a href="CODE_OF_CONDUCT.html">code of conduct</a>.</p>
+<p>To contribute to the <em><a href="https://bioconductor.org/packages/3.15/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em> R/Bioconductor package, first read the <a href="CONTRIBUTING.html">contributing guidelines</a> and then open an issue. Also, note that in contributing you agree to abide by the <a href="CODE_OF_CONDUCT.html">code of conduct</a>.</p>
 <hr>
 <p>Pasolli E, Schiffer L, Manghi P, Renson A, Obenchain V, Truong D, Beghini F, Malik F, Ramos M, Dowd J, Huttenhower C, Morgan M, Segata N, Waldron L (2017). Accessible, curated metagenomic data through ExperimentHub. <em>Nat. Methods</em>, <strong>14</strong> (11), 1023-1024. ISSN 1548-7091, 1548-7105, doi: <a href="https://doi.org/10.1038/nmeth.4468" class="external-link">10.1038/nmeth.4468</a>.</p>
 </div>
@@ -272,7 +272,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
 </div>
 
       </footer>
