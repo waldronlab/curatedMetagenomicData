@@ -210,7 +210,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Install covr
-        if: github.ref == 'refs/heads/RELEASE_3_15' && env.run_covr == 'true' && runner.os == 'Linux'
+        if: github.ref == 'refs/heads/master' && env.run_covr == 'true' && runner.os == 'Linux'
         run: |
           remotes::install_cran("covr")
         shell: Rscript {0}
@@ -266,7 +266,7 @@ jobs:
         shell: Rscript {0}
 
       - name: Test coverage
-        if: github.ref == 'refs/heads/RELEASE_3_15' && env.run_covr == 'true' && runner.os == 'Linux'
+        if: github.ref == 'refs/heads/master' && env.run_covr == 'true' && runner.os == 'Linux'
         run: |
           covr::codecov()
         shell: Rscript {0}
