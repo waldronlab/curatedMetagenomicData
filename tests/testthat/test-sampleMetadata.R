@@ -3,7 +3,7 @@ test_that("sampleMetadata data.frame is present", {
 })
 
 test_that("sampleMetadata dimensions have not decreased", {
-    expect_gte(base::nrow(sampleMetadata), 20534)
+    expect_gte(base::nrow(sampleMetadata), 20533)
     expect_gte(base::ncol(sampleMetadata), 136)
 })
 
