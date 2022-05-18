@@ -31,7 +31,7 @@ biocViews:
     Homo_sapiens_Data,
     MicrobiomeData,
     ReproducibleResearch
-Version: 3.4.1
+Version: 3.4.2
 License: Artistic-2.0
 Depends:
     R (>= 4.1.0),
@@ -66,5 +66,5 @@ BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 VignetteBuilder: knitr
