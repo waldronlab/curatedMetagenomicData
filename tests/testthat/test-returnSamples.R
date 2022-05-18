@@ -22,8 +22,9 @@ test_that("sample_id must be present in sampleMetadata", {
 
 test_that("results have fewer samples than sampleMetadata when assay does not contain all samples", {
     sample_metadata <-
-        dplyr::filter(sampleMetadata, study_name == "HMP_2019_ibdmdb") |>
-        dplyr::select(where(~ !base::all(base::is.na(.x))))
+        dplyr::filter(sampleMetadata, study_name == "WindTT_2020") |>
+        dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
+        dplyr::mutate(sample_id = base::paste(sample_id, "FAKE", sep = "_"))
 
     ncol_returned <-
         returnSamples(sample_metadata, "relative_abundance") |>
@@ -37,8 +38,9 @@ test_that("results have fewer samples than sampleMetadata when assay does not co
 
 test_that("message has an additional new line when dataType is not relative_abundance", {
     sample_metadata <-
-        dplyr::filter(sampleMetadata, study_name == "HMP_2019_ibdmdb") |>
-        dplyr::select(where(~ !base::all(base::is.na(.x))))
+        dplyr::filter(sampleMetadata, study_name == "WindTT_2020") |>
+        dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
+        dplyr::mutate(sample_id = base::paste(sample_id, "FAKE", sep = "_"))
 
     expect_message(returnSamples(sample_metadata, "relative_abundance"), regexp = "^dropping columns without assay matches:\n")
     expect_message(returnSamples(sample_metadata, "pathway_coverage"), regexp = "^\ndropping columns without assay matches:\n")
