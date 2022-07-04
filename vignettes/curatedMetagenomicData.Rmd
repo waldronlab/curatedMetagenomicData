@@ -30,6 +30,10 @@ vignette: >
   %\VignetteEncoding{UTF-8}  
 ---
 
+```{r, include = FALSE}
+library(curatedMetagenomicData)
+```
+
 # What `curatedMetagenomicData` provides
 
 `curatedMetagenomicData` provides 6 types of data for each dataset:
@@ -80,10 +84,6 @@ BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, b
 Most users should simply install `r BiocStyle::Biocpkg("curatedMetagenomicData")` from Bioconductor.
 
 # R Packages
-
-```{r, include = FALSE}
-library(curatedMetagenomicData)
-```
 
 To demonstrate the functionality of `r Biocpkg("curatedMetagenomicData")`, the `r CRANpkg("dplyr")` and `r CRANpkg("DT")` packages are needed.
 
