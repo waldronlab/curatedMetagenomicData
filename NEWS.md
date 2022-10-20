@@ -1,3 +1,13 @@
+# curatedMetagenomicData 3.6.0
+
+* curatedMetagenomicData now contains 22,588 samples from 93 studies
+* A total of 2,055 samples added since Bioconductor 3.15 (April 2022)
+* Studies added since Bioconductor 3.15 (April 2022):
+    - BedarfJR_2017 (59 samples)
+    - IaniroG_2022 (165 samples)
+    - MetaCardis_2020_a (1,831 samples)
+* Both `"short"` and `"NCBI"` row names were re-validated against NCBI Taxonomy
+
 # curatedMetagenomicData 3.4.0
 
 * curatedMetagenomicData now contains 20,533 samples from 90 studies
