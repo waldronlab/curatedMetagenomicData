@@ -24,7 +24,7 @@ object to include only desired samples and metadata."><!-- mathjax --><script sr
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">curatedMetagenomicData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.6.0</span>
       </span>
     </div>
 
@@ -86,7 +86,7 @@ object to include only desired samples and metadata.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">returnSamples</span><span class="op">(</span><span class="va">sampleMetadata</span>, <span class="va">dataType</span>, counts <span class="op">=</span> <span class="cn">FALSE</span>, rownames <span class="op">=</span> <span class="st">"long"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">returnSamples</span><span class="op">(</span><span class="va">sampleMetadata</span>, <span class="va">dataType</span>, counts <span class="op">=</span> <span class="cn">FALSE</span>, rownames <span class="op">=</span> <span class="st">"long"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -94,6 +94,8 @@ object to include only desired samples and metadata.</p>
     <dl><dt>sampleMetadata</dt>
 <dd><p>the <a href="sampleMetadata.html">sampleMetadata</a> <code>data.frame</code> subset to include
 only desired samples and metadata</p></dd>
+
+
 <dt>dataType</dt>
 <dd><p>the data type to be returned; one of the following:</p><ul><li><p><code>"gene_families"</code></p></li>
 <li><p><code>"marker_abundance"</code></p></li>
@@ -102,20 +104,33 @@ only desired samples and metadata</p></dd>
 <li><p><code>"pathway_coverage"</code></p></li>
 <li><p><code>"relative_abundance"</code></p></li>
 </ul></dd>
+
+
 <dt>counts</dt>
 <dd><p>if <code>FALSE</code> (the default), relative abundance proportions are
 returned; if <code>TRUE</code>, relative abundance proportions are multiplied by read
 depth and rounded to the nearest integer prior to being returned</p></dd>
+
+
 <dt>rownames</dt>
 <dd><p>the type of <code>rownames</code> to use for <code>relative_abundance</code>
 resources, one of: <code>"long"</code> (the default), <code>"short"</code> (species name), or
 <code>"NCBI"</code> (NCBI Taxonomy ID)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>when <code>dataType = "relative_abundance"</code>, a
-<a href="https://rdrr.io/pkg/TreeSummarizedExperiment/man/TreeSummarizedExperiment-class.html" class="external-link">TreeSummarizedExperiment</a>object is returned; otherwise, a
-<a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">SummarizedExperiment</a>object is returned</p>
+    
+
+<p>when <code>dataType = "relative_abundance"</code>, a
+<a href="https://rdrr.io/pkg/TreeSummarizedExperiment/man/TreeSummarizedExperiment-class.html" class="external-link">TreeSummarizedExperiment</a></p>
+
+
+<p>object is returned; otherwise, a
+<a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">SummarizedExperiment</a></p>
+
+
+<p>object is returned</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -127,14 +142,13 @@ the same caveats detailed under <strong>Details</strong> in <a href="mergeData.h
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">sampleMetadata</span> |&gt;</span>
-<span class="r-in">    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">age</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span> |&gt;</span>
-<span class="r-in">    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">alcohol</span><span class="op">)</span><span class="op">)</span> |&gt;</span>
-<span class="r-in">    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">body_site</span> <span class="op">==</span> <span class="st">"stool"</span><span class="op">)</span> |&gt;</span>
-<span class="r-in">    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="op">~</span> <span class="op">!</span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> |&gt;</span>
-<span class="r-in">    <span class="fu">returnSamples</span><span class="op">(</span><span class="st">"relative_abundance"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">sampleMetadata</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">age</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">alcohol</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">body_site</span> <span class="op">==</span> <span class="st">"stool"</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="op">~</span> <span class="op">!</span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="fu">base</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">returnSamples</span><span class="op">(</span><span class="st">"relative_abundance"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> snapshotDate(): 2022-04-26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> $`2021-10-14.KaurK_2020.relative_abundance`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> dropping rows without rowTree matches:</span>
@@ -142,14 +156,12 @@ the same caveats detailed under <strong>Details</strong> in <a href="mergeData.h
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Collinsella|s__Collinsella_stercoris</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Ruminococcus|s__Ruminococcus_champanellensis</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Sutterellaceae|g__Sutterella|s__Sutterella_parvirubra</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> $`2021-03-31.KeohaneDM_2020.relative_abundance`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> dropping rows without rowTree matches:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Collinsella|s__Collinsella_stercoris</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Enorma|s__[Collinsella]_massiliensis</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Ruminococcus|s__Ruminococcus_champanellensis</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Sutterellaceae|g__Sutterella|s__Sutterella_parvirubra</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> $`2021-03-31.QinN_2014.relative_abundance`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> dropping rows without rowTree matches:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Atopobiaceae|g__Olsenella|s__Olsenella_profusa</span>
@@ -161,7 +173,6 @@ the same caveats detailed under <strong>Details</strong> in <a href="mergeData.h
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Firmicutes|c__Erysipelotrichia|o__Erysipelotrichales|f__Erysipelotrichaceae|g__Bulleidia|s__Bulleidia_extructa</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Sutterellaceae|g__Sutterella|s__Sutterella_parvirubra</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Synergistetes|c__Synergistia|o__Synergistales|f__Synergistaceae|g__Cloacibacillus|s__Cloacibacillus_evryensis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> $`2021-03-31.ThomasAM_2018a.relative_abundance`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> dropping rows without rowTree matches:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Atopobiaceae|g__Olsenella|s__Olsenella_profusa</span>
@@ -173,7 +184,6 @@ the same caveats detailed under <strong>Details</strong> in <a href="mergeData.h
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Firmicutes|c__Erysipelotrichia|o__Erysipelotrichales|f__Erysipelotrichaceae|g__Bulleidia|s__Bulleidia_extructa</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Sutterellaceae|g__Sutterella|s__Sutterella_parvirubra</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Synergistetes|c__Synergistia|o__Synergistales|f__Synergistaceae|g__Cloacibacillus|s__Cloacibacillus_evryensis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> $`2021-03-31.XieH_2016.relative_abundance`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> dropping rows without rowTree matches:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Atopobiaceae|g__Olsenella|s__Olsenella_profusa</span>
@@ -196,7 +206,7 @@ the same caveats detailed under <strong>Details</strong> in <a href="mergeData.h
 <span class="r-out co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Corynebacteriales|f__Corynebacteriaceae|g__Corynebacterium|s__Corynebacterium_coyleae</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> rowData names(7): superkingdom phylum ... genus species</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> colnames(702): JAS_1 JAS_10 ... YSZC12003_37879 YSZC12003_37880</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> colData names(45): study_name subject_id ... ctp zigosity</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> colData names(45): study_name subject_id ... inr zigosity</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> reducedDimNames(0):</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mainExpName: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> altExpNames(0):</span>
@@ -204,7 +214,7 @@ the same caveats detailed under <strong>Details</strong> in <a href="mergeData.h
 <span class="r-out co"><span class="r-pr">#&gt;</span> rowTree: 1 phylo tree(s) (10430 leaves)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> colLinks: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> colTree: NULL</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -219,7 +229,7 @@ the same caveats detailed under <strong>Details</strong> in <a href="mergeData.h
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -31,7 +31,7 @@ to the nearest integer.'><!-- mathjax --><script src="https://cdnjs.cloudflare.c
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">curatedMetagenomicData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.4.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.6.0</span>
       </span>
     </div>
 
@@ -100,12 +100,12 @@ to the nearest integer.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">curatedMetagenomicData</span><span class="op">(</span>
-  <span class="va">pattern</span>,
-  dryrun <span class="op">=</span> <span class="cn">TRUE</span>,
-  counts <span class="op">=</span> <span class="cn">FALSE</span>,
-  rownames <span class="op">=</span> <span class="st">"long"</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">curatedMetagenomicData</span><span class="op">(</span></span>
+<span>  <span class="va">pattern</span>,</span>
+<span>  dryrun <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  counts <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  rownames <span class="op">=</span> <span class="st">"long"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -113,21 +113,30 @@ to the nearest integer.</p>
     <dl><dt>pattern</dt>
 <dd><p>regular expression pattern to look for in the titles of
 resources available in curatedMetagenomicData; <code>""</code> will return all resources</p></dd>
+
+
 <dt>dryrun</dt>
 <dd><p>if <code>TRUE</code> (the default), a character vector of resource names
 is returned invisibly; if <code>FALSE</code>, a <code>list</code> of resources is returned</p></dd>
+
+
 <dt>counts</dt>
 <dd><p>if <code>FALSE</code> (the default), relative abundance proportions are
 returned; if <code>TRUE</code>, relative abundance proportions are multiplied by read
 depth and rounded to the nearest integer prior to being returned</p></dd>
+
+
 <dt>rownames</dt>
 <dd><p>the type of <code>rownames</code> to use for <code>relative_abundance</code>
 resources, one of: <code>"long"</code> (the default), <code>"short"</code> (species name), or
 <code>"NCBI"</code> (NCBI Taxonomy ID)</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>if <code>dryrun = TRUE</code>, a character vector of resource names is returned
+    
+
+<p>if <code>dryrun = TRUE</code>, a character vector of resource names is returned
 invisibly; if <code>dryrun = FALSE</code>, a <code>list</code> of resources is returned</p>
     </div>
     <div id="details">
@@ -151,7 +160,7 @@ to optimize storage. When searching for "resources", users will use the
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">curatedMetagenomicData</span><span class="op">(</span><span class="st">"AsnicarF_20.+"</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">curatedMetagenomicData</span><span class="op">(</span><span class="st">"AsnicarF_20.+"</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 2021-03-31.AsnicarF_2017.gene_families</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 2021-03-31.AsnicarF_2017.marker_abundance</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 2021-03-31.AsnicarF_2017.marker_presence</span>
@@ -170,11 +179,9 @@ to optimize storage. When searching for "resources", users will use the
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 2021-03-31.AsnicarF_2021.pathway_abundance</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 2021-03-31.AsnicarF_2021.pathway_coverage</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> 2021-03-31.AsnicarF_2021.relative_abundance</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">curatedMetagenomicData</span><span class="op">(</span><span class="st">"AsnicarF_2017.relative_abundance"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">curatedMetagenomicData</span><span class="op">(</span><span class="st">"AsnicarF_2017.relative_abundance"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> snapshotDate(): 2022-04-26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> $`2021-10-14.AsnicarF_2017.relative_abundance`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> dropping rows without rowTree matches:</span>
@@ -207,8 +214,8 @@ to optimize storage. When searching for "resources", users will use the
 <span class="r-out co"><span class="r-pr">#&gt;</span> colLinks: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> colTree: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">curatedMetagenomicData</span><span class="op">(</span><span class="st">"AsnicarF_20.+.relative_abundance"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span>, counts <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">curatedMetagenomicData</span><span class="op">(</span><span class="st">"AsnicarF_20.+.relative_abundance"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span>, counts <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> snapshotDate(): 2022-04-26</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> $`2021-10-14.AsnicarF_2017.relative_abundance`</span>
@@ -219,7 +226,6 @@ to optimize storage. When searching for "resources", users will use the
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Firmicutes|c__Clostridia|o__Clostridiales|f__Ruminococcaceae|g__Ruminococcus|s__Ruminococcus_champanellensis</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Proteobacteria|c__Betaproteobacteria|o__Burkholderiales|f__Sutterellaceae|g__Sutterella|s__Sutterella_parvirubra</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Synergistetes|c__Synergistia|o__Synergistales|f__Synergistaceae|g__Cloacibacillus|s__Cloacibacillus_evryensis</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> $`2021-03-31.AsnicarF_2021.relative_abundance`</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> dropping rows without rowTree matches:</span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Actinobacteria|c__Coriobacteriia|o__Coriobacteriales|f__Coriobacteriaceae|g__Collinsella|s__Collinsella_stercoris</span>
@@ -264,7 +270,7 @@ to optimize storage. When searching for "resources", users will use the
 <span class="r-out co"><span class="r-pr">#&gt;</span>   k__Bacteria|p__Actinobacteria|c__Actinobacteria|o__Micrococcales|f__Brevibacteriaceae|g__Brevibacterium|s__Brevibacterium_aurantiacum</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> rowData names(7): superkingdom phylum ... genus species</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> colnames(1098): SAMEA7041133 SAMEA7041134 ... SAMEA7045952 SAMEA7045953</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> colData names(22): study_name subject_id ... BMI family</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> colData names(24): study_name subject_id ... family treatment</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> reducedDimNames(0):</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> mainExpName: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> altExpNames(0):</span>
@@ -273,7 +279,7 @@ to optimize storage. When searching for "resources", users will use the
 <span class="r-out co"><span class="r-pr">#&gt;</span> colLinks: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> colTree: NULL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -288,7 +294,7 @@ to optimize storage. When searching for "resources", users will use the
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
