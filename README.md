@@ -11,7 +11,7 @@ quality](https://img.shields.io/codefactor/grade/github/waldronlab/curatedMetage
 <!-- badges: end -->
 
 The
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.15/curatedMetagenomicData)*
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.16/curatedMetagenomicData)*
 package provides standardized, curated human microbiome data for novel
 analyses. It includes gene families, marker abundance, marker presence,
 pathway abundance, pathway coverage, and relative abundance for samples
@@ -26,7 +26,7 @@ sample metadata and standardized metagenomic data are available as
 ## Installation
 
 To install
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.15/curatedMetagenomicData)*
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.16/curatedMetagenomicData)*
 from Bioconductor, use
 *[BiocManager](https://CRAN.R-project.org/package=BiocManager)* as
 follows.
@@ -36,7 +36,7 @@ BiocManager::install("curatedMetagenomicData")
 ```
 
 To install
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.15/curatedMetagenomicData)*
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.16/curatedMetagenomicData)*
 from GitHub, use
 *[BiocManager](https://CRAN.R-project.org/package=BiocManager)* as
 follows.
@@ -46,7 +46,7 @@ BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, b
 ```
 
 Most users should simply install
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.15/curatedMetagenomicData)*
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.16/curatedMetagenomicData)*
 from Bioconductor.
 
 ## Examples
@@ -144,7 +144,7 @@ curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, count
 ##   Pyramidobacter sp. C12-8 Brevibacterium aurantiacum
 ## rowData names(7): superkingdom phylum ... genus species
 ## colnames(1098): SAMEA7041133 SAMEA7041134 ... SAMEA7045952 SAMEA7045953
-## colData names(22): study_name subject_id ... BMI family
+## colData names(24): study_name subject_id ... family treatment
 ## reducedDimNames(0):
 ## mainExpName: NULL
 ## altExpNames(0):
@@ -159,12 +159,12 @@ curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, count
 See
 [curatedMetagenomicAnalyses](https://github.com/waldronlab/curatedMetagenomicAnalyses)
 for analyses in R and Python using
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.15/curatedMetagenomicData)*.
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.16/curatedMetagenomicData)*.
 
 ## Contributing
 
 To contribute to the
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.15/curatedMetagenomicData)*
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.16/curatedMetagenomicData)*
 R/Bioconductor package, first read the [contributing
 guidelines](CONTRIBUTING.md) and then open an issue. Also, note that in
 contributing you agree to abide by the [code of
