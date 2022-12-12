@@ -24,19 +24,19 @@ test_that("all metadata.csv resources exists", {
         base::sort()
 
     returned_resources <-
-        curatedMetagenomicData("", dryrun = TRUE, counts = FALSE) |>
+        curatedMetagenomicData(".+", dryrun = TRUE, counts = FALSE) |>
         base::sort()
 
     expect_equal(metadata_resources, returned_resources)
 })
 
 test_that("return is invisible when `dryrun = TRUE`", {
-    expect_invisible(curatedMetagenomicData("", dryrun = TRUE, counts = FALSE))
+    expect_invisible(curatedMetagenomicData(".+", dryrun = TRUE, counts = FALSE))
 })
 
 test_that("return type is character when `dryrun = TRUE`", {
     returned_resources <-
-        curatedMetagenomicData("", dryrun = TRUE, counts = FALSE)
+        curatedMetagenomicData(".+", dryrun = TRUE, counts = FALSE)
 
     expect_type(returned_resources, "character")
 })
