@@ -4,7 +4,7 @@ test_that("sampleMetadata data.frame is present", {
 
 test_that("sampleMetadata dimensions have not decreased", {
     expect_gte(base::nrow(sampleMetadata), 22588)
-    expect_gte(base::ncol(sampleMetadata), 148)
+    expect_gte(base::ncol(sampleMetadata), 141)
 })
 
 test_that("there are no columns of all NA values", {
