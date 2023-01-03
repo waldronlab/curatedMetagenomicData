@@ -60,6 +60,7 @@
 #' @importFrom ExperimentHub ExperimentHub
 #' @importFrom AnnotationHub query
 #' @importFrom S4Vectors mcols
+#' @importFrom ExperimentHub package
 #' @importFrom magrittr extract
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr separate
@@ -112,7 +113,7 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE, rowna
         mcols(to_return)
 
     keep_rows <-
-        rownames(to_subset)
+        package(to_return) %in% "curatedMetagenomicData"
 
     into_cols <-
         c("date_added", "study_name", "data_type")
