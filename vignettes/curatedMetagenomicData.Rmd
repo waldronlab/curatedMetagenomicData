@@ -236,7 +236,7 @@ To quickly plot the results of alpha diversity estimation, the `plotColData()` f
 
 ```{r, collapse = TRUE, fig.cap = "Alpha Diversity – Shannon Index (H')"}
 alcoholStudy |>
-    estimateDiversity(abund_values = "relative_abundance", index = "shannon") |>
+    estimateDiversity(assay.type = "relative_abundance", index = "shannon") |>
     plotColData(x = "alcohol", y = "shannon", colour_by = "alcohol", shape_by = "alcohol") +
     labs(x = "Alcohol", y = "Alpha Diversity (H')") +
     guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +
