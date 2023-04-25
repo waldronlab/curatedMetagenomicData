@@ -31,7 +31,7 @@ biocViews:
     Homo_sapiens_Data,
     MicrobiomeData,
     ReproducibleResearch
-Version: 3.8.0
+Version: 3.9.0
 License: Artistic-2.0
 Depends:
     R (>= 4.1.0),
