@@ -236,6 +236,9 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE, rowna
 
                 rownames(tree_summarized_experiment) <-
                     rowData(tree_summarized_experiment)[["species"]]
+
+                rownames(assay(tree_summarized_experiment)) <-
+                    rowData(tree_summarized_experiment)[["species"]]
             }
 
             resource_list[[i]] <-
