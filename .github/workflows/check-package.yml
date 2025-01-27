@@ -40,9 +40,9 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - { os: ubuntu-latest, r: '4.4', bioc: '3.20', cont: "bioconductor/bioconductor_docker:devel", rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest" }
-          - { os: macOS-latest, r: '4.4', bioc: '3.20'}
-          - { os: windows-latest, r: '4.4', bioc: '3.20'}
+          - { os: ubuntu-latest, r: '4.5', bioc: '3.21', cont: "bioconductor/bioconductor_docker:devel", rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest" }
+          - { os: macOS-latest, r: '4.5', bioc: '3.21'}
+          - { os: windows-latest, r: '4.5', bioc: '3.21'}
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.config.rspm }}
@@ -79,15 +79,15 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-4.4-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-4.4-
+          key: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-4.5-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-4.5-
       - name: Cache R packages on Linux
         if: "!contains(github.event.head_commit.message, '/nocache') && runner.os == 'Linux' "
         uses: actions/cache@v3
         with:
           path: /home/runner/work/_temp/Library
-          key: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-4.4-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-4.4-
+          key: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-4.5-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ env.cache-version }}-${{ runner.os }}-biocversion-devel-r-4.5-
       - name: Install Linux system dependencies
         if: runner.os == 'Linux'
         run: |
@@ -122,7 +122,7 @@ jobs:
           gha_repos <- if(
             .Platform$OS.type == "unix" && Sys.info()["sysname"] != "Darwin"
           ) c(
-            "AnVIL" = "https://bioconductordocker.blob.core.windows.net/packages/3.20/bioc",
+            "AnVIL" = "https://bioconductordocker.blob.core.windows.net/packages/3.21/bioc",
             BiocManager::repositories()
           ) else BiocManager::repositories()
           message(paste('****', Sys.time(), 'installing rcmdcheck and BiocCheck ****'))
@@ -208,7 +208,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v3
         with:
-          name: ${{ runner.os }}-biocversion-devel-r-4.4-results
+          name: ${{ runner.os }}-biocversion-devel-r-4.5-results
           path: check
       - uses: docker/build-push-action@v1
         if: "!contains(github.event.head_commit.message, '/nodocker') && env.run_docker == 'true' && runner.os == 'Linux' "
