@@ -79,7 +79,7 @@
 #' @importFrom S4Vectors SimpleList
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment rowData<-
-#' @importFrom mia agglomerateByRank
+#' @importFrom mia taxonomyRankEmpty getTaxonomyLabels
 #' @importFrom TreeSummarizedExperiment rownames<-
 #' @importFrom SummarizedExperiment rowData
 #' @importFrom SummarizedExperiment SummarizedExperiment
@@ -231,14 +231,30 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE, rowna
             }
 
             if (rownames != "long") {
-                tree_summarized_experiment <-
-                    agglomerateByRank(tree_summarized_experiment, rank = "species", na.rm = TRUE)
-
+                # Remove taxa without taxonomy information as taxonomy
+                # information is required to create short labels
+                wo_taxonomy <-
+                    taxonomyRankEmpty(tree_summarized_experiment)
+                if( any(wo_taxonomy) ){
+                    drop_rows <-
+                        rownames(tree_summarized_experiment)[wo_taxonomy]
+                    drop_name <-
+                        str_c("$`", resource_names[[i]], "`\n")
+                    drop_text <-
+                        as.character("dropping rows without taxonomy info:\n")
+                    drop_rows <-
+                        str_c("  ", drop_rows, collapse = "\n")
+                    if (i == 1) {
+                        message("\n", drop_name, drop_text, drop_rows, "\n")
+                    } else {
+                        message(drop_name, drop_text, drop_rows, "\n")
+                    }
+                    tree_summarized_experiment <-
+                        tree_summarized_experiment[!wo_taxonomy, ]
+                }
+                # Get shorter labels
                 rownames(tree_summarized_experiment) <-
-                    rowData(tree_summarized_experiment)[["species"]]
-
-                rownames(assay(tree_summarized_experiment)) <-
-                    rowData(tree_summarized_experiment)[["species"]]
+                    getTaxonomyLabels(tree_summarized_experiment)
             }
 
             resource_list[[i]] <-
