@@ -3,10 +3,10 @@ name: BiocCheck
 on:
   push:
     branches:
-      - main
+      - devel
   pull_request:
     branches:
-      - main
+      - devel
 
 jobs:
   bioccheck:
@@ -34,18 +34,16 @@ jobs:
           BiocManager::install(c('BiocCheck', 'covr', 'lintr'))
 
       - name: Run BiocCheck
-        run: BiocCheck::BiocCheck('.')
+        run: Rscript -e "BiocCheck::BiocCheck('.')"
 
       - name: Run R CMD check
         run: R CMD check .
 
       - name: Test Coverage
-        run: |
-          covr::codecov()
+        run: Rscript -e "covr::codecov()"
 
       - name: Lint Code
-        run: |
-          lintr::lint_package()
+        run: Rscript -e "lintr::lint_package()"
 
       - name: Upload Coverage Badge
         uses: actions/upload-artifact@v3
