@@ -82,6 +82,7 @@
 #' @importFrom mia taxonomyRankEmpty getTaxonomyLabels
 #' @importFrom TreeSummarizedExperiment rownames<-
 #' @importFrom SummarizedExperiment rowData
+#' @importFrom SummarizedExperiment assay<-
 #' @importFrom SummarizedExperiment SummarizedExperiment
 curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE, rownames = "long") {
     if (missing(pattern)) {
