@@ -870,5 +870,7 @@
 #'
 #' @name curatedMetagenomicData-defunct
 #'
+#' @return -
+#'
 #' @keywords internal
 NULL

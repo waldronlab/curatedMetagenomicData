@@ -433,6 +433,11 @@
 \alias{ZellerG_2014.pathabundance_relab.stool}
 \alias{ZellerG_2014.pathcoverage.stool}
 \title{Defunct functions in package ‘curatedMetagenomicData’}
+\value{
+\itemize{
+\item 
+}
+}
 \description{
 These functions are defunct and no longer available.
 }
