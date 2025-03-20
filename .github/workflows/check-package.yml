@@ -23,7 +23,14 @@ jobs:
           Rscript -e "BiocManager::install(c('BiocCheck', 'covr', 'lintr'))"
 
       - name: Run BiocCheck
-        run: Rscript -e "BiocCheck::BiocCheck('.', `no-check-install-self`=TRUE)"
+        run: |
+          BiocCheck::BiocCheck(
+              dir('check', 'tar.gz$', full.names = TRUE),
+              `quit-with-status` = TRUE,
+              `no-check-R-ver` = TRUE,
+              `no-check-bioc-help` = TRUE
+          )
+        shell: Rscript {0}
 
       - name: Run R CMD check
         run: R CMD check .
