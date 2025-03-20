@@ -25,7 +25,9 @@ Authors@R:
       person(given = "Marcel", family = "Ramos", role = "ctb"),
       person(given = "Valerie", family = "Obenchain", role = "ctb"),
       person(given = "Kelly", family = "Eckenrode", role = "ctb"),
-      person(given = "Nicola", family = "Segata", role = "ctb"))
+      person(given = "Nicola", family = "Segata", role = "ctb"),
+      person(given = "Tuomas", family = "Borman", role = "ctb",
+             comment = c(ORCID = "0000-0002-8563-8884")))
 biocViews:
     ExperimentHub,
     Homo_sapiens_Data,
