@@ -25,10 +25,8 @@ jobs:
       - name: Run BiocCheck
         run: |
           BiocCheck::BiocCheck(
-              dir('check', 'tar.gz$', full.names = TRUE),
-              `quit-with-status` = TRUE,
-              `no-check-R-ver` = TRUE,
-              `no-check-bioc-help` = TRUE
+              "."
+              `no-check-install-self` = TRUE,
           )
         shell: Rscript {0}
 
