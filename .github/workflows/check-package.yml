@@ -25,7 +25,7 @@ jobs:
       - name: Run BiocCheck
         run: |
           BiocCheck::BiocCheck(
-              "."
+              ".",
               `no-check-install-self` = TRUE,
           )
         shell: Rscript {0}
