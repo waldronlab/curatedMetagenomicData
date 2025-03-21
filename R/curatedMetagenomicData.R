@@ -255,16 +255,7 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE, rowna
                 }
                 # Get shorter labels
                 rownames(tree_summarized_experiment) <-
-                    getTaxonomyLabels(tree_summarized_experiment, make.unique = FALSE)
-                # If user wants NCBI-style rownames, we remove possible rank
-                # prefix. The labels might have the prefix, if taxon was
-                # identified only in genus level while others had species level.
-                # Usually rank prefix is useful information, but in NCBI-style
-                # taxa are just unique IDs, so we do not need the prefix.
-                if( rownames == "NCBI" ){
-                    pattern <- paste0(paste0(taxonomyRanks(tree_summarized_experiment), ":"), collapse = "|")
-                    rownames(tree_summarized_experiment) <- gsub(pattern, "", rownames(tree_summarized_experiment)) |> as.integer()
-                }
+                    getTaxonomyLabels(tree_summarized_experiment)
             }
 
             resource_list[[i]] <-

@@ -112,6 +112,22 @@ test_that('first list element row names all coercible to integer when `rownames 
     returned_resources <-
         curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE, counts = TRUE, rownames = "NCBI")
 
+    # rowData includes only IDs
+    all_boolean <- lapply(rowData(returned_resources[[1L]]), function(col) is.integer(col)) |> unlist() |> all()
+    expect_true(all_boolean)
+
+    # If user wants NCBI-style rownames, we remove possible rank
+    # prefix. The labels might have the prefix, if taxon was
+    # identified only in genus level while others had species level, i.e., they
+    # can look like this: genus:0091, species:0903. species:8982.
+    # We remove the prefixes so we can test whether rownames are correctly
+    # formed.
+    pattern <- paste0(paste0(taxonomyRanks(returned_resources[[1]]), ":"), collapse = "|")
+    rownames(returned_resources[[1]]) <- gsub(pattern, "", rownames(returned_resources[[1]]))
+    # Moreover, if there were duplicated rownames, the function added a suffix
+    # (species:001, species:001_2), which is why we remove it.
+    rownames(returned_resources[[1]]) <- gsub("_\\d+$", "", rownames(returned_resources[[1]])) |> as.integer()
+
     resource_row_names <-
         base::rownames(returned_resources[[1]])
 
