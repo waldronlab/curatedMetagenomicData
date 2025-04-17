@@ -68,16 +68,16 @@ See:
 To install `r BiocStyle::Biocpkg("curatedMetagenomicData")` from Bioconductor, use `r BiocStyle::CRANpkg("BiocManager")` as follows.
 
 ```{r, eval = FALSE}
+if (!require("BiocManager", quietly = TRUE))
+    install.packages("BiocManager")
+
 BiocManager::install("curatedMetagenomicData")
 ```
 
-To install `r BiocStyle::Biocpkg("curatedMetagenomicData")` from GitHub, use `r BiocStyle::CRANpkg("BiocManager")` as follows.
-
-```{r, eval = FALSE}
-BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, build_vignettes = TRUE)
-```
-
-Most users should simply install `r BiocStyle::Biocpkg("curatedMetagenomicData")` from Bioconductor.
+Most users should simply install
+`r BiocStyle::Biocpkg("curatedMetagenomicData")` from Bioconductor. Developers
+may install the GitHub repository with `remotes::install_github` and the latest
+Bioconductor development version.
 
 # R Packages
 
