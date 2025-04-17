@@ -110,8 +110,16 @@ mergeData <- function(mergeList) {
         map(as.data.frame) |>
         map(rownames_to_column) |>
         reduce(full_join, by = "rowname") |>
-        column_to_rownames() |>
-        mutate(across(.fns = ~ replace_na(.x, 0))) |>
+        column_to_rownames()
+
+    cols <- names(assays)
+    assays <-
+        mutate(
+            assays,
+            across(
+                tidyselect::all_of(cols), .fns = ~ replace_na(.x, 0)
+            )
+        ) |>
         as.matrix() |>
         SimpleList() |>
         set_names(assay_name)
