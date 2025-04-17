@@ -64,11 +64,10 @@
 #' @importFrom magrittr extract
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr separate
-#' @importFrom rlang .data
+#' @importFrom rlang .data rep_named
 #' @importFrom dplyr group_by
 #' @importFrom dplyr slice_max
 #' @importFrom dplyr ungroup
-#' @importFrom purrr list_along
 #' @importFrom magrittr set_names
 #' @importFrom dplyr filter
 #' @importFrom tibble column_to_rownames
@@ -128,8 +127,7 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE, rowna
         ungroup()
 
     resource_list <-
-        list_along(resources[["title"]]) |>
-        set_names(resources[["title"]])
+        rep_named(resources[["title"]], list(NULL))
 
     resource_index <-
         nrow(resources) |>
