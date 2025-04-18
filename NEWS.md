@@ -1,3 +1,11 @@
+# curatedMetagenomicData 3.16.1
+
+* Updates to `rownames = "short"` due to downstream changes in `mia`
+(@TuomasBorman, #309)
+* Use `convertToPhyloseq` in vignette instead of
+`makePhyloseqFromTreeSummarizedExperiment` (@cmirzayi, #310)
+* Use `rep_named` instead of deprecated `list_along` (@LiNk-NY)
+
 # curatedMetagenomicData 3.6.0
 
 * curatedMetagenomicData now contains 22,588 samples from 93 studies
