@@ -68,7 +68,7 @@ returnSamples <- function(sampleMetadata, dataType, counts = FALSE, rownames = "
     }
 
     sampleMetadata[["sample_id"]] <-
-        select(sampleMetadata, .data[["sample_id"]], .data[["study_name"]]) |>
+        select(sampleMetadata, "sample_id", "study_name") |>
         add_count(.data[["sample_id"]]) |>
         mutate(sample_id = ifelse(.data[["n"]] > 1, paste(.data[["sample_id"]], .data[["study_name"]], sep = "."), .data[["sample_id"]])) |>
         pull(.data[["sample_id"]])
