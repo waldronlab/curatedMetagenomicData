@@ -114,6 +114,9 @@ test_that('first list element row names all coercible to integer when `rownames 
 
     resource_row_names <-
         base::rownames(returned_resources[[1]])
+    ## hack to remove text from rownames
+    resource_row_names <-
+        vapply(strsplit(resource_row_names, ":|_"), `[[`, character(1L), 2L)
 
     expect_silent(base::as.integer(resource_row_names))
 })
