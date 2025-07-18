@@ -11,6 +11,16 @@ author:
   - Graduate School of Public Health and Health Policy, City University of New
     York, New York, NY, U.S.A.
   email: levi.waldron@sph.cuny.edu
+- name: Yoon Ji Jung
+  affiliation:
+  - Graduate School of Public Health and Health Policy, City University of New
+    York, New York, NY, U.S.A.
+  email: YOONJI.JUNG49@sphmail.cuny.edu  
+- name: Sehyun Oh
+  affiliation:
+  - Graduate School of Public Health and Health Policy, City University of New
+    York, New York, NY, U.S.A.
+  email: Sehyun.Oh@sph.cuny.edu  
 package: curatedMetagenomicData
 abstract: >
     The curatedMetagenomicData package provides standardized, curated human
@@ -186,110 +196,175 @@ The `counts` and `rownames` arguments apply to `returnSamples()` as well, and ca
 
 To demonstrate the utility of `r Biocpkg("curatedMetagenomicData")`, an example analysis is presented below. However, readers should know analysis is generally beyond the scope of `r Biocpkg("curatedMetagenomicData")` and the analysis presented here is for demonstration alone. It is best to consider the output of `r Biocpkg("curatedMetagenomicData")` as the input of analysis more than anything else.
 
-## R Packages
-
-To demonstrate the utility of `r Biocpkg("curatedMetagenomicData")`, the `r CRANpkg("stringr")`, `r Biocpkg("mia")`, `r Biocpkg("scater")`, and `r CRANpkg("vegan")` packages are needed.
-
-```{r, message = FALSE}
-library(stringr)
+## Load R packages
+```{r,include=TRUE,results="hide",message=FALSE,warning=FALSE}
+library(OmicsMLRepoR)
 library(mia)
 library(scater)
 library(vegan)
+library(stringr)
+library(lefser)
+```
+
+## Retrieve harmonized metadata 
+`r Biocpkg("curatedMetagenomicData")` loads the metadata table, `sampleMetadata`. For further harmonized version of the sample-level metadata will be available in the future release of this package, and currently available through `r Biocpkg("OmicsMLRepoR")` package.
+
+```{r, message = FALSE}
+cmd <- OmicsMLRepoR::getMetadata("cMD")
 ```
 
 ## Prepare Data
 
-In our hypothetical study, let's examine the association of alcohol consumption and stool microbial composition across all annotated samples in `r Biocpkg("curatedMetagenomicData")`. We will examine the alpha diversity (within subject diversity), beta diversity (between subject diversity), and conclude with a few notes on differential abundance analysis.
+In this example, we will examine the association between current smoking status and fecal microbial composition across all relevant samples from `r Biocpkg("curatedMetagenomicData")`. We will examine the alpha diversity (within subject diversity), beta diversity (between subject diversity), and differential abundant taxa.
 
 ### Return Samples
 
-First, as above, we use the `returnSamples()` function to return the relevant samples across all studies available in `r Biocpkg("curatedMetagenomicData")`. We want adults over the age of 18, for whom alcohol consumption status is known, and we want only stool samples. The `select(where...` line below simply removes metadata columns which are all `NA` values – they exist in another study but are all `NA` once subsetting has been done. Lastly, the `"relative_abundance"` `dataType` is requested because it contains the relevant information about microbial composition.
+First, as above, we use the `returnSamples()` function to return the relevant samples across all studies available in `r Biocpkg("curatedMetagenomicData")`. We want healthy adults, whose smoking history is known, and only fecal samples. The `select(where...` line below removes metadata columns which are all `NA` values – they exist in another study but are all `NA` once subsetting has been done. 
 
-```{r, collapse = TRUE, message = FALSE}
-alcoholStudy <-
-    filter(sampleMetadata, age >= 18) |>
-    filter(!is.na(alcohol)) |>
-    filter(body_site == "stool") |>
-    select(where(~ !all(is.na(.x)))) |>
-    returnSamples("relative_abundance", rownames = "short")
+```{r}
+smoke <- cmd |> 
+    filter(disease == "Healthy") |> 
+    filter(age_group == "Adult") |>
+    filter(!is.na(smoker)) |>
+    filter(body_site == "feces") |>
+    select(where(~ !all(is.na(.x))))  # remove metadata columns which are all `NA` values
 ```
 
-### Mutate colData
-
-Most of the values in the `sampleMetadata` `data.frame` (which becomes `colData`) are in snake case (e.g. `snake_case`) and don't look nice in plots. Here, the values of the `alcohol` variable are made into title case using `r CRANpkg("stringr")` so they will look nice in plots.
-
-```{r, collapse = TRUE, message = FALSE}
-colData(alcoholStudy) <-
-    colData(alcoholStudy) |>
-    as.data.frame() |>
-    mutate(alcohol = str_replace_all(alcohol, "no", "No")) |>
-    mutate(alcohol = str_replace_all(alcohol, "yes", "Yes")) |>
-    DataFrame()
+```{r}
+table(smoke$smoker, useNA = "ifany")
 ```
 
-### Agglomerate Ranks
+A new binary variable for smoking status, with levels `Smoker` and `Never Smoker`, is created to facilitate downstream analysis. The names of attributes are updated, so they will look nice in plots.
 
-Next, the `splitByRanks` function from `r Biocpkg("mia")` is used to create alternative experiments for each level of the taxonomic tree (e.g. Genus). This allows for diversity and differential abundance analysis at specific taxonomic levels; with this step complete, our data is ready to analyze.
+```{r}
+smoke <- smoke %>%
+  mutate(
+    smoker_bin = as.factor(
+      case_when(smoker == "Smoker (finding)" ~ "Smoker",
+                smoker != "Non-smoker (finding);Never smoked tobacco (finding)" ~ "Never Smoker",
+      )))
 
-```{r, collapse = TRUE, message = FALSE}
-altExps(alcoholStudy) <-
-    splitByRanks(alcoholStudy)
+table(smoke$smoker_bin, useNA = "ifany")
 ```
+
+Lastly, the `"relative_abundance"` `dataType` is requested because it contains the relevant information about microbial composition.
+
+```{r message = FALSE}
+smoke_tse <- smoke %>% returnSamples("relative_abundance", rownames = "short")
+
+## Removing samples with NA values for smoker_bin
+smoke_tse <- smoke_tse[,!is.na(smoke_tse$smoker_bin)]
+```
+
+### Agglomerate By Taxonomic Rank
+The `agglomerateByRank` unction from `r Biocpkg("mia")` is used to sum up data based on associations with certain taxonomic ranks, as defined in `rowData`.
+
+```{r}
+smoke_tse_genus <- agglomerateByRank(smoke_tse, rank = "genus")
+```
+
 
 ## Alpha Diversity
+Alpha diversity is a measure of the within sample diversity of features 
+(relative abundance proportions here) and seeks to quantify the evenness 
+(i.e. are the amounts of different microbes the same) and richness (i.e. 
+are they are large variety of microbial taxa present). The Shannon index 
+(H’) is a commonly used measure of alpha diversity, it’s estimated here 
+using the `addAlpha()` function from the `r Biocpkg("mia")` package.
 
-Alpha diversity is a measure of the within sample diversity of features (relative abundance proportions here) and seeks to quantify the evenness (i.e. are the amounts of different microbes the same) and richness (i.e. are they are large variety of microbial taxa present). The Shannon index (H') is a commonly used measure of alpha diversity, it's estimated here using the `estimateDiversity()` function from the `r Biocpkg("mia")` package.
+```{r fig.cap = "Alpha Diversity - Shannon Index (H')"}
+## Adding Shannon diversity values to colData
+smoke_shannon <- smoke_tse_genus |>
+  addAlpha(assay.type = "relative_abundance", index = "shannon_diversity")
 
-To quickly plot the results of alpha diversity estimation, the `plotColData()` function from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax.
-
-```{r, collapse = TRUE, fig.cap = "Alpha Diversity – Shannon Index (H')"}
-alcoholStudy |>
-    estimateDiversity(assay.type = "relative_abundance", index = "shannon") |>
-    plotColData(x = "alcohol", y = "shannon", colour_by = "alcohol", shape_by = "alcohol") +
-    labs(x = "Alcohol", y = "Alpha Diversity (H')") +
-    guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +
+## Violin plots
+title <- "Alpha Diversity by Smoking Status"
+smoke_shannon |> 
+    plotColData(x = "smoker_bin", y = "shannon_diversity", colour_by = "smoker_bin", shape_by = "smoker_bin") +
+    labs(x = "Smoking Status", y = "Alpha Diversity (H')") + 
+    guides(colour = guide_legend(title = "Smoking Status"), shape = guide_legend(title = title)) +
     theme(legend.position = "none")
 ```
 
-The figure suggest that those who consume alcohol have higher Shannon alpha diversity than those who do not consume alcohol; however, the difference does not appear to be significant, at least qualitatively.
+A p-value < 0.01 and a W value > 0 indicate that the `Never Smoker` group 
+has higher alpha diversity compared to the `Smoker` group. This may serve 
+as basis for further investigation as to whether smoking can lead to gut 
+microbiome dysbiosis.
+
+```{r}
+## Test if alpha diversity between smokers and non-smokers is significantly different
+wilcox.test(shannon_diversity ~ smoker_bin, data = colData(smoke_shannon))
+```
 
 ## Beta Diversity
-
-Beta diversity is a measure of the between sample diversity of features (relative abundance proportions here) and seeks to quantify the magnitude of differences (or similarity) between every given pair of samples. Below it is assessed by Bray–Curtis Principal Coordinates Analysis (PCoA) and Uniform Manifold Approximation and Projection (UMAP).
+Beta diversity is a measure of the between sample diversity of features 
+(relative abundance proportions here) and seeks to quantify the magnitude 
+of differences (or similarity) between every given pair of samples. Below 
+it is assessed by Bray–Curtis Principal Coordinates Analysis (PCoA) and 
+Uniform Manifold Approximation and Projection (UMAP).
 
 ### Bray–Curtis PCoA
+To calculate pairwise Bray–Curtis distance for every sample in our study 
+we will use the `runMDS()` function from the `r Biocpkg("scater")` package 
+along with the `vegdist()` function from the `r CRANpkg("vegan")` package.
 
-To calculate pairwise Bray–Curtis distance for every sample in our study we will use the `runMDS()` function from the `r Biocpkg("scater")` package along with the `vegdist()` function from the `r CRANpkg("vegan")` package.
+To quickly plot the results of beta diversity analysis, 
+the `plotReducedDim()` function from the `r Biocpkg("scater")` package is 
+used along with `r CRANpkg("ggplot2")` syntax.
 
-To quickly plot the results of beta diversity analysis, the `plotReducedDim()` function from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax.
-
-```{r, collapse = TRUE, fig.cap = "Beta Diversity – Bray–Curtis PCoA"}
-alcoholStudy |>
+```{r fig.cap = "Beta Diversity – Bray–Curtis PCoA"}
+smoke_tse %>% 
+  agglomerateByRanks() |>
     runMDS(FUN = vegdist, method = "bray", exprs_values = "relative_abundance", altexp = "genus", name = "BrayCurtis") |>
-    plotReducedDim("BrayCurtis", colour_by = "alcohol", shape_by = "alcohol") +
+    plotReducedDim("BrayCurtis", colour_by = "smoker_bin", shape_by = "smoker_bin") +
     labs(x = "PCo 1", y = "PCo 2") +
-    guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +
-    theme(legend.position = c(0.90, 0.85))
+    guides(colour = guide_legend(title = "Smoking Status"), shape = guide_legend(title = "Smoking Status")) +
+    theme(legend.position = c(0.80, 0.25))
 ```
+
 
 ### UMAP
+To calculate the UMAP coordinates of every sample in our study we will use 
+the` runUMAP()` function from the `r Biocpkg("scater")` package package, as 
+it handles the task in a single line.
 
-To calculate the UMAP coordinates of every sample in our study we will use the `runUMAP()` function from the `r Biocpkg("scater")` package package, as it handles the task in a single line.
+To quickly plot the results of beta diversity analysis, the `plotReducedDim()` 
+function from the `r Biocpkg("scater")` package is used along with 
+`r CRANpkg("ggplot2")` syntax again.
 
-To quickly plot the results of beta diversity analysis, the `plotReducedDim()` function from the `r Biocpkg("scater")` package is used along with `r CRANpkg("ggplot2")` syntax again.
-
-```{r, collapse = TRUE, fig.cap = "Beta Diversity – UMAP (Uniform Manifold Approximation and Projection)"}
-alcoholStudy |>
+```{r}
+smoke_tse %>%
+  agglomerateByRanks() |>
     runUMAP(exprs_values = "relative_abundance", altexp = "genus", name = "UMAP") |>
-    plotReducedDim("UMAP", colour_by = "alcohol", shape_by = "alcohol") +
+    plotReducedDim("UMAP", colour_by = "smoker_bin", shape_by = "smoker_bin") +
     labs(x = "UMAP 1", y = "UMAP 2") +
-    guides(colour = guide_legend(title = "Alcohol"), shape = guide_legend(title = "Alcohol")) +
-    theme(legend.position = c(0.90, 0.85))
+    guides(colour = guide_legend(title = "Smoking Status"), shape = guide_legend(title = "Smoking Status")) +
+    theme(legend.position = c(0.80, 0.55))
 ```
 
-## Differential Abundance
 
-Next, it would be desirable to establish which microbes are differentially abundant between the two groups (those who consume alcohol, and those who do not). The `r Biocpkg("lefser")` and `r Biocpkg("ANCOMBC")` packages are excellent resources for this tasks; however, code is not included here to avoid including excessive `Suggests` packages – `r Biocpkg("curatedMetagenomicData")` had far too many of these in the the past and is now very lean. There is a repository of analyses, [curatedMetagenomicAnalyses](https://github.com/waldronlab/curatedMetagenomicAnalyses), on GitHub and a forthcoming paper that will feature extensive demonstrations of analyses – but for now, the suggestions above will have to suffice.
+## Differential Abundance
+Next, we can identify taxa enriched in either the *Smoker* or *Never Smoker* 
+groups. An example approach for differential abundance is the LEfSe analysis,
+which can be accomplished using `lefser()` and `lefserPlot()` from the 
+`r Biocpkg("lefser")` package.
+
+```{r}
+lefser(
+    relativeAb(smoke_tse_genus),
+    kruskal.threshold = 0.05,
+    wilcox.threshold = 0.05,
+    lda.threshold = 2,
+    classCol = "smoker_bin",
+    subclassCol = NULL,
+    assay = 1L,
+    trim.names = FALSE,
+    checkAbundances = TRUE
+) %>%
+    lefserPlot()
+```
+
+
 
 # Type Conversion
 
