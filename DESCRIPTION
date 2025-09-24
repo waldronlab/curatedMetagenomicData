@@ -33,7 +33,7 @@ biocViews:
     Homo_sapiens_Data,
     MicrobiomeData,
     ReproducibleResearch
-Version: 3.17.2
+Version: 3.17.3
 License: Artistic-2.0
 Depends:
     R (>= 4.1.0),
@@ -62,7 +62,8 @@ Suggests:
     testthat,
     utils,
     uwot,
-    vegan
+    vegan,
+    OmicsMLRepoR
 URL: https://github.com/waldronlab/curatedMetagenomicData
 BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
 Encoding: UTF-8
