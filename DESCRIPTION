@@ -1,5 +1,7 @@
 Package: curatedMetagenomicData
 Title: Curated Metagenomic Data of the Human Microbiome
+Version: 3.17.4
+Date: 2025-9-26
 Description:
     The curatedMetagenomicData package provides standardized, curated human
     microbiome data for novel analyses. It includes gene families, marker
@@ -28,12 +30,6 @@ Authors@R:
       person(given = "Nicola", family = "Segata", role = "ctb"),
       person(given = "Sehyun", family = "Oh", role = "ctb"),
       person(given = "Yoon-Ji", family = "Jung", role = "ctb"))
-biocViews:
-    ExperimentHub,
-    Homo_sapiens_Data,
-    MicrobiomeData,
-    ReproducibleResearch
-Version: 3.17.3
 License: Artistic-2.0
 Depends:
     R (>= 4.1.0),
@@ -63,7 +59,8 @@ Suggests:
     utils,
     uwot,
     vegan,
-    OmicsMLRepoR
+    OmicsMLRepoR,
+    lefser
 URL: https://github.com/waldronlab/curatedMetagenomicData
 BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
 Encoding: UTF-8
@@ -71,3 +68,8 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 VignetteBuilder: knitr
+biocViews:
+    ExperimentHub,
+    Homo_sapiens_Data,
+    MicrobiomeData,
+    ReproducibleResearch
