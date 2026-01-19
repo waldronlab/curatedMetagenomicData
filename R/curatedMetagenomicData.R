@@ -82,6 +82,7 @@
 #' @importFrom TreeSummarizedExperiment rownames<-
 #' @importFrom SummarizedExperiment rowData
 #' @importFrom SummarizedExperiment assay<-
+#' @importFrom SummarizedExperiment assay<-
 #' @importFrom SummarizedExperiment SummarizedExperiment
 curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE, rownames = "long") {
     if (missing(pattern)) {
@@ -230,6 +231,28 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE, rowna
             }
 
             if (rownames != "long") {
+                # Remove taxa without taxonomy information as taxonomy
+                # information is required to create short labels
+                wo_taxonomy <-
+                    taxonomyRankEmpty(tree_summarized_experiment)
+                if( any(wo_taxonomy) ){
+                    drop_rows <-
+                        rownames(tree_summarized_experiment)[wo_taxonomy]
+                    drop_name <-
+                        str_c("$`", resource_names[[i]], "`\n")
+                    drop_text <-
+                        as.character("dropping rows without taxonomy info:\n")
+                    drop_rows <-
+                        str_c("  ", drop_rows, collapse = "\n")
+                    if (i == 1) {
+                        message("\n", drop_name, drop_text, drop_rows, "\n")
+                    } else {
+                        message(drop_name, drop_text, drop_rows, "\n")
+                    }
+                    tree_summarized_experiment <-
+                        tree_summarized_experiment[!wo_taxonomy, ]
+                }
+                # Get shorter labels
                 # Remove taxa without taxonomy information as taxonomy
                 # information is required to create short labels
                 wo_taxonomy <-
