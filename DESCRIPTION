@@ -32,6 +32,11 @@ Authors@R:
              comment = c(ORCID = "0000-0002-8563-8884")),
       person(given = "Sehyun", family = "Oh", role = "ctb"),
       person(given = "Yoon-Ji", family = "Jung", role = "ctb"))
+biocViews:
+    ExperimentHub,
+    Homo_sapiens_Data,
+    MicrobiomeData,
+    ReproducibleResearch
 License: Artistic-2.0
 Depends:
     R (>= 4.1.0),
