@@ -1,7 +1,7 @@
 Package: curatedMetagenomicData
 Title: Curated Metagenomic Data of the Human Microbiome
-Version: 3.19.0
-Date: 2025-9-26
+Version: 3.19.1
+Date: 2026-01-20
 Description:
     The curatedMetagenomicData package provides standardized, curated human
     microbiome data for novel analyses. It includes gene families, marker
@@ -32,11 +32,6 @@ Authors@R:
              comment = c(ORCID = "0000-0002-8563-8884")),
       person(given = "Sehyun", family = "Oh", role = "ctb"),
       person(given = "Yoon-Ji", family = "Jung", role = "ctb"))
-biocViews:
-    ExperimentHub,
-    Homo_sapiens_Data,
-    MicrobiomeData,
-    ReproducibleResearch
 License: Artistic-2.0
 Depends:
     R (>= 4.1.0),
