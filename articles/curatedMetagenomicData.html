@@ -4,95 +4,67 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>curatedMetagenomicData • curatedMetagenomicData</title>
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
-<script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="curatedMetagenomicData">
-<meta property="og:description" content="curatedMetagenomicData">
-<!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
-<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="curatedMetagenomicData">
 </head>
-<body data-spy="scroll" data-target="#toc">
-    
+<body>
+    <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
-    <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <span class="navbar-brand">
-        <a class="navbar-link" href="../index.html">curatedMetagenomicData</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">3.6.2</span>
-      </span>
-    </div>
 
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-<li>
-  <a href="../articles/curatedMetagenomicData.html">Get started</a>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
-</li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-<li>
-      <a href="../articles/available-studies.html">Available Studies</a>
-    </li>
-    <li>
-      <a href="../articles/our-pipeline.html">Our Pipeline</a>
-    </li>
-    <li>
-      <a href="../articles/version-three.html">Version Three</a>
-    </li>
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
+
+    <a class="navbar-brand me-2" href="../index.html">curatedMetagenomicData</a>
+
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">3.19.1</small>
+
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div id="navbar" class="collapse navbar-collapse ms-3">
+      <ul class="navbar-nav me-auto">
+<li class="active nav-item"><a class="nav-link" href="../articles/curatedMetagenomicData.html">Get started</a></li>
+<li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="../articles/available-studies.html">Available Studies</a></li>
+    <li><a class="dropdown-item" href="../articles/our-pipeline.html">Our Pipeline</a></li>
+    <li><a class="dropdown-item" href="../articles/version-three.html">Version Three</a></li>
   </ul>
 </li>
-<li>
-  <a href="../news/index.html">Changelog</a>
-</li>
+<li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul>
-<ul class="nav navbar-nav navbar-right">
-<li>
-  <a href="https://github.com/waldronlab/curatedMetagenomicData/" class="external-link">
-    <span class="fab fa-github fa-lg"></span>
-     
-  </a>
-</li>
+<ul class="navbar-nav">
+<li class="nav-item"><form class="form-inline" role="search">
+ <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
+</form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/waldronlab/curatedMetagenomicData/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
-<!--/.nav-collapse -->
+
+
   </div>
-<!--/.container -->
-</div>
-<!--/.navbar -->
+</nav><div class="container template-article">
 
-      
 
-      </header><script src="curatedMetagenomicData_files/htmlwidgets-1.6.0/htmlwidgets.js"></script><link href="curatedMetagenomicData_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
-<script src="curatedMetagenomicData_files/datatables-binding-0.26/datatables.js"></script><link href="curatedMetagenomicData_files/dt-core-1.12.1/css/jquery.dataTables.min.css" rel="stylesheet">
-<link href="curatedMetagenomicData_files/dt-core-1.12.1/css/jquery.dataTables.extra.css" rel="stylesheet">
-<script src="curatedMetagenomicData_files/dt-core-1.12.1/js/jquery.dataTables.min.js"></script><link href="curatedMetagenomicData_files/dt-ext-responsive-1.12.1/css/responsive.dataTables.min.css" rel="stylesheet">
-<script src="curatedMetagenomicData_files/dt-ext-responsive-1.12.1/js/dataTables.responsive.min.js"></script><link href="curatedMetagenomicData_files/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
-<script src="curatedMetagenomicData_files/crosstalk-1.2.0/js/crosstalk.min.js"></script><div class="row">
-  <div class="col-md-9 contents">
-    <div class="page-header toc-ignore">
-      <h1 data-toc-skip>curatedMetagenomicData</h1>
+
+<link href="curatedMetagenomicData_files/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
+<script src="curatedMetagenomicData_files/htmlwidgets-1.6.4/htmlwidgets.js"></script><link href="curatedMetagenomicData_files/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet">
+<script src="curatedMetagenomicData_files/datatables-binding-0.34.0/datatables.js"></script><link href="curatedMetagenomicData_files/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet">
+<link href="curatedMetagenomicData_files/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet">
+<script src="curatedMetagenomicData_files/dt-core-1.13.6/js/jquery.dataTables.min.js"></script><link href="curatedMetagenomicData_files/dt-ext-responsive-1.13.6/css/responsive.dataTables.min.css" rel="stylesheet">
+<script src="curatedMetagenomicData_files/dt-ext-responsive-1.13.6/js/dataTables.responsive.min.js"></script><link href="curatedMetagenomicData_files/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
+<script src="curatedMetagenomicData_files/crosstalk-1.2.2/js/crosstalk.min.js"></script><div class="row">
+  <main id="main" class="col-md-9"><div class="page-header">
+
+      <h1>curatedMetagenomicData</h1>
                         <h4 data-toc-skip class="author">Lucas Schiffer,
 MPH</h4>
             <address class="author_afil">
@@ -107,11 +79,24 @@ Waldron, PhD</h4>
 University of New York, New York, NY,
 U.S.A.<br><a class="author_email" href="mailto:#"></a><a href="mailto:levi.waldron@sph.cuny.edu" class="email">levi.waldron@sph.cuny.edu</a>
       </address>
+                              <h4 data-toc-skip class="author">Yoon Ji
+Jung</h4>
+            <address class="author_afil">
+      Graduate School of Public Health and Health Policy, City
+University of New York, New York, NY,
+U.S.A.<br><a class="author_email" href="mailto:#"></a><a href="mailto:YOONJI.JUNG49@sphmail.cuny.edu" class="email">YOONJI.JUNG49@sphmail.cuny.edu</a>
+      </address>
+                              <h4 data-toc-skip class="author">Sehyun
+Oh</h4>
+            <address class="author_afil">
+      Graduate School of Public Health and Health Policy, City
+University of New York, New York, NY,
+U.S.A.<br><a class="author_email" href="mailto:#"></a><a href="mailto:Sehyun.Oh@sph.cuny.edu" class="email">Sehyun.Oh@sph.cuny.edu</a>
+      </address>
                   
       
-      <small class="dont-index">Source: <a href="https://github.com/waldronlab/curatedMetagenomicData/blob/HEAD/vignettes/curatedMetagenomicData.Rmd" class="external-link"><code>vignettes/curatedMetagenomicData.Rmd</code></a></small>
-      <div class="hidden name"><code>curatedMetagenomicData.Rmd</code></div>
-
+      <small class="dont-index">Source: <a href="https://github.com/waldronlab/curatedMetagenomicData/blob/fix-failed-actions/vignettes/curatedMetagenomicData.Rmd" class="external-link"><code>vignettes/curatedMetagenomicData.Rmd</code></a></small>
+      <div class="d-none name"><code>curatedMetagenomicData.Rmd</code></div>
     </div>
 
     
@@ -150,13 +135,16 @@ from kingdom to strain level (<code>relative_abundance</code>)</li>
 </ol>
 <p>Types 1-3 are generated by <a href="http://segatalab.cibio.unitn.it/tools/metaphlan/index.html" class="external-link">MetaPhlAn3</a>;
 4-6 are generated by <a href="https://huttenhower.sph.harvard.edu/humann/" class="external-link">HUMAnN3</a> using the
+<a href="https://www.uniprot.org/help/uniref" class="external-link">UniRef90 database</a>.
+Types 1-3 are generated by <a href="http://segatalab.cibio.unitn.it/tools/metaphlan/index.html" class="external-link">MetaPhlAn3</a>;
+4-6 are generated by <a href="https://huttenhower.sph.harvard.edu/humann/" class="external-link">HUMAnN3</a> using the
 <a href="https://www.uniprot.org/help/uniref" class="external-link">UniRef90 database</a>.</p>
 <p>Currently there are:</p>
 <ul>
 <li>22588 samples from 93 datasets; see the list of <a href="https://waldronlab.io/curatedMetagenomicData/articles/available-studies.html">available
 studies</a>
 </li>
-<li>148 fields of specimen metadata from original papers, supplementary
+<li>141 fields of specimen metadata from original papers, supplementary
 files, and websites, with manual curation and automated syntax-checking
 to standardize annotations</li>
 </ul>
@@ -184,34 +172,34 @@ teaching/learning</a></li>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>To install <em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
+<p>To install <em><a href="https://bioconductor.org/packages/3.23/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
 from Bioconductor, use <em><a href="https://CRAN.R-project.org/package=BiocManager" class="external-link">BiocManager</a></em>
 as follows.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"curatedMetagenomicData"</span><span class="op">)</span></span></code></pre></div>
-<p>To install <em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
-from GitHub, use <em><a href="https://CRAN.R-project.org/package=BiocManager" class="external-link">BiocManager</a></em>
-as follows.</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/BiocManager/man/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"waldronlab/curatedMetagenomicData"</span>, dependencies <span class="op">=</span> <span class="cn">TRUE</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p>Most users should simply install <em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
-from Bioconductor.</p>
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">require</a></span><span class="op">(</span><span class="st"><a href="https://bioconductor.github.io/BiocManager/" class="external-link">"BiocManager"</a></span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html" class="external-link">install</a></span><span class="op">(</span><span class="st">"curatedMetagenomicData"</span><span class="op">)</span></span></code></pre></div>
+<p>Most users should simply install <em><a href="https://bioconductor.org/packages/3.23/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
+from Bioconductor. Developers may install the GitHub repository with
+<code><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">remotes::install_github</a></code> and the latest Bioconductor
+development version.</p>
 </div>
 <div class="section level2">
 <h2 id="r-packages">R Packages<a class="anchor" aria-label="anchor" href="#r-packages"></a>
 </h2>
-<p>To demonstrate the functionality of <em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>,
+<p>To demonstrate the functionality of <em><a href="https://bioconductor.org/packages/3.23/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>,
 the <em><a href="https://CRAN.R-project.org/package=dplyr" class="external-link">dplyr</a></em> and
 <em><a href="https://CRAN.R-project.org/package=DT" class="external-link">DT</a></em> packages
 are needed.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/rstudio/DT" class="external-link">DT</a></span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="sample-metadata">Sample Metadata<a class="anchor" aria-label="anchor" href="#sample-metadata"></a>
 </h2>
-<p>The <em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
+<p>The <em><a href="https://bioconductor.org/packages/3.23/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
 package contains a <code>data.frame</code>, <code>sampleMetadata</code>,
 of manually curated sample metadata to help users understand the nature
 of studies and samples available prior to returning resources. Beyond
@@ -223,15 +211,15 @@ samples across studies.</p>
 <p>To demonstrate, the first ten rows and columns (without any
 <code>NA</code> values) of <code>sampleMetadata</code> for the
 <code>AsnicarF_2017</code> study are shown in the table below.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sampleMetadata</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">study_name</span> <span class="op">==</span> <span class="st">"AsnicarF_2017"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="op">~</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html" class="external-link">where</a></span><span class="op">(</span><span class="op">~</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/any.html" class="external-link">any</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/pkg/DT/man/datatable.html" class="external-link">datatable</a></span><span class="op">(</span>options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>dom <span class="op">=</span> <span class="st">"t"</span><span class="op">)</span>, extensions <span class="op">=</span> <span class="st">"Responsive"</span><span class="op">)</span></span></code></pre></div>
-<div class="datatables html-widget html-fill-item-overflow-hidden html-fill-item" id="htmlwidget-29c152c33fb82e7711df" style="width:100%;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-29c152c33fb82e7711df">{"x":{"filter":"none","vertical":false,"extensions":["Responsive"],"data":[["1","2","3","4","5","6","7","8","9","10"],["AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017"],["MV_FEI1_t1Q14","MV_FEI2_t1Q14","MV_FEI3_t1Q14","MV_FEI4_t1Q14","MV_FEI4_t2Q15","MV_FEI5_t1Q14","MV_FEI5_t2Q14","MV_FEI5_t3Q15","MV_FEM1_t1Q14","MV_FEM2_t1Q14"],["MV_FEI1","MV_FEI2","MV_FEI3","MV_FEI4","MV_FEI4","MV_FEI5","MV_FEI5","MV_FEI5","MV_FEM1","MV_FEM2"],["stool","stool","stool","stool","stool","stool","stool","stool","stool","stool"],["control","control","control","control","control","control","control","control","control","control"],["healthy","healthy","healthy","healthy","healthy","healthy","healthy","healthy","healthy","healthy"],["newborn","newborn","newborn","child","child","child","child","child","adult","adult"],["female","male","male","male","male","male","male","male","female","female"],["ITA","ITA","ITA","ITA","ITA","ITA","ITA","ITA","ITA","ITA"],["no","no","no","no","no","no","no","no","no","no"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>study_name<\/th>\n      <th>sample_id<\/th>\n      <th>subject_id<\/th>\n      <th>body_site<\/th>\n      <th>study_condition<\/th>\n      <th>disease<\/th>\n      <th>age_category<\/th>\n      <th>gender<\/th>\n      <th>country<\/th>\n      <th>non_westernized<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0}],"order":[],"autoWidth":false,"orderClasses":false,"responsive":true}},"evals":[],"jsHooks":[]}</script>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-ac96cb3ee4656e2e9ec3" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-ac96cb3ee4656e2e9ec3">{"x":{"filter":"none","vertical":false,"extensions":["Responsive"],"data":[["1","2","3","4","5","6","7","8","9","10"],["AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017","AsnicarF_2017"],["MV_FEI1_t1Q14","MV_FEI2_t1Q14","MV_FEI3_t1Q14","MV_FEI4_t1Q14","MV_FEI4_t2Q15","MV_FEI5_t1Q14","MV_FEI5_t2Q14","MV_FEI5_t3Q15","MV_FEM1_t1Q14","MV_FEM2_t1Q14"],["MV_FEI1","MV_FEI2","MV_FEI3","MV_FEI4","MV_FEI4","MV_FEI5","MV_FEI5","MV_FEI5","MV_FEM1","MV_FEM2"],["stool","stool","stool","stool","stool","stool","stool","stool","stool","stool"],["control","control","control","control","control","control","control","control","control","control"],["healthy","healthy","healthy","healthy","healthy","healthy","healthy","healthy","healthy","healthy"],["newborn","newborn","newborn","child","child","child","child","child","adult","adult"],["female","male","male","male","male","male","male","male","female","female"],["ITA","ITA","ITA","ITA","ITA","ITA","ITA","ITA","ITA","ITA"],["no","no","no","no","no","no","no","no","no","no"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>study_name<\/th>\n      <th>sample_id<\/th>\n      <th>subject_id<\/th>\n      <th>body_site<\/th>\n      <th>study_condition<\/th>\n      <th>disease<\/th>\n      <th>age_category<\/th>\n      <th>gender<\/th>\n      <th>country<\/th>\n      <th>non_westernized<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"t","columnDefs":[{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"study_name","targets":1},{"name":"sample_id","targets":2},{"name":"subject_id","targets":3},{"name":"body_site","targets":4},{"name":"study_condition","targets":5},{"name":"disease","targets":6},{"name":"age_category","targets":7},{"name":"gender","targets":8},{"name":"country","targets":9},{"name":"non_westernized","targets":10}],"order":[],"autoWidth":false,"orderClasses":false,"responsive":true}},"evals":[],"jsHooks":[]}</script>
 </div>
 <div class="section level2">
 <h2 id="data-access">Data Access<a class="anchor" aria-label="anchor" href="#data-access"></a>
@@ -254,7 +242,7 @@ command-line interface.</li>
 <code><a href="../reference/curatedMetagenomicData.html">curatedMetagenomicData()</a></code> function both to query and return
 resources. The first argument <code>pattern</code> is a regular
 expression pattern to look for in the titles of resources available in
-<em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>;
+<em><a href="https://bioconductor.org/packages/3.23/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>;
 <code>""</code> will return all resources. The title of each resource is
 a three part string with “.” as a delimiter – the fields are
 <code>runDate</code>, <code>studyName</code>, and <code>dataType</code>.
@@ -266,7 +254,7 @@ needed.</p>
 <p>Multiple resources can be queried or returned with a single call to
 <code><a href="../reference/curatedMetagenomicData.html">curatedMetagenomicData()</a></code>, but only the titles of resources
 are returned by default.</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_20.+"</span><span class="op">)</span></span>
 <span><span class="co">## 2021-03-31.AsnicarF_2017.gene_families</span></span>
 <span><span class="co">## 2021-03-31.AsnicarF_2017.marker_abundance</span></span>
@@ -295,23 +283,23 @@ resources: either <code>"long"</code> (the default),
 <code>"short"</code> (species name), or <code>"NCBI"</code> (NCBI
 Taxonomy ID). When a single resource is requested, a single element
 <code>list</code> is returned.</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_2017.relative_abundance"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span>, rownames <span class="op">=</span> <span class="st">"short"</span><span class="op">)</span></span>
 <span><span class="co">## $`2021-10-14.AsnicarF_2017.relative_abundance`</span></span>
 <span><span class="co">## class: TreeSummarizedExperiment </span></span>
-<span><span class="co">## dim: 296 24 </span></span>
-<span><span class="co">## metadata(1): agglomerated_by_rank</span></span>
+<span><span class="co">## dim: 298 24 </span></span>
+<span><span class="co">## metadata(0):</span></span>
 <span><span class="co">## assays(1): relative_abundance</span></span>
-<span><span class="co">## rownames(296): Escherichia coli Bifidobacterium bifidum ...</span></span>
-<span><span class="co">##   Streptococcus gordonii Abiotrophia sp. HMSC24B09</span></span>
+<span><span class="co">## rownames(298): species:Escherichia coli species:Bifidobacterium bifidum</span></span>
+<span><span class="co">##   ... species:Streptococcus gordonii species:Abiotrophia sp. HMSC24B09</span></span>
 <span><span class="co">## rowData names(7): superkingdom phylum ... genus species</span></span>
 <span><span class="co">## colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14</span></span>
 <span><span class="co">##   MV_MIM5_t3F15</span></span>
-<span><span class="co">## colData names(22): study_name subject_id ... lactating curator</span></span>
+<span><span class="co">## colData names(22): study_name subject_id ... pregnant lactating</span></span>
 <span><span class="co">## reducedDimNames(0):</span></span>
 <span><span class="co">## mainExpName: NULL</span></span>
 <span><span class="co">## altExpNames(0):</span></span>
-<span><span class="co">## rowLinks: a LinkDataFrame (296 rows)</span></span>
+<span><span class="co">## rowLinks: a LinkDataFrame (298 rows)</span></span>
 <span><span class="co">## rowTree: 1 phylo tree(s) (10430 leaves)</span></span>
 <span><span class="co">## colLinks: NULL</span></span>
 <span><span class="co">## colTree: NULL</span></span></code></pre></div>
@@ -321,41 +309,42 @@ to the nearest integer prior to being returned. Also, when multiple
 resources are requested, the <code>list</code> will contain named
 elements corresponding to each <code>SummarizedExperiment</code> and/or
 <code>TreeSummarizedExperiment</code> object.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_20.+.relative_abundance"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span>, counts <span class="op">=</span> <span class="cn">TRUE</span>, rownames <span class="op">=</span> <span class="st">"short"</span><span class="op">)</span></span>
 <span><span class="co">## $`2021-10-14.AsnicarF_2017.relative_abundance`</span></span>
 <span><span class="co">## class: TreeSummarizedExperiment </span></span>
-<span><span class="co">## dim: 296 24 </span></span>
-<span><span class="co">## metadata(1): agglomerated_by_rank</span></span>
+<span><span class="co">## dim: 298 24 </span></span>
+<span><span class="co">## metadata(0):</span></span>
 <span><span class="co">## assays(1): relative_abundance</span></span>
-<span><span class="co">## rownames(296): Escherichia coli Bifidobacterium bifidum ...</span></span>
-<span><span class="co">##   Streptococcus gordonii Abiotrophia sp. HMSC24B09</span></span>
+<span><span class="co">## rownames(298): species:Escherichia coli species:Bifidobacterium bifidum</span></span>
+<span><span class="co">##   ... species:Streptococcus gordonii species:Abiotrophia sp. HMSC24B09</span></span>
 <span><span class="co">## rowData names(7): superkingdom phylum ... genus species</span></span>
 <span><span class="co">## colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14</span></span>
 <span><span class="co">##   MV_MIM5_t3F15</span></span>
-<span><span class="co">## colData names(22): study_name subject_id ... lactating curator</span></span>
+<span><span class="co">## colData names(22): study_name subject_id ... pregnant lactating</span></span>
 <span><span class="co">## reducedDimNames(0):</span></span>
 <span><span class="co">## mainExpName: NULL</span></span>
 <span><span class="co">## altExpNames(0):</span></span>
-<span><span class="co">## rowLinks: a LinkDataFrame (296 rows)</span></span>
+<span><span class="co">## rowLinks: a LinkDataFrame (298 rows)</span></span>
 <span><span class="co">## rowTree: 1 phylo tree(s) (10430 leaves)</span></span>
 <span><span class="co">## colLinks: NULL</span></span>
 <span><span class="co">## colTree: NULL</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $`2021-03-31.AsnicarF_2021.relative_abundance`</span></span>
 <span><span class="co">## class: TreeSummarizedExperiment </span></span>
-<span><span class="co">## dim: 633 1098 </span></span>
-<span><span class="co">## metadata(1): agglomerated_by_rank</span></span>
+<span><span class="co">## dim: 639 1098 </span></span>
+<span><span class="co">## metadata(0):</span></span>
 <span><span class="co">## assays(1): relative_abundance</span></span>
-<span><span class="co">## rownames(633): Phocaeicola vulgatus Bacteroides stercoris ...</span></span>
-<span><span class="co">##   Pyramidobacter sp. C12-8 Brevibacterium aurantiacum</span></span>
+<span><span class="co">## rownames(639): species:Phocaeicola vulgatus species:Bacteroides</span></span>
+<span><span class="co">##   stercoris ... species:Pyramidobacter sp. C12-8 species:Brevibacterium</span></span>
+<span><span class="co">##   aurantiacum</span></span>
 <span><span class="co">## rowData names(7): superkingdom phylum ... genus species</span></span>
 <span><span class="co">## colnames(1098): SAMEA7041133 SAMEA7041134 ... SAMEA7045952 SAMEA7045953</span></span>
-<span><span class="co">## colData names(24): study_name subject_id ... family treatment</span></span>
+<span><span class="co">## colData names(24): study_name subject_id ... BMI family</span></span>
 <span><span class="co">## reducedDimNames(0):</span></span>
 <span><span class="co">## mainExpName: NULL</span></span>
 <span><span class="co">## altExpNames(0):</span></span>
-<span><span class="co">## rowLinks: a LinkDataFrame (633 rows)</span></span>
+<span><span class="co">## rowLinks: a LinkDataFrame (639 rows)</span></span>
 <span><span class="co">## rowTree: 1 phylo tree(s) (10430 leaves)</span></span>
 <span><span class="co">## colLinks: NULL</span></span>
 <span><span class="co">## colTree: NULL</span></span></code></pre></div>
@@ -369,7 +358,7 @@ elements corresponding to each <code>SummarizedExperiment</code> and/or
 <code>TreeSummarizedExperiment</code> object, users will use the
 <code><a href="../reference/mergeData.html">mergeData()</a></code> function, provided elements are of the same
 <code>dataType</code>.</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_20.+.marker_abundance"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="../reference/mergeData.html">mergeData</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## class: SummarizedExperiment </span></span>
@@ -382,12 +371,12 @@ elements corresponding to each <code>SummarizedExperiment</code> and/or
 <span><span class="co">## rowData names(0):</span></span>
 <span><span class="co">## colnames(1122): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... SAMEA7045952</span></span>
 <span><span class="co">##   SAMEA7045953</span></span>
-<span><span class="co">## colData names(26): study_name subject_id ... family treatment</span></span></code></pre></div>
+<span><span class="co">## colData names(26): study_name subject_id ... BMI family</span></span></code></pre></div>
 <p>The <code><a href="../reference/mergeData.html">mergeData()</a></code> function works for every
 <code>dataType</code> and will always return the appropriate data
 structure (a single <code>SummarizedExperiment</code> or
 <code>TreeSummarizedExperiment</code> object).</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_20.+.pathway_abundance"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="../reference/mergeData.html">mergeData</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## class: SummarizedExperiment </span></span>
@@ -402,28 +391,29 @@ structure (a single <code>SummarizedExperiment</code> or
 <span><span class="co">## rowData names(0):</span></span>
 <span><span class="co">## colnames(1122): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... SAMEA7045952</span></span>
 <span><span class="co">##   SAMEA7045953</span></span>
-<span><span class="co">## colData names(26): study_name subject_id ... family treatment</span></span></code></pre></div>
+<span><span class="co">## colData names(26): study_name subject_id ... BMI family</span></span></code></pre></div>
 <p>This is useful for analysis across entire studies
 (e.g. meta-analysis); however, when doing analysis across individual
 samples (e.g. mega-analysis) the <code><a href="../reference/returnSamples.html">returnSamples()</a></code> function
 is preferable.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/curatedMetagenomicData.html">curatedMetagenomicData</a></span><span class="op">(</span><span class="st">"AsnicarF_20.+.relative_abundance"</span>, dryrun <span class="op">=</span> <span class="cn">FALSE</span>, rownames <span class="op">=</span> <span class="st">"short"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="../reference/mergeData.html">mergeData</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co">## class: TreeSummarizedExperiment </span></span>
-<span><span class="co">## dim: 673 1122 </span></span>
+<span><span class="co">## dim: 679 1122 </span></span>
 <span><span class="co">## metadata(0):</span></span>
 <span><span class="co">## assays(1): relative_abundance</span></span>
-<span><span class="co">## rownames(673): Escherichia coli Bifidobacterium bifidum ...</span></span>
-<span><span class="co">##   Pyramidobacter sp. C12-8 Brevibacterium aurantiacum</span></span>
+<span><span class="co">## rownames(679): species:Escherichia coli species:Bifidobacterium bifidum</span></span>
+<span><span class="co">##   ... species:Pyramidobacter sp. C12-8 species:Brevibacterium</span></span>
+<span><span class="co">##   aurantiacum</span></span>
 <span><span class="co">## rowData names(7): superkingdom phylum ... genus species</span></span>
 <span><span class="co">## colnames(1122): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... SAMEA7045952</span></span>
 <span><span class="co">##   SAMEA7045953</span></span>
-<span><span class="co">## colData names(26): study_name subject_id ... family treatment</span></span>
+<span><span class="co">## colData names(26): study_name subject_id ... BMI family</span></span>
 <span><span class="co">## reducedDimNames(0):</span></span>
 <span><span class="co">## mainExpName: NULL</span></span>
 <span><span class="co">## altExpNames(0):</span></span>
-<span><span class="co">## rowLinks: a LinkDataFrame (673 rows)</span></span>
+<span><span class="co">## rowLinks: a LinkDataFrame (679 rows)</span></span>
 <span><span class="co">## rowTree: 1 phylo tree(s) (10430 leaves)</span></span>
 <span><span class="co">## colLinks: NULL</span></span>
 <span><span class="co">## colTree: NULL</span></span></code></pre></div>
@@ -452,26 +442,28 @@ the subset <code>data.frame</code> as the first argument to the
 convenient to subset the <code>sampleMetadata</code>
 <code>data.frame</code> using <em><a href="https://CRAN.R-project.org/package=dplyr" class="external-link">dplyr</a></em>
 syntax.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">sampleMetadata</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">age</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">alcohol</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">body_site</span> <span class="op">==</span> <span class="st">"stool"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="op">~</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html" class="external-link">where</a></span><span class="op">(</span><span class="op">~</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="../reference/returnSamples.html">returnSamples</a></span><span class="op">(</span><span class="st">"relative_abundance"</span>, rownames <span class="op">=</span> <span class="st">"short"</span><span class="op">)</span></span>
 <span><span class="co">## class: TreeSummarizedExperiment </span></span>
-<span><span class="co">## dim: 824 702 </span></span>
+<span><span class="co">## dim: 832 702 </span></span>
 <span><span class="co">## metadata(0):</span></span>
 <span><span class="co">## assays(1): relative_abundance</span></span>
-<span><span class="co">## rownames(824): Prevotella copri Prevotella sp. CAG:520 ...</span></span>
-<span><span class="co">##   Corynebacterium aurimucosum Corynebacterium coyleae</span></span>
+<span><span class="co">## rownames(832): species:Prevotella copri species:Prevotella sp. CAG:520</span></span>
+<span><span class="co">##   ... species:Corynebacterium aurimucosum species:Corynebacterium</span></span>
+<span><span class="co">##   coyleae</span></span>
 <span><span class="co">## rowData names(7): superkingdom phylum ... genus species</span></span>
 <span><span class="co">## colnames(702): JAS_1 JAS_10 ... YSZC12003_37879 YSZC12003_37880</span></span>
-<span><span class="co">## colData names(45): study_name subject_id ... inr zigosity</span></span>
+<span><span class="co">## colData names(48): study_name subject_id ...</span></span>
+<span><span class="co">##   age_twins_started_to_live_apart zigosity</span></span>
 <span><span class="co">## reducedDimNames(0):</span></span>
 <span><span class="co">## mainExpName: NULL</span></span>
 <span><span class="co">## altExpNames(0):</span></span>
-<span><span class="co">## rowLinks: a LinkDataFrame (824 rows)</span></span>
+<span><span class="co">## rowLinks: a LinkDataFrame (832 rows)</span></span>
 <span><span class="co">## rowTree: 1 phylo tree(s) (10430 leaves)</span></span>
 <span><span class="co">## colLinks: NULL</span></span>
 <span><span class="co">## colTree: NULL</span></span></code></pre></div>
@@ -486,85 +478,91 @@ of the <code>SummarizedExperiment</code> or
 <div class="section level2">
 <h2 id="example-analysis">Example Analysis<a class="anchor" aria-label="anchor" href="#example-analysis"></a>
 </h2>
-<p>To demonstrate the utility of <em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>,
+<p>To demonstrate the utility of <em><a href="https://bioconductor.org/packages/3.23/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>,
 an example analysis is presented below. However, readers should know
-analysis is generally beyond the scope of <em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
+analysis is generally beyond the scope of <em><a href="https://bioconductor.org/packages/3.23/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
 and the analysis presented here is for demonstration alone. It is best
-to consider the output of <em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
+to consider the output of <em><a href="https://bioconductor.org/packages/3.23/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
 as the input of analysis more than anything else.</p>
 <div class="section level3">
-<h3 id="r-packages-1">R Packages<a class="anchor" aria-label="anchor" href="#r-packages-1"></a>
+<h3 id="load-r-packages">Load R packages<a class="anchor" aria-label="anchor" href="#load-r-packages"></a>
 </h3>
-<p>To demonstrate the utility of <em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>,
-the <em><a href="https://CRAN.R-project.org/package=stringr" class="external-link">stringr</a></em>,
-<em><a href="https://bioconductor.org/packages/3.16/mia" class="external-link">mia</a></em>,
-<em><a href="https://bioconductor.org/packages/3.16/scater" class="external-link">scater</a></em>,
-and <em><a href="https://CRAN.R-project.org/package=vegan" class="external-link">vegan</a></em> packages
-are needed.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/microbiome/mia" class="external-link">mia</a></span><span class="op">)</span></span>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">OmicsMLRepoR</span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://microbiome.github.io/mia/" class="external-link">mia</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://bioconductor.org/packages/scater/" class="external-link">scater</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vegandevs/vegan" class="external-link">vegan</a></span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://vegandevs.github.io/vegan/" class="external-link">vegan</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/waldronlab/lefser" class="external-link">lefser</a></span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level3">
+<h3 id="retrieve-harmonized-metadata">Retrieve harmonized metadata<a class="anchor" aria-label="anchor" href="#retrieve-harmonized-metadata"></a>
+</h3>
+<p><em><a href="https://bioconductor.org/packages/3.23/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
+loads the metadata table, <code>sampleMetadata</code>. For further
+harmonized version of the sample-level metadata will be available in the
+future release of this package, and currently available through <em><a href="https://bioconductor.org/packages/3.23/OmicsMLRepoR" class="external-link">OmicsMLRepoR</a></em>
+package.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">cmd</span> <span class="op">&lt;-</span> <span class="fu">OmicsMLRepoR</span><span class="fu">::</span><span class="fu">getMetadata</span><span class="op">(</span><span class="st">"cMD"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="prepare-data">Prepare Data<a class="anchor" aria-label="anchor" href="#prepare-data"></a>
 </h3>
-<p>In our hypothetical study, let’s examine the association of alcohol
-consumption and stool microbial composition across all annotated samples
-in <em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>.
+<p>In this example, we will examine the association between current
+smoking status and fecal microbial composition across all relevant
+samples from <em><a href="https://bioconductor.org/packages/3.23/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>.
 We will examine the alpha diversity (within subject diversity), beta
-diversity (between subject diversity), and conclude with a few notes on
-differential abundance analysis.</p>
+diversity (between subject diversity), and differential abundant
+taxa.</p>
 <div class="section level4">
 <h4 id="return-samples">Return Samples<a class="anchor" aria-label="anchor" href="#return-samples"></a>
 </h4>
 <p>First, as above, we use the <code><a href="../reference/returnSamples.html">returnSamples()</a></code> function to
-return the relevant samples across all studies available in <em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>.
-We want adults over the age of 18, for whom alcohol consumption status
-is known, and we want only stool samples. The
-<code>select(where...</code> line below simply removes metadata columns
-which are all <code>NA</code> values – they exist in another study but
-are all <code>NA</code> once subsetting has been done. Lastly, the
-<code>"relative_abundance"</code> <code>dataType</code> is requested
-because it contains the relevant information about microbial
-composition.</p>
+return the relevant samples across all studies available in <em><a href="https://bioconductor.org/packages/3.23/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>.
+We want healthy adults, whose smoking history is known, and only fecal
+samples. The <code>select(where...</code> line below removes metadata
+columns which are all <code>NA</code> values – they exist in another
+study but are all <code>NA</code> once subsetting has been done.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">alcoholStudy</span> <span class="op">&lt;-</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">sampleMetadata</span>, <span class="va">age</span> <span class="op">&gt;=</span> <span class="fl">18</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">alcohol</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">body_site</span> <span class="op">==</span> <span class="st">"stool"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu">where</span><span class="op">(</span><span class="op">~</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="../reference/returnSamples.html">returnSamples</a></span><span class="op">(</span><span class="st">"relative_abundance"</span>, rownames <span class="op">=</span> <span class="st">"short"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div class="section level4">
-<h4 id="mutate-coldata">Mutate colData<a class="anchor" aria-label="anchor" href="#mutate-coldata"></a>
-</h4>
-<p>Most of the values in the <code>sampleMetadata</code>
-<code>data.frame</code> (which becomes <code>colData</code>) are in
-snake case (e.g. <code>snake_case</code>) and don’t look nice in plots.
-Here, the values of the <code>alcohol</code> variable are made into
-title case using <em><a href="https://CRAN.R-project.org/package=stringr" class="external-link">stringr</a></em> so
-they will look nice in plots.</p>
+<code class="sourceCode R"><span><span class="va">smoke</span> <span class="op">&lt;-</span> <span class="va">cmd</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">disease</span> <span class="op">==</span> <span class="st">"Healthy"</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">age_group</span> <span class="op">==</span> <span class="st">"Adult"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">smoker</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">body_site</span> <span class="op">==</span> <span class="st">"feces"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="fu"><a href="https://tidyselect.r-lib.org/reference/where.html" class="external-link">where</a></span><span class="op">(</span><span class="op">~</span> <span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/all.html" class="external-link">all</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">.x</span><span class="op">)</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>  <span class="co"># remove metadata columns which are all `NA` values</span></span></code></pre></div>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">colData</a></span><span class="op">(</span><span class="va">alcoholStudy</span><span class="op">)</span> <span class="op">&lt;-</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">colData</a></span><span class="op">(</span><span class="va">alcoholStudy</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/r/base/as.data.frame.html" class="external-link">as.data.frame</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>alcohol <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="va">alcohol</span>, <span class="st">"no"</span>, <span class="st">"No"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>alcohol <span class="op">=</span> <span class="fu"><a href="https://stringr.tidyverse.org/reference/str_replace.html" class="external-link">str_replace_all</a></span><span class="op">(</span><span class="va">alcohol</span>, <span class="st">"yes"</span>, <span class="st">"Yes"</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/S4Vectors/man/DataFrame-class.html" class="external-link">DataFrame</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">smoke</span><span class="op">$</span><span class="va">smoker</span>, useNA <span class="op">=</span> <span class="st">"ifany"</span><span class="op">)</span></span></code></pre></div>
+<p>A new binary variable for smoking status, with levels
+<code>Smoker</code> and <code>Never Smoker</code>, is created to
+facilitate downstream analysis. The names of attributes are updated, so
+they will look nice in plots.</p>
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">smoke</span> <span class="op">&lt;-</span> <span class="va">smoke</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span></span>
+<span>    smoker_bin <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">as.factor</a></span><span class="op">(</span></span>
+<span>      <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html" class="external-link">case_when</a></span><span class="op">(</span><span class="va">smoker</span> <span class="op">==</span> <span class="st">"Smoker (finding)"</span> <span class="op">~</span> <span class="st">"Smoker"</span>,</span>
+<span>                <span class="va">smoker</span> <span class="op">!=</span> <span class="st">"Non-smoker (finding);Never smoked tobacco (finding)"</span> <span class="op">~</span> <span class="st">"Never Smoker"</span>,</span>
+<span>      <span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">smoke</span><span class="op">$</span><span class="va">smoker_bin</span>, useNA <span class="op">=</span> <span class="st">"ifany"</span><span class="op">)</span></span></code></pre></div>
+<p>Lastly, the <code>"relative_abundance"</code> <code>dataType</code>
+is requested because it contains the relevant information about
+microbial composition.</p>
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">smoke_tse</span> <span class="op">&lt;-</span> <span class="va">smoke</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="../reference/returnSamples.html">returnSamples</a></span><span class="op">(</span><span class="st">"relative_abundance"</span>, rownames <span class="op">=</span> <span class="st">"short"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Removing samples with NA values for smoker_bin</span></span>
+<span><span class="va">smoke_tse</span> <span class="op">&lt;-</span> <span class="va">smoke_tse</span><span class="op">[</span>,<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">smoke_tse</span><span class="op">$</span><span class="va">smoker_bin</span><span class="op">)</span><span class="op">]</span></span></code></pre></div>
 </div>
 <div class="section level4">
-<h4 id="agglomerate-ranks">Agglomerate Ranks<a class="anchor" aria-label="anchor" href="#agglomerate-ranks"></a>
+<h4 id="agglomerate-by-taxonomic-rank">Agglomerate By Taxonomic Rank<a class="anchor" aria-label="anchor" href="#agglomerate-by-taxonomic-rank"></a>
 </h4>
-<p>Next, the <code>splitByRanks</code> function from <em><a href="https://bioconductor.org/packages/3.16/mia" class="external-link">mia</a></em> is used
-to create alternative experiments for each level of the taxonomic tree
-(e.g. Genus). This allows for diversity and differential abundance
-analysis at specific taxonomic levels; with this step complete, our data
-is ready to analyze.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/SingleCellExperiment/man/altExps.html" class="external-link">altExps</a></span><span class="op">(</span><span class="va">alcoholStudy</span><span class="op">)</span> <span class="op">&lt;-</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/mia/man/splitByRanks.html" class="external-link">splitByRanks</a></span><span class="op">(</span><span class="va">alcoholStudy</span><span class="op">)</span></span></code></pre></div>
+<p>The <code>agglomerateByRank</code> unction from <em><a href="https://bioconductor.org/packages/3.23/mia" class="external-link">mia</a></em> is used
+to sum up data based on associations with certain taxonomic ranks, as
+defined in <code>rowData</code>.</p>
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">smoke_tse_genus</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://microbiome.github.io/mia/reference/agglomerate-methods.html" class="external-link">agglomerateByRank</a></span><span class="op">(</span><span class="va">smoke_tse</span>, rank <span class="op">=</span> <span class="st">"genus"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
@@ -573,31 +571,31 @@ is ready to analyze.</p>
 <p>Alpha diversity is a measure of the within sample diversity of
 features (relative abundance proportions here) and seeks to quantify the
 evenness (i.e. are the amounts of different microbes the same) and
-richness (i.e. are they are large variety of microbial taxa present).
+richness (i.e.  are they are large variety of microbial taxa present).
 The Shannon index (H’) is a commonly used measure of alpha diversity,
-it’s estimated here using the <code><a href="https://rdrr.io/pkg/mia/man/estimateDiversity.html" class="external-link">estimateDiversity()</a></code> function
-from the <em><a href="https://bioconductor.org/packages/3.16/mia" class="external-link">mia</a></em>
+it’s estimated here using the <code><a href="https://microbiome.github.io/mia/reference/addAlpha.html" class="external-link">addAlpha()</a></code> function from the
+<em><a href="https://bioconductor.org/packages/3.23/mia" class="external-link">mia</a></em>
 package.</p>
-<p>To quickly plot the results of alpha diversity estimation, the
-<code><a href="https://rdrr.io/pkg/scater/man/plotColData.html" class="external-link">plotColData()</a></code> function from the <em><a href="https://bioconductor.org/packages/3.16/scater" class="external-link">scater</a></em>
-package is used along with <em><a href="https://CRAN.R-project.org/package=ggplot2" class="external-link">ggplot2</a></em>
-syntax.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">alcoholStudy</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/mia/man/estimateDiversity.html" class="external-link">estimateDiversity</a></span><span class="op">(</span>abund_values <span class="op">=</span> <span class="st">"relative_abundance"</span>, index <span class="op">=</span> <span class="st">"shannon"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotColData.html" class="external-link">plotColData</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"alcohol"</span>, y <span class="op">=</span> <span class="st">"shannon"</span>, colour_by <span class="op">=</span> <span class="st">"alcohol"</span>, shape_by <span class="op">=</span> <span class="st">"alcohol"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Alcohol"</span>, y <span class="op">=</span> <span class="st">"Alpha Diversity (H')"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Alcohol"</span><span class="op">)</span>, shape <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Alcohol"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Adding Shannon diversity values to colData</span></span>
+<span><span class="va">smoke_shannon</span> <span class="op">&lt;-</span> <span class="va">smoke_tse_genus</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu"><a href="https://microbiome.github.io/mia/reference/addAlpha.html" class="external-link">addAlpha</a></span><span class="op">(</span>assay.type <span class="op">=</span> <span class="st">"relative_abundance"</span>, index <span class="op">=</span> <span class="st">"shannon_diversity"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co">## Violin plots</span></span>
+<span><span class="va">title</span> <span class="op">&lt;-</span> <span class="st">"Alpha Diversity by Smoking Status"</span></span>
+<span><span class="va">smoke_shannon</span> <span class="op">|&gt;</span> </span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotColData.html" class="external-link">plotColData</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"smoker_bin"</span>, y <span class="op">=</span> <span class="st">"shannon_diversity"</span>, colour_by <span class="op">=</span> <span class="st">"smoker_bin"</span>, shape_by <span class="op">=</span> <span class="st">"smoker_bin"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Smoking Status"</span>, y <span class="op">=</span> <span class="st">"Alpha Diversity (H')"</span><span class="op">)</span> <span class="op">+</span> </span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Smoking Status"</span><span class="op">)</span>, shape <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="va">title</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="st">"none"</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="curatedMetagenomicData_files/figure-html/unnamed-chunk-17-1.png" alt="Alpha Diversity – Shannon Index (H')" width="700"><p class="caption">
-Alpha Diversity – Shannon Index (H’)
-</p>
-</div>
-<p>The figure suggest that those who consume alcohol have higher Shannon
-alpha diversity than those who do not consume alcohol; however, the
-difference does not appear to be significant, at least
-qualitatively.</p>
+<p>A p-value &lt; 0.01 and a W value &gt; 0 indicate that the
+<code>Never Smoker</code> group has higher alpha diversity compared to
+the <code>Smoker</code> group. This may serve as basis for further
+investigation as to whether smoking can lead to gut microbiome
+dysbiosis.</p>
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co">## Test if alpha diversity between smokers and non-smokers is significantly different</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/wilcox.test.html" class="external-link">wilcox.test</a></span><span class="op">(</span><span class="va">shannon_diversity</span> <span class="op">~</span> <span class="va">smoker_bin</span>, data <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/SummarizedExperiment/man/SummarizedExperiment-class.html" class="external-link">colData</a></span><span class="op">(</span><span class="va">smoke_shannon</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="beta-diversity">Beta Diversity<a class="anchor" aria-label="anchor" href="#beta-diversity"></a>
@@ -612,92 +610,91 @@ Analysis (PCoA) and Uniform Manifold Approximation and Projection
 <h4 id="braycurtis-pcoa">Bray–Curtis PCoA<a class="anchor" aria-label="anchor" href="#braycurtis-pcoa"></a>
 </h4>
 <p>To calculate pairwise Bray–Curtis distance for every sample in our
-study we will use the <code><a href="https://rdrr.io/pkg/scater/man/runMDS.html" class="external-link">runMDS()</a></code> function from the <em><a href="https://bioconductor.org/packages/3.16/scater" class="external-link">scater</a></em>
-package along with the <code><a href="https://rdrr.io/pkg/vegan/man/vegdist.html" class="external-link">vegdist()</a></code> function from the <em><a href="https://CRAN.R-project.org/package=vegan" class="external-link">vegan</a></em>
+study we will use the <code><a href="https://rdrr.io/pkg/scater/man/runMDS.html" class="external-link">runMDS()</a></code> function from the <em><a href="https://bioconductor.org/packages/3.23/scater" class="external-link">scater</a></em>
+package along with the <code><a href="https://vegandevs.github.io/vegan/reference/vegdist.html" class="external-link">vegdist()</a></code> function from the <em><a href="https://CRAN.R-project.org/package=vegan" class="external-link">vegan</a></em>
 package.</p>
 <p>To quickly plot the results of beta diversity analysis, the
-<code><a href="https://rdrr.io/pkg/scater/man/plotReducedDim.html" class="external-link">plotReducedDim()</a></code> function from the <em><a href="https://bioconductor.org/packages/3.16/scater" class="external-link">scater</a></em>
+<code><a href="https://rdrr.io/pkg/scater/man/plotReducedDim.html" class="external-link">plotReducedDim()</a></code> function from the <em><a href="https://bioconductor.org/packages/3.23/scater" class="external-link">scater</a></em>
 package is used along with <em><a href="https://CRAN.R-project.org/package=ggplot2" class="external-link">ggplot2</a></em>
 syntax.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">alcoholStudy</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">smoke_tse</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> </span>
+<span>  <span class="fu"><a href="https://microbiome.github.io/mia/reference/agglomerate-methods.html" class="external-link">agglomerateByRanks</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/pkg/scater/man/runMDS.html" class="external-link">runMDS</a></span><span class="op">(</span>FUN <span class="op">=</span> <span class="va">vegdist</span>, method <span class="op">=</span> <span class="st">"bray"</span>, exprs_values <span class="op">=</span> <span class="st">"relative_abundance"</span>, altexp <span class="op">=</span> <span class="st">"genus"</span>, name <span class="op">=</span> <span class="st">"BrayCurtis"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotReducedDim.html" class="external-link">plotReducedDim</a></span><span class="op">(</span><span class="st">"BrayCurtis"</span>, colour_by <span class="op">=</span> <span class="st">"alcohol"</span>, shape_by <span class="op">=</span> <span class="st">"alcohol"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotReducedDim.html" class="external-link">plotReducedDim</a></span><span class="op">(</span><span class="st">"BrayCurtis"</span>, colour_by <span class="op">=</span> <span class="st">"smoker_bin"</span>, shape_by <span class="op">=</span> <span class="st">"smoker_bin"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"PCo 1"</span>, y <span class="op">=</span> <span class="st">"PCo 2"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Alcohol"</span><span class="op">)</span>, shape <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Alcohol"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.90</span>, <span class="fl">0.85</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="curatedMetagenomicData_files/figure-html/unnamed-chunk-18-1.png" alt="Beta Diversity – Bray–Curtis PCoA" width="700"><p class="caption">
-Beta Diversity – Bray–Curtis PCoA
-</p>
-</div>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Smoking Status"</span><span class="op">)</span>, shape <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Smoking Status"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.80</span>, <span class="fl">0.25</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level4">
 <h4 id="umap">UMAP<a class="anchor" aria-label="anchor" href="#umap"></a>
 </h4>
 <p>To calculate the UMAP coordinates of every sample in our study we
-will use the <code><a href="https://rdrr.io/pkg/scater/man/runUMAP.html" class="external-link">runUMAP()</a></code> function from the <em><a href="https://bioconductor.org/packages/3.16/scater" class="external-link">scater</a></em>
+will use the<code><a href="https://rdrr.io/pkg/scater/man/runUMAP.html" class="external-link">runUMAP()</a></code> function from the <em><a href="https://bioconductor.org/packages/3.23/scater" class="external-link">scater</a></em>
 package package, as it handles the task in a single line.</p>
 <p>To quickly plot the results of beta diversity analysis, the
-<code><a href="https://rdrr.io/pkg/scater/man/plotReducedDim.html" class="external-link">plotReducedDim()</a></code> function from the <em><a href="https://bioconductor.org/packages/3.16/scater" class="external-link">scater</a></em>
+<code><a href="https://rdrr.io/pkg/scater/man/plotReducedDim.html" class="external-link">plotReducedDim()</a></code> function from the <em><a href="https://bioconductor.org/packages/3.23/scater" class="external-link">scater</a></em>
 package is used along with <em><a href="https://CRAN.R-project.org/package=ggplot2" class="external-link">ggplot2</a></em>
 syntax again.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">alcoholStudy</span> <span class="op">|&gt;</span></span>
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">smoke_tse</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://microbiome.github.io/mia/reference/agglomerate-methods.html" class="external-link">agglomerateByRanks</a></span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://rdrr.io/pkg/scater/man/runUMAP.html" class="external-link">runUMAP</a></span><span class="op">(</span>exprs_values <span class="op">=</span> <span class="st">"relative_abundance"</span>, altexp <span class="op">=</span> <span class="st">"genus"</span>, name <span class="op">=</span> <span class="st">"UMAP"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
-<span>    <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotReducedDim.html" class="external-link">plotReducedDim</a></span><span class="op">(</span><span class="st">"UMAP"</span>, colour_by <span class="op">=</span> <span class="st">"alcohol"</span>, shape_by <span class="op">=</span> <span class="st">"alcohol"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/scater/man/plotReducedDim.html" class="external-link">plotReducedDim</a></span><span class="op">(</span><span class="st">"UMAP"</span>, colour_by <span class="op">=</span> <span class="st">"smoker_bin"</span>, shape_by <span class="op">=</span> <span class="st">"smoker_bin"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"UMAP 1"</span>, y <span class="op">=</span> <span class="st">"UMAP 2"</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Alcohol"</span><span class="op">)</span>, shape <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Alcohol"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.90</span>, <span class="fl">0.85</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="figure">
-<img src="curatedMetagenomicData_files/figure-html/unnamed-chunk-19-1.png" alt="Beta Diversity – UMAP (Uniform Manifold Approximation and Projection)" width="700"><p class="caption">
-Beta Diversity – UMAP (Uniform Manifold Approximation and Projection)
-</p>
-</div>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guides.html" class="external-link">guides</a></span><span class="op">(</span>colour <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Smoking Status"</span><span class="op">)</span>, shape <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/guide_legend.html" class="external-link">guide_legend</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Smoking Status"</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>    <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>legend.position <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.80</span>, <span class="fl">0.55</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level3">
 <h3 id="differential-abundance">Differential Abundance<a class="anchor" aria-label="anchor" href="#differential-abundance"></a>
 </h3>
-<p>Next, it would be desirable to establish which microbes are
-differentially abundant between the two groups (those who consume
-alcohol, and those who do not). The <em><a href="https://bioconductor.org/packages/3.16/lefser" class="external-link">lefser</a></em> and
-<em><a href="https://bioconductor.org/packages/3.16/ANCOMBC" class="external-link">ANCOMBC</a></em>
-packages are excellent resources for this tasks; however, code is not
-included here to avoid including excessive <code>Suggests</code>
-packages – <em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
-had far too many of these in the the past and is now very lean. There is
-a repository of analyses, <a href="https://github.com/waldronlab/curatedMetagenomicAnalyses" class="external-link">curatedMetagenomicAnalyses</a>,
-on GitHub and a forthcoming paper that will feature extensive
-demonstrations of analyses – but for now, the suggestions above will
-have to suffice.</p>
+<p>Next, we can identify taxa enriched in either the <em>Smoker</em> or
+<em>Never Smoker</em> groups. An example approach for differential
+abundance is the LEfSe analysis, which can be accomplished using
+<code><a href="https://rdrr.io/pkg/lefser/man/lefser.html" class="external-link">lefser()</a></code> and <code><a href="https://rdrr.io/pkg/lefser/man/lefserPlot.html" class="external-link">lefserPlot()</a></code> from the <em><a href="https://bioconductor.org/packages/3.23/lefser" class="external-link">lefser</a></em>
+package.</p>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/lefser/man/lefser.html" class="external-link">lefser</a></span><span class="op">(</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/lefser/man/relativeAb.html" class="external-link">relativeAb</a></span><span class="op">(</span><span class="va">smoke_tse_genus</span><span class="op">)</span>,</span>
+<span>    kruskal.threshold <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>    wilcox.threshold <span class="op">=</span> <span class="fl">0.05</span>,</span>
+<span>    lda.threshold <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>    classCol <span class="op">=</span> <span class="st">"smoker_bin"</span>,</span>
+<span>    subclassCol <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>    assay <span class="op">=</span> <span class="fl">1L</span>,</span>
+<span>    trim.names <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>    checkAbundances <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/pkg/lefser/man/lefserPlot.html" class="external-link">lefserPlot</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2">
 <h2 id="type-conversion">Type Conversion<a class="anchor" aria-label="anchor" href="#type-conversion"></a>
 </h2>
-<p>Finally, the <em><a href="https://bioconductor.org/packages/3.16/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
+<p>Finally, the <em><a href="https://bioconductor.org/packages/3.23/curatedMetagenomicData" class="external-link">curatedMetagenomicData</a></em>
 package previously had functions for conversion to <code>phyloseq</code>
 class objects, and they have been removed. It is likely that some users
-will still want to do analysis using <em><a href="https://bioconductor.org/packages/3.16/phyloseq" class="external-link">phyloseq</a></em>,
+will still want to do analysis using <em><a href="https://bioconductor.org/packages/3.23/phyloseq" class="external-link">phyloseq</a></em>,
 and we would like to help them do so – it is just easier if we don’t
-have to maintain the conversion function ourselves. As such, the <em><a href="https://bioconductor.org/packages/3.16/mia" class="external-link">mia</a></em> package
+have to maintain the conversion function ourselves. As such, the <em><a href="https://bioconductor.org/packages/3.23/mia" class="external-link">mia</a></em> package
 has a function, <code>makePhyloseqFromTreeSummarizedExperiment</code>,
 that will readily do the conversion – users needing this functionality
 are advised to use it.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/pkg/mia/man/makePhyloseqFromTreeSE.html" class="external-link">makePhyloseqFromTreeSummarizedExperiment</a></span><span class="op">(</span><span class="va">alcoholStudy</span>, abund_values <span class="op">=</span> <span class="st">"relative_abundance"</span><span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://microbiome.github.io/mia/reference/convertFromPhyloseq.html" class="external-link">convertToPhyloseq</a></span><span class="op">(</span><span class="va">alcoholStudy</span>, assay.type <span class="op">=</span> <span class="st">"relative_abundance"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://microbiome.github.io/mia/reference/convertFromPhyloseq.html" class="external-link">convertToPhyloseq</a></span><span class="op">(</span><span class="va">alcoholStudy</span>, assay.type <span class="op">=</span> <span class="st">"relative_abundance"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="session-info">Session Info<a class="anchor" aria-label="anchor" href="#session-info"></a>
 </h2>
-<pre><code><span><span class="co">## R version 4.2.2 (2022-10-31)</span></span>
-<span><span class="co">## Platform: x86_64-pc-linux-gnu (64-bit)</span></span>
-<span><span class="co">## Running under: Ubuntu 22.04.1 LTS</span></span>
+<pre><code><span><span class="co">## R Under development (unstable) (2026-01-18 r89306)</span></span>
+<span><span class="co">## Platform: x86_64-pc-linux-gnu</span></span>
+<span><span class="co">## Running under: Ubuntu 24.04.3 LTS</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## Matrix products: default</span></span>
-<span><span class="co">## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3</span></span>
-<span><span class="co">## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.20.so</span></span>
+<span><span class="co">## BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
+<span><span class="co">## LAPACK: /usr/lib/x86_64-linux-gnu/openblas-pthread/libopenblasp-r0.3.26.so;  LAPACK version 3.12.0</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## locale:</span></span>
 <span><span class="co">##  [1] LC_CTYPE=en_US.UTF-8       LC_NUMERIC=C              </span></span>
@@ -707,118 +704,105 @@ are advised to use it.</p>
 <span><span class="co">##  [9] LC_ADDRESS=C               LC_TELEPHONE=C            </span></span>
 <span><span class="co">## [11] LC_MEASUREMENT=en_US.UTF-8 LC_IDENTIFICATION=C       </span></span>
 <span><span class="co">## </span></span>
+<span><span class="co">## time zone: UTC</span></span>
+<span><span class="co">## tzcode source: system (glibc)</span></span>
+<span><span class="co">## </span></span>
 <span><span class="co">## attached base packages:</span></span>
 <span><span class="co">## [1] stats4    stats     graphics  grDevices utils     datasets  methods  </span></span>
 <span><span class="co">## [8] base     </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## other attached packages:</span></span>
-<span><span class="co">##  [1] vegan_2.6-4                    lattice_0.20-45               </span></span>
-<span><span class="co">##  [3] permute_0.9-7                  scater_1.26.1                 </span></span>
-<span><span class="co">##  [5] ggplot2_3.4.0                  scuttle_1.8.3                 </span></span>
-<span><span class="co">##  [7] mia_1.6.0                      MultiAssayExperiment_1.24.0   </span></span>
-<span><span class="co">##  [9] stringr_1.5.0                  DT_0.26                       </span></span>
-<span><span class="co">## [11] dplyr_1.0.10                   curatedMetagenomicData_3.7.0  </span></span>
-<span><span class="co">## [13] TreeSummarizedExperiment_2.6.0 Biostrings_2.66.0             </span></span>
-<span><span class="co">## [15] XVector_0.38.0                 SingleCellExperiment_1.20.0   </span></span>
-<span><span class="co">## [17] SummarizedExperiment_1.28.0    Biobase_2.58.0                </span></span>
-<span><span class="co">## [19] GenomicRanges_1.50.2           GenomeInfoDb_1.34.4           </span></span>
-<span><span class="co">## [21] IRanges_2.32.0                 S4Vectors_0.36.1              </span></span>
-<span><span class="co">## [23] BiocGenerics_0.44.0            MatrixGenerics_1.10.0         </span></span>
-<span><span class="co">## [25] matrixStats_0.63.0             BiocStyle_2.26.0              </span></span>
+<span><span class="co">##  [1] DT_0.34.0                       dplyr_1.1.4                    </span></span>
+<span><span class="co">##  [3] curatedMetagenomicData_3.19.1   TreeSummarizedExperiment_2.19.0</span></span>
+<span><span class="co">##  [5] Biostrings_2.79.4               XVector_0.51.0                 </span></span>
+<span><span class="co">##  [7] SingleCellExperiment_1.33.0     SummarizedExperiment_1.41.0    </span></span>
+<span><span class="co">##  [9] Biobase_2.71.0                  GenomicRanges_1.63.1           </span></span>
+<span><span class="co">## [11] Seqinfo_1.1.0                   IRanges_2.45.0                 </span></span>
+<span><span class="co">## [13] S4Vectors_0.49.0                BiocGenerics_0.57.0            </span></span>
+<span><span class="co">## [15] generics_0.1.4                  MatrixGenerics_1.23.0          </span></span>
+<span><span class="co">## [17] matrixStats_1.5.0               BiocStyle_2.39.0               </span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## loaded via a namespace (and not attached):</span></span>
-<span><span class="co">##   [1] AnnotationHub_3.6.0           BiocFileCache_2.6.0          </span></span>
-<span><span class="co">##   [3] systemfonts_1.0.4             plyr_1.8.8                   </span></span>
-<span><span class="co">##   [5] lazyeval_0.2.2                splines_4.2.2                </span></span>
-<span><span class="co">##   [7] crosstalk_1.2.0               BiocParallel_1.32.5          </span></span>
-<span><span class="co">##   [9] digest_0.6.31                 yulab.utils_0.0.6            </span></span>
-<span><span class="co">##  [11] htmltools_0.5.4               viridis_0.6.2                </span></span>
-<span><span class="co">##  [13] fansi_1.0.3                   magrittr_2.0.3               </span></span>
-<span><span class="co">##  [15] memoise_2.0.1                 ScaledMatrix_1.6.0           </span></span>
-<span><span class="co">##  [17] cluster_2.1.4                 DECIPHER_2.26.0              </span></span>
-<span><span class="co">##  [19] pkgdown_2.0.7                 colorspace_2.0-3             </span></span>
-<span><span class="co">##  [21] blob_1.2.3                    rappdirs_0.3.3               </span></span>
-<span><span class="co">##  [23] ggrepel_0.9.2                 textshaping_0.3.6            </span></span>
-<span><span class="co">##  [25] xfun_0.36                     crayon_1.5.2                 </span></span>
-<span><span class="co">##  [27] RCurl_1.98-1.9                jsonlite_1.8.4               </span></span>
-<span><span class="co">##  [29] ape_5.6-2                     glue_1.6.2                   </span></span>
-<span><span class="co">##  [31] gtable_0.3.1                  zlibbioc_1.44.0              </span></span>
-<span><span class="co">##  [33] DelayedArray_0.24.0           BiocSingular_1.14.0          </span></span>
-<span><span class="co">##  [35] scales_1.2.1                  DBI_1.1.3                    </span></span>
-<span><span class="co">##  [37] Rcpp_1.0.9                    viridisLite_0.4.1            </span></span>
-<span><span class="co">##  [39] xtable_1.8-4                  decontam_1.18.0              </span></span>
-<span><span class="co">##  [41] tidytree_0.4.2                bit_4.0.5                    </span></span>
-<span><span class="co">##  [43] rsvd_1.0.5                    htmlwidgets_1.6.0            </span></span>
-<span><span class="co">##  [45] httr_1.4.4                    FNN_1.1.3.1                  </span></span>
-<span><span class="co">##  [47] ellipsis_0.3.2                farver_2.1.1                 </span></span>
-<span><span class="co">##  [49] pkgconfig_2.0.3               uwot_0.1.14                  </span></span>
-<span><span class="co">##  [51] sass_0.4.4                    dbplyr_2.2.1                 </span></span>
-<span><span class="co">##  [53] utf8_1.2.2                    labeling_0.4.2               </span></span>
-<span><span class="co">##  [55] tidyselect_1.2.0              rlang_1.0.6                  </span></span>
-<span><span class="co">##  [57] reshape2_1.4.4                later_1.3.0                  </span></span>
-<span><span class="co">##  [59] AnnotationDbi_1.60.0          munsell_0.5.0                </span></span>
-<span><span class="co">##  [61] BiocVersion_3.16.0            tools_4.2.2                  </span></span>
-<span><span class="co">##  [63] cachem_1.0.6                  cli_3.5.0                    </span></span>
-<span><span class="co">##  [65] DirichletMultinomial_1.40.0   generics_0.1.3               </span></span>
-<span><span class="co">##  [67] RSQLite_2.2.20                ExperimentHub_2.6.0          </span></span>
-<span><span class="co">##  [69] evaluate_0.19                 fastmap_1.1.0                </span></span>
-<span><span class="co">##  [71] yaml_2.3.6                    ragg_1.2.4                   </span></span>
-<span><span class="co">##  [73] knitr_1.41                    bit64_4.0.5                  </span></span>
-<span><span class="co">##  [75] fs_1.5.2                      purrr_1.0.0                  </span></span>
-<span><span class="co">##  [77] KEGGREST_1.38.0               nlme_3.1-161                 </span></span>
-<span><span class="co">##  [79] sparseMatrixStats_1.10.0      mime_0.12                    </span></span>
-<span><span class="co">##  [81] compiler_4.2.2                rstudioapi_0.14              </span></span>
-<span><span class="co">##  [83] beeswarm_0.4.0                filelock_1.0.2               </span></span>
-<span><span class="co">##  [85] curl_4.3.3                    png_0.1-8                    </span></span>
-<span><span class="co">##  [87] interactiveDisplayBase_1.36.0 treeio_1.22.0                </span></span>
-<span><span class="co">##  [89] tibble_3.1.8                  bslib_0.4.2                  </span></span>
-<span><span class="co">##  [91] stringi_1.7.8                 highr_0.10                   </span></span>
-<span><span class="co">##  [93] desc_1.4.2                    Matrix_1.5-3                 </span></span>
-<span><span class="co">##  [95] vctrs_0.5.1                   pillar_1.8.1                 </span></span>
-<span><span class="co">##  [97] lifecycle_1.0.3               BiocManager_1.30.19          </span></span>
-<span><span class="co">##  [99] jquerylib_0.1.4               BiocNeighbors_1.16.0         </span></span>
-<span><span class="co">## [101] cowplot_1.1.1                 bitops_1.0-7                 </span></span>
-<span><span class="co">## [103] irlba_2.3.5.1                 httpuv_1.6.7                 </span></span>
-<span><span class="co">## [105] R6_2.5.1                      bookdown_0.31                </span></span>
-<span><span class="co">## [107] promises_1.2.0.1              gridExtra_2.3                </span></span>
-<span><span class="co">## [109] vipor_0.4.5                   codetools_0.2-18             </span></span>
-<span><span class="co">## [111] MASS_7.3-58.1                 assertthat_0.2.1             </span></span>
-<span><span class="co">## [113] rprojroot_2.0.3               withr_2.5.0                  </span></span>
-<span><span class="co">## [115] GenomeInfoDbData_1.2.9        mgcv_1.8-41                  </span></span>
-<span><span class="co">## [117] parallel_4.2.2                grid_4.2.2                   </span></span>
-<span><span class="co">## [119] beachmat_2.14.0               tidyr_1.2.1                  </span></span>
-<span><span class="co">## [121] rmarkdown_2.19                DelayedMatrixStats_1.20.0    </span></span>
-<span><span class="co">## [123] shiny_1.7.4                   ggbeeswarm_0.7.1</span></span></code></pre>
+<span><span class="co">##   [1] RColorBrewer_1.1-3          jsonlite_2.0.0             </span></span>
+<span><span class="co">##   [3] MultiAssayExperiment_1.37.2 magrittr_2.0.4             </span></span>
+<span><span class="co">##   [5] ggbeeswarm_0.7.3            farver_2.1.2               </span></span>
+<span><span class="co">##   [7] rmarkdown_2.30              fs_1.6.6                   </span></span>
+<span><span class="co">##   [9] ragg_1.5.0                  vctrs_0.7.0                </span></span>
+<span><span class="co">##  [11] memoise_2.0.1               DelayedMatrixStats_1.33.0  </span></span>
+<span><span class="co">##  [13] htmltools_0.5.9             S4Arrays_1.11.1            </span></span>
+<span><span class="co">##  [15] AnnotationHub_4.1.0         curl_7.0.0                 </span></span>
+<span><span class="co">##  [17] BiocNeighbors_2.5.0         SparseArray_1.11.10        </span></span>
+<span><span class="co">##  [19] sass_0.4.10                 bslib_0.9.0                </span></span>
+<span><span class="co">##  [21] htmlwidgets_1.6.4           desc_1.4.3                 </span></span>
+<span><span class="co">##  [23] plyr_1.8.9                  DECIPHER_3.7.0             </span></span>
+<span><span class="co">##  [25] httr2_1.2.2                 cachem_1.1.0               </span></span>
+<span><span class="co">##  [27] igraph_2.2.1                lifecycle_1.0.5            </span></span>
+<span><span class="co">##  [29] pkgconfig_2.0.3             rsvd_1.0.5                 </span></span>
+<span><span class="co">##  [31] Matrix_1.7-4                R6_2.6.1                   </span></span>
+<span><span class="co">##  [33] fastmap_1.2.0               digest_0.6.39              </span></span>
+<span><span class="co">##  [35] AnnotationDbi_1.73.0        scater_1.39.2              </span></span>
+<span><span class="co">##  [37] irlba_2.3.5.1               ExperimentHub_3.1.0        </span></span>
+<span><span class="co">##  [39] crosstalk_1.2.2             textshaping_1.0.4          </span></span>
+<span><span class="co">##  [41] RSQLite_2.4.5               vegan_2.7-2                </span></span>
+<span><span class="co">##  [43] beachmat_2.27.2             filelock_1.0.3             </span></span>
+<span><span class="co">##  [45] mgcv_1.9-4                  httr_1.4.7                 </span></span>
+<span><span class="co">##  [47] abind_1.4-8                 compiler_4.6.0             </span></span>
+<span><span class="co">##  [49] withr_3.0.2                 bit64_4.6.0-1              </span></span>
+<span><span class="co">##  [51] S7_0.2.1                    BiocParallel_1.45.0        </span></span>
+<span><span class="co">##  [53] viridis_0.6.5               DBI_1.2.3                  </span></span>
+<span><span class="co">##  [55] MASS_7.3-65                 rappdirs_0.3.4             </span></span>
+<span><span class="co">##  [57] DelayedArray_0.37.0         bluster_1.21.0             </span></span>
+<span><span class="co">##  [59] permute_0.9-8               tools_4.6.0                </span></span>
+<span><span class="co">##  [61] vipor_0.4.7                 otel_0.2.0                 </span></span>
+<span><span class="co">##  [63] beeswarm_0.4.0              ape_5.8-1                  </span></span>
+<span><span class="co">##  [65] glue_1.8.0                  nlme_3.1-168               </span></span>
+<span><span class="co">##  [67] grid_4.6.0                  mia_1.19.2                 </span></span>
+<span><span class="co">##  [69] cluster_2.1.8.1             reshape2_1.4.5             </span></span>
+<span><span class="co">##  [71] gtable_0.3.6                tidyr_1.3.2                </span></span>
+<span><span class="co">##  [73] BiocSingular_1.27.1         ScaledMatrix_1.19.0        </span></span>
+<span><span class="co">##  [75] ggrepel_0.9.6               BiocVersion_3.23.1         </span></span>
+<span><span class="co">##  [77] pillar_1.11.1               stringr_1.6.0              </span></span>
+<span><span class="co">##  [79] yulab.utils_0.2.3           splines_4.6.0              </span></span>
+<span><span class="co">##  [81] BiocFileCache_3.1.0         treeio_1.35.0              </span></span>
+<span><span class="co">##  [83] lattice_0.22-7              bit_4.6.0                  </span></span>
+<span><span class="co">##  [85] tidyselect_1.2.1            DirichletMultinomial_1.53.0</span></span>
+<span><span class="co">##  [87] scuttle_1.21.0              knitr_1.51                 </span></span>
+<span><span class="co">##  [89] gridExtra_2.3               bookdown_0.46              </span></span>
+<span><span class="co">##  [91] xfun_0.56                   stringi_1.8.7              </span></span>
+<span><span class="co">##  [93] lazyeval_0.2.2              yaml_2.3.12                </span></span>
+<span><span class="co">##  [95] evaluate_1.0.5              codetools_0.2-20           </span></span>
+<span><span class="co">##  [97] tibble_3.3.1                BiocManager_1.30.27        </span></span>
+<span><span class="co">##  [99] cli_3.6.5                   systemfonts_1.3.1          </span></span>
+<span><span class="co">## [101] jquerylib_0.1.4             Rcpp_1.1.1                 </span></span>
+<span><span class="co">## [103] dbplyr_2.5.1                png_0.1-8                  </span></span>
+<span><span class="co">## [105] parallel_4.6.0              pkgdown_2.2.0              </span></span>
+<span><span class="co">## [107] ggplot2_4.0.1               blob_1.3.0                 </span></span>
+<span><span class="co">## [109] ecodive_2.2.2               sparseMatrixStats_1.23.0   </span></span>
+<span><span class="co">## [111] decontam_1.31.0             viridisLite_0.4.2          </span></span>
+<span><span class="co">## [113] tidytree_0.4.7              scales_1.4.0               </span></span>
+<span><span class="co">## [115] purrr_1.2.1                 crayon_1.5.3               </span></span>
+<span><span class="co">## [117] rlang_1.1.7                 KEGGREST_1.51.1</span></span></code></pre>
 </div>
-  </div>
-
-  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-
-        <nav id="toc" data-toggle="toc"><h2 data-toc-skip>Contents</h2>
-    </nav>
-</div>
-
+  </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
+    </nav></aside>
 </div>
 
 
 
-      <footer><div class="copyright">
-  <p></p>
-<p>Developed by Lucas schiffer, Levi Waldron.</p>
+    <footer><div class="pkgdown-footer-left">
+  <p>Developed by Lucas schiffer, Levi Waldron.</p>
 </div>
 
-<div class="pkgdown">
-  <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<div class="pkgdown-footer-right">
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
-      </footer>
+    </footer>
 </div>
 
-  
 
 
-  
+
 
   </body>
 </html>

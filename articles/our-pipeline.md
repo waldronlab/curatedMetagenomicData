@@ -1,0 +1,70 @@
+# Our Pipeline
+
+To create the objects that are ultimately returned to users there are a
+number of steps taken beyond what is contained in the
+curatedMetagenomicData package – this document is intended to add some
+clarity and transparency to the process. Roughly, the process is as
+follows: a study is selected for inclusion, metadata for each sample in
+the study is manually curated, raw data for each sample is downloaded
+(usually from NCBI SRA), raw data is processed into the six data types
+(gene families, marker abundance, marker presence, pathway abundance,
+pathway coverage, and relative abundance) using
+[MetaPhlAn3](https://github.com/biobakery/MetaPhlAn) and
+[HUMAnN3](https://github.com/biobakery/humann), processed data for all
+samples in a study are combined into a matrix for each data type, the
+six matrices are saved as R objects and uploaded to ExperimentHub, and,
+finally, the matrices are used to construct (Tree)SummarizedExperiment
+objects on the fly that are returned to users.
+
+## Curation
+
+The curation process takes place on GitHub in the
+[curatedMetagenomicDataCuration](https://github.com/waldronlab/curatedMetagenomicDataCuration)
+repository. Sample metadata for every sample included in
+curatedMetagenomicData is manually curated by humans and checked against
+a standardized template for accuracy. The process is labor intensive and
+information comes from three principle sources: journal articles (and
+their supplementary materials), metadata included when samples were
+uploaded to NCBI, and other publications referring to or augmenting the
+original journal articles. Not only is explicit information (i.e. tables
+that enumerate the values of variables for each sample) sought out, but
+implicit information (e.g. “all the subjects in the study were
+non-smokers”) is also included where it occurs in text. The manually
+curated sample metadata is continuously updated with the advent of new
+information (this is common when reanalyses find issues) and these
+changes propagate from the curation repository to the R package weekly.
+
+## Processing
+
+Raw data are processed using
+[MetaPhlAn3](https://github.com/biobakery/MetaPhlAn) and
+[HUMAnN3](https://github.com/biobakery/humann) and uploaded to a Google
+Cloud Storage bucket as zipped tar file. The tar file contains
+directories (one for each data type) of tsv files (one for each sample)
+that are used as the input of R pipeline.
+
+## R Pipeline
+
+The collection of tsv files are not obviously or immediately useful –
+there is an pipeline written in R to process these outputs into relevant
+matrix objects for user consumption. The
+[curatedMetagenomicDataPipeline](https://github.com/waldronlab/curatedMetagenomicDataPipeline)
+repository on GitHub details the methods that are used to construct and
+save the six matrices for each study that are uploaded to ExperimentHub.
+The `gene_families` data type is large and stored as a sparse matrix,
+while the other data types are store as standard matrix objects. The
+upload to ExperimentHub is ultimately done using the aws-cli with
+credentials from Bioconductor specific to the curatedMetagenomicData
+package.
+
+As for why we construct matrix objects: the process of combining the
+samples into a matrix can take hours even on heavy-duty equipment (many
+cores, many GB of RAM). This is both the advantage and crux of
+curatedMetagenomicData – subseting the matrix takes mere seconds and
+simple laptops are powerful enough; however, the ability to download
+many single samples across studies is lost. We accomplish the later in
+the R package by matrix subsetting and merging in the
+[`returnSamples()`](https://waldronlab.io/curatedMetagenomicData/reference/returnSamples.md)
+method. All alternatives considered, this is the optimal trade-off, but
+we are working towards something more efficient in the future – stay
+tuned!
