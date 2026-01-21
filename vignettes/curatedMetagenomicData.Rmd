@@ -198,7 +198,7 @@ The `counts` and `rownames` arguments apply to `returnSamples()` as well, and ca
 To demonstrate the utility of `r Biocpkg("curatedMetagenomicData")`, an example analysis is presented below. However, readers should know analysis is generally beyond the scope of `r Biocpkg("curatedMetagenomicData")` and the analysis presented here is for demonstration alone. It is best to consider the output of `r Biocpkg("curatedMetagenomicData")` as the input of analysis more than anything else.
 
 ## Load R packages
-```{r,include=TRUE,results="hide",message=FALSE,warning=FALSE}
+```{r,include=TRUE,results="hide",message=FALSE,warning=FALSE,eval=require("OmicsMLRepoR", quietly=TRUE)}
 library(OmicsMLRepoR)
 library(mia)
 library(scater)
@@ -210,7 +210,7 @@ library(lefser)
 ## Retrieve harmonized metadata 
 `r Biocpkg("curatedMetagenomicData")` loads the metadata table, `sampleMetadata`. For further harmonized version of the sample-level metadata will be available in the future release of this package, and currently available through `r Biocpkg("OmicsMLRepoR")` package.
 
-```{r, message = FALSE}
+```{r, message = FALSE, eval=require("OmicsMLRepoR", quietly=TRUE)}
 cmd <- OmicsMLRepoR::getMetadata("cMD")
 ```
 
@@ -222,7 +222,7 @@ In this example, we will examine the association between current smoking status 
 
 First, as above, we use the `returnSamples()` function to return the relevant samples across all studies available in `r Biocpkg("curatedMetagenomicData")`. We want healthy adults, whose smoking history is known, and only fecal samples. The `select(where...` line below removes metadata columns which are all `NA` values – they exist in another study but are all `NA` once subsetting has been done. 
 
-```{r}
+```{r, eval=require("OmicsMLRepoR", quietly=TRUE)}
 smoke <- cmd |> 
     filter(disease == "Healthy") |> 
     filter(age_group == "Adult") |>
@@ -231,13 +231,13 @@ smoke <- cmd |>
     select(where(~ !all(is.na(.x))))  # remove metadata columns which are all `NA` values
 ```
 
-```{r}
+```{r, eval=require("OmicsMLRepoR", quietly=TRUE)}
 table(smoke$smoker, useNA = "ifany")
 ```
 
 A new binary variable for smoking status, with levels `Smoker` and `Never Smoker`, is created to facilitate downstream analysis. The names of attributes are updated, so they will look nice in plots.
 
-```{r}
+```{r, eval=require("OmicsMLRepoR", quietly=TRUE)}
 smoke <- smoke %>%
   mutate(
     smoker_bin = as.factor(
@@ -250,7 +250,7 @@ table(smoke$smoker_bin, useNA = "ifany")
 
 Lastly, the `"relative_abundance"` `dataType` is requested because it contains the relevant information about microbial composition.
 
-```{r message = FALSE}
+```{r, message = FALSE, eval=require("OmicsMLRepoR", quietly=TRUE)}
 smoke_tse <- smoke %>% returnSamples("relative_abundance", rownames = "short")
 
 ## Removing samples with NA values for smoker_bin
@@ -260,7 +260,7 @@ smoke_tse <- smoke_tse[,!is.na(smoke_tse$smoker_bin)]
 ### Agglomerate By Taxonomic Rank
 The `agglomerateByRank` unction from `r Biocpkg("mia")` is used to sum up data based on associations with certain taxonomic ranks, as defined in `rowData`.
 
-```{r}
+```{r, eval=require("OmicsMLRepoR", quietly=TRUE)}
 smoke_tse_genus <- agglomerateByRank(smoke_tse, rank = "genus")
 ```
 
@@ -273,7 +273,7 @@ are they are large variety of microbial taxa present). The Shannon index
 (H’) is a commonly used measure of alpha diversity, it’s estimated here 
 using the `addAlpha()` function from the `r Biocpkg("mia")` package.
 
-```{r fig.cap = "Alpha Diversity - Shannon Index (H')"}
+```{r, fig.cap = "Alpha Diversity - Shannon Index (H')", eval=require("OmicsMLRepoR", quietly=TRUE)}
 ## Adding Shannon diversity values to colData
 smoke_shannon <- smoke_tse_genus |>
   addAlpha(assay.type = "relative_abundance", index = "shannon_diversity")
@@ -292,7 +292,7 @@ has higher alpha diversity compared to the `Smoker` group. This may serve
 as basis for further investigation as to whether smoking can lead to gut 
 microbiome dysbiosis.
 
-```{r}
+```{r, eval=require("OmicsMLRepoR", quietly=TRUE)}
 ## Test if alpha diversity between smokers and non-smokers is significantly different
 wilcox.test(shannon_diversity ~ smoker_bin, data = colData(smoke_shannon))
 ```
@@ -313,7 +313,7 @@ To quickly plot the results of beta diversity analysis,
 the `plotReducedDim()` function from the `r Biocpkg("scater")` package is 
 used along with `r CRANpkg("ggplot2")` syntax.
 
-```{r fig.cap = "Beta Diversity – Bray–Curtis PCoA"}
+```{r, fig.cap = "Beta Diversity – Bray–Curtis PCoA", eval=require("OmicsMLRepoR", quietly=TRUE)}
 smoke_tse %>% 
   agglomerateByRanks() |>
     runMDS(FUN = vegdist, method = "bray", exprs_values = "relative_abundance", altexp = "genus", name = "BrayCurtis") |>
@@ -333,7 +333,7 @@ To quickly plot the results of beta diversity analysis, the `plotReducedDim()`
 function from the `r Biocpkg("scater")` package is used along with 
 `r CRANpkg("ggplot2")` syntax again.
 
-```{r}
+```{r, eval=require("OmicsMLRepoR", quietly=TRUE)}
 smoke_tse %>%
   agglomerateByRanks() |>
     runUMAP(exprs_values = "relative_abundance", altexp = "genus", name = "UMAP") |>
@@ -350,7 +350,7 @@ groups. An example approach for differential abundance is the LEfSe analysis,
 which can be accomplished using `lefser()` and `lefserPlot()` from the 
 `r Biocpkg("lefser")` package.
 
-```{r}
+```{r, eval=require("OmicsMLRepoR", quietly=TRUE) && require("lefser", quietly=TRUE)}
 lefser(
     relativeAb(smoke_tse_genus),
     kruskal.threshold = 0.05,
