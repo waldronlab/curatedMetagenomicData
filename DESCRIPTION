@@ -12,31 +12,28 @@ Description:
     calculated with HUMAnN3. The manually curated sample metadata and
     standardized metagenomic data are available as (Tree)SummarizedExperiment
     objects.
-Authors@R:
-    c(person(given = "Lucas", family = "schiffer", role = c("aut", "cre"),
-             email = "schiffer.lucas@gmail.com",
-             comment = c(ORCID = "0000-0003-3628-0326")),
-      person(given = "Levi", family = "Waldron", role = "aut"),
-      person(given = "Edoardo", family = "Pasolli", role = "ctb"),
-      person(given = "Jennifer", family = "Wokaty", role = "ctb"),
-      person(given = "Sean", family = "Davis", role = "ctb"),
-      person(given = "Audrey", family = "Renson", role = "ctb"),
-      person(given = "Chloe", family = "Mirzayi", role = "ctb"),
-      person(given = "Paolo", family = "Manghi", role = "ctb"),
-      person(given = "Samuel", family = "Gamboa-Tuz", role = "ctb"),
-      person(given = "Marcel", family = "Ramos", role = "ctb"),
-      person(given = "Valerie", family = "Obenchain", role = "ctb"),
-      person(given = "Kelly", family = "Eckenrode", role = "ctb"),
-      person(given = "Nicola", family = "Segata", role = "ctb"),
-      person(given = "Tuomas", family = "Borman", role = "ctb",
-             comment = c(ORCID = "0000-0002-8563-8884")),
-      person(given = "Sehyun", family = "Oh", role = "ctb"),
-      person(given = "Yoon-Ji", family = "Jung", role = "ctb"))
-biocViews:
-    ExperimentHub,
-    Homo_sapiens_Data,
-    MicrobiomeData,
-    ReproducibleResearch
+Authors@R:c(
+    person("Lucas", "schiffer", , "schiffer.lucas@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-3628-0326")),
+    person("Levi", "Waldron", role = "aut"),
+    person("Edoardo", "Pasolli", role = "ctb"),
+    person("Jennifer", "Wokaty", role = "ctb"),
+    person("Sean", "Davis", role = "ctb"),
+    person("Audrey", "Renson", role = "ctb"),
+    person("Chloe", "Mirzayi", role = "ctb"),
+    person("Paolo", "Manghi", role = "ctb"),
+    person("Samuel", "Gamboa-Tuz", role = "ctb"),
+    person("Marcel", "Ramos", role = "ctb"),
+    person("Valerie", "Obenchain", role = "ctb"),
+    person("Kelly", "Eckenrode", role = "ctb"),
+    person("Nicola", "Segata", role = "ctb"),
+    person("Tuomas", "Borman", role = "ctb",
+           comment = c(ORCID = "0000-0002-8563-8884")),
+    person("Sehyun", "Oh", role = "ctb"),
+    person("Yoon-Ji", "Jung", role = "ctb"),
+    person("NCI", role = "fnd",
+           comment = c(GrantNo. = "R01CA230551"))
+  )
 License: Artistic-2.0
 Depends:
     R (>= 4.1.0),
