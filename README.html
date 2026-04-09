@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+padding-top: 0px;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<h1 id="curatedmetagenomicdata">curatedMetagenomicData</h1>
+<!-- badges: start -->
+
+<p><a href="https://www.codefactor.io/repository/github/waldronlab/curatedmetagenomicdata"><img role="img" aria-label="code quality" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDQiIGhlaWdodD0iMjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iY29kZSBxdWFsaXR5OiBBKyI+PHRpdGxlPmNvZGUgcXVhbGl0eTogQSs8L3RpdGxlPjxsaW5lYXJHcmFkaWVudCBpZD0icyIgeDI9IjAiIHkyPSIxMDAlIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiYmIiIHN0b3Atb3BhY2l0eT0iLjEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3Atb3BhY2l0eT0iLjEiLz48L2xpbmVhckdyYWRpZW50PjxjbGlwUGF0aCBpZD0iciI+PHJlY3Qgd2lkdGg9IjEwNCIgaGVpZ2h0PSIyMCIgcng9IjMiIGZpbGw9IiNmZmYiLz48L2NsaXBQYXRoPjxnIGNsaXAtcGF0aD0idXJsKCNyKSI+PHJlY3Qgd2lkdGg9Ijc3IiBoZWlnaHQ9IjIwIiBmaWxsPSIjNTU1Ii8+PHJlY3QgeD0iNzciIHdpZHRoPSIyNyIgaGVpZ2h0PSIyMCIgZmlsbD0iIzRjMSIvPjxyZWN0IHdpZHRoPSIxMDQiIGhlaWdodD0iMjAiIGZpbGw9InVybCgjcykiLz48L2c+PGcgZmlsbD0iI2ZmZiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IlZlcmRhbmEsR2VuZXZhLERlamFWdSBTYW5zLHNhbnMtc2VyaWYiIHRleHQtcmVuZGVyaW5nPSJnZW9tZXRyaWNQcmVjaXNpb24iIGZvbnQtc2l6ZT0iMTEwIj48dGV4dCBhcmlhLWhpZGRlbj0idHJ1ZSIgeD0iMzk1IiB5PSIxNTAiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSI2NzAiPmNvZGUgcXVhbGl0eTwvdGV4dD48dGV4dCB4PSIzOTUiIHk9IjE0MCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIGZpbGw9IiNmZmYiIHRleHRMZW5ndGg9IjY3MCI+Y29kZSBxdWFsaXR5PC90ZXh0Pjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSI4OTUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjE3MCI+QSs8L3RleHQ+PHRleHQgeD0iODk1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSIxNzAiPkErPC90ZXh0PjwvZz48L3N2Zz4=" alt="code quality" /></a> <a href="https://codecov.io/gh/waldronlab/curatedMetagenomicData"><img role="img" aria-label="coverage" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMjIiIGhlaWdodD0iMjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iY292ZXJhZ2U6IHVua25vd24iPjx0aXRsZT5jb3ZlcmFnZTogdW5rbm93bjwvdGl0bGU+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4Mj0iMCIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2JiYiIgc3RvcC1vcGFjaXR5PSIuMSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1vcGFjaXR5PSIuMSIvPjwvbGluZWFyR3JhZGllbnQ+PGNsaXBQYXRoIGlkPSJyIj48cmVjdCB3aWR0aD0iMTIyIiBoZWlnaHQ9IjIwIiByeD0iMyIgZmlsbD0iI2ZmZiIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI3IpIj48cmVjdCB3aWR0aD0iNjEiIGhlaWdodD0iMjAiIGZpbGw9IiM1NTUiLz48cmVjdCB4PSI2MSIgd2lkdGg9IjYxIiBoZWlnaHQ9IjIwIiBmaWxsPSIjOWY5ZjlmIi8+PHJlY3Qgd2lkdGg9IjEyMiIgaGVpZ2h0PSIyMCIgZmlsbD0idXJsKCNzKSIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iVmVyZGFuYSxHZW5ldmEsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZiIgdGV4dC1yZW5kZXJpbmc9Imdlb21ldHJpY1ByZWNpc2lvbiIgZm9udC1zaXplPSIxMTAiPjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSIzMTUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjUxMCI+Y292ZXJhZ2U8L3RleHQ+PHRleHQgeD0iMzE1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSI1MTAiPmNvdmVyYWdlPC90ZXh0Pjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSI5MDUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjUxMCI+dW5rbm93bjwvdGV4dD48dGV4dCB4PSI5MDUiIHk9IjE0MCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIGZpbGw9IiNmZmYiIHRleHRMZW5ndGg9IjUxMCI+dW5rbm93bjwvdGV4dD48L2c+PC9zdmc+" alt="coverage" /></a></p>
+<!-- badges: end -->
+
+<p>The <em><a href="https://bioconductor.org/packages/3.22/curatedMetagenomicData">curatedMetagenomicData</a></em>
+package provides standardized, curated human microbiome data for novel
+analyses. It includes marker abundance, marker presence, and relative
+abundance for samples collected from different body sites, with gene
+families, pathway abundance, and pathway coverage reinstated as they are
+added to the cMD4 catalog. The bacterial, fungal, and archaeal taxonomic
+abundances for each sample were calculated with <a href="https://github.com/biobakery/MetaPhlAn">MetaPhlAn3</a>, and
+metabolic functional potential was calculated with <a href="https://github.com/biobakery/humann">HUMAnN3</a>. The manually
+curated sample metadata and standardized metagenomic data are available
+as (Tree)SummarizedExperiment objects.</p>
+<h2 id="whats-new-in-cmd-40-cmd4">What’s new in cMD 4.0 (“cMD4”)</h2>
+<p>Starting with version 4.0.0, <em><a href="https://bioconductor.org/packages/3.22/curatedMetagenomicData">curatedMetagenomicData</a></em>
+serves sample-level profiling data from the published cMD4 DuckDB
+catalog of hive-partitioned parquet files produced by
+<code>curatedMetagenomicDataETL</code>, replacing the cMD3 ExperimentHub
+backend. The user-facing API is unchanged:
+<code>curatedMetagenomicData()</code>, <code>returnSamples()</code>, and
+<code>mergeData()</code> keep their signatures (including
+<code>dryrun</code>, <code>counts</code>, and <code>rownames</code>) and
+still return <code>(Tree)SummarizedExperiment</code> objects, so
+existing user code continues to work.</p>
+<p>Key changes:</p>
+<ul>
+<li><strong>Harmonized metadata objects.</strong> The legacy
+<code>sampleMetadata</code> object has been replaced by two
+<code>data.frame</code> exports shipped directly with the package:
+<code>harmonized_meta</code> (one row per sample, restricted to columns
+defined in the cMD harmonization schema) and <code>all_meta</code> (the
+same rows plus study-specific columns still under harmonization). Both
+expose <code>study_name</code> and <code>sample_id</code> for use with
+<code>curatedMetagenomicData()</code> and
+<code>returnSamples()</code>.</li>
+<li><strong>Catalog URL.</strong> Defaults to
+<code>https://minio.cancerdatasci.org/cmgd-export/cmgd.duckdb</code>;
+override with
+<code>options(curatedMetagenomicData.duckdb_url = ...)</code>.</li>
+<li><strong>Resource titles.</strong> Still use the cMD3 dotted format
+<code>&lt;runDate&gt;.&lt;study_name&gt;.&lt;dataType&gt;</code>.
+Because the cMD4 ETL produces a single dated snapshot,
+<code>&lt;runDate&gt;</code> is a fixed release tag (<code>&quot;cmd4&quot;</code>
+by default, override with
+<code>options(curatedMetagenomicData.run_date = ...)</code>).</li>
+<li><strong>HUMAnN3 data types temporarily unavailable.</strong>
+<code>gene_families</code>, <code>pathway_abundance</code>, and
+<code>pathway_coverage</code> are not yet in the cMD4 catalog and
+currently raise an error if requested; they will be reinstated as soon
+as they are added to the ETL output.</li>
+<li><strong>Runtime dependencies.</strong> The runtime package no longer
+depends on <code>curatedMetagenomicDataCuration</code>,
+<code>ExperimentHub</code>, or <code>AnnotationHub</code>.</li>
+</ul>
+<p>See <code>NEWS.md</code> and the vignette for the full set of
+changes.</p>
+<h2 id="installation">Installation</h2>
+<p>To install <em><a href="https://bioconductor.org/packages/3.22/curatedMetagenomicData">curatedMetagenomicData</a></em>
+from Bioconductor, use <em><a href="https://CRAN.R-project.org/package=BiocManager">BiocManager</a></em>
+as follows.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;curatedMetagenomicData&quot;</span>)</span></code></pre></div>
+<p>To install <em><a href="https://bioconductor.org/packages/3.22/curatedMetagenomicData">curatedMetagenomicData</a></em>
+from GitHub, use <em><a href="https://CRAN.R-project.org/package=BiocManager">BiocManager</a></em>
+as follows.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">&quot;waldronlab/curatedMetagenomicData&quot;</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>, <span class="at">build_vignettes =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>Most users should simply install <em><a href="https://bioconductor.org/packages/3.22/curatedMetagenomicData">curatedMetagenomicData</a></em>
+from Bioconductor.</p>
+<h2 id="sample-metadata">Sample metadata</h2>
+<p><em><a href="https://bioconductor.org/packages/3.22/curatedMetagenomicData">curatedMetagenomicData</a></em>
+ships two curated sample metadata tables that users typically explore
+before pulling assay data:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># schema-only, portable cohort assembly</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>harmonized_meta</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># schema plus study-specific columns still under harmonization</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>all_meta</span></code></pre></div>
+<p>Both tables include <code>study_name</code> (used with
+<code>curatedMetagenomicData()</code> to query resources) and
+<code>sample_id</code> (used with <code>returnSamples()</code> to pull
+samples across studies).</p>
+<h2 id="examples">Examples</h2>
+<p>To access curated metagenomic data, users will use the
+<code>curatedMetagenomicData()</code> function both to query and return
+resources. Multiple resources can be queried or returned with a single
+call, but only the titles of resources are returned by default.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">curatedMetagenomicData</span>(<span class="st">&quot;AsnicarF_20.+&quot;</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="do">## cmd4.AsnicarF_2017.relative_abundance</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="do">## cmd4.AsnicarF_2021.relative_abundance</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="do">## cmd4.AsnicarF_2017.viral_clusters</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="do">## cmd4.AsnicarF_2021.viral_clusters</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="do">## cmd4.AsnicarF_2017.marker_abundance</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="do">## cmd4.AsnicarF_2021.marker_abundance</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="do">## cmd4.AsnicarF_2017.marker_presence</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="do">## cmd4.AsnicarF_2021.marker_presence</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="do">## cmd4.AsnicarF_2017.marker_rel_ab_w_read_stats</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="do">## cmd4.AsnicarF_2021.marker_rel_ab_w_read_stats</span></span></code></pre></div>
+<p>When the <code>dryrun</code> argument is set to <code>FALSE</code>, a
+<code>list</code> of <code>SummarizedExperiment</code> and/or
+<code>TreeSummarizedExperiment</code> objects is returned. The
+<code>rownames</code> argument determines the type of
+<code>rownames</code> to use for <code>relative_abundance</code>
+resources: either <code>&quot;long&quot;</code> (the default),
+<code>&quot;short&quot;</code> (species name), or <code>&quot;NCBI&quot;</code> (NCBI
+Taxonomy ID). When a single resource is requested, a single-element
+<code>list</code> is returned.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="fu">curatedMetagenomicData</span>(<span class="st">&quot;AsnicarF_2017.relative_abundance&quot;</span>, <span class="at">dryrun =</span> <span class="cn">FALSE</span>, <span class="at">rownames =</span> <span class="st">&quot;short&quot;</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="do">## $cmd4.AsnicarF_2017.relative_abundance</span></span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="do">## class: TreeSummarizedExperiment </span></span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="do">## dim: 53 24 </span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="do">## metadata(0):</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="do">## assays(1): relative_abundance</span></span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="do">## rownames(53): Candidatus Gastranaerophilales bacterium Staphylococcus</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="do">##   epidermidis ... Parvimonas micra Peptoniphilus lacrimalis</span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="do">## rowData names(7): superkingdom phylum ... genus species</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="do">## colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="do">##   MV_MIM5_t3F15</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="do">## colData names(20): study_name sample_id ... sex westernized</span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="do">## reducedDimNames(0):</span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="do">## mainExpName: NULL</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="do">## altExpNames(0):</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="do">## rowLinks: a LinkDataFrame (53 rows)</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="do">## rowTree: 1 phylo tree(s) (10430 leaves)</span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="do">## colLinks: NULL</span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="do">## colTree: NULL</span></span></code></pre></div>
+<p>When the <code>counts</code> argument is set to <code>TRUE</code>,
+relative abundance proportions are multiplied by read depth and rounded
+to the nearest integer prior to being returned. When multiple resources
+are requested, the <code>list</code> contains named elements
+corresponding to each <code>SummarizedExperiment</code> and/or
+<code>TreeSummarizedExperiment</code> object.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="fu">curatedMetagenomicData</span>(<span class="st">&quot;AsnicarF_20.+.relative_abundance&quot;</span>, <span class="at">dryrun =</span> <span class="cn">FALSE</span>, <span class="at">counts =</span> <span class="cn">TRUE</span>, <span class="at">rownames =</span> <span class="st">&quot;short&quot;</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="do">## Warning: `number_reads` missing in `all_meta` for 24 sample(s); their count</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="do">## assay values will be NA.</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="do">## Warning: `number_reads` missing in `all_meta` for 178 sample(s); their count</span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="do">## assay values will be NA.</span></span>
+<span id="cb6-6"><a href="#cb6-6" tabindex="-1"></a><span class="do">## $cmd4.AsnicarF_2017.relative_abundance</span></span>
+<span id="cb6-7"><a href="#cb6-7" tabindex="-1"></a><span class="do">## class: TreeSummarizedExperiment </span></span>
+<span id="cb6-8"><a href="#cb6-8" tabindex="-1"></a><span class="do">## dim: 53 24 </span></span>
+<span id="cb6-9"><a href="#cb6-9" tabindex="-1"></a><span class="do">## metadata(0):</span></span>
+<span id="cb6-10"><a href="#cb6-10" tabindex="-1"></a><span class="do">## assays(1): relative_abundance</span></span>
+<span id="cb6-11"><a href="#cb6-11" tabindex="-1"></a><span class="do">## rownames(53): Candidatus Gastranaerophilales bacterium Staphylococcus</span></span>
+<span id="cb6-12"><a href="#cb6-12" tabindex="-1"></a><span class="do">##   epidermidis ... Parvimonas micra Peptoniphilus lacrimalis</span></span>
+<span id="cb6-13"><a href="#cb6-13" tabindex="-1"></a><span class="do">## rowData names(7): superkingdom phylum ... genus species</span></span>
+<span id="cb6-14"><a href="#cb6-14" tabindex="-1"></a><span class="do">## colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14</span></span>
+<span id="cb6-15"><a href="#cb6-15" tabindex="-1"></a><span class="do">##   MV_MIM5_t3F15</span></span>
+<span id="cb6-16"><a href="#cb6-16" tabindex="-1"></a><span class="do">## colData names(20): study_name sample_id ... sex westernized</span></span>
+<span id="cb6-17"><a href="#cb6-17" tabindex="-1"></a><span class="do">## reducedDimNames(0):</span></span>
+<span id="cb6-18"><a href="#cb6-18" tabindex="-1"></a><span class="do">## mainExpName: NULL</span></span>
+<span id="cb6-19"><a href="#cb6-19" tabindex="-1"></a><span class="do">## altExpNames(0):</span></span>
+<span id="cb6-20"><a href="#cb6-20" tabindex="-1"></a><span class="do">## rowLinks: a LinkDataFrame (53 rows)</span></span>
+<span id="cb6-21"><a href="#cb6-21" tabindex="-1"></a><span class="do">## rowTree: 1 phylo tree(s) (10430 leaves)</span></span>
+<span id="cb6-22"><a href="#cb6-22" tabindex="-1"></a><span class="do">## colLinks: NULL</span></span>
+<span id="cb6-23"><a href="#cb6-23" tabindex="-1"></a><span class="do">## colTree: NULL</span></span>
+<span id="cb6-24"><a href="#cb6-24" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb6-25"><a href="#cb6-25" tabindex="-1"></a><span class="do">## $cmd4.AsnicarF_2021.relative_abundance</span></span>
+<span id="cb6-26"><a href="#cb6-26" tabindex="-1"></a><span class="do">## class: TreeSummarizedExperiment </span></span>
+<span id="cb6-27"><a href="#cb6-27" tabindex="-1"></a><span class="do">## dim: 61 178 </span></span>
+<span id="cb6-28"><a href="#cb6-28" tabindex="-1"></a><span class="do">## metadata(0):</span></span>
+<span id="cb6-29"><a href="#cb6-29" tabindex="-1"></a><span class="do">## assays(1): relative_abundance</span></span>
+<span id="cb6-30"><a href="#cb6-30" tabindex="-1"></a><span class="do">## rownames(61): Candidatus Gastranaerophilales bacterium Enterococcus</span></span>
+<span id="cb6-31"><a href="#cb6-31" tabindex="-1"></a><span class="do">##   casseliflavus ... Tissierellia bacterium KA00581 Saccharomyces</span></span>
+<span id="cb6-32"><a href="#cb6-32" tabindex="-1"></a><span class="do">##   cerevisiae</span></span>
+<span id="cb6-33"><a href="#cb6-33" tabindex="-1"></a><span class="do">## rowData names(7): superkingdom phylum ... genus species</span></span>
+<span id="cb6-34"><a href="#cb6-34" tabindex="-1"></a><span class="do">## colnames(178): SAMEA7041148 SAMEA7041149 ... SAMEA7045127 SAMEA7045128</span></span>
+<span id="cb6-35"><a href="#cb6-35" tabindex="-1"></a><span class="do">## colData names(25): study_name sample_id ... sex westernized</span></span>
+<span id="cb6-36"><a href="#cb6-36" tabindex="-1"></a><span class="do">## reducedDimNames(0):</span></span>
+<span id="cb6-37"><a href="#cb6-37" tabindex="-1"></a><span class="do">## mainExpName: NULL</span></span>
+<span id="cb6-38"><a href="#cb6-38" tabindex="-1"></a><span class="do">## altExpNames(0):</span></span>
+<span id="cb6-39"><a href="#cb6-39" tabindex="-1"></a><span class="do">## rowLinks: a LinkDataFrame (61 rows)</span></span>
+<span id="cb6-40"><a href="#cb6-40" tabindex="-1"></a><span class="do">## rowTree: 1 phylo tree(s) (10430 leaves)</span></span>
+<span id="cb6-41"><a href="#cb6-41" tabindex="-1"></a><span class="do">## colLinks: NULL</span></span>
+<span id="cb6-42"><a href="#cb6-42" tabindex="-1"></a><span class="do">## colTree: NULL</span></span></code></pre></div>
+<p>For cross-study cohort assembly, filter <code>harmonized_meta</code>
+(or <code>all_meta</code>) to the samples of interest and pass the
+result to <code>returnSamples()</code>:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>harmonized_meta <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a>    <span class="fu">filter</span>(age_years <span class="sc">&gt;=</span> <span class="dv">18</span>, <span class="sc">!</span><span class="fu">is.na</span>(bmi), body_site <span class="sc">==</span> <span class="st">&quot;feces&quot;</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a>    <span class="fu">returnSamples</span>(<span class="st">&quot;relative_abundance&quot;</span>, <span class="at">rownames =</span> <span class="st">&quot;short&quot;</span>)</span></code></pre></div>
+<h2 id="analyses">Analyses</h2>
+<p>See <a href="https://github.com/waldronlab/curatedMetagenomicAnalyses">curatedMetagenomicAnalyses</a>
+for analyses in R and Python using <em><a href="https://bioconductor.org/packages/3.22/curatedMetagenomicData">curatedMetagenomicData</a></em>.</p>
+<h2 id="contributing">Contributing</h2>
+<p>To contribute to the <em><a href="https://bioconductor.org/packages/3.22/curatedMetagenomicData">curatedMetagenomicData</a></em>
+R/Bioconductor package, first read the <a href="CONTRIBUTING.md">contributing guidelines</a> and then open an
+issue. Also, note that in contributing you agree to abide by the <a href="CODE_OF_CONDUCT.md">code of conduct</a>.</p>
+<hr />
+<p>Pasolli E, Schiffer L, Manghi P, Renson A, Obenchain V, Truong D,
+Beghini F, Malik F, Ramos M, Dowd J, Huttenhower C, Morgan M, Segata N,
+Waldron L (2017). Accessible, curated metagenomic data through
+ExperimentHub. <em>Nat. Methods</em>, <strong>14</strong> (11),
+1023-1024. ISSN 1548-7091, 1548-7105, doi: <a href="https://doi.org/10.1038/nmeth.4468">10.1038/nmeth.4468</a>.</p>
+
+</body>
+</html>
