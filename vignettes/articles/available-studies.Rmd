@@ -7,12 +7,13 @@ library(curatedMetagenomicData)
 ```
 
 ```{r, echo = FALSE}
-sampleMetadata |>
+harmonized_meta |>
     dplyr::rename(Study = study_name) |>
     dplyr::rename(Curator = curator) |>
     dplyr::rename(Disease = disease) |>
     dplyr::rename(`Body Site` = body_site) |>
-    dplyr::rename(`Body Subsite` = body_subsite) |>
+    dplyr::rename(`Body Subsite` = body_site_details) |>
+    dplyr::rename(PMID = pmid) |>
     dplyr::select(Study, PMID, Curator, Disease, `Body Site`, `Body Subsite`) |>
     dplyr::mutate(PMID = stringr::str_replace(PMID, "unpublished", NA_character_)) |>
     dplyr::mutate(Curator = stringr::str_replace_all(Curator, ",", ";")) |>
