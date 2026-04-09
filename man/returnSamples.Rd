@@ -7,56 +7,67 @@
 returnSamples(sampleMetadata, dataType, counts = FALSE, rownames = "long")
 }
 \arguments{
-\item{sampleMetadata}{the \link{sampleMetadata} \code{data.frame} subset to include
-only desired samples and metadata}
+\item{sampleMetadata}{a \code{data.frame} filtered to the samples of interest,
+typically a subset of \link{harmonized_meta} or \link{all_meta}. Must contain
+\code{sample_id} and \code{study_name} columns.}
 
-\item{dataType}{the data type to be returned; one of the following:
-\itemize{
-\item \code{"gene_families"}
-\item \code{"marker_abundance"}
-\item \code{"marker_presence"}
-\item \code{"pathway_abundance"}
-\item \code{"pathway_coverage"}
-\item \code{"relative_abundance"}
-}}
+\item{dataType}{the data type to return; one of \code{"relative_abundance"},
+\code{"marker_abundance"}, \code{"marker_presence"}, \code{"marker_rel_ab_w_read_stats"},
+or \code{"viral_clusters"}. (HUMAnN3-derived data types -- \code{gene_families},
+\code{pathway_abundance}, \code{pathway_coverage} -- are not yet available in
+the cMD4 catalog and currently raise an error.)}
 
 \item{counts}{if \code{FALSE} (the default), relative abundance proportions are
-returned; if \code{TRUE}, relative abundance proportions are multiplied by read
-depth and rounded to the nearest integer prior to being returned}
+returned; if \code{TRUE}, relative abundance proportions are multiplied by
+read depth and rounded to the nearest integer. Only applies to
+\code{relative_abundance}; ignored for other data types.}
 
 \item{rownames}{the type of \code{rownames} to use for \code{relative_abundance}
-resources, one of: \code{"long"} (the default), \code{"short"} (species name), or
-\code{"NCBI"} (NCBI Taxonomy ID)}
+results, one of \code{"long"} (the default), \code{"short"} (species name), or
+\code{"NCBI"} (NCBI Taxonomy ID). Ignored for other data types.}
 }
 \value{
-when \code{dataType = "relative_abundance"}, a
-\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
-object is returned; otherwise, a
+A
 \link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
-object is returned
+(or
+\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
+for \code{relative_abundance}) whose \code{colData} is the filtered
+\code{sampleMetadata} (rows aligned to the assay columns) and whose assay
+is named after \code{dataType}.
 }
 \description{
-To return samples across studies, users will use \code{returnSamples()} along with
-the \link{sampleMetadata} \code{data.frame} subset to include only desired samples and
-metadata. The subset \link{sampleMetadata} \code{data.frame} will be used to get the
-desired resources, \link{mergeData} will be used to merge them, and the subset
-\link{sampleMetadata} \code{data.frame} will be used again to subset the
-\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment} or
+To return a cohort of samples selected across studies, users filter the
+\link{harmonized_meta} (or \link{all_meta}) \code{data.frame} to the samples and columns
+of interest and then pass the subset to \code{returnSamples()}. The function
+assembles a feature x sample matrix from the cMD4 backend, attaches the
+filtered metadata as \code{colData}, and returns a
+\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
+(or
 \link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
-object to include only desired samples and metadata.
+for \code{relative_abundance}).
 }
 \details{
-At present, curatedMetagenomicData resources exists only as entire studies
-which requires potentially getting many resources for a limited number of
-samples. Furthermore, because it is necessary to use \link{mergeData} internally,
-the same caveats detailed under \strong{Details} in \link{mergeData} apply here.
+Starting with curatedMetagenomicData 4.0 the data backend is a published
+DuckDB catalog of hive-partitioned parquet files produced by
+\code{curatedMetagenomicDataETL}. The catalog is queried on demand and the
+transition from the cMD3 ExperimentHub backend is intentionally
+transparent: the function signature, the \code{counts} and \code{rownames}
+arguments, and the return type are unchanged from cMD3.
 }
 \examples{
-sampleMetadata |>
-    dplyr::filter(age >= 18) |>
-    dplyr::filter(!base::is.na(alcohol)) |>
-    dplyr::filter(body_site == "stool") |>
-    dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
-    returnSamples("relative_abundance")
+\dontrun{
+  library(curatedMetagenomicData)
+  library(dplyr)
 
+  harmonized_meta |>
+      filter(age_years >= 18) |>
+      filter(!is.na(bmi)) |>
+      filter(body_site == "feces") |>
+      returnSamples("relative_abundance", rownames = "short")
+}
+
+}
+\seealso{
+\link{curatedMetagenomicData}, \link{mergeData}, \link{harmonized_meta},
+\link{all_meta}
 }

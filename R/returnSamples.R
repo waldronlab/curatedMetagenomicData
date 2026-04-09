@@ -1,120 +1,104 @@
 #' Return Samples Across Studies
 #'
-#' To return samples across studies, users will use `returnSamples()` along with
-#' the [sampleMetadata] `data.frame` subset to include only desired samples and
-#' metadata. The subset [sampleMetadata] `data.frame` will be used to get the
-#' desired resources, [mergeData] will be used to merge them, and the subset
-#' [sampleMetadata] `data.frame` will be used again to subset the
-#' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class] or
-#' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
-#' object to include only desired samples and metadata.
-#'
-#' At present, curatedMetagenomicData resources exists only as entire studies
-#' which requires potentially getting many resources for a limited number of
-#' samples. Furthermore, because it is necessary to use [mergeData] internally,
-#' the same caveats detailed under **Details** in [mergeData] apply here.
-#'
-#' @param sampleMetadata the [sampleMetadata] `data.frame` subset to include
-#' only desired samples and metadata
-#'
-#' @param dataType the data type to be returned; one of the following:
-#' * `"gene_families"`
-#' * `"marker_abundance"`
-#' * `"marker_presence"`
-#' * `"pathway_abundance"`
-#' * `"pathway_coverage"`
-#' * `"relative_abundance"`
-#'
-#' @param counts if `FALSE` (the default), relative abundance proportions are
-#' returned; if `TRUE`, relative abundance proportions are multiplied by read
-#' depth and rounded to the nearest integer prior to being returned
-#'
-#' @param rownames the type of `rownames` to use for `relative_abundance`
-#' resources, one of: `"long"` (the default), `"short"` (species name), or
-#' `"NCBI"` (NCBI Taxonomy ID)
-#'
-#' @return when `dataType = "relative_abundance"`, a
-#' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
-#' object is returned; otherwise, a
+#' To return a cohort of samples selected across studies, users filter the
+#' [harmonized_meta] (or [all_meta]) `data.frame` to the samples and columns
+#' of interest and then pass the subset to `returnSamples()`. The function
+#' assembles a feature x sample matrix from the cMD4 backend, attaches the
+#' filtered metadata as `colData`, and returns a
 #' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
-#' object is returned
+#' (or
+#' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
+#' for `relative_abundance`).
+#'
+#' Starting with curatedMetagenomicData 4.0 the data backend is a published
+#' DuckDB catalog of hive-partitioned parquet files produced by
+#' `curatedMetagenomicDataETL`. The catalog is queried on demand and the
+#' transition from the cMD3 ExperimentHub backend is intentionally
+#' transparent: the function signature, the `counts` and `rownames`
+#' arguments, and the return type are unchanged from cMD3.
+#'
+#' @param sampleMetadata a `data.frame` filtered to the samples of interest,
+#'   typically a subset of [harmonized_meta] or [all_meta]. Must contain
+#'   `sample_id` and `study_name` columns.
+#' @param dataType the data type to return; one of `"relative_abundance"`,
+#'   `"marker_abundance"`, `"marker_presence"`, `"marker_rel_ab_w_read_stats"`,
+#'   or `"viral_clusters"`. (HUMAnN3-derived data types -- `gene_families`,
+#'   `pathway_abundance`, `pathway_coverage` -- are not yet available in
+#'   the cMD4 catalog and currently raise an error.)
+#' @param counts if `FALSE` (the default), relative abundance proportions are
+#'   returned; if `TRUE`, relative abundance proportions are multiplied by
+#'   read depth and rounded to the nearest integer. Only applies to
+#'   `relative_abundance`; ignored for other data types.
+#' @param rownames the type of `rownames` to use for `relative_abundance`
+#'   results, one of `"long"` (the default), `"short"` (species name), or
+#'   `"NCBI"` (NCBI Taxonomy ID). Ignored for other data types.
+#'
+#' @return A
+#'   [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
+#'   (or
+#'   [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
+#'   for `relative_abundance`) whose `colData` is the filtered
+#'   `sampleMetadata` (rows aligned to the assay columns) and whose assay
+#'   is named after `dataType`.
 #' @export
 #'
-#' @examples
-#' sampleMetadata |>
-#'     dplyr::filter(age >= 18) |>
-#'     dplyr::filter(!base::is.na(alcohol)) |>
-#'     dplyr::filter(body_site == "stool") |>
-#'     dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
-#'     returnSamples("relative_abundance")
+#' @seealso [curatedMetagenomicData], [mergeData], [harmonized_meta],
+#'   [all_meta]
 #'
-#' @importFrom dplyr select
-#' @importFrom rlang .data
-#' @importFrom dplyr add_count
-#' @importFrom dplyr mutate
-#' @importFrom dplyr pull
-#' @importFrom stringr str_c
-#' @importFrom SummarizedExperiment colData<-
-#' @importFrom dplyr filter
-#' @importFrom tibble column_to_rownames
-#' @importFrom S4Vectors DataFrame
-returnSamples <- function(sampleMetadata, dataType, counts = FALSE, rownames = "long") {
-    if (is.null(sampleMetadata[["study_name"]])) {
-        stop("study_name must be present in sampleMetadata", call. = FALSE)
+#' @examples
+#' \dontrun{
+#'   library(curatedMetagenomicData)
+#'   library(dplyr)
+#'
+#'   harmonized_meta |>
+#'       filter(age_years >= 18) |>
+#'       filter(!is.na(bmi)) |>
+#'       filter(body_site == "feces") |>
+#'       returnSamples("relative_abundance", rownames = "short")
+#' }
+#'
+#' @importFrom DBI dbDisconnect
+returnSamples <- function(sampleMetadata, dataType,
+                          counts = FALSE, rownames = "long") {
+    if (!is.data.frame(sampleMetadata)) {
+        stop("'sampleMetadata' must be a data.frame.", call. = FALSE)
     }
-
     if (is.null(sampleMetadata[["sample_id"]])) {
-        stop("sample_id must be present in sampleMetadata", call. = FALSE)
+        stop("'sampleMetadata' must contain a 'sample_id' column.",
+             call. = FALSE)
+    }
+    if (is.null(sampleMetadata[["study_name"]])) {
+        stop("'sampleMetadata' must contain a 'study_name' column.",
+             call. = FALSE)
+    }
+    rownames <- match.arg(rownames, c("long", "short", "NCBI"))
+
+    sample_ids <- as.character(sampleMetadata[["sample_id"]])
+    if (anyDuplicated(sample_ids)) {
+        stop("'sampleMetadata$sample_id' must be unique; filter the table ",
+             "first.", call. = FALSE)
     }
 
-    sampleMetadata[["sample_id"]] <-
-        select(sampleMetadata, "sample_id", "study_name") |>
-        add_count(.data[["sample_id"]]) |>
-        mutate(sample_id = ifelse(.data[["n"]] > 1, paste(.data[["sample_id"]], .data[["study_name"]], sep = "."), .data[["sample_id"]])) |>
-        pull(.data[["sample_id"]])
+    coldata_df <- as.data.frame(sampleMetadata, stringsAsFactors = FALSE)
+    rownames(coldata_df) <- sample_ids
 
-    to_return <-
-        unique(sampleMetadata[["study_name"]]) |>
-        str_c(dataType, sep = ".") |>
-        str_c(collapse = "|") |>
-        curatedMetagenomicData(dryrun = FALSE, counts = counts, rownames = rownames) |>
-        mergeData()
+    con <- .cmd_connect()
+    on.exit(try(DBI::dbDisconnect(con, shutdown = TRUE), silent = TRUE),
+            add = TRUE)
 
-    keep_rows <-
-        rownames(to_return)
+    assay_mat <- .cmd_load_assay(
+        con          = con,
+        dataType     = dataType,
+        sample_names = sample_ids
+    )
 
-    col_names <-
-        colnames(to_return) |>
-        intersect(sampleMetadata[["sample_id"]])
-
-    if (length(sampleMetadata[["sample_id"]]) != length(col_names)) {
-        drop_text <-
-            as.character("dropping columns without assay matches:\n")
-
-        drop_cols <-
-            setdiff(sampleMetadata[["sample_id"]], col_names) |>
-            str_c(collapse = ", ")
-
-        if (dataType == "relative_abundance") {
-            message(drop_text, "  ", drop_cols, "\n")
-        } else {
-            message("\n", drop_text, "  ", drop_cols, "\n")
-        }
-
-        keep_cols <-
-            intersect(col_names, sampleMetadata[["sample_id"]])
-    } else {
-        keep_cols <-
-            sampleMetadata[["sample_id"]]
-    }
-
-    to_return <-
-        to_return[keep_rows, keep_cols]
-
-    colData(to_return) <-
-        filter(sampleMetadata, .data[["sample_id"]] %in% keep_cols) |>
-        column_to_rownames(var = "sample_id") |>
-        DataFrame()
-
-    to_return
+    .cmd_build_assay_object(
+        assay_mat      = assay_mat,
+        colData_df     = coldata_df,
+        dataType       = dataType,
+        counts         = counts,
+        rownames       = rownames,
+        resource_label = NULL,
+        message_first  = TRUE
+    )
 }

@@ -137,7 +137,7 @@ test_that('first list element row names all coercible to integer when `rownames 
     expect_silent(base::as.integer(resource_row_names))
 })
 
-test_that("first list element colData matches sampleMetadata when dataType is not relative_abundance", {
+test_that("first list element colData matches harmonized_meta when dataType is not relative_abundance", {
     returned_resources <-
         curatedMetagenomicData("HMP_2012.marker_presence", dryrun = FALSE, counts = FALSE)
 
@@ -159,7 +159,7 @@ test_that("first list element colData matches sampleMetadata when dataType is no
         base::unique()
 
     sample_metadata_data_frame <-
-        dplyr::filter(sampleMetadata, study_name == resource_study_name) |>
+        dplyr::filter(harmonized_meta, study_name == resource_study_name) |>
         dplyr::select(where(~ !base::all(base::is.na(.x))))
 
     sample_metadata_col_names <-
@@ -173,7 +173,7 @@ test_that("first list element colData matches sampleMetadata when dataType is no
     expect_equal(resource_col_data, sample_metadata_data_frame)
 })
 
-test_that("first list element colData matches sampleMetadata when dataType is relative_abundance", {
+test_that("first list element colData matches harmonized_meta when dataType is relative_abundance", {
     returned_resources <-
         curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE, counts = FALSE)
 
@@ -195,7 +195,7 @@ test_that("first list element colData matches sampleMetadata when dataType is re
         base::unique()
 
     sample_metadata_data_frame <-
-        dplyr::filter(sampleMetadata, study_name == resource_study_name) |>
+        dplyr::filter(harmonized_meta, study_name == resource_study_name) |>
         dplyr::select(where(~ !base::all(base::is.na(.x))))
 
     sample_metadata_col_names <-
