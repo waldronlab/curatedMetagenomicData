@@ -1,18 +1,21 @@
 Package: curatedMetagenomicData
 Title: Curated Metagenomic Data of the Human Microbiome
-Version: 3.19.1
-Date: 2026-01-20
+Version: 4.0.0
+Date: 2026-04-08
 Description:
     The curatedMetagenomicData package provides standardized, curated human
-    microbiome data for novel analyses. It includes gene families, marker
-    abundance, marker presence, pathway abundance, pathway coverage, and
-    relative abundance for samples collected from different body sites. The
-    bacterial, fungal, and archaeal taxonomic abundances for each sample were
-    calculated with MetaPhlAn3, and metabolic functional potential was
-    calculated with HUMAnN3. The manually curated sample metadata and
-    standardized metagenomic data are available as (Tree)SummarizedExperiment
-    objects.
-Authors@R:c(
+    microbiome data for novel analyses. Starting with version 4 ("cMD4"),
+    sample-level profiling data is served from a published DuckDB catalog of
+    hive-partitioned parquet files produced by the curatedMetagenomicDataETL
+    pipeline. Sample metadata is shipped directly with the package as the
+    harmonized_meta (schema-only) and all_meta (schema plus under-harmonization
+    columns) data.frame objects, derived from
+    curatedMetagenomicDataCuration::makeCombinedMetadata(); the runtime
+    package itself does not depend on curatedMetagenomicDataCuration. Users
+    filter harmonized_meta or all_meta to the samples of interest and call
+    returnSamples() to obtain a SummarizedExperiment assembled across studies
+    on demand.
+Authors@R: c(
     person("Lucas", "schiffer", , "schiffer.lucas@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-3628-0326")),
     person("Levi", "Waldron", role = "aut"),
@@ -40,10 +43,11 @@ Depends:
     SummarizedExperiment,
     TreeSummarizedExperiment
 Imports:
-    AnnotationHub,
-    ExperimentHub,
+    DBI,
     S4Vectors,
+    dbplyr,
     dplyr,
+    duckdb,
     magrittr,
     mia,
     purrr,
@@ -51,7 +55,8 @@ Imports:
     stringr,
     tibble,
     tidyr,
-    tidyselect
+    tidyselect,
+    utils
 Suggests:
     BiocStyle,
     DT,
@@ -60,7 +65,6 @@ Suggests:
     rmarkdown,
     scater,
     testthat,
-    utils,
     uwot,
     vegan,
     OmicsMLRepoR,
@@ -70,10 +74,9 @@ BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 VignetteBuilder: knitr
 biocViews:
-    ExperimentHub,
     Homo_sapiens_Data,
     MicrobiomeData,
     ReproducibleResearch

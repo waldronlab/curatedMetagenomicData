@@ -1,3 +1,45 @@
+# curatedMetagenomicData 4.0.0
+
+* **Backend swap, same API.** Sample-level profiling data is now served
+  from the published cMD4 DuckDB catalog of hive-partitioned parquet
+  files produced by `curatedMetagenomicDataETL`, replacing the cMD3
+  ExperimentHub backend. The cMD3 user-facing functions
+  (`curatedMetagenomicData()`, `returnSamples()`, `mergeData()`) keep
+  their signatures, including the `dryrun`, `counts`, and `rownames`
+  arguments and the `(Tree)SummarizedExperiment` return type, so
+  existing user code continues to work unchanged. The catalog URL
+  defaults to `https://minio.cancerdatasci.org/cmgd-export/cmgd.duckdb`
+  and can be overridden via
+  `options(curatedMetagenomicData.duckdb_url = ...)`.
+* **Harmonized sample metadata.** The legacy `sampleMetadata` object is
+  replaced by two `data.frame` exports built from
+  `curatedMetagenomicDataCuration::makeCombinedMetadata()`:
+  `harmonized_meta` (one row per sample, restricted to columns defined
+  in the cMD harmonization schema) and `all_meta` (the same rows plus
+  study-specific columns still under harmonization). Staged copies are
+  shipped at `inst/extdata/harmonized_meta.csv` and
+  `inst/extdata/all_meta.csv`; run `data-raw/harmonized_meta.R` to
+  rebuild `data/harmonized_meta.rda` and `data/all_meta.rda`. The
+  runtime package no longer depends on `curatedMetagenomicDataCuration`,
+  `ExperimentHub`, or `AnnotationHub`.
+* **Resource titles.** Resource titles continue to use the cMD3 dotted
+  format `<runDate>.<study_name>.<dataType>`. Because the cMD4 ETL
+  produces a single dated snapshot, `<runDate>` is a fixed cMD4 release
+  tag and the historical "select the most recent date" step is a
+  no-op. Override the tag with
+  `options(curatedMetagenomicData.run_date = ...)`.
+* **HUMAnN3 data types temporarily unavailable.** `gene_families`,
+  `pathway_abundance`, and `pathway_coverage` are not yet present in
+  the cMD4 catalog and currently raise an error if requested. They
+  will be reinstated when added to the ETL output.
+* **DuckDB plumbing is internal.** The DuckDB connection / query
+  helpers used to be tentatively exported as `cmdConnect()`,
+  `cmdDataUrl()`, `cmdDataTypes()`, `cmdListViews()`,
+  `cmdListStudies()`, and `cmdLoadAssay()`. They are now private
+  (`.cmd_*`) so the user-visible API remains the same as cMD3
+  (`curatedMetagenomicData()`, `returnSamples()`, `mergeData()`,
+  `harmonized_meta`, `all_meta`).
+
 # curatedMetagenomicData 3.16.1
 
 * Updates to `rownames = "short"` due to downstream changes in `mia`
