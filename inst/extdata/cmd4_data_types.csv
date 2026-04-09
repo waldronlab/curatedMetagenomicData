@@ -1,0 +1,6 @@
+data_type,view_name,feature_col,value_col,description
+relative_abundance,src_metaphlan_unknown_list,column0,column2,"MetaPhlAn clade relative abundance (percent) per sample; feature is clade_name (column0), value is relative_abundance (column2)."
+viral_clusters,src_metaphlan_viruses_list,column1,column4,"MetaPhlAn viral cluster profile per sample; feature is genome_name (column1), value is depth_of_coverage_mean (column4)."
+marker_abundance,src_marker_abundance,column0,column1,"Per-sample marker gene abundance; feature is marker_id (column0), value is abundance (column1)."
+marker_presence,src_marker_presence,column0,column1,"Per-sample marker gene presence/absence; feature is marker_id (column0), value is presence (column1)."
+marker_rel_ab_w_read_stats,src_marker_rel_ab_w_read_stats,column0,column2,"Marker relative abundance with read-level stats; feature is clade (column0), value is relative_abundance (column2)."
