@@ -112,8 +112,11 @@ test_that('first list element row names all coercible to integer when `rownames 
     returned_resources <-
         curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE, counts = TRUE, rownames = "NCBI")
 
-    # Skip test if no data was returned (can happen in CI environments with network restrictions)
-    skip_if(length(returned_resources) == 0, "No data returned from ExperimentHub - skipping test")
+    expect_gt(
+        length(returned_resources),
+        0L,
+        info = "Expected at least one resource from ExperimentHub for 'HMP_2012.relative_abundance'"
+    )
 
     # rowData includes only IDs
     all_boolean <- lapply(rowData(returned_resources[[1L]]), function(col) is.integer(col)) |> unlist() |> all()
@@ -129,18 +132,10 @@ test_that('first list element row names all coercible to integer when `rownames 
     rownames(returned_resources[[1]]) <- gsub(pattern, "", rownames(returned_resources[[1]]))
     # Moreover, if there were duplicated rownames, the function added a suffix
     # (species:001, species:001_2), which is why we remove it.
-    rownames(returned_resources[[1]]) <- gsub("_\\d+$", "", rownames(returned_resources[[1]])) |> as.integer()
-
-    resource_row_names <-
-        base::rownames(returned_resources[[1]])
-    ## hack to remove text from rownames
-    # Handle case where split might not have a second element
-    resource_row_names <-
-        vapply(strsplit(resource_row_names, ":|_"), function(x) {
-            if (length(x) >= 2L) x[[2L]] else x[[1L]]
-        }, character(1L))
-
-    expect_silent(base::as.integer(resource_row_names))
+    resource_row_names <- base::rownames(returned_resources[[1]])
+    resource_row_names <- gsub(pattern, "", resource_row_names)
+    resource_row_names <- gsub("_\\d+$", "", resource_row_names)
+    expect_false(anyNA(suppressWarnings(base::as.integer(resource_row_names))))
 })
 
 test_that("first list element colData matches sampleMetadata when dataType is not relative_abundance", {

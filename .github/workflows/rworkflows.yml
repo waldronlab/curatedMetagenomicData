@@ -39,8 +39,6 @@ jobs:
           rspm: ~
     steps:
     - uses: neurogenomics/rworkflows@master
-      env:
-        _R_CHECK_FORCE_SUGGESTS_: "FALSE"
       with:
         run_bioccheck: ${{ true }}
         run_rcmdcheck: ${{ true }}
