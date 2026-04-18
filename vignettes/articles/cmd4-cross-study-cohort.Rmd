@@ -104,7 +104,7 @@ cohort |> count(study_name, sort = TRUE) |> head(10)
 `cohort` is an ordinary `data.frame` - every harmonized metadata column is
 preserved and travels with the cohort downstream.
 
-# Step 3 - Return a SummarizedExperiment
+# Step 3 - Return a TreeSummarizedExperiment
 
 `returnSamples()` takes the filtered metadata and a `dataType`. The
 function signature is unchanged from cMD3:
