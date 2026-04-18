@@ -1,28 +1,28 @@
-test_that("study_name must be present in sampleMetadata", {
+test_that("study_name must be present in harmonized_meta", {
     sample_metadata <-
-        dplyr::filter(sampleMetadata, age >= 18) |>
-        dplyr::filter(!base::is.na(alcohol)) |>
-        dplyr::filter(body_site == "stool") |>
+        dplyr::filter(harmonized_meta, age_years >= 18) |>
+        dplyr::filter(!base::is.na(bmi)) |>
+        dplyr::filter(body_site == "feces") |>
         dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
         dplyr::select(-study_name)
 
     expect_error(returnSamples(sample_metadata, "relative_abundance"))
 })
 
-test_that("sample_id must be present in sampleMetadata", {
+test_that("sample_id must be present in harmonized_meta", {
     sample_metadata <-
-        dplyr::filter(sampleMetadata, age >= 18) |>
-        dplyr::filter(!base::is.na(alcohol)) |>
-        dplyr::filter(body_site == "stool") |>
+        dplyr::filter(harmonized_meta, age_years >= 18) |>
+        dplyr::filter(!base::is.na(bmi)) |>
+        dplyr::filter(body_site == "feces") |>
         dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
         dplyr::select(-sample_id)
 
     expect_error(returnSamples(sample_metadata, "relative_abundance"))
 })
 
-test_that("results have fewer samples than sampleMetadata when assay does not contain all samples", {
+test_that("results have fewer samples than harmonized_meta when assay does not contain all samples", {
     sample_metadata <-
-        dplyr::filter(sampleMetadata, study_name == "WindTT_2020") |>
+        dplyr::filter(harmonized_meta, study_name == "WindTT_2020") |>
         dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
         dplyr::mutate(sample_id = base::paste(sample_id, "FAKE", sep = "_"))
 
@@ -38,7 +38,7 @@ test_that("results have fewer samples than sampleMetadata when assay does not co
 
 test_that("message has an additional new line when dataType is not relative_abundance", {
     sample_metadata <-
-        dplyr::filter(sampleMetadata, study_name == "WindTT_2020") |>
+        dplyr::filter(harmonized_meta, study_name == "WindTT_2020") |>
         dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
         dplyr::mutate(sample_id = base::paste(sample_id, "FAKE", sep = "_"))
 
@@ -46,11 +46,11 @@ test_that("message has an additional new line when dataType is not relative_abun
     expect_message(returnSamples(sample_metadata, "pathway_coverage"), regexp = "^\ndropping columns without assay matches:\n")
 })
 
-test_that("sampleMetadata is equal to colData without sorting", {
+test_that("harmonized_meta is equal to colData without sorting", {
     sample_metadata <-
-        dplyr::filter(sampleMetadata, age >= 18) |>
-        dplyr::filter(!base::is.na(alcohol)) |>
-        dplyr::filter(body_site == "stool") |>
+        dplyr::filter(harmonized_meta, age_years >= 18) |>
+        dplyr::filter(!base::is.na(bmi)) |>
+        dplyr::filter(body_site == "feces") |>
         dplyr::select(where(~ !base::all(base::is.na(.x))))
 
     col_data <-
@@ -66,9 +66,9 @@ test_that("sampleMetadata is equal to colData without sorting", {
 
 test_that("return type is SummarizedExperiment when dataType is not relative_abundance", {
     return_object <-
-        dplyr::filter(sampleMetadata, age >= 18) |>
-        dplyr::filter(!base::is.na(alcohol)) |>
-        dplyr::filter(body_site == "stool") |>
+        dplyr::filter(harmonized_meta, age_years >= 18) |>
+        dplyr::filter(!base::is.na(bmi)) |>
+        dplyr::filter(body_site == "feces") |>
         dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
         returnSamples("marker_presence")
 
@@ -77,9 +77,9 @@ test_that("return type is SummarizedExperiment when dataType is not relative_abu
 
 test_that("return type is TreeSummarizedExperiment when dataType is relative_abundance", {
     return_object <-
-        dplyr::filter(sampleMetadata, age >= 18) |>
-        dplyr::filter(!base::is.na(alcohol)) |>
-        dplyr::filter(body_site == "stool") |>
+        dplyr::filter(harmonized_meta, age_years >= 18) |>
+        dplyr::filter(!base::is.na(bmi)) |>
+        dplyr::filter(body_site == "feces") |>
         dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
         returnSamples("relative_abundance")
 

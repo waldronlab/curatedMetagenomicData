@@ -1,0 +1,168 @@
+---
+title: "cMD4: assembling a cross-study cohort"
+author: "curatedMetagenomicData team"
+output:
+  BiocStyle::html_document:
+    toc: true
+    toc_depth: 2
+vignette: >
+  %\VignetteIndexEntry{cMD4: assembling a cross-study cohort}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(eval = TRUE,
+                      collapse = TRUE,
+                      comment = "#>")
+```
+
+# Overview
+
+Starting with `curatedMetagenomicData` 4.0 (cMD4), sample-level profiling
+data is served from a published DuckDB catalog of hive-partitioned parquet
+files produced by the
+[`curatedMetagenomicDataETL`](https://github.com/seandavi/curatedMetagenomicDataETL)
+pipeline. The backend swap is intentionally transparent: the cMD3
+user-facing functions (`curatedMetagenomicData()`, `returnSamples()`,
+`mergeData()`) keep their signatures, so existing user code continues
+to work unchanged.
+
+Sample metadata originates from
+[`curatedMetagenomicDataCuration`](https://github.com/waldronlab/curatedMetagenomicDataCuration)
+and is shipped directly with `curatedMetagenomicData` as two
+`data.frame` objects so that the runtime package does not depend on
+`curatedMetagenomicDataCuration`:
+
+- `harmonized_meta` -- one row per sample, restricted to columns defined
+  in the cMD harmonization schema. Use this for portable, schema-aligned
+  cohort assembly.
+- `all_meta` -- the same rows as `harmonized_meta` plus study-specific
+  columns that have not yet been folded into the schema. Use this when
+  inspecting studies that are still under harmonization.
+
+This article walks through the canonical cMD4 cross-study workflow:
+
+1. filter the harmonized metadata to the samples of interest across any
+   number of studies,
+2. call `returnSamples()` to return a `SummarizedExperiment` whose
+   `colData` is the filtered metadata and whose assay is pulled from the
+   cMD4 DuckDB catalog on demand.
+
+# Package imports
+
+```{r}
+library(curatedMetagenomicData)
+library(dplyr)
+library(SummarizedExperiment)
+```
+
+# Step 1 - Inspect the harmonized metadata
+
+`curatedMetagenomicData` ships two metadata tables built from staged
+copies of `curatedMetagenomicDataCuration::makeCombinedMetadata()`:
+
+```{r}
+## Schema-aligned harmonized release
+dim(harmonized_meta)
+
+## Harmonized release plus under-harmonization columns
+dim(all_meta)
+
+colnames(harmonized_meta)[1:12]
+
+# Studies currently carried in the harmonized release
+harmonized_meta |>
+    count(study_name, sort = TRUE) |>
+    head()
+```
+
+The harmonized table carries curated clinical, demographic, and
+sequencing fields, along with ontology term identifiers for values drawn
+from controlled vocabularies.
+
+# Step 2 - Define a cohort across studies
+
+Suppose we want adult, feces-derived, healthy samples from Western
+cohorts, pooled across every study that contributes such samples:
+
+```{r}
+cohort <- harmonized_meta |>
+    filter(
+        body_site == "feces",
+        !is.na(age_years),
+        age_years >= 18,
+        disease == "Healthy",
+        westernized == "Yes"
+    ) |>
+    distinct(sample_id, .keep_all = TRUE)
+
+nrow(cohort)
+cohort |> count(study_name, sort = TRUE) |> head(10)
+```
+
+`cohort` is an ordinary `data.frame` - every harmonized metadata column is
+preserved and travels with the cohort downstream.
+
+# Step 3 - Return a TreeSummarizedExperiment
+
+`returnSamples()` takes the filtered metadata and a `dataType`. The
+function signature is unchanged from cMD3:
+
+```{r}
+se <- returnSamples(cohort, dataType = "relative_abundance")
+se
+```
+
+The resulting `TreeSummarizedExperiment` has
+
+- `assay(se, "relative_abundance")` - a feature x sample numeric matrix
+  pivoted from the long-format parquet view in the cMD4 DuckDB catalog,
+- `colData(se)` - the filtered `harmonized_meta` rows, aligned to the
+  assay columns by `sample_id`,
+- column order matching the rows of the filtered `harmonized_meta` that
+  were actually found in the catalog (missing samples are dropped with
+  a message),
+- `rowTree`, `rowData`, and `counts`/`rownames` handling that match
+  cMD3 conventions for `relative_abundance`.
+
+# Step 4 - Use the cohort as usual
+
+Because the return value is a standard `(Tree)SummarizedExperiment`, the
+entire Bioconductor microbiome stack applies directly. For example:
+
+```{r}
+table(colData(se)$country)
+head(rowSums(assay(se)))
+```
+
+# Available data types
+
+The cMD4 catalog currently exposes the following data types:
+
+| dataType | source |
+|---|---|
+| `relative_abundance` | MetaPhlAn clade relative abundance |
+| `marker_abundance` | MetaPhlAn marker gene abundance |
+| `marker_presence` | MetaPhlAn marker gene presence/absence |
+| `marker_rel_ab_w_read_stats` | Marker relative abundance with read-level stats |
+| `viral_clusters` | MetaPhlAn viral cluster profiles |
+
+The HUMAnN3-derived data types served by cMD3
+(`gene_families`, `pathway_abundance`, `pathway_coverage`) are not yet
+available in the cMD4 catalog and will raise an error if requested.
+They will be reinstated when added to the ETL output.
+
+# Pointing at a different catalog
+
+The cMD4 backend reads its default URL from the
+`curatedMetagenomicData.duckdb_url` option. To point the entire package
+at a staging catalog or a local copy, set the option in `.Rprofile` or
+at the start of a session:
+
+```{r}
+options(curatedMetagenomicData.duckdb_url = "/path/to/cmgd.duckdb")
+```
+
+All subsequent calls to `curatedMetagenomicData()` and `returnSamples()`
+will use the new location.

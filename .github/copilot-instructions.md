@@ -16,11 +16,11 @@ The package exports three main functions (`R/`):
    - Returns TreeSummarizedExperiment for `relative_abundance`, SummarizedExperiment otherwise
    - Uses dplyr joins on assays/rowData; memory-intensive for many elements
 
-3. **`returnSamples(sampleMetadata, dataType, counts, rownames)`** - Convenience wrapper: filters samples using subset sampleMetadata, retrieves resources, merges, and subsets result
+3. **`returnSamples(sampleMetadata, dataType, counts, rownames)`** - Convenience wrapper: filters samples using a subset of `harmonized_meta` (or `all_meta`), retrieves resources, merges, and subsets result
 
 ### Data Structure
 - **Resource Titles** (`R/sysdata.rda`): Embedded vector of all available resource names matching pattern `YYYY-MM-DD.StudyName.dataType`
-- **Sample Metadata** (`data/sampleMetadata.rda`): User-facing DataFrame for browsing/filtering (derived from curatedMetagenomicDataCuration package)
+- **Sample Metadata** (`data/harmonized_meta.rda`, `data/all_meta.rda`): Two user-facing data.frames for browsing/filtering. `harmonized_meta` is the schema-only release; `all_meta` adds study-specific columns still under harmonization. Both are staged copies of `curatedMetagenomicDataCuration::makeCombinedMetadata()` so the runtime package has no dependency on `curatedMetagenomicDataCuration`.
 - **ExperimentHub**: Sparse matrices stored here; package queries via `ExperimentHub::ExperimentHub()` + pattern matching
 
 #### Sparse Matrix Storage Optimization
@@ -53,7 +53,7 @@ Key test files:
 ### Data Update Workflow
 When adding new studies (uncommon):
 1. **Generate metadata CSV**: [inst/scripts/make-metadata.R](inst/scripts/make-metadata.R) - Combines dated CSVs in `inst/extdata/` into single metadata.csv
-2. **Update sampleMetadata**: [data-raw/sampleMetadata.R](data-raw/sampleMetadata.R) - Pulls from curatedMetagenomicDataCuration package, validates against resourceTitles, saves as .rda
+2. **Update sample metadata**: [data-raw/harmonized_meta.R](data-raw/harmonized_meta.R) - Reads staged copies from `inst/extdata/{harmonized_meta,all_meta}.csv` (regenerated upstream from `curatedMetagenomicDataCuration::makeCombinedMetadata()`), saves as `data/harmonized_meta.rda` and `data/all_meta.rda`
 3. **Regenerate resource titles**: [data-raw/resourceTitles.R](data-raw/resourceTitles.R) - Extracts from metadata.csv, saved to sysdata.rda
 4. **Rebuild documentation**: Run `roxygen2::roxygenise()` to regenerate NAMESPACE & .Rd files
 
@@ -90,7 +90,7 @@ When adding new studies (uncommon):
 - Local caching handled by ExperimentHub (users rarely see this)
 
 ### Internal: curatedMetagenomicDataCuration Package
-- Required only for updating sampleMetadata (data-raw step)
+- Required only for refreshing the staged `inst/extdata/harmonized_meta.csv` and `inst/extdata/all_meta.csv` files (upstream of the data-raw step). The runtime package itself does not depend on it.
 - Contains curated source .tsv files; not needed for users
 
 ## Common Tasks
@@ -98,4 +98,4 @@ When adding new studies (uncommon):
 - **Add new test**: Place in [tests/testthat/](tests/testthat/) following `test_that("description", {expect_*(...)})`  pattern
 - **Update function docs**: Edit roxygen comments in [R/*.R](R/) files, run `roxygen2::roxygenise()`
 - **Fix typo in vignette**: Edit [vignettes/](vignettes/) .Rmd directly
-- **Debug data merging**: Check [R/mergeData.R](R/mergeData.R) ~line 50-100 for join logic; test with small subset of sampleMetadata
+- **Debug data merging**: Check [R/mergeData.R](R/mergeData.R) ~line 50-100 for join logic; test with small subset of `harmonized_meta`

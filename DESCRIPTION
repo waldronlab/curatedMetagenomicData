@@ -1,20 +1,37 @@
 Package: curatedMetagenomicData
 Title: Curated Metagenomic Data of the Human Microbiome
-Version: 3.19.1
-Date: 2026-01-20
+Version: 4.0.1
+Date: 2026-04-18
 Description:
-    The curatedMetagenomicData package provides standardized, curated human
-    microbiome data for novel analyses. It includes gene families, marker
-    abundance, marker presence, pathway abundance, pathway coverage, and
-    relative abundance for samples collected from different body sites. The
-    bacterial, fungal, and archaeal taxonomic abundances for each sample were
-    calculated with MetaPhlAn3, and metabolic functional potential was
-    calculated with HUMAnN3. The manually curated sample metadata and
-    standardized metagenomic data are available as (Tree)SummarizedExperiment
-    objects.
-Authors@R:c(
-    person("Lucas", "schiffer", , "schiffer.lucas@gmail.com", role = c("aut", "cre"),
-           comment = c(ORCID = "0000-0003-3628-0326")),
+    The curatedMetagenomicData package provides standardized, curated 
+    microbiome data for novel analyses. Starting with version 4 ("cMD4"),
+    sample-level profiling data is served from a published DuckDB catalog over
+    Hive-partitioned Parquet files produced by the curatedMetagenomicDataETL 
+    pipeline. 
+    
+    Hive-partition (organizing a dataset across many files by encoding
+    column values into the directory path itself, rather than storing those
+    values inside the files) lets the catalog skip files that don't match 
+    sample-side filters. Parquet's columnar layout reads only the requested 
+    features from the fiels that remain, and DuckDB coordinates these 
+    operations through a single queryable catalog. Together, these let users 
+    load only the samples and features of interest without downloading full 
+    study datasets.
+    
+    Sample metadata is shipped directly with the package as two data.frame 
+    objects; harmonized_meta (curated schema columns only) and all_meta 
+    (harmonized schema plus under-harmonization columns), both derived from
+    `curatedMetagenomicDataCuration::makeCombinedMetadata()`. The runtime
+    package itself does not depend on curatedMetagenomicDataCuration. Users
+    filter harmonized_meta or all_meta to samples of interest and call
+    returnSamples() to obtain a SummarizedExperiment assembled across studies
+    on demand.
+    
+Authors@R: c(
+    person("Lucas", "schiffer", , 
+            "schiffer.lucas@gmail.com", 
+            role = c("aut", "cre"),
+            comment = c(ORCID = "0000-0003-3628-0326")),
     person("Levi", "Waldron", role = "aut"),
     person("Edoardo", "Pasolli", role = "ctb"),
     person("Jennifer", "Wokaty", role = "ctb"),
@@ -29,7 +46,8 @@ Authors@R:c(
     person("Nicola", "Segata", role = "ctb"),
     person("Tuomas", "Borman", role = "ctb",
            comment = c(ORCID = "0000-0002-8563-8884")),
-    person("Sehyun", "Oh", role = "ctb"),
+    person("Sehyun", "Oh", role = "ctb",
+            comment = c(ORCID = "0000-0002-9490-3061")),
     person("Yoon-Ji", "Jung", role = "ctb"),
     person("NCI", role = "fnd",
            comment = c(GrantNo. = "R01CA230551"))
@@ -40,10 +58,11 @@ Depends:
     SummarizedExperiment,
     TreeSummarizedExperiment
 Imports:
-    AnnotationHub,
-    ExperimentHub,
+    DBI,
     S4Vectors,
+    dbplyr,
     dplyr,
+    duckdb,
     magrittr,
     mia,
     purrr,
@@ -51,7 +70,8 @@ Imports:
     stringr,
     tibble,
     tidyr,
-    tidyselect
+    tidyselect,
+    utils
 Suggests:
     BiocStyle,
     DT,
@@ -60,7 +80,6 @@ Suggests:
     rmarkdown,
     scater,
     testthat,
-    utils,
     uwot,
     vegan,
     OmicsMLRepoR,
@@ -70,10 +89,9 @@ BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 VignetteBuilder: knitr
 biocViews:
-    ExperimentHub,
     Homo_sapiens_Data,
     MicrobiomeData,
     ReproducibleResearch

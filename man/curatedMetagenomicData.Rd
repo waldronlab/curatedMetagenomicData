@@ -32,42 +32,48 @@ invisibly; if \code{dryrun = FALSE}, a \code{list} of resources is returned
 }
 \description{
 To access curated metagenomic data users will use \code{curatedMetagenomicData()}
-after "shopping" the \link{sampleMetadata} \code{data.frame} for resources they are
-interested in. The \code{dryrun} argument allows users to perfect a query prior to
-returning resources. When \code{dryrun = TRUE}, matched resources will be printed
-before they are returned invisibly as a character vector. When
+after "shopping" the \link{harmonized_meta} \code{data.frame} for resources they are
+interested in. The \code{dryrun} argument allows users to perfect a query prior
+to returning resources. When \code{dryrun = TRUE}, matched resources will be
+printed before they are returned invisibly as a character vector. When
 \code{dryrun = FALSE}, a \code{list} of resources containing
 \link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
 and/or
 \link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
-objects, each with corresponding sample metadata, is returned. Multiple
-resources can be returned simultaneously and if there is more than one date
-corresponding to a resource, the most recent one is selected automatically.
-Finally, if a \code{relative_abundance} resource is requested and \code{counts = TRUE},
-relative abundance proportions will be multiplied by read depth and rounded
-to the nearest integer.
+objects, each with the corresponding harmonized sample metadata, is
+returned. Multiple resources can be returned simultaneously. Finally, if a
+\code{relative_abundance} resource is requested and \code{counts = TRUE}, relative
+abundance proportions will be multiplied by read depth and rounded to the
+nearest integer.
 }
 \details{
-Above "resources" refers to resources that exists in Bioconductor's
-ExperimentHub service. In the context of curatedMetagenomicData, these are
-study-level (sparse) matrix objects used to create
-\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
-and/or
-\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
-objects that are ultimately returned as the \code{list} of resources. Only the
-\code{gene_families} \code{dataType} (see \link{returnSamples}) is stored as a sparse matrix
-in ExperimentHub – this has no practical consequences for users and is done
-to optimize storage. When searching for "resources", users will use the
-\code{study_name} value from the \link{sampleMetadata} \code{data.frame}.
+Starting with curatedMetagenomicData 4.0 ("cMD4"), resources are served
+from the published cMD4 DuckDB catalog of hive-partitioned parquet files
+produced by \code{curatedMetagenomicDataETL} rather than from
+Bioconductor's ExperimentHub. The function signature, the \code{dryrun},
+\code{counts}, and \code{rownames} arguments, and the return type are unchanged
+from cMD3 so existing user code continues to work; the catalog URL can
+be overridden via \code{options(curatedMetagenomicData.duckdb_url = ...)}.
+
+Resource titles use the cMD3 dotted format
+\verb{<runDate>.<study_name>.<dataType>}, where \verb{<runDate>} is a fixed cMD4
+release tag (the cMD4 ETL produces a single dated snapshot, so the
+historical "select the most recent date" step is a no-op). The
+HUMAnN3-derived data types (\code{gene_families}, \code{pathway_abundance},
+\code{pathway_coverage}) are not yet available in the cMD4 catalog and
+currently raise an error if requested.
 }
 \examples{
 curatedMetagenomicData("AsnicarF_20.+")
 
-curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
+\dontrun{
+  curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
 
-curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
+  curatedMetagenomicData("AsnicarF_20.+.relative_abundance",
+                         dryrun = FALSE, counts = TRUE)
+}
 
 }
 \seealso{
-\link{mergeData}, \link{returnSamples}, \link{sampleMetadata}
+\link{mergeData}, \link{returnSamples}, \link{harmonized_meta}, \link{all_meta}
 }
