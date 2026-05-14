@@ -1,0 +1,97 @@
+# --------------------------------------------
+# CITATION file created with {cffr} R package
+# See also: https://docs.ropensci.org/cffr/
+# --------------------------------------------
+ 
+cff-version: 1.2.0
+message: 'To cite package "curatedMetagenomicData" in publications use:'
+type: software
+license: Artistic-2.0
+title: 'curatedMetagenomicData: Curated Metagenomic Data of the Human Microbiome'
+version: 3.21.1
+doi: 10.1038/nmeth.4468
+abstract: The curatedMetagenomicData package provides standardized, curated human
+  microbiome data for novel analyses. It includes gene families, marker abundance,
+  marker presence, pathway abundance, pathway coverage, and relative abundance for
+  samples collected from different body sites. The bacterial, fungal, and archaeal
+  taxonomic abundances for each sample were calculated with MetaPhlAn3, and metabolic
+  functional potential was calculated with HUMAnN3. The manually curated sample metadata
+  and standardized metagenomic data are available as (Tree)SummarizedExperiment objects.
+authors:
+- family-names: schiffer
+  given-names: Lucas
+  email: schiffer.lucas@gmail.com
+  orcid: https://orcid.org/0000-0003-3628-0326
+- family-names: Waldron
+  given-names: Levi
+preferred-citation:
+  type: article
+  title: Accessible, curated metagenomic data through ExperimentHub
+  authors:
+  - family-names: Pasolli
+    given-names: Edoardo
+  - family-names: Schiffer
+    given-names: Lucas
+    email: schiffer.lucas@gmail.com
+    orcid: https://orcid.org/0000-0003-3628-0326
+  - family-names: Manghi
+    given-names: Paolo
+  - family-names: Renson
+    given-names: Audrey
+  - family-names: Obenchain
+    given-names: Valerie
+  - family-names: Truong
+    given-names: Duy Tin
+  - family-names: Beghini
+    given-names: Francesco
+  - family-names: Malik
+    given-names: Faizan
+  - family-names: Ramos
+    given-names: Marcel
+  - family-names: Dowd
+    given-names: Jennifer B
+  - family-names: Huttenhower
+    given-names: Curtis
+  - family-names: Morgan
+    given-names: Martin
+  - family-names: Segata
+    given-names: Nicola
+  - family-names: Waldron
+    given-names: Levi
+  journal: Nat. Methods
+  volume: '14'
+  issue: '11'
+  month: '10'
+  year: '2017'
+  issn: 1548-7091, 1548-7105
+  doi: 10.1038/nmeth.4468
+  start: '1023'
+  end: '1024'
+repository: https://bioconductor.org/
+repository-code: https://github.com/waldronlab/curatedMetagenomicData
+url: https://github.com/waldronlab/curatedMetagenomicData
+date-released: '2025-09-26'
+contact:
+- family-names: schiffer
+  given-names: Lucas
+  email: schiffer.lucas@gmail.com
+  orcid: https://orcid.org/0000-0003-3628-0326
+keywords:
+- bioconductor
+- bioconductor-package
+- experimenthub
+- r01ca230551
+references:
+- type: manual
+  title: 'curatedMetagenomicData: Curated Metagenomic Data of the Human Microbiome'
+  authors:
+  - family-names: schiffer
+    given-names: Lucas
+    email: schiffer.lucas@gmail.com
+    orcid: https://orcid.org/0000-0003-3628-0326
+  - family-names: Waldron
+    given-names: Levi
+  year: '2025'
+  notes: R package version 3.21.1
+  url: https://github.com/waldronlab/curatedMetagenomicData
+
