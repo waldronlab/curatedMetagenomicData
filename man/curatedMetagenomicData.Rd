@@ -13,7 +13,8 @@ curatedMetagenomicData(
 }
 \arguments{
 \item{pattern}{regular expression pattern to look for in the titles of
-resources available in curatedMetagenomicData; \code{""} will return all resources}
+resources available in curatedMetagenomicData; \code{""} will return all
+resources}
 
 \item{dryrun}{if \code{TRUE} (the default), a character vector of resource names
 is returned invisibly; if \code{FALSE}, a \code{list} of resources is returned}
@@ -55,13 +56,12 @@ Bioconductor's ExperimentHub. The function signature, the \code{dryrun},
 from cMD3 so existing user code continues to work; the catalog URL can
 be overridden via \code{options(curatedMetagenomicData.duckdb_url = ...)}.
 
-Resource titles use the cMD3 dotted format
-\verb{<runDate>.<study_name>.<dataType>}, where \verb{<runDate>} is a fixed cMD4
-release tag (the cMD4 ETL produces a single dated snapshot, so the
-historical "select the most recent date" step is a no-op). The
-HUMAnN3-derived data types (\code{gene_families}, \code{pathway_abundance},
-\code{pathway_coverage}) are not yet available in the cMD4 catalog and
-currently raise an error if requested.
+Resource titles use the cMD3 dotted format \verb{<runDate>.<study_name>.<dataType>},
+where \verb{<runDate>} is a fixed cMD4 release tag (the cMD4 ETL produces a
+single dated snapshot, so the historical "select the most recent date"
+step is a no-op). The HUMAnN3-derived data types (\code{gene_families},
+\code{pathway_abundance}, \code{pathway_coverage}) are not yet available in the
+cMD4 catalog and currently raise an error if requested.
 }
 \examples{
 curatedMetagenomicData("AsnicarF_20.+")

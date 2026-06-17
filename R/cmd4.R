@@ -49,52 +49,15 @@
 
 ## ---- DuckDB connection ----------------------------------------------------
 
-#' @importFrom DBI dbConnect dbExecute
 .cmd_connect <- function(db_url = .cmd_data_url(), alias = "cmgd") {
-    if (!requireNamespace("duckdb", quietly = TRUE)) {
-        stop("Package 'duckdb' is required for cMD4 access.", call. = FALSE)
-    }
-    con <- DBI::dbConnect(duckdb::duckdb(), dbdir = ":memory:")
-    DBI::dbExecute(con, "INSTALL httpfs; LOAD httpfs;")
-
-    ## When the catalog is served over HTTP(S), its `src_*` views reference
-    ## parquet partitions via `s3://` URIs against the same host. Configure
-    ## DuckDB's httpfs S3 client so those references resolve back to the
-    ## catalog's host instead of AWS.
-    scheme_match <- regmatches(
-        db_url,
-        regexpr("^(https?)://([^/]+)", db_url, ignore.case = TRUE)
-    )
-    if (length(scheme_match) == 1L) {
-        parts <- regmatches(
-            scheme_match,
-            regexec("^(https?)://([^/]+)", scheme_match, ignore.case = TRUE)
-        )[[1L]]
-        scheme   <- tolower(parts[2L])
-        endpoint <- parts[3L]
-        DBI::dbExecute(con, sprintf("SET s3_endpoint='%s';", endpoint))
-        DBI::dbExecute(con, "SET s3_url_style='path';")
-        DBI::dbExecute(
-            con,
-            sprintf(
-                "SET s3_use_ssl=%s;",
-                if (scheme == "https") "true" else "false"
-            )
-        )
-    }
-
-    DBI::dbExecute(
-        con,
-        sprintf("ATTACH '%s' AS %s (READ_ONLY);", db_url, alias)
-    )
-    DBI::dbExecute(con, sprintf("USE %s;", alias))
-    con
+    src <- curatedCore::duckdbCatalogSource(db_url, alias = alias)
+    curatedCore::connectSource(src)
 }
 
 ## ---- assay retrieval ------------------------------------------------------
 
 #' @importFrom DBI dbListFields
-#' @importFrom dplyr tbl filter select collect group_by summarise ungroup
+#' @importFrom dplyr select group_by summarise
 #' @importFrom tidyr pivot_wider
 #' @importFrom rlang sym .data :=
 .cmd_load_assay <- function(con, dataType, sample_names) {
@@ -103,6 +66,7 @@
     feature_col <- spec$feature_col
     value_col   <- spec$value_col
 
+    ## Validate columns exist
     view_fields  <- DBI::dbListFields(con, view_name)
     missing_cols <- setdiff(
         c("sample_name", feature_col, value_col),
@@ -118,17 +82,18 @@
     }
 
     sample_names <- unique(as.character(sample_names))
-    feature_sym  <- rlang::sym(feature_col)
-    value_sym    <- rlang::sym(value_col)
 
-    long <- dplyr::tbl(con, view_name) |>
-        dplyr::filter(.data$sample_name %in% !!sample_names) |>
-        dplyr::select(
-            "sample_name",
-            feature = !!feature_sym,
-            value   = !!value_sym
-        ) |>
-        dplyr::collect()
+    ## Use curatedCore for lazy filtering and collection
+    lazy <- curatedCore::filterView(
+        con, view_name,
+        filter_values = list(sample_name = sample_names)
+    )
+    long <- dplyr::select(
+        curatedCore::collectView(lazy, notify = FALSE),
+        "sample_name",
+        feature = !!rlang::sym(feature_col),
+        value   = !!rlang::sym(value_col)
+    )
 
     if (nrow(long) == 0L) {
         return(matrix(
