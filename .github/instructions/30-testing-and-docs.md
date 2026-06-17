@@ -9,7 +9,7 @@ R CMD build .
 R CMD check curatedMetagenomicData_*.tar.gz
 
 # Documentation
-R -e "roxygen2::roxygenize()"
+R -e "roxygen2::roxygenise()"
 
 # Tests
 R -e "devtools::test()"
@@ -27,7 +27,7 @@ Tests are organized under tests/testthat/ with standard testthat conventions.
 
 ### Test Data
 
-- **Location**: No inst/extdata/ found, uses sysdata.rda and remote DuckDB resources.
+- **Location**: Uses `inst/extdata/` (e.g., `metadata.csv`, `cmd4_data_types.csv`) plus remote DuckDB catalog resources.
 - **File types**: [To be documented]
 - **Purpose**: [To be documented]
 
