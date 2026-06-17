@@ -1,8 +1,5 @@
 # Development Patterns
 
-For complete Bioconductor and waldronlab standards, see:
-- [Core Bioconductor standards](../../templates/bioconductor-development.md)
-- [Waldronlab conventions](../../templates/waldronlab-standards.md)
 
 ## Package-Specific Patterns
 

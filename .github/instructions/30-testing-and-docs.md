@@ -1,8 +1,5 @@
 # Testing and Documentation
 
-For complete standards, see:
-- [Core Bioconductor standards](../../templates/bioconductor-development.md)
-- [Waldronlab conventions](../../templates/waldronlab-standards.md)
 
 ## Development and Checking Commands
 
