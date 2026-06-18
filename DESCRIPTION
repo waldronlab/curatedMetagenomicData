@@ -1,7 +1,7 @@
 Package: curatedMetagenomicData
 Title: Curated Metagenomic Data of the Human Microbiome
-Version: 3.19.1
-Date: 2026-01-20
+Version: 3.21.1
+Date: 2025-9-26
 Description:
     The curatedMetagenomicData package provides standardized, curated human
     microbiome data for novel analyses. It includes gene families, marker
