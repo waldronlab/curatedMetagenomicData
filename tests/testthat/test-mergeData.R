@@ -5,6 +5,15 @@ test_that("merge result is the equal to the first element of mergeList when its 
     expect_equal(mergeData(merge_list), merge_list[[1]])
 })
 
+test_that("merge result is the input itself when mergeList is a SummarizedExperiment", {
+    merge_list <-
+        curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, counts = FALSE)
+
+    se <- merge_list[[1]]
+    expect_equal(mergeData(se), se)
+})
+
+
 test_that("cannot merge list elements when dataType is different", {
     merge_list <-
         curatedMetagenomicData("HMP_2012.marker_", dryrun = FALSE, counts = FALSE)
