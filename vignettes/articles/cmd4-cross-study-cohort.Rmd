@@ -136,6 +136,71 @@ table(colData(se)$country)
 head(rowSums(assay(se)))
 ```
 
+# Extracting a single feature across all samples
+
+The workflow above follows a **sample-first** access pattern: filter
+metadata to a cohort, then pull all features for those samples via
+`returnSamples()`.  The complementary **feature-first** pattern extracts
+one feature across every sample in the catalog — useful for pan-cohort
+prevalence screens, single-species abundance comparisons, or building
+a metadata-annotated vector of one taxon's relative abundance.
+
+Feature-sorted Parquet files make this efficient.  When the Parquet file
+is sorted by the feature (clade) column, DuckDB can use row-group
+min/max statistics to skip all slices that do not contain the target
+feature, avoiding a full scan of the remote file.  The cMD4 catalog
+publishes a feature-sorted view alongside the default (sample-sorted)
+view for `relative_abundance`.
+
+```{r, eval = FALSE}
+con <- curatedMetagenomicData:::.cmd_connect()
+
+## Target: Faecalibacterium prausnitzii relative abundance in every sample.
+## The feature-sorted view (suffix "_clade") lets DuckDB jump straight to
+## the row groups that contain this clade.
+target <- paste0(
+    "k__Bacteria|p__Firmicutes|c__Clostridia|o__Eubacteriales|",
+    "f__Oscillospiraceae|g__Faecalibacterium|",
+    "s__Faecalibacterium_prausnitzii"
+)
+
+fp_df <- dplyr::tbl(con, "src_metaphlan_unknown_list_clade") |>
+    dplyr::filter(column0 == target) |>
+    dplyr::select(sample_name, rel_ab = column2) |>
+    dplyr::collect() |>
+    dplyr::mutate(rel_ab = as.numeric(rel_ab))
+
+nrow(fp_df)
+summary(fp_df$rel_ab)
+```
+
+Because the result is a plain `data.frame` (one row per sample), joining
+with `harmonized_meta` is straightforward:
+
+```{r, eval = FALSE}
+## Annotate with harmonized metadata
+fp_annotated <- fp_df |>
+    dplyr::inner_join(harmonized_meta, by = c("sample_name" = "sample_id"))
+
+## Median relative abundance by disease status
+fp_annotated |>
+    dplyr::group_by(disease) |>
+    dplyr::summarise(
+        n       = dplyr::n(),
+        median  = median(rel_ab, na.rm = TRUE),
+        .groups = "drop"
+    ) |>
+    dplyr::arrange(dplyr::desc(n)) |>
+    head(10)
+
+DBI::dbDisconnect(con, shutdown = TRUE)
+```
+
+Using the default sample-sorted view (`src_metaphlan_unknown_list`)
+for the same query would still return correct results, but DuckDB
+would need to scan every row group in the remote file to find matching
+rows — substantially slower for a single-feature lookup.
+
 # Available data types
 
 The cMD4 catalog currently exposes the following data types:

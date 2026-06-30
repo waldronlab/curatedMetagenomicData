@@ -62,7 +62,6 @@
 #' }
 #'
 #' @importFrom stringr str_subset str_c
-#' @importFrom DBI dbDisconnect
 #' @importFrom dplyr filter
 #' @importFrom rlang .data
 curatedMetagenomicData <- function(pattern, dryrun = TRUE,
@@ -91,8 +90,7 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE,
     names(resource_list) <- matched
 
     con <- .cmd_connect()
-    on.exit(try(DBI::dbDisconnect(con, shutdown = TRUE), silent = TRUE),
-            add = TRUE)
+    on.exit(curatedCore::closeSource(con), add = TRUE)
 
     for (i in seq_len(nrow(parts))) {
         study   <- parts[[i, "study_name"]]
@@ -115,16 +113,10 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE,
         meta_i <- as.data.frame(meta_i, stringsAsFactors = FALSE)
         rownames(meta_i) <- sample_ids
 
-        assay_mat <- .cmd_load_assay(
-            con          = con,
-            dataType     = dtype,
-            sample_names = sample_ids
-        )
-
-        resource_list[[i]] <- .cmd_build_assay_object(
-            assay_mat      = assay_mat,
-            colData_df     = meta_i,
+        resource_list[[i]] <- .cmd_assemble(
+            con            = con,
             dataType       = dtype,
+            colData_df     = meta_i,
             counts         = counts,
             rownames       = rownames,
             resource_label = label,

@@ -175,7 +175,7 @@ curatedMetagenomicData("AsnicarF_20.+.marker_abundance", dryrun = FALSE) |>
 The `mergeData()` function works for every `dataType` and will always return the appropriate data structure (a single `SummarizedExperiment` or `TreeSummarizedExperiment` object).
 
 ```{r, collapse = TRUE, message = FALSE}
-curatedMetagenomicData("AsnicarF_20.+.pathway_abundance", dryrun = FALSE) |>
+curatedMetagenomicData("AsnicarF_20.+.marker_presence", dryrun = FALSE) |>
     mergeData()
 ```
 
@@ -265,6 +265,9 @@ smoke_tse <- smoke %>% returnSamples("relative_abundance", rownames = "short")
 
 ## Removing samples with NA values for smoker_bin
 smoke_tse <- smoke_tse[,!is.na(smoke_tse$smoker_bin)]
+
+## Removing samples with zero total relative abundance (required for Bray-Curtis)
+smoke_tse <- smoke_tse[, colSums(assay(smoke_tse, "relative_abundance"), na.rm = TRUE) > 0]
 ```
 
 ### Agglomerate By Taxonomic Rank

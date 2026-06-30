@@ -57,7 +57,6 @@
 #'       returnSamples("relative_abundance", rownames = "short")
 #' }
 #'
-#' @importFrom DBI dbDisconnect
 returnSamples <- function(sampleMetadata, dataType,
                           counts = FALSE, rownames = "long") {
     if (!is.data.frame(sampleMetadata)) {
@@ -83,19 +82,12 @@ returnSamples <- function(sampleMetadata, dataType,
     rownames(coldata_df) <- sample_ids
 
     con <- .cmd_connect()
-    on.exit(try(DBI::dbDisconnect(con, shutdown = TRUE), silent = TRUE),
-            add = TRUE)
+    on.exit(curatedCore::closeSource(con), add = TRUE)
 
-    assay_mat <- .cmd_load_assay(
-        con          = con,
-        dataType     = dataType,
-        sample_names = sample_ids
-    )
-
-    .cmd_build_assay_object(
-        assay_mat      = assay_mat,
-        colData_df     = coldata_df,
+    .cmd_assemble(
+        con            = con,
         dataType       = dataType,
+        colData_df     = coldata_df,
         counts         = counts,
         rownames       = rownames,
         resource_label = NULL,

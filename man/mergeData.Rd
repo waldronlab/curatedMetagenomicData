@@ -35,6 +35,11 @@ Internally, \code{mergeData()} must full join \code{assays} and \code{rowData} s
 object (\code{colData} is merged slightly more efficiently by row binding). While
 \code{dplyr} methods are used for maximum efficiency, users should be aware that
 memory requirements can be large when merging many \code{list} elements.
+
+Starting with curatedMetagenomicData 4.0.1 the actual merge is delegated to
+\code{\link[curatedCore:mergeExperiments]{curatedCore::mergeExperiments()}}; \code{mergeData()} is a thin adapter that
+first disambiguates duplicate sample (column) names across \code{list} elements
+by appending the \code{study_name}, preserving the historical cMD3 behavior.
 }
 \examples{
 curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) |>

@@ -7,8 +7,8 @@ Description:
     microbiome data for novel analyses. Starting with version 4 ("cMD4"),
     sample-level profiling data is served from a published DuckDB catalog over
     Hive-partitioned Parquet files produced by the curatedMetagenomicDataETL 
-    pipeline. 
-    
+    pipeline.
+    .
     Hive-partition (organizing a dataset across many files by encoding
     column values into the directory path itself, rather than storing those
     values inside the files) lets the catalog skip files that don't match 
@@ -17,8 +17,8 @@ Description:
     operations through a single queryable catalog. Together, these let users 
     load only the samples and features of interest without downloading full 
     study datasets.
-    
-    Sample metadata is shipped directly with the package as two data.frame 
+    .
+    Sample metadata is shipped directly with the package as two data.frame
     objects; harmonized_meta (curated schema columns only) and all_meta 
     (harmonized schema plus under-harmonization columns), both derived from
     `curatedMetagenomicDataCuration::makeCombinedMetadata()`. The runtime
@@ -26,7 +26,6 @@ Description:
     filter harmonized_meta or all_meta to samples of interest and call
     returnSamples() to obtain a SummarizedExperiment assembled across studies
     on demand.
-    
 Authors@R: c(
     person("Lucas", "schiffer", , 
             "schiffer.lucas@gmail.com", 
@@ -58,19 +57,14 @@ Depends:
     SummarizedExperiment,
     TreeSummarizedExperiment
 Imports:
-    DBI,
+    curatedCore,
     S4Vectors,
-    dbplyr,
     dplyr,
-    duckdb,
     magrittr,
     mia,
     purrr,
     rlang,
     stringr,
-    tibble,
-    tidyr,
-    tidyselect,
     utils
 Suggests:
     BiocStyle,
