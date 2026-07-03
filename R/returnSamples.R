@@ -82,7 +82,7 @@ returnSamples <- function(sampleMetadata, dataType,
     rownames(coldata_df) <- sample_ids
 
     con <- .cmd_connect()
-    on.exit(curatedCore::closeSource(con), add = TRUE)
+    on.exit(.cmd_disconnect(con), add = TRUE)
 
     assay_mat <- .cmd_load_assay(
         con          = con,

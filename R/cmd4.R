@@ -48,11 +48,8 @@
 }
 
 ## ---- DuckDB connection ----------------------------------------------------
-
-.cmd_connect <- function(db_url = .cmd_data_url(), alias = "cmgd") {
-    src <- curatedCore::duckdbCatalogSource(db_url, alias = alias)
-    curatedCore::connectSource(src)
-}
+## .cmd_connect() and .cmd_disconnect() live in R/duckdb-connection.R
+## .filter_view() and .collect_view() live in R/duckdb-query.R
 
 ## ---- assay retrieval ------------------------------------------------------
 
@@ -83,13 +80,13 @@
 
     sample_names <- unique(as.character(sample_names))
 
-    ## Use curatedCore for lazy filtering and collection
-    lazy <- curatedCore::filterView(
+    ## Lazy-filter the view and collect results
+    lazy <- .filter_view(
         con, view_name,
         filter_values = list(sample_name = sample_names)
     )
     long <- dplyr::select(
-        curatedCore::collectView(lazy, notify = FALSE),
+        .collect_view(lazy, notify = FALSE),
         "sample_name",
         feature = !!rlang::sym(feature_col),
         value   = !!rlang::sym(value_col)
