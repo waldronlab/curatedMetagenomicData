@@ -18,7 +18,7 @@ No new exported S4 classes; returns imported (Tree)SummarizedExperiment.
 ## Key Dependencies
 
 - SummarizedExperiment, TreeSummarizedExperiment
-- curatedCore, DBI, duckdb, dplyr, tidyr, purrr
+- DBI, duckdb, dplyr, tidyr, purrr
 - mia
 
 ## Code Style Notes

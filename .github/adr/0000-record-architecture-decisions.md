@@ -17,9 +17,9 @@ reasoning.
 ## Decision
 
 We will record architecturally significant decisions as **Architecture Decision
-Records (ADRs)** stored in `docs/adr/`, using a lightweight Nygard-style format
+Records (ADRs)** stored in `.github/adr/`, using a lightweight Nygard-style format
 (context / decision / alternatives / consequences). The process and index live
-in `docs/adr/README.md`. ADRs are immutable once accepted; a changed decision is
+in `.github/adr/README.md`. ADRs are immutable once accepted; a changed decision is
 captured by a new ADR that supersedes the old one.
 
 ## Alternatives considered
@@ -44,4 +44,4 @@ captured by a new ADR that supersedes the old one.
 ## References
 
 - Michael Nygard, "Documenting Architecture Decisions" (2011).
-- `docs/adr/README.md` for the process and index.
+- `.github/adr/README.md` for the process and index.

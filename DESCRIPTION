@@ -57,13 +57,13 @@ Depends:
     SummarizedExperiment,
     TreeSummarizedExperiment
 Imports:
-    curatedCore,
     DBI,
     S4Vectors,
     dbplyr,
     dplyr,
     duckdb,
     magrittr,
+    methods,
     mia,
     purrr,
     rlang,
@@ -72,8 +72,6 @@ Imports:
     tidyr,
     tidyselect,
     utils
-Remotes:
-    waldronlab/curatedCore
 Suggests:
     BiocStyle,
     DT,

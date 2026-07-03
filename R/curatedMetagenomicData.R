@@ -90,7 +90,7 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE,
     names(resource_list) <- matched
 
     con <- .cmd_connect()
-    on.exit(curatedCore::closeSource(con), add = TRUE)
+    on.exit(.cmd_disconnect(con), add = TRUE)
 
     for (i in seq_len(nrow(parts))) {
         study   <- parts[[i, "study_name"]]
