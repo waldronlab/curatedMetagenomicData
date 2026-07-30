@@ -160,11 +160,11 @@
 * curatedMetagenomicData is currently on a diet and being refactored:
     - The docs directory used to build the github pages site has been moved to a
       branch, making the R package smaller
-    - All code used for processing of raw data in R is moving to a seperate
+    - All code used for processing of raw data in R is moving to a separate
       GitHub repository curatedMetagenomicDataPipeline
     - Curation takes place in the curatedMetagenomicDataCuration repository and
       curation is automatically checked; contributions are welcomed
-    - All code used for processing of raw data beyond R is moving to a seperate
+    - All code used for processing of raw data beyond R is moving to a separate
       GitHub repository curatedMetagenomicDataHighLoad
 * All data has been reprocessed to ensure updated and correct curation
 
