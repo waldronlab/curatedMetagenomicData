@@ -5,12 +5,13 @@ test_that("merge result is the equal to the first element of mergeList when its 
     expect_equal(mergeData(merge_list), merge_list[[1]])
 })
 
-test_that("merge result is the input itself when mergeList is a SummarizedExperiment", {
+test_that("merge result is the input itself when mergeList is a TreeSummarizedExperiment", {
     merge_list <-
         curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, counts = FALSE)
 
-    se <- merge_list[[1]]
-    expect_equal(mergeData(se), se)
+    tse <- merge_list[[1]]
+    expect_s4_class(tse, "TreeSummarizedExperiment")
+    expect_identical(mergeData(tse), tse)
 })
 
 
