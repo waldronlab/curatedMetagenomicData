@@ -16,10 +16,10 @@ Raw sequencing reads are processed using our standardized [curatedMetagenomicsNe
 2. **Preprocessing (Kneaddata):** Reads undergo quality trimming and adapter removal using Trimmomatic (e.g., sliding window quality filtering). Host contamination (e.g., human or mouse) is then removed by aligning reads against reference genomes using Bowtie2.
 3. **Taxonomic Profiling:** 
    - **MetaPhlAn:** Host-decontaminated reads are profiled using [MetaPhlAn](https://github.com/biobakery/MetaPhlAn) (version 4+) to generate marker presence, marker abundance, and relative abundance profiles. The pipeline also extracts strain-level markers using StrainPhlAn's `sample2markers.py`.
-   - **Kraken2 / Bracken:** A complementary read-based whole-community taxonomic profile is generated using Kraken2 and Bracken.
-4. **Resistome Profiling:** Antimicrobial resistance genes are profiled by aligning reads against the CARD database using KMA.
+   - **Kraken2 / Bracken:** (upcoming in cMD4) A complementary read-based whole-community taxonomic profile is generated using Kraken2 and Bracken.
+4. **Resistome Profiling:** (upcoming in cMD4) Antimicrobial resistance genes are profiled by aligning reads against the CARD database using KMA.
 5. **Functional Profiling:** When enabled, [HUMAnN](https://github.com/biobakery/humann) is run to quantify gene families and pathway abundances (with CPM and relative abundance normalizations).
-6. **Rarefaction:** The pipeline automatically runs a parallel "rarefied" branch, where reads are downsampled (e.g., to 1 million reads) before profiling, enabling standardized cross-sample comparisons.
+6. **Rarefaction:** (upcoming in cMD4) The pipeline automatically runs a parallel "rarefied" branch, where reads are downsampled (e.g., to 1 million reads) before profiling, enabling standardized cross-sample comparisons of alpha diversity.
 
 The outputs from the pipeline are uploaded to a cloud storage bucket. These include directories (one for each data type) of TSV files (one for each sample) that serve as the input for the R pipeline.
 
