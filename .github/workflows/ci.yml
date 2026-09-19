@@ -1,0 +1,22 @@
+name: Bioconductor CI
+
+on:
+  push:
+    branches: [ devel, main, master, RELEASE_* ]
+  pull_request:
+    branches: [ devel, main, master, RELEASE_* ]
+
+jobs:
+  bioccheck:
+    # pages/id-token are required by enable_pkgdown; declaring any permissions
+    # zeroes the rest, so contents: read has to be listed for the checkout.
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: bioconductor/workflows/.github/workflows/bioccheck.yml@main
+    with:
+      error_on: 'warning'
+      enable_pkgdown: true
+    secrets:
+      CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
