@@ -98,7 +98,10 @@ To demonstrate the functionality of `r Biocpkg("curatedMetagenomicData")`, the
 
 ```{r, message = FALSE}
 library(dplyr)
-library(DT)
+
+# DT is only in Suggests, so the vignette has to render without it.
+have_DT <- requireNamespace("DT", quietly = TRUE)
+if (have_DT) library(DT)
 ```
 
 # Sample Metadata
@@ -115,12 +118,18 @@ To demonstrate, the first ten rows and columns (without any `NA` values) of
 `sampleMetadata` for the `AsnicarF_2017` study are shown in the table below.
 
 ```{r, collapse = TRUE}
-sampleMetadata |>
+asnicar_metadata <- sampleMetadata |>
     filter(study_name == "AsnicarF_2017") |>
     select(where(~ !any(is.na(.x)))) |>
     slice(1:10) |>
-    select(1:10) |>
-    datatable(options = list(dom = "t"), extensions = "Responsive")
+    select(1:10)
+
+if (have_DT) {
+    datatable(asnicar_metadata, options = list(dom = "t"),
+              extensions = "Responsive")
+} else {
+    asnicar_metadata
+}
 ```
 
 # Data Access
