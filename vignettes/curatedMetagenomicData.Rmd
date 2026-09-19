@@ -207,10 +207,12 @@ The `counts` and `rownames` arguments apply to `returnSamples()` as well, and ca
 To demonstrate the utility of `r Biocpkg("curatedMetagenomicData")`, an example analysis is presented below. However, readers should know analysis is generally beyond the scope of `r Biocpkg("curatedMetagenomicData")` and the analysis presented here is for demonstration alone. It is best to consider the output of `r Biocpkg("curatedMetagenomicData")` as the input of analysis more than anything else.
 
 ```{r, include = FALSE}
-# The example analysis relies on packages that are only in Suggests, so the
-# vignette has to build when they are absent -- R CMD check is allowed to run
-# without them. OmicsMLRepoR is unavailable on Bioconductor 3.24 right now
-# because it depends on rols, which was removed in that release.
+# The example analysis relies on optional packages, so the vignette has to
+# build when they are absent -- R CMD check is allowed to run without Suggests.
+# OmicsMLRepoR is deliberately not in Suggests: it is unavailable on
+# Bioconductor 3.24, because it depends on rols which was removed in that
+# release, and an uninstallable Suggests entry fails R CMD check outright. It
+# is called namespaced below, so no attach is needed.
 analysis_pkgs <- c("OmicsMLRepoR", "scater", "vegan", "lefser")
 have_pkg <- vapply(analysis_pkgs, requireNamespace, logical(1), quietly = TRUE)
 run_analysis <- all(have_pkg)
@@ -227,7 +229,6 @@ if (!run_analysis) {
 
 ## Load R packages
 ```{r,include=TRUE,results="hide",message=FALSE,warning=FALSE}
-library(OmicsMLRepoR)
 library(mia)
 library(scater)
 library(vegan)

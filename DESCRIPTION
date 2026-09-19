@@ -63,7 +63,6 @@ Suggests:
     utils,
     uwot,
     vegan,
-    OmicsMLRepoR,
     lefser
 URL: https://github.com/waldronlab/curatedMetagenomicData
 BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
