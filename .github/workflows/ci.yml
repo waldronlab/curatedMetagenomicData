@@ -8,15 +8,13 @@ on:
 
 jobs:
   bioccheck:
-    # pages/id-token are required by enable_pkgdown; declaring any permissions
-    # zeroes the rest, so contents: read has to be listed for the checkout.
+    # Only contents: read is needed. pkgdown is off, so the pages/id-token
+    # permissions the reusable workflow documents for deployment don't apply.
     permissions:
       contents: read
-      pages: write
-      id-token: write
     uses: bioconductor/workflows/.github/workflows/bioccheck.yml@main
     with:
       error_on: 'warning'
-      enable_pkgdown: true
+      enable_pkgdown: false
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
