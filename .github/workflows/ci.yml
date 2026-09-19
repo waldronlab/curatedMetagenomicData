@@ -5,16 +5,21 @@ on:
     branches: [ devel, main, master, RELEASE_* ]
   pull_request:
     branches: [ devel, main, master, RELEASE_* ]
+  # Lets the docs site be rebuilt on demand. Dispatching on a RELEASE_*
+  # branch sets is_release_branch, which is what gates pkgdown.
+  workflow_dispatch:
 
 jobs:
   bioccheck:
-    # Only contents: read is needed. pkgdown is off, so the pages/id-token
-    # permissions the reusable workflow documents for deployment don't apply.
+    # pages/id-token are required by the reusable workflow's pkgdown deploy.
+    # Declaring any permissions zeroes the rest, so contents: read is explicit.
     permissions:
       contents: read
+      pages: write
+      id-token: write
     uses: bioconductor/workflows/.github/workflows/bioccheck.yml@main
     with:
       error_on: 'warning'
-      enable_pkgdown: false
+      enable_pkgdown: true
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
