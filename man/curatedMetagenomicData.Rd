@@ -72,27 +72,35 @@ when merging curatedMetagenomicData with profiles generated elsewhere.
 the MetaPhlAn database used to generate the data (\code{mpa_v30_CHOCOPhlAn_201901}
 for the MetaPhlAn3 resources here). It matches an external profile exactly
 when that profile was generated from the same database, so it is the option
-to use when joining against a \code{merged_abundance_table}.
+to use when joining against a \code{merged_abundance_table}. It also returns
+slightly more rows than the other two, which drop taxa whose lineage stops
+above species.
 
-\code{"short"} and \code{"NCBI"} are both derived by resolving each clade's NCBI
-Taxonomy ID against NCBI, so they follow current NCBI taxonomy rather than
-the taxonomy frozen in the MetaPhlAn database. Where a taxon has been
-reclassified since that database was built, the \code{"short"} name differs from
-the MetaPhlAn clade name: MetaPhlAn3 reports \code{Bacteroides_dorei} while
-\code{"short"} gives \code{Phocaeicola_dorei}. This affects about 10\% of species,
-including the 2020 split of \code{Lactobacillus} across several new genera, and
-those taxa simply fail to match on a merge by name.
+\code{"short"} and \code{"NCBI"} are derived by resolving each clade's NCBI Taxonomy ID
+against NCBI when the package data are built, so they reflect NCBI taxonomy as
+of that point rather than the taxonomy frozen in the MetaPhlAn database.
+Neither is looked up at retrieval time: both are snapshots, refreshed only when
+the packaged taxonomy is regenerated. Where a taxon was reclassified between
+the two, the \code{"short"} name differs from the MetaPhlAn clade name, and such
+taxa fail to match on a merge by name with no error raised. MetaPhlAn3 reports
+\code{Bacteroides_dorei} while \code{"short"} gives \code{Phocaeicola_dorei}. This affects
+about 7\% of returned rows, including the 2020 split of \code{Lactobacillus} across
+several new genera. Roughly half of the affected rows are phages, which
+MetaPhlAn names after the host rather than by NCBI's virus genus.
 
-To join on NCBI Taxonomy ID, use the integer \code{rowData()} column for the rank
-of interest rather than the row names. Row names produced by
-\code{rownames = "NCBI"} are labels rather than bare identifiers: they can carry a
-rank prefix such as \code{species:}, so they are not directly comparable with
-identifiers taken from another source.
+To join on NCBI Taxonomy ID, use the integer \code{rowData()} column for the species
+rank rather than the row names. Species identifiers are stable across genus
+reclassification, but genus identifiers are not: \code{Bacteroides} is 816 and
+\code{Phocaeicola} is 909656, so a genus-level identifier join fails in exactly the
+way a name join does. Row names produced by \code{rownames = "NCBI"} are labels
+rather than bare identifiers and can carry a rank prefix such as \verb{species:}, so
+they are not directly comparable with identifiers from another source.
 
-\code{rowData()} holds one vocabulary at a time, determined by \code{rownames}:
-character names for \code{"long"} and \code{"short"}, integer NCBI Taxonomy IDs for
-\code{"NCBI"}. A single returned object therefore exposes its row names and one
-set of rank columns, not all three vocabularies at once.
+\code{rowData()} holds one vocabulary at a time, determined by \code{rownames}: character
+names for \code{"long"} and \code{"short"}, integer NCBI Taxonomy IDs for \code{"NCBI"}. A
+\code{"long"} object therefore gives a clade-string to NCBI-name mapping on its own,
+because its row names and its \code{rowData()} names are different vocabularies.
+Getting the integer identifiers alongside the names takes a second call.
 }
 
 \examples{
