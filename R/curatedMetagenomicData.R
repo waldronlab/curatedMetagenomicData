@@ -56,7 +56,7 @@
 #' curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
 #'
 #' @importFrom stringr str_subset
-#' @importFrom stringr str_c
+#' @importFrom stringr str_c str_replace
 #' @importFrom ExperimentHub ExperimentHub
 #' @importFrom AnnotationHub query
 #' @importFrom S4Vectors mcols
@@ -78,7 +78,7 @@
 #' @importFrom S4Vectors SimpleList
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment rowData<-
-#' @importFrom mia taxonomyRankEmpty getTaxonomyLabels
+#' @importFrom mia taxonomyRankEmpty getTaxonomyLabels agglomerateByVariable
 #' @importFrom TreeSummarizedExperiment rownames<-
 #' @importFrom SummarizedExperiment rowData
 #' @importFrom SummarizedExperiment assay<-
@@ -231,50 +231,73 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE, rowna
             }
 
             if (rownames != "long") {
-                # Remove taxa without taxonomy information as taxonomy
-                # information is required to create short labels
+                # taxonomyRankEmpty() defaults to the first rank, which here is
+                # superkingdom and is never empty, so the rank has to be named.
+                # Rows whose lineage stops above species cannot be given a
+                # species-level label, and leaving them in makes
+                # getTaxonomyLabels() prefix every label with its rank.
                 wo_taxonomy <-
-                    taxonomyRankEmpty(tree_summarized_experiment)
-                if( any(wo_taxonomy) ){
+                    taxonomyRankEmpty(tree_summarized_experiment,
+                                      rank = "species")
+
+                if (any(wo_taxonomy)) {
                     drop_rows <-
                         rownames(tree_summarized_experiment)[wo_taxonomy]
-                    drop_name <-
-                        str_c("$`", resource_names[[i]], "`\n")
-                    drop_text <-
-                        as.character("dropping rows without taxonomy info:\n")
-                    drop_rows <-
-                        str_c("  ", drop_rows, collapse = "\n")
-                    if (i == 1) {
-                        message("\n", drop_name, drop_text, drop_rows, "\n")
-                    } else {
-                        message(drop_name, drop_text, drop_rows, "\n")
-                    }
+
+                    warning(
+                        "dropping ", sum(wo_taxonomy), " taxa from `",
+                        resource_names[[i]], "` with no species-level name:\n",
+                        str_c("  ", str_replace(drop_rows, "^.*\\|s__", ""),
+                              collapse = "\n"),
+                        "\nThese are MetaPhlAn species groups and complexes ",
+                        "that NCBI does not resolve to a species. Use ",
+                        "rownames = \"long\" to keep every taxon.",
+                        call. = FALSE
+                    )
+
                     tree_summarized_experiment <-
                         tree_summarized_experiment[!wo_taxonomy, ]
                 }
-                # Get shorter labels
-                # Remove taxa without taxonomy information as taxonomy
-                # information is required to create short labels
-                wo_taxonomy <-
-                    taxonomyRankEmpty(tree_summarized_experiment)
-                if( any(wo_taxonomy) ){
-                    drop_rows <-
-                        rownames(tree_summarized_experiment)[wo_taxonomy]
-                    drop_name <-
-                        str_c("$`", resource_names[[i]], "`\n")
-                    drop_text <-
-                        as.character("dropping rows without taxonomy info:\n")
-                    drop_rows <-
-                        str_c("  ", drop_rows, collapse = "\n")
-                    if (i == 1) {
-                        message("\n", drop_name, drop_text, drop_rows, "\n")
-                    } else {
-                        message(drop_name, drop_text, drop_rows, "\n")
+
+                if (rownames == "NCBI") {
+                    # NCBI has merged some species that MetaPhlAn still reports
+                    # as separate clades, so one identifier can belong to two or
+                    # three rows. Sum them: these are partitioned reads of one
+                    # organism, not repeated measurements of it.
+                    species_id <-
+                        as.character(rowData(tree_summarized_experiment)[["species"]])
+
+                    if (anyDuplicated(species_id)) {
+                        merged_ids <-
+                            base::unique(species_id[base::duplicated(species_id)])
+
+                        clade_names <-
+                            str_replace(rownames(tree_summarized_experiment),
+                                        "^.*\\|s__", "")
+
+                        merge_lines <-
+                            vapply(merged_ids, function(id) {
+                                members <- clade_names[species_id == id]
+                                str_c("  ", id, " <- ",
+                                      str_c(members, collapse = ", "))
+                            }, character(1L))
+
+                        message(
+                            "\nmerging ", base::sum(species_id %in% merged_ids),
+                            " rows of `", resource_names[[i]], "` into ",
+                            base::length(merged_ids),
+                            " NCBI Taxonomy IDs, summing their values:\n",
+                            str_c(merge_lines, collapse = "\n"), "\n"
+                        )
+
+                        tree_summarized_experiment <-
+                            agglomerateByVariable(tree_summarized_experiment,
+                                                  by = "rows",
+                                                  group = species_id,
+                                                  update.tree = TRUE)
                     }
-                    tree_summarized_experiment <-
-                        tree_summarized_experiment[!wo_taxonomy, ]
                 }
-                # Get shorter labels
+
                 rownames(tree_summarized_experiment) <-
                     getTaxonomyLabels(tree_summarized_experiment)
             }
