@@ -116,25 +116,66 @@ test_that('first list element row names all coercible to integer when `rownames 
     all_boolean <- lapply(rowData(returned_resources[[1L]]), function(col) is.integer(col)) |> unlist() |> all()
     expect_true(all_boolean)
 
-    # If user wants NCBI-style rownames, we remove possible rank
-    # prefix. The labels might have the prefix, if taxon was
-    # identified only in genus level while others had species level, i.e., they
-    # can look like this: genus:0091, species:0903. species:8982.
-    # We remove the prefixes so we can test whether rownames are correctly
-    # formed.
-    pattern <- paste0(paste0(taxonomyRanks(returned_resources[[1]]), ":"), collapse = "|")
-    rownames(returned_resources[[1]]) <- gsub(pattern, "", rownames(returned_resources[[1]]))
-    # Moreover, if there were duplicated rownames, the function added a suffix
-    # (species:001, species:001_2), which is why we remove it.
-    rownames(returned_resources[[1]]) <- gsub("_\\d+$", "", rownames(returned_resources[[1]])) |> as.integer()
-
+    # Row names are bare NCBI Taxonomy IDs. Taxa whose lineage stops above
+    # species are dropped and taxa sharing an ID are summed, so there is
+    # nothing left to make getTaxonomyLabels() add a rank prefix or a
+    # uniquifying suffix. Stripping either here would hide a regression.
     resource_row_names <-
-        base::rownames(returned_resources[[1]])
-    ## hack to remove text from rownames
-    resource_row_names <-
-        vapply(strsplit(resource_row_names, ":|_"), `[[`, character(1L), 2L)
+        base::rownames(returned_resources[[1L]])
 
+    expect_false(base::any(base::grepl("[^0-9]", resource_row_names)))
+    expect_false(base::any(base::duplicated(resource_row_names)))
     expect_silent(base::as.integer(resource_row_names))
+
+    # Merging rows that share an NCBI Taxonomy ID must sum them, not average
+    # them. `"short"` drops the same taxa but does not merge, so the two
+    # column totals have to agree.
+    short_resources <-
+        curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE,
+                               counts = TRUE, rownames = "short")
+
+    expect_equal(
+        base::colSums(SummarizedExperiment::assay(returned_resources[[1L]])),
+        base::colSums(SummarizedExperiment::assay(short_resources[[1L]]))
+    )
+
+    # Merging fewer rows than `"short"` is the point: identifiers collapse
+    # where names do not.
+    expect_lt(base::nrow(returned_resources[[1L]]),
+              base::nrow(short_resources[[1L]]))
+
+    # Agglomeration has to leave the row tree consistent with the rows.
+    expect_equal(
+        base::nrow(returned_resources[[1L]]),
+        base::nrow(TreeSummarizedExperiment::rowLinks(returned_resources[[1L]]))
+    )
+})
+
+test_that('taxa without a species-level name are dropped with a warning', {
+    expect_warning(
+        curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE,
+                               rownames = "short"),
+        "no species-level name"
+    )
+
+    # `"long"` is the lossless option and must not warn. It still emits the
+    # unrelated "dropping rows without rowTree matches" message, so this
+    # checks for the absence of a warning rather than silence.
+    expect_warning(
+        curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE,
+                               rownames = "long"),
+        regexp = NA
+    )
+})
+
+test_that('rows sharing an NCBI Taxonomy ID are reported when merged', {
+    expect_message(
+        suppressWarnings(
+            curatedMetagenomicData("HMP_2012.relative_abundance",
+                                   dryrun = FALSE, rownames = "NCBI")
+        ),
+        "NCBI Taxonomy IDs, summing their values"
+    )
 })
 
 test_that("first list element colData matches sampleMetadata when dataType is not relative_abundance", {
