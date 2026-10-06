@@ -24,9 +24,9 @@ depth and rounded to the nearest integer prior to being returned}
 
 \item{rownames}{the type of \code{rownames} to use for \code{relative_abundance}
 resources, one of: \code{"long"} (the default, the full MetaPhlAn clade string),
-\code{"short"} (species name), or \code{"NCBI"} (NCBI Taxonomy ID). See the Taxonomic
-names section below; \code{"long"} is the only option that matches MetaPhlAn
-output exactly.}
+\code{"short"} (species name), or \code{"NCBI"} (NCBI Taxonomy ID). These are different
+vocabularies; see the Taxonomic names section below before merging with
+profiles generated elsewhere.}
 }
 \value{
 if \code{dryrun = TRUE}, a character vector of resource names is returned
@@ -70,9 +70,9 @@ when merging curatedMetagenomicData with profiles generated elsewhere.
 
 \code{"long"} is the unmodified MetaPhlAn clade string, exactly as it appears in
 the MetaPhlAn database used to generate the data (\code{mpa_v30_CHOCOPhlAn_201901}
-for MetaPhlAn3 resources). It is the only option guaranteed to match an
-external MetaPhlAn profile, so it is the one to use when joining against a
-\code{merged_abundance_table}.
+for the MetaPhlAn3 resources here). It matches an external profile exactly
+when that profile was generated from the same database, so it is the option
+to use when joining against a \code{merged_abundance_table}.
 
 \code{"short"} and \code{"NCBI"} are both derived by resolving each clade's NCBI
 Taxonomy ID against NCBI, so they follow current NCBI taxonomy rather than
@@ -80,16 +80,19 @@ the taxonomy frozen in the MetaPhlAn database. Where a taxon has been
 reclassified since that database was built, the \code{"short"} name differs from
 the MetaPhlAn clade name: MetaPhlAn3 reports \code{Bacteroides_dorei} while
 \code{"short"} gives \code{Phocaeicola_dorei}. This affects about 10\% of species,
-including the 2020 split of \code{Lactobacillus} across several new genera.
+including the 2020 split of \code{Lactobacillus} across several new genera, and
+those taxa simply fail to match on a merge by name.
 
-Merging by \code{"short"} name therefore drops reclassified taxa silently: they
-are present in both tables but never match, and appear as all-zero rows
-rather than raising an error. Join on \code{"long"} names, or on the NCBI
-Taxonomy ID, which is stable across reclassification.
+To join on NCBI Taxonomy ID, use the integer \code{rowData()} column for the rank
+of interest rather than the row names. Row names produced by
+\code{rownames = "NCBI"} are labels rather than bare identifiers: they can carry a
+rank prefix such as \code{species:}, so they are not directly comparable with
+identifiers taken from another source.
 
-A crosswalk between the three can be built from a returned object:
-\code{rownames()} supplies one key and \code{rowData()} carries the taxonomy at each
-rank.
+\code{rowData()} holds one vocabulary at a time, determined by \code{rownames}:
+character names for \code{"long"} and \code{"short"}, integer NCBI Taxonomy IDs for
+\code{"NCBI"}. A single returned object therefore exposes its row names and one
+set of rank columns, not all three vocabularies at once.
 }
 
 \examples{

@@ -31,9 +31,9 @@
 #'
 #' @param rownames the type of `rownames` to use for `relative_abundance`
 #' resources, one of: `"long"` (the default, the full MetaPhlAn clade string),
-#' `"short"` (species name), or `"NCBI"` (NCBI Taxonomy ID). See the Taxonomic
-#' names section below; `"long"` is the only option that matches MetaPhlAn
-#' output exactly.
+#' `"short"` (species name), or `"NCBI"` (NCBI Taxonomy ID). These are different
+#' vocabularies; see the Taxonomic names section of [curatedMetagenomicData]
+#' before merging with profiles generated elsewhere.
 #'
 #' @return when `dataType = "relative_abundance"`, a
 #' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]

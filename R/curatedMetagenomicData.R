@@ -40,9 +40,9 @@
 #'
 #' @param rownames the type of `rownames` to use for `relative_abundance`
 #' resources, one of: `"long"` (the default, the full MetaPhlAn clade string),
-#' `"short"` (species name), or `"NCBI"` (NCBI Taxonomy ID). See the Taxonomic
-#' names section below; `"long"` is the only option that matches MetaPhlAn
-#' output exactly.
+#' `"short"` (species name), or `"NCBI"` (NCBI Taxonomy ID). These are different
+#' vocabularies; see the Taxonomic names section below before merging with
+#' profiles generated elsewhere.
 #'
 #'
 #' @section Taxonomic names:
@@ -52,9 +52,9 @@
 #'
 #' `"long"` is the unmodified MetaPhlAn clade string, exactly as it appears in
 #' the MetaPhlAn database used to generate the data (`mpa_v30_CHOCOPhlAn_201901`
-#' for MetaPhlAn3 resources). It is the only option guaranteed to match an
-#' external MetaPhlAn profile, so it is the one to use when joining against a
-#' `merged_abundance_table`.
+#' for the MetaPhlAn3 resources here). It matches an external profile exactly
+#' when that profile was generated from the same database, so it is the option
+#' to use when joining against a `merged_abundance_table`.
 #'
 #' `"short"` and `"NCBI"` are both derived by resolving each clade's NCBI
 #' Taxonomy ID against NCBI, so they follow current NCBI taxonomy rather than
@@ -62,16 +62,19 @@
 #' reclassified since that database was built, the `"short"` name differs from
 #' the MetaPhlAn clade name: MetaPhlAn3 reports `Bacteroides_dorei` while
 #' `"short"` gives `Phocaeicola_dorei`. This affects about 10% of species,
-#' including the 2020 split of `Lactobacillus` across several new genera.
+#' including the 2020 split of `Lactobacillus` across several new genera, and
+#' those taxa simply fail to match on a merge by name.
 #'
-#' Merging by `"short"` name therefore drops reclassified taxa silently: they
-#' are present in both tables but never match, and appear as all-zero rows
-#' rather than raising an error. Join on `"long"` names, or on the NCBI
-#' Taxonomy ID, which is stable across reclassification.
+#' To join on NCBI Taxonomy ID, use the integer `rowData()` column for the rank
+#' of interest rather than the row names. Row names produced by
+#' `rownames = "NCBI"` are labels rather than bare identifiers: they can carry a
+#' rank prefix such as `species:`, so they are not directly comparable with
+#' identifiers taken from another source.
 #'
-#' A crosswalk between the three can be built from a returned object:
-#' `rownames()` supplies one key and `rowData()` carries the taxonomy at each
-#' rank.
+#' `rowData()` holds one vocabulary at a time, determined by `rownames`:
+#' character names for `"long"` and `"short"`, integer NCBI Taxonomy IDs for
+#' `"NCBI"`. A single returned object therefore exposes its row names and one
+#' set of rank columns, not all three vocabularies at once.
 #'
 #' @return if `dryrun = TRUE`, a character vector of resource names is returned
 #' invisibly; if `dryrun = FALSE`, a `list` of resources is returned

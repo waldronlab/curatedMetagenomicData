@@ -26,9 +26,9 @@ depth and rounded to the nearest integer prior to being returned}
 
 \item{rownames}{the type of \code{rownames} to use for \code{relative_abundance}
 resources, one of: \code{"long"} (the default, the full MetaPhlAn clade string),
-\code{"short"} (species name), or \code{"NCBI"} (NCBI Taxonomy ID). See the Taxonomic
-names section below; \code{"long"} is the only option that matches MetaPhlAn
-output exactly.}
+\code{"short"} (species name), or \code{"NCBI"} (NCBI Taxonomy ID). These are different
+vocabularies; see the Taxonomic names section of \link{curatedMetagenomicData}
+before merging with profiles generated elsewhere.}
 }
 \value{
 when \code{dataType = "relative_abundance"}, a
