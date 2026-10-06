@@ -24,7 +24,7 @@ depth and rounded to the nearest integer prior to being returned}
 
 \item{rownames}{the type of \code{rownames} to use for \code{relative_abundance}
 resources, one of: \code{"long"} (the default, the full MetaPhlAn clade string),
-\code{"short"} (the lowest available taxonomic name, usually species), or
+\code{"short"} (species name), or
 \code{"NCBI"} (NCBI Taxonomy ID). These are different
 vocabularies; see the Taxonomic names section below before merging with
 profiles generated elsewhere.}
@@ -87,11 +87,14 @@ about 7\% of returned rows, including the 2020 split of \code{Lactobacillus} acr
 several new genera. Roughly half of the affected rows are phages, which
 MetaPhlAn names after the host rather than by NCBI's virus genus.
 
-\code{"short"} is the lowest taxonomic name available for a row, which is the
-species for almost every row but the genus for a handful of MetaPhlAn
-species groups and complexes that NCBI resolves no further. Those rows are
-not filtered out, and their presence is why \code{"NCBI"} row names carry a rank
-prefix.
+\code{"short"} and \code{"NCBI"} also return slightly fewer rows than \code{"long"}. A
+handful of MetaPhlAn clades are species groups and complexes that NCBI
+resolves no further than genus, so they have no species-level name or
+identifier to label them with and are dropped, with a warning naming them.
+\code{"NCBI"} drops a few more: NCBI has merged species that MetaPhlAn still
+reports separately, so two or three clades can share one identifier, and
+those rows are summed into one with a message listing what was merged. Use
+\code{"long"} to keep every row.
 
 To join on NCBI Taxonomy ID, use the integer \code{rowData()} column for the species
 rank rather than the row names. That column holds identifiers only when the
@@ -99,9 +102,8 @@ resource was requested with \code{rownames = "NCBI"}; with \code{"long"} or \cod
 the same column holds character names. Species identifiers are stable across genus
 reclassification, but genus identifiers are not: \code{Bacteroides} is 816 and
 \code{Phocaeicola} is 909656, so a genus-level identifier join fails in exactly the
-way a name join does. Row names produced by \code{rownames = "NCBI"} are labels
-rather than bare identifiers and can carry a rank prefix such as \verb{species:}, so
-they are not directly comparable with identifiers from another source.
+way a name join does. The \code{"NCBI"} row names carry the same species
+identifiers, so either works as a key.
 
 \code{rowData()} holds one vocabulary at a time, determined by \code{rownames}: character
 names for \code{"long"} and \code{"short"}, integer NCBI Taxonomy IDs for \code{"NCBI"}. A

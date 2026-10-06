@@ -40,7 +40,7 @@
 #'
 #' @param rownames the type of `rownames` to use for `relative_abundance`
 #' resources, one of: `"long"` (the default, the full MetaPhlAn clade string),
-#' `"short"` (the lowest available taxonomic name, usually species), or
+#' `"short"` (species name), or
 #' `"NCBI"` (NCBI Taxonomy ID). These are different
 #' vocabularies; see the Taxonomic names section below before merging with
 #' profiles generated elsewhere.
@@ -70,11 +70,14 @@
 #' MetaPhlAn names after the host rather than by NCBI's virus genus.
 #'
 #'
-#' `"short"` is the lowest taxonomic name available for a row, which is the
-#' species for almost every row but the genus for a handful of MetaPhlAn
-#' species groups and complexes that NCBI resolves no further. Those rows are
-#' not filtered out, and their presence is why `"NCBI"` row names carry a rank
-#' prefix.
+#' `"short"` and `"NCBI"` also return slightly fewer rows than `"long"`. A
+#' handful of MetaPhlAn clades are species groups and complexes that NCBI
+#' resolves no further than genus, so they have no species-level name or
+#' identifier to label them with and are dropped, with a warning naming them.
+#' `"NCBI"` drops a few more: NCBI has merged species that MetaPhlAn still
+#' reports separately, so two or three clades can share one identifier, and
+#' those rows are summed into one with a message listing what was merged. Use
+#' `"long"` to keep every row.
 #'
 #' To join on NCBI Taxonomy ID, use the integer `rowData()` column for the species
 #' rank rather than the row names. That column holds identifiers only when the
@@ -82,9 +85,8 @@
 #' the same column holds character names. Species identifiers are stable across genus
 #' reclassification, but genus identifiers are not: `Bacteroides` is 816 and
 #' `Phocaeicola` is 909656, so a genus-level identifier join fails in exactly the
-#' way a name join does. Row names produced by `rownames = "NCBI"` are labels
-#' rather than bare identifiers and can carry a rank prefix such as `species:`, so
-#' they are not directly comparable with identifiers from another source.
+#' way a name join does. The `"NCBI"` row names carry the same species
+#' identifiers, so either works as a key.
 #'
 #' `rowData()` holds one vocabulary at a time, determined by `rownames`: character
 #' names for `"long"` and `"short"`, integer NCBI Taxonomy IDs for `"NCBI"`. A
