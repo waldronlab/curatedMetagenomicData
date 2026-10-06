@@ -39,8 +39,58 @@
 #' depth and rounded to the nearest integer prior to being returned
 #'
 #' @param rownames the type of `rownames` to use for `relative_abundance`
-#' resources, one of: `"long"` (the default), `"short"` (species name), or
-#' `"NCBI"` (NCBI Taxonomy ID)
+#' resources, one of: `"long"` (the default, the full MetaPhlAn clade string),
+#' `"short"` (the lowest available taxonomic name, usually species), or
+#' `"NCBI"` (NCBI Taxonomy ID). These are different
+#' vocabularies; see the Taxonomic names section below before merging with
+#' profiles generated elsewhere.
+#'
+#'
+#' @section Taxonomic names:
+#'
+#' The three `rownames` options do not use the same vocabulary, which matters
+#' when merging curatedMetagenomicData with profiles generated elsewhere.
+#'
+#' `"long"` is the unmodified MetaPhlAn clade string, exactly as it appears in
+#' the MetaPhlAn database used to generate the data (`mpa_v30_CHOCOPhlAn_201901`
+#' for the MetaPhlAn3 resources here). It matches an external profile exactly
+#' when that profile was generated from the same database, so it is the option
+#' to use when joining against a `merged_abundance_table`.
+#'
+#' `"short"` and `"NCBI"` are derived by resolving each clade's NCBI Taxonomy ID
+#' against NCBI when the package data are built, so they reflect NCBI taxonomy as
+#' of that point rather than the taxonomy frozen in the MetaPhlAn database.
+#' Neither is looked up at retrieval time: both are snapshots, refreshed only when
+#' the packaged taxonomy is regenerated. Where a taxon was reclassified between
+#' the two, the `"short"` name differs from the MetaPhlAn clade name, and such
+#' taxa fail to match on a merge by name with no error raised. MetaPhlAn3 reports
+#' `Bacteroides_dorei` while `"short"` gives `Phocaeicola_dorei`. This affects
+#' about 7% of returned rows, including the 2020 split of `Lactobacillus` across
+#' several new genera. Roughly half of the affected rows are phages, which
+#' MetaPhlAn names after the host rather than by NCBI's virus genus.
+#'
+#'
+#' `"short"` is the lowest taxonomic name available for a row, which is the
+#' species for almost every row but the genus for a handful of MetaPhlAn
+#' species groups and complexes that NCBI resolves no further. Those rows are
+#' not filtered out, and their presence is why `"NCBI"` row names carry a rank
+#' prefix.
+#'
+#' To join on NCBI Taxonomy ID, use the integer `rowData()` column for the species
+#' rank rather than the row names. That column holds identifiers only when the
+#' resource was requested with `rownames = "NCBI"`; with `"long"` or `"short"`
+#' the same column holds character names. Species identifiers are stable across genus
+#' reclassification, but genus identifiers are not: `Bacteroides` is 816 and
+#' `Phocaeicola` is 909656, so a genus-level identifier join fails in exactly the
+#' way a name join does. Row names produced by `rownames = "NCBI"` are labels
+#' rather than bare identifiers and can carry a rank prefix such as `species:`, so
+#' they are not directly comparable with identifiers from another source.
+#'
+#' `rowData()` holds one vocabulary at a time, determined by `rownames`: character
+#' names for `"long"` and `"short"`, integer NCBI Taxonomy IDs for `"NCBI"`. A
+#' `"long"` object therefore gives a clade-string to NCBI-name mapping on its own,
+#' because its row names and its `rowData()` names are different vocabularies.
+#' Getting the integer identifiers alongside the names takes a second call.
 #'
 #' @return if `dryrun = TRUE`, a character vector of resource names is returned
 #' invisibly; if `dryrun = FALSE`, a `list` of resources is returned
