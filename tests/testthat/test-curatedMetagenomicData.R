@@ -126,6 +126,56 @@ test_that('first list element row names all coercible to integer when `rownames 
     expect_false(base::any(base::grepl("[^0-9]", resource_row_names)))
     expect_false(base::any(base::duplicated(resource_row_names)))
     expect_silent(base::as.integer(resource_row_names))
+
+    # Merging rows that share an NCBI Taxonomy ID must sum them, not average
+    # them. `"short"` drops the same taxa but does not merge, so the two
+    # column totals have to agree.
+    short_resources <-
+        curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE,
+                               counts = TRUE, rownames = "short")
+
+    expect_equal(
+        base::colSums(SummarizedExperiment::assay(returned_resources[[1L]])),
+        base::colSums(SummarizedExperiment::assay(short_resources[[1L]]))
+    )
+
+    # Merging fewer rows than `"short"` is the point: identifiers collapse
+    # where names do not.
+    expect_lt(base::nrow(returned_resources[[1L]]),
+              base::nrow(short_resources[[1L]]))
+
+    # Agglomeration has to leave the row tree consistent with the rows.
+    expect_equal(
+        base::nrow(returned_resources[[1L]]),
+        base::nrow(TreeSummarizedExperiment::rowLinks(returned_resources[[1L]]))
+    )
+})
+
+test_that('taxa without a species-level name are dropped with a warning', {
+    expect_warning(
+        curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE,
+                               rownames = "short"),
+        "no species-level name"
+    )
+
+    # `"long"` is the lossless option and must not warn. It still emits the
+    # unrelated "dropping rows without rowTree matches" message, so this
+    # checks for the absence of a warning rather than silence.
+    expect_warning(
+        curatedMetagenomicData("HMP_2012.relative_abundance", dryrun = FALSE,
+                               rownames = "long"),
+        regexp = NA
+    )
+})
+
+test_that('rows sharing an NCBI Taxonomy ID are reported when merged', {
+    expect_message(
+        suppressWarnings(
+            curatedMetagenomicData("HMP_2012.relative_abundance",
+                                   dryrun = FALSE, rownames = "NCBI")
+        ),
+        "NCBI Taxonomy IDs, summing their values"
+    )
 })
 
 test_that("first list element colData matches sampleMetadata when dataType is not relative_abundance", {
