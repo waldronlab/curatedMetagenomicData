@@ -23,8 +23,11 @@ returned; if \code{TRUE}, relative abundance proportions are multiplied by read
 depth and rounded to the nearest integer prior to being returned}
 
 \item{rownames}{the type of \code{rownames} to use for \code{relative_abundance}
-resources, one of: \code{"long"} (the default), \code{"short"} (species name), or
-\code{"NCBI"} (NCBI Taxonomy ID)}
+resources, one of: \code{"long"} (the default, the full MetaPhlAn clade string),
+\code{"short"} (the lowest available taxonomic name, usually species), or
+\code{"NCBI"} (NCBI Taxonomy ID). These are different
+vocabularies; see the Taxonomic names section below before merging with
+profiles generated elsewhere.}
 }
 \value{
 if \code{dryrun = TRUE}, a character vector of resource names is returned
@@ -60,6 +63,53 @@ in ExperimentHub – this has no practical consequences for users and is done
 to optimize storage. When searching for "resources", users will use the
 \code{study_name} value from the \link{sampleMetadata} \code{data.frame}.
 }
+\section{Taxonomic names}{
+
+
+The three \code{rownames} options do not use the same vocabulary, which matters
+when merging curatedMetagenomicData with profiles generated elsewhere.
+
+\code{"long"} is the unmodified MetaPhlAn clade string, exactly as it appears in
+the MetaPhlAn database used to generate the data (\code{mpa_v30_CHOCOPhlAn_201901}
+for the MetaPhlAn3 resources here). It matches an external profile exactly
+when that profile was generated from the same database, so it is the option
+to use when joining against a \code{merged_abundance_table}.
+
+\code{"short"} and \code{"NCBI"} are derived by resolving each clade's NCBI Taxonomy ID
+against NCBI when the package data are built, so they reflect NCBI taxonomy as
+of that point rather than the taxonomy frozen in the MetaPhlAn database.
+Neither is looked up at retrieval time: both are snapshots, refreshed only when
+the packaged taxonomy is regenerated. Where a taxon was reclassified between
+the two, the \code{"short"} name differs from the MetaPhlAn clade name, and such
+taxa fail to match on a merge by name with no error raised. MetaPhlAn3 reports
+\code{Bacteroides_dorei} while \code{"short"} gives \code{Phocaeicola_dorei}. This affects
+about 7\% of returned rows, including the 2020 split of \code{Lactobacillus} across
+several new genera. Roughly half of the affected rows are phages, which
+MetaPhlAn names after the host rather than by NCBI's virus genus.
+
+\code{"short"} is the lowest taxonomic name available for a row, which is the
+species for almost every row but the genus for a handful of MetaPhlAn
+species groups and complexes that NCBI resolves no further. Those rows are
+not filtered out, and their presence is why \code{"NCBI"} row names carry a rank
+prefix.
+
+To join on NCBI Taxonomy ID, use the integer \code{rowData()} column for the species
+rank rather than the row names. That column holds identifiers only when the
+resource was requested with \code{rownames = "NCBI"}; with \code{"long"} or \code{"short"}
+the same column holds character names. Species identifiers are stable across genus
+reclassification, but genus identifiers are not: \code{Bacteroides} is 816 and
+\code{Phocaeicola} is 909656, so a genus-level identifier join fails in exactly the
+way a name join does. Row names produced by \code{rownames = "NCBI"} are labels
+rather than bare identifiers and can carry a rank prefix such as \verb{species:}, so
+they are not directly comparable with identifiers from another source.
+
+\code{rowData()} holds one vocabulary at a time, determined by \code{rownames}: character
+names for \code{"long"} and \code{"short"}, integer NCBI Taxonomy IDs for \code{"NCBI"}. A
+\code{"long"} object therefore gives a clade-string to NCBI-name mapping on its own,
+because its row names and its \code{rowData()} names are different vocabularies.
+Getting the integer identifiers alongside the names takes a second call.
+}
+
 \examples{
 curatedMetagenomicData("AsnicarF_20.+")
 
