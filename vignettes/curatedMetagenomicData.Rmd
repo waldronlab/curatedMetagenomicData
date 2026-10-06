@@ -150,7 +150,7 @@ Multiple resources can be queried or returned with a single call to `curatedMeta
 curatedMetagenomicData("AsnicarF_20.+")
 ```
 
-When the `dryrun` argument is set to `FALSE`, a `list` of `SummarizedExperiment` and/or `TreeSummarizedExperiment` objects is returned. The `rownames` argument determines the type of `rownames` to use for `relative_abundance` resources: either `"long"` (the default), `"short"` (species name), or `"NCBI"` (NCBI Taxonomy ID). When a single resource is requested, a single element `list` is returned.
+When the `dryrun` argument is set to `FALSE`, a `list` of `SummarizedExperiment` and/or `TreeSummarizedExperiment` objects is returned. The `rownames` argument determines the type of `rownames` to use for `relative_abundance` resources: either `"long"` (the default), `"short"` (species name), or `"NCBI"` (NCBI Taxonomy ID). These are not the same vocabulary, which matters if you merge with profiles generated elsewhere. `"long"` is the unmodified MetaPhlAn clade string and is the only option that matches an external MetaPhlAn profile exactly. `"short"` and `"NCBI"` are resolved against current NCBI taxonomy, so a taxon reclassified since the MetaPhlAn database was built gets its current name: MetaPhlAn3 reports `Bacteroides_dorei`, while `"short"` gives `Phocaeicola_dorei`. Merging on `"short"` names drops such taxa silently, as all-zero rows rather than an error, so join on `"long"` names or on the NCBI Taxonomy ID, which is stable across reclassification. When a single resource is requested, a single element `list` is returned.
 
 ```{r, collapse = TRUE, message = FALSE}
 curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, rownames = "short")

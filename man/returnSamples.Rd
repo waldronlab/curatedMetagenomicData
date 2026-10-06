@@ -25,8 +25,10 @@ returned; if \code{TRUE}, relative abundance proportions are multiplied by read
 depth and rounded to the nearest integer prior to being returned}
 
 \item{rownames}{the type of \code{rownames} to use for \code{relative_abundance}
-resources, one of: \code{"long"} (the default), \code{"short"} (species name), or
-\code{"NCBI"} (NCBI Taxonomy ID)}
+resources, one of: \code{"long"} (the default, the full MetaPhlAn clade string),
+\code{"short"} (species name), or \code{"NCBI"} (NCBI Taxonomy ID). See the Taxonomic
+names section below; \code{"long"} is the only option that matches MetaPhlAn
+output exactly.}
 }
 \value{
 when \code{dataType = "relative_abundance"}, a

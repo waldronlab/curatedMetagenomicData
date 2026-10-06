@@ -30,8 +30,10 @@
 #' depth and rounded to the nearest integer prior to being returned
 #'
 #' @param rownames the type of `rownames` to use for `relative_abundance`
-#' resources, one of: `"long"` (the default), `"short"` (species name), or
-#' `"NCBI"` (NCBI Taxonomy ID)
+#' resources, one of: `"long"` (the default, the full MetaPhlAn clade string),
+#' `"short"` (species name), or `"NCBI"` (NCBI Taxonomy ID). See the Taxonomic
+#' names section below; `"long"` is the only option that matches MetaPhlAn
+#' output exactly.
 #'
 #' @return when `dataType = "relative_abundance"`, a
 #' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
