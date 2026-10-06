@@ -40,7 +40,8 @@
 #'
 #' @param rownames the type of `rownames` to use for `relative_abundance`
 #' resources, one of: `"long"` (the default, the full MetaPhlAn clade string),
-#' `"short"` (species name), or `"NCBI"` (NCBI Taxonomy ID). These are different
+#' `"short"` (the lowest available taxonomic name, usually species), or
+#' `"NCBI"` (NCBI Taxonomy ID). These are different
 #' vocabularies; see the Taxonomic names section below before merging with
 #' profiles generated elsewhere.
 #'
@@ -54,9 +55,7 @@
 #' the MetaPhlAn database used to generate the data (`mpa_v30_CHOCOPhlAn_201901`
 #' for the MetaPhlAn3 resources here). It matches an external profile exactly
 #' when that profile was generated from the same database, so it is the option
-#' to use when joining against a `merged_abundance_table`. It also returns
-#' slightly more rows than the other two, which drop taxa whose lineage stops
-#' above species.
+#' to use when joining against a `merged_abundance_table`.
 #'
 #' `"short"` and `"NCBI"` are derived by resolving each clade's NCBI Taxonomy ID
 #' against NCBI when the package data are built, so they reflect NCBI taxonomy as
@@ -69,6 +68,13 @@
 #' about 7% of returned rows, including the 2020 split of `Lactobacillus` across
 #' several new genera. Roughly half of the affected rows are phages, which
 #' MetaPhlAn names after the host rather than by NCBI's virus genus.
+#'
+#'
+#' `"short"` is the lowest taxonomic name available for a row, which is the
+#' species for almost every row but the genus for a handful of MetaPhlAn
+#' species groups and complexes that NCBI resolves no further. Those rows are
+#' not filtered out, and their presence is why `"NCBI"` row names carry a rank
+#' prefix.
 #'
 #' To join on NCBI Taxonomy ID, use the integer `rowData()` column for the species
 #' rank rather than the row names. Species identifiers are stable across genus

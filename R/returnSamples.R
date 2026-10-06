@@ -31,7 +31,8 @@
 #'
 #' @param rownames the type of `rownames` to use for `relative_abundance`
 #' resources, one of: `"long"` (the default, the full MetaPhlAn clade string),
-#' `"short"` (species name), or `"NCBI"` (NCBI Taxonomy ID). These are different
+#' `"short"` (the lowest available taxonomic name, usually species), or
+#' `"NCBI"` (NCBI Taxonomy ID). These are different
 #' vocabularies; see the Taxonomic names section of [curatedMetagenomicData]
 #' before merging with profiles generated elsewhere.
 #'
