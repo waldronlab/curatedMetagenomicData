@@ -77,7 +77,9 @@
 #' prefix.
 #'
 #' To join on NCBI Taxonomy ID, use the integer `rowData()` column for the species
-#' rank rather than the row names. Species identifiers are stable across genus
+#' rank rather than the row names. That column holds identifiers only when the
+#' resource was requested with `rownames = "NCBI"`; with `"long"` or `"short"`
+#' the same column holds character names. Species identifiers are stable across genus
 #' reclassification, but genus identifiers are not: `Bacteroides` is 816 and
 #' `Phocaeicola` is 909656, so a genus-level identifier join fails in exactly the
 #' way a name join does. Row names produced by `rownames = "NCBI"` are labels
