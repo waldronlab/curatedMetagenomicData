@@ -5,6 +5,8 @@
 
 <!-- badges: start -->
 
+[![R CMD
+check](https://github.com/waldronlab/curatedMetagenomicData/actions/workflows/ci.yml/badge.svg)](https://github.com/waldronlab/curatedMetagenomicData/actions/workflows/ci.yml)
 [![code
 quality](https://img.shields.io/codefactor/grade/github/waldronlab/curatedMetagenomicData)](https://www.codefactor.io/repository/github/waldronlab/curatedmetagenomicdata)
 [![coverage](https://img.shields.io/codecov/c/github/waldronlab/curatedMetagenomicData)](https://codecov.io/gh/waldronlab/curatedMetagenomicData)
