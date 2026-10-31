@@ -67,13 +67,13 @@ test_that("relative_abundance is a TreeSummarizedExperiment keyed by sample_key"
     expect_true(all(col_data[["study_name"]] == "ArtachoA_2021"))
 })
 
-test_that("colData matches harmonized_meta for the matched samples", {
+test_that("colData matches sampleMetadata for the matched samples", {
     skip_if_offline()
     tse <-
         curatedMetagenomicData("ArtachoA_2021.relative_abundance", dryrun = FALSE)[[1L]]
 
     col_data <- as.data.frame(SummarizedExperiment::colData(tse))
-    curated <- harmonized_meta[harmonized_meta$study_name == "ArtachoA_2021", ]
+    curated <- sampleMetadata[sampleMetadata$study_name == "ArtachoA_2021", ]
     curated <- curated[match(col_data$sample_id, curated$sample_id), ]
 
     expect_false(anyNA(col_data$sample_id))
@@ -159,7 +159,7 @@ test_that("studies without curated metadata still return with QC colData", {
     skip_if_offline()
     rel <- cmdRelease()
     studies <- cmgdr::cmgd_studies(rel)
-    uncurated <- setdiff(studies$study_name, harmonized_meta$study_name)
+    uncurated <- setdiff(studies$study_name, sampleMetadata$study_name)
     skip_if(length(uncurated) == 0L, "every study in the release is curated")
     study <- uncurated[which.min(studies$n_samples[match(uncurated, studies$study_name)])]
     se <- curatedMetagenomicData(paste0(study, ".resistome"), dryrun = FALSE)[[1L]]

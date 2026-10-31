@@ -33,7 +33,7 @@ invisibly; if \code{dryrun = FALSE}, a \code{list} of resources is returned
 }
 \description{
 To access curated metagenomic data users will use \code{curatedMetagenomicData()}
-after "shopping" the \link{harmonized_meta} \code{data.frame} for studies they are
+after "shopping" the \link{sampleMetadata} \code{data.frame} for studies they are
 interested in. The \code{dryrun} argument allows users to perfect a query prior
 to returning resources. When \code{dryrun = TRUE}, matched resources will be
 printed before they are returned invisibly as a character vector. When
@@ -55,7 +55,7 @@ see \link{cmdRelease} for the release in use and how to change it. A resource
 is one study and one data type in that release, titled
 \verb{<release>.<study_name>.<dataType>}. Every study published in the release
 is a resource, whether or not it has curated metadata yet; the
-\code{colData} of each object holds the matching \link{harmonized_meta} columns
+\code{colData} of each object holds the matching \link{sampleMetadata} columns
 (\code{NA} for samples without curated metadata) followed by the release's
 per-sample QC columns (\code{sample_key}, \code{run_ids}, \code{number_reads}, ...).
 Columns are named by the release's \code{sample_key}.
@@ -106,5 +106,5 @@ curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, count
 
 }
 \seealso{
-\link{mergeData}, \link{returnSamples}, \link{harmonized_meta}, \link{cmdRelease}
+\link{mergeData}, \link{returnSamples}, \link{sampleMetadata}, \link{cmdRelease}
 }

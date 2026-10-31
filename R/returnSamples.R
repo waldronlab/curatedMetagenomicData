@@ -1,7 +1,7 @@
 #' Return Samples Across Studies
 #'
 #' To return samples across studies, users will use `returnSamples()` along with
-#' the [harmonized_meta] `data.frame` subset to include only desired samples and
+#' the [sampleMetadata] `data.frame` subset to include only desired samples and
 #' metadata. The subset `data.frame` is matched to the samples of the release
 #' in use (see [cmdRelease]), their profiles are read and merged, and the subset
 #' `data.frame` becomes the `colData` of the
@@ -10,7 +10,7 @@
 #' object that is returned.
 #'
 #' Curated samples are matched to the release by run accession
-#' (`ncbi_accession` in [harmonized_meta] against the release's `run_ids`).
+#' (`ncbi_accession` in [sampleMetadata] against the release's `run_ids`).
 #' Samples that are not in the release, or whose accessions match no single
 #' sample, are dropped with a message naming them; a sample given more than
 #' once is kept once. The returned object's columns are named by the
@@ -18,7 +18,7 @@
 #' the release's per-sample QC columns (`sample_key`, `run_ids`,
 #' `number_reads`, ...), which replace any input columns of the same name.
 #'
-#' @param sampleMetadata the [harmonized_meta] `data.frame` subset to include
+#' @param sampleMetadata the [sampleMetadata] `data.frame` subset to include
 #' only desired samples and metadata; `study_name` and `sample_id` must be
 #' present
 #'
@@ -46,10 +46,10 @@
 #' object is returned
 #' @export
 #'
-#' @seealso [curatedMetagenomicData], [mergeData], [harmonized_meta]
+#' @seealso [curatedMetagenomicData], [mergeData], [sampleMetadata]
 #'
 #' @examples
-#' harmonized_meta |>
+#' sampleMetadata |>
 #'     dplyr::filter(study_name %in% c("AsnicarF_2017", "ZellerG_2014")) |>
 #'     dplyr::filter(age_years >= 18) |>
 #'     dplyr::filter(body_site == "feces") |>
@@ -88,12 +88,12 @@ returnSamples <- function(sampleMetadata, dataType, counts = FALSE, rownames = "
     ## package metadata when the caller has dropped the column.
     accession <- sampleMetadata[["ncbi_accession"]]
     if (is.null(accession)) {
-        all_meta <- curatedMetagenomicData::all_meta
+        curated <- curatedMetagenomicData::sampleMetadata
         idx <- match(
             str_c(sampleMetadata[["study_name"]], sampleMetadata[["sample_id"]], sep = "\r"),
-            str_c(all_meta[["study_name"]], all_meta[["sample_id"]], sep = "\r")
+            str_c(curated[["study_name"]], curated[["sample_id"]], sep = "\r")
         )
-        accession <- all_meta[["ncbi_accession"]][idx]
+        accession <- curated[["ncbi_accession"]][idx]
     }
 
     rel <- cmdRelease()

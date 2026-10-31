@@ -8,7 +8,7 @@ library(curatedMetagenomicData)
 
 The table lists every study in the release this version of the package reads
 (see `cmdRelease()`), with the number of samples the release holds and, where
-the study has curated metadata in `harmonized_meta`, its PMID, body sites and
+the study has curated metadata in `sampleMetadata`, its PMID, body sites and
 conditions. Studies named by a BioProject accession are processed but not yet
 curated.
 
@@ -16,7 +16,7 @@ curated.
 rel <- cmdRelease()
 studies <- cmgdr::cmgd_studies(rel)
 
-curated <- harmonized_meta |>
+curated <- sampleMetadata |>
     dplyr::group_by(Study = study_name) |>
     dplyr::summarize(
         PMID = stringr::str_c(sort(unique(na.omit(pmid))), collapse = ", "),

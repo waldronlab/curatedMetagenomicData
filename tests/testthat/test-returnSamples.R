@@ -1,5 +1,5 @@
 artacho <- function() {
-    harmonized_meta |>
+    sampleMetadata |>
         dplyr::filter(study_name == "ArtachoA_2021") |>
         dplyr::select(where(~ !base::all(base::is.na(.x))))
 }
@@ -34,7 +34,7 @@ test_that("samples not in the release are dropped with a message", {
 
 test_that("studies absent from the release are reported", {
     skip_if_offline()
-    not_there <- harmonized_meta |>
+    not_there <- sampleMetadata |>
         dplyr::filter(study_name == "WindTT_2020") |>
         dplyr::slice(1:3)
     expect_error(returnSamples(not_there, "resistome"), "none of the studies")
@@ -52,6 +52,7 @@ test_that("colData is the input plus the release QC columns, in input order", {
 
     col_data <- as.data.frame(SummarizedExperiment::colData(se))
     expect_equal(colnames(col_data)[1:5], colnames(sample_metadata))
+    attr(sample_metadata, "harmonized") <- NULL
     expect_equal(
         unname(as.list(col_data[, 1:5])),
         unname(as.list(as.data.frame(sample_metadata)))
@@ -75,7 +76,7 @@ test_that("repeated rows are kept once and a DataFrame input is accepted", {
 test_that("the release QC columns replace input columns of the same name", {
     skip_if_offline()
     sample_metadata <-
-        all_meta |>
+        sampleMetadata |>
         dplyr::filter(study_name == "ArtachoA_2021") |>
         dplyr::slice(1:3)
     skip_if_not("number_reads" %in% colnames(sample_metadata))
@@ -102,7 +103,7 @@ test_that("ncbi_accession is looked up when the caller dropped it", {
 test_that("return type follows dataType and spans studies", {
     skip_if_offline()
     sample_metadata <-
-        harmonized_meta |>
+        sampleMetadata |>
         dplyr::filter(study_name %in% c("ArtachoA_2021", "ZellerG_2014")) |>
         dplyr::select(where(~ !base::all(base::is.na(.x))))
 

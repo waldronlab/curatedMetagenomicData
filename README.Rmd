@@ -22,7 +22,7 @@ The `r BiocStyle::Biocpkg("curatedMetagenomicData")` package provides standardiz
 
 Version 4.0.0 reads its data from the public curatedMetagenomicData releases at <https://cmgd-public.cancerdatasci.org> through the [cmgdr](https://github.com/seandavi/cmgdr) package, instead of from ExperimentHub. A release is an immutable, dated snapshot of one pipeline registration; this version pins one, and `cmdRelease()` shows which. The user-facing functions `curatedMetagenomicData()`, `returnSamples()` and `mergeData()` keep their signatures and return types.
 
-- **Metadata.** `sampleMetadata` is replaced by `harmonized_meta` (schema-aligned columns) and `all_meta` (plus study-specific columns still under harmonization).
+- **Metadata.** `sampleMetadata` keeps its name and takes the cMD 4 data dictionary columns; `attr(sampleMetadata, "harmonized")` names the schema-governed ones.
 - **Sample identity.** Objects are keyed by the release's `sample_key`; curated metadata is joined to it by run accession. The `colData` holds the curated columns followed by the release's per-sample QC columns.
 - **Data types.** `relative_abundance`, `marker_abundance` and `marker_presence` continue; `bracken` and `resistome` are new. The HUMAnN data types (`gene_families`, `pathway_abundance`, `pathway_coverage`) return when the HUMAnN datasets are published.
 - **Coverage.** The pinned release holds the studies processed so far by the new pipeline. Every study in the release is listed, whether or not it has curated metadata yet.
@@ -65,12 +65,12 @@ When the `counts` argument is set to `TRUE`, relative abundance proportions are 
 curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE, rownames = "short")
 ```
 
-To return samples across studies, filter `harmonized_meta` and pass the result to `returnSamples()`.
+To return samples across studies, filter `sampleMetadata` and pass the result to `returnSamples()`.
 
 ```{r, collapse = TRUE, message = FALSE}
 library(dplyr)
 
-harmonized_meta |>
+sampleMetadata |>
     filter(study_name %in% c("AsnicarF_2017", "ZellerG_2014")) |>
     filter(body_site == "feces") |>
     select(where(~ !all(is.na(.x)))) |>

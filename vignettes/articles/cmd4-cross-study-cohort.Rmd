@@ -23,8 +23,8 @@ Three things changed underneath them.
    date. Each version of this package pins one; `cmdRelease()` shows which.
 2. **Sample identity.** Samples are keyed by the release's `sample_key`.
    Curated metadata is joined to the release by run accession.
-3. **Metadata objects.** `sampleMetadata` is replaced by `harmonized_meta` and
-   `all_meta`.
+3. **Metadata columns.** `sampleMetadata` keeps its name and takes the cMD 4
+   data dictionary columns.
 
 This article walks through the cross-study workflow: filter the curated
 metadata, call `returnSamples()`, and work with what comes back.
@@ -60,17 +60,17 @@ options(curatedMetagenomicData.release = "latest")
 
 # The curated metadata
 
-`harmonized_meta` has one row per curated sample, restricted to the columns of
-the cMD 4 data dictionary. `all_meta` has the same rows plus study-specific
-columns that have not yet been harmonized. Both are built from
+`sampleMetadata` has one row per curated sample. The columns of the cMD 4
+data dictionary are named in its `harmonized` attribute; the rest are the
+ontology term ids for those fields and study-specific columns that have not
+yet been harmonized. It is built from
 `curatedMetagenomicDataCuration::makeCombinedMetadata()` by
-`data-raw/harmonized_meta.R`, so the package does not depend on the curation
+`data-raw/sampleMetadata.R`, so the package does not depend on the curation
 repository at run time.
 
 ```{r}
-dim(harmonized_meta)
-dim(all_meta)
-colnames(harmonized_meta)[1:12]
+dim(sampleMetadata)
+head(attr(sampleMetadata, "harmonized"), 12)
 ```
 
 Not every curated sample is in the release yet, and not every sample in the
@@ -81,7 +81,7 @@ release is curated. `returnSamples()` reports what it drops.
 Adult stool samples from two studies that are in the release:
 
 ```{r}
-cohort <- harmonized_meta |>
+cohort <- sampleMetadata |>
     filter(
         study_name %in% c("AsnicarF_2017", "ZellerG_2014"),
         body_site == "feces",

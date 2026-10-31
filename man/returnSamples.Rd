@@ -7,7 +7,7 @@
 returnSamples(sampleMetadata, dataType, counts = FALSE, rownames = "long")
 }
 \arguments{
-\item{sampleMetadata}{the \link{harmonized_meta} \code{data.frame} subset to include
+\item{sampleMetadata}{the \link{sampleMetadata} \code{data.frame} subset to include
 only desired samples and metadata; \code{study_name} and \code{sample_id} must be
 present}
 
@@ -39,7 +39,7 @@ object is returned
 }
 \description{
 To return samples across studies, users will use \code{returnSamples()} along with
-the \link{harmonized_meta} \code{data.frame} subset to include only desired samples and
+the \link{sampleMetadata} \code{data.frame} subset to include only desired samples and
 metadata. The subset \code{data.frame} is matched to the samples of the release
 in use (see \link{cmdRelease}), their profiles are read and merged, and the subset
 \code{data.frame} becomes the \code{colData} of the
@@ -49,7 +49,7 @@ object that is returned.
 }
 \details{
 Curated samples are matched to the release by run accession
-(\code{ncbi_accession} in \link{harmonized_meta} against the release's \code{run_ids}).
+(\code{ncbi_accession} in \link{sampleMetadata} against the release's \code{run_ids}).
 Samples that are not in the release, or whose accessions match no single
 sample, are dropped with a message naming them; a sample given more than
 once is kept once. The returned object's columns are named by the
@@ -58,7 +58,7 @@ the release's per-sample QC columns (\code{sample_key}, \code{run_ids},
 \code{number_reads}, ...), which replace any input columns of the same name.
 }
 \examples{
-harmonized_meta |>
+sampleMetadata |>
     dplyr::filter(study_name \%in\% c("AsnicarF_2017", "ZellerG_2014")) |>
     dplyr::filter(age_years >= 18) |>
     dplyr::filter(body_site == "feces") |>
@@ -67,5 +67,5 @@ harmonized_meta |>
 
 }
 \seealso{
-\link{curatedMetagenomicData}, \link{mergeData}, \link{harmonized_meta}
+\link{curatedMetagenomicData}, \link{mergeData}, \link{sampleMetadata}
 }

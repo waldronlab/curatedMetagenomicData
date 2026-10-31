@@ -37,9 +37,9 @@ registration; this version pins one, and `cmdRelease()` shows which. The
 user-facing functions `curatedMetagenomicData()`, `returnSamples()` and
 `mergeData()` keep their signatures and return types.
 
-- **Metadata.** `sampleMetadata` is replaced by `harmonized_meta`
-  (schema-aligned columns) and `all_meta` (plus study-specific columns
-  still under harmonization).
+- **Metadata.** `sampleMetadata` keeps its name and takes the cMD 4 data
+  dictionary columns; `attr(sampleMetadata, "harmonized")` names the
+  schema-governed ones.
 - **Sample identity.** Objects are keyed by the release’s `sample_key`;
   curated metadata is joined to it by run accession. The `colData` holds
   the curated columns followed by the release’s per-sample QC columns.
@@ -117,7 +117,7 @@ curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, rowna
 ##   RS.2RIKzrkv8vjM99hR46qeCXgaPB6_a6yB ...
 ##   RS.Zc57w716jKVKG_6UvW4UbrN3tlmQ_OXV
 ##   RS.ZGpyEvoNn4f_5wz0V7luDpdUHqqVgt4f
-## colData names(34): study_name sample_id ... git_commit number_reads
+## colData names(43): study_name sample_id ... git_commit number_reads
 ## reducedDimNames(0):
 ## mainExpName: NULL
 ## altExpNames(0):
@@ -147,7 +147,7 @@ curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, count
 ##   RS.2RIKzrkv8vjM99hR46qeCXgaPB6_a6yB ...
 ##   RS.Zc57w716jKVKG_6UvW4UbrN3tlmQ_OXV
 ##   RS.ZGpyEvoNn4f_5wz0V7luDpdUHqqVgt4f
-## colData names(34): study_name sample_id ... git_commit number_reads
+## colData names(43): study_name sample_id ... git_commit number_reads
 ## reducedDimNames(0):
 ## mainExpName: NULL
 ## altExpNames(0):
@@ -157,13 +157,13 @@ curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, count
 ## colTree: NULL
 ```
 
-To return samples across studies, filter `harmonized_meta` and pass the
+To return samples across studies, filter `sampleMetadata` and pass the
 result to `returnSamples()`.
 
 ``` r
 library(dplyr)
 
-harmonized_meta |>
+sampleMetadata |>
     filter(study_name %in% c("AsnicarF_2017", "ZellerG_2014")) |>
     filter(body_site == "feces") |>
     select(where(~ !all(is.na(.x)))) |>
@@ -179,7 +179,7 @@ harmonized_meta |>
 ##   RS.m6yHjtU_3TiZGworEkrPrYczURQ9xngA ...
 ##   RS.8G5cd1ZeZW4RVHDQitQ1t5PV7IHCue2p
 ##   RS.bZz5VlfYIkTVYKmDibnmPtWb6pkLWBP9
-## colData names(41): study_name sample_id ... git_commit number_reads
+## colData names(50): study_name sample_id ... git_commit number_reads
 ## reducedDimNames(0):
 ## mainExpName: NULL
 ## altExpNames(0):

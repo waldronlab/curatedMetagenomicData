@@ -30,11 +30,17 @@
 
 ## Sample identity and metadata
 
-* `sampleMetadata` is replaced by `harmonized_meta` (one row per sample,
-  the columns of the cMD 4 data dictionary) and `all_meta` (the same rows
-  plus study-specific columns still under harmonization), both built from
-  `curatedMetagenomicDataCuration::makeCombinedMetadata()` by
-  `data-raw/harmonized_meta.R`.
+* `sampleMetadata` keeps its name and takes the columns of the cMD 4 data
+  dictionary, built from
+  `curatedMetagenomicDataCuration::makeCombinedMetadata(TRUE)` by
+  `data-raw/sampleMetadata.R`. The harmonized (dictionary) columns are
+  named in `attr(sampleMetadata, "harmonized")`; the other columns are
+  the ontology term ids and study-specific fields still under
+  harmonization. Column names change with the dictionary: `NCBI_accession`
+  is `ncbi_accession`, `age` is joined by `age_years` and `age_unit`,
+  `disease` by `target_condition` and `control`, `body_site` uses UBERON
+  names (`feces`, not `stool`), and `number_reads` moves to the QC columns
+  of returned objects.
 * Objects are keyed by the release's `sample_key` (a readset id, `RS.…`)
   rather than the curated `sample_id`. Curated metadata is joined to the
   release by run accession (`ncbi_accession` against the release's

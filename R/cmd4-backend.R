@@ -2,7 +2,7 @@
 ##
 ## Everything here is private. The user-facing API is
 ## curatedMetagenomicData(), returnSamples() and mergeData(), plus the
-## harmonized_meta and all_meta data objects; cmdRelease() names the
+## sampleMetadata data object; cmdRelease() names the
 ## release being read.
 ##
 ## A release publishes, per study, ready-made files (metaphlan_species.tsv.gz,
@@ -248,7 +248,7 @@
 }
 
 ## colData for every sample of a study: curated columns from `meta`
-## (harmonized_meta by default) where a sample matches, NA otherwise, then
+## (sampleMetadata by default) where a sample matches, NA otherwise, then
 ## the qc columns. Rows and row names are the study's sample_keys.
 .cmd_study_col_data <- function(qc, study, meta) {
     curated <- meta[meta[["study_name"]] == study, , drop = FALSE]

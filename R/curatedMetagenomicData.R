@@ -1,7 +1,7 @@
 #' Access Curated Metagenomic Data
 #'
 #' To access curated metagenomic data users will use `curatedMetagenomicData()`
-#' after "shopping" the [harmonized_meta] `data.frame` for studies they are
+#' after "shopping" the [sampleMetadata] `data.frame` for studies they are
 #' interested in. The `dryrun` argument allows users to perfect a query prior
 #' to returning resources. When `dryrun = TRUE`, matched resources will be
 #' printed before they are returned invisibly as a character vector. When
@@ -22,7 +22,7 @@
 #' is one study and one data type in that release, titled
 #' `<release>.<study_name>.<dataType>`. Every study published in the release
 #' is a resource, whether or not it has curated metadata yet; the
-#' `colData` of each object holds the matching [harmonized_meta] columns
+#' `colData` of each object holds the matching [sampleMetadata] columns
 #' (`NA` for samples without curated metadata) followed by the release's
 #' per-sample QC columns (`sample_key`, `run_ids`, `number_reads`, ...).
 #' Columns are named by the release's `sample_key`.
@@ -78,7 +78,7 @@
 #' invisibly; if `dryrun = FALSE`, a `list` of resources is returned
 #' @export
 #'
-#' @seealso [mergeData], [returnSamples], [harmonized_meta], [cmdRelease]
+#' @seealso [mergeData], [returnSamples], [sampleMetadata], [cmdRelease]
 #'
 #' @examples
 #' curatedMetagenomicData("AsnicarF_20.+")
@@ -121,7 +121,7 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE, rowna
     resource_list <- vector("list", length(resources))
     names(resource_list) <- resources
 
-    meta <- curatedMetagenomicData::harmonized_meta
+    meta <- curatedMetagenomicData::sampleMetadata
 
     for (i in seq_along(resources)) {
         study <- parts[[i, "study_name"]]
