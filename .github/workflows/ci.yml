@@ -21,5 +21,7 @@ jobs:
     with:
       error_on: 'warning'
       enable_pkgdown: true
+      # HTML coverage report as a run artifact, alongside the Codecov upload.
+      enable_coverage_report: true
     secrets:
       CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
