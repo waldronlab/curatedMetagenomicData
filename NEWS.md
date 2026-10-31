@@ -1,3 +1,66 @@
+# curatedMetagenomicData 3.99.0 (4.0.0 at the Bioconductor 3.25 release)
+
+## New data backend
+
+* Profiles are read from the public curatedMetagenomicData releases at
+  <https://cmgd-public.cancerdatasci.org> through the `cmgdr` package,
+  replacing ExperimentHub. A release is an immutable, dated snapshot of one
+  pipeline registration; this version pins `cmgd_mpa4.2-2.3.0` release
+  `2026-10-20`. `cmdRelease()` returns the handle in use, and the options
+  `curatedMetagenomicData.dataset` and `curatedMetagenomicData.release`
+  select another. Downloads are cached and checksum-verified by `cmgdr`.
+* All profiles come from version 2.3.0 of the
+  [curatedMetagenomicsNextflow](https://github.com/seandavi/curatedMetagenomicsNextflow)
+  pipeline: MetaPhlAn 4 (vJan25 SGB database), Kraken2/Bracken and
+  KMA against CARD.
+* `curatedMetagenomicData()`, `returnSamples()` and `mergeData()` keep
+  their signatures and return types.
+
+## Data types
+
+* `relative_abundance` (MetaPhlAn 4 species, percent), `marker_abundance`
+  and `marker_presence` (MetaPhlAn markers) continue. The marker tables
+  are read from the release catalog with a per-study filter and take
+  about 15 seconds per study.
+* New: `bracken` (Kraken2/Bracken species profile, fraction of total
+  reads) and `resistome` (KMA depth per CARD reference template).
+* Not available: `gene_families`, `pathway_abundance` and
+  `pathway_coverage`. The HUMAnN datasets are not published yet;
+  requesting them is an error that says so.
+
+## Sample identity and metadata
+
+* `sampleMetadata` is replaced by `harmonized_meta` (one row per sample,
+  the columns of the cMD 4 data dictionary) and `all_meta` (the same rows
+  plus study-specific columns still under harmonization), both built from
+  `curatedMetagenomicDataCuration::makeCombinedMetadata()` by
+  `data-raw/harmonized_meta.R`.
+* Objects are keyed by the release's `sample_key` (a readset id, `RS.…`)
+  rather than the curated `sample_id`. Curated metadata is joined to the
+  release by run accession (`ncbi_accession` against the release's
+  `run_ids`). The `colData` holds the curated columns followed by the
+  release's per-sample QC columns (`sample_key`, `run_ids`, read counts,
+  `number_reads`, pipeline version and commit).
+* Every study in the release is a resource, including studies that have
+  no curated metadata yet; their `colData` carries the QC columns only.
+* `counts = TRUE` multiplies by `number_reads`, now the release's
+  `reads_decontaminated`, so counts are available for every sample (#332).
+
+## Taxonomy
+
+* `rowData` of `relative_abundance` objects holds the seven ranks parsed
+  from the MetaPhlAn clade string and the integer `ncbi_taxid`, for every
+  `rownames` option. `rownames = "NCBI"` drops species-level genome bins
+  without an NCBI Taxonomy ID, with a warning, and sums clades that share
+  one. No phylogenetic row tree is attached in this version.
+
+## Removed
+
+* The ExperimentHub resource metadata (`inst/extdata/*.csv`), the
+  MetaPhlAn 3 phylogenetic tree and the packaged NCBI taxonomy lookups.
+* Imports on `AnnotationHub`, `ExperimentHub` and `mia`; new imports on
+  `cmgdr` and `DBI`.
+
 # curatedMetagenomicData 3.16.1
 
 * Updates to `rownames = "short"` due to downstream changes in `mia`

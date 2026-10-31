@@ -24,10 +24,8 @@ depth and rounded to the nearest integer prior to being returned}
 
 \item{rownames}{the type of \code{rownames} to use for \code{relative_abundance}
 resources, one of: \code{"long"} (the default, the full MetaPhlAn clade string),
-\code{"short"} (species name), or
-\code{"NCBI"} (NCBI Taxonomy ID). These are different
-vocabularies; see the Taxonomic names section below before merging with
-profiles generated elsewhere.}
+\code{"short"} (species name), or \code{"NCBI"} (NCBI Taxonomy ID); see the
+Taxonomic names section}
 }
 \value{
 if \code{dryrun = TRUE}, a character vector of resource names is returned
@@ -35,81 +33,68 @@ invisibly; if \code{dryrun = FALSE}, a \code{list} of resources is returned
 }
 \description{
 To access curated metagenomic data users will use \code{curatedMetagenomicData()}
-after "shopping" the \link{sampleMetadata} \code{data.frame} for resources they are
-interested in. The \code{dryrun} argument allows users to perfect a query prior to
-returning resources. When \code{dryrun = TRUE}, matched resources will be printed
-before they are returned invisibly as a character vector. When
+after "shopping" the \link{harmonized_meta} \code{data.frame} for studies they are
+interested in. The \code{dryrun} argument allows users to perfect a query prior
+to returning resources. When \code{dryrun = TRUE}, matched resources will be
+printed before they are returned invisibly as a character vector. When
 \code{dryrun = FALSE}, a \code{list} of resources containing
 \link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
 and/or
 \link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
 objects, each with corresponding sample metadata, is returned. Multiple
-resources can be returned simultaneously and if there is more than one date
-corresponding to a resource, the most recent one is selected automatically.
-Finally, if a \code{relative_abundance} resource is requested and \code{counts = TRUE},
-relative abundance proportions will be multiplied by read depth and rounded
-to the nearest integer.
+resources can be returned simultaneously. Finally, if a
+\code{relative_abundance} resource is requested and \code{counts = TRUE}, relative
+abundance proportions will be multiplied by read depth and rounded to the
+nearest integer.
 }
 \details{
-Above "resources" refers to resources that exists in Bioconductor's
-ExperimentHub service. In the context of curatedMetagenomicData, these are
-study-level (sparse) matrix objects used to create
-\link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
-and/or
-\link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
-objects that are ultimately returned as the \code{list} of resources. Only the
-\code{gene_families} \code{dataType} (see \link{returnSamples}) is stored as a sparse matrix
-in ExperimentHub – this has no practical consequences for users and is done
-to optimize storage. When searching for "resources", users will use the
-\code{study_name} value from the \link{sampleMetadata} \code{data.frame}.
+Since version 4.0.0, resources are read from the public
+curatedMetagenomicData releases at
+\url{https://cmgd-public.cancerdatasci.org} rather than from ExperimentHub;
+see \link{cmdRelease} for the release in use and how to change it. A resource
+is one study and one data type in that release, titled
+\verb{<release>.<study_name>.<dataType>}. Every study published in the release
+is a resource, whether or not it has curated metadata yet; the
+\code{colData} of each object holds the matching \link{harmonized_meta} columns
+(\code{NA} for samples without curated metadata) followed by the release's
+per-sample QC columns (\code{sample_key}, \code{run_ids}, \code{number_reads}, ...).
+Columns are named by the release's \code{sample_key}.
 }
+\section{Data types}{
+
+\itemize{
+\item \code{relative_abundance}: MetaPhlAn 4 species relative abundance, in
+percent, from the main pass on all reads. A
+\code{TreeSummarizedExperiment} with \code{rowData} columns for each rank and
+\code{ncbi_taxid}. No row tree is attached in this version.
+\item \code{marker_abundance}, \code{marker_presence}: MetaPhlAn marker abundance and
+presence (1 where present). These are read from the release's catalog
+rather than per-study files and take longer, roughly 15 seconds per
+study.
+\item \code{bracken}: Kraken2/Bracken species profile, as the fraction of total
+reads (0 to 1), with \code{ncbi_taxid} in \code{rowData}.
+\item \code{resistome}: KMA depth per CARD reference template.
+}
+
+The HUMAnN data types of version 3 (\code{gene_families}, \code{pathway_abundance},
+\code{pathway_coverage}) are not available until the HUMAnN datasets are
+published.
+}
+
 \section{Taxonomic names}{
 
 
-The three \code{rownames} options do not use the same vocabulary, which matters
-when merging curatedMetagenomicData with profiles generated elsewhere.
-
-\code{"long"} is the unmodified MetaPhlAn clade string, exactly as it appears in
-the MetaPhlAn database used to generate the data (\code{mpa_v30_CHOCOPhlAn_201901}
-for the MetaPhlAn3 resources here). It matches an external profile exactly
-when that profile was generated from the same database, so it is the option
-to use when joining against a \code{merged_abundance_table}.
-
-\code{"short"} and \code{"NCBI"} are derived by resolving each clade's NCBI Taxonomy ID
-against NCBI when the package data are built, so they reflect NCBI taxonomy as
-of that point rather than the taxonomy frozen in the MetaPhlAn database.
-Neither is looked up at retrieval time: both are snapshots, refreshed only when
-the packaged taxonomy is regenerated. Where a taxon was reclassified between
-the two, the \code{"short"} name differs from the MetaPhlAn clade name, and such
-taxa fail to match on a merge by name with no error raised. MetaPhlAn3 reports
-\code{Bacteroides_dorei} while \code{"short"} gives \code{Phocaeicola_dorei}. This affects
-about 7\% of returned rows, including the 2020 split of \code{Lactobacillus} across
-several new genera. Roughly half of the affected rows are phages, which
-MetaPhlAn names after the host rather than by NCBI's virus genus.
-
-\code{"short"} and \code{"NCBI"} also return slightly fewer rows than \code{"long"}. A
-handful of MetaPhlAn clades are species groups and complexes that NCBI
-resolves no further than genus, so they have no species-level name or
-identifier to label them with and are dropped, with a warning naming them.
-\code{"NCBI"} drops a few more: NCBI has merged species that MetaPhlAn still
-reports separately, so two or three clades can share one identifier, and
-those rows are summed into one with a message listing what was merged. Use
-\code{"long"} to keep every row.
-
-To join on NCBI Taxonomy ID, use the integer \code{rowData()} column for the species
-rank rather than the row names. That column holds identifiers only when the
-resource was requested with \code{rownames = "NCBI"}; with \code{"long"} or \code{"short"}
-the same column holds character names. Species identifiers are stable across genus
-reclassification, but genus identifiers are not: \code{Bacteroides} is 816 and
-\code{Phocaeicola} is 909656, so a genus-level identifier join fails in exactly the
-way a name join does. The \code{"NCBI"} row names carry the same species
-identifiers, so either works as a key.
-
-\code{rowData()} holds one vocabulary at a time, determined by \code{rownames}: character
-names for \code{"long"} and \code{"short"}, integer NCBI Taxonomy IDs for \code{"NCBI"}. A
-\code{"long"} object therefore gives a clade-string to NCBI-name mapping on its own,
-because its row names and its \code{rowData()} names are different vocabularies.
-Getting the integer identifiers alongside the names takes a second call.
+The three \code{rownames} options for \code{relative_abundance} are different
+vocabularies. \code{"long"} is the MetaPhlAn clade string exactly as reported
+by the MetaPhlAn database the release was built with (see
+\code{cmgdr::cmgd_provenance(cmdRelease())}). \code{"short"} is the species part of
+that string. \code{"NCBI"} is the NCBI Taxonomy ID MetaPhlAn assigns to the
+species; MetaPhlAn 4 species-level genome bins without a named species
+have none and are dropped with a warning, and clades sharing one
+identifier are summed with a message. Every option carries the same
+\code{rowData}: one column per rank (\code{superkingdom} to \code{species}, as names) and
+the integer \code{ncbi_taxid}, which is the column to join on when matching
+profiles generated elsewhere.
 }
 
 \examples{
@@ -117,9 +102,9 @@ curatedMetagenomicData("AsnicarF_20.+")
 
 curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE)
 
-curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE)
+curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, counts = TRUE)
 
 }
 \seealso{
-\link{mergeData}, \link{returnSamples}, \link{sampleMetadata}
+\link{mergeData}, \link{returnSamples}, \link{harmonized_meta}, \link{cmdRelease}
 }

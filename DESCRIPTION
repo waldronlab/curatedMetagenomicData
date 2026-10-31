@@ -1,18 +1,19 @@
 Package: curatedMetagenomicData
 Title: Curated Metagenomic Data of the Human Microbiome
-Version: 3.21.2
-Date: 2025-9-26
+Version: 3.99.0
+Date: 2026-10-31
 Description:
     The curatedMetagenomicData package provides standardized, curated human
-    microbiome data for novel analyses. It includes gene families, marker
-    abundance, marker presence, pathway abundance, pathway coverage, and
-    relative abundance for samples collected from different body sites. The
-    bacterial, fungal, and archaeal taxonomic abundances for each sample were
-    calculated with MetaPhlAn3, and metabolic functional potential was
-    calculated with HUMAnN3. The manually curated sample metadata and
+    microbiome data for novel analyses. It includes species relative
+    abundance, marker abundance, marker presence, Bracken species profiles
+    and antimicrobial resistance gene depth for samples collected from
+    different body sites, read from the public curatedMetagenomicData
+    releases through the cmgdr package. Taxonomic abundances for each sample
+    were calculated with MetaPhlAn 4 and Kraken2/Bracken, and resistance
+    genes with KMA against CARD. The manually curated sample metadata and
     standardized metagenomic data are available as (Tree)SummarizedExperiment
     objects.
-Authors@R:c(
+Authors@R: c(
     person("Lucas", "schiffer", , "schiffer.lucas@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-3628-0326")),
     person("Levi", "Waldron", role = "aut"),
@@ -40,39 +41,42 @@ Depends:
     SummarizedExperiment,
     TreeSummarizedExperiment
 Imports:
-    AnnotationHub,
-    ExperimentHub,
+    DBI,
     S4Vectors,
+    cmgdr,
     dplyr,
     magrittr,
-    mia,
     purrr,
     rlang,
     stringr,
     tibble,
     tidyr,
-    tidyselect
+    tidyselect,
+    utils
 Suggests:
     BiocStyle,
     DT,
     knitr,
+    mia,
     readr,
     rmarkdown,
     scater,
     testthat,
-    utils,
     uwot,
     vegan,
-    lefser
+    lefser,
+    withr
+Remotes:
+    seandavi/cmgdr
 URL: https://github.com/waldronlab/curatedMetagenomicData
 BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 biocViews:
-    ExperimentHub,
+    ExperimentData,
     Homo_sapiens_Data,
     MicrobiomeData,
     ReproducibleResearch
+Config/roxygen2/version: 8.0.0

@@ -16,7 +16,18 @@ library(curatedMetagenomicData)
 [![coverage](https://img.shields.io/codecov/c/github/waldronlab/curatedMetagenomicData)](https://codecov.io/gh/waldronlab/curatedMetagenomicData)
 <!-- badges: end -->
 
-The `r BiocStyle::Biocpkg("curatedMetagenomicData")` package provides standardized, curated human microbiome data for novel analyses. It includes gene families, marker abundance, marker presence, pathway abundance, pathway coverage, and relative abundance for samples collected from different body sites. The bacterial, fungal, and archaeal taxonomic abundances for each sample were calculated with [MetaPhlAn3](https://github.com/biobakery/MetaPhlAn), and metabolic functional potential was calculated with [HUMAnN3](https://github.com/biobakery/humann). The manually curated sample metadata and standardized metagenomic data are available as (Tree)SummarizedExperiment objects.
+The `r BiocStyle::Biocpkg("curatedMetagenomicData")` package provides standardized, curated human microbiome data for novel analyses. It includes species relative abundance, marker abundance, marker presence, Bracken species profiles and antimicrobial resistance gene depth for samples collected from different body sites. Taxonomic abundances for each sample were calculated with [MetaPhlAn 4](https://github.com/biobakery/MetaPhlAn) and [Kraken2/Bracken](https://github.com/jenniferlu717/Bracken), and resistance genes with [KMA](https://bitbucket.org/genomicepidemiology/kma) against [CARD](https://card.mcmaster.ca). The manually curated sample metadata and standardized metagenomic data are available as (Tree)SummarizedExperiment objects.
+
+## What's new in version 4
+
+Version 4.0.0 reads its data from the public curatedMetagenomicData releases at <https://cmgd-public.cancerdatasci.org> through the [cmgdr](https://github.com/seandavi/cmgdr) package, instead of from ExperimentHub. A release is an immutable, dated snapshot of one pipeline registration; this version pins one, and `cmdRelease()` shows which. The user-facing functions `curatedMetagenomicData()`, `returnSamples()` and `mergeData()` keep their signatures and return types.
+
+- **Metadata.** `sampleMetadata` is replaced by `harmonized_meta` (schema-aligned columns) and `all_meta` (plus study-specific columns still under harmonization).
+- **Sample identity.** Objects are keyed by the release's `sample_key`; curated metadata is joined to it by run accession. The `colData` holds the curated columns followed by the release's per-sample QC columns.
+- **Data types.** `relative_abundance`, `marker_abundance` and `marker_presence` continue; `bracken` and `resistome` are new. The HUMAnN data types (`gene_families`, `pathway_abundance`, `pathway_coverage`) return when the HUMAnN datasets are published.
+- **Coverage.** The pinned release holds the studies processed so far by the new pipeline. Every study in the release is listed, whether or not it has curated metadata yet.
+
+See `NEWS.md` for the full list of changes.
 
 ## Installation
 
@@ -36,7 +47,7 @@ Most users should simply install `r BiocStyle::Biocpkg("curatedMetagenomicData")
 
 ## Examples
 
-To access curated metagenomic data, users will use the `curatedMetagenomicData()` method both to query and return resources. Multiple resources can be queried or returned with a single call to `curatedMetagenomicData()`, but only the titles of resources are returned by default.
+To access curated metagenomic data, users will use the `curatedMetagenomicData()` function both to query and return resources. Multiple resources can be queried or returned with a single call to `curatedMetagenomicData()`, but only the titles of resources are returned by default.
 
 ```{r, collapse = TRUE}
 curatedMetagenomicData("AsnicarF_20.+")
@@ -52,6 +63,18 @@ When the `counts` argument is set to `TRUE`, relative abundance proportions are 
 
 ```{r, collapse = TRUE, message = FALSE}
 curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE, rownames = "short")
+```
+
+To return samples across studies, filter `harmonized_meta` and pass the result to `returnSamples()`.
+
+```{r, collapse = TRUE, message = FALSE}
+library(dplyr)
+
+harmonized_meta |>
+    filter(study_name %in% c("AsnicarF_2017", "ZellerG_2014")) |>
+    filter(body_site == "feces") |>
+    select(where(~ !all(is.na(.x)))) |>
+    returnSamples("relative_abundance", rownames = "short")
 ```
 
 ## Analyses

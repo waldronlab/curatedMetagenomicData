@@ -30,13 +30,10 @@
 #' @seealso [curatedMetagenomicData], [returnSamples]
 #'
 #' @examples
-#' curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) |>
+#' curatedMetagenomicData("(AsnicarF_2017|ZellerG_2014).relative_abundance", dryrun = FALSE) |>
 #'     mergeData()
 #'
-#' curatedMetagenomicData("LiJ_20.+.pathway_abundance", dryrun = FALSE) |>
-#'     mergeData()
-#'
-#' curatedMetagenomicData("LiJ_20.+.relative_abundance", dryrun = FALSE) |>
+#' curatedMetagenomicData("(AsnicarF_2017|ZellerG_2014).resistome", dryrun = FALSE) |>
 #'     mergeData()
 #'
 #' @importFrom purrr map_chr
@@ -58,12 +55,14 @@
 #' @importFrom SummarizedExperiment rowData
 #' @importFrom S4Vectors DataFrame
 #' @importFrom dplyr bind_rows
-#' @importFrom TreeSummarizedExperiment rowLinks
-#' @importFrom dplyr distinct
 #' @importFrom rlang .data
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment
 mergeData <- function(mergeList) {
+    if (length(mergeList) == 0) {
+        stop("mergeList is empty", call. = FALSE)
+    }
+
     if (length(mergeList) == 1) {
         return(mergeList[[1]])
     }
@@ -147,19 +146,7 @@ mergeData <- function(mergeList) {
         DataFrame()
 
     if (assay_name == "relative_abundance") {
-        row_names <-
-            rownames(rowData)
-
-        rowNodeLab <-
-            map(mergeList, rowLinks) |>
-            map(as.data.frame) |>
-            map(rownames_to_column) |>
-            bind_rows() |>
-            distinct(.data[["rowname"]], .keep_all = TRUE) |>
-            column_to_rownames() |>
-            extract(row_names, "nodeLab")
-
-        TreeSummarizedExperiment(assays = assays, rowData = rowData, colData = colData, rowTree = phylogeneticTree, rowNodeLab = rowNodeLab)
+        TreeSummarizedExperiment(assays = assays, rowData = rowData, colData = colData)
     } else {
         SummarizedExperiment(assays = assays, rowData = rowData, colData = colData)
     }

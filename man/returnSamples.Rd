@@ -7,17 +7,18 @@
 returnSamples(sampleMetadata, dataType, counts = FALSE, rownames = "long")
 }
 \arguments{
-\item{sampleMetadata}{the \link{sampleMetadata} \code{data.frame} subset to include
-only desired samples and metadata}
+\item{sampleMetadata}{the \link{harmonized_meta} \code{data.frame} subset to include
+only desired samples and metadata; \code{study_name} and \code{sample_id} must be
+present}
 
-\item{dataType}{the data type to be returned; one of the following:
+\item{dataType}{the data type to be returned; one of the following (see the
+Data types section of \link{curatedMetagenomicData}):
 \itemize{
-\item \code{"gene_families"}
+\item \code{"relative_abundance"}
 \item \code{"marker_abundance"}
 \item \code{"marker_presence"}
-\item \code{"pathway_abundance"}
-\item \code{"pathway_coverage"}
-\item \code{"relative_abundance"}
+\item \code{"bracken"}
+\item \code{"resistome"}
 }}
 
 \item{counts}{if \code{FALSE} (the default), relative abundance proportions are
@@ -26,10 +27,8 @@ depth and rounded to the nearest integer prior to being returned}
 
 \item{rownames}{the type of \code{rownames} to use for \code{relative_abundance}
 resources, one of: \code{"long"} (the default, the full MetaPhlAn clade string),
-\code{"short"} (species name), or
-\code{"NCBI"} (NCBI Taxonomy ID). These are different
-vocabularies; see the Taxonomic names section of \link{curatedMetagenomicData}
-before merging with profiles generated elsewhere.}
+\code{"short"} (species name), or \code{"NCBI"} (NCBI Taxonomy ID); see the
+Taxonomic names section of \link{curatedMetagenomicData}}
 }
 \value{
 when \code{dataType = "relative_abundance"}, a
@@ -40,26 +39,33 @@ object is returned
 }
 \description{
 To return samples across studies, users will use \code{returnSamples()} along with
-the \link{sampleMetadata} \code{data.frame} subset to include only desired samples and
-metadata. The subset \link{sampleMetadata} \code{data.frame} will be used to get the
-desired resources, \link{mergeData} will be used to merge them, and the subset
-\link{sampleMetadata} \code{data.frame} will be used again to subset the
+the \link{harmonized_meta} \code{data.frame} subset to include only desired samples and
+metadata. The subset \code{data.frame} is matched to the samples of the release
+in use (see \link{cmdRelease}), their profiles are read and merged, and the subset
+\code{data.frame} becomes the \code{colData} of the
 \link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment} or
 \link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
-object to include only desired samples and metadata.
+object that is returned.
 }
 \details{
-At present, curatedMetagenomicData resources exists only as entire studies
-which requires potentially getting many resources for a limited number of
-samples. Furthermore, because it is necessary to use \link{mergeData} internally,
-the same caveats detailed under \strong{Details} in \link{mergeData} apply here.
+Curated samples are matched to the release by run accession
+(\code{ncbi_accession} in \link{harmonized_meta} against the release's \code{run_ids}).
+Samples that are not in the release, or whose accessions match no single
+sample, are dropped with a message naming them; a sample given more than
+once is kept once. The returned object's columns are named by the
+release's \code{sample_key}; the \code{colData} holds the input columns followed by
+the release's per-sample QC columns (\code{sample_key}, \code{run_ids},
+\code{number_reads}, ...), which replace any input columns of the same name.
 }
 \examples{
-sampleMetadata |>
-    dplyr::filter(age >= 18) |>
-    dplyr::filter(!base::is.na(alcohol)) |>
-    dplyr::filter(body_site == "stool") |>
+harmonized_meta |>
+    dplyr::filter(study_name \%in\% c("AsnicarF_2017", "ZellerG_2014")) |>
+    dplyr::filter(age_years >= 18) |>
+    dplyr::filter(body_site == "feces") |>
     dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
     returnSamples("relative_abundance")
 
+}
+\seealso{
+\link{curatedMetagenomicData}, \link{mergeData}, \link{harmonized_meta}
 }

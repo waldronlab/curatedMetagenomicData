@@ -37,13 +37,10 @@ object (\code{colData} is merged slightly more efficiently by row binding). Whil
 memory requirements can be large when merging many \code{list} elements.
 }
 \examples{
-curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) |>
+curatedMetagenomicData("(AsnicarF_2017|ZellerG_2014).relative_abundance", dryrun = FALSE) |>
     mergeData()
 
-curatedMetagenomicData("LiJ_20.+.pathway_abundance", dryrun = FALSE) |>
-    mergeData()
-
-curatedMetagenomicData("LiJ_20.+.relative_abundance", dryrun = FALSE) |>
+curatedMetagenomicData("(AsnicarF_2017|ZellerG_2014).resistome", dryrun = FALSE) |>
     mergeData()
 
 }
