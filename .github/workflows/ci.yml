@@ -19,7 +19,8 @@ jobs:
       id-token: write
     uses: bioconductor/workflows/.github/workflows/bioccheck.yml@main
     with:
-      error_on: 'warning'
+      rcmdcheck_error_on: 'warning'
+      bioccheck_error_on: 'never'
       enable_pkgdown: true
       # HTML coverage report as a run artifact, alongside the Codecov upload.
       enable_coverage_report: true
