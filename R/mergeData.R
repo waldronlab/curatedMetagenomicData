@@ -64,7 +64,7 @@
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment SummarizedExperiment
 mergeData <- function(mergeList) {
-    if (is(mergeList, "SummarizedExperiment")) {
+    if (methods::is(mergeList, "SummarizedExperiment")) {
         return(mergeList)
     }
 
