@@ -21,6 +21,12 @@ test_that("merge result is equal to the first element of mergeList when its leng
     expect_equal(mergeData(merge_list), merge_list[[1]])
 })
 
+test_that("a (Tree)SummarizedExperiment passed directly is returned unchanged", {
+    skip_if_offline()
+    tse <- curatedMetagenomicData("ZellerG_2014.relative_abundance", dryrun = FALSE)[[1]]
+    expect_identical(mergeData(tse), tse)
+})
+
 test_that("cannot merge list elements when dataType is different", {
     skip_if_offline()
     merge_list <-
