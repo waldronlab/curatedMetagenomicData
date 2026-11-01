@@ -1,0 +1,142 @@
+"cmd3","cmd4","relation","notes","n_cmd3","coverage","identical"
+"study_name","study_name","same","",22588,1,1
+"sample_id","sample_id","same","",22588,1,1
+"subject_id","subject_id","same","",22588,1,1
+"body_site","body_site","recoded","UBERON names: stool is feces, oralcavity is oral cavity, skin is skin epidermis, nasalcavity is nasal cavity",22588,1,NA
+"antibiotics_current_use","antibiotics_current_use","recoded","yes/no become Yes/No; Not applicable where not relevant",14699,0.998,NA
+"study_condition","target_condition;control;disease","restructured","target_condition names the condition(s) the study targets, control is Case / Study Control / Not Used, disease lists the participant's conditions; see cmd3_to_cmd4_conditions.csv",22563,1,NA
+"disease","target_condition;control;disease","restructured","see study_condition",22588,1,NA
+"age","age;age_unit;age_years;age_min;age_max","restructured","age is the value in age_unit (Year, Month, Day); age_years is the age in years; age_min/age_max bound an age given as a range",18440,0.734,NA
+"age_category","age_group","renamed+recoded","age_group is re-derived from age_years (Newborn, Infant, Child, Adolescent, Adult, Elderly), so it does not map one to one",22587,1,NA
+"gender","sex","renamed+recoded","",20016,1,NA
+"country","country","recoded","ISO 3166 alpha-3 codes become country names",22588,1,NA
+"location","location","same","",7184,1,1
+"non_westernized","westernized","renamed+recoded","sense inverted: non_westernized yes is westernized No",22588,1,NA
+"sequencing_platform","sequencing_platform","same","",22423,1,1
+"DNA_extraction_kit","dna_extraction_kit","renamed","",15617,1,1
+"PMID","pmid","renamed","",22588,1,1
+"number_reads","","dropped","read counts now come from the release QC table (number_reads in the colData of returned objects)",22588,NA,NA
+"number_bases","","dropped","see number_reads (bases_decontaminated in the QC columns)",22588,NA,NA
+"minimum_read_length","","dropped","",20757,NA,NA
+"median_read_length","","dropped","",20757,NA,NA
+"NCBI_accession","ncbi_accession","renamed","",17968,1,1
+"hscrp","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'High_Sensitivity_C-Reactive_Protein / High Sensitivity C-Reactive Protein Measurement'",1228,1,NA
+"ESR","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Erythrocyte_Sedimentation_Rate'",97,1,NA
+"treatment","treatment","recoded","free text becomes NCIT names (one per treatment, comma separated); cMD 3 'no' becomes None or NA",5461,0.47,NA
+"curator","curator","recoded","the separator between names is , in some studies and ; in others",22588,1,NA
+"infant_age","age;age_unit;age_years","restructured","infant ages in days become age with age_unit Day; cMD 3 age for the same sample was the floor in years",3028,0.954,NA
+"pregnant","obgyn_pregnancy","renamed+recoded","",3613,0.999,NA
+"lactating","obgyn_lactating","renamed+recoded","",967,0.996,NA
+"BMI","bmi","renamed","",12825,1,1
+"family","family","same","",4270,1,1
+"disease_subtype","disease_details","renamed+recoded","",3081,0.135,NA
+"days_from_first_collection","days_from_first_collection","same","a few studies re-curated the values",8678,0.952,0.916
+"family_role","family_role","same","",2805,1,1
+"born_method","neonatal_delivery_procedure","renamed+recoded","",2928,1,NA
+"feeding_practice","neonatal_feeding_method","renamed+recoded","",737,1,NA
+"anti_PD_1","treatment","restructured","folded into treatment",38,0,NA
+"RECIST","disease_response_recist","renamed+recoded","",221,1,NA
+"ORR","disease_response_orr","renamed+recoded","",224,1,NA
+"diet","dietary_restriction","renamed","",417,0.99,1
+"travel_destination","uncurated_metadata","uncurated","as 'travel_destination:<value>'",35,1,NA
+"subcohort","subcohort","same","",330,1,1
+"smoker","smoker","recoded","yes/no become SNOMED finding names, possibly several (Smoker (finding); Non-smoker (finding); Ex-smoker (finding); Never smoked tobacco (finding))",2980,1,NA
+"visit_number","","dropped","",2626,NA,NA
+"premature","neonatal_preterm_birth","renamed+recoded","",2214,0.887,NA
+"birth_weight","neonatal_birth_weight","renamed","",2182,1,1
+"gestational_age","neonatal_gestational_age","renamed","",2220,1,1
+"antibiotics_family","","dropped","",559,NA,NA
+"days_after_onset","","dropped","",133,NA,NA
+"creatine","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Creatine Measurement / Creatine'",334,1,NA
+"albumine","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Albumin / Albumin Measurement'",554,1,NA
+"ast","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Aspartate_Aminotransferase'",317,1,NA
+"alt","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Alanine_Aminotransferase'",310,1,NA
+"globulin","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Globulin_Protein'",317,1,NA
+"urea_nitrogen","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Urea_Nitrogen / Urea Nitrogen Measurement'",391,1,NA
+"BASDAI","uncurated_metadata","uncurated","as 'BASDAI:<value>'",97,1,NA
+"BASFI","uncurated_metadata","uncurated","as 'BASFI:<value>'",97,1,NA
+"alcohol","","dropped","",780,NA,NA
+"flg_genotype","","dropped","",78,NA,NA
+"population","ancestry;ancestry_details","renamed+recoded","ancestry is a broad category; the cMD 3 value is kept in ancestry_details where it was a named population",2026,1,NA
+"menopausal_status","obgyn_menopause","renamed+recoded","",431,1,NA
+"lifestyle","lifestyle","same","",286,1,1
+"body_subsite","body_site_details","renamed+recoded","UBERON names; stool becomes Not applicable",2159,0.561,NA
+"uncurated_metadata","uncurated_metadata","recoded","now a ;-separated list of name:value pairs",1523,0.861,NA
+"hdl","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'High Density Lipoprotein Cholesterol Measurement / High_Density_Lipoprotein_Cholesterol'",962,1,NA
+"ldl","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'LDL_Particles / LDL Particles Measurement'",1805,1,NA
+"fasting_insulin","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'blood insulin Measurement'",106,1,NA
+"fasting_glucose","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'blood glucose Measurement / blood_glucose_amount'",205,1,NA
+"creatinine","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Creatinine Measurement / Creatinine'",772,1,NA
+"tnm","tumor_staging_tnm","renamed+recoded","upper case",262,1,NA
+"triglycerides","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Triglyceride / Triglyceride Measurement'",1809,1,NA
+"hba1c","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Glycosylated_Hemoglobin / Glycosylated Hemoglobin Measurement'",1534,1,NA
+"change_in_tumor_size","","dropped","",39,NA,NA
+"ever_smoker","smoker","renamed+recoded","folded into smoker",1185,1,NA
+"dental_sample_type","","dropped","",161,NA,NA
+"history_of_periodontitis","","dropped","",105,NA,NA
+"PPD_M","","dropped","",113,NA,NA
+"PPD_B","","dropped","",113,NA,NA
+"PPD_D","","dropped","",113,NA,NA
+"PPD_L","","dropped","",113,NA,NA
+"fobt","uncurated_metadata","uncurated","as 'fobt:<value>'",266,1,NA
+"disease_stage","tumor_staging_ajcc","renamed","",143,1,1
+"disease_location","","dropped","",409,NA,NA
+"calprotectin","feces_phenotype;feces_phenotype_value","restructured","see bristol_score",263,1,NA
+"HBI","","dropped","",80,NA,NA
+"SCCAI","uncurated_metadata","uncurated","as 'SCCAI:<value>'",48,1,NA
+"mumps","","dropped","",53,NA,NA
+"cholesterol","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Cholesterol Measurement / Cholesterol'",1199,1,NA
+"c_peptide","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'C-peptide Measurement / C-peptide'",225,1,NA
+"glucose","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Glucose / Glucose Measurement'",414,1,NA
+"bilirubin","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Direct Bilirubin Measurement / Direct_Bilirubin'",443,1,NA
+"prothrombin_time","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Prothrombin_Time'",240,1,NA
+"wbc","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'White_blood_cell_count_(procedure)'",216,1,NA
+"rbc","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Red_blood_cell_count_(procedure)'",216,1,NA
+"hemoglobinometry","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Hemoglobinometry'",216,1,NA
+"FMT_role","fmt_role","renamed+recoded","",156,1,NA
+"fmt_id","fmt_id","same","",145,1,1
+"remission","","dropped","",45,NA,NA
+"birth_control_pil","obgyn_birth_control","renamed+recoded","",286,1,NA
+"dyastolic_p","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Diastolic Blood Pressure Measurement'",799,1,NA
+"systolic_p","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Systolic Blood Pressure Measurement'",799,1,NA
+"insulin_cat","","dropped","",145,NA,NA
+"adiponectin","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Adiponectin Measurement'",144,1,NA
+"glp_1","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Glucagon-like Peptide-1 Measurement'",130,1,NA
+"cd163","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Scavenger Receptor Cysteine-Rich Type 1 Protein M130 Measurement'",130,1,NA
+"il_1","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Interleukin 1 Measurement'",130,1,NA
+"leptin","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Leptin Measurement'",144,1,NA
+"fgf_19","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Fibroblast Growth Factor 19 Measurement'",130,1,NA
+"glutamate_decarboxylase_2_antibody","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Glutamate decarboxylase 65 antibody Measurement'",145,1,NA
+"HLA","hla","renamed+recoded","",120,1,NA
+"autoantibody_positive","","dropped","",73,NA,NA
+"age_seroconversion","uncurated_metadata","uncurated","as 'age_seroconversion:<value>'",73,1,NA
+"age_T1D_diagnosis","uncurated_metadata","uncurated","as 'age_T1D_diagnosis:<value>'",31,1,NA
+"hitchip_probe_class","","dropped","",292,NA,NA
+"history_of_therapy","previous_therapy","renamed+recoded","",165,0,NA
+"performance_status","ecog_performance_status","renamed","",159,NA,NA
+"toxicity_above_zero","","dropped","",165,NA,NA
+"PFS12","disease_response_pfs;disease_response_pfs_month","restructured","",205,1,NA
+"protein_intake","uncurated_metadata","uncurated","as 'protein_intake:<value>'",110,1,NA
+"stec_count","","dropped","",36,NA,NA
+"shigatoxin_2_elisa","","dropped","",36,NA,NA
+"stool_texture","","dropped","",34,NA,NA
+"ajcc","tumor_staging_ajcc","renamed+recoded","upper case",486,1,NA
+"bristol_score","feces_phenotype;feces_phenotype_value","restructured","feces_phenotype says which score, feces_phenotype_value holds it",834,1,NA
+"mgs_richness","","dropped","derived value, not metadata",393,NA,NA
+"ferm_milk_prod_consumer","","dropped","",19,NA,NA
+"breastfeeding_duration","uncurated_metadata","uncurated","as 'breastfeeding_duration:<value>'",136,1,NA
+"inr","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'International Normalized Ratio of Prothrombin Time Measurement'",123,1,NA
+"ctp","","dropped","",123,NA,NA
+"c_section_type","neonatal_delivery_procedure","renamed+recoded","Elective_CS / Emergency_CS become Elective / Emergency Cesarean Delivery",782,1,NA
+"hla_drb12","","dropped","",148,NA,NA
+"hla_dqa12","","dropped","",339,NA,NA
+"hla_dqa11","","dropped","",564,NA,NA
+"hla_drb11","","dropped","",237,NA,NA
+"birth_order","","dropped","",222,NA,NA
+"age_twins_started_to_live_apart","","dropped","",248,NA,NA
+"zigosity","zigosity","same","",286,1,1
+"brinkman_index","","dropped","",614,NA,NA
+"alcohol_numeric","","dropped","",615,NA,NA
+"formula_first_day","uncurated_metadata","uncurated","as 'formula_first_day:<value>'",152,1,NA
+"ALT","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Alanine_Aminotransferase'",108,1,NA
+"eGFR","biomarker_name;biomarker_unit;biomarker_value","biomarker","biomarker_name is 'Estimated_Glomerular_Filtration_Rate'",109,1,NA

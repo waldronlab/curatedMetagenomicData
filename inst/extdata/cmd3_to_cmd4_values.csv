@@ -1,0 +1,254 @@
+"cmd3_column","cmd3_value","cmd4_column","cmd4_value","n"
+"body_site","milk","body_site","milk",8
+"body_site","nasalcavity","body_site","nasal cavity",93
+"body_site","oralcavity","body_site","oral cavity",857
+"body_site","skin","body_site","skin epidermis",504
+"body_site","stool","body_site","feces",21026
+"body_site","stool","body_site",NA,4
+"body_site","vagina","body_site","vagina",96
+"antibiotics_current_use","no","antibiotics_current_use","No",12713
+"antibiotics_current_use","yes","antibiotics_current_use","Yes",1943
+"antibiotics_current_use","yes","antibiotics_current_use",NA,31
+"antibiotics_current_use","yes","antibiotics_current_use","Not applicable",12
+"age_category","adult","age_group","Adult",15396
+"age_category","adult","age_group","Elderly",180
+"age_category","adult","age_group",NA,4
+"age_category","child","age_group","Child",567
+"age_category","child","age_group","Infant",531
+"age_category","child","age_group","Adolescent",85
+"age_category","newborn","age_group","Newborn",1852
+"age_category","newborn","age_group","Infant",1043
+"age_category","newborn","age_group","Adult",1
+"age_category","schoolage","age_group","Adolescent",675
+"age_category","schoolage","age_group","Adult",53
+"age_category","senior","age_group","Elderly",2200
+"gender","female","sex","Female",10156
+"gender","female","sex",NA,1
+"gender","male","sex","Male",9856
+"gender","male","sex",NA,3
+"country","AUT","country","Austria",154
+"country","BGD","country","Bangladesh",74
+"country","BRN","country","Brunei Darussalam",2
+"country","CAN","country","Canada",328
+"country","CHN","country","China",1673
+"country","CMR","country","Cameroon",232
+"country","DEU","country","Germany",988
+"country","DNK","country","Denmark",1301
+"country","ESP","country","Spain",371
+"country","EST","country","Estonia",221
+"country","ETH","country","Ethiopia",50
+"country","FIN","country","Finland",652
+"country","FJI","country","Fiji",312
+"country","FRA","country","France",915
+"country","GBR","country","United Kingdom",3087
+"country","GHA","country","Ghana",44
+"country","HUN","country","Hungary",1
+"country","IDN","country","Indonesia",22
+"country","IND","country","India",201
+"country","IRL","country","Ireland",117
+"country","ISL","country","Iceland",1
+"country","ISR","country","Israel",900
+"country","ITA","country","Italy",849
+"country","ITA","country",NA,4
+"country","JPN","country","Japan",696
+"country","KAZ","country","Kazakhstan",172
+"country","KOR","country","Korea, Republic of",36
+"country","LBR","country","Liberia",4
+"country","LUX","country","Luxembourg",116
+"country","MDG","country","Madagascar",112
+"country","MNG","country","Mongolia",110
+"country","MYS","country","Malaysia",8
+"country","NLD","country","Netherlands",2091
+"country","NOR","country","Norway",1
+"country","PER","country","Peru",113
+"country","PHL","country","Philippines",23
+"country","RUS","country","Russian Federation",305
+"country","SGP","country","Singapore",46
+"country","SLV","country","El Salvador",114
+"country","SVK","country","Slovakia",3
+"country","SWE","country","Sweden",600
+"country","TZA","country","Tanzania, United Republic of",135
+"country","USA","country","United States",5404
+"non_westernized","no","westernized","Yes",21329
+"non_westernized","no","westernized",NA,4
+"non_westernized","yes","westernized","No",1255
+"curator","Aitor_Blanco_Miguez;Paolo_Manghi","curator","Aitor_Blanco_Miguez,Paolo_Manghi",472
+"curator","Andrew_Malthez_Thomas;Paolo_Manghi","curator","Andrew_Malthez_Thomas,Paolo_Manghi",192
+"curator","Andrew_Malthez_Thomas;Paolo_Manghi","curator","Andrew_Malthez_Thomas;Paolo_Manghi",20
+"curator","Anna_Pedrotti","curator","Anna_Pedrotti",475
+"curator","Anna_Pedrotti;Paolo_Manghi","curator","Anna_Pedrotti;Paolo_Manghi",296
+"curator","Arianna_Bonetti;Anna_Pedrotti","curator","Arianna_Bonetti,Anna_Pedrotti",86
+"curator","Arianna_Bonetti;Fatima_Zohra;Paolo_Manghi","curator","Arianna_Bonetti,Fatima_Zohra,Paolo_Manghi",57
+"curator","Arianna_Bonetti;Paolo_Manghi","curator","Arianna_Bonetti,Paolo_Manghi",2632
+"curator","Francesca_DeFilippis;Edoardo_Pasolli","curator","Francesca_DeFilippis,Edoardo_Pasolli",93
+"curator","Francesca_DeFilippis;Edoardo_Pasolli","curator",NA,4
+"curator","Francesco_Asnicar;Paolo_Manghi","curator","Francesco_Asnicar,Paolo_Manghi",1096
+"curator","Francesco_Asnicar;Paolo_Manghi","curator","Alice_Bassetto",1
+"curator","Francesco_Asnicar;Paolo_Manghi","curator","Francesco_Asnicar,Ilya_Likhotkin",1
+"curator","Giacomo_DAmato","curator","Giacomo_DAmato",688
+"curator","Giacomo_Damato;Paolo_Manghi","curator","Giacomo_Damato;Paolo_Manghi",80
+"curator","Ilya_Likhotkin;Paolo_Manghi","curator","Ilya_Likhotkin;Paolo_Manghi",1490
+"curator","Jacob_Wirbel;Paolo_Manghi","curator","Jacob_Wirbel,Paolo_Manghi",982
+"curator","Marisa_Metzger","curator","Marisa_Metzger",553
+"curator","Mireia_VallesColomer","curator","Mireia_VallesColomer",63
+"curator","Paolo_Manghi","curator","Paolo_Manghi",9969
+"curator","Paolo_Manghi,Marisa_Metzger","curator","Paolo_Manghi,Marisa_Metzger",400
+"curator","Paolo_Manghi;Andrea_Zen","curator","Paolo_Manghi,Andrea_Zen",229
+"curator","Paolo_Manghi;Andrew_Malthez_Thomas","curator","Paolo_Manghi,Andrew_Malthez_Thomas",39
+"curator","Paolo_Manghi;Davide_Golzato","curator","Paolo_Manghi,Davide_Golzato",112
+"curator","Paolo_Manghi;Giacomo_DAmato","curator","Paolo_Manghi,Giacomo_DAmato",380
+"curator","Paolo_Manghi;Giacomo_DAmato","curator","Giacomo_DAmato,Paolo_Manghi",5
+"curator","Paolo_Manghi;Jacob_Wirbel","curator","Paolo_Manghi,Jacob_Wirbel",59
+"curator","Paolo_Manghi;Marisa_Metzger","curator","Paolo_Manghi,Marisa_Metzger",242
+"curator","Paolo_Manghi;Marisa_Metzger","curator","Paolo_Manghi;Marisa_Metzger",234
+"curator","Paolo_Manghi;Michal_Puncochar","curator","Paolo_Manghi;Michal_Puncochar",165
+"curator","Paolo_Manghi;Mireia_Valles-Colomer","curator","Paolo_Manghi,Mireia_VallesColomer",47
+"curator","Paolo_Manghi;Pamela_Ferretti","curator","Paolo_Manghi,Pamela_Ferretti",214
+"curator","Paolo_Manghi;Valentina_Giunchiglia;Marisa_Metzger","curator","Paolo_Manghi,Valentina_Giunchiglia,Marisa_Metzger",279
+"curator","Paolo_Manghi;Valentina_Giunchiglia;Marisa_Metzger","curator","Paolo_Manghi,Valentina_Giunchiglia",250
+"curator","Valentina_Giunchiglia","curator","Valentina_Giunchiglia",613
+"curator","Valentina_Giunchiglia,Paolo_Manghi,Marisa_Metzger","curator","Valentina_Giunchiglia,Paolo_Manghi,Marisa_Metzger",70
+"pregnant","no","obgyn_pregnancy","Not Pregnant",3455
+"pregnant","no","obgyn_pregnancy",NA,4
+"pregnant","yes","obgyn_pregnancy","Pregnant",154
+"lactating","no","obgyn_lactating","No",947
+"lactating","no","obgyn_lactating",NA,4
+"lactating","yes","obgyn_lactating","Yes",16
+"born_method","c_section","neonatal_delivery_procedure","Elective Cesarean Delivery",598
+"born_method","c_section","neonatal_delivery_procedure","Cesarean Section",399
+"born_method","c_section","neonatal_delivery_procedure","Emergency Cesarean Delivery",184
+"born_method","vaginal","neonatal_delivery_procedure","Vaginal Delivery",1747
+"feeding_practice","any_breastfeeding","neonatal_feeding_method","Exclusively Breastfeeding;Mixed Feeding",21
+"feeding_practice","exclusively_breastfeeding","neonatal_feeding_method","Exclusively Breastfeeding",392
+"feeding_practice","exclusively_formula_feeding","neonatal_feeding_method","Exclusively Formula Feeding",17
+"feeding_practice","mixed_feeding","neonatal_feeding_method","Mixed Feeding",215
+"feeding_practice","mixed_feeding","neonatal_feeding_method","Exclusively Breastfeeding",15
+"feeding_practice","no_breastfeeding","neonatal_feeding_method","No Breastfeeding",77
+"RECIST","CR","disease_response_recist","RECIST Complete Response",28
+"RECIST","PD","disease_response_recist","RECIST Progressive Disease",94
+"RECIST","PR","disease_response_recist","RECIST Partial Response",64
+"RECIST","SD","disease_response_recist","RECIST Stable Disease",35
+"ORR","no","disease_response_orr","No",96
+"ORR","yes","disease_response_orr","Yes",128
+"smoker","no","smoker","Non-smoker (finding)",1584
+"smoker","no","smoker","Non-smoker (finding);Never smoked tobacco (finding)",799
+"smoker","no","smoker","Non-smoker (finding);Ex-smoker (finding)",160
+"smoker","yes","smoker","Smoker (finding)",437
+"premature","no","neonatal_preterm_birth","Term Birth",1485
+"premature","no","neonatal_preterm_birth",NA,207
+"premature","no","neonatal_preterm_birth","Not applicable",65
+"premature","yes","neonatal_preterm_birth","Preterm Birth",406
+"premature","yes","neonatal_preterm_birth",NA,43
+"premature","yes","neonatal_preterm_birth","Not applicable",8
+"population","Aeta","ancestry","Asian",4
+"population","African_American","ancestry","African American or Afro-Caribbean",24
+"population","Agta","ancestry","Asian",4
+"population","asian","ancestry","Asian",2
+"population","Asian","ancestry","Asian",50
+"population","Australoid","ancestry","Asian",12
+"population","Bagyeli","ancestry","African",16
+"population","Bantu","ancestry","African",41
+"population","Batak","ancestry","Asian",4
+"population","Casigurani","ancestry","Asian",4
+"population","Caucasian","ancestry","European",201
+"population","Caucasoid","ancestry","Asian",10
+"population","Dutch","ancestry","European",1490
+"population","hispanic","ancestry","Latin or Admixed American",15
+"population","Hispanic_Latino","ancestry","Hispanic or Latin American",21
+"population","MDG_1FE","ancestry","African",102
+"population","MDG_2FE","ancestry","African",10
+"population","Mongoloid","ancestry","Asian",9
+"population","Tagbanua","ancestry","Asian",4
+"population","Zambal","ancestry","Asian",3
+"menopausal_status","going_through","obgyn_menopause","Perimenopausal",28
+"menopausal_status","post","obgyn_menopause","Postmenopausal",174
+"menopausal_status","pre","obgyn_menopause","Premenopausal",229
+"body_subsite","anterior_nares","body_site_details","anterior naris",93
+"body_subsite","buccal_mucosa","body_site_details","buccal mucosa",119
+"body_subsite","chest","body_site_details","chest",15
+"body_subsite","hard_palate","body_site_details","hard palate",1
+"body_subsite","keratinized_gingiva","body_site_details","gingiva",6
+"body_subsite","l_retroauricular_crease","body_site_details","retroauricular region",9
+"body_subsite","left_ear","body_site_details","left ear",22
+"body_subsite","left_elbow","body_site_details","elbow",21
+"body_subsite","mid_vagina","body_site_details","median vaginal canal",2
+"body_subsite","palatine_tonsils","body_site_details","palatine tonsil",6
+"body_subsite","posterior_fornix","body_site_details","posterior fornix of vagina",62
+"body_subsite","r_retroauricular_crease","body_site_details","retroauricular region",18
+"body_subsite","rectal_swab","body_site_details",NA,923
+"body_subsite","right_ear","body_site_details","right ear",26
+"body_subsite","right_elbow","body_site_details","elbow",20
+"body_subsite","saliva","body_site_details","saliva",5
+"body_subsite","stool","body_site_details","Not applicable",265
+"body_subsite","stool","body_site_details",NA,24
+"body_subsite","subgingival_plaque","body_site_details","subgingival dental plaque",168
+"body_subsite","supragingival_plaque","body_site_details","supragingival dental plaque",127
+"body_subsite","throat","body_site_details","throat",7
+"body_subsite","tongue_dorsum","body_site_details","dorsum of tongue",198
+"body_subsite","vaginal_introitus","body_site_details","vagina orifice",22
+"uncurated_metadata","high_gluten_diet","uncurated_metadata",NA,103
+"uncurated_metadata","infant_age was given as <30","uncurated_metadata","uncurated_metadata:infant_age was given as <30",45
+"uncurated_metadata","low_gluten_diet","uncurated_metadata",NA,104
+"uncurated_metadata","low_level_ascaris_lumbricoides","uncurated_metadata","uncurated_metadata:low_level_ascaris_lumbricoides",3
+"uncurated_metadata","low_level_ascaris_lumbricoides;low_level_necator_americanus","uncurated_metadata","uncurated_metadata:low_level_ascaris_lumbricoides<;>low_level_necator_americanus",1
+"uncurated_metadata","low_level_necator_americanus","uncurated_metadata","uncurated_metadata:low_level_necator_americanus",2
+"uncurated_metadata","malnourished","uncurated_metadata","uncurated_metadata:malnourished",18
+"uncurated_metadata","no_diabetes;non_celiac;no_GI_diseases","uncurated_metadata","uncurated_metadata:no_diabetes<;>non_celiac<;>no_GI_diseases",93
+"uncurated_metadata","no_diabetes;non_celiac;no_GI_diseases","uncurated_metadata",NA,4
+"uncurated_metadata","no_immuno_suppressive;no_T2D;no_T1D;no_related_treatments;no_psychiatric_diseases;no_gastro_intestinal_disorder;non_celiac","uncurated_metadata","uncurated_metadata:no_immuno_suppressive<;>no_T2D<;>no_T1D<;>no_related_treatments<;>no_psychiatric_diseases<;>no_gastro_intestinal_disorder<;>non_celiac",900
+"uncurated_metadata","no_infection;no_cancer","uncurated_metadata","uncurated_metadata:no_infection<;>no_cancer",250
+"tnm","ptis","tumor_staging_tnm","pTis",7
+"tnm","t1n0m0","tumor_staging_tnm","T1N0M0",39
+"tnm","t1n0m1","tumor_staging_tnm","T1N0M1",1
+"tnm","t2m0n0","tumor_staging_tnm","T2N0M0",1
+"tnm","t2n0m0","tumor_staging_tnm","T2N0M0",36
+"tnm","t2n0m1","tumor_staging_tnm","T2N0M1",2
+"tnm","t2n1m0","tumor_staging_tnm","T2N1M0",6
+"tnm","t2n1m1","tumor_staging_tnm","T2N1M1",1
+"tnm","t2n2m0","tumor_staging_tnm","T2N2M0",1
+"tnm","t3n0m0","tumor_staging_tnm","T3N0M0",57
+"tnm","t3n0m1","tumor_staging_tnm","T3N0M1",5
+"tnm","t3n1m0","tumor_staging_tnm","T3N1M0",29
+"tnm","t3n1m1","tumor_staging_tnm","T3N1M1",14
+"tnm","t3n2m0","tumor_staging_tnm","T3N2M0",17
+"tnm","t3n2m1","tumor_staging_tnm","T3N2M1",2
+"tnm","t3n3m1","tumor_staging_tnm","T3N3M1",2
+"tnm","t3nxm1","tumor_staging_tnm","T3NXM1",1
+"tnm","t4n0m0","tumor_staging_tnm","T4N0M0",4
+"tnm","t4n0m1","tumor_staging_tnm","T4N0M1",1
+"tnm","t4n1m0","tumor_staging_tnm","T4N1M0",14
+"tnm","t4n1m1","tumor_staging_tnm","T4N1M1",10
+"tnm","t4n2m0","tumor_staging_tnm","T4N2M0",5
+"tnm","t4n2m1","tumor_staging_tnm","T4N2M1",4
+"tnm","tisn0m0","tumor_staging_tnm","Tis",3
+"ever_smoker","no","smoker","Non-smoker (finding);Never smoked tobacco (finding)",799
+"ever_smoker","yes","smoker","Smoker (finding)",226
+"ever_smoker","yes","smoker","Non-smoker (finding);Ex-smoker (finding)",160
+"FMT_role","donor","fmt_role","Donor",12
+"FMT_role","recipient_after","fmt_role","Recipient (after procedure)",109
+"FMT_role","recipient_before","fmt_role","Recipient (before procedure)",34
+"FMT_role","recipient-before","fmt_role","Recipient (before procedure)",1
+"birth_control_pil","no","obgyn_birth_control","No",143
+"birth_control_pil","yes","obgyn_birth_control","Yes",143
+"HLA","DQA1*0201/*03-DQB1*02/*0302-DRB1*0404","hla","HLA-DQA1*02:01 protein complex;HLA protein complex with DQ3 serotype;HLA protein complex with DQ2 serotype;HLA-DQB1*03:02 protein complex;HLA-DRB1*04:04 protein complex",7
+"HLA","DQA1*05-DQB1*02/*04","hla","HLA protein complex with DQ5 serotype;HLA protein complex with DQ2 serotype;HLA protein complex with DQ4 serotype",6
+"HLA","DQA1*05-DQB1*02/*0604","hla","HLA protein complex with DQ5 serotype;HLA protein complex with DQ2 serotype;HLA-DQB1*06:04 protein complex",7
+"HLA","DQA1*05/*0201-DQB1*02/*02","hla","HLA protein complex with DQ5 serotype;HLA-DQA1*02:01 protein complex;HLA protein complex with DQ2 serotype;HLA protein complex with DQ2 serotype",8
+"HLA","DQA1*05/*03-DQB1*02/*0301","hla","HLA protein complex with DQ5 serotype;HLA protein complex with DQ3 serotype;HLA protein complex with DQ2 serotype;HLA-DQB1*03:01 protein complex",6
+"HLA","DQA1*05/*03-DQB1*02/*0302-DRB1*0401","hla","HLA protein complex with DQ5 serotype;HLA protein complex with DQ3 serotype;HLA protein complex with DQ2 serotype;HLA-DQB1*03:02 protein complex;HLA-DRB1*04:01 protein complex",13
+"HLA","DQB1*0302/*0*01-DRB1*0401","hla","HLA-DQB1*03:02 protein complex;HLA protein complex with DQ1 serotype;HLA-DRB1*04:01 protein complex",10
+"HLA","DQB1*0302/*04-DRB1*0401","hla","HLA-DQB1*03:02 protein complex;HLA protein complex with DQ4 serotype;HLA-DRB1*04:01 protein complex",34
+"HLA","DQB1*0302/*0501-DRB*0401","hla","HLA-DQB1*03:02 protein complex;HLA-DQB1*05:01 protein complex;HLA-DRB1*04:01 protein complex",5
+"HLA","DQB1*0302/*0501-DRB1*0401","hla","HLA-DQB1*03:02 protein complex;HLA-DQB1*05:01 protein complex;HLA-DRB1*04:01 protein complex",8
+"HLA","DQB1*0302/*0501-DRB1*0404","hla","HLA-DQB1*03:02 protein complex;HLA-DQB1*05:01 protein complex;HLA-DRB1*04:04 protein complex",9
+"HLA","DQB1*0302/*0604-DRB1*0404","hla","HLA-DQB1*03:02 protein complex;HLA-DQB1*06:04 protein complex;HLA-DRB1*04:04 protein complex",7
+"history_of_therapy","no","previous_therapy",NA,124
+"history_of_therapy","yes","previous_therapy",NA,41
+"ajcc","0","tumor_staging_ajcc","0",77
+"ajcc","i","tumor_staging_ajcc","I",123
+"ajcc","ii","tumor_staging_ajcc","II",85
+"ajcc","iii","tumor_staging_ajcc","III",96
+"ajcc","iii/iv","tumor_staging_ajcc","III/IV",40
+"ajcc","iv","tumor_staging_ajcc","IV",65
+"c_section_type","Elective_CS","neonatal_delivery_procedure","Elective Cesarean Delivery",598
+"c_section_type","Emergency_CS","neonatal_delivery_procedure","Emergency Cesarean Delivery",184

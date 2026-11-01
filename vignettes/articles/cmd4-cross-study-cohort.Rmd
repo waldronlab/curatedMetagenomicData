@@ -1,0 +1,137 @@
+---
+title: "Version 4: assembling a cross-study cohort"
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+# Overview
+
+Starting with version 4.0.0, `curatedMetagenomicData` reads profiles from the
+public curatedMetagenomicData releases at
+<https://cmgd-public.cancerdatasci.org> through the
+[cmgdr](https://github.com/seandavi/cmgdr) package, instead of from
+ExperimentHub. The user-facing functions `curatedMetagenomicData()`,
+`returnSamples()` and `mergeData()` keep their signatures and return types.
+
+Three things changed underneath them.
+
+1. **Releases.** A dataset is one registration of the
+   [curatedMetagenomicsNextflow](https://github.com/seandavi/curatedMetagenomicsNextflow)
+   pipeline, and a release is an immutable snapshot of it named by its build
+   date. Each version of this package pins one; `cmdRelease()` shows which.
+2. **Sample identity.** Samples are keyed by the release's `sample_key`.
+   Curated metadata is joined to the release by run accession.
+3. **Metadata columns.** `sampleMetadata` keeps its name and takes the cMD 4
+   data dictionary columns.
+
+This article walks through the cross-study workflow: filter the curated
+metadata, call `returnSamples()`, and work with what comes back.
+
+# Packages
+
+```{r, message = FALSE}
+library(curatedMetagenomicData)
+library(dplyr)
+library(SummarizedExperiment)
+```
+
+# The release in use
+
+```{r}
+cmdRelease()
+```
+
+A release holds the studies the pipeline has processed so far. Studies named
+by a BioProject accession are processed but not yet curated.
+
+```{r}
+cmgdr::cmgd_studies(cmdRelease()) |> head(10)
+```
+
+To read a different release, set the options before any data-access call. The
+published datasets and releases are listed by `cmgdr::cmgd_datasets()` and
+`cmgdr::cmgd_releases()`.
+
+```{r, eval = FALSE}
+options(curatedMetagenomicData.release = "latest")
+```
+
+# The curated metadata
+
+`sampleMetadata` has one row per curated sample. The columns of the cMD 4
+data dictionary are named in its `harmonized` attribute; the rest are the
+ontology term ids for those fields and study-specific columns that have not
+yet been harmonized. It is built from
+`curatedMetagenomicDataCuration::makeCombinedMetadata()` by
+`data-raw/sampleMetadata.R`, so the package does not depend on the curation
+repository at run time.
+
+```{r}
+dim(sampleMetadata)
+head(attr(sampleMetadata, "harmonized"), 12)
+```
+
+Not every curated sample is in the release yet, and not every sample in the
+release is curated. `returnSamples()` reports what it drops.
+
+# Define a cohort
+
+Adult stool samples from two studies that are in the release:
+
+```{r}
+cohort <- sampleMetadata |>
+    filter(
+        study_name %in% c("AsnicarF_2017", "ZellerG_2014"),
+        body_site == "feces",
+        age_years >= 18
+    ) |>
+    select(where(~ !all(is.na(.x))))
+
+count(cohort, study_name)
+```
+
+# Return the profiles
+
+```{r}
+tse <- returnSamples(cohort, "relative_abundance", rownames = "short")
+tse
+```
+
+The columns are named by `sample_key`. The `colData` holds the cohort's
+columns followed by the release's per-sample QC columns: `sample_key`,
+`run_ids`, the read counts, `number_reads` (reads after host decontamination,
+which `counts = TRUE` multiplies by), the MetaPhlAn index and the pipeline
+version and commit.
+
+```{r}
+colData(tse)[1:3, c("study_name", "sample_id", "sample_key", "number_reads", "metaphlan_index")]
+```
+
+The `rowData` holds the seven ranks parsed from the MetaPhlAn clade string and
+the integer `ncbi_taxid`. MetaPhlAn 4 species-level genome bins without a
+named species have no identifier.
+
+```{r}
+rowData(tse) |> head(3)
+mean(is.na(rowData(tse)$ncbi_taxid))
+```
+
+# Other data types
+
+`marker_abundance` and `marker_presence` are read from the release catalog
+rather than per-study files, so they take longer (about 15 seconds per
+study). `bracken` and `resistome` are new in version 4.
+
+```{r}
+resistome <- returnSamples(cohort, "resistome")
+resistome
+head(rownames(resistome), 3)
+```
+
+# Session info
+
+```{r}
+sessionInfo()
+```

@@ -1,46 +1,31 @@
+## Rebuild data/sampleMetadata.rda from the curation repository.
+##
+## Source of truth: curatedMetagenomicDataCuration::makeCombinedMetadata()
+##   - makeCombinedMetadata()      -> the harmonized (data dictionary) columns
+##   - makeCombinedMetadata(TRUE)  -> the same rows plus every other column
+##
+## sampleMetadata is the wide table; the names of the harmonized columns are
+## kept in its "harmonized" attribute.
+
 BiocManager::install("waldronlab/curatedMetagenomicDataCuration")
 
-col_types <-
-    readr::cols(
-        col.name = readr::col_character(),
-        col.class = readr::col_character(),
-        uniqueness = readr::col_character(),
-        requiredness = readr::col_character(),
-        multiplevalues = readr::col_logical(),
-        allowedvalues = readr::col_character(),
-        description = readr::col_character()
-    )
-
-glue_str <-
-    base::system.file("extdata", "template.csv", package = "curatedMetagenomicDataCuration") |>
-    readr::read_csv(col_types = col_types) |>
-    glue::glue_data('{col.name} = readr::col_{col.class}()') |>
-    glue::glue_collapse(sep = ", ")
-
-cols_str <-
-    glue::glue('readr::cols({glue_str})')
-
-col_types <-
-    base::parse(text = cols_str) |>
-    base::eval()
-
-base::load("R/sysdata.rda")
-
-valid_name <-
-    stringr::str_extract(resourceTitles, "[A-Z].+") |>
-    stringr::str_remove("\\..+") |>
-    base::unique()
+harmonized <-
+    curatedMetagenomicDataCuration::makeCombinedMetadata() |>
+    as.data.frame()
 
 sampleMetadata <-
-    base::system.file("curated", package = "curatedMetagenomicDataCuration") |>
-    base::dir(pattern = "tsv", full.names = TRUE, recursive = TRUE) |>
-    purrr::set_names(nm = ~ base::basename(.x)) |>
-    purrr::set_names(nm = ~ stringr::str_remove(.x, "_metadata.tsv")) |>
-    purrr::map(~ readr::read_tsv(.x, col_types = col_types)) |>
-    purrr::imap(~ dplyr::mutate(.x, study_name = .y, .before = "sample_id")) |>
-    purrr::reduce(dplyr::bind_rows) |>
-    dplyr::filter(study_name %in% valid_name) |>
-    dplyr::select(where(~ !base::all(base::is.na(.x)))) |>
-    base::as.data.frame()
+    curatedMetagenomicDataCuration::makeCombinedMetadata(TRUE) |>
+    as.data.frame()
 
-usethis::use_data(sampleMetadata, overwrite = TRUE)
+stopifnot(
+    identical(harmonized, sampleMetadata[colnames(harmonized)]),
+    !anyDuplicated(paste(sampleMetadata$study_name, sampleMetadata$sample_id))
+)
+
+## Drop columns that are empty everywhere.
+empty <- vapply(sampleMetadata, function(x) all(is.na(x)), logical(1L))
+sampleMetadata <- sampleMetadata[!empty]
+
+attr(sampleMetadata, "harmonized") <- intersect(colnames(harmonized), colnames(sampleMetadata))
+
+usethis::use_data(sampleMetadata, overwrite = TRUE, compress = "xz")

@@ -1,0 +1,303 @@
+"study_name","study_condition","disease_cmd3","target_condition","control","disease_cmd4","n"
+"AsnicarF_2017","control","healthy","Intestinal Flora","Study Control","Healthy",24
+"AsnicarF_2021","control","healthy","Intestinal Flora","Study Control","Healthy",1098
+"BackhedF_2015","control","healthy","Intestinal Flora","Study Control","Healthy",400
+"BedarfJR_2017","PD","PD","Parkinson's Disease","Case","Parkinson disease",31
+"BedarfJR_2017","control","healthy","Parkinson's Disease","Study Control","Healthy",28
+"Bengtsson-PalmeJ_2015","control","healthy","Intestinal Flora","Study Control","Healthy",70
+"BritoIL_2016","control","healthy","Intestinal Flora;Oral Microbiome","Study Control","Healthy",312
+"BrooksB_2017","premature_born","premature_born","Preterm Birth","Case","Preterm Birth",403
+"BrooksB_2017","control","healthy","Preterm Birth","Study Control","Healthy",5
+"Castro-NallarE_2015","control","healthy","Schizophrenia","Study Control","Healthy",16
+"Castro-NallarE_2015","schizophrenia","schizophrenia","Schizophrenia","Case","Schizophrenia",12
+"Castro-NallarE_2015","schizophrenia","T2D;schizophrenia","Schizophrenia","Case","Type 2 Diabetes Mellitus,Schizophrenia",3
+"Castro-NallarE_2015","schizophrenia","CD;schizophrenia","Schizophrenia","Case","Crohn Disease,Schizophrenia",1
+"ChengpingW_2017","AS","RA","Rheumatoid Arthritis;Ankylosing Spondylitis","Case","Rheumatoid Arthritis,Ankylosing Spondylitis",97
+"ChngKR_2016","control","healthy","Alzheimer's Disease","Study Control","Healthy",30
+"ChngKR_2016","AD","AD;AR","Alzheimer's Disease","Case","Alzheimer's Disease,Allergic Rhinitis",16
+"ChngKR_2016","AD","AD","Alzheimer's Disease","Case","Alzheimer's Disease",10
+"ChngKR_2016","AD","AD;AR;asthma","Alzheimer's Disease","Case","Alzheimer's Disease,Allergic Rhinitis,Asthma",8
+"ChngKR_2016","control","AR;asthma","Alzheimer's Disease","Study Control","Allergic Rhinitis,Asthma",8
+"ChngKR_2016","AD","AD;asthma","Alzheimer's Disease","Case","Alzheimer's Disease,Asthma",4
+"ChngKR_2016","control","AR","Alzheimer's Disease","Study Control","Allergic Rhinitis",2
+"ChuDM_2017","control","healthy","Gestational Diabetes;Chorioamnionitis;Preeclampsia","Study Control","Healthy",75
+"ChuDM_2017","control","chorioamnionitis","Gestational Diabetes;Chorioamnionitis;Preeclampsia","Study Control","Chorioamnionitis",3
+"ChuDM_2017","control","gestational_diabetes","Gestational Diabetes;Chorioamnionitis;Preeclampsia","Study Control","Gestational Diabetes",3
+"ChuDM_2017","control","gestational_diabetes;pre-eclampsia","Gestational Diabetes;Chorioamnionitis;Preeclampsia","Study Control","Gestational Diabetes,Preeclampsia",3
+"ChuDM_2017","control","pre-eclampsia","Gestational Diabetes;Chorioamnionitis;Preeclampsia","Study Control","Preeclampsia",2
+"CosteaPI_2017","control","healthy","Intestinal Flora","Study Control","Healthy",279
+"DavidLA_2015","acute_diarrhoea","acute_diarrhoea","Diarrhea;Cholera","Case","Diarrhea,Cholera",38
+"DavidLA_2015","control","healthy","Diarrhea;Cholera","Study Control","Healthy",9
+"DeFilippisF_2019","control","healthy","Prevotella copri","Study Control","Healthy",93
+"DeFilippisF_2019","control","healthy",NA,NA,NA,4
+"DhakanDB_2019","control","healthy","Intestinal Flora","Study Control","Healthy",110
+"FengQ_2015","control","healthy","Colorectal Carcinoma;Carcinoma;Adenoma","Study Control","Healthy",16
+"FengQ_2015","adenoma","adenoma;fatty_liver;hypertension","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Adenoma;Hepatic Steatosis;Hypertension",14
+"FengQ_2015","CRC","CRC","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Colorectal Carcinoma;Carcinoma",13
+"FengQ_2015","control","fatty_liver;hypertension","Colorectal Carcinoma;Carcinoma;Adenoma","Study Control","Hepatic Steatosis;Hypertension",13
+"FengQ_2015","CRC","CRC;fatty_liver;hypertension","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Colorectal Carcinoma;Hepatic Steatosis;Hypertension;Carcinoma",12
+"FengQ_2015","CRC","CRC;hypertension","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Colorectal Carcinoma;Hypertension;Carcinoma",12
+"FengQ_2015","adenoma","adenoma;fatty_liver","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Adenoma;Hepatic Steatosis",12
+"FengQ_2015","control","hypertension","Colorectal Carcinoma;Carcinoma;Adenoma","Study Control","Hypertension",11
+"FengQ_2015","control","T2D;fatty_liver;hypertension","Colorectal Carcinoma;Carcinoma;Adenoma","Study Control","Type 2 Diabetes Mellitus;Hepatic Steatosis;Hypertension",9
+"FengQ_2015","adenoma","adenoma","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Adenoma",8
+"FengQ_2015","adenoma","adenoma;hypertension","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Adenoma;Hypertension",8
+"FengQ_2015","control","fatty_liver","Colorectal Carcinoma;Carcinoma;Adenoma","Study Control","Hepatic Steatosis",8
+"FengQ_2015","CRC","CRC;T2D;fatty_liver;hypertension","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Colorectal Carcinoma;Type 2 Diabetes Mellitus;Hepatic Steatosis;Hypertension;Carcinoma",4
+"FengQ_2015","CRC","CRC;fatty_liver","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Colorectal Carcinoma;Hepatic Steatosis;Carcinoma",3
+"FengQ_2015","control","T2D;fatty_liver","Colorectal Carcinoma;Carcinoma;Adenoma","Study Control","Type 2 Diabetes Mellitus;Hepatic Steatosis",3
+"FengQ_2015","CRC","CRC;T2D;hypertension","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Colorectal Carcinoma;Type 2 Diabetes Mellitus;Hypertension;Carcinoma",2
+"FengQ_2015","adenoma","T2D;adenoma;hypertension","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Type 2 Diabetes Mellitus;Adenoma;Hypertension",2
+"FengQ_2015","adenoma","T2D;adenoma","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Type 2 Diabetes Mellitus;Adenoma",1
+"FengQ_2015","adenoma","T2D;adenoma;fatty_liver","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Type 2 Diabetes Mellitus;Adenoma;Hepatic Steatosis",1
+"FengQ_2015","adenoma","T2D;adenoma;fatty_liver;hypertension","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Type 2 Diabetes Mellitus;Adenoma;Hepatic Steatosis;Hypertension",1
+"FengQ_2015","control","T2D;hypertension","Colorectal Carcinoma;Carcinoma;Adenoma","Study Control","Type 2 Diabetes Mellitus;Hypertension",1
+"FerrettiP_2018","control","healthy","Intestinal Flora","Study Control","Healthy",214
+"FrankelAE_2017","melanoma","melanoma;metastases_lung","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Lung",11
+"FrankelAE_2017","melanoma","melanoma;metastases_nodes","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Lymph Nodes",6
+"FrankelAE_2017","melanoma","melanoma;metastases_liver","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Liver",3
+"FrankelAE_2017","melanoma","melanoma;metastases_nodes;metastases_SQ","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Lymph Nodes,Metastatic Squamous Cell Carcinoma",3
+"FrankelAE_2017","melanoma","melanoma;metastases_SQ","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Squamous Cell Carcinoma",2
+"FrankelAE_2017","melanoma","melanoma;metastases_SQ;metastases_adrenal","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Adrenal Gland,Metastatic Squamous Cell Carcinoma",2
+"FrankelAE_2017","melanoma","melanoma;metastases_lung;metastases_liver","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Lung,Metastatic Malignant Neoplasm in the Liver",2
+"FrankelAE_2017","melanoma","melanoma;metastases_bone","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Bone",1
+"FrankelAE_2017","melanoma","melanoma;metastases_lung,metastases_nodes","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Lymph Nodes,Metastatic Malignant Neoplasm in the Lung",1
+"FrankelAE_2017","melanoma","melanoma;metastases_lung;metastases_adrenal","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Lung,Metastatic Malignant Neoplasm in the Adrenal Gland",1
+"FrankelAE_2017","melanoma","melanoma;metastases_lung;metastases_liver","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Liver,Metastatic Malignant Neoplasm in the Lung",1
+"FrankelAE_2017","melanoma","melanoma;metastases_lung;metastases_liver;metastases_bone","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Lung,Metastatic Malignant Neoplasm in the Bone,Metastatic Malignant Neoplasm in the Liver",1
+"FrankelAE_2017","melanoma","melanoma;metastases_lung;metastases_liver;metastases_nodes","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Lung,Metastatic Malignant Neoplasm in the Lymph Nodes,Metastatic Malignant Neoplasm in the Liver",1
+"FrankelAE_2017","melanoma","melanoma;metastases_lung;metastases_nodes","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Lung,Metastatic Malignant Neoplasm in the Lymph Nodes",1
+"FrankelAE_2017","melanoma","melanoma;metastases_lung;metastases_nodes","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Lymph Nodes",1
+"FrankelAE_2017","melanoma","melanoma;metastases_lung;metastases_nodes;metastases_SQ","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Lymph Nodes,Metastatic Squamous Cell Carcinoma,Metastatic Malignant Neoplasm in the Lung",1
+"FrankelAE_2017","melanoma","melanoma;metastases_nodes;metastases_bone","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm in the Lymph Nodes,Metastatic Malignant Neoplasm in the Bone",1
+"GhensiP_2019","control","healthy","Periodontal Disorder;Mucositis","Study Control","Healthy",42
+"GhensiP_2019","control","healthy","Periodontal Disorder;Mucositis","Study Control","Healthy;Periodontitis",23
+"GhensiP_2019","peri-implantitis","peri-implantitis","Periodontal Disorder;Mucositis","Case","Periodontal Disorder",11
+"GhensiP_2019","mucositis","mucositis","Periodontal Disorder;Mucositis","Case","Mucositis",10
+"GhensiP_2019","mucositis","mucositis","Periodontal Disorder;Mucositis","Case","Mucositis;Periodontitis",9
+"GhensiP_2019","peri-implantitis","peri-implantitis","Periodontal Disorder;Mucositis","Case","Periodontal Disorder;Periodontitis",9
+"GhensiP_2019","control","T2D","Periodontal Disorder;Mucositis","Study Control","Type 2 Diabetes Mellitus",4
+"GhensiP_2019","peri-implantitis","T2D;peri-implantitis","Periodontal Disorder;Mucositis","Case","Type 2 Diabetes Mellitus;Periodontal Disorder",2
+"GhensiP_2019","control","T2D","Periodontal Disorder;Mucositis","Study Control","Type 2 Diabetes Mellitus;Periodontitis",1
+"GhensiP_2019","mucositis","T2D;mucositis","Periodontal Disorder;Mucositis","Case","Type 2 Diabetes Mellitus;Mucositis",1
+"GhensiP_2019","peri-implantitis","T2D;peri-implantitis","Periodontal Disorder;Mucositis","Case","Type 2 Diabetes Mellitus;Periodontal Disorder;Periodontitis",1
+"GopalakrishnanV_2018","melanoma","melanoma;metastases","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm",25
+"GuptaA_2019","CRC","CRC","Colorectal Carcinoma;Adenocarcinoma","Case","Colorectal Carcinoma,Adenocarcinoma",30
+"GuptaA_2019","control","healthy","Colorectal Carcinoma;Adenocarcinoma","Study Control","Healthy",30
+"HMP_2012","control","healthy","Microbiome","Study Control","Healthy",748
+"HMP_2019_ibdmdb","IBD","IBD","Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease;Crohn Disease",748
+"HMP_2019_ibdmdb","IBD","IBD","Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease;Ulcerative Colitis",453
+"HMP_2019_ibdmdb","control","healthy","Inflammatory Bowel Disease","Study Control","Healthy",426
+"HMP_2019_t2d","IGT","IGT","Glucose Intolerance;Type 2 Diabetes Mellitus","Case","Glucose Intolerance",164
+"HMP_2019_t2d","IGT","IGT;respiratoryinf","Glucose Intolerance;Type 2 Diabetes Mellitus","Case","Glucose Intolerance;Upper Respiratory Tract Infection",75
+"HMP_2019_t2d","control","healthy","Glucose Intolerance;Type 2 Diabetes Mellitus","Study Control","Healthy",42
+"HMP_2019_t2d","T2D","T2D;respiratoryinf","Glucose Intolerance;Type 2 Diabetes Mellitus","Case","Type 2 Diabetes Mellitus;Upper Respiratory Tract Infection",9
+"HMP_2019_t2d","control","respiratoryinf","Glucose Intolerance;Type 2 Diabetes Mellitus","Study Control","Upper Respiratory Tract Infection",4
+"HMP_2019_t2d","T2D","T2D","Glucose Intolerance;Type 2 Diabetes Mellitus","Case","Type 2 Diabetes Mellitus",2
+"HallAB_2017","IBD","IBD","Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease;Ulcerative Colitis",97
+"HallAB_2017","IBD","IBD","Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease;Crohn Disease",88
+"HallAB_2017","control","healthy","Inflammatory Bowel Disease","Study Control","Healthy",74
+"HanniganGD_2017","control","healthy","Colorectal Carcinoma;Adenoma","Study Control","Healthy",28
+"HanniganGD_2017","CRC","CRC","Colorectal Carcinoma;Adenoma","Case","Colorectal Carcinoma",27
+"HanniganGD_2017","adenoma","adenoma","Colorectal Carcinoma;Adenoma","Case","Adenoma",26
+"HansenLBS_2018","control","healthy","Intestinal Flora","Study Control","Healthy",207
+"Heitz-BuschartA_2016","T1D","T1D","Type 1 Diabetes Mellitus","Case","Type 1 Diabetes Mellitus",24
+"Heitz-BuschartA_2016","control","healthy","Type 1 Diabetes Mellitus","Study Control","Healthy",21
+"Heitz-BuschartA_2016","T1D","T1D;coeliac;irritable_bowel","Type 1 Diabetes Mellitus","Case","Type 1 Diabetes Mellitus;Celiac Disease;Irritable Bowel Syndrome",3
+"Heitz-BuschartA_2016","control","hepatitis","Type 1 Diabetes Mellitus","Study Control","Hepatitis",3
+"Heitz-BuschartA_2016","control","CMV;coeliac;gestational_diabetes","Type 1 Diabetes Mellitus","Study Control","Cytomegaloviral Infection;Celiac Disease;Gestational Diabetes",2
+"IaniroG_2022","FMT","CDI","Diarrhea;Clostridium difficile Infection;Intestinal Flora;Inflammatory Bowel Disease","Case","Clostridium difficile Infection;Fecal Microbiota Transplantation",74
+"IaniroG_2022","FMT","TKI_dependent_diarrhoea","Diarrhea;Clostridium difficile Infection;Intestinal Flora;Inflammatory Bowel Disease","Case","Diarrhea;Fecal Microbiota Transplantation",26
+"IaniroG_2022","CDI","CDI","Diarrhea;Clostridium difficile Infection;Intestinal Flora;Inflammatory Bowel Disease","Case","Clostridium difficile Infection",20
+"IaniroG_2022","TKI_dependent_diarrhoea","TKI_dependent_diarrhoea","Diarrhea;Clostridium difficile Infection;Intestinal Flora;Inflammatory Bowel Disease","Case","Diarrhea",16
+"IaniroG_2022","donor","healthy","Diarrhea;Clostridium difficile Infection;Intestinal Flora;Inflammatory Bowel Disease","Case","Healthy;Donor",9
+"IaniroG_2022","FMT","MDRB","Diarrhea;Clostridium difficile Infection;Intestinal Flora;Inflammatory Bowel Disease","Case","Bacterial Infection;Fecal Microbiota Transplantation",6
+"IaniroG_2022","MDRB","MDRB","Diarrhea;Clostridium difficile Infection;Intestinal Flora;Inflammatory Bowel Disease","Case","Bacterial Infection",5
+"IaniroG_2022","FMT","IBD","Diarrhea;Clostridium difficile Infection;Intestinal Flora;Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease;Fecal Microbiota Transplantation",3
+"IaniroG_2022","IBD","IBD","Diarrhea;Clostridium difficile Infection;Intestinal Flora;Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease",3
+"IaniroG_2022","control","healthy","Diarrhea;Clostridium difficile Infection;Intestinal Flora;Inflammatory Bowel Disease","Study Control","Healthy",3
+"IjazUZ_2017","IBD","IBD","Inflammatory Bowel Disease;Crohn Disease","Case","Inflammatory Bowel Disease;Crohn Disease",56
+"IjazUZ_2017","control","healthy","Inflammatory Bowel Disease;Crohn Disease","Study Control","Healthy",38
+"JieZ_2017","ACVD","ACVD","Atherosclerosis","Case","Atherosclerosis",214
+"JieZ_2017","control","healthy","Atherosclerosis","Study Control","Healthy",171
+"KarlssonFH_2013","T2D","T2D","Glucose Intolerance;Type 2 Diabetes Mellitus","Case","Type 2 Diabetes Mellitus",53
+"KarlssonFH_2013","IGT","IGT","Glucose Intolerance;Type 2 Diabetes Mellitus","Case","Glucose Intolerance",49
+"KarlssonFH_2013","control","healthy","Glucose Intolerance;Type 2 Diabetes Mellitus","Study Control","Healthy",43
+"KaurK_2020","control","healthy","Intestinal Flora","Study Control","Healthy",31
+"KeohaneDM_2020","control","healthy","Intestinal Flora","Study Control","Healthy",117
+"KieserS_2018","acute_diarrhoea","acute_diarrhoea","Diarrhea","Case","Diarrhea",18
+"KieserS_2018","control","healthy","Diarrhea","Study Control","Healthy",9
+"KosticAD_2015","control","healthy","Type 1 Diabetes Mellitus","Study Control","Healthy;Type 1 Diabetes Mellitus",89
+"KosticAD_2015","T1D","T1D","Type 1 Diabetes Mellitus","Case","Type 1 Diabetes Mellitus",31
+"LassalleF_2017","control","healthy","Oral Microbiome","Study Control","Healthy",23
+"LeChatelierE_2013","control","healthy","Intestinal Flora","Study Control","Healthy",292
+"LeeKA_2022","melanoma","melanoma","Melanoma","Case","Melanoma",130
+"LeeKA_2022","melanoma","melanoma;treatment_colitis","Melanoma","Case","Melanoma,Colitis",35
+"LiJ_2014","T2D","T2D","Type 2 Diabetes Mellitus;Type 1 Diabetes Mellitus;Inflammatory Bowel Disease","Case","Type 2 Diabetes Mellitus",79
+"LiJ_2014","IBD","IBD","Type 2 Diabetes Mellitus;Type 1 Diabetes Mellitus;Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease,Ulcerative Colitis",64
+"LiJ_2014","IBD","IBD","Type 2 Diabetes Mellitus;Type 1 Diabetes Mellitus;Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease,Crohn Disease",39
+"LiJ_2014","IBD","IBD;perianal_fistula","Type 2 Diabetes Mellitus;Type 1 Diabetes Mellitus;Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease,Anorectal Fistula,Crohn Disease",37
+"LiJ_2014","T1D","T1D","Type 2 Diabetes Mellitus;Type 1 Diabetes Mellitus;Inflammatory Bowel Disease","Case","Type 1 Diabetes Mellitus",31
+"LiJ_2014","control","healthy","Type 2 Diabetes Mellitus;Type 1 Diabetes Mellitus;Inflammatory Bowel Disease","Study Control","Healthy",10
+"LiJ_2017","hypertension","hypertension","Hypertension","Case","Hypertension",99
+"LiJ_2017","pre-hypertension","hypertension","Hypertension","Case","Hypertension,Borderline Hypertension",56
+"LiJ_2017","control","healthy","Hypertension","Study Control","Healthy",41
+"LiSS_2016","FMT","metabolic_syndrome","Metabolic Syndrome","Case","Metabolic Syndrome,Fecal Microbiota Transplantation",40
+"LiSS_2016","metabolic_syndrome","metabolic_syndrome","Metabolic Syndrome","Case","Metabolic Syndrome",10
+"LiSS_2016","control","healthy","Metabolic Syndrome","Study Control","Healthy",5
+"LifeLinesDeep_2016","control","healthy","Intestinal Flora","Study Control","Healthy",1135
+"LiuW_2016","control","healthy","Intestinal Flora","Study Control","Healthy",110
+"LokmerA_2019","control","healthy","Intestinal Flora","Study Control","Healthy",57
+"LomanNJ_2013","STEC","STEC","Escherichia coli Infection","Case","Escherichia coli Infection",42
+"LoombaR_2017","fatty_liver","fatty_liver","Nonalcoholic Fatty Liver Disease","Case","Not applicable",41
+"LoombaR_2017","control","fatty_liver","Nonalcoholic Fatty Liver Disease","Study Control","Hepatic Steatosis",36
+"LoombaR_2017","cirrhosis","cirrhosis","Nonalcoholic Fatty Liver Disease","Case","Cirrhosis",9
+"LouisS_2016","control","healthy","Intestinal Flora;Weight Loss","Study Control","Healthy",92
+"MatsonV_2018","melanoma","melanoma;metastases","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm",39
+"MehtaRS_2018","control","healthy","Intestinal Flora","Study Control","Healthy",928
+"MetaCardis_2020_a","T2D","T2D","Glucose Intolerance;Metabolic Syndrome;Type 2 Diabetes Mellitus;Heart Failure","Case","Type 2 Diabetes Mellitus",549
+"MetaCardis_2020_a","control","MS","Glucose Intolerance;Metabolic Syndrome;Type 2 Diabetes Mellitus;Heart Failure","Study Control","Metabolic Syndrome",365
+"MetaCardis_2020_a","IGT","IGT;MS","Glucose Intolerance;Metabolic Syndrome;Type 2 Diabetes Mellitus;Heart Failure","Case","Glucose Intolerance;Metabolic Syndrome",266
+"MetaCardis_2020_a","control","healthy","Glucose Intolerance;Metabolic Syndrome;Type 2 Diabetes Mellitus;Heart Failure","Study Control","Healthy",234
+"MetaCardis_2020_a","CAD","CAD;T2D","Glucose Intolerance;Metabolic Syndrome;Type 2 Diabetes Mellitus;Heart Failure","Case","Coronary Artery Disease;Type 2 Diabetes Mellitus",184
+"MetaCardis_2020_a","CAD","CAD","Glucose Intolerance;Metabolic Syndrome;Type 2 Diabetes Mellitus;Heart Failure","Case","Coronary Artery Disease",85
+"MetaCardis_2020_a","HF","HF;CAD;T2D","Glucose Intolerance;Metabolic Syndrome;Type 2 Diabetes Mellitus;Heart Failure","Case","Heart Failure;Coronary Artery Disease;Type 2 Diabetes Mellitus",57
+"MetaCardis_2020_a","control","IGT","Glucose Intolerance;Metabolic Syndrome;Type 2 Diabetes Mellitus;Heart Failure","Study Control","Glucose Intolerance",43
+"MetaCardis_2020_a","HF","HF;CAD","Glucose Intolerance;Metabolic Syndrome;Type 2 Diabetes Mellitus;Heart Failure","Case","Heart Failure;Coronary Artery Disease",37
+"MetaCardis_2020_a","IGT","IGT","Glucose Intolerance;Metabolic Syndrome;Type 2 Diabetes Mellitus;Heart Failure","Case","Glucose Intolerance",9
+"MetaCardis_2020_a","HF","HF;T2D","Glucose Intolerance;Metabolic Syndrome;Type 2 Diabetes Mellitus;Heart Failure","Case","Heart Failure;Type 2 Diabetes Mellitus",1
+"MetaCardis_2020_a","T2D","T2D;HF","Glucose Intolerance;Metabolic Syndrome;Type 2 Diabetes Mellitus;Heart Failure","Case","Type 2 Diabetes Mellitus;Heart Failure",1
+"NagySzakalD_2017","ME/CFS","ME/CFS","Chronic Fatigue Syndrome","Case","Chronic Fatigue Syndrome",50
+"NagySzakalD_2017","control","healthy","Chronic Fatigue Syndrome","Study Control","Healthy",50
+"NielsenHB_2014","control","healthy","Inflammatory Bowel Disease","Study Control","Healthy",248
+"NielsenHB_2014","IBD","IBD","Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease,Ulcerative Colitis",127
+"NielsenHB_2014","IBD","IBD","Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease,Crohn Disease",21
+"Obregon-TitoAJ_2015","control","healthy","Intestinal Flora","Study Control","Healthy",58
+"OhJ_2014","control","healthy","human skin microbiome interaction","Study Control","Healthy",291
+"OlmMR_2017","premature_born","premature_born","Preterm Birth","Case","Preterm Birth",45
+"PasolliE_2019","control","healthy","Microbiome","Study Control","Healthy",112
+"PehrssonE_2016","control","healthy","Intestinal Flora","Study Control","Healthy",191
+"PetersBA_2019","melanoma","melanoma;metastases","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm",16
+"PetersBA_2019","melanoma","melanoma;metastases;melanoma_surgery","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma,Metastatic Malignant Neoplasm,Melanoma Surgery",11
+"QinJ_2012","control","healthy","Type 2 Diabetes Mellitus","Study Control","Healthy",174
+"QinJ_2012","T2D","T2D","Type 2 Diabetes Mellitus","Case","Type 2 Diabetes Mellitus",170
+"QinJ_2012",NA,"healthy","Type 2 Diabetes Mellitus","Not Used","Healthy",19
+"QinN_2014","control","healthy","Cirrhosis","Study Control","Healthy",114
+"QinN_2014","cirrhosis","ascites;cirrhosis;hepatitis","Cirrhosis","Case","Ascites, CTCAE,Cirrhosis,Hepatitis",54
+"QinN_2014","cirrhosis","cirrhosis;hepatitis","Cirrhosis","Case","Cirrhosis,Hepatitis",43
+"QinN_2014","cirrhosis","ascites;cirrhosis","Cirrhosis","Case","Ascites, CTCAE,Cirrhosis",9
+"QinN_2014","cirrhosis","cirrhosis","Cirrhosis","Case","Cirrhosis",8
+"QinN_2014","cirrhosis","ascites;cirrhosis;hepatitis;schistosoma","Cirrhosis","Case","Ascites, CTCAE,Cirrhosis,Hepatitis,Parasite Present",3
+"QinN_2014","cirrhosis","ascites;cirrhosis;hepatitis","Cirrhosis","Case","Ascites, CTCAE,Cirrhosis",1
+"QinN_2014","cirrhosis","ascites;cirrhosis;hepatitis;wilson","Cirrhosis","Case","Ascites, CTCAE,Cirrhosis,Hepatitis,Hepatolenticular Degeneration",1
+"QinN_2014","cirrhosis","ascites;cirrhosis;schistosoma","Cirrhosis","Case","Ascites, CTCAE,Cirrhosis,Parasite Present",1
+"QinN_2014","cirrhosis","ascites;cirrhosis;wilson","Cirrhosis","Case","Ascites, CTCAE,Cirrhosis,Hepatolenticular Degeneration",1
+"QinN_2014","cirrhosis","cirrhosis","Cirrhosis","Case","Cirrhosis,Ascites, CTCAE",1
+"QinN_2014","cirrhosis","hepatitis","Cirrhosis","Case","Hepatitis,Cirrhosis,Ascites, CTCAE",1
+"RampelliS_2015","control","healthy","Intestinal Flora","Study Control","Healthy",38
+"RaymondF_2016","cephalosporins","healthy","Cephalosporin Antibiotic","Case","Healthy",36
+"RaymondF_2016","control","healthy","Cephalosporin Antibiotic","Study Control","Healthy",36
+"RosaBA_2018","STH","STH","Helminth","Case","Parasite Present",19
+"RosaBA_2018","control","healthy","Helminth","Study Control","Healthy",5
+"RubelMA_2020","STH","STH","Helminth","Case","Parasite Present",89
+"RubelMA_2020","control","healthy","Helminth","Study Control","Healthy",86
+"SankaranarayananK_2015","T2D","T2D","Type 2 Diabetes Mellitus","Case","Type 2 Diabetes Mellitus",19
+"SankaranarayananK_2015","control","healthy","Type 2 Diabetes Mellitus","Study Control","Healthy",18
+"SchirmerM_2016","control","healthy","Intestinal Flora","Study Control","Healthy",471
+"ShaoY_2019","control","healthy","Intestinal Flora","Study Control","Healthy",1644
+"ShiB_2015","SRP","periodontitis","Periodontitis","Case","Periodontitis,Periodontal Scaling and Planing",24
+"ShiB_2015","periodontitis","periodontitis","Periodontitis","Case","Periodontitis",24
+"SmitsSA_2017","control","healthy","Intestinal Flora","Study Control","Healthy",40
+"TettAJ_2016","control","psoriasis","Arthritis;Psoriasis","Study Control","Psoriasis",38
+"TettAJ_2016","psoriasis","psoriasis","Arthritis;Psoriasis","Case","Psoriasis",31
+"TettAJ_2016","psoriasis","arthritis;psoriasis","Arthritis;Psoriasis","Case","Arthritis;Psoriasis",10
+"TettAJ_2016","control","arthritis;psoriasis","Arthritis;Psoriasis","Study Control","Arthritis;Psoriasis",9
+"TettAJ_2016","control","arthritis","Arthritis;Psoriasis","Study Control","Arthritis",1
+"TettAJ_2019_a","control","healthy","Prevotella copri","Study Control","Healthy",68
+"TettAJ_2019_b","control","healthy","Prevotella copri","Study Control","Healthy",44
+"TettAJ_2019_c","control","healthy","Prevotella copri","Study Control","Healthy",50
+"ThomasAM_2018a","adenoma","adenoma","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Case","Adenoma",16
+"ThomasAM_2018a","CRC","CRC","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Case","Colorectal Carcinoma;Adenocarcinoma",15
+"ThomasAM_2018a","control","healthy","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Study Control","Healthy",14
+"ThomasAM_2018a","CRC","CRC;hypertension","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Case","Colorectal Carcinoma;Hypertension;Adenocarcinoma",8
+"ThomasAM_2018a","control","hypercholesterolemia","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Study Control","Hypercholesterolemia",5
+"ThomasAM_2018a","adenoma","adenoma;hypercholesterolemia","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Case","Adenoma;Hypercholesterolemia",4
+"ThomasAM_2018a","adenoma","adenoma;hypertension","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Case","Adenoma;Hypertension",4
+"ThomasAM_2018a","CRC","CRC;hypercholesterolemia","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Case","Colorectal Carcinoma;Hypercholesterolemia;Adenocarcinoma",3
+"ThomasAM_2018a","control","hypertension","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Study Control","Hypertension",3
+"ThomasAM_2018a","CRC","CRC;cholesterolemia","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Case","Colorectal Carcinoma;Hypercholesterolemia;Adenocarcinoma",1
+"ThomasAM_2018a","CRC","CRC;hypercholesterolemia;hypertension","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Case","Colorectal Carcinoma;Hypercholesterolemia;Hypertension;Adenocarcinoma",1
+"ThomasAM_2018a","CRC","CRC;metastases","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Case","Colorectal Carcinoma;Metastatic Malignant Neoplasm;Adenocarcinoma",1
+"ThomasAM_2018a","adenoma","T2D;adenoma","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Case","Type 2 Diabetes Mellitus;Adenoma",1
+"ThomasAM_2018a","adenoma","adenoma;hypercholesterolemia;metastases","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Case","Adenoma;Hypercholesterolemia;Metastatic Malignant Neoplasm",1
+"ThomasAM_2018a","adenoma","adenoma;metastases","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Case","Adenoma;Metastatic Malignant Neoplasm",1
+"ThomasAM_2018a","control","hypertension;metastases","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Study Control","Hypertension;Metastatic Malignant Neoplasm",1
+"ThomasAM_2018a","control","metastases","Colorectal Carcinoma;Adenoma;Adenocarcinoma","Study Control","Metastatic Malignant Neoplasm",1
+"ThomasAM_2018b","CRC","CRC","Colorectal Carcinoma","Case","Colorectal Carcinoma",32
+"ThomasAM_2018b","control","healthy","Colorectal Carcinoma","Study Control","Healthy",28
+"ThomasAM_2019_c","CRC","CRC","Colorectal Carcinoma","Case","Colorectal Carcinoma",40
+"ThomasAM_2019_c","control","healthy","Colorectal Carcinoma","Study Control","Healthy",40
+"VatanenT_2016","control","healthy","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Study Control","Healthy",615
+"VatanenT_2016","otitis","otitis","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Otitis Media",107
+"VatanenT_2016","bronchitis","bronchitis","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","bronchitis",18
+"VatanenT_2016","respiratoryinf","respiratoryinf","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Upper Respiratory Tract Infection",13
+"VatanenT_2016","pyelonephritis","pyelonephritis","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Pyelonephritis",6
+"VatanenT_2016","infectiousgastroenteritis","infectiousgastroenteritis","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Gastroenteritis",5
+"VatanenT_2016","fever","fever","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Fever",3
+"VatanenT_2016","pneumonia","pneumonia","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Pneumonia",3
+"VatanenT_2016","tonsillitis","tonsillitis","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Tonsillitis",3
+"VatanenT_2016","cough","cough","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Cough",2
+"VatanenT_2016","pyelonefritis","pyelonefritis","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Pyelonephritis",2
+"VatanenT_2016","skininf","skininf","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Skin Infection",2
+"VatanenT_2016","stomatitis","stomatitis","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Stomatitis",2
+"VatanenT_2016","cystitis","cystitis","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Cystitis",1
+"VatanenT_2016","salmonellosis","salmonellosis","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Salmonellosis",1
+"VatanenT_2016","sepsis","sepsis","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Sepsis",1
+"VatanenT_2016","suspinf","suspinf","Otitis Media;Pneumonia;bronchitis;Upper Respiratory Tract Infection;Sepsis;Skin Infection;Cough;Gastroenteritis;Tonsillitis;Pyelonephritis;Cystitis;Fever;Infection;Stomatitis;Salmonellosis","Case","Infection",1
+"VilaAV_2018","IBD","IBD","Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease;Crohn Disease",216
+"VilaAV_2018","IBD","IBD","Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease;Ulcerative Colitis",119
+"VilaAV_2018","IBD","IBD","Inflammatory Bowel Disease","Case","Inflammatory Bowel Disease;Colitis",20
+"VincentC_2016","control","healthy","Clostridium difficile Infection","Study Control","Healthy",182
+"VincentC_2016","CDI","CDI;pneumonia","Clostridium difficile Infection","Case","Clostridium difficile Infection,Pneumonia",15
+"VincentC_2016","CDI","CDI","Clostridium difficile Infection","Case","Clostridium difficile Infection",14
+"VincentC_2016","control","cellulitis","Clostridium difficile Infection","Study Control","Cellulitis",6
+"VincentC_2016","control","pneumonia","Clostridium difficile Infection","Study Control","Pneumonia",4
+"VincentC_2016","CDI","CDI;cellulitis","Clostridium difficile Infection","Case","Clostridium difficile Infection,Cellulitis",2
+"VincentC_2016","control","abdominalhernia","Clostridium difficile Infection","Study Control","Abdominal Hernia",2
+"VincentC_2016","CDI","CDI;osteoarthritis","Clostridium difficile Infection","Case","Clostridium difficile Infection,Osteoarthritis",1
+"VincentC_2016","CDI","CDI;ureteralstone","Clostridium difficile Infection","Case","Clostridium difficile Infection,Ureterolithiasis",1
+"VincentC_2016","control","gangrene","Clostridium difficile Infection","Study Control","Gangrene",1
+"VincentC_2016","control","osteoarthritis","Clostridium difficile Infection","Study Control","Osteoarthritis",1
+"VogtmannE_2016","CRC","CRC","Colorectal Carcinoma","Case","Colorectal Carcinoma",52
+"VogtmannE_2016","control","healthy","Colorectal Carcinoma","Study Control","Healthy",52
+"VogtmannE_2016",NA,"healthy","Colorectal Carcinoma","Not Used","Healthy",6
+"WampachL_2018","control","healthy","Intestinal Flora","Study Control","Healthy",63
+"WindTT_2020","melanoma","melanoma;metastases","Melanoma;Metastatic Malignant Neoplasm","Case","Melanoma;Metastatic Malignant Neoplasm",20
+"WirbelJ_2018","control","healthy","Colorectal Carcinoma","Study Control","Healthy",65
+"WirbelJ_2018","CRC","CRC","Colorectal Carcinoma","Case","Colorectal Carcinoma",60
+"XieH_2016","control","healthy","Migraine;Asthma","Study Control","Healthy",169
+"XieH_2016","migraine","migraine","Migraine;Asthma","Case","Migraine",36
+"XieH_2016","asthma","asthma","Migraine;Asthma","Case","Asthma",24
+"XieH_2016","migraine","migraine;asthma","Migraine;Asthma","Case","Migraine,Asthma",12
+"XieH_2016","control","generic_diabetes","Migraine;Asthma","Study Control","Diabetes Mellitus",8
+"XieH_2016","migraine","migraine;generic_diabetes","Migraine;Asthma","Case","Migraine,Diabetes Mellitus",1
+"YachidaS_2019","CRC","CRC","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Colorectal Carcinoma",258
+"YachidaS_2019","control","healthy","Colorectal Carcinoma;Carcinoma;Adenoma","Study Control","Healthy",246
+"YachidaS_2019","adenoma","adenoma","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Adenoma",67
+"YachidaS_2019","carcinoma_surgery_history","carcinoma_surgery_history","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Carcinoma",40
+"YachidaS_2019","control","few_polyps","Colorectal Carcinoma;Carcinoma;Adenoma","Study Control","Polyps",5
+"YassourM_2016","control","healthy","Intestinal Flora","Study Control","Healthy",36
+"YassourM_2018","control","healthy","Intestinal Flora","Study Control","Healthy",271
+"YeZ_2018","control","healthy","Behcet Syndrome","Study Control","Healthy",45
+"YeZ_2018","BD","BD","Behcet Syndrome","Case","Behcet Syndrome",20
+"YuJ_2015","CRC","CRC","Colorectal Carcinoma","Case","Colorectal Carcinoma,Carcinoma",45
+"YuJ_2015","control","healthy","Colorectal Carcinoma","Study Control","Healthy",38
+"YuJ_2015","CRC","CRC;T2D","Colorectal Carcinoma","Case","Colorectal Carcinoma,Type 2 Diabetes Mellitus",29
+"YuJ_2015","control","T2D","Colorectal Carcinoma","Study Control","Type 2 Diabetes Mellitus",16
+"ZeeviD_2015","control","healthy","Intestinal Flora","Study Control","Healthy",900
+"ZellerG_2014","control","healthy","Colorectal Carcinoma;Carcinoma;Adenoma","Study Control","Healthy",61
+"ZellerG_2014","CRC","CRC","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Colorectal Carcinoma,Carcinoma",53
+"ZellerG_2014","adenoma","adenoma","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Adenoma,Small Intestinal Adenoma",27
+"ZellerG_2014","adenoma","adenoma","Colorectal Carcinoma;Carcinoma;Adenoma","Case","Adenoma,Colorectal Adenoma",15
+"ZhuF_2020","schizophrenia","schizophrenia","Schizophrenia","Case","Schizophrenia",90
+"ZhuF_2020","control","healthy","Schizophrenia","Study Control","Healthy",81

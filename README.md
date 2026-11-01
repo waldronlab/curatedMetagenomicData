@@ -13,22 +13,50 @@ quality](https://img.shields.io/codefactor/grade/github/waldronlab/curatedMetage
 <!-- badges: end -->
 
 The
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.16/curatedMetagenomicData)*
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.24/curatedMetagenomicData)*
 package provides standardized, curated human microbiome data for novel
-analyses. It includes gene families, marker abundance, marker presence,
-pathway abundance, pathway coverage, and relative abundance for samples
-collected from different body sites. The bacterial, fungal, and archaeal
-taxonomic abundances for each sample were calculated with
-[MetaPhlAn3](https://github.com/biobakery/MetaPhlAn), and metabolic
-functional potential was calculated with
-[HUMAnN3](https://github.com/biobakery/humann). The manually curated
-sample metadata and standardized metagenomic data are available as
+analyses. It includes species relative abundance, marker abundance,
+marker presence, Bracken species profiles and antimicrobial resistance
+gene depth for samples collected from different body sites. Taxonomic
+abundances for each sample were calculated with [MetaPhlAn
+4](https://github.com/biobakery/MetaPhlAn) and
+[Kraken2/Bracken](https://github.com/jenniferlu717/Bracken), and
+resistance genes with
+[KMA](https://bitbucket.org/genomicepidemiology/kma) against
+[CARD](https://card.mcmaster.ca). The manually curated sample metadata
+and standardized metagenomic data are available as
 (Tree)SummarizedExperiment objects.
+
+## What’s new in version 4
+
+Version 4.0.0 reads its data from the public curatedMetagenomicData
+releases at <https://cmgd-public.cancerdatasci.org> through the
+[cmgdr](https://github.com/seandavi/cmgdr) package, instead of from
+ExperimentHub. A release is an immutable, dated snapshot of one pipeline
+registration; this version pins one, and `cmdRelease()` shows which. The
+user-facing functions `curatedMetagenomicData()`, `returnSamples()` and
+`mergeData()` keep their signatures and return types.
+
+- **Metadata.** `sampleMetadata` keeps its name and takes the cMD 4 data
+  dictionary columns; `attr(sampleMetadata, "harmonized")` names the
+  schema-governed ones.
+- **Sample identity.** Objects are keyed by the release’s `sample_key`;
+  curated metadata is joined to it by run accession. The `colData` holds
+  the curated columns followed by the release’s per-sample QC columns.
+- **Data types.** `relative_abundance`, `marker_abundance` and
+  `marker_presence` continue; `bracken` and `resistome` are new. The
+  HUMAnN data types (`gene_families`, `pathway_abundance`,
+  `pathway_coverage`) return when the HUMAnN datasets are published.
+- **Coverage.** The pinned release holds the studies processed so far by
+  the new pipeline. Every study in the release is listed, whether or not
+  it has curated metadata yet.
+
+See `NEWS.md` for the full list of changes.
 
 ## Installation
 
 To install
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.16/curatedMetagenomicData)*
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.24/curatedMetagenomicData)*
 from Bioconductor, use
 *[BiocManager](https://CRAN.R-project.org/package=BiocManager)* as
 follows.
@@ -38,7 +66,7 @@ BiocManager::install("curatedMetagenomicData")
 ```
 
 To install
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.16/curatedMetagenomicData)*
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.24/curatedMetagenomicData)*
 from GitHub, use
 *[BiocManager](https://CRAN.R-project.org/package=BiocManager)* as
 follows.
@@ -48,37 +76,24 @@ BiocManager::install("waldronlab/curatedMetagenomicData", dependencies = TRUE, b
 ```
 
 Most users should simply install
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.16/curatedMetagenomicData)*
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.24/curatedMetagenomicData)*
 from Bioconductor.
 
 ## Examples
 
 To access curated metagenomic data, users will use the
-`curatedMetagenomicData()` method both to query and return resources.
+`curatedMetagenomicData()` function both to query and return resources.
 Multiple resources can be queried or returned with a single call to
 `curatedMetagenomicData()`, but only the titles of resources are
 returned by default.
 
 ``` r
 curatedMetagenomicData("AsnicarF_20.+")
-## 2021-03-31.AsnicarF_2017.gene_families
-## 2021-03-31.AsnicarF_2017.marker_abundance
-## 2021-03-31.AsnicarF_2017.marker_presence
-## 2021-03-31.AsnicarF_2017.pathway_abundance
-## 2021-03-31.AsnicarF_2017.pathway_coverage
-## 2021-03-31.AsnicarF_2017.relative_abundance
-## 2021-10-14.AsnicarF_2017.gene_families
-## 2021-10-14.AsnicarF_2017.marker_abundance
-## 2021-10-14.AsnicarF_2017.marker_presence
-## 2021-10-14.AsnicarF_2017.pathway_abundance
-## 2021-10-14.AsnicarF_2017.pathway_coverage
-## 2021-10-14.AsnicarF_2017.relative_abundance
-## 2021-03-31.AsnicarF_2021.gene_families
-## 2021-03-31.AsnicarF_2021.marker_abundance
-## 2021-03-31.AsnicarF_2021.marker_presence
-## 2021-03-31.AsnicarF_2021.pathway_abundance
-## 2021-03-31.AsnicarF_2021.pathway_coverage
-## 2021-03-31.AsnicarF_2021.relative_abundance
+## 2026-10-20.AsnicarF_2017.relative_abundance
+## 2026-10-20.AsnicarF_2017.marker_abundance
+## 2026-10-20.AsnicarF_2017.marker_presence
+## 2026-10-20.AsnicarF_2017.bracken
+## 2026-10-20.AsnicarF_2017.resistome
 ```
 
 When the `dryrun` argument is set to `FALSE`, a `list` of
@@ -90,22 +105,24 @@ resource is requested, a single element `list` is returned.
 
 ``` r
 curatedMetagenomicData("AsnicarF_2017.relative_abundance", dryrun = FALSE, rownames = "short")
-## $`2021-10-14.AsnicarF_2017.relative_abundance`
+## $`2026-10-20.AsnicarF_2017.relative_abundance`
 ## class: TreeSummarizedExperiment 
-## dim: 296 24 
-## metadata(1): agglomerated_by_rank
+## dim: 913 24 
+## metadata(0):
 ## assays(1): relative_abundance
-## rownames(296): Escherichia coli Bifidobacterium bifidum ...
-##   Streptococcus gordonii Abiotrophia sp. HMSC24B09
-## rowData names(7): superkingdom phylum ... genus species
-## colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14
-##   MV_MIM5_t3F15
-## colData names(22): study_name subject_id ... lactating curator
+## rownames(913): Methanobrevibacter_smithii Methanosphaera_stadtmanae ...
+##   Akkermansia_sp_BIOML_A66 Akkermansia_sp_N21116
+## rowData names(8): superkingdom phylum ... species ncbi_taxid
+## colnames(24): RS.1Lw9jFpaPHo3SFDkT4_dKIf2HMp4u3JK
+##   RS.2RIKzrkv8vjM99hR46qeCXgaPB6_a6yB ...
+##   RS.Zc57w716jKVKG_6UvW4UbrN3tlmQ_OXV
+##   RS.ZGpyEvoNn4f_5wz0V7luDpdUHqqVgt4f
+## colData names(43): study_name sample_id ... git_commit number_reads
 ## reducedDimNames(0):
 ## mainExpName: NULL
 ## altExpNames(0):
-## rowLinks: a LinkDataFrame (296 rows)
-## rowTree: 1 phylo tree(s) (10430 leaves)
+## rowLinks: NULL
+## rowTree: NULL
 ## colLinks: NULL
 ## colTree: NULL
 ```
@@ -118,40 +135,56 @@ requested, the `list` will contain named elements corresponding to each
 
 ``` r
 curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, counts = TRUE, rownames = "short")
-## $`2021-10-14.AsnicarF_2017.relative_abundance`
+## $`2026-10-20.AsnicarF_2017.relative_abundance`
 ## class: TreeSummarizedExperiment 
-## dim: 296 24 
-## metadata(1): agglomerated_by_rank
+## dim: 913 24 
+## metadata(0):
 ## assays(1): relative_abundance
-## rownames(296): Escherichia coli Bifidobacterium bifidum ...
-##   Streptococcus gordonii Abiotrophia sp. HMSC24B09
-## rowData names(7): superkingdom phylum ... genus species
-## colnames(24): MV_FEI1_t1Q14 MV_FEI2_t1Q14 ... MV_MIM5_t2M14
-##   MV_MIM5_t3F15
-## colData names(22): study_name subject_id ... lactating curator
+## rownames(913): Methanobrevibacter_smithii Methanosphaera_stadtmanae ...
+##   Akkermansia_sp_BIOML_A66 Akkermansia_sp_N21116
+## rowData names(8): superkingdom phylum ... species ncbi_taxid
+## colnames(24): RS.1Lw9jFpaPHo3SFDkT4_dKIf2HMp4u3JK
+##   RS.2RIKzrkv8vjM99hR46qeCXgaPB6_a6yB ...
+##   RS.Zc57w716jKVKG_6UvW4UbrN3tlmQ_OXV
+##   RS.ZGpyEvoNn4f_5wz0V7luDpdUHqqVgt4f
+## colData names(43): study_name sample_id ... git_commit number_reads
 ## reducedDimNames(0):
 ## mainExpName: NULL
 ## altExpNames(0):
-## rowLinks: a LinkDataFrame (296 rows)
-## rowTree: 1 phylo tree(s) (10430 leaves)
+## rowLinks: NULL
+## rowTree: NULL
 ## colLinks: NULL
 ## colTree: NULL
-## 
-## $`2021-03-31.AsnicarF_2021.relative_abundance`
+```
+
+To return samples across studies, filter `sampleMetadata` and pass the
+result to `returnSamples()`.
+
+``` r
+library(dplyr)
+
+sampleMetadata |>
+    filter(study_name %in% c("AsnicarF_2017", "ZellerG_2014")) |>
+    filter(body_site == "feces") |>
+    select(where(~ !all(is.na(.x)))) |>
+    returnSamples("relative_abundance", rownames = "short")
 ## class: TreeSummarizedExperiment 
-## dim: 633 1098 
-## metadata(1): agglomerated_by_rank
+## dim: 1116 19 
+## metadata(0):
 ## assays(1): relative_abundance
-## rownames(633): Phocaeicola vulgatus Bacteroides stercoris ...
-##   Pyramidobacter sp. C12-8 Brevibacterium aurantiacum
-## rowData names(7): superkingdom phylum ... genus species
-## colnames(1098): SAMEA7041133 SAMEA7041134 ... SAMEA7045952 SAMEA7045953
-## colData names(24): study_name subject_id ... family treatment
+## rownames(1116): Methanobrevibacter_smithii Methanosphaera_stadtmanae
+##   ... Saccharomyces_cerevisiae Blastocystis_sp_subtype_6
+## rowData names(8): superkingdom phylum ... species ncbi_taxid
+## colnames(19): RS.wP6CFlagMWIXNkQUF1QcOpF9tzS3SIZN
+##   RS.m6yHjtU_3TiZGworEkrPrYczURQ9xngA ...
+##   RS.8G5cd1ZeZW4RVHDQitQ1t5PV7IHCue2p
+##   RS.bZz5VlfYIkTVYKmDibnmPtWb6pkLWBP9
+## colData names(50): study_name sample_id ... git_commit number_reads
 ## reducedDimNames(0):
 ## mainExpName: NULL
 ## altExpNames(0):
-## rowLinks: a LinkDataFrame (633 rows)
-## rowTree: 1 phylo tree(s) (10430 leaves)
+## rowLinks: NULL
+## rowTree: NULL
 ## colLinks: NULL
 ## colTree: NULL
 ```
@@ -161,12 +194,12 @@ curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, count
 See
 [curatedMetagenomicAnalyses](https://github.com/waldronlab/curatedMetagenomicAnalyses)
 for analyses in R and Python using
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.16/curatedMetagenomicData)*.
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.24/curatedMetagenomicData)*.
 
 ## Contributing
 
 To contribute to the
-*[curatedMetagenomicData](https://bioconductor.org/packages/3.16/curatedMetagenomicData)*
+*[curatedMetagenomicData](https://bioconductor.org/packages/3.24/curatedMetagenomicData)*
 R/Bioconductor package, first read the [contributing
 guidelines](CONTRIBUTING.md) and then open an issue. Also, note that in
 contributing you agree to abide by the [code of

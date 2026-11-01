@@ -5,12 +5,65 @@
 \alias{sampleMetadata}
 \title{Manually Curated Sample Metadata}
 \format{
-An object of class \code{data.frame} with 22588 rows and 141 columns.
+A \code{data.frame} with one row per curated sample and one column per
+field, with a \code{harmonized} attribute naming the data dictionary columns.
 }
 \usage{
 sampleMetadata
 }
 \description{
-Manually curated sample metadata for all samples in curatedMetagenomicData.
+Manually curated sample metadata for every curated sample in
+curatedMetagenomicData, one row per sample. It is built from
+\code{curatedMetagenomicDataCuration::makeCombinedMetadata(TRUE)} by
+\code{data-raw/sampleMetadata.R}, so the package does not depend on the
+curation repository at run time.
+}
+\details{
+Two columns identify a sample: \code{study_name}, which is used with
+\code{\link[=curatedMetagenomicData]{curatedMetagenomicData()}} to query and return resources, and \code{sample_id},
+which with \code{study_name} identifies a curated sample for \code{\link[=returnSamples]{returnSamples()}}.
+The \code{ncbi_accession} column (\verb{;}-separated run accessions) is what joins a
+curated sample to the release in use (see \link{cmdRelease}); not every curated
+sample is in the release yet.
+}
+\section{Harmonized columns}{
+
+
+The columns defined in the cMD 4 data dictionary (the harmonized schema:
+\code{age_years}, \code{sex}, \code{body_site}, \code{target_condition}, \code{control}, ...) are
+named in \code{attr(sampleMetadata, "harmonized")}, and are the columns to
+filter on for portable, cross-study cohorts. The remaining columns are
+the ontology term ids for the harmonized fields
+(\code{body_site_ontology_term_id}, ...), fields kept from version 3 that are
+not in the dictionary (\code{alcohol}, \code{body_subsite}, ...), and study-specific
+fields still under harmonization, most of which are \code{NA} outside one or
+two studies and may be renamed or dropped as harmonization proceeds. After
+filtering to a cohort, \code{dplyr::select(where(~ !all(is.na(.x))))} drops the
+columns that are empty for it.
+
+Compared to version 3, the column names follow the cMD 4 data dictionary:
+for example \code{NCBI_accession} is \code{ncbi_accession}, \code{age} is joined by
+\code{age_years} and \code{age_unit}, \code{disease} by \code{target_condition} and \code{control},
+and \code{body_site} uses UBERON names (\code{feces}, not \code{stool}). \code{number_reads}
+is no longer curated; it comes from the release's QC table in the
+\code{colData} of returned objects. The complete map from the version 3
+columns and values to version 4 is shipped as
+\code{system.file("extdata", "cmd3_to_cmd4_columns.csv", package = "curatedMetagenomicData")}
+(one row per version 3 column), \code{cmd3_to_cmd4_values.csv} (value maps for
+recoded columns) and \code{cmd3_to_cmd4_conditions.csv} (\code{study_condition} and
+\code{disease} to \code{target_condition}, \code{control} and \code{disease}), and rendered in
+the article "Migrating from version 3".
+}
+
+\examples{
+attr(sampleMetadata, "harmonized")
+
+sampleMetadata |>
+    dplyr::filter(study_name == "AsnicarF_2017") |>
+    dplyr::select(where(~ !all(is.na(.x)))) |>
+    head()
+}
+\seealso{
+\link{curatedMetagenomicData}, \link{returnSamples}
 }
 \keyword{datasets}
