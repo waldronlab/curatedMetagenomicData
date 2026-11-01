@@ -40,7 +40,11 @@
   is `ncbi_accession`, `age` is joined by `age_years` and `age_unit`,
   `disease` by `target_condition` and `control`, `body_site` uses UBERON
   names (`feces`, not `stool`), and `number_reads` moves to the QC columns
-  of returned objects.
+  of returned objects. The complete column and value map from version 3,
+  derived from the curation repository, ships in `inst/extdata/`
+  (`cmd3_to_cmd4_columns.csv`, `cmd3_to_cmd4_values.csv`,
+  `cmd3_to_cmd4_conditions.csv`) and is rendered in the article
+  "Migrating from version 3".
 * Objects are keyed by the release's `sample_key` (a readset id, `RS.…`)
   rather than the curated `sample_id`. Curated metadata is joined to the
   release by run accession (`ncbi_accession` against the release's

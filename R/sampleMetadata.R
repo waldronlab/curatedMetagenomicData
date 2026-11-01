@@ -32,7 +32,13 @@
 #' `age_years` and `age_unit`, `disease` by `target_condition` and `control`,
 #' and `body_site` uses UBERON names (`feces`, not `stool`). `number_reads`
 #' is no longer curated; it comes from the release's QC table in the
-#' `colData` of returned objects.
+#' `colData` of returned objects. The complete map from the version 3
+#' columns and values to version 4 is shipped as
+#' `system.file("extdata", "cmd3_to_cmd4_columns.csv", package = "curatedMetagenomicData")`
+#' (one row per version 3 column), `cmd3_to_cmd4_values.csv` (value maps for
+#' recoded columns) and `cmd3_to_cmd4_conditions.csv` (`study_condition` and
+#' `disease` to `target_condition`, `control` and `disease`), and rendered in
+#' the article "Migrating from version 3".
 #'
 #' @format A `data.frame` with one row per curated sample and one column per
 #' field, with a `harmonized` attribute naming the data dictionary columns.

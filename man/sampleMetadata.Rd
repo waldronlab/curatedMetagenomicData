@@ -46,7 +46,13 @@ for example \code{NCBI_accession} is \code{ncbi_accession}, \code{age} is joined
 \code{age_years} and \code{age_unit}, \code{disease} by \code{target_condition} and \code{control},
 and \code{body_site} uses UBERON names (\code{feces}, not \code{stool}). \code{number_reads}
 is no longer curated; it comes from the release's QC table in the
-\code{colData} of returned objects.
+\code{colData} of returned objects. The complete map from the version 3
+columns and values to version 4 is shipped as
+\code{system.file("extdata", "cmd3_to_cmd4_columns.csv", package = "curatedMetagenomicData")}
+(one row per version 3 column), \code{cmd3_to_cmd4_values.csv} (value maps for
+recoded columns) and \code{cmd3_to_cmd4_conditions.csv} (\code{study_condition} and
+\code{disease} to \code{target_condition}, \code{control} and \code{disease}), and rendered in
+the article "Migrating from version 3".
 }
 
 \examples{

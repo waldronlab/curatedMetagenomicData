@@ -68,9 +68,10 @@ See:
 1.  [Available Studies](https://waldronlab.io/curatedMetagenomicData/articles/available-studies.html)
 2.  [Our Pipeline](https://waldronlab.io/curatedMetagenomicData/articles/our-pipeline.html)
 3.  [Version 4: assembling a cross-study cohort](https://waldronlab.io/curatedMetagenomicData/articles/cmd4-cross-study-cohort.html)
-4.  [Reference for cMD Functions](https://waldronlab.io/curatedMetagenomicData/reference/index.html)
-5.  [The command-line tool](https://github.com/waldronlab/curatedMetagenomicDataTerminal)
-6.  [Example analyses in R and Python, Docker image, free Cloud instance for teaching/learning](https://github.com/waldronlab/curatedMetagenomicDataAnalyses)
+4.  [Migrating from version 3: the sampleMetadata map](https://waldronlab.io/curatedMetagenomicData/articles/migrating-from-version-three.html)
+5.  [Reference for cMD Functions](https://waldronlab.io/curatedMetagenomicData/reference/index.html)
+6.  [The command-line tool](https://github.com/waldronlab/curatedMetagenomicDataTerminal)
+7.  [Example analyses in R and Python, Docker image, free Cloud instance for teaching/learning](https://github.com/waldronlab/curatedMetagenomicDataAnalyses)
 
 # Installation
 
