@@ -405,3 +405,30 @@ test_that("return type is TreeSummarizedExperiment when dataType is relative_abu
 
     expect_s4_class(merge_result, "TreeSummarizedExperiment")
 })
+
+test_that("assays merge over the union of row names with 0 for absent features", {
+    a <- matrix(c(1, 2, 3, 4), 2, dimnames = list(c("f1", "f2"), c("s1", "s2")))
+    b <- matrix(c(5, NA), 2, dimnames = list(c("f3", "f1"), "s3"))
+
+    merged <- curatedMetagenomicData:::.merge_assays(list(a, b))
+
+    expected <- matrix(
+        c(1, 2, 0, 3, 4, 0, 0, 0, 5), 3,
+        dimnames = list(c("f1", "f2", "f3"), c("s1", "s2", "s3"))
+    )
+    expect_identical(merged, expected)
+})
+
+test_that("merged assays stay integer, accept sparse input and empty studies", {
+    a <- matrix(1:4, 2, dimnames = list(c("f1", "f2"), c("s1", "s2")))
+    b <- matrix(5L, 1, dimnames = list("f3", "s3"))
+    merged <- curatedMetagenomicData:::.merge_assays(list(a, b))
+    expect_type(merged, "integer")
+    expect_identical(merged[, "s3"], c(f1 = 0L, f2 = 0L, f3 = 5L))
+
+    sparse <- Matrix::Matrix(a * 1, sparse = TRUE)
+    empty <- b[, 0L, drop = FALSE]
+    merged <- curatedMetagenomicData:::.merge_assays(list(sparse, empty, b * 1))
+    expect_identical(dim(merged), c(3L, 3L))
+    expect_identical(merged["f3", ], c(s1 = 0, s2 = 0, s3 = 5))
+})
