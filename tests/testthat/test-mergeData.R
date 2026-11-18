@@ -426,6 +426,7 @@ test_that("merged assays stay integer, accept sparse input and empty studies", {
     expect_type(merged, "integer")
     expect_identical(merged[, "s3"], c(f1 = 0L, f2 = 0L, f3 = 5L))
 
+    skip_if_not_installed("Matrix")
     sparse <- Matrix::Matrix(a * 1, sparse = TRUE)
     empty <- b[, 0L, drop = FALSE]
     merged <- curatedMetagenomicData:::.merge_assays(list(sparse, empty, b * 1))
