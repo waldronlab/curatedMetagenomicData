@@ -1,36 +1,50 @@
-# curatedMetagenomicData 3.21.8
+# curatedMetagenomicData 3.22.0
 
-* `mergeData()` and `returnSamples()` stop with a clear error when the merged
-`gene_families` assay would hold more than the 2^31 - 1 non-zero values that a
-sparse matrix can store, instead of failing with `p[length(p)] cannot exceed
-2^31-1`. The 5,474 samples from 45 studies requested in #304 are over this limit
-
-# curatedMetagenomicData 3.21.7
+## SIGNIFICANT USER-VISIBLE CHANGES
 
 * `mergeData()` and `returnSamples()` return a sparse assay (`dgCMatrix`) for
 `gene_families`, as `curatedMetagenomicData()` already does for a single study,
 instead of a dense matrix. For 48 samples from two studies the assay is 0.95 GB
-rather than 2.5 GB, and peak memory fell from 8.9 GB to 5.7 GB. Code that needs
-a dense matrix can call `as.matrix()` on the assay (#304, #318)
+rather than 2.5 GB. Code that needs a dense matrix can call `as.matrix()` on
+the assay (#304, @amsegura; #318, @adamsorbie)
+* `rownames = "NCBI"` gives bare NCBI Taxonomy IDs as row names, without the
+`species:` and `genus:` prefixes. Rows that share an ID are summed, with a
+message naming them. For `"short"` and `"NCBI"`, clades that NCBI resolves no
+further than genus are dropped with a warning; `rownames = "long"` keeps every
+row (#316, @LiNk-NY)
 
-# curatedMetagenomicData 3.21.6
-
-* `rownames = "NCBI"` keeps its row tree with mia 1.21.30 and later. Rows that
-share an NCBI Taxonomy ID are summed in this package instead of with
-`mia::agglomerateByVariable()`, which now removes the tree. Results are the same
-as before
-
-# curatedMetagenomicData 3.21.5
+## BUG FIXES AND MINOR IMPROVEMENTS
 
 * `returnSamples()` no longer mislabels columns. When a requested sample had no
 assay match and `sampleMetadata` was not in study order, the returned columns
-carried the names and `colData` of other samples
+carried the names and `colData` of other samples (#354, @lwaldron)
 * `returnSamples()` no longer drops a sample whose `sample_id` also occurs in
-another requested study
+another requested study (#354, @lwaldron)
+* `mergeData()` returns a `SummarizedExperiment` input unchanged, instead of
+failing with `subscript is out of bounds` when given the result of
+`returnSamples()` (#321, @BinhongLiu)
 * `returnSamples()` keeps only the requested samples of each study before
 merging, and `mergeData()` no longer builds intermediate data frames. Peak
 memory for four `gene_families` samples from two studies fell from 10.3 GB to
-3.6 GB (#304)
+3.6 GB (#304, @amsegura)
+* `mergeData()` and `returnSamples()` stop with a clear error when the merged
+`gene_families` assay would hold more than the 2^31 - 1 non-zero values that a
+sparse matrix can store, instead of failing with `p[length(p)] cannot exceed
+2^31-1`. The 5,474 samples from 45 studies requested in #304 are over this
+limit (#304, @amsegura)
+* `rownames = "NCBI"` keeps its row tree with mia 1.21.30 and later. Rows that
+share an NCBI Taxonomy ID are summed in this package instead of with
+`mia::agglomerateByVariable()`, which now removes the tree (#356, @lwaldron)
+* The `curatedMetagenomicData()` help page and the vignette explain how the
+`"long"`, `"short"` and `"NCBI"` row names differ (#342, @lwaldron)
+* The vignette builds when packages in Suggests are not installed, and
+OmicsMLRepoR is removed from Suggests while it cannot be installed on
+Bioconductor 3.24 (#339, #340, @lwaldron)
+* `methods` and `Matrix` are declared in Imports (#353, #355, @lwaldron)
+* Unit tests updated for changes in `mia` (#314, @TuomasBorman)
+* Added `CITATION.cff` (@LiNk-NY)
+* Continuous integration uses the Bioconductor reusable GitHub workflow, with a
+coverage report (#338, #344, @lwaldron)
 
 # curatedMetagenomicData 3.16.1
 
