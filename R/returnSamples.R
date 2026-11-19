@@ -61,6 +61,8 @@
 #' @importFrom dplyr filter
 #' @importFrom tibble column_to_rownames
 #' @importFrom S4Vectors DataFrame
+#' @importFrom purrr map
+#' @importFrom SummarizedExperiment colData
 returnSamples <- function(sampleMetadata, dataType, counts = FALSE, rownames = "long") {
     if (is.null(sampleMetadata[["study_name"]])) {
         stop("study_name must be present in sampleMetadata", call. = FALSE)
@@ -69,6 +71,9 @@ returnSamples <- function(sampleMetadata, dataType, counts = FALSE, rownames = "
     if (is.null(sampleMetadata[["sample_id"]])) {
         stop("sample_id must be present in sampleMetadata", call. = FALSE)
     }
+
+    requested <-
+        split(sampleMetadata[["sample_id"]], sampleMetadata[["study_name"]])
 
     sampleMetadata[["sample_id"]] <-
         select(sampleMetadata, "sample_id", "study_name") |>
@@ -81,6 +86,7 @@ returnSamples <- function(sampleMetadata, dataType, counts = FALSE, rownames = "
         str_c(dataType, sep = ".") |>
         str_c(collapse = "|") |>
         curatedMetagenomicData(dryrun = FALSE, counts = counts, rownames = rownames) |>
+        map(.keep_requested, requested = requested) |>
         mergeData()
 
     keep_rows <-
@@ -104,8 +110,9 @@ returnSamples <- function(sampleMetadata, dataType, counts = FALSE, rownames = "
             message("\n", drop_text, "  ", drop_cols, "\n")
         }
 
+        ## in sampleMetadata order, to line up with the colData set below
         keep_cols <-
-            intersect(col_names, sampleMetadata[["sample_id"]])
+            intersect(sampleMetadata[["sample_id"]], col_names)
     } else {
         keep_cols <-
             sampleMetadata[["sample_id"]]
@@ -120,4 +127,12 @@ returnSamples <- function(sampleMetadata, dataType, counts = FALSE, rownames = "
         DataFrame()
 
     to_return
+}
+
+## Keep only the requested samples of one study, so that mergeData() works on
+## the samples asked for rather than on every sample of every study.
+.keep_requested <- function(x, requested) {
+    study <- unique(as.character(colData(x)[["study_name"]]))
+    wanted <- unlist(requested[study], use.names = FALSE)
+    x[, colnames(x) %in% wanted]
 }

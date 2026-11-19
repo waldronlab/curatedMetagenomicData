@@ -9,12 +9,12 @@
 #' studies (e.g. meta-analysis); however, when doing analysis across individual
 #' samples (e.g. mega-analysis) [returnSamples] is preferable.
 #'
-#' Internally, `mergeData()` must full join `assays` and `rowData` slots of each
+#' Internally, `mergeData()` combines the `assays` of each
 #' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class] or
 #' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
-#' object (`colData` is merged slightly more efficiently by row binding). While
-#' `dplyr` methods are used for maximum efficiency, users should be aware that
-#' memory requirements can be large when merging many `list` elements.
+#' object over the union of their row names, full joins the `rowData`, and row
+#' binds the `colData`. The merged assay is a dense matrix, so memory
+#' requirements can be large when merging many `list` elements.
 #'
 #' @param mergeList a `list` returned from [curatedMetagenomicData] where all of
 #' the elements are of the same `dataType` (see [returnSamples])
@@ -50,9 +50,6 @@
 #' @importFrom tibble rownames_to_column
 #' @importFrom dplyr full_join
 #' @importFrom tibble column_to_rownames
-#' @importFrom dplyr mutate
-#' @importFrom dplyr across
-#' @importFrom tidyr replace_na
 #' @importFrom S4Vectors SimpleList
 #' @importFrom magrittr set_names
 #' @importFrom SummarizedExperiment rowData
@@ -110,21 +107,7 @@ mergeData <- function(mergeList) {
 
     assays <-
         map(mergeList, assay) |>
-        map(as.matrix) |>
-        map(as.data.frame) |>
-        map(rownames_to_column) |>
-        reduce(full_join, by = "rowname") |>
-        column_to_rownames()
-
-    cols <- names(assays)
-    assays <-
-        mutate(
-            assays,
-            across(
-                tidyselect::all_of(cols), .fns = ~ replace_na(.x, 0)
-            )
-        ) |>
-        as.matrix() |>
+        .merge_assays() |>
         SimpleList() |>
         set_names(assay_name)
 
@@ -167,4 +150,38 @@ mergeData <- function(mergeList) {
     } else {
         SummarizedExperiment(assays = assays, rowData = rowData, colData = colData)
     }
+}
+
+## Merge feature x sample matrices into one dense matrix over the union of
+## their row names, with 0 where a study lacks a feature (and in place of NA,
+## as before). Studies are made dense one at a time, so peak memory is the
+## result plus one study, rather than several data.frame copies of everything.
+.merge_assays <- function(mats) {
+    features <- unique(unlist(lapply(mats, rownames), use.names = FALSE))
+    samples <- unlist(lapply(mats, colnames), use.names = FALSE)
+
+    types <- vapply(mats, function(m) {
+        typeof(as.matrix(m[0L, 0L, drop = FALSE]))
+    }, character(1L))
+    zero <- if (length(unique(types)) == 1L) vector(types[[1L]], 1L) else 0
+
+    merged <- matrix(
+        zero, length(features), length(samples),
+        dimnames = list(features, samples)
+    )
+
+    end <- cumsum(vapply(mats, ncol, integer(1L)))
+    for (i in seq_along(mats)) {
+        n <- ncol(mats[[i]])
+        if (n == 0L) {
+            next
+        }
+        block <- as.matrix(mats[[i]])
+        if (anyNA(block)) {
+            block[is.na(block)] <- zero
+        }
+        merged[match(rownames(block), features), seq(end[[i]] - n + 1L, end[[i]])] <- block
+    }
+
+    merged
 }

@@ -1,3 +1,15 @@
+# curatedMetagenomicData 3.21.5
+
+* `returnSamples()` no longer mislabels columns. When a requested sample had no
+assay match and `sampleMetadata` was not in study order, the returned columns
+carried the names and `colData` of other samples
+* `returnSamples()` no longer drops a sample whose `sample_id` also occurs in
+another requested study
+* `returnSamples()` keeps only the requested samples of each study before
+merging, and `mergeData()` no longer builds intermediate data frames. Peak
+memory for four `gene_families` samples from two studies fell from 10.3 GB to
+3.6 GB (#304)
+
 # curatedMetagenomicData 3.16.1
 
 * Updates to `rownames = "short"` due to downstream changes in `mia`

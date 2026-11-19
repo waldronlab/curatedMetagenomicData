@@ -29,12 +29,12 @@ studies (e.g. meta-analysis); however, when doing analysis across individual
 samples (e.g. mega-analysis) \link{returnSamples} is preferable.
 }
 \details{
-Internally, \code{mergeData()} must full join \code{assays} and \code{rowData} slots of each
+Internally, \code{mergeData()} combines the \code{assays} of each
 \link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment} or
 \link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
-object (\code{colData} is merged slightly more efficiently by row binding). While
-\code{dplyr} methods are used for maximum efficiency, users should be aware that
-memory requirements can be large when merging many \code{list} elements.
+object over the union of their row names, full joins the \code{rowData}, and row
+binds the \code{colData}. The merged assay is a dense matrix, so memory
+requirements can be large when merging many \code{list} elements.
 }
 \examples{
 curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) |>

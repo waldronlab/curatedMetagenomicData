@@ -85,3 +85,51 @@ test_that("return type is TreeSummarizedExperiment when dataType is relative_abu
 
     expect_s4_class(return_object, "TreeSummarizedExperiment")
 })
+
+test_that("a sample_id shared by two studies is returned when requested from one", {
+    # MH0001 and MH0002 are in both LeChatelierE_2013 and NielsenHB_2014
+    requested <-
+        dplyr::bind_rows(
+            dplyr::filter(sampleMetadata, study_name == "LeChatelierE_2013", sample_id == "MH0001"),
+            dplyr::filter(sampleMetadata, study_name == "NielsenHB_2014", sample_id == "MH0002")
+        )
+
+    returned <-
+        suppressMessages(returnSamples(requested, "relative_abundance"))
+
+    expect_identical(colnames(returned), c("MH0001", "MH0002"))
+    expect_identical(returned$study_name, c("LeChatelierE_2013", "NielsenHB_2014"))
+})
+
+test_that("columns keep their own values when a requested sample is dropped", {
+    zeller <-
+        dplyr::filter(sampleMetadata, study_name == "ZellerG_2014") |>
+        dplyr::slice(1)
+
+    asnicar <-
+        dplyr::filter(sampleMetadata, study_name == "AsnicarF_2017") |>
+        dplyr::slice(1)
+
+    absent <-
+        dplyr::mutate(asnicar, sample_id = "not_a_sample")
+
+    returned <-
+        dplyr::bind_rows(zeller, absent, asnicar) |>
+        returnSamples("relative_abundance") |>
+        suppressMessages()
+
+    whole_study <-
+        curatedMetagenomicData("ZellerG_2014.relative_abundance", dryrun = FALSE) |>
+        suppressMessages() |>
+        magrittr::extract2(1L)
+
+    species <-
+        intersect(rownames(returned), rownames(whole_study))
+
+    expect_identical(colnames(returned), c(zeller$sample_id, asnicar$sample_id))
+    expect_identical(returned$study_name, c("ZellerG_2014", "AsnicarF_2017"))
+    expect_equal(
+        assay(returned)[species, zeller$sample_id],
+        assay(whole_study)[species, zeller$sample_id]
+    )
+})
