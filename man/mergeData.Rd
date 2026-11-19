@@ -36,7 +36,9 @@ object over the union of their row names, full joins the \code{rowData}, and row
 binds the \code{colData}. The merged assay is a sparse matrix when every element
 holds one (\code{gene_families}), as returned by \link{curatedMetagenomicData}, and a
 dense matrix otherwise; memory requirements can still be large when merging
-many \code{list} elements.
+many \code{list} elements. A sparse matrix can store at most 2^31 - 1 non-zero
+values; \code{mergeData()} stops with an error if the merged assay would hold
+more.
 }
 \examples{
 curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) |>

@@ -16,7 +16,9 @@
 #' binds the `colData`. The merged assay is a sparse matrix when every element
 #' holds one (`gene_families`), as returned by [curatedMetagenomicData], and a
 #' dense matrix otherwise; memory requirements can still be large when merging
-#' many `list` elements.
+#' many `list` elements. A sparse matrix can store at most 2^31 - 1 non-zero
+#' values; `mergeData()` stops with an error if the merged assay would hold
+#' more.
 #'
 #' @param mergeList a `list` returned from [curatedMetagenomicData] where all of
 #' the elements are of the same `dataType` (see [returnSamples])

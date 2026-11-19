@@ -466,6 +466,27 @@ test_that("a sparse merge beyond 2^31 - 1 non-zero values stops with advice", {
     )
 })
 
+test_that("mergeData() checks the size of a sparse merge", {
+    make_se <- function(samples) {
+        SummarizedExperiment::SummarizedExperiment(
+            assays = list(gene_families = Matrix::Matrix(
+                matrix(1, 2L, length(samples), dimnames = list(c("f1", "f2"), samples)),
+                sparse = TRUE
+            )),
+            colData = S4Vectors::DataFrame(study_name = rep("A", length(samples)), row.names = samples)
+        )
+    }
+    testthat::local_mocked_bindings(
+        .check_sparse_size = function(nnz, n_samples) {
+            stop("checked ", sum(nnz), " values from ", n_samples, " samples")
+        }
+    )
+    expect_error(
+        mergeData(list(make_se("s1"), make_se(c("s2", "s3")))),
+        "checked 6 values from 3 samples"
+    )
+})
+
 test_that("mergeData() keeps gene_families-like sparse assays sparse", {
     study <- function(features, samples, name) {
         counts <- Matrix::Matrix(
