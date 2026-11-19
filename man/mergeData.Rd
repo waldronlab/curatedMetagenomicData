@@ -33,8 +33,10 @@ Internally, \code{mergeData()} combines the \code{assays} of each
 \link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment} or
 \link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
 object over the union of their row names, full joins the \code{rowData}, and row
-binds the \code{colData}. The merged assay is a dense matrix, so memory
-requirements can be large when merging many \code{list} elements.
+binds the \code{colData}. The merged assay is a sparse matrix when every element
+holds one (\code{gene_families}), as returned by \link{curatedMetagenomicData}, and a
+dense matrix otherwise; memory requirements can still be large when merging
+many \code{list} elements.
 }
 \examples{
 curatedMetagenomicData("LiJ_20.+.marker_abundance", dryrun = FALSE) |>

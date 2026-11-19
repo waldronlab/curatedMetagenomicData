@@ -13,8 +13,10 @@
 #' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class] or
 #' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
 #' object over the union of their row names, full joins the `rowData`, and row
-#' binds the `colData`. The merged assay is a dense matrix, so memory
-#' requirements can be large when merging many `list` elements.
+#' binds the `colData`. The merged assay is a sparse matrix when every element
+#' holds one (`gene_families`), as returned by [curatedMetagenomicData], and a
+#' dense matrix otherwise; memory requirements can still be large when merging
+#' many `list` elements.
 #'
 #' @param mergeList a `list` returned from [curatedMetagenomicData] where all of
 #' the elements are of the same `dataType` (see [returnSamples])
@@ -152,13 +154,18 @@ mergeData <- function(mergeList) {
     }
 }
 
-## Merge feature x sample matrices into one dense matrix over the union of
-## their row names, with 0 where a study lacks a feature (and in place of NA,
-## as before). Studies are made dense one at a time, so peak memory is the
-## result plus one study, rather than several data.frame copies of everything.
+## Merge feature x sample matrices into one matrix over the union of their row
+## names, with 0 where a study lacks a feature (and in place of NA, as before).
+## When every study is sparse (gene_families) the result is sparse too.
+## Otherwise it is dense, and studies are made dense one at a time, so peak
+## memory is the result plus one study.
 .merge_assays <- function(mats) {
     features <- unique(unlist(lapply(mats, rownames), use.names = FALSE))
     samples <- unlist(lapply(mats, colnames), use.names = FALSE)
+
+    if (all(vapply(mats, inherits, logical(1L), what = "sparseMatrix"))) {
+        return(.merge_sparse_assays(mats, features, samples))
+    }
 
     types <- vapply(mats, function(m) {
         typeof(as.matrix(m[0L, 0L, drop = FALSE]))
@@ -183,5 +190,25 @@ mergeData <- function(mergeList) {
         merged[match(rownames(block), features), seq(end[[i]] - n + 1L, end[[i]])] <- block
     }
 
+    merged
+}
+
+## The sparse case: re-index each study's non-zero entries to the merged rows,
+## one study at a time, then bind the studies by column.
+.merge_sparse_assays <- function(mats, features, samples) {
+    blocks <- lapply(mats, function(m) {
+        triplet <- Matrix::mat2triplet(m)
+        value <- as.numeric(triplet[["x"]])
+        value[is.na(value)] <- 0
+        Matrix::sparseMatrix(
+            i = match(rownames(m), features)[triplet[["i"]]],
+            j = triplet[["j"]],
+            x = value,
+            dims = c(length(features), ncol(m))
+        )
+    })
+
+    merged <- do.call(cbind, blocks)
+    dimnames(merged) <- list(features, samples)
     merged
 }

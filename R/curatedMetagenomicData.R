@@ -24,8 +24,9 @@
 #' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
 #' objects that are ultimately returned as the `list` of resources. Only the
 #' `gene_families` `dataType` (see [returnSamples]) is stored as a sparse matrix
-#' in ExperimentHub – this has no practical consequences for users and is done
-#' to optimize storage. When searching for "resources", users will use the
+#' in ExperimentHub, and it is returned as one, by [mergeData] and
+#' [returnSamples] as well; use `as.matrix()` on the assay if a dense matrix is
+#' needed and fits in memory. When searching for "resources", users will use the
 #' `study_name` value from the [sampleMetadata] `data.frame`.
 #'
 #' @param pattern regular expression pattern to look for in the titles of

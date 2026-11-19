@@ -1,3 +1,11 @@
+# curatedMetagenomicData 3.21.6
+
+* `mergeData()` and `returnSamples()` return a sparse assay (`dgCMatrix`) for
+`gene_families`, as `curatedMetagenomicData()` already does for a single study,
+instead of a dense matrix. For 48 samples from two studies the assay is 0.95 GB
+rather than 2.5 GB, and peak memory fell from 8.9 GB to 5.7 GB. Code that needs
+a dense matrix can call `as.matrix()` on the assay (#304, #318)
+
 # curatedMetagenomicData 3.21.5
 
 * `returnSamples()` no longer mislabels columns. When a requested sample had no

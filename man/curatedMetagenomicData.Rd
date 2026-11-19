@@ -59,8 +59,9 @@ and/or
 \link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
 objects that are ultimately returned as the \code{list} of resources. Only the
 \code{gene_families} \code{dataType} (see \link{returnSamples}) is stored as a sparse matrix
-in ExperimentHub – this has no practical consequences for users and is done
-to optimize storage. When searching for "resources", users will use the
+in ExperimentHub, and it is returned as one, by \link{mergeData} and
+\link{returnSamples} as well; use \code{as.matrix()} on the assay if a dense matrix is
+needed and fits in memory. When searching for "resources", users will use the
 \code{study_name} value from the \link{sampleMetadata} \code{data.frame}.
 }
 \section{Taxonomic names}{
