@@ -45,6 +45,7 @@ Imports:
     S4Vectors,
     dplyr,
     magrittr,
+    methods,
     mia,
     purrr,
     rlang,
