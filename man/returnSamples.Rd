@@ -36,7 +36,10 @@ when \code{dataType = "relative_abundance"}, a
 \link[TreeSummarizedExperiment:TreeSummarizedExperiment-class]{TreeSummarizedExperiment}
 object is returned; otherwise, a
 \link[SummarizedExperiment:SummarizedExperiment-class]{SummarizedExperiment}
-object is returned
+object is returned. The assay is a sparse matrix (\code{dgCMatrix}) for
+\code{"gene_families"} and a dense matrix for every other \code{dataType}; use
+\code{as.matrix()} on the assay if a function needs a dense matrix and it fits in
+memory.
 }
 \description{
 To return samples across studies, users will use \code{returnSamples()} along with

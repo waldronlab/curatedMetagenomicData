@@ -426,10 +426,55 @@ test_that("merged assays stay integer, accept sparse input and empty studies", {
     expect_type(merged, "integer")
     expect_identical(merged[, "s3"], c(f1 = 0L, f2 = 0L, f3 = 5L))
 
-    skip_if_not_installed("Matrix")
     sparse <- Matrix::Matrix(a * 1, sparse = TRUE)
     empty <- b[, 0L, drop = FALSE]
     merged <- curatedMetagenomicData:::.merge_assays(list(sparse, empty, b * 1))
     expect_identical(dim(merged), c(3L, 3L))
     expect_identical(merged["f3", ], c(s1 = 0, s2 = 0, s3 = 5))
+})
+
+test_that("sparse assays merge to a sparse assay with the same values", {
+    a <- matrix(c(1, 0, 3, 4), 2, dimnames = list(c("f1", "f2"), c("s1", "s2")))
+    b <- matrix(c(5, NA, 0), 3, dimnames = list(c("f3", "f1", "f4"), "s3"))
+    sparse <- list(
+        Matrix::Matrix(a, sparse = TRUE),
+        methods::as(Matrix::Matrix(b, sparse = TRUE), "TsparseMatrix"),
+        Matrix::Matrix(b[, 0L, drop = FALSE], sparse = TRUE)
+    )
+
+    merged <- curatedMetagenomicData:::.merge_assays(sparse)
+
+    expect_s4_class(merged, "dgCMatrix")
+    expect_identical(
+        as.matrix(merged),
+        curatedMetagenomicData:::.merge_assays(list(a, b))
+    )
+
+    pattern <- methods::as(Matrix::Matrix(a != 0, sparse = TRUE), "nMatrix")
+    merged <- curatedMetagenomicData:::.merge_assays(list(pattern, sparse[[2L]]))
+    expect_identical(merged[, "s1"], c(f1 = 1, f2 = 0, f3 = 0, f4 = 0))
+})
+
+test_that("mergeData() keeps gene_families-like sparse assays sparse", {
+    study <- function(features, samples, name) {
+        counts <- Matrix::Matrix(
+            seq_len(length(features) * length(samples)) * 1,
+            length(features), length(samples),
+            dimnames = list(features, samples), sparse = TRUE
+        )
+        SummarizedExperiment::SummarizedExperiment(
+            assays = list(gene_families = counts),
+            colData = S4Vectors::DataFrame(study_name = rep(name, length(samples)), row.names = samples)
+        )
+    }
+
+    merged <- mergeData(list(
+        study(c("f1", "f2"), c("s1", "s2"), "A"),
+        study(c("f2", "f3"), "s3", "B")
+    ))
+
+    expect_s4_class(assay(merged), "dgCMatrix")
+    expect_identical(dim(merged), c(3L, 3L))
+    expect_identical(assay(merged)["f2", ], c(s1 = 2, s2 = 4, s3 = 1))
+    expect_identical(merged$study_name, c("A", "A", "B"))
 })
