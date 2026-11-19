@@ -1,10 +1,17 @@
-# curatedMetagenomicData 3.21.6
+# curatedMetagenomicData 3.21.7
 
 * `mergeData()` and `returnSamples()` return a sparse assay (`dgCMatrix`) for
 `gene_families`, as `curatedMetagenomicData()` already does for a single study,
 instead of a dense matrix. For 48 samples from two studies the assay is 0.95 GB
 rather than 2.5 GB, and peak memory fell from 8.9 GB to 5.7 GB. Code that needs
 a dense matrix can call `as.matrix()` on the assay (#304, #318)
+
+# curatedMetagenomicData 3.21.6
+
+* `rownames = "NCBI"` keeps its row tree with mia 1.21.30 and later. Rows that
+share an NCBI Taxonomy ID are summed in this package instead of with
+`mia::agglomerateByVariable()`, which now removes the tree. Results are the same
+as before
 
 # curatedMetagenomicData 3.21.5
 
