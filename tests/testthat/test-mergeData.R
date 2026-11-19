@@ -449,6 +449,10 @@ test_that("sparse assays merge to a sparse assay with the same values", {
         as.matrix(merged),
         curatedMetagenomicData:::.merge_assays(list(a, b))
     )
+
+    pattern <- methods::as(Matrix::Matrix(a != 0, sparse = TRUE), "nMatrix")
+    merged <- curatedMetagenomicData:::.merge_assays(list(pattern, sparse[[2L]]))
+    expect_identical(merged[, "s1"], c(f1 = 1, f2 = 0, f3 = 0, f4 = 0))
 })
 
 test_that("mergeData() keeps gene_families-like sparse assays sparse", {

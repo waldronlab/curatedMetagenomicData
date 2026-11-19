@@ -189,7 +189,7 @@ curatedMetagenomicData("AsnicarF_20.+.relative_abundance", dryrun = FALSE, rowna
 
 The `returnSamples()` function takes the `sampleMetadata` `data.frame` subset to include only desired samples and metadata as input, and returns a single `SummarizedExperiment` or `TreeSummarizedExperiment` object that includes only desired samples and metadata. To use this function, filter rows and/or select columns of interest from the `sampleMetadata` `data.frame`, maintaining at least one row, and the `sample_id` and `study_name` columns. Then provide the subset `data.frame` as the first argument to the `returnSamples()` function.
 
-The `returnSamples()` function requires a second argument `dataType` (either `"gene_families"`, `"marker_abundance"`, `"marker_presence"`, `"pathway_abundance"`, `"pathway_coverage"`, or `"relative_abundance"`) to be specified. It is often most convenient to subset the `sampleMetadata` `data.frame` using `r CRANpkg("dplyr")` syntax.
+The `returnSamples()` function requires a second argument `dataType` (either `"gene_families"`, `"marker_abundance"`, `"marker_presence"`, `"pathway_abundance"`, `"pathway_coverage"`, or `"relative_abundance"`) to be specified. It is often most convenient to subset the `sampleMetadata` `data.frame` using `r CRANpkg("dplyr")` syntax. For `"gene_families"` the assay is returned as a sparse matrix, by `returnSamples()` and `mergeData()` as well as by `curatedMetagenomicData()`; call `as.matrix()` on it if a function needs a dense matrix and it fits in memory.
 
 ```{r, collapse = TRUE, message = FALSE}
 sampleMetadata |>

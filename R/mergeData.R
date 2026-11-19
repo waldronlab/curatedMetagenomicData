@@ -198,7 +198,12 @@ mergeData <- function(mergeList) {
 .merge_sparse_assays <- function(mats, features, samples) {
     blocks <- lapply(mats, function(m) {
         triplet <- Matrix::mat2triplet(m)
-        value <- as.numeric(triplet[["x"]])
+        ## pattern matrices (ngCMatrix) have no values: every entry is 1
+        value <- if (is.null(triplet[["x"]])) {
+            rep(1, length(triplet[["i"]]))
+        } else {
+            as.numeric(triplet[["x"]])
+        }
         value[is.na(value)] <- 0
         Matrix::sparseMatrix(
             i = match(rownames(m), features)[triplet[["i"]]],

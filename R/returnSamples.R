@@ -40,7 +40,10 @@
 #' [TreeSummarizedExperiment][TreeSummarizedExperiment::TreeSummarizedExperiment-class]
 #' object is returned; otherwise, a
 #' [SummarizedExperiment][SummarizedExperiment::SummarizedExperiment-class]
-#' object is returned
+#' object is returned. The assay is a sparse matrix (`dgCMatrix`) for
+#' `"gene_families"` and a dense matrix for every other `dataType`; use
+#' `as.matrix()` on the assay if a function needs a dense matrix and it fits in
+#' memory.
 #' @export
 #'
 #' @examples
