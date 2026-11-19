@@ -1,3 +1,10 @@
+# curatedMetagenomicData 3.21.8
+
+* `mergeData()` and `returnSamples()` stop with a clear error when the merged
+`gene_families` assay would hold more than the 2^31 - 1 non-zero values that a
+sparse matrix can store, instead of failing with `p[length(p)] cannot exceed
+2^31-1`. The 5,474 samples from 45 studies requested in #304 are over this limit
+
 # curatedMetagenomicData 3.21.7
 
 * `mergeData()` and `returnSamples()` return a sparse assay (`dgCMatrix`) for

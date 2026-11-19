@@ -16,7 +16,9 @@
 #' binds the `colData`. The merged assay is a sparse matrix when every element
 #' holds one (`gene_families`), as returned by [curatedMetagenomicData], and a
 #' dense matrix otherwise; memory requirements can still be large when merging
-#' many `list` elements.
+#' many `list` elements. A sparse matrix can store at most 2^31 - 1 non-zero
+#' values; `mergeData()` stops with an error if the merged assay would hold
+#' more.
 #'
 #' @param mergeList a `list` returned from [curatedMetagenomicData] where all of
 #' the elements are of the same `dataType` (see [returnSamples])
@@ -213,7 +215,26 @@ mergeData <- function(mergeList) {
         )
     })
 
+    .check_sparse_size(vapply(blocks, Matrix::nnzero, numeric(1L)), length(samples))
+
     merged <- do.call(cbind, blocks)
     dimnames(merged) <- list(features, samples)
     merged
+}
+
+## A sparse matrix from the Matrix package holds at most 2^31 - 1 non-zero
+## values. Stop with advice before cbind() fails with "p[length(p)] cannot
+## exceed 2^31-1".
+.check_sparse_size <- function(nnz, n_samples) {
+    total <- sum(as.numeric(nnz))
+    if (total > .Machine[["integer.max"]]) {
+        stop(
+            "the merged assay would hold ", format(total, big.mark = ","),
+            " non-zero values from ", n_samples, " samples, more than the ",
+            "2^31 - 1 that a sparse matrix can store; request fewer samples, ",
+            "or process the studies separately",
+            call. = FALSE
+        )
+    }
+    invisible(total)
 }
