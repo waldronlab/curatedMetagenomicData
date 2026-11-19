@@ -130,7 +130,9 @@
 #' @importFrom S4Vectors SimpleList
 #' @importFrom TreeSummarizedExperiment TreeSummarizedExperiment
 #' @importFrom SummarizedExperiment rowData<-
-#' @importFrom mia taxonomyRankEmpty getTaxonomyLabels agglomerateByVariable
+#' @importFrom mia taxonomyRankEmpty getTaxonomyLabels
+#' @importFrom TreeSummarizedExperiment rowLinks rowTree subsetByLeaf changeTree
+#' @importFrom SummarizedExperiment assay
 #' @importFrom TreeSummarizedExperiment rownames<-
 #' @importFrom SummarizedExperiment rowData
 #' @importFrom SummarizedExperiment assay<-
@@ -342,11 +344,39 @@ curatedMetagenomicData <- function(pattern, dryrun = TRUE, counts = FALSE, rowna
                             str_c(merge_lines, collapse = "\n"), "\n"
                         )
 
+                        # Summed here rather than with
+                        # mia::agglomerateByVariable(), which from mia 1.21.30
+                        # removes the row tree when the merged rows are not a
+                        # subtree of their own. As before, rows come back
+                        # sorted by identifier, a merged row keeps the rowData
+                        # and tree tip of its first member, and the tree is
+                        # pruned to the remaining rows with the identifiers as
+                        # tip labels.
+                        summed <-
+                            base::rowsum(assay(tree_summarized_experiment),
+                                         species_id, reorder = TRUE)
+
                         tree_summarized_experiment <-
-                            agglomerateByVariable(tree_summarized_experiment,
-                                                  by = "rows",
-                                                  group = species_id,
-                                                  update.tree = TRUE)
+                            tree_summarized_experiment[base::match(rownames(summed), species_id), ]
+
+                        assay(tree_summarized_experiment, withDimnames = FALSE) <-
+                            summed
+
+                        tree_summarized_experiment <-
+                            subsetByLeaf(tree_summarized_experiment,
+                                         rowLeaf = rowLinks(tree_summarized_experiment)[["nodeLab"]])
+
+                        pruned_tree <-
+                            rowTree(tree_summarized_experiment)
+
+                        pruned_tree[["tip.label"]] <-
+                            rownames(summed)[base::match(pruned_tree[["tip.label"]],
+                                                         rowLinks(tree_summarized_experiment)[["nodeLab"]])]
+
+                        tree_summarized_experiment <-
+                            changeTree(tree_summarized_experiment,
+                                       rowTree = pruned_tree,
+                                       rowNodeLab = rownames(summed))
                     }
                 }
 
