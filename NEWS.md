@@ -1,3 +1,10 @@
+# curatedMetagenomicData 3.21.6
+
+* `rownames = "NCBI"` keeps its row tree with mia 1.21.30 and later. Rows that
+share an NCBI Taxonomy ID are summed in this package instead of with
+`mia::agglomerateByVariable()`, which now removes the tree. Results are the same
+as before
+
 # curatedMetagenomicData 3.21.5
 
 * `returnSamples()` no longer mislabels columns. When a requested sample had no
