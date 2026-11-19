@@ -178,6 +178,29 @@ test_that('rows sharing an NCBI Taxonomy ID are reported when merged', {
     )
 })
 
+test_that('merged NCBI rows are sorted, unique, and linked to a pruned tree', {
+    merged <-
+        curatedMetagenomicData("HMP_2012.relative_abundance",
+                               dryrun = FALSE, rownames = "NCBI") |>
+        suppressMessages() |>
+        suppressWarnings() |>
+        magrittr::extract2(1L)
+
+    ids <- rownames(merged)
+    tree <- TreeSummarizedExperiment::rowTree(merged)
+    links <- TreeSummarizedExperiment::rowLinks(merged)
+
+    expect_false(base::anyDuplicated(ids) > 0)
+    expect_identical(ids, base::sort(ids))
+    expect_setequal(tree[["tip.label"]], ids)
+    expect_identical(links[["nodeLab"]], ids)
+    expect_true(base::all(links[["isLeaf"]]))
+    expect_identical(
+        base::as.character(SummarizedExperiment::rowData(merged)[["species"]]),
+        ids
+    )
+})
+
 test_that("first list element colData matches sampleMetadata when dataType is not relative_abundance", {
     returned_resources <-
         curatedMetagenomicData("HMP_2012.marker_presence", dryrun = FALSE, counts = FALSE)
