@@ -43,7 +43,10 @@
 #' object is returned. The assay is a sparse matrix (`dgCMatrix`) for
 #' `"gene_families"` and a dense matrix for every other `dataType`; use
 #' `as.matrix()` on the assay if a function needs a dense matrix and it fits in
-#' memory.
+#' memory. A sparse matrix can store at most 2^31 - 1 non-zero values, which
+#' `"gene_families"` reaches at a few thousand samples; a larger request stops
+#' with an error after the studies have loaded, so request fewer samples or
+#' process the studies separately.
 #' @export
 #'
 #' @examples

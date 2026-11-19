@@ -1,6 +1,6 @@
 Package: curatedMetagenomicData
 Title: Curated Metagenomic Data of the Human Microbiome
-Version: 3.21.7
+Version: 3.21.8
 Date: 2025-9-26
 Description:
     The curatedMetagenomicData package provides standardized, curated human
@@ -12,7 +12,7 @@ Description:
     calculated with HUMAnN3. The manually curated sample metadata and
     standardized metagenomic data are available as (Tree)SummarizedExperiment
     objects.
-Authors@R:c(
+Authors@R: c(
     person("Lucas", "schiffer", , "schiffer.lucas@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0003-3628-0326")),
     person("Levi", "Waldron", role = "aut"),
@@ -71,10 +71,10 @@ BugReports: https://github.com/waldronlab/curatedMetagenomicData/issues
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
 VignetteBuilder: knitr
 biocViews:
     ExperimentHub,
     Homo_sapiens_Data,
     MicrobiomeData,
     ReproducibleResearch
+Config/roxygen2/version: 8.0.0

@@ -455,6 +455,17 @@ test_that("sparse assays merge to a sparse assay with the same values", {
     expect_identical(merged[, "s1"], c(f1 = 1, f2 = 0, f3 = 0, f4 = 0))
 })
 
+test_that("a sparse merge beyond 2^31 - 1 non-zero values stops with advice", {
+    check <- curatedMetagenomicData:::.check_sparse_size
+    expect_identical(check(c(2, 3), 2L), 5)
+    expect_identical(check(rep(.Machine$integer.max, 1L), 1L), 2^31 - 1)
+    ## integer counts must not overflow to NA when summed
+    expect_error(
+        check(rep(.Machine$integer.max, 2L), 5474L),
+        "4,294,967,294 non-zero values from 5474 samples.*fewer samples"
+    )
+})
+
 test_that("mergeData() keeps gene_families-like sparse assays sparse", {
     study <- function(features, samples, name) {
         counts <- Matrix::Matrix(

@@ -39,7 +39,10 @@ object is returned; otherwise, a
 object is returned. The assay is a sparse matrix (\code{dgCMatrix}) for
 \code{"gene_families"} and a dense matrix for every other \code{dataType}; use
 \code{as.matrix()} on the assay if a function needs a dense matrix and it fits in
-memory.
+memory. A sparse matrix can store at most 2^31 - 1 non-zero values, which
+\code{"gene_families"} reaches at a few thousand samples; a larger request stops
+with an error after the studies have loaded, so request fewer samples or
+process the studies separately.
 }
 \description{
 To return samples across studies, users will use \code{returnSamples()} along with
