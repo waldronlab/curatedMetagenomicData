@@ -150,6 +150,30 @@ mergeData <- function(mergeList) {
             column_to_rownames() |>
             extract(row_names, "nodeLab")
 
+        # Studies retrieved with rownames = "NCBI" that merged duplicate species
+        # IDs relabel their tree tips and rowLinks to bare NCBI IDs. Map those
+        # back to matching tips of phylogeneticTree before building the merged
+        # TreeSummarizedExperiment.
+        missing_tips <-
+            !(rowNodeLab %in% phylogeneticTree[["tip.label"]])
+
+        if (any(missing_tips)) {
+            tree_tips <-
+                intersect(rownames(rowDataNCBI), phylogeneticTree[["tip.label"]])
+
+            tip_species <-
+                as.character(rowDataNCBI[tree_tips, "species"])
+
+            mapped <-
+                tree_tips[match(rowNodeLab[missing_tips], tip_species)]
+
+            matched <-
+                !is.na(mapped)
+
+            rowNodeLab[missing_tips][matched] <-
+                mapped[matched]
+        }
+
         TreeSummarizedExperiment(assays = assays, rowData = rowData, colData = colData, rowTree = phylogeneticTree, rowNodeLab = rowNodeLab)
     } else {
         SummarizedExperiment(assays = assays, rowData = rowData, colData = colData)

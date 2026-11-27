@@ -510,3 +510,78 @@ test_that("mergeData() keeps gene_families-like sparse assays sparse", {
     expect_identical(assay(merged)["f2", ], c(s1 = 2, s2 = 4, s3 = 1))
     expect_identical(merged$study_name, c("A", "A", "B"))
 })
+
+test_that("mergeData() preserves rows when merging NCBI-keyed relative_abundance studies", {
+    ns <- asNamespace("curatedMetagenomicData")
+    pt <- ns[["phylogeneticTree"]]
+    rd_ncbi <- ns[["rowDataNCBI"]]
+    in_tree <- base::intersect(base::rownames(rd_ncbi), pt[["tip.label"]])
+    rd_tree <- rd_ncbi[in_tree, ]
+    dup_id <- base::unique(
+        rd_tree[["species"]][base::duplicated(rd_tree[["species"]]) & !base::is.na(rd_tree[["species"]])]
+    )[[1L]]
+    dup_clades <- base::rownames(rd_tree)[!base::is.na(rd_tree[["species"]]) & rd_tree[["species"]] == dup_id]
+    other_clades <- base::rownames(rd_tree)[!base::is.na(rd_tree[["species"]]) & rd_tree[["species"]] != dup_id][seq_len(3L)]
+    keep_ranks <- c("superkingdom", "phylum", "class", "order", "family", "genus", "species")
+
+    make_ncbi_tse <- function(clades, samples, study_name, merge_dups = TRUE) {
+        mat <- base::matrix(
+            base::seq_len(base::length(clades) * base::length(samples)) * 1,
+            nrow = base::length(clades), ncol = base::length(samples),
+            dimnames = list(clades, samples)
+        )
+        tse <- TreeSummarizedExperiment::TreeSummarizedExperiment(
+            assays = S4Vectors::SimpleList(relative_abundance = mat),
+            colData = S4Vectors::DataFrame(study_name = base::rep(study_name, base::length(samples)), row.names = samples),
+            rowTree = pt
+        )
+        SummarizedExperiment::rowData(tse) <- rd_ncbi[clades, keep_ranks]
+        species_id <- base::as.character(SummarizedExperiment::rowData(tse)[["species"]])
+        if (merge_dups && base::anyDuplicated(species_id)) {
+            summed <- base::rowsum(SummarizedExperiment::assay(tse), species_id, reorder = TRUE)
+            tse <- tse[base::match(base::rownames(summed), species_id), ]
+            SummarizedExperiment::assay(tse, withDimnames = FALSE) <- summed
+            tse <- TreeSummarizedExperiment::subsetByLeaf(
+                tse, rowLeaf = TreeSummarizedExperiment::rowLinks(tse)[["nodeLab"]]
+            )
+            pruned_tree <- TreeSummarizedExperiment::rowTree(tse)
+            pruned_tree[["tip.label"]] <- base::rownames(summed)[base::match(
+                pruned_tree[["tip.label"]],
+                TreeSummarizedExperiment::rowLinks(tse)[["nodeLab"]]
+            )]
+            tse <- TreeSummarizedExperiment::changeTree(
+                tse, rowTree = pruned_tree, rowNodeLab = base::rownames(summed)
+            )
+        }
+        rownames(tse) <- base::as.character(SummarizedExperiment::rowData(tse)[["species"]])
+        tse
+    }
+
+    study_a <- make_ncbi_tse(c(dup_clades, other_clades[c(1L, 2L)]), c("s1", "s2"), "StudyA")
+    study_b <- make_ncbi_tse(c(dup_clades, other_clades[c(2L, 3L)]), c("s3", "s4"), "StudyB")
+    study_c <- make_ncbi_tse(other_clades[c(1L, 3L)], "s5", "StudyC", merge_dups = FALSE)
+
+    merged <- mergeData(list(study_a, study_b))
+    expected_ids <- base::union(base::rownames(study_a), base::rownames(study_b))
+
+    expect_s4_class(merged, "TreeSummarizedExperiment")
+    expect_identical(base::nrow(merged), base::length(expected_ids))
+    expect_setequal(base::rownames(merged), expected_ids)
+    expect_true(base::all(TreeSummarizedExperiment::rowLinks(merged)[["isLeaf"]]))
+    expect_equal(
+        SummarizedExperiment::assay(merged)[base::rownames(study_a), c("s1", "s2")],
+        SummarizedExperiment::assay(study_a)
+    )
+    expect_equal(
+        SummarizedExperiment::assay(merged)[base::rownames(study_b), c("s3", "s4")],
+        SummarizedExperiment::assay(study_b)
+    )
+
+    # Also works when combining a study with bare NCBI tip labels and one with clade tip labels
+    merged_mixed <- mergeData(list(study_a, study_c))
+    expect_identical(
+        base::nrow(merged_mixed),
+        base::length(base::union(base::rownames(study_a), base::rownames(study_c)))
+    )
+    expect_true(base::all(TreeSummarizedExperiment::rowLinks(merged_mixed)[["isLeaf"]]))
+})
